@@ -29,9 +29,6 @@ STEP 10: ACS JOINT OUTPUT IS GENERATED AUTOMATICALLY IN THE CORRECT FORMAT
 STEP 11: SEND COP ROWS AND ACS JOINT OBS OUTPUT TO OPS TEAM
 """
 
-#import os
-#import sys
-
 
 __project__   = "NOMAD Observation Planning"
 __author__    = "Ian Thomas"
@@ -39,60 +36,13 @@ __contact__   = "ian.thomas@aeronomie.be"
 
 
 
-"""choose which mtp to analyse. define each below"""
-#mtpNumber = 13
 
-
-"""choose what to run. "all" will run all the first time around. Choose merge to avoid running the long calculation again, if the correct data is already in memory"""
-#scriptToRun = "all"
-#scriptToRun = "occultation"
-#scriptToRun = "nadir"
-#scriptToRun = "merge"
-#scriptToRun = "plot occ"
-#scriptToRun = "plot nadir"
-#scriptToRun = "planObs"
-#scriptToRun = ""
-#scriptToRun = "make html"
-#scriptToRun = "make uvis obs pages"
-
-
-"""if observation plan doesn't exist, run through whole MTP and write observation plan txt file. Writes orbit type 1 or 5 for all occultations and then lno cycle for all non-occultation nadirs
-Other observations such as limbs/nightsides/calibrations must be added manually
-Requires MAPPS event file!"""
-#MAKE_OBSERVATION_PLAN = False
-#MAKE_OBSERVATION_PLAN = True
-
-
-"""should uvis cop rows be added to the observation planning website? Note that COP rows must be provided by OU first for this to work"""
-#ADD_UVIS_COP_ROWS = False
-#ADD_UVIS_COP_ROWS = True
-
-
-"""if MAPPS event file (containing allocation of NOMAD-ACS occultations) doesn't exist, make a dummy one? For normal operations this should be set to False
-Requires dummy MAPPS event file to exist!"""
-#MAKE_MAPPS_EVENT_FILE = False
-#MAKE_MAPPS_EVENT_FILE = True #for early MTP testing only!
-
-
-"""For making observation file, don't stop on error if the given orbit type does not match the MAPPS plan. For normal operation this should be set to True"""
-#STOP_ON_ERROR = True
-#STOP_ON_ERROR = False #for specific circumstances only. Errors may not be caught for normal operations!
-
-
-
-"""Extra part to write to file joint observation file for ACS"""
-JOINT_OBSERVATION_NAMES_TO_FIND = [
-        "Nominal Science 1xCO2 LA01",
-        "Dust H2O 01",
-        "Water Ice 01",
-        "AER 01"
-        ]
-SOC_JOINT_OBSERVATION_NAMES = [
-        "NOM_01",
-        "DUST01",
-        "ICE_01",
-        "AER_01"
-        ]
+SOC_JOINT_OBSERVATION_NAMES = {
+        "Nominal Science 1xCO2 LA01":"NOM_01",
+        "Dust H2O 01":"DUST01",
+        "Water Ice 01":"ICE_01",
+        "AER 01":"AER_01"
+        }
 SOC_JOINT_OBSERVATION_TYPES = [
         "OCCEG",
         "OCCIN",
@@ -100,20 +50,6 @@ SOC_JOINT_OBSERVATION_TYPES = [
         "OCCGR"
         ]
         
-
-    
-"""Don't save figures or stop on error if making observation plan or event file!"""
-#if MAKE_MAPPS_EVENT_FILE or MAKE_OBSERVATION_PLAN:
-#    STOP_ON_ERROR = False
-#    OUTPUT_OBSERVATION_NAMES_TO_FIND = []
-#    ADD_UVIS_COP_ROWS = False
-    
-    
-    
-
-
-
-
 
 
 """make the observation dictionaries of all the desired measurement types
@@ -189,7 +125,7 @@ occultationObservationDict = {
 "ACS Ridealong Science All Fullscan Fast":[["COP#294"], 0, 1, 16],
                                             
 #testing
-"Test":[["COP#1"], 0, 1, 16],
+#"Test":[["COP#1"], 0, 1, 16],
 #"Ingress":[["COP#1"], 0, 0, 0],
 #"Egress":[["COP#1"], 0, 0, 0],
 #"Merged":[["COP#1"], 0, 0, 0],
@@ -269,7 +205,7 @@ nadirObservationDict = {
 
 
 #testing
-"Test":[["COP#1"], 0, 1, 16],
+#"Test":[["COP#1"], 0, 1, 16],
 #"Long Dayside":[["COP#1"], 0, 0, 0],
 #"Short Dayside":[["COP#1"], 0, 0, 0],
 #"Dayside":[["COP#1"], 0, 0, 0],
@@ -292,6 +228,17 @@ First orbit must match with Bojan/Claudio. Don't generate an MTP plan and then d
 Define a few extra observations and then delete them from the final observation plan.
 CHECK START TIMES IN COSMOGRAPHIA OR SOC EVENT FILE"""
 def getMtpConstants(mtpNumber):
+
+    def convertInputTimeStrings(timeString):
+        from datetime import datetime, timedelta
+        """convert input time strings to SPICE format and add a delta of a few minutes"""
+        time = datetime.strptime(timeString, "%Y-%m-%dT%H:%M:%SZ")
+        #start time must be a minute after passing from day to night. Bojan will specify which orbit to start on!
+        #end time must be a minute after the end of the event file on the nightside
+        delta = timedelta(minutes=1) 
+        newTime = time + delta
+        utcString = datetime.strftime(newTime, '%Y %b %d %H:%M:%S')   
+        return utcString
 
     if mtpNumber == 0:
         utcstringDaysideNadirStart = "2018MAR24-11:50:00 UTC" #in general, choose a time just after passing from day to night
@@ -397,80 +344,56 @@ def getMtpConstants(mtpNumber):
         NADIR_ONLY = False
         SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
     
-    elif mtpNumber == 10: #2018-12-29T14:12:47Z EXMGEO_TD2N - 2019-01-26T12:49:26Z EXMGEO_TD2N
-        utcstringDaysideNadirStart = "2018DEC29-14:15:00 UTC" #in general, choose a time a few minutes after passing from day to night. Bojan will specify which orbit to start on!
-        utcstringOccultationStart = utcstringDaysideNadirStart
-        utcstringDaysideNadirEnd = "2019JAN26-12:55:00 UTC" #in general, choose a time just after the end of the event file on the nightside
-        utcstringOccultationEnd = utcstringDaysideNadirEnd
-        copVersion = "20181229_113000" #desired cop table folder
-        MAPPS_EVENT_FILE = "LEVF_M010_SOC_PLANNING.EVF"
-        NADIR_ONLY = False
+    elif mtpNumber == 10:
+        mtpStart = "2018-12-29T14:12:47Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2019-01-26T12:49:26Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20181229_113000" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 11:
+        mtpStart = "2019-01-26T14:47:51Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2019-02-23T12:49:34Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20181229_113000" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+    
+    elif mtpNumber == 12: # > EXMGEO_TD2N -  > EXMGEO_TD2N
+        mtpStart = "2019-02-23T14:47:29Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2019-03-23T13:13:40Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20181229_113000" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+    
+    elif mtpNumber == 13:
+        mtpStart = "2019-03-23T15:11:46Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2019-04-20T13:16:29Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+    
+    elif mtpNumber == 14:
+        mtpStart = "2019-04-20T15:14:22Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2019-05-18T13:39:12Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+
+    MAPPS_EVENT_FILE = "LEVF_M%03d_SOC_PLANNING.EVF" %mtpNumber
+    if mtpNumber < 13:
+        ACS_START_ALTITUDE = 250 #km
+    else:
+        ACS_START_ALTITUDE = 200 #km
+
+    if mtpNumber == 2:
+        SO_CENTRE_DETECTOR_LINE = 130 #boresight corrected by moving detector readout region
+    elif mtpNumber in [3, 4]:
+        SO_CENTRE_DETECTOR_LINE = 131 #detector readout region improved
+    else:
         SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
+
+
+
+    utcstringStart = convertInputTimeStrings(mtpStart)
+    utcstringEnd = convertInputTimeStrings(mtpEnd)
     
-    elif mtpNumber == 11: #2019-01-26T14:47:51Z EXMGEO_TD2N - 2019-02-23T12:49:34Z EXMGEO_TD2N. No occs on first orbits -> later start time
-        utcstringDaysideNadirStart = "2019JAN26-14:58:00 UTC" #in general, choose a time a few minutes after passing from day to night. Bojan will specify which orbit to start on!
-        utcstringOccultationStart = utcstringDaysideNadirStart
-        utcstringDaysideNadirEnd = "2019FEB23-12:55:00 UTC" #in general, choose a time just after the end of the event file on the nightside
-        utcstringOccultationEnd = utcstringDaysideNadirEnd
-        copVersion = "20181229_113000" #desired cop table folder
-        MAPPS_EVENT_FILE = "LEVF_M011_SOC_PLANNING.EVF"
-        NADIR_ONLY = False
-        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
-    
-    elif mtpNumber == 12: #2019-02-23T14:47:29Z > EXMGEO_TD2N - 2019-03-23T13:13:40Z > EXMGEO_TD2N
-        utcstringDaysideNadirStart = "2019FEB23-14:50:00 UTC" #in general, choose a time a few minutes after passing from day to night. Bojan will specify which orbit to start on!
-        utcstringOccultationStart = utcstringDaysideNadirStart
-#        utcstringDaysideNadirEnd = "2019MAR01-13:20:00 UTC" #in general, choose a time just after the end of the event file on the nightside
-        utcstringDaysideNadirEnd = "2019MAR23-13:20:00 UTC" #in general, choose a time just after the end of the event file on the nightside
-        utcstringOccultationEnd = utcstringDaysideNadirEnd
-        copVersion = "20181229_113000" #desired cop table folder
-        MAPPS_EVENT_FILE = "LEVF_M012_SOC_PLANNING.EVF"
-        NADIR_ONLY = False
-        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
-    
-    elif mtpNumber == 13: #2019-03-23T15:11:46Z EXMGEO_TD2N (COUNT=04814) - 2019-04-20T13:16:29Z EXMGEO_TD2N (COUNT=05155)
-        utcstringStart = "2019MAR23-15:15:00 UTC" #in general, choose a time a few minutes after passing from day to night. Bojan will specify which orbit to start on!
-        utcstringEnd = "2019APR20-13:20:00 UTC" #in general, choose a time just after the end of the event file on the nightside
-        copVersion = "20190323_120000" #desired cop table folder
-        MAPPS_EVENT_FILE = "LEVF_M013_SOC_PLANNING.EVF"
-        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
-#        ALLOCATED_DATA_VOLUME = 208000 #MBits # TODO : add if required
-    
-    elif mtpNumber == 14: #
-        utcstringStart = "2019JAN26-14:58:00 UTC" #in general, choose a time a few minutes after passing from day to night. Bojan will specify which orbit to start on!
-        utcstringEnd = "2019FEB23-12:55:00 UTC" #in general, choose a time just after the end of the event file on the nightside
-        copVersion = "20181229_113000" #desired cop table folder
-        MAPPS_EVENT_FILE = "LEVF_M014_SOC_PLANNING.EVF"
-        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
-    
-    elif mtpNumber == 15: #
-        utcstringDaysideNadirStart = "2019JAN26-14:58:00 UTC" #in general, choose a time a few minutes after passing from day to night. Bojan will specify which orbit to start on!
-        utcstringOccultationStart = utcstringDaysideNadirStart
-        utcstringDaysideNadirEnd = "2019FEB23-12:55:00 UTC" #in general, choose a time just after the end of the event file on the nightside
-        utcstringOccultationEnd = utcstringDaysideNadirEnd
-        copVersion = "20181229_113000" #desired cop table folder
-        MAPPS_EVENT_FILE = "LEVF_M015_SOC_PLANNING.EVF"
-        NADIR_ONLY = False
-        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
-    
-    
-    
-    
-    
-    
-    
-    
-        """MTP008 below was a rehearsal prior to the nominal mission. Overwrite when getting to the real MTP008!"""
-    elif mtpNumber == -8:
-        utcstringDaysideNadirStart = "2018JUL27-22:50:00" #in general, choose a time just after passing from day to night. Bojan will specify which orbit to start on!
-        utcstringOccultationStart = utcstringDaysideNadirStart
-        utcstringDaysideNadirEnd = "2018AUG24-22:30:00 UTC"
-        utcstringOccultationEnd = utcstringDaysideNadirEnd
-        MAPPS_EVENT_FILE = "test-OR8-171025.tgo"
-        NADIR_ONLY = False
-        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
-    
-    return utcstringStart, utcstringEnd, copVersion, MAPPS_EVENT_FILE, SO_CENTRE_DETECTOR_LINE
+    return utcstringStart, utcstringEnd, copVersion, MAPPS_EVENT_FILE, SO_CENTRE_DETECTOR_LINE, ACS_START_ALTITUDE
             
 
 
@@ -776,6 +699,8 @@ NADIR_NIGHTSIDE_KEYS= [
 
 #windows only
 #run planning script in pop-out window so user can continue working
+#import os
+#import sys
 #if sys.platform == "win32":
 #    if __name__ == "__main__":
 #        os.system("python -i observation_planning_v05.py")

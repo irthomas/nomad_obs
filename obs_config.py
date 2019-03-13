@@ -22,13 +22,13 @@ if sys.platform == "win32":
 #    BASE_DIRECTORY = os.path.normcase(os.getcwd())
     BASE_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "nomad_obs")
 elif sys.platform == "linux":
-    BASE_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "Observation_planning", "nomad_obs")
+    BASE_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "Observation_planning")
 
 
 
 """change if neccessary. You will need to create a subdirectories called "mtps", "input" and "output" within this directory"""
 if sys.platform == "win32":
-    OBS_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "observations")
+    OBS_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "nomad_obs", "observations")
 elif sys.platform == "linux":
     BASE_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "Observation_planning", "observations")
 
@@ -36,8 +36,8 @@ elif sys.platform == "linux":
 
 """where to find cop tables? Note that COP patches are done at the end of an MTP, and so planning the MTP after must be done with the new tables!"""
 if sys.platform == "win32":
-#    COP_TABLE_DIRECTORY = os.path.join(BASE_DIRECTORY, "data", "cop_tables")
-    COP_TABLE_DIRECTORY = os.path.join("W:", os.sep, "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "cop_tables")
+    COP_TABLE_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "data", "cop_tables")
+#    COP_TABLE_DIRECTORY = os.path.join("W:", os.sep, "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "cop_tables")
 elif sys.platform == "linux":
     COP_TABLE_DIRECTORY = os.path.join(os.sep, "bira-iasb", "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "cop_tables")
 
