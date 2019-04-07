@@ -26,12 +26,18 @@ elif sys.platform == "linux":
 
 
 
-"""change if neccessary. You will need to create a subdirectories called "mtps", "input" and "output" within this directory"""
+"""where to put input and output files and build master copy of website?"""
 if sys.platform == "win32":
     OBS_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "nomad_obs", "observations")
 elif sys.platform == "linux":
-    BASE_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "Observation_planning", "observations")
+    OBS_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "Observation_planning", "observations")
 
+
+"""dev website directory, for placing a copy of all the files generated, to be put online"""
+if sys.platform == "win32":
+    DEV_DIRECTORY = os.path.join("w:", os.sep, "websites", "dev", "mars", "en", "exomars", "observations")
+elif sys.platform == "linux":
+    DEV_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "Observation_planning", "observations")
 
 
 """where to find cop tables? Note that COP patches are done at the end of an MTP, and so planning the MTP after must be done with the new tables!"""
@@ -60,6 +66,41 @@ if sys.platform == "win32":
 elif sys.platform == "linux":
     METAKERNEL_NAME = "em16_plan_v320_20181206_002.tm"
 
+
+
+
+def setupPaths(mtpConstants):
+    """set up paths to output files"""
+    mtpNumber = mtpConstants["mtpNumber"]
+    
+    paths = {
+            "COP_ROW_BASE_PATH":os.path.join(OBS_DIRECTORY, "cop_rows"), \
+            "ORBIT_PLAN_BASE_PATH":os.path.join(OBS_DIRECTORY, "orbit_plans"), \
+            "SUMMARY_FILE_BASE_PATH":os.path.join(OBS_DIRECTORY, "summary_files"), \
+            "MTP_BASE_PATH":os.path.join(OBS_DIRECTORY, "mtp_pages"), \
+            "HTML_BASE_PATH":os.path.join(OBS_DIRECTORY, "pages"), \
+            
+            "COP_ROW_PATH":os.path.join(OBS_DIRECTORY, "cop_rows", "mtp%03d" %mtpNumber), \
+            "EVENT_FILE_PATH":os.path.join(OBS_DIRECTORY, "event_files"), \
+            "ORBIT_PLAN_PATH":os.path.join(OBS_DIRECTORY, "orbit_plans", "mtp%03d" %mtpNumber), \
+            "SUMMARY_FILE_PATH":os.path.join(OBS_DIRECTORY, "summary_files", "mtp%03d" %mtpNumber), \
+            "HTML_MTP_PATH":os.path.join(OBS_DIRECTORY, "mtp_pages", "mtp%03d" %mtpNumber), \
+            "IMG_MTP_PATH":os.path.join(OBS_DIRECTORY, "mtp_pages", "mtp%03d" %mtpNumber, "img")}
+    
+    #make directories if not already existing
+    for pathName, path in paths.items():
+        if not os.path.exists(path):
+            print("Making %s path" %pathName)
+            os.mkdir(path)
+
+    return paths
+
+
+#load spiceypy kernels
+import spiceypy as sp
+sp.furnsh(KERNEL_DIRECTORY+os.sep+METAKERNEL_NAME)
+print(sp.tkvrsn("toolkit"))
+print("KERNEL_DIRECTORY=%s" %KERNEL_DIRECTORY)
 
 
 

@@ -36,7 +36,7 @@ __contact__   = "ian.thomas@aeronomie.be"
 
 
 
-
+#ACS joint observation names. Don't modify unless instructed to do so by SOC/ACS.
 SOC_JOINT_OBSERVATION_NAMES = {
         "Nominal Science 1xCO2 LA01":"NOM_01",
         "Dust H2O 01":"DUST01",
@@ -54,167 +54,153 @@ SOC_JOINT_OBSERVATION_TYPES = [
 
 """make the observation dictionaries of all the desired measurement types
 DON'T MODIFY OR DELETE ANY OBSERVATIONS - JUST ADD NEW ONES"""
-#name:[[orders], int time, rhythm, lines, so/lno]
+#name:[[orders], int time, rhythm, lines, so=0/lno=1]
 occultationObservationDict = {
-"BgSubTest 03":[[121,134,149,165,168,190], 4, 1, 16],
-"Dust H2O 01":[[119,130,145,171,191,0], 4, 1, 16],
-"Water Ice 01":[[119,140,153,170,191,0], 4, 1, 16],
-"CO 01":[[167,188,189,190,191,0], 4, 1, 16],
-"HDO 01":[[168,134,124,129,190,0], 4, 1, 16],
-"AER 01":[[119,133,143,154,169,0], 4, 1, 16],
-"CH4 01":[[168,133,134,135,136,0], 4, 1, 16],
+"BgSubTest 03":[[121,134,149,165,168,190], 4, 1, 16, 0],
+"BgSubTest 04":[[119,136,148,166,168,189], 4, 1, 16, 0],
 
-"Nominal Science 1xCO2 LA01":[[168,134,190,121,149,0], 4, 1, 16],
-"Nominal Science 1xCO2 HA01":[[168,134,190,121,165,0], 4, 1, 16],
-"Nominal Science 1xCO2 LA02":[[168,134,190,119,149,0], 4, 1, 16],
-"Nominal Science 1xCO2 HA02":[[168,134,190,119,165,0], 4, 1, 16],
+"Dust H2O 01":[[119,130,145,171,191,0], 4, 1, 16, 0],
+"Water Ice 01":[[119,140,153,170,191,0], 4, 1, 16, 0],
+"CO 01":[[167,188,189,190,191,0], 4, 1, 16, 0],
+"HDO 01":[[168,134,124,129,190,0], 4, 1, 16, 0],
+"AER 01":[[119,133,143,154,169,0], 4, 1, 16, 0],
+"CH4 01":[[168,133,134,135,136,0], 4, 1, 16, 0],
 
-"Nominal Science 1xCO2 LA03":[[168,134,189,121,149,0], 4, 1, 16],
-"Nominal Science 1xCO2 HA03":[[168,134,189,121,165,0], 4, 1, 16],
-"Nominal Science 1xCO2 LA04":[[168,136,189,119,149,0], 4, 1, 16],
-"Nominal Science 1xCO2 HA04":[[168,136,189,119,165,0], 4, 1, 16],
+"Nominal Science 1xCO2 LA01":[[168,134,190,121,149,0], 4, 1, 16, 0],
+"Nominal Science 1xCO2 HA01":[[168,134,190,121,165,0], 4, 1, 16, 0],
+"Nominal Science 1xCO2 LA02":[[168,134,190,119,149,0], 4, 1, 16, 0],
+"Nominal Science 1xCO2 HA02":[[168,134,190,119,165,0], 4, 1, 16, 0],
+
+"Nominal Science 1xCO2 LA03":[[168,134,189,121,149,0], 4, 1, 16, 0],
+"Nominal Science 1xCO2 HA03":[[168,134,189,121,165,0], 4, 1, 16, 0],
+"Nominal Science 1xCO2 LA04":[[168,136,189,119,149,0], 4, 1, 16, 0],
+"Nominal Science 1xCO2 HA04":[[168,136,189,119,165,0], 4, 1, 16, 0],
 
 
-"Nominal Science with CO 01":[[169,134,186,121,147,0], 4, 1, 16],
+"Nominal Science with CO 01":[[169,134,186,121,147,0], 4, 1, 16, 0],
 
-"All Fullscan Fast":[["COP#293"], 0, 1, 16],
-"All Fullscan Slow":[["COP#107"], 0, 1, 24],
+"All Fullscan Fast":[["COP#293"], 0, 1, 16, 0],
+"All Fullscan Slow":[["COP#107"], 0, 1, 24, 0],
 
-"CO2 Fullscan Fast":[["COP#239"], 0, 1, 16],
-"CO Fullscan Fast":[["COP#254"], 0, 1, 16],
+"CO2 Fullscan Fast":[["COP#239"], 0, 1, 16, 0],
+"CO Fullscan Fast":[["COP#254"], 0, 1, 16, 0],
                       
-"ACS Ridealong Science 6SUBD 01":[[121,134,149,165,168,190], 10, 4, 20],
-"ACS Ridealong Science 6SUBD 02":[[121,134,149,165,168,190], 20, 4, 20],
-"ACS Ridealong Science 2SUBD 01":[[164,165], 40, 4, 24],
+"ACS Ridealong Science 6SUBD 01":[[121,134,149,165,168,190], 10, 4, 20, 0],
+"ACS Ridealong Science 6SUBD 02":[[121,134,149,165,168,190], 20, 4, 20, 0],
+"ACS Ridealong Science 2SUBD 01":[[164,165], 40, 4, 24, 0],
 
-"LNO Occultation Nominal Science 1xCO2 01":[["COP#697"], 2, 1, 20],
-"LNO Occultation Fullscan 01":[["COP#93"], 2, 1, 20],
+"LNO Occultation Nominal Science 1xCO2 01":[["COP#697"], 2, 1, 20, 1],
+"LNO Occultation Fullscan 01":[["COP#93"], 2, 1, 20, 1],
 
-"119 with 1xDark":[["COP#1460"], 4, 1, 16],
-"120 with 1xDark":[["COP#1461"], 4, 1, 16],
-"121 with 1xDark":[["COP#1462"], 4, 1, 16],
-"122 with 1xDark":[["COP#1463"], 4, 1, 16],
-"123 with 1xDark":[["COP#1464"], 4, 1, 16],
+"119 with 1xDark":[["COP#1460"], 4, 1, 16, 0],
+"120 with 1xDark":[["COP#1461"], 4, 1, 16, 0],
+"121 with 1xDark":[["COP#1462"], 4, 1, 16, 0],
+"122 with 1xDark":[["COP#1463"], 4, 1, 16, 0],
+"123 with 1xDark":[["COP#1464"], 4, 1, 16, 0],
 
-"132 with 1xDark":[["COP#1465"], 4, 1, 16],
-"133 with 1xDark":[["COP#1466"], 4, 1, 16],
-"134 with 1xDark":[["COP#1467"], 4, 1, 16],
-"135 with 1xDark":[["COP#1468"], 4, 1, 16],
-"136 with 1xDark":[["COP#1469"], 4, 1, 16],
-"190 with 1xDark":[["COP#1487"], 4, 1, 16],
+"132 with 1xDark":[["COP#1465"], 4, 1, 16, 0],
+"133 with 1xDark":[["COP#1466"], 4, 1, 16, 0],
+"134 with 1xDark":[["COP#1467"], 4, 1, 16, 0],
+"135 with 1xDark":[["COP#1468"], 4, 1, 16, 0],
+"136 with 1xDark":[["COP#1469"], 4, 1, 16, 0],
+"190 with 1xDark":[["COP#1487"], 4, 1, 16, 0],
 
 
 
                     
-"134 with 5xDark":[["COP#4088"], 4, 1, 16], #MTP010+
-"136 with 5xDark":[["COP#4090"], 4, 1, 16], #MTP010+
-"Nominal Science 1xCO2 TOA":[[168,135,190,121,164,0], 4, 1, 16], #MTP010+
+"134 with 5xDark":[["COP#4088"], 4, 1, 16, 0], #MTP010+
+"136 with 5xDark":[["COP#4090"], 4, 1, 16, 0], #MTP010+
+"Nominal Science 1xCO2 TOA":[[168,135,190,121,164,0], 4, 1, 16, 0], #MTP010+
 
                     
                     
 #old
-"BgSubTest 01":[[121,134,149,165,167,190], 4, 1, 16],
-"BgSubTest 02":[[168,136,189,119,166,148], 4, 1, 16],
-"CO2 01":[[167,146,147,148,154,0], 4, 1, 16],
-"CO2 02":[[167,155,159,164,148,0], 4, 1, 16],
-"Dust H2O 02":[[121,130,145,169,195,0], 4, 1, 16],
-"AER 02":[[120,133,143,154,181,0], 4, 1, 16],
-"CO2 Fullscan":[["COP#239"], 0, 1, 16],
+"BgSubTest 01":[[121,134,149,165,167,190], 4, 1, 16, 0],
+"BgSubTest 02":[[168,136,189,119,166,148], 4, 1, 16, 0],
+"CO2 01":[[167,146,147,148,154,0], 4, 1, 16, 0],
+"CO2 02":[[167,155,159,164,148,0], 4, 1, 16, 0],
+"Dust H2O 02":[[121,130,145,169,195,0], 4, 1, 16, 0],
+"AER 02":[[120,133,143,154,181,0], 4, 1, 16, 0],
+"CO2 Fullscan":[["COP#239"], 0, 1, 16, 0],
 
-"ACS Ridealong Science":[["COP#1550"], 0, 1, 16],
-"ACS Ridealong Science All Fullscan Fast":[["COP#294"], 0, 1, 16],
+"ACS Ridealong Science":[["COP#1550"], 0, 1, 16, 0],
+"ACS Ridealong Science All Fullscan Fast":[["COP#294"], 0, 1, 16, 0],
                                             
-#testing
-#"Test":[["COP#1"], 0, 1, 16],
-#"Ingress":[["COP#1"], 0, 0, 0],
-#"Egress":[["COP#1"], 0, 0, 0],
-#"Merged":[["COP#1"], 0, 0, 0],
-#"Grazing":[["COP#1"], 0, 0, 0],
 }
 
 
 
-#name:[[orders], int time, rhythm, lines]
+#name:[[orders], int time, rhythm, lines, channel (not used)]
 nadirObservationDict = {
-"Nominal 6SUBD 01":[[149,134,168,119,190,196], 220, 15, 144],
-"H2O 2SUBD 01":[[167,169], 200, 15, 144],
-"HDO CO 3SUBD 01":[[167,121,190], 205, 15, 144],
-"AER H2Oi 3SUBD 01":[[169,131,127], 205, 15, 144],
-"CH4 2SUBD 02":[[134,136], 200, 15, 144], #USE FOR CURIOSITY
-"CH4 3SUBD 01":[[168,134,136], 205, 15, 144],
-"CO 2SUBD 02":[[167,189], 200, 15, 144],
-"HDO Fullscan":[["COP#140"], 0, 15, 144],
+"Nominal 6SUBD 01":[[149,134,168,119,190,196], 220, 15, 144, 1],
+"H2O 2SUBD 01":[[167,169], 200, 15, 144, 1],
+"HDO CO 3SUBD 01":[[167,121,190], 205, 15, 144, 1],
+"AER H2Oi 3SUBD 01":[[169,131,127], 205, 15, 144, 1],
+"CH4 2SUBD 02":[[134,136], 200, 15, 144, 1], #USE FOR CURIOSITY
+"CH4 3SUBD 01":[[168,134,136], 205, 15, 144, 1],
+"CO 2SUBD 02":[[167,189], 200, 15, 144, 1],
+"HDO Fullscan":[["COP#140"], 0, 15, 144, 1],
 
-"HDO H2O 2SUBD 02":[[168,124], 200, 15, 144], #USE FOR SOFIA/EXES JOINT TARGETS
+"HDO H2O 2SUBD 02":[[168,124], 200, 15, 144, 1], #USE FOR SOFIA/EXES JOINT TARGETS
                  
-"Surface 3SUBD 01":[[168, 190, 191], 205, 15, 144], #OLD TARGET FOR FA NADIR TARGETS
+"Surface 3SUBD 01":[[168, 190, 191], 205, 15, 144, 1], #OLD TARGET FOR FA NADIR TARGETS
                  
-"Limb 2SUBD 01":[[161,162], 200, 15, 144],
-"Limb 2SUBD 02":[[162,163], 200, 15, 144],
-"Limb 2SUBD 03":[[163,164], 200, 15, 144],
-"Limb 2SUBD 04":[[164,165], 200, 15, 144],
-"Limb 2SUBD 05":[[165,166], 200, 15, 144],
-"Limb 2SUBD 06":[[166,167], 200, 15, 144],
+"Limb 2SUBD 01":[[161,162], 200, 15, 144, 1],
+"Limb 2SUBD 02":[[162,163], 200, 15, 144, 1],
+"Limb 2SUBD 03":[[163,164], 200, 15, 144, 1],
+"Limb 2SUBD 04":[[164,165], 200, 15, 144, 1],
+"Limb 2SUBD 05":[[165,166], 200, 15, 144, 1],
+"Limb 2SUBD 06":[[166,167], 200, 15, 144, 1],
 
-"CO2 Fullscan":[["COP#144"], 0, 15, 144],
-"CO Fullscan":[["COP#124"], 0, 15, 144],
-"H2O Fullscan":[["COP#116"], 0, 15, 144],
-"CH4 Fullscan":[["COP#104"], 0, 15, 144],
+"CO2 Fullscan":[["COP#144"], 0, 15, 144, 1],
+"CO Fullscan":[["COP#124"], 0, 15, 144, 1],
+"H2O Fullscan":[["COP#116"], 0, 15, 144, 1],
+"CH4 Fullscan":[["COP#104"], 0, 15, 144, 1],
 
-"Nominal Nightside 02":[[162,163], 200, 15, 144],
-"Nominal Limb 01":[[164,169], 200, 15, 144],
+"Nominal Nightside 02":[[162,163], 200, 15, 144, 1],
+"Nominal Limb 01":[[164,169], 200, 15, 144, 1],
 
-#surface ice variable rhythms  #MTP010+
-"Surface Ice 4SUBD 8S 01":[[199, 194, 193, 187], 220, 8, 144],
-"Surface Ice 6SUBD 8S 01":[[199, 198, 194, 193, 187, 186], 205, 8, 144],
-"Surface Ice 4SUBD 8S 02":[[199, 189, 188, 187], 220, 8, 144],
-"Surface Ice 3SUBD 8S 01":[[199, 194, 188], 180, 8, 144],
+#surface ice variable rhythms  #MTP010+ when lst is low
+"Surface Ice 4SUBD 8S 01":[[199, 194, 193, 187], 220, 8, 144, 1],
+"Surface Ice 6SUBD 8S 01":[[199, 198, 194, 193, 187, 186], 205, 8, 144, 1],
+"Surface Ice 4SUBD 8S 02":[[199, 189, 188, 187], 220, 8, 144, 1],
+"Surface Ice 3SUBD 8S 01":[[199, 194, 188], 180, 8, 144, 1],
 
-"Surface Ice 4SUBD 01":[[199, 194, 193, 187], 195, 15, 144],
-"Surface Ice 6SUBD 01":[[199, 198, 194, 193, 187, 186], 220, 15, 144],
-"Surface Ice 4SUBD 02":[[199, 189, 188, 187], 195, 15, 144],
-"Surface Ice 3SUBD 01":[[199, 194, 188], 205, 15, 144],
+"Surface Ice 4SUBD 01":[[199, 194, 193, 187], 195, 15, 144, 1],
+"Surface Ice 6SUBD 01":[[199, 198, 194, 193, 187, 186], 220, 15, 144, 1],
+"Surface Ice 4SUBD 02":[[199, 189, 188, 187], 195, 15, 144, 1],
+"Surface Ice 3SUBD 01":[[199, 194, 188], 205, 15, 144, 1],
     
-"Surface Ice 2SUBD 4S 01":[[199, 193], 205, 4, 144],
-"Surface Ice 2SUBD 4S 02":[[198, 194], 205, 4, 144],
-"Surface Ice 2SUBD 4S 03":[[193, 194], 205, 4, 144],
-"Surface Ice 2SUBD 4S 04":[[199, 187], 205, 4, 144],
+"Surface Ice 2SUBD 4S 01":[[199, 193], 205, 4, 144, 1],
+"Surface Ice 2SUBD 4S 02":[[198, 194], 205, 4, 144, 1],
+"Surface Ice 2SUBD 4S 03":[[193, 194], 205, 4, 144, 1],
+"Surface Ice 2SUBD 4S 04":[[199, 187], 205, 4, 144, 1],
 
-"LNO Ice Index 2SUBD 01":[[153, 158], 200, 15, 144], #MTP013+
+"LNO Ice Index 2SUBD 01":[[153, 158], 200, 15, 144, 1], #MTP013+ FS
 
 
-"Surface 3SUBD 02":[[191,194,196], 205, 15, 144], #USE FOR FA NADIR TARGETS MTP010+
+"Surface 3SUBD 02":[[191,194,196], 205, 15, 144, 1], #USE FOR FA NADIR TARGETS MTP010+
 
 
 
 
 
 #old
-"Nominal 6SUBD 02":[[167,134,168,121,189,197], 220, 15, 144],
-"Nominal 4SUBD 01":[[168,134,121,190], 195, 15, 144],
-"Nominal 3SUBD 01":[[167,169,190], 205, 15, 144],
+"Nominal 6SUBD 02":[[167,134,168,121,189,197], 220, 15, 144, 1],
+"Nominal 4SUBD 01":[[168,134,121,190], 195, 15, 144, 1],
+"Nominal 3SUBD 01":[[167,169,190], 205, 15, 144, 1],
 
-"CH4 2SUBD 01":[[167,134], 200, 15, 144],
-"D/H 2SUBD 01":[[121,169], 200, 15, 144],
-"D/H 3SUBD 01":[[167,121,169], 205, 15, 144],
-"HDO 3SUBD 01":[[121,171,124], 205, 15, 144],
-"AER H2Oi CO2i 4SUBD 01":[[164,169,131,127], 195, 15, 144],
-"HDO H2O 2SUBD 01":[[121,169], 200, 15, 144],
+"CH4 2SUBD 01":[[167,134], 200, 15, 144, 1],
+"D/H 2SUBD 01":[[121,169], 200, 15, 144, 1],
+"D/H 3SUBD 01":[[167,121,169], 205, 15, 144, 1],
+"HDO 3SUBD 01":[[121,171,124], 205, 15, 144, 1],
+"AER H2Oi CO2i 4SUBD 01":[[164,169,131,127], 195, 15, 144, 1],
+"HDO H2O 2SUBD 01":[[121,169], 200, 15, 144, 1],
 
-"Nominal Nightside 01":[[169,190], 200, 15, 144],
+"Nominal Nightside 01":[[169,190], 200, 15, 144, 1],
 
 
-#testing
-#"Test":[["COP#1"], 0, 1, 16],
-#"Long Dayside":[["COP#1"], 0, 0, 0],
-#"Short Dayside":[["COP#1"], 0, 0, 0],
-#"Dayside":[["COP#1"], 0, 0, 0],
-#"Limb":[["COP#1"], 0, 0, 0],
 }
-
-    
-    
-    
 
     
 
@@ -324,25 +310,17 @@ def getMtpConstants(mtpNumber):
         NADIR_ONLY = False
         SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
     
-    elif mtpNumber == 8:
-        utcstringDaysideNadirStart = "2018NOV03-14:00:00 UTC" #in general, choose a time a few minutes after passing from day to night. Bojan will specify which orbit to start on!
-        utcstringOccultationStart = utcstringDaysideNadirStart
-        utcstringDaysideNadirEnd = "2018DEC01-12:10:00 UTC" #in general, choose a time just after the end of the event file on the nightside
-        utcstringOccultationEnd = utcstringDaysideNadirEnd
-        copVersion = "20181006_120000" #desired cop table folder
-        MAPPS_EVENT_FILE = "LEVF_M008_SOC_PLANNING.EVF"
-        NADIR_ONLY = False
-        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
+    elif mtpNumber == 8: #2018-11-03T13:00:13Z (actually started orbit after:2018-11-03T14:58:06Z)     EXMGEO_TN2D - 2018-12-01T12:02:30Z     EXMGEO_TD2N
+        mtpStart = "2018-11-03T14:58:06Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2018-12-01T12:02:30Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20181006_120000" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
     
     elif mtpNumber == 9: #2018-12-01T14:00:32Z EXMGEO_TD2N - 2018-12-29T12:14:53Z EXMGEO_TD2N 
-        utcstringDaysideNadirStart = "2018DEC01-14:03:00 UTC" #in general, choose a time a few minutes after passing from day to night. Bojan will specify which orbit to start on!
-        utcstringOccultationStart = utcstringDaysideNadirStart
-        utcstringDaysideNadirEnd = "2018DEC29-12:20:00 UTC" #in general, choose a time just after the end of the event file on the nightside
-        utcstringOccultationEnd = utcstringDaysideNadirEnd
-        copVersion = "20181006_120000" #desired cop table folder
-        MAPPS_EVENT_FILE = "LEVF_M009_SOC_PLANNING.EVF"
-        NADIR_ONLY = False
-        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
+        mtpStart = "2018-12-01T14:00:32Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2018-12-29T12:14:53Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20181006_120000" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
     
     elif mtpNumber == 10:
         mtpStart = "2018-12-29T14:12:47Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -374,26 +352,71 @@ def getMtpConstants(mtpNumber):
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
+    elif mtpNumber == 15:
+        mtpStart = "2019-05-18T15:37:10Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2019-06-15T11:37:56Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
-    MAPPS_EVENT_FILE = "LEVF_M%03d_SOC_PLANNING.EVF" %mtpNumber
+    elif mtpNumber == 16:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 17:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 18:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 19:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 20:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+
+
+    mappsEventFilename = "LEVF_M%03d_SOC_PLANNING.EVF" %mtpNumber
     if mtpNumber < 13:
-        ACS_START_ALTITUDE = 250 #km
+        acsStartAltitude = 250 #km
     else:
-        ACS_START_ALTITUDE = 200 #km
+        acsStartAltitude = 200 #km
 
     if mtpNumber == 2:
-        SO_CENTRE_DETECTOR_LINE = 130 #boresight corrected by moving detector readout region
+        soCentreDetectorLine = 130 #boresight corrected by moving detector readout region
     elif mtpNumber in [3, 4]:
-        SO_CENTRE_DETECTOR_LINE = 131 #detector readout region improved
+        soCentreDetectorLine = 131 #detector readout region improved
     else:
-        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
+        soCentreDetectorLine = 128 #boresight corrected from MTP005 onwards
 
 
 
     utcstringStart = convertInputTimeStrings(mtpStart)
     utcstringEnd = convertInputTimeStrings(mtpEnd)
     
-    return utcstringStart, utcstringEnd, copVersion, MAPPS_EVENT_FILE, SO_CENTRE_DETECTOR_LINE, ACS_START_ALTITUDE
+    mtpConstantsDict = {"mtpNumber":mtpNumber, \
+                        "utcStringStart":utcstringStart, \
+                        "utcStringEnd":utcstringEnd, \
+                        "copVersion":copVersion, \
+                        "mappsEventFilename":mappsEventFilename, \
+                        "soCentreDetectorLine":soCentreDetectorLine, \
+                        "acsStartAltitude":acsStartAltitude}
+    
+    return mtpConstantsDict
             
 
 
@@ -497,7 +520,7 @@ nadirRegionsObservations = \
 "MAWRTH VALLIS-ARAM CHAOS":"Surface 3SUBD 02",
 "MERIDIANI SULPHATES":"Surface 3SUBD 02",
 "CURIOSITY":"CH4 2SUBD 02",
-"INSIGHT":"H2O 2SUBD 01",
+"INSIGHT":"CH4 2SUBD 02",
 }
 
 
@@ -536,6 +559,7 @@ OCCULTATION_KEYS = [
         "Nominal Science 1xCO2 LA01", 
         "Nominal Science 1xCO2 LA02", 
         "BgSubTest 03",
+        "BgSubTest 04",
 #        "133 with 1xDark", #special calibration
         "Dust H2O 01",
         "Nominal Science 1xCO2 LA01",
@@ -548,17 +572,20 @@ OCCULTATION_KEYS = [
         "Nominal Science 1xCO2 LA03",
         "Nominal Science 1xCO2 LA01",
         "BgSubTest 03",
+        "BgSubTest 04",
         "Nominal Science 1xCO2 LA02",
         "Nominal Science 1xCO2 LA04",
         "134 with 1xDark", #special calibration
         "HDO 01",
         "Nominal Science 1xCO2 LA01",
         "Nominal Science with CO 01",
+        "BgSubTest 04",
         "CO 01",
         "CO Fullscan Fast",
         "CH4 01",
         "BgSubTest 03",
         "AER 01",
+        "BgSubTest 04",
         "Nominal Science 1xCO2 LA01",
         "Nominal Science 1xCO2 LA02",
         "BgSubTest 03",
@@ -568,6 +595,7 @@ OCCULTATION_KEYS = [
         "Nominal Science 1xCO2 LA01",
         "Water Ice 01",
         "BgSubTest 03",
+        "BgSubTest 04",
         "Nominal Science with CO 01",
         "CO 01",
         "Nominal Science 1xCO2 LA01",
@@ -581,7 +609,7 @@ OCCULTATION_KEYS = [
 #        "All Fullscan Slow", #use very rarely, good for checking boresight alignment
         "HDO 01",
 
-        "LNO Occultation Fullscan 01"
+        "LNO Occultation Fullscan 01",
 
         ] * 100
 

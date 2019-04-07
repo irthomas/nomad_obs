@@ -10,6 +10,7 @@ OBS PLANNING USING SPICE WINDOWS
 
 import numpy as np
 import os
+import sys
 
 #import numpy as np
 #import os
@@ -17,12 +18,12 @@ from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
 import xlsxwriter
 import xlrd
-#import spiceypy as sp
+import spiceypy as sp
 
-from obs_config import BASE_DIRECTORY, COP_TABLE_DIRECTORY, KERNEL_DIRECTORY, OBS_DIRECTORY, METAKERNEL_NAME
-from run_planning import mtpNumber
+from obs_config import BASE_DIRECTORY, COP_TABLE_DIRECTORY, OBS_DIRECTORY
+#from run_planning import mtpNumber
 from obs_inputs import SOC_JOINT_OBSERVATION_NAMES, SOC_JOINT_OBSERVATION_TYPES
-from obs_inputs import getMtpConstants
+#from obs_inputs import getMtpConstants
 from obs_inputs import nadirObservationDict, nadirRegionsOfInterest, occultationObservationDict, occultationRegionsOfInterest, nadirRegionsObservations, occultationRegionsObservations
 from obs_inputs import OCCULTATION_KEYS, OCCULTATION_MERGED_KEYS, OCCULTATION_GRAZING_KEYS, USE_TWO_SCIENCES
 from obs_inputs import NADIR_KEYS, NADIR_LIMB_KEYS, NADIR_NIGHTSIDE_KEYS
@@ -43,42 +44,6 @@ __contact__   = "ian.thomas@aeronomie.be"
 #
 #stop()
 
-if not os.path.exists("/bira-iasb/data/SATELLITE/TRACE-GAS-ORBITER/NOMAD"):# and not os.path.exists(os.path.normcase(r"X:\linux\Data")):
-    print("Running on windows")
-    import spiceypy as sp
-#    load spiceypy kernels if required
-#    KERNEL_DIRECTORY = os.path.normcase(r"C:\Users\iant\Documents\DATA\local_spice_kernels\kernels\mk")
-#    METAKERNEL_NAME = "em16_plan_win.tm"
-#    METAKERNEL_NAME = "em16_ops_win.tm"
-    sp.furnsh(KERNEL_DIRECTORY+os.sep+METAKERNEL_NAME)
-    print(sp.tkvrsn("toolkit"))
-    print("KERNEL_DIRECTORY=%s" %KERNEL_DIRECTORY)
-
-
-"""set up paths to output files"""
-#LOG_FILE_PATH = os.path.join(BASE_DIRECTORY)
-#HTML_FILE_PATH = os.path.join(BASE_DIRECTORY)
-#INPUT_FILE_PATH = os.path.join(OBS_DIRECTORY, "observations")
-
-PATHS = {
-        "COP_ROW_BASE_PATH":os.path.join(OBS_DIRECTORY, "cop_rows"), \
-        "ORBIT_PLAN_BASE_PATH":os.path.join(OBS_DIRECTORY, "orbit_plans"), \
-        "SUMMARY_FILE_BASE_PATH":os.path.join(OBS_DIRECTORY, "summary_files"), \
-        "MTP_BASE_PATH":os.path.join(OBS_DIRECTORY, "mtp_pages"), \
-        "HTML_BASE_PATH":os.path.join(OBS_DIRECTORY, "pages"), \
-        
-        "COP_ROW_PATH":os.path.join(OBS_DIRECTORY, "cop_rows", "mtp%03d" %mtpNumber), \
-        "EVENT_FILE_PATH":os.path.join(OBS_DIRECTORY, "event_files"), \
-        "ORBIT_PLAN_PATH":os.path.join(OBS_DIRECTORY, "orbit_plans", "mtp%03d" %mtpNumber), \
-        "SUMMARY_FILE_PATH":os.path.join(OBS_DIRECTORY, "summary_files", "mtp%03d" %mtpNumber), \
-        "HTML_MTP_PATH":os.path.join(OBS_DIRECTORY, "mtp_pages", "mtp%03d" %mtpNumber), \
-        "IMG_MTP_PATH":os.path.join(OBS_DIRECTORY, "mtp_pages", "mtp%03d" %mtpNumber, "img")}
-
-#make directories if not existing
-for pathName, path in PATHS.items():
-    if not os.path.exists(path):
-        print("Making %s path" %pathName)
-        os.mkdir(path)
 
 
 
@@ -135,6 +100,9 @@ MAXIMUM_SEARCH_INCIDENCE_ANGLE = 60.0 #max solar incidence angle when searching 
 
 #orbit types. Remember to add type numbers to functions if more are created!
 UVIS_MULTIPLE_TC_NADIR_ORBIT_TYPES = [2, 4, 6]
+LIMB_ORBIT_TYPES = [8, 28]
+UVIS_DEFAULT_ORBIT_TYPE = 14 #14 = UVIS 1xTC per dayside. 4 = 3xTCs per dayside
+
 
 #plot constants
 FIG_X = 10
@@ -152,6 +120,8 @@ NOMAD_MERGED_START_CODES = ["NOMAD_OCCME_START"]
 NOMAD_MERGED_END_CODES = ["NOMAD_OCCME_END"]
 NOMAD_GRAZING_START_CODES = ["NOMAD_OCCGR_START"]
 NOMAD_GRAZING_END_CODES = ["NOMAD_OCCGR_END"]
+NOMAD_LIMB_START_CODES = ["NOMAD_LIMB_START"]
+NOMAD_LIMB_END_CODES = ["NOMAD_LIMB_END"]
 
 """Old list - new list for MTP008 onwards is below"""
 #ACS_INGRESS_START_CODES = ["ACS_MIR_OCCIN_START", "ACS_NIR_OCCIN_RA_START", "ACS_TIRSUN_OCCIN_START"]
@@ -187,7 +157,6 @@ def stop():
 
 
 
-
 def et2utc(et):
     """function to convert et to utc if float is not -"""
     if et == "-":
@@ -205,16 +174,16 @@ def getLonLatIncidenceLst(et):
     lst = sp.et2lst(et, 499, (lon / sp.dpr()), "PLANETOCENTRIC")[3]
     incidence = sp.ilumin(SPICE_SHAPE, SPICE_TARGET, et, SPICE_REF, SPICE_ABCORR, SPICE_OBSERVER, coords)[3] * sp.dpr()
     lst_hours = np.float(lst[0:2]) + np.float(lst[3:5])/60.0 + np.float(lst[6:8])/3600.0
-
     return lon, lat, incidence, lst_hours
 
 
 
 
 
-def getNadirData(orbit_list, utc_string_start, utc_string_end):
+def getNadirData(orbit_list, mtpConstants):
     """get all nadir data, add to orbit list"""
-    #Dayside Nadir Index	UTC Start Time	UTC End Time UTC Minimum Incidence Angle Time	Duration (s)	Start Longitude	Centre Longitude	End Longitude	Start Latitude	Centre Latitude	End Latitude	Centre Local Time (hrs)
+    utc_string_start = mtpConstants["utcStringStart"]
+    utc_string_end = mtpConstants["utcStringEnd"]
 
     adjust = 0
     nintvals = 500
@@ -281,8 +250,9 @@ def getNadirData(orbit_list, utc_string_start, utc_string_end):
                                            "incidenceStart":nightside_start_incidence, "incidenceEnd":nightside_end_incidence, "incidenceMidpoint":nightside_midpoint_incidence, 
                                            "lstStart":nightside_start_lst, "lstEnd":nightside_end_lst, "lstMidpoint":nightside_midpoint_lst, 
                                            "duration":nightside_duration}})
-        
     return orbit_list
+
+
 
 
 def getTangentAltitude(et): #returns zero if viewing planet
@@ -319,15 +289,16 @@ def getLonLatLst(et):
     lon, lat = sp.reclat(coords)[1:3] * np.asfarray([sp.dpr(),sp.dpr()])
     lst = sp.et2lst(et, 499, (lon / sp.dpr()), "PLANETOCENTRIC")[3]
     lst_hours = np.float(lst[0:2]) + np.float(lst[3:5])/60.0 + np.float(lst[6:8])/3600.0
-
     return lon, lat, lst_hours
 
 
 
 
-def getOccultationData(orbit_list, utc_string_start, utc_string_end):
+def getOccultationData(orbit_list, mtpConstants):
     """get all occultation data (except grazing), add to orbit list"""
-    #Instrument	Occultation Index	 Occultation Type	 UTC Start Time	UTC End Time	UTC Transition Time	Duration (s)	Tangent Centre Longitude	Tangent Centre Latitude	Tangent Centre Local Time (hrs)
+    utc_string_start = mtpConstants["utcStringStart"]
+    utc_string_end = mtpConstants["utcStringEnd"]
+    acs_start_altitude = mtpConstants["acsStartAltitude"]
 
     orbit_starts = np.asfarray([orbit["etOrbitStart"] for orbit in orbit_list])
     
@@ -367,7 +338,7 @@ def getOccultationData(orbit_list, utc_string_start, utc_string_end):
 
         ingress_start = findTangentAltitudeTime(ingress_start_altitude, ingress_end, -1.0)
         
-        ingress_start_acs = findTangentAltitudeTime(ACS_START_ALTITUDE, ingress_end, -1.0)
+        ingress_start_acs = findTangentAltitudeTime(acs_start_altitude, ingress_end, -1.0)
         
         ingress_start_str = et2utc(ingress_start)
         ingress_end_str = et2utc(ingress_end)
@@ -398,10 +369,13 @@ def getOccultationData(orbit_list, utc_string_start, utc_string_end):
 
         obs_ingress_start = ingress_start - INITIALISATION_TIME - PRECOOLING_TIME - SO_REFERENCE_DURATION
         obs_ingress_end = ingress_end + SO_REFERENCE_DURATION
+        obs_ingress_duration = obs_ingress_end - obs_ingress_start
         obs_egress_start = egress_start - INITIALISATION_TIME - PRECOOLING_TIME - SO_REFERENCE_DURATION
         obs_egress_end = egress_end + SO_REFERENCE_DURATION
-        
+        obs_egress_duration = obs_egress_end - obs_egress_start
+
         if egress_start - ingress_end < MINIMUM_TIME_BETWEEN_OCCULTATIONS:
+            
             merged_start = ingress_start
             merged_start_str = ingress_start_str
             merged_end = egress_end
@@ -424,6 +398,7 @@ def getOccultationData(orbit_list, utc_string_start, utc_string_end):
             
             obs_merged_start = obs_ingress_start
             obs_merged_end = obs_egress_end
+            obs_merged_duration = obs_merged_end - obs_merged_start
 
             occultation_dict = {"occultationNumber":index+1, \
                                 "merged":{"utcStart":merged_start_str, "utcEnd":merged_end_str, "utcMidpoint":merged_midpoint_str, "utcTransition":merged_transition_str, \
@@ -432,7 +407,7 @@ def getOccultationData(orbit_list, utc_string_start, utc_string_end):
                                            "latStart":merged_start_lat, "latEnd":merged_end_lat, "latMidpoint":merged_midpoint_lat, "latTransition":merged_transition_lat, \
                                            "altitudeStart":merged_start_altitude, "altitudeEnd":merged_end_altitude, "altitudeMidpoint":merged_midpoint_altitude, "altitudeTransition":merged_transition_altitude, \
                                            "lstStart":merged_start_lst, "lstEnd":merged_end_lst, "lstMidpoint":merged_midpoint_lst, "lstTransition":merged_transition_lst, \
-                                           "obsStart":obs_merged_start, "obsEnd":obs_merged_end, \
+                                           "obsStart":obs_merged_start, "obsEnd":obs_merged_end, "obsDuration":obs_merged_duration, \
                                            "duration":merged_duration, \
                                            "etStartAcs":ingress_start_acs}}
         else:
@@ -443,7 +418,7 @@ def getOccultationData(orbit_list, utc_string_start, utc_string_end):
                                            "latStart":ingress_start_lat, "latEnd":ingress_end_lat, "latMidpoint":ingress_midpoint_lat, "latTransition":ingress_transition_lat, \
                                            "altitudeStart":ingress_start_altitude, "altitudeEnd":ingress_end_altitude, "altitudeMidpoint":ingress_midpoint_altitude, "altitudeTransition":ingress_transition_altitude, \
                                            "lstStart":ingress_start_lst, "lstEnd":ingress_end_lst, "lstMidpoint":ingress_midpoint_lst, "lstTransition":ingress_transition_lst, \
-                                           "obsStart":obs_ingress_start, "obsEnd":obs_ingress_end, \
+                                           "obsStart":obs_ingress_start, "obsEnd":obs_ingress_end, "obsDuration":obs_ingress_duration, \
                                            "duration":ingress_duration, \
                                            "etStartAcs":ingress_start_acs}, 
 
@@ -453,10 +428,16 @@ def getOccultationData(orbit_list, utc_string_start, utc_string_end):
                                            "latStart":egress_start_lat, "latEnd":egress_end_lat, "latMidpoint":egress_midpoint_lat, "latTransition":egress_transition_lat, \
                                            "altitudeStart":egress_start_altitude, "altitudeEnd":egress_end_altitude, "altitudeMidpoint":egress_midpoint_altitude, "altitudeTransition":egress_transition_altitude, \
                                            "lstStart":egress_start_lst, "lstEnd":egress_end_lst, "lstMidpoint":egress_midpoint_lst, "lstTransition":egress_transition_lst, \
-                                           "obsStart":obs_egress_start, "obsEnd":obs_egress_end, \
+                                           "obsStart":obs_egress_start, "obsEnd":obs_egress_end, "obsDuration":obs_egress_duration, \
                                            "duration":egress_duration}}
         orbit_index = (ingress_start > orbit_starts).argmin() - 1
         orbit_list[orbit_index].update(occultation_dict)
+
+        #finally, print note if occultations are merged, or almost merged
+        if (egress_start - ingress_end) < (MINIMUM_TIME_BETWEEN_OCCULTATIONS + 30.0):
+            print("Time between occultations is %0.1f seconds for orbit list index %i" %((egress_start - ingress_end), orbit_index))
+        
+
 
     return orbit_list        
 
@@ -466,7 +447,7 @@ def getOccultationData(orbit_list, utc_string_start, utc_string_end):
 def findGrazingOccultations(orbit_list):
     """find all grazing occultations in MTP, add to orbit list"""
     grazing_index = 0
-    for orbit in orbitList:
+    for orbit in orbit_list:
         if orbit["dayside"]["incidenceMidpoint"] > 60.0: #if high beta angle
             if "merged" not in orbit.keys():
                 et_start = orbit["nightside"]["etStart"] + 500
@@ -503,6 +484,7 @@ def findGrazingOccultations(orbit_list):
     
                     obs_grazing_start = grazing_start - INITIALISATION_TIME - PRECOOLING_TIME - SO_REFERENCE_DURATION
                     obs_grazing_end = grazing_end + SO_REFERENCE_DURATION
+                    obs_duration = obs_grazing_end - obs_grazing_start
                     
                     grazing_duration = grazing_end - grazing_start
                     
@@ -513,7 +495,7 @@ def findGrazingOccultations(orbit_list):
                                    "latStart":grazing_start_lat, "latEnd":grazing_end_lat, "latMidpoint":grazing_midpoint_lat, "latTransition":"-", \
                                    "altitudeStart":grazing_start_altitude, "altitudeEnd":grazing_end_altitude, "altitudeMidpoint":grazing_midpoint_altitude, "altitudeTransition":"-", \
                                    "lstStart":grazing_start_lst, "lstEnd":grazing_end_lst, "lstMidpoint":grazing_midpoint_lst, "lstTransition":"-", \
-                                   "obsStart":obs_grazing_start, "obsEnd":obs_grazing_end, \
+                                   "obsStart":obs_grazing_start, "obsEnd":obs_grazing_end, "obsDuration":obs_duration, \
                                    "duration":grazing_duration}}
     
     
@@ -524,10 +506,13 @@ def findGrazingOccultations(orbit_list):
 
 
 
-def readMappsEventFile(instrument, mappsObservationType):
+def readMappsEventFile(instrument, mappsObservationType, mtpConstants, paths):
     """read in the LTP  planning file from the SOC and find NOMAD or ACS events (occultations) or terminator crossings (nadir)"""
-    MAPPS_EVENT_FILEPATH = os.path.join(PATHS["EVENT_FILE_PATH"], MAPPS_EVENT_FILENAME)
-    lines = [line.rstrip('\n').split()[0:3] for line in open(MAPPS_EVENT_FILEPATH) if line[0] != "#"]
+    mappsEventFilename = mtpConstants["mappsEventFilename"]
+    
+    
+    mappsEventFilepath = os.path.join(paths["EVENT_FILE_PATH"], mappsEventFilename)
+    lines = [line.rstrip('\n').split()[0:3] for line in open(mappsEventFilepath) if line[0] != "#"]
 
     if mappsObservationType == "occultation":
         mappsEvent = []
@@ -551,7 +536,7 @@ def readMappsEventFile(instrument, mappsObservationType):
 
         for eventTime, eventName, eventCount in lines:
             if eventName in EVENT_CODES:
-                eventTime = eventTime[0:-1]
+                eventTime = eventTime[0:-1] #remove Z
                 eventCount = eventName + "-%i" %int(eventCount.split("COUNT=")[1].strip(r")"))
         
                 if eventName in NOMAD_INGRESS_START_CODES + ACS_INGRESS_START_CODES:
@@ -603,31 +588,55 @@ def readMappsEventFile(instrument, mappsObservationType):
                     grazingEndFound = False
     
 
-    elif mappsObservationType == "nadir":
+#    elif mappsObservationType == "nadir":
+#        mappsEvent = []
+#        
+#        daysideStartFound = False
+#        daysideEndFound = False
+#        eventIndex = 0
+#        
+#        EVENT_CODES = TERMINATOR_N2D_CODES + TERMINATOR_D2N_CODES
+#        
+#        for eventTime, eventName, eventCount in lines:
+#            if eventName in EVENT_CODES:
+#                eventTime = eventTime[0:-1]
+#                eventCount = eventName + "-%i" %int(eventCount.split("COUNT=")[1].strip(r")"))
+#        
+#                if eventName in TERMINATOR_N2D_CODES:
+#                    mappsDaysideStart = sp.str2et(eventTime)
+#                    daysideStartFound = True
+#                elif eventName in TERMINATOR_D2N_CODES:
+#                    mappsDaysideEnd = sp.str2et(eventTime)
+#                    daysideEndFound = True
+#                if daysideStartFound and daysideEndFound:
+#                    mappsEvent.append([eventIndex, "Dayside", mappsDaysideStart, mappsDaysideEnd, eventCount])
+#                    eventIndex += 1
+#                    daysideStartFound = False
+#                    daysideEndFound = False
+
+    elif mappsObservationType == "limb":
         mappsEvent = []
         
-        daysideStartFound = False
-        daysideEndFound = False
+        limbStartFound = False
+        limbEndFound = False
         eventIndex = 0
         
-        EVENT_CODES = TERMINATOR_N2D_CODES + TERMINATOR_D2N_CODES
+        EVENT_CODES = NOMAD_LIMB_START_CODES + NOMAD_LIMB_END_CODES
         
         for eventTime, eventName, eventCount in lines:
             if eventName in EVENT_CODES:
-                eventTime = eventTime[0:-1]
-                eventCount = eventName + "-%i" %int(eventCount.split("COUNT=")[1].strip(r")"))
-        
-                if eventName in TERMINATOR_N2D_CODES:
-                    mappsDaysideStart = sp.str2et(eventTime)
-                    daysideStartFound = True
-                elif eventName in TERMINATOR_D2N_CODES:
-                    mappsDaysideEnd = sp.str2et(eventTime)
-                    daysideEndFound = True
-                if daysideStartFound and daysideEndFound:
-                    mappsEvent.append([eventIndex, "Dayside", mappsDaysideStart, mappsDaysideEnd, eventCount])
+                eventTime = eventTime[0:-1] #remove Z
+                if eventName in NOMAD_LIMB_START_CODES:
+                    mappsLimbStart = sp.str2et(eventTime)
+                    limbStartFound = True
+                elif eventName in NOMAD_LIMB_END_CODES:
+                    mappsLimbEnd = sp.str2et(eventTime)
+                    limbEndFound = True
+                if limbStartFound and limbEndFound:
+                    mappsEvent.append([eventIndex, "Limb", mappsLimbStart, mappsLimbEnd, eventCount])
                     eventIndex += 1
-                    daysideStartFound = False
-                    daysideEndFound = False
+                    limbStartFound = False
+                    limbEndFound = False
 
     return mappsEvent
 
@@ -640,14 +649,14 @@ def readMappsEventFile(instrument, mappsObservationType):
 
 
 
-def addMappsEvents(orbit_list):
+def addMappsEvents(orbit_list, mtpConstants, paths):
     """compare timings in event file to calculated orbits"""
-    mappsNomadOccEvents = readMappsEventFile("NOMAD", "occultation")
+    mappsNomadOccEvents = readMappsEventFile("NOMAD", "occultation", mtpConstants, paths)
     mappsNomadOccEventStartTimes = [eventTime for _, eventName, eventTime, _, _ in mappsNomadOccEvents if eventName in ["Ingress", "Egress", "Merged", "Grazing"]]
     mappsNomadOccEventStartNames = [eventName for _, eventName, _, _, _ in mappsNomadOccEvents if eventName in ["Ingress", "Egress", "Merged", "Grazing"]]
     mappsNomadOccEventStartCounts = [eventCount for _, eventName, _, _, eventCount in mappsNomadOccEvents if eventName in ["Ingress", "Egress", "Merged", "Grazing"]]
     
-    mappsAcsOccEvents = readMappsEventFile("ACS", "occultation")
+    mappsAcsOccEvents = readMappsEventFile("ACS", "occultation", mtpConstants, paths)
     mappsAcsOccEventStartTimes = [eventTime for _, eventName, eventTime, _, _ in mappsAcsOccEvents if eventName in ["Ingress", "Egress", "Merged", "Grazing"]]
 #    mappsAcsOccEventStartNames = [eventName for _, eventName, _, _, _ in mappsAcsOccEvents if eventName in ["Ingress", "Egress", "Merged", "Grazing"]]
 #    mappsAcsOccEventStartCounts = [eventCount for _, eventName, _, _, eventCount in mappsAcsOccEvents if eventName in ["Ingress", "Egress", "Merged", "Grazing"]]
@@ -658,7 +667,8 @@ def addMappsEvents(orbit_list):
 #    mappsDaysideEventStartCounts = [eventCount for _, eventName, _, _, eventCount in mappsDaysideEvents if eventName in ["Dayside"]]
     
 
-    #TODO: add true limbs
+    mappsLimbEvents = readMappsEventFile("", "limb", mtpConstants, paths)
+    mappsLimbEventStartTimes = [eventTime for _, eventName, eventTime, _, _ in mappsLimbEvents if eventName in ["Limb"]]
 
     for orbit in orbit_list:
 #        orbit["obsTypes"] = []
@@ -695,6 +705,12 @@ def addMappsEvents(orbit_list):
                 else: #occultation not used
                     orbit[obstype]["rowColour"] = "f99797"
                     orbit[obstype]["primeInstrument"] = "N/A"
+                
+        #check if limb measurement lies within the dayside nadir of this orbit
+        for limbStartTime in mappsLimbEventStartTimes:
+            if orbit["dayside"]["etStart"] < limbStartTime < orbit["dayside"]["etEnd"]:
+                orbit["allowedObservationTypes"].append("trueLimb")
+            
     return orbit_list
 
 
@@ -745,53 +761,55 @@ def regionsOfInterestOccultation(orbit_list, regions_of_interest, silent=True):
     for orbit in orbit_list:
         for occultation_type in orbit["allowedObservationTypes"]:
 #            print(occultation_type)
-            occultation = orbit[occultation_type]
             
-            etStart = occultation["etStart"]
-            etEnd = occultation["etEnd"]
-            ets = np.arange(etStart, etEnd, OCCULTATION_SEARCH_STEP_SIZE)
-            occultationData = np.asfarray([getLonLatLst(et) for et in ets])
-            alts = np.asfarray([getTangentAltitude(et) for et in ets])
-            
-            
-            lons = occultationData[:, 0]
-            lats = occultationData[:, 1]
-            lst = occultationData[:, 2]
-            
-            warning_1_given = False
-            warning_2_given = False
-            for region_of_interest in regions_of_interest:
-                matches = np.logical_and(
-                        np.logical_and((region_of_interest[1] < lats), (region_of_interest[2] > lats)),
-                        np.logical_and((region_of_interest[3] < lons), (region_of_interest[4] > lons))
-                        )
-                if np.any(matches): #if match found
-                    #for merged occultation, check altitude to determine if real or viewing planet
-                    if np.all(alts[matches] == 0.0):
-                        if not silent and not warning_1_given:
-                            if not silent: 
-                                print("Match found on orbit %i but all tangent altitudes are negative" %orbit["orbitNumber"])
-                                warning_1_given = True
-    
-                    #for grazing, check if altitude is good or not. Don't add if too high
-                    elif np.all(alts[matches] > MAXIMUM_GRAZING_ALTITUDE):
-                        if not silent and not warning_2_given:
-                            print("Match found on orbit %i but all tangent altitudes are above %ikm" %(orbit["orbitNumber"], MAXIMUM_GRAZING_ALTITUDE))
-                            warning_2_given = True
-     
-                    else:
-                        min_altitude = np.nanmin(alts[matches]) #find minimum valid altitude
-                        i = int(np.where(alts[matches] == min_altitude)[0]) #find index corresponding to minimum altitude
-                        #i = int(np.mean(np.where(matches)[0])) #find centre index
-                        
-                        #get data for minimum altitude point
-                        regionDict = {"occultationType":occultation_type, "name":region_of_interest[0], \
-                             "et":ets[i], "utc":et2utc(ets[i]), \
-                             "lon":lons[i], "lat":lats[i], \
-                             "lst":lst[i]}
-                        if "occultationRegions" not in orbit.keys():
-                            orbit["occultationRegions"] = []
-                        orbit["occultationRegions"].append(regionDict)
+            if occultation_type in ["ingress", "egress", "merged", "grazing"]:
+                occultation = orbit[occultation_type]
+                
+                etStart = occultation["etStart"]
+                etEnd = occultation["etEnd"]
+                ets = np.arange(etStart, etEnd, OCCULTATION_SEARCH_STEP_SIZE)
+                occultationData = np.asfarray([getLonLatLst(et) for et in ets])
+                alts = np.asfarray([getTangentAltitude(et) for et in ets])
+                
+                
+                lons = occultationData[:, 0]
+                lats = occultationData[:, 1]
+                lst = occultationData[:, 2]
+                
+                warning_1_given = False
+                warning_2_given = False
+                for region_of_interest in regions_of_interest:
+                    matches = np.logical_and(
+                            np.logical_and((region_of_interest[1] < lats), (region_of_interest[2] > lats)),
+                            np.logical_and((region_of_interest[3] < lons), (region_of_interest[4] > lons))
+                            )
+                    if np.any(matches): #if match found
+                        #for merged occultation, check altitude to determine if real or viewing planet
+                        if np.all(alts[matches] == 0.0):
+                            if not silent and not warning_1_given:
+                                if not silent: 
+                                    print("Match found on orbit %i but all tangent altitudes are negative" %orbit["orbitNumber"])
+                                    warning_1_given = True
+        
+                        #for grazing, check if altitude is good or not. Don't add if too high
+                        elif np.all(alts[matches] > MAXIMUM_GRAZING_ALTITUDE):
+                            if not silent and not warning_2_given:
+                                print("Match found on orbit %i but all tangent altitudes are above %ikm" %(orbit["orbitNumber"], MAXIMUM_GRAZING_ALTITUDE))
+                                warning_2_given = True
+         
+                        else:
+                            min_altitude = np.nanmin(alts[matches]) #find minimum valid altitude
+                            i = int(np.where(alts[matches] == min_altitude)[0]) #find index corresponding to minimum altitude
+                            #i = int(np.mean(np.where(matches)[0])) #find centre index
+                            
+                            #get data for minimum altitude point
+                            regionDict = {"occultationType":occultation_type, "name":region_of_interest[0], \
+                                 "et":ets[i], "utc":et2utc(ets[i]), \
+                                 "lon":lons[i], "lat":lats[i], \
+                                 "lst":lst[i]}
+                            if "occultationRegions" not in orbit.keys():
+                                orbit["occultationRegions"] = []
+                            orbit["occultationRegions"].append(regionDict)
     return orbit_list
 
 
@@ -825,7 +843,6 @@ def findMatchingRegions(orbit_list, silent=True):
                         print("%s observation added" %occultationRegionsObservations[region["name"]])
                 else:
                     print("Warning: %s not found in observation list" %region["name"])
-
     return orbit_list
 
 
@@ -834,7 +851,7 @@ def findMatchingRegions(orbit_list, silent=True):
 def makeGenericOrbitPlan(orbit_list, silent=True):
     """save generic plan to orbit list. This doesn't have nightsides or limbs, just occs and dayside nadirs"""
     """baseline orbit plan orbit types: 1 or 5 if occultations, 14 if not, 3 if nadir region of interest detected"""
-    # TODO: add limb and nightside for filling in occulation-free regions times
+    # Potential improvment: automatically add some limbs and nightsides to fill in the times when occultations cannot be performed
 
 
     #inputs for defining generic orbit plan
@@ -846,7 +863,7 @@ def makeGenericOrbitPlan(orbit_list, silent=True):
     for orbit in orbit_list:
 
         generic_orbit = {}
-        generic_orbit_type = 14
+        generic_orbit_type = UVIS_DEFAULT_ORBIT_TYPE
         generic_orbit_comment = ""
         
         generic_orbit["irNightside"] = "" #irNightside not defined in generic plan
@@ -856,15 +873,26 @@ def makeGenericOrbitPlan(orbit_list, silent=True):
         timeStringOut = orbit["dayside"]["utcStart"]
         orbitNumber = orbit["orbitNumber"]
     
+        #first check for OCMs
         ocm = False
         if datetime.strptime(timeStringOut, SPICE_DATETIME_FORMAT).isoweekday() == 6:
             if orbitNumber != 1: #if not first orbit
                 if orbitNumber != len(orbit_list): #if not last orbit
                     if 11 < datetime.strptime(timeStringOut, SPICE_DATETIME_FORMAT).hour < 16:
-                        generic_orbit_comment += "&PossibleOCM; "
+                        generic_orbit_comment += "&possibleOCM; "
                         ocm = True
 
-
+        #next check for true (UVIS+LNO) limbs
+        if "trueLimb" in orbit["allowedObservationTypes"]:
+            generic_orbit_type = 28
+            generic_orbit["irDayside"] = "irLimb"
+            generic_orbit["uvisDayside"] = "uvisLimb"
+            generic_orbit["irIngressHigh"] = ""
+            generic_orbit["irIngressLow"] = ""
+            generic_orbit["uvisIngress"] = ""
+            generic_orbit["irEgressHigh"] = ""
+            generic_orbit["irEgressLow"] = ""
+            generic_orbit["uvisEgress"] = ""
 
     
         for occultation_type in orbit["allowedObservationTypes"]:
@@ -992,10 +1020,10 @@ def makeGenericOrbitPlan(orbit_list, silent=True):
                 else: #if lno off and no occultations
                     generic_orbit["irDayside"] = ""
                     if generic_orbit_type == 4: #if 3x UVIS TCs
-                        generic_orbit["uvisDayside"] = "uvis3xDayside"
+                        generic_orbit["uvisDayside"] = "uvisDayside"
                         
                     elif generic_orbit_type == 14: #if 1x UVIS TCs
-                        generic_orbit["uvisDayside"] = "uvisOnlyDayside"
+                        generic_orbit["uvisDayside"] = "uvisDayside"
 
         else: #if not orbit type 14, still check for nadir regions
             #check nadir regions of interest
@@ -1008,11 +1036,24 @@ def makeGenericOrbitPlan(orbit_list, silent=True):
                 generic_orbit["irDayside"] = orbit["dayside"]["observationName"]
 
             
-
+        #special section for true limbs
+        if "trueLimb" in orbit["allowedObservationTypes"]:
+            generic_orbit_type = 28
+            generic_orbit["irIngressHigh"] = ""
+            generic_orbit["irIngressLow"] = ""
+            generic_orbit["uvisIngress"] = ""
+            generic_orbit["irEgressHigh"] = ""
+            generic_orbit["irEgressLow"] = ""
+            generic_orbit["uvisEgress"] = ""
+            generic_orbit["irDayside"] = "irLimb"
+            generic_orbit["uvisDayside"] = "uvisLimb"
+            generic_orbit_comment = "&trueLimb"
         
     
         orbit["genericOrbitPlanOut"] = {"orbitType":generic_orbit_type, "orbitTypes":generic_orbit, "comment":generic_orbit_comment}
     return orbit_list
+
+
 
 
 
@@ -1023,35 +1064,68 @@ def writeObservationPlan(worksheet, row, row_to_write):
 
 
 
-def writeGenericPlanXlsx(mtp_number, orbit_list):
-    """write generic observation plan to file"""
-    with xlsxwriter.Workbook(os.path.join(BASE_DIRECTORY, "nomad_mtp%03d_plan_generic.xlsx" %mtp_number)) as workbook:
-        worksheet = workbook.add_worksheet()
+
+
+def writeOrbitPlanXlsx(orbit_list, mtpConstants, paths, version):
+    """write generic observation plan to file if the file doesn't exist """
+    mtp_number = mtpConstants["mtpNumber"]
+    
+    #check if file has already been placed in correct directory. If so, don't generate again
+    fileExists = os.path.isfile(os.path.join(paths["ORBIT_PLAN_PATH"], "nomad_mtp%03d_%s.xlsx" %(mtp_number, version)))
         
-        rowCounter = 0
-        writeObservationPlan(worksheet, rowCounter, ["#orbitType","irIngressHigh","irIngressLow","uvisIngress","irEgressHigh","irEgressLow","uvisEgress","irDayside","uvisDayside","irNightside","uvisNightside","night2dayTerminator","comment"])
-        
-        for orbit in orbit_list:
-            genericOrbitPlan = orbit["genericOrbitPlanOut"]
-            row_to_write = [genericOrbitPlan["orbitType"]]
+    if not fileExists:    
+        with xlsxwriter.Workbook(os.path.join(BASE_DIRECTORY, "nomad_mtp%03d_%s.xlsx" %(mtp_number, version))) as workbook:
+            worksheet = workbook.add_worksheet()
             
-            for genericObsType in ["irIngressHigh","irIngressLow","uvisIngress","irEgressHigh","irEgressLow","uvisEgress","irDayside","uvisDayside","irNightside","uvisNightside"]:
-                row_to_write.append(genericOrbitPlan["orbitTypes"][genericObsType])
+            if version == "plan_generic": #find name of the orbit plan
+                orbitPlanName = "genericOrbitPlanOut"
+            elif version == "plan":
+                orbitPlanName = "completeOrbitPlan"
+            else:
+                print("Error: unknown version %s. Exiting..." %version)
+                sys.exit()
             
-            row_to_write.append(orbit["dayside"]["utcStart"])
-            row_to_write.append(genericOrbitPlan["comment"])
-            
-            rowCounter += 1
-            writeObservationPlan(worksheet, rowCounter, row_to_write)
+            rowCounter = 0
+            writeObservationPlan(worksheet, rowCounter, ["#orbitType","irIngressHigh","irIngressLow","uvisIngress","irEgressHigh","irEgressLow","uvisEgress","irDayside","uvisDayside","irNightside","uvisNightside","night2dayTerminator","comment"])
+    
+            for orbit in orbit_list:
+                orbitPlan = orbit[orbitPlanName]
+                row_to_write = [orbitPlan["orbitType"]]
+                
+                for genericObsType in ["irIngressHigh","irIngressLow","uvisIngress","irEgressHigh","irEgressLow","uvisEgress","irDayside","uvisDayside","irNightside","uvisNightside"]:
+                    if version == "plan_generic": #find name of the orbit plan. Information is in a different format in the generic orbit plan
+                        row_to_write.append(orbitPlan["orbitTypes"][genericObsType])
+                    elif version == "plan":
+                        row_to_write.append(orbitPlan[genericObsType])
+                
+                row_to_write.append(orbit["dayside"]["utcStart"])
+                row_to_write.append(orbitPlan["comment"])
+                
+                rowCounter += 1
+                writeObservationPlan(worksheet, rowCounter, row_to_write)
 
 
 
 
 
 
-def getMtpPlanXlsx(mtp_number, version):
+def getMtpPlanXlsx(mtpConstants, paths, version):
     """read back in orbit plan after iteration by OU/BIRA"""
-    with xlrd.open_workbook(os.path.join(PATHS["ORBIT_PLAN_PATH"], "nomad_mtp%03d_%s.xlsx" %(mtp_number, version))) as workbook:
+    mtp_number = mtpConstants["mtpNumber"]
+    
+    workbookPath = os.path.join(paths["ORBIT_PLAN_PATH"], "nomad_mtp%03d_%s.xlsx" %(mtp_number, version))
+    
+    if not os.path.exists(workbookPath):
+        if version == "plan_generic": #write message depending on which orbit plan was not found, then exit program
+            print("Iterated orbit plan (%s) not found. Exiting..." %workbookPath)
+        elif version == "plan":
+            print("Final orbit plan (%s) not found. Exiting..." %workbookPath)
+        else:
+            print("Orbit plan (%s) not found. Exiting..." %workbookPath)
+        sys.exit()
+    
+    #if plan found, open it and list contents
+    with xlrd.open_workbook(workbookPath) as workbook:
         worksheet = workbook.sheet_by_index(0)
         
         mtp_plan_list = []
@@ -1073,22 +1147,28 @@ def getMtpPlanXlsx(mtp_number, version):
     return mtp_plan_list
 
 
-def mergeMtpPlan(orbit_list, mtp_plan, dict_name_in, dict_name_out):
-    """merge iterated orbit plan into orbit list"""    
+
+
+def mergeMtpPlan(orbit_list, mtp_plan, new_dict_name, old_dict_name):
+    """merge iterated orbit plan into orbit list, check that they match each other"""    
     if len(mtp_plan) != len(orbit_list):
         print("Error: length of plan read in from file does not match number of orbits calculated")
     
     for orbit, orbit_plan in zip(orbit_list, mtp_plan):
-        orbit[dict_name_in] = {}
+        orbit[new_dict_name] = {}
         
-        if orbit_plan["orbitType"] == 1 and orbit[dict_name_out]["orbitType"] != 1:
+        if orbit_plan["orbitType"] == 1 and orbit[old_dict_name]["orbitType"] != 1:
             print("Error: occultation mismatch between orbit plan written and orbit plan read in for orbit number %i" %orbit["orbitNumber"])
+            
+        #do checks to ensure that ingress/egresses match in orbit list and mtp plan
+        occultationFound = [True for value in orbit["allowedObservationTypes"] if value in ["ingress", "egress", "merged", "grazing"]]
+        if orbit_plan["orbitType"] in [1, 5, 6] and not occultationFound:
+            print("Error: occultation detected in orbit that shouldn't have occultations")
         
         for key, value in orbit_plan.items():
             if key in ["orbitType", "irIngressHigh", "irIngressLow", "uvisIngress", "irEgressHigh", "irEgressLow", "uvisEgress", "irDayside", \
                       "uvisDayside", "irNightside", "uvisNightside", "comment"]:
-                orbit[dict_name_in][key] = value
-                #TODO: check ingress/egresses match in orbit list and mtp plan, check timings match
+                orbit[new_dict_name][key] = value
             if value != "":
                 orbit[key] = value
 
@@ -1175,13 +1255,13 @@ def makeCompleteOrbitPlan(orbit_list):
             else:
                 irIngressHigh = genericObsTypes["irIngressHigh"] #use preselected targeted obs
                 irIngressLow = genericObsTypes["irIngressLow"] #use preselected targeted obs
-    
+                uvisIngress = "uvisIngress"
     
     
             if genericObsTypes["irEgressHigh"] == "": #no observation
                 irEgressHigh = ""
                 irEgressLow = ""
-                uvisIngress = ""
+                uvisEgress = ""
             elif genericObsTypes["irEgressHigh"] == "irEgress": #generic observation
                 occultationCounter += 1
                 irEgressHigh = OCCULTATION_KEYS[occultationCounter]
@@ -1208,11 +1288,12 @@ def makeCompleteOrbitPlan(orbit_list):
             else:
                 irEgressHigh = genericObsTypes["irEgressHigh"] #use preselected targeted obs
                 irEgressLow = genericObsTypes["irEgressLow"] #use preselected targeted obs
+                uvisEgress = "uvisEgress"
     
     
             if genericObsTypes["irDayside"] == "": #if LNO off
                 irDayside = ""
-                uvisDayside = "uvisOnlyDayside"
+                uvisDayside = "uvisDayside"
             elif genericObsTypes["irDayside"] in ["irDayside", "irShortDayside", "irLongDayside"]: #generic observation
                 nadirCounter += 1
                 irDayside = NADIR_KEYS[nadirCounter]
@@ -1250,7 +1331,7 @@ def makeCompleteOrbitPlan(orbit_list):
                 if orbitType == 6:
                     print("Error: orbit type 6 cannot have LNO dayside")
                     irDayside = ""
-                    uvisDayside = "uvis3xDayside"
+                    uvisDayside = "uvisDayside"
                 else:
                     nadirCounter += 1
                     irDayside = NADIR_KEYS[nadirCounter]
@@ -1259,14 +1340,14 @@ def makeCompleteOrbitPlan(orbit_list):
             elif genericObsTypes["irDayside"] == "": #LNO off
                 if orbitType == 6:
                     irDayside = ""
-                    uvisDayside = "uvis3xDayside"
+                    uvisDayside = "uvisDayside"
                 else:
-                    uvisDayside = "uvisOnlyDayside"
+                    uvisDayside = "uvisDayside"
             else: #use preselected targeted obs
                 if orbitType == 6:
                     print("Error: orbit type 6 cannot have LNO dayside")
                     irDayside = ""
-                    uvisDayside = "uvis3xDayside"
+                    uvisDayside = "uvisDayside"
                 else:
                     irDayside = genericObsTypes["irDayside"] #use preselected targeted obs
                     uvisDayside = "uvisDayside"
@@ -1350,7 +1431,7 @@ def makeCompleteOrbitPlan(orbit_list):
                 uvisDayside = "uvisDayside"
             elif genericObsTypes["irDayside"] == "": #LNO off
                 irDayside = ""
-                uvisDayside = "uvisOnlyDayside"
+                uvisDayside = "uvisDayside"
             else:
                 irDayside = genericObsTypes["irDayside"] #use preselected targeted obs
                 uvisDayside = "uvisDayside"
@@ -1373,7 +1454,8 @@ def makeCompleteOrbitPlan(orbit_list):
                         uvisNightside = "uvisNightside"
     
                 else: #if LNO should be off
-                    print("Error: orbit type 17 cannot have LNO nightside")
+                    print("Error: orbit type 17 cannot have LNO nightside (orbit %i)" %orbit["orbitNumber"])
+                    print(genericObsTypes["irNightside"])
                     irNightside = ""
                     uvisNightside = "uvisOnlyNightside"
     
@@ -1395,7 +1477,7 @@ def makeCompleteOrbitPlan(orbit_list):
                 print("Warning: orbit type 8 found with blank limb observation")
     
                 if orbitType == 8:
-                    uvisDayside = "uvisOnlyDayside"
+                    uvisDayside = "uvisDayside"
                 else:
                     uvisDayside = "uvisOnlyLimb"
     
@@ -1404,7 +1486,7 @@ def makeCompleteOrbitPlan(orbit_list):
                 irDayside = NADIR_LIMB_KEYS[nadirLimbCounter]
     
                 if orbitType == 8:
-                    uvisDayside = "uvisOnlyDayside"
+                    uvisDayside = "uvisDayside"
                 else:
                     uvisDayside = "uvisLimb"
     
@@ -1413,7 +1495,7 @@ def makeCompleteOrbitPlan(orbit_list):
                 print("Warning: check that observation %s is suitable for an LNO limb measurement" %irDayside)
     
                 if orbitType == 8:
-                    uvisDayside = "uvisOnlyDayside"
+                    uvisDayside = "uvisDayside"
                 else:
                     uvisDayside = "uvisLimb"
                 
@@ -1442,35 +1524,8 @@ def makeCompleteOrbitPlan(orbit_list):
 
 
 
-def writeCompletePlanXlsx(mtp_number, orbit_list):
-    """write complete observation plan to file"""
-    with xlsxwriter.Workbook(os.path.join(BASE_DIRECTORY, "nomad_mtp%03d_plan.xlsx" %mtpNumber)) as workbook:
-        worksheet = workbook.add_worksheet()
-        
-        rowCounter = 0
-        writeObservationPlan(worksheet, rowCounter, ["#orbitType","irIngressHigh","irIngressLow","uvisIngress","irEgressHigh","irEgressLow","uvisEgress","irDayside","uvisDayside","irNightside","uvisNightside","night2dayTerminator","comment"])
-        
-        for orbit in orbitList:
-            completeOrbitPlan = orbit["completeOrbitPlan"]
-            row_to_write = [completeOrbitPlan["orbitType"]]
-            
-            for genericObsType in ["irIngressHigh","irIngressLow","uvisIngress","irEgressHigh","irEgressLow","uvisEgress","irDayside","uvisDayside","irNightside","uvisNightside"]:
-                row_to_write.append(completeOrbitPlan[genericObsType])
-            
-            row_to_write.append(orbit["dayside"]["utcStart"])
-            row_to_write.append(completeOrbitPlan["comment"])
-            
-            rowCounter += 1
-            writeObservationPlan(worksheet, rowCounter, row_to_write)
 
 
-
-
-
-
-    
-"""check for clashing start/end times"""
-#TODO: check for clashes, adjust LNO nadir times accordingly
 
 
 
@@ -1512,8 +1567,11 @@ def findIndex(valueIn,listIn):
         print("Error: Not found")
     
 
-def getCopTables(copVersion):
+def getCopTables(mtpConstants):
     """read in COP tables from file"""
+    copVersion = mtpConstants["copVersion"]
+
+
     soAotfHeaders,soAotfList = outputCopTable(copVersion,"so",'aotf')
     soFixedHeaders,soFixedList = outputCopTable(copVersion,"so",'fixed')
     soScienceHeaders,soScienceList = outputCopTable(copVersion,"so",'science')
@@ -1855,23 +1913,26 @@ def getCopRows(channel,copTableDict, observationType,inputDict,silent=False):
 
 
 
-def getObsParameters(observation_name, dictionary):
+def getObsParameters(observation_name, dictionary, orbit):
     if observation_name in list(dictionary.keys()):
-        orders_out, inttime_out, rhythm_out, rows_out = dictionary[observation_name]
+        orders_out, inttime_out, rhythm_out, rows_out, channel_code = dictionary[observation_name]
         return sorted(orders_out), inttime_out, rhythm_out, rows_out
     else:
-        print("Observation name %s not found in dictionary" %observation_name)
+        orbitNumber = orbit["orbitNumber"]
+        print("Observation name %s not found in dictionary for orbit number %i" %(observation_name, orbitNumber))
+        
         
 
 
 
 
-def addIrCopRows(orbit_list, copTableDict):
+def addIrCopRows(orbit_list, copTableDict, mtpConstants):
     """find cop rows that match observation names in final plan, add to orbit list"""
+    soCentreDetectorLine = mtpConstants["soCentreDetectorLine"]
     # TODO: rewrite all cop row finding parts
     
     
-    for orbit in orbitList:    
+    for orbit in orbit_list:    
         finalOrbitPlan = orbit["finalOrbitPlan"]
         
         #first, find all allowed occultation measurement types for orbit
@@ -1902,8 +1963,8 @@ def addIrCopRows(orbit_list, copTableDict):
         if "ingress" in irMeasuredObsTypes or "merged" in irMeasuredObsTypes or "grazing" in irMeasuredObsTypes:
             for obsType in ["irIngressHigh","irIngressLow"]:
                 observationName = finalOrbitPlan[obsType]
-                diffractionOrders, integrationTime, rhythm, detectorRows = getObsParameters(observationName,occultationObservationDict)
-                detectorCentreLine = SO_CENTRE_DETECTOR_LINE #LNO occultations not yet implemented
+                diffractionOrders, integrationTime, rhythm, detectorRows = getObsParameters(observationName, occultationObservationDict, orbit)
+                detectorCentreLine = soCentreDetectorLine #LNO occultations not yet implemented
                 channel = "so" #LNO occultations not yet implemented
                 channelCode = SO_CHANNEL_CODE #LNO occultations not yet implemented
 
@@ -1928,8 +1989,8 @@ def addIrCopRows(orbit_list, copTableDict):
         if "egress" in irMeasuredObsTypes:
             for obsType in ["irEgressHigh","irEgressLow"]:
                 observationName = finalOrbitPlan[obsType]
-                diffractionOrders, integrationTime, rhythm, detectorRows = getObsParameters(observationName,occultationObservationDict)
-                detectorCentreLine = SO_CENTRE_DETECTOR_LINE #LNO occultations not yet implemented
+                diffractionOrders, integrationTime, rhythm, detectorRows = getObsParameters(observationName, occultationObservationDict, orbit)
+                detectorCentreLine = soCentreDetectorLine #LNO occultations not yet implemented
                 channel = "so" #LNO occultations not yet implemented
                 channelCode = SO_CHANNEL_CODE #LNO occultations not yet implemented
 
@@ -1953,7 +2014,7 @@ def addIrCopRows(orbit_list, copTableDict):
         if "dayside" in irMeasuredObsTypes:
             obsType  = "irDayside"
             observationName = finalOrbitPlan[obsType]
-            diffractionOrders, integrationTime, rhythm, detectorRows = getObsParameters(observationName,nadirObservationDict)
+            diffractionOrders, integrationTime, rhythm, detectorRows = getObsParameters(observationName, nadirObservationDict, orbit)
             detectorCentreLine = LNO_CENTRE_DETECTOR_LINE #LNO occultations not yet implemented
             channel = "lno" #LNO occultations not yet implemented
             channelCode = LNO_CHANNEL_CODE #LNO occultations not yet implemented
@@ -1978,26 +2039,26 @@ def addIrCopRows(orbit_list, copTableDict):
         else: #if uvis operating, still write COP rows for nadirs
             if "dayside" in uvisMeasuredObsTypes: #if uvis operating, still write COP rows for nadirs
                 obsType  = "irDayside"
-                finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow":-1, "copRowDescription":""}
+                finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow":-1, "fixedCopRow":-1, "copRowDescription":""}
             if "dayside2" in uvisMeasuredObsTypes: #if uvis operating, still write COP rows for nadirs
                 obsType  = "irDayside2"
-                finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow":-1, "copRowDescription":""}
+                finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow":-1, "fixedCopRow":-1, "copRowDescription":""}
             if "dayside3" in uvisMeasuredObsTypes: #if uvis operating, still write COP rows for nadirs
                 obsType  = "irDayside3"
-                finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow":-1, "copRowDescription":""}
+                finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow":-1, "fixedCopRow":-1, "copRowDescription":""}
                 
                 
         #if orbit type not 12 (NOMAD OFF) then there should always be nadir COP rows specified
         if orbit["orbitType"] != 12 and "dayside" not in uvisMeasuredObsTypes:
             obsType  = "irDayside"
-            finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow":-1, "copRowDescription":""}
+            finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow":-1, "fixedCopRow":-1, "copRowDescription":""}
             
         
 
         if "nightside" in irMeasuredObsTypes:
             obsType  = "irNightside"
             observationName = finalOrbitPlan[obsType]
-            diffractionOrders, integrationTime, rhythm, detectorRows = getObsParameters(observationName,nadirObservationDict)
+            diffractionOrders, integrationTime, rhythm, detectorRows = getObsParameters(observationName, nadirObservationDict, orbit)
             detectorCentreLine = LNO_CENTRE_DETECTOR_LINE #LNO occultations not yet implemented
             channel = "lno" #LNO occultations not yet implemented
             channelCode = LNO_CHANNEL_CODE #LNO occultations not yet implemented
@@ -2047,19 +2108,19 @@ def addIrCopRows(orbit_list, copTableDict):
 
         if "dayside2" in uvisMeasuredObsTypes:
             obsType = "uvisDayside2"
-            observationName = finalOrbitPlan[obsType]
+            observationName = finalOrbitPlan["uvisDayside"] #use same uvis dayside obs name for 3 x TC20s
             finalOrbitPlan[obsType+"ObservationName"] = observationName
             finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow":-1, "copRowDescription":""}
 
         if "dayside3" in uvisMeasuredObsTypes:
             obsType = "uvisDayside3"
-            observationName = finalOrbitPlan[obsType]
+            observationName = finalOrbitPlan["uvisDayside"] #use same uvis dayside obs name for 3 x TC20s
             finalOrbitPlan[obsType+"ObservationName"] = observationName
             finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow":-1, "copRowDescription":""}
 
         if "nightside" in uvisMeasuredObsTypes:
             obsType = "uvisNightside"
-            observationName = finalOrbitPlan[obsType]
+            observationName = finalOrbitPlan["uvisDayside"] #use same uvis dayside obs name for 3 x TC20s
             finalOrbitPlan[obsType+"ObservationName"] = observationName
             finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow":-1, "copRowDescription":""}
 
@@ -2073,21 +2134,31 @@ def addIrCopRows(orbit_list, copTableDict):
 
 
 
-def addUvisCopRows(orbit_list, copTableDict):
+def addUvisCopRows(orbit_list, copTableDict, mtpConstants, paths):
     """get UVIS COP rows from file (if they already exist)"""
+    mtpNumber = mtpConstants["mtpNumber"]
 
-    uvisFilesAvailable = os.path.isfile(os.path.join(PATHS["COP_ROW_PATH"], "mtp%03d_uvis_dayside_nadir.txt" %mtpNumber))
+    uvisFilesAvailable = os.path.isfile(os.path.join(paths["COP_ROW_PATH"], "mtp%03d_uvis_dayside_nadir.txt" %mtpNumber))
+    uvisGrazingAvailable = os.path.isfile(os.path.join(paths["COP_ROW_PATH"], "mtp%03d_uvis_grazing_occultations.txt" %mtpNumber)) #grazing file only present if there are grazing occultations
     
     if uvisFilesAvailable:
-        uvisInputDict = {"uvis_calibration":[], "uvis_dayside_nadir":[], \
-                         "uvis_egress_occultations":[], "uvis_grazing_occultations":[], \
-                         "uvis_ingress_occultations":[], "uvis_nightside_nadir":[]}
+        if uvisGrazingAvailable:
+            uvisInputDict = {"uvis_dayside_nadir":[], \
+                             "uvis_egress_occultations":[], "uvis_grazing_occultations":[], \
+                             "uvis_ingress_occultations":[], "uvis_nightside_nadir":[]}
+        else:
+            uvisInputDict = {"uvis_dayside_nadir":[], \
+                             "uvis_egress_occultations":[], \
+                             "uvis_ingress_occultations":[], "uvis_nightside_nadir":[]}
         for uvisInputName in uvisInputDict.keys():
-            with open(os.path.join(PATHS["COP_ROW_PATH"], "mtp%03d_%s.txt" %(mtpNumber, uvisInputName))) as f:
+            with open(os.path.join(paths["COP_ROW_PATH"], "mtp%03d_%s.txt" %(mtpNumber, uvisInputName))) as f:
                 for index, line in enumerate(f):
                     content = line.strip('\n')
                     if index > 0: #if first line
                         uvisInputDict[uvisInputName].append(int(content))
+
+        if not uvisGrazingAvailable: #create empty grazing dictionary
+            uvisInputDict["uvis_grazing_occultations"] = []
             
     
         
@@ -2097,10 +2168,15 @@ def addUvisCopRows(orbit_list, copTableDict):
         ingressCounter = -1
         nightsideCounter = -1
         
-        #orbit = orbitList[33]
-        
+        #fudge for mtp010, probably because with new kernels an old grazing occultation is now a merged occ
+        if mtpNumber == 10:
+            orbit_list[227]["allowedObservationTypes"] = ["dayside", "grazing"]
+            
+            
+       
         for orbit in orbit_list:
             finalOrbitPlan = orbit["finalOrbitPlan"]
+#            print(orbit["orbitNumber"])
             if "ingress" in orbit["allowedObservationTypes"]:
                 ingressCounter += 1
                 copRow = uvisInputDict["uvis_ingress_occultations"][ingressCounter]
@@ -2115,7 +2191,7 @@ def addUvisCopRows(orbit_list, copTableDict):
         
             if "grazing" in orbit["allowedObservationTypes"]: #grazing is taken from a different file but added to ingress orbit plan
                 grazingCounter += 1
-                copRow = uvisInputDict["uvis_grazing_occultations"][ingressCounter]
+                copRow = uvisInputDict["uvis_grazing_occultations"][grazingCounter]
                 finalOrbitPlan["uvisIngressCopRows"]["scienceCopRow"] = copRow
                 finalOrbitPlan["uvisIngressCopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
         
@@ -2129,19 +2205,30 @@ def addUvisCopRows(orbit_list, copTableDict):
                 daysideCounter += 1
                 copRow = uvisInputDict["uvis_dayside_nadir"][daysideCounter]
                 finalOrbitPlan["uvisDaysideCopRows"]["scienceCopRow"] = copRow
-                finalOrbitPlan["uvisDaysideCopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
+                copRowDescription = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
+                finalOrbitPlan["uvisDaysideCopRows"]["copRowDescription"] = copRowDescription
             
-            if "dayside2" in orbit["allowedObservationTypes"]:
-                daysideCounter += 1
-                copRow = uvisInputDict["uvis_dayside_nadir"][daysideCounter]
-                finalOrbitPlan["uvisDayside2CopRows"]["scienceCopRow"] = copRow
-                finalOrbitPlan["uvisDayside2CopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
-        
-            if "dayside3" in orbit["allowedObservationTypes"]:
-                daysideCounter += 1
-                copRow = uvisInputDict["uvis_dayside_nadir"][daysideCounter]
-                finalOrbitPlan["uvisDayside3CopRows"]["scienceCopRow"] = copRow
-                finalOrbitPlan["uvisDayside3CopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
+                #special case: UVIS can have 3 x TC20s in one dayside nadir
+                if "dayside2" in orbit["allowedObservationTypes"]:
+                    copRows = [copRow]
+                    copRowDescriptions = [copRowDescription]
+                    
+                    daysideCounter += 1
+                    copRow = uvisInputDict["uvis_dayside_nadir"][daysideCounter]
+                    copRowDescription = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
+                    copRows.append(copRow)
+                    copRowDescriptions.append(copRowDescription)
+            
+                    daysideCounter += 1
+                    copRow = uvisInputDict["uvis_dayside_nadir"][daysideCounter]
+                    copRowDescription = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
+                    copRows.append(copRow)
+                    copRowDescriptions.append(copRowDescription)
+
+                    finalOrbitPlan["uvisDaysideCopRows"]["scienceCopRow"] = copRows
+                    finalOrbitPlan["uvisDaysideCopRows"]["copRowDescription"] = copRowDescriptions
+
+
 
             if "nightside" in orbit["allowedObservationTypes"]:
                 nightsideCounter += 1
@@ -2166,90 +2253,120 @@ def addUvisCopRows(orbit_list, copTableDict):
 
 def writeOutputTxt(filepath, lines_to_write):
     """function to write output to a log file"""
-    txtFile = open(filepath+".txt", 'w')
-    for line_to_write in lines_to_write:
-        txtFile.write(line_to_write+'\n')
-    txtFile.close()
+    with open(filepath+".txt", 'w') as txtFile:
+        for line_to_write in lines_to_write:
+            txtFile.write(line_to_write+'\n')
 
 def writeOutputCsv(filepath, lines_to_write):
     """function to write output to a log file"""
-    txtFile = open(filepath+".csv", 'w')
-    for line_to_write in lines_to_write:
-        txtFile.write(line_to_write+'\n')
-    txtFile.close()
+    with open(filepath+".csv", 'w') as txtFile:
+        for line_to_write in lines_to_write:
+            txtFile.write(line_to_write+'\n')
 
 
-def writeIrCopRowsTxt(orbit_list):
+def writeIrCopRowsTxt(orbit_list, mtpConstants, paths):
     """write cop rows to output files"""
+    """rememeber: only the allowed ingresses and egresses allocated to NOMAD are written to file. 
+                  for nadir, every orbit must be written to file, with -1s written in orbits without observations"""
+    mtpNumber = mtpConstants["mtpNumber"]
 
     outputHeader = "TC20 FIXED,TC20 PRECOOLING,TC20 SCI1,TC20 SCI2,LNO_OBSERVING (1=YES;0=NO),OBSERVATION NUMBER,OBSERVATION TYPE,APPROX TC START TIME,COMMENTS"
-    opsOutputDict = {"ir_calibrations":[outputHeader], "ir_dayside_nadir":[outputHeader], \
+    opsOutputDict = {"ir_dayside_nadir":[outputHeader], \
                      "ir_egress_occultations":[outputHeader], "ir_grazing_occultations":[outputHeader], \
                      "ir_ingress_occultations":[outputHeader], "ir_nightside_nadir":[outputHeader]}
     #which file to write cop rows to
-    opsOutputNames = {"calibration":"ir_calibrations", "dayside":"ir_dayside_nadir", \
+    opsOutputNames = {"dayside":"ir_dayside_nadir", \
+                      "dayside2":"ir_dayside_nadir", "dayside3":"ir_dayside_nadir", \
                       "egress":"ir_egress_occultations", "grazing":"ir_grazing_occultations", \
                       "ingress":"ir_ingress_occultations", "merged":"ir_ingress_occultations", \
                       "nightside":"ir_nightside_nadir"}
-    
-    for orbit in orbitList:
-        finalOrbitPlan = orbit["finalOrbitPlan"]
+
+    for orbit in orbit_list:
+        finalOrbitPlan = orbit["finalOrbitPlan"] #final version with cop rows and measurements specified
         irMeasuredObsTypes = orbit["irMeasuredObsTypes"][:]
         uvisMeasuredObsTypes = orbit["uvisMeasuredObsTypes"][:]
 
         #which variable contains cop row info
-        obsTypeNames = {"dayside":"irDayside", "dayside2":"irDayside2", "dayside3":"irDayside3", "nightside":"irNightside"}
-        for measuredObsType in obsTypeNames.keys():
-            obsType = obsTypeNames[measuredObsType]
-            if measuredObsType in irMeasuredObsTypes:
+        lnoObsTypeNames = {"dayside":"irDayside", "nightside":"irNightside"} #matching ir daysides have been made for when UVIS has 3 x TCs per orbit
+        for measuredObsType in lnoObsTypeNames.keys(): #loop through potential IR nadir types
+            obsType = lnoObsTypeNames[measuredObsType]
+            if measuredObsType in irMeasuredObsTypes: #if dayside or nightside is found, write COP rows. LNO cannot run multiple TCs
+#                print(orbit["orbitNumber"])
                 copRow1 = finalOrbitPlan[obsType+"CopRows"]["scienceCopRow"]
                 copRow2 = copRow1 #lno nadir has only 1 science
+                precoolingRow = PRECOOLING_COP_ROW
                 fixedRow = finalOrbitPlan[obsType+"CopRows"]["fixedCopRow"]
                 channelCode = finalOrbitPlan[obsType+"ChannelCode"]
                 obsComment = "LNO ON"
+                #special case for limb
+                if "limb" in finalOrbitPlan["irDayside"].lower():
+                    obsTypeOut = "limb"
+                else:
+                    obsTypeOut = measuredObsType
 
-                outputLineToWrite = "%i,%i,%i,%i,%i,%i,%s,%s,%s" %(fixedRow, PRECOOLING_COP_ROW, copRow1, copRow2, channelCode, orbit["orbitNumber"], measuredObsType, orbit[measuredObsType]["utcStart"], obsComment)
+
+                outputLineToWrite = "%i,%i,%i,%i,%i,%i,%s,%s,%s" %(fixedRow, precoolingRow, copRow1, copRow2, channelCode, orbit["orbitNumber"], obsTypeOut, orbit[measuredObsType]["utcStart"], obsComment)
                 opsOutputDict[opsOutputNames[measuredObsType]].append(outputLineToWrite)
-            elif measuredObsType in uvisMeasuredObsTypes: #must write line(s) even if not operating in nadir
-                    copRow1 = OFF_COP_ROW
-                    copRow2 = OFF_COP_ROW
-                    fixedRow = OFF_COP_ROW
-                    channelCode = OFF_COP_ROW
-                    obsComment = "LNO OFF"
-    
-                    outputLineToWrite = "%i,%i,%i,%i,%i,%i,%s,%s,%s" %(fixedRow, PRECOOLING_COP_ROW, copRow1, copRow2, channelCode, orbit["orbitNumber"], measuredObsType, orbit[measuredObsType]["utcStart"], obsComment)
-                    opsOutputDict[opsOutputNames[measuredObsType]].append(outputLineToWrite)
-          
-        #if both LNO and UVIS off, write a line anyway
-        if "dayside" not in irMeasuredObsTypes and "dayside" not in uvisMeasuredObsTypes:
+
+        #special bit - we need to write a line of -1s for each orbit when LNO is not operating, and 3xlines if UVIS in 3xTCs mode
+        uvisObsTypeNames = {"dayside":"uvisDayside", "dayside2":"uvisDayside2", "dayside3":"uvisDayside3", "nightside":"uvisNightside"} #matching ir daysides have been made for when UVIS has 3 x TCs per orbit
+        for measuredObsType in uvisObsTypeNames.keys(): #loop through potential UVIS nadir types
+            obsType = uvisObsTypeNames[measuredObsType]
+            #if dayside, dayside2 or dayside3, or nightside is found in uvis list, but not in LNO list, write a line to corresponding LNO COP row file anyway
+            if measuredObsType in uvisMeasuredObsTypes and measuredObsType not in irMeasuredObsTypes: 
+                copRow1 = OFF_COP_ROW
+                copRow2 = OFF_COP_ROW
+                precoolingRow = OFF_COP_ROW
+                fixedRow = OFF_COP_ROW
+                channelCode = OFF_COP_ROW
+                obsComment = "LNO OFF"
+                obsTypeOut = measuredObsType
+                
+                if measuredObsType in ["dayside2","dayside3"]: #UVIS 3x TC20s not implemented. Using timings from dayside instead
+                    measuredObsTypeOut = "dayside" 
+                else:
+                    measuredObsTypeOut = measuredObsType #otherwise just use the normal dayside/nightside
+
+                outputLineToWrite = "%i,%i,%i,%i,%i,%i,%s,%s,%s" %(fixedRow, precoolingRow, copRow1, copRow2, channelCode, orbit["orbitNumber"], obsTypeOut, orbit[measuredObsTypeOut]["utcStart"], obsComment)
+                opsOutputDict[opsOutputNames[measuredObsType]].append(outputLineToWrite)
+
+
+        #if both LNO and UVIS off, write a single line anyway (only for dayside)
+        measuredObsType = "dayside"
+        if measuredObsType not in irMeasuredObsTypes and measuredObsType not in uvisMeasuredObsTypes:
             copRow1 = OFF_COP_ROW
             copRow2 = OFF_COP_ROW
+            precoolingRow = OFF_COP_ROW
             fixedRow = OFF_COP_ROW
             channelCode = OFF_COP_ROW
             obsComment = "ALL OFF"
+            obsTypeOut = measuredObsType
 
-            outputLineToWrite = "%i,%i,%i,%i,%i,%i,%s,%s,%s" %(fixedRow, PRECOOLING_COP_ROW, copRow1, copRow2, channelCode, orbit["orbitNumber"], measuredObsType, orbit[measuredObsType]["utcStart"], obsComment)
+            outputLineToWrite = "%i,%i,%i,%i,%i,%i,%s,%s,%s" %(fixedRow, precoolingRow, copRow1, copRow2, channelCode, orbit["orbitNumber"], obsTypeOut, orbit[measuredObsType]["utcStart"], obsComment)
             opsOutputDict[opsOutputNames[measuredObsType]].append(outputLineToWrite)
-                    
 
-        #which variable contains cop row info
+
+        #find which variable name contains cop row info
         #remember order is reversed for egress
+        #TODO: add LNO occultations
         obsTypeNames = {"ingress":["irIngressHigh","irIngressLow"], "merged":["irIngressHigh","irIngressLow"], "grazing":["irIngressHigh","irIngressLow"], "egress":["irEgressLow","irEgressHigh"]}
         for measuredObsType in obsTypeNames.keys():
             obsType1, obsType2 = obsTypeNames[measuredObsType]
             if measuredObsType in irMeasuredObsTypes:
                 copRow1 = finalOrbitPlan[obsType1+"CopRows"]["scienceCopRow"]
                 copRow2 = finalOrbitPlan[obsType2+"CopRows"]["scienceCopRow"]
+                precoolingRow = PRECOOLING_COP_ROW
                 fixedRow = finalOrbitPlan[obsType1+"CopRows"]["fixedCopRow"]
                 channelCode = finalOrbitPlan[obsType1+"ChannelCode"]
                 obsComment = "SO ON"
-    
-                outputLineToWrite = "%i,%i,%i,%i,%i,%i,%s,%s,%s" %(fixedRow, PRECOOLING_COP_ROW, copRow1, copRow2, channelCode, orbit["orbitNumber"], measuredObsType, orbit[measuredObsType]["utcStart"], obsComment)
+                obsTypeOut = measuredObsType
+
+                outputLineToWrite = "%i,%i,%i,%i,%i,%i,%s,%s,%s" %(fixedRow, precoolingRow, copRow1, copRow2, channelCode, orbit["orbitNumber"], obsTypeOut, orbit[measuredObsType]["utcStart"], obsComment)
                 opsOutputDict[opsOutputNames[measuredObsType]].append(outputLineToWrite)        
-        
-       
+
+
     for opsOutputName in opsOutputDict.keys():
-        writeOutputTxt(os.path.join(PATHS["COP_ROW_PATH"], "mtp%03d_%s" %(mtpNumber, opsOutputName)), opsOutputDict[opsOutputName])
+        writeOutputTxt(os.path.join(paths["COP_ROW_PATH"], "mtp%03d_%s" %(mtpNumber, opsOutputName)), opsOutputDict[opsOutputName])
 
     return opsOutputDict
 
@@ -2259,7 +2376,7 @@ def writeIrCopRowsTxt(orbit_list):
 
 
 
-def writeHtmlTable(html_page_name, html_title, html_header, html_rows, linkNameDesc="", extraComments=[]):
+def writeHtmlTable(html_page_name, html_title, html_header, html_rows, paths, linkNameDesc="", extraComments=[]):
     """make html observation file"""
 #    global HTML_PATHS
 
@@ -2293,7 +2410,7 @@ def writeHtmlTable(html_page_name, html_title, html_header, html_rows, linkNameD
     h += r"</table>"+"\n"
     h += r"</div>"
 
-    f = open(os.path.join(PATHS["HTML_MTP_PATH"], html_page_name+".html"), 'w')
+    f = open(os.path.join(paths["HTML_MTP_PATH"], html_page_name+".html"), 'w')
     f.write(h)
     f.close()
 
@@ -2302,8 +2419,10 @@ def writeHtmlTable(html_page_name, html_title, html_header, html_rows, linkNameD
 
 
 
-def writeNadirWebpage(orbit_list):
+def writeNadirWebpage(orbit_list, mtpConstants, paths):
     """write nadir website page"""
+    mtpNumber = mtpConstants["mtpNumber"]
+    mappsEventFilename = mtpConstants["mappsEventFilename"]
 
     htmlHeader = ["Orbit Index", "UTC Start Time", "UTC Centre Time", "UTC End Time", "Duration (s)", \
                 "Start Longitude", "Centre Longitude", "End Longitude", \
@@ -2362,7 +2481,18 @@ def writeNadirWebpage(orbit_list):
         else:
             irDescription = "-"
         if "uvisDaysideCopRows" in orbit["finalOrbitPlan"].keys():
-            uvisDescription = "COP row %i: %s" %(orbit["finalOrbitPlan"]["uvisDaysideCopRows"]["scienceCopRow"], orbit["finalOrbitPlan"]["uvisDaysideCopRows"]["copRowDescription"])
+            
+            #special case when UVIS has 3x TC20s in one nadir:
+            if isinstance(orbit["finalOrbitPlan"]["uvisDaysideCopRows"]["scienceCopRow"], list):
+                #first, check if all COP rows are the same (if so, just write info once)
+                if len(set(orbit["finalOrbitPlan"]["uvisDaysideCopRows"]["scienceCopRow"])):
+                    uvisDescription = "3x COP rows %i: %s" %(orbit["finalOrbitPlan"]["uvisDaysideCopRows"]["scienceCopRow"][0], orbit["finalOrbitPlan"]["uvisDaysideCopRows"]["copRowDescription"][0])
+                else: #loop through COP rows
+                    uvisDescription = ""
+                    for copRow, copRowDescription in zip(orbit["finalOrbitPlan"]["uvisDaysideCopRows"]["scienceCopRow"], orbit["finalOrbitPlan"]["uvisDaysideCopRows"]["copRowDescription"]):
+                        uvisDescription += "COP row %i: %s; " %(copRow, copRowDescription)
+            else:
+                uvisDescription = "COP row %i: %s" %(orbit["finalOrbitPlan"]["uvisDaysideCopRows"]["scienceCopRow"], orbit["finalOrbitPlan"]["uvisDaysideCopRows"]["copRowDescription"])
         else:
             uvisDescription = "-"
             
@@ -2399,12 +2529,12 @@ def writeNadirWebpage(orbit_list):
                      "UTC End Time = Terminator crossing time", \
     #                 "Duration time includes extra time before and after terminator crossing", \
                      "Dayside nadir timings do not include 10 second initialisation time", \
-                     "LTP file used for this analysis: %s" %MAPPS_EVENT_FILENAME, \
+                     "LTP file used for this analysis: %s" %mappsEventFilename, \
                      "Timings may vary from SOC by up to %i seconds, due to orbit differences" %ACCEPTABLE_MTP_NADIR_TIME_ERROR, \
                      "Colour code: Grey = nightside nadir; Green = dayside nadir"]
     #                "Note that observation start/end times here have not yet been checked for clashes with other NOMAD observations"]
-    writeHtmlTable("nomad_mtp%03d_nadir" %mtpNumber, "NOMAD MTP%03d Nadir Observations" %mtpNumber, htmlHeader, htmlRows, linkNameDesc=[linkName, linkDescription], extraComments=extraComments)
-    writeOutputTxt(os.path.join(PATHS["HTML_MTP_PATH"], "nomad_mtp%03d_nadir" %mtpNumber), linesToWrite)
+    writeHtmlTable("nomad_mtp%03d_nadir" %mtpNumber, "NOMAD MTP%03d Nadir Observations" %mtpNumber, htmlHeader, htmlRows, paths, linkNameDesc=[linkName, linkDescription], extraComments=extraComments)
+    writeOutputTxt(os.path.join(paths["HTML_MTP_PATH"], "nomad_mtp%03d_nadir" %mtpNumber), linesToWrite)
     
     
     plt.figure(figsize=(FIG_X, FIG_Y-2))
@@ -2416,7 +2546,7 @@ def writeNadirWebpage(orbit_list):
     plt.xlabel("Observation Time")
     plt.ylabel("Dayside nadir Minimum Solar Incidence Angle (deg)")
     plt.title("MTP%03d Dayside Nadir Minimum Solar Incidence Angle" %mtpNumber)
-    plt.savefig(os.path.join(PATHS["HTML_MTP_PATH"], "mtp%03d_nadir_minimum_incidence_angle.png" %mtpNumber))
+    plt.savefig(os.path.join(paths["HTML_MTP_PATH"], "mtp%03d_nadir_minimum_incidence_angle.png" %mtpNumber))
     plt.close()
 
 
@@ -2425,8 +2555,10 @@ def writeNadirWebpage(orbit_list):
 
 
 
-def writeOccultationWebpage(orbit_list):
+def writeOccultationWebpage(orbit_list, mtpConstants, paths):
     """write occultation website page"""
+    mtpNumber = mtpConstants["mtpNumber"]
+    mappsEventFilename = mtpConstants["mappsEventFilename"]
 
     def getValue(key):
         if occultation[key] != "-":
@@ -2449,7 +2581,8 @@ def writeOccultationWebpage(orbit_list):
     
     
     htmlRows = []
-    plotData = {"lon":[], "lat":[], "duration":[], "et":[]}
+    plotDataIngress = {"lon":[], "lat":[], "duration":[], "et":[]}
+    plotDataEgress = {"lon":[], "lat":[], "duration":[], "et":[]}
     for orbit in orbit_list:
         orbitType = orbit["finalOrbitPlan"]["orbitType"]
     
@@ -2488,7 +2621,7 @@ def writeOccultationWebpage(orbit_list):
                 comment = orbit["finalOrbitPlan"]["comment"]
                     
         
-                lineToWrite = [occultation["primeInstrument"], orbit["orbitNumber"], occultationName, \
+                lineToWrite = [occultation["primeInstrument"], orbit["orbitNumber"], occultationName.capitalize(), \
                                occultation["utcStart"], occultation["utcTransition"], occultation["utcEnd"], "%0.1f" %occultation["duration"], \
                                "%0.1f" %occultation["lonStart"], getValue("lonTransition"), "%0.1f" %occultation["lonEnd"], \
                                "%0.1f" %occultation["latStart"], getValue("latTransition"), "%0.1f" %occultation["latEnd"], \
@@ -2502,11 +2635,17 @@ def writeOccultationWebpage(orbit_list):
                 htmlRow = lineToWrite+[rowColour]
                 htmlRows.append(htmlRow)
                 
-                if getValue("lonTransition") != "-":
-                    plotData["lon"].append(occultation["lonTransition"])
-                    plotData["lat"].append(occultation["latTransition"])
-                    plotData["duration"].append(occultation["duration"])
-                    plotData["et"].append(occultation["etTransition"])
+                if getValue("lonTransition") != "-": #igore merged or grazing
+                    if occultationName == "ingress":
+                        plotDataIngress["lon"].append(occultation["lonTransition"])
+                        plotDataIngress["lat"].append(occultation["latTransition"])
+                        plotDataIngress["duration"].append(occultation["duration"])
+                        plotDataIngress["et"].append(occultation["etTransition"])
+                    elif occultationName == "egress":
+                        plotDataEgress["lon"].append(occultation["lonTransition"])
+                        plotDataEgress["lat"].append(occultation["latTransition"])
+                        plotDataEgress["duration"].append(occultation["duration"])
+                        plotDataEgress["et"].append(occultation["etTransition"])
     
         
         
@@ -2515,57 +2654,100 @@ def writeOccultationWebpage(orbit_list):
     extraComments = ["UTC Start Time = 0 or 250km tangent altitude", \
                      "UTC End Time = 0 or 250km tangent altitude", \
                      "UTC Transition Time = %i km tangent altitude" %SO_TRANSITION_ALTITUDE, \
-                     "LTP file used for this analysis: %s" %MAPPS_EVENT_FILENAME, \
+                     "LTP file used for this analysis: %s" %mappsEventFilename, \
                      "Timings may vary from SOC by up to %i seconds, due to orbit differences" %ACCEPTABLE_MTP_OCCULTATION_TIME_ERROR, \
                      "Colour code: Green = occultation assigned to NOMAD in LTP; Blue = occultation assigned to ACS in LTP; Red = occultation unassigned in LTP; Yellow = unused observation e.g. tangent altitude too high"]
     #                     "Note that observation start/end times here have not yet been checked for clashes with other NOMAD observations"]
-    writeHtmlTable("nomad_mtp%03d_occultation" %mtpNumber, "NOMAD MTP%03d Occultation Observations" %mtpNumber, htmlHeader, htmlRows, linkNameDesc=[linkName, linkDescription], extraComments=extraComments)
-    writeOutputTxt(os.path.join(PATHS["HTML_MTP_PATH"], "nomad_mtp%03d_occultation" %mtpNumber), linesToWrite)
+    writeHtmlTable("nomad_mtp%03d_occultation" %mtpNumber, "NOMAD MTP%03d Occultation Observations" %mtpNumber, htmlHeader, htmlRows, paths, linkNameDesc=[linkName, linkDescription], extraComments=extraComments)
+    writeOutputTxt(os.path.join(paths["HTML_MTP_PATH"], "nomad_mtp%03d_occultation" %mtpNumber), linesToWrite)
     
     
     
     
     plt.figure(figsize=(FIG_X, FIG_Y-2))
-    plt.scatter(plotData["et"], plotData["duration"])
-    xTickIndices = list(range(0, len(plotData["et"]), (np.int(len(plotData["et"])/4) -1)))
-    xTickLabels = [et2utc(plotData["et"][x])[0:11] for x in xTickIndices]
-    xTicks = [plotData["et"][x] for x in xTickIndices]
+    plt.scatter(plotDataIngress["et"], plotDataIngress["duration"], c="r", label="Ingress")
+    plt.scatter(plotDataEgress["et"], plotDataEgress["duration"], c="b", label="Egress")
+    xTickIndices = list(range(0, len(plotDataIngress["et"]), (np.int(len(plotDataIngress["et"])/4) -1)))
+    xTickLabels = [et2utc(plotDataIngress["et"][x])[0:11] for x in xTickIndices]
+    xTicks = [plotDataIngress["et"][x] for x in xTickIndices]
     plt.xticks(xTicks, xTickLabels)
     plt.xlabel("Observation Time")
     plt.ylabel("Occultation Duration (s)")
     plt.title("MTP%02d Solar Occultation Observation Durations" %mtpNumber)
-    plt.savefig(os.path.join(PATHS["HTML_MTP_PATH"], "mtp%03d_occultation_duration.png" %mtpNumber))
+    plt.legend()
+    plt.savefig(os.path.join(paths["HTML_MTP_PATH"], "mtp%03d_occultation_duration.png" %mtpNumber))
+    
     plt.close()
     
     plt.figure(figsize=(FIG_X, FIG_Y-2))
-    plt.scatter(plotData["et"], plotData["lat"])
-    xTickIndices = list(range(0, len(plotData["et"]), (np.int(len(plotData["et"])/4) -1)))
-    xTickLabels = [et2utc(plotData["et"][x])[0:11] for x in xTickIndices]
-    xTicks = [plotData["et"][x] for x in xTickIndices]
+    plt.scatter(plotDataIngress["et"], plotDataIngress["lat"], c="r", label="Ingress")
+    plt.scatter(plotDataEgress["et"], plotDataEgress["lat"], c="b", label="Egress")
+    xTickIndices = list(range(0, len(plotDataIngress["et"]), (np.int(len(plotDataIngress["et"])/4) -1)))
+    xTickLabels = [et2utc(plotDataIngress["et"][x])[0:11] for x in xTickIndices]
+    xTicks = [plotDataIngress["et"][x] for x in xTickIndices]
     plt.xticks(xTicks, xTickLabels)
     plt.xlabel("Observation Time")
     plt.ylabel("Occultation Latitudes (deg)")
     plt.ylim([-90, 90])
     plt.title("MTP%02d Solar Occultation Observation Latitudes" %mtpNumber)
-    plt.savefig(os.path.join(PATHS["HTML_MTP_PATH"], "mtp%03d_occultation_lat.png" %mtpNumber))
+    plt.legend()
+    plt.savefig(os.path.join(paths["HTML_MTP_PATH"], "mtp%03d_occultation_lat.png" %mtpNumber))
     plt.close()
     
 
 
 
-def writeLnoUvisJointObsNumbers(orbit_list):
+def writeLnoUvisJointObsNumbers(orbit_list, mtpConstants, paths):
     """write LNO obs numbers for UVIS-LNO joint obs"""
+    """irDayside field must contain text and must not be a limb measurement"""
+    """note that a check is NOT made to see if this file arlready exists. It should be identical each time it is made and should never be edited by hand"""
+    mtpNumber = mtpConstants["mtpNumber"]
+    
+    ORBIT_PLAN_NAME = "genericOrbitPlanIn"
+    
     lnoOperatingOrbits = ["THERMAL ORBIT NUMBER WITH LNO NADIR"]
     for orbit in orbit_list:
-        if "irDayside" in orbit["finalOrbitPlan"].keys():
-            if orbit["finalOrbitPlan"]["irDayside"] != "":
-                lnoOperatingOrbits.append("%s" %orbit["orbitNumber"])
+        if "irDayside" in orbit[ORBIT_PLAN_NAME].keys():
+            if orbit[ORBIT_PLAN_NAME]["orbitType"] not in LIMB_ORBIT_TYPES:
+                if orbit[ORBIT_PLAN_NAME]["irDayside"] != "":
+                    lnoOperatingOrbits.append("%s" %orbit["orbitNumber"])
     
-    writeOutputTxt(os.path.join(PATHS["COP_ROW_PATH"], "nomad_mtp%03d_lno_orbits" %mtpNumber), lnoOperatingOrbits)
+    writeOutputTxt(os.path.join(paths["ORBIT_PLAN_PATH"], "nomad_mtp%03d_lno_orbits" %mtpNumber), lnoOperatingOrbits)
 
 
-def writeAcsJointObsNumbers(orbit_list):
+def writeLnoSamJointObsInfo(orbit_list, mtpConstants, paths):
+    """ write NOMAD + SAM-TLS joint obs info - start/end time, incidence angle, COP rows used"""
+    mtpNumber = mtpConstants["mtpNumber"]
+
+    ORBIT_PLAN_NAME = "finalOrbitPlan"
+    
+    lnoSamJointObs = ["UTC TIME WHEN LNO OBSERVING CLOSE TO CURIOSITY, INCIDENCE ANGLE, LOCAL SOLAR TIME, LNO DIFFRACTION ORDERS MEASURED"]
+    for orbit in orbit_list:
+        if "irDayside" in orbit[ORBIT_PLAN_NAME].keys(): #check if dayside
+            if orbit[ORBIT_PLAN_NAME]["irDayside"] != "": #check if LNO observing
+                if "daysideRegions" in orbit.keys(): #check if any regions of interest observed
+                    for daysideRegion in orbit["daysideRegions"]: 
+                        if "CURIOSITY" in daysideRegion["name"]: #check if curiosity
+                            print(orbit["orbitNumber"])
+                            ordersMeasured = orbit[ORBIT_PLAN_NAME]["irDaysideOrders"]
+                            orders = "#"+" #".join(str(order) for order in ordersMeasured)
+                            utcTimeMeasured = daysideRegion["utc"]
+                            incidenceAngleMeasured = daysideRegion["incidenceAngle"]
+                            lstMeasured = daysideRegion["lst"]
+                            
+                            outputText = "%s, %0.1f, %0.1f, %s" %(utcTimeMeasured, incidenceAngleMeasured, lstMeasured, orders)
+                            lnoSamJointObs.append(outputText)
+                            print(outputText)
+
+    writeOutputTxt(os.path.join(paths["ORBIT_PLAN_PATH"], "nomad_mtp%03d_lno_sam_joint_obs" %mtpNumber), lnoSamJointObs)
+
+
+def writeAcsJointObsNumbers(orbit_list, mtpConstants, paths):
     """write ACS joint obs"""
+    """note that a check is NOT made to see if this file arlready exists. It should be identical each time it is made and should never be edited by hand"""
+    mtpNumber = mtpConstants["mtpNumber"]
+
+
     obsTypeNames = {"ingress":"irIngressLow", "merged":"irIngressLow", "grazing":"irIngressLow", "egress":"irEgressLow"}
     outputStrings = []
     for obsName, socObsName in SOC_JOINT_OBSERVATION_NAMES.items():
@@ -2588,7 +2770,60 @@ def writeAcsJointObsNumbers(orbit_list):
             if found:
                 outputStrings.append(outputString)
 
-    writeOutputCsv(os.path.join(PATHS["COP_ROW_PATH"], "joint_occ_mtp%03d.csv" %mtpNumber), outputStrings)
+    writeOutputCsv(os.path.join(paths["COP_ROW_PATH"], "joint_occ_mtp%03d" %mtpNumber), outputStrings)
+
+
+
+
+def writeOrbitPlanCsv(orbit_List, mtpConstants, paths):
+    """write final orbit type numbers to csv file for ops team"""
+    """note that a check is NOT made to see if this file arlready exists. It should be identical each time it is made and should never be edited by hand"""
+    mtpNumber = mtpConstants["mtpNumber"]
+
+    ORBIT_PLAN_NAME = "genericOrbitPlanIn"
+    
+    orbitTypeNumbers = ["#orbitType"]
+    for orbit in orbit_List:
+        orbitTypeNumbers.append("%i" %orbit[ORBIT_PLAN_NAME]["orbitType"])
+
+    writeOutputCsv(os.path.join(paths["ORBIT_PLAN_PATH"], "nomad_mtp%03d_plan" %mtpNumber), orbitTypeNumbers)
+
+
+
+
+def fitNadirToThermalRule(orbit_list):
+    """check for clashing start/end times and reduce LNO on time to fit within thermal rule"""
+    #TODO: check for clashes between nadirs and occultations and adjust nadir start/end times accordingly
+
+    ORBIT_PLAN_NAME = "completeOrbitPlan"
+    
+    for orbit in orbit_list:
+        irMeasuredObsTypes = [occultationType for occultationType in orbit["allowedObservationTypes"][:] if occultationType in ["ingress", "egress", "merged", "grazing"]]
+    
+        if orbit[ORBIT_PLAN_NAME]["irDayside"] != "": #if LNO observing
+            
+            dayside = orbit["dayside"]
+            
+            totalObsTime = 0
+            for occultationType in irMeasuredObsTypes:
+                occultation = orbit[occultationType]
+                totalObsTime += occultation["obsDuration"]
+                
+            oldNadirDuration = dayside["duration"]
+            remainingObsTime = THERMAL_RULE_ON_TIME - totalObsTime - PRECOOLING_TIME - INITIALISATION_TIME
+    
+            if remainingObsTime < oldNadirDuration: #if allowed on time is less than long nadir duration, then nadir obs must be shortened
+                dayside["oldEtStart"] = dayside["etStart"]
+                dayside["oldEtEnd"] = dayside["etEnd"]
+                
+                dayside["etStart"] = dayside["etMidpoint"] - (remainingObsTime / 2.0)
+                dayside["etEnd"] = dayside["etMidpoint"] + (remainingObsTime / 2.0)
+    
+            dayside["obsStart"] = dayside["etStart"] - PRECOOLING_TIME - INITIALISATION_TIME
+            dayside["obsEnd"] = dayside["etEnd"]
+            dayside["obsDuration"] = dayside["obsEnd"] - dayside["obsStart"]
+    return orbit_list
+        
 
 
 def getMtpTimes(mtpNumber):
@@ -2613,8 +2848,11 @@ def getMtpTimes(mtpNumber):
     return mtpStartString, mtpEndString, mtpStartLs, mtpEndLs
 
 
-def makeOverviewPage(orbit_list):
+
+
+def makeOverviewPage(orbit_list, mtpConstants, paths):
     """plot occultation orders for mtp overview page"""
+    mtpNumber = mtpConstants["mtpNumber"]
     obsTypeNames = {"ingress":"irIngressLow", "egress":"irEgressLow"}
     
     #loop through once to find list of all orders measured
@@ -2653,6 +2891,8 @@ def makeOverviewPage(orbit_list):
                         
                         #if lats/lons/alts not yet in orbitList, find and write to list
                         if "alts" not in occultation.keys():
+                            #just plot the half of the occultation closest to the surface, not the high altitude bits
+                            #ignore merged or grazing occs at this point
                             if occultationObsType == "ingress":
                                 ets = np.arange(occultation["etMidpoint"], occultation["etEnd"], OCCULTATION_SEARCH_STEP_SIZE)
                             elif occultationObsType == "egress":
@@ -2669,7 +2909,7 @@ def makeOverviewPage(orbit_list):
         cbar = fig.colorbar(plot1, fraction=0.046, pad=0.04)
         cbar.set_label("Tangent Point Altitude (km)", rotation=270, labelpad=20)
         fig.tight_layout()
-        plt.savefig(os.path.join(PATHS["IMG_MTP_PATH"], "occultations_mtp%03d_order%i_altitude.png" %(mtpNumber, chosenOrder)))
+        plt.savefig(os.path.join(paths["IMG_MTP_PATH"], "occultations_mtp%03d_order%i_altitude.png" %(mtpNumber, chosenOrder)))
         plt.close()
     
     
@@ -2703,7 +2943,11 @@ def makeOverviewPage(orbit_list):
                     
                     #if lats/lons/incidence angles not yet in orbitList, find and write to list
                     if "incidences" not in nadir.keys():
-                        ets = np.arange(nadir["etStart"], nadir["etEnd"], NADIR_SEARCH_STEP_SIZE)
+#                        print(orbit["orbitNumber"])
+                        #nadir start/end times have been modified to fit thermal room
+                        realStartTime = nadir["obsStart"] + PRECOOLING_TIME + INITIALISATION_TIME
+                        realEndTime = nadir["obsEnd"]
+                        ets = np.arange(realStartTime, realEndTime, NADIR_SEARCH_STEP_SIZE)
                         lonsLatsIncidencesLsts = np.asfarray([getLonLatIncidenceLst(et) for et in ets])
                         nadir["lons"] = lonsLatsIncidencesLsts[:, 0]
                         nadir["lats"] = lonsLatsIncidencesLsts[:, 1]
@@ -2716,7 +2960,7 @@ def makeOverviewPage(orbit_list):
         cbar = fig.colorbar(plot1, fraction=0.046, pad=0.04)
         cbar.set_label("Incidence Angle (degrees)", rotation=270, labelpad=20)
         fig.tight_layout()
-        plt.savefig(os.path.join(PATHS["IMG_MTP_PATH"], "dayside_nadirs_mtp%03d_order%i_incidence_angle.png" %(mtpNumber, chosenOrder)))
+        plt.savefig(os.path.join(paths["IMG_MTP_PATH"], "dayside_nadirs_mtp%03d_order%i_incidence_angle.png" %(mtpNumber, chosenOrder)))
         plt.close()
 
     """write mtp overview page"""
@@ -2731,6 +2975,7 @@ def makeOverviewPage(orbit_list):
     imagename = "mtp%03d_nadir_minimum_incidence_angle.png" %(mtpNumber)
     h += r"<img src='%s'>" %imagename
     
+    h += r"<p>UVIS typically operates on all dayside nadirs and all occultations</p>"+"\n"
     
     h += r"<h2>Solar Occultations</h2>"+"\n"
     
@@ -2764,8 +3009,7 @@ def makeOverviewPage(orbit_list):
     
     h += r"<br>"+"\n"
     h += r"<br>"+"\n"
-    h += r"<h2>SO/LNO Observation Plan</h2>"+"\n"
-    h += r"<p>UVIS typically operates on all dayside nadirs and all occultations</p>"+"\n"
+#    h += r"<h2>SO/LNO Observation Plan</h2>"+"\n"
     
         
     h += r"<br>"+"\n"
@@ -2779,7 +3023,7 @@ def makeOverviewPage(orbit_list):
         h += r"<th>%s</th>" %header
     h += r"</tr>"+"\n"
     for key in sorted(occultationObservationDict.keys()):
-        orders, integrationTime, rhythm, detectorRows = getObsParameters(key, occultationObservationDict)
+        orders, integrationTime, rhythm, detectorRows = getObsParameters(key, occultationObservationDict, {})
     
         h += r"<tr>"+"\n"
         h += r"<td>%s</td>" %(key)
@@ -2808,7 +3052,7 @@ def makeOverviewPage(orbit_list):
         h += r"<th>%s</th>" %header
     h += r"</tr>"
     for key in sorted(nadirObservationDict.keys()):
-        orders, integrationTime, rhythm, detectorRows = getObsParameters(key, nadirObservationDict)
+        orders, integrationTime, rhythm, detectorRows = getObsParameters(key, nadirObservationDict, {})
     
         h += r"<tr>"+"\n"
         h += r"<td>%s</td>" %(key)
@@ -2835,7 +3079,7 @@ def makeOverviewPage(orbit_list):
     h += r"<br>"+"\n"
     h += r"<p>Page last modified: %s</p>" %(datetime.now().strftime('%a, %d %b %Y %H:%M:%S')) +"\n"
     
-    with open(os.path.join(PATHS["HTML_MTP_PATH"], "nomad_mtp%03d_overview.html" %(mtpNumber)), 'w') as f:
+    with open(os.path.join(paths["HTML_MTP_PATH"], "nomad_mtp%03d_overview.html" %(mtpNumber)), 'w') as f:
         f.write(h)
 
 
@@ -2844,9 +3088,9 @@ def makeOverviewPage(orbit_list):
 
 
 
-def writeMtpMasterPage(mtpNumber):
-
+def writeMtpMasterPage(mtpConstants, paths):
     
+    mtpNumber = mtpConstants["mtpNumber"]
 
     mtpStartString, mtpEndString, mtpStartLs, mtpEndLs = getMtpTimes(mtpNumber)
         
@@ -2873,13 +3117,14 @@ def writeMtpMasterPage(mtpNumber):
     pagename = "../../itls/MITL_M%03d_NOMAD.ITL" %(mtpNumber); desc = "."
     h += r"<p><a href=%s>%s</a></p>" %(pagename, desc)
     
-    with open(os.path.join(PATHS["HTML_MTP_PATH"], "nomad_mtp%03d.html" %(mtpNumber)), 'w') as f:
+    with open(os.path.join(paths["HTML_MTP_PATH"], "nomad_mtp%03d.html" %(mtpNumber)), 'w') as f:
         f.write(h)
 
 
 
-def writeIndexWebpage(mtpNumber):
+def writeIndexWebpage(mtpConstants, paths):
     """update website index page with latest mtp"""    
+    mtpNumber = mtpConstants["mtpNumber"]
 
     MASTER_PAGE_NAMES = ["EXM-NO-SNO-AER-00028-iss0rev4-SO_LNO_COP_Table_Order_Combinations-180528.htm", \
               "EXM-NO-SNO-AER-00027-iss0rev8-Science_Orbit_Observation_Rules-180306.pdf", \
@@ -2932,7 +3177,7 @@ def writeIndexWebpage(mtpNumber):
         
         pagename = "nomad_mtp%03d.html" %(mtpIndex); desc="Medium Term Planning MTP%03d (%s - %s, Ls: %0.0f - %0.0f)" %(mtpIndex, mtpStartString, mtpEndString, mtpStartLs, mtpEndLs)
         h += r"<p><a href=%s>%s</a> - %s</p>" \
-            %(("mtp_pages/mtp%03d/" %mtpIndex +os.sep+pagename),pagename,desc)+"\n"
+            %(("mtp_pages/mtp%03d" %mtpIndex +os.sep+pagename),pagename,desc)+"\n"
         
 
 
@@ -2940,7 +3185,7 @@ def writeIndexWebpage(mtpNumber):
     h += r"<br>"+"\n"
 
     pagename = "science_calibrations.html"; desc="Calibrations During Nominal Science Period"
-    h += r"<p><a href=%s>%s</a> - %s</p>" %("pages/"+pagename,pagename,desc)+"\n"
+    h += r"<p><a href=%s>%s</a> - %s</p>" %("calibrations/"+pagename,pagename,desc)+"\n"
 
         
     h += r"<br>"+"\n"
@@ -2953,93 +3198,117 @@ def writeIndexWebpage(mtpNumber):
 
 
 
-def step1(orbitList, mtpNumber, utcstringStart, utcstringEnd, nadirRegionsOfInterest, occultationRegionsOfInterest):
-    
-    
-    
-    print("Getting nadir data (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
-    orbitList = getNadirData(orbitList, utcstringStart, utcstringEnd)
-    print("Getting occultation data (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
-    orbitList = getOccultationData(orbitList, utcstringStart, utcstringEnd)
-    print("Finding grazing occultations (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
+def printStatement(string_in):
+    print("%s (%s)" %(string_in, datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
+
+
+
+
+
+
+
+
+# TODO: write calibration page, starting from existing script
+    #search for filename matching sequence
+    #read lines
+    #remove unneeded lines
+    #split by MTP
+    #get copVersion for each MTP
+    #get obs description from COP row
+    #write html page
+
+
+
+
+
+
+
+
+
+def step1(orbitList, mtpConstants, paths):
+    printStatement("Starting program")
+    printStatement("Reading in initialisation data and inputs from mapps event file")    
+    printStatement("Getting nadir data")
+    orbitList = getNadirData(orbitList, mtpConstants)
+    printStatement("Getting occultation data")
+    orbitList = getOccultationData(orbitList, mtpConstants)
+    printStatement("Finding grazing occultations")
     orbitList = findGrazingOccultations(orbitList)
-    print("Checking for corresponding MAPPS events (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
-    orbitList = addMappsEvents(orbitList)
-    print("Finding dayside nadir observations in regions of interest (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
+    printStatement("Checking for corresponding MAPPS events")
+    orbitList = addMappsEvents(orbitList, mtpConstants, paths)
+    printStatement("Finding dayside nadir observations in regions of interest")
     orbitList = regionsOfInterestNadir(orbitList, nadirRegionsOfInterest)
-    print("Finding occultation observations in regions of interest (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
+    printStatement("Finding occultation observations in regions of interest")
     orbitList = regionsOfInterestOccultation(orbitList, occultationRegionsOfInterest)
-    print("Adding flags to file where obsevations match a region of interest (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
+    printStatement("Adding flags to file where obsevations match a region of interest")
     orbitList = findMatchingRegions(orbitList)
-    print("Adding generic orbit plan to orbit list (no nightsides or limbs, to be added manually) (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
+    printStatement("Adding generic orbit plan to orbit list (no nightsides or limbs, to be added manually)")
     orbitList = makeGenericOrbitPlan(orbitList)
-    print("Writing generic observation plan to file (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
-    writeGenericPlanXlsx(mtpNumber, orbitList)
+    printStatement("Writing generic observation plan to file")
+    writeOrbitPlanXlsx(orbitList, mtpConstants, paths, "plan_generic")
     return orbitList
 
 
-def step2(orbitList, mtpNumber):
-    print("Getting iterated mtp plan from file and merging with orbit list (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
-    mtpPlan = getMtpPlanXlsx(mtpNumber, "plan_generic")
+
+def step2(orbitList, mtpConstants, paths):
+
+
+    printStatement("Getting iterated mtp plan from file and merging with orbit list")
+    mtpPlan = getMtpPlanXlsx(mtpConstants, paths, "plan_generic")
     orbitList = mergeMtpPlan(orbitList, mtpPlan, "genericOrbitPlanIn", "genericOrbitPlanOut")
-    print("Checking that all observation keys are in dictionary (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
+    printStatement("Writing joint observation number files for UVIS")
+    writeLnoUvisJointObsNumbers(orbitList, mtpConstants, paths)
+    printStatement("Writing final orbit plan to csv file")
+    writeOrbitPlanCsv(orbitList, mtpConstants, paths)
+    return orbitList
+
+
+
+def step3(orbitList, mtpConstants, paths):
+
+
+    printStatement("Checking that all observation keys are in dictionary")
     checkKeys(occultationObservationDict, nadirObservationDict)
-    print("Generating complete orbit plan (with real observation names) and adding to orbit list (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
+    printStatement("Generating complete orbit plan (with real observation names) and adding to orbit list")
     orbitList = makeCompleteOrbitPlan(orbitList)
-    print("Writing complete observation plan to file (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
-    writeCompletePlanXlsx(mtpNumber, orbitList)
-    return orbitList
-
-
-def step3(orbitList, mtpNumber, copVersion):
-    print("Getting final mtp plan from file and merging with orbit list (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
-    finalMtpPlan = getMtpPlanXlsx(mtpNumber, "plan")
-    orbitList = mergeMtpPlan(orbitList, finalMtpPlan, "finalOrbitPlan", "completeOrbitPlan")
-    copTableDict = getCopTables(copVersion)
-    print("Finding and adding COP rows to orbit list")
-    orbitList = addIrCopRows(orbitList, copTableDict)
-    orbitList = addUvisCopRows(orbitList, copTableDict)
-    print("Writing COP rows to text files")
-#    opsOutputDict = writeIrCopRowsTxt(orbitList)
-    writeIrCopRowsTxt(orbitList)
-    print("Writing mtp occultation webpage")
-    writeOccultationWebpage(orbitList)
-    print("Writing mtp nadir webpage")
-    writeNadirWebpage(orbitList)
-    print("Making order plots and writing mtp overview page")
-    uniqueOccultationOrders, uniqueNadirOrders = makeOverviewPage(orbitList)
-    print("Writing joint observation number files: 1 for UVIS, 1 for ACS")
-    writeLnoUvisJointObsNumbers(orbitList)
-    writeAcsJointObsNumbers(orbitList)
-    print("Writing master page for this MTP and updating main index webpage")
-    writeMtpMasterPage(mtpNumber)
-    writeIndexWebpage(mtpNumber)
+    printStatement("Writing complete observation plan to file")
+    writeOrbitPlanXlsx(orbitList, mtpConstants, paths, "plan")
     return orbitList
 
 
 
-#START PROGRAM HERE
-print("Starting program (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
-orbitList = []
-print("Reading in initialisation data and inputs from mapps event file (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
-utcstringStart, utcstringEnd, copVersion, MAPPS_EVENT_FILENAME, SO_CENTRE_DETECTOR_LINE, ACS_START_ALTITUDE = getMtpConstants(mtpNumber)
-orbitList = step1(orbitList, mtpNumber, utcstringStart, utcstringEnd, nadirRegionsOfInterest, occultationRegionsOfInterest)
-#GENERIC ORBIT PLAN WILL BE PLACED IN BASE DIRECTORY. SEND THIS TO NOMAD.IOPS
-#WHEN MODIFIED VERSION IS SENT BACK, CHECK FOR ERRORS
-#IF ALL IS OK THEN PLACE IT IN THE ORBIT_PLANS/MTPXXX FOLDER AND RUN ENTIRE SCRIPT AGAIN
-orbitList = step2(orbitList, mtpNumber)
-#FINAL ORBIT PLAN WILL BE PLACED IN BASE DIRECTORY. CHECK FOR ISSUES
-#IF ALL OK THEN PLACE IT IN THE ORBIT_PLANS/MTPXXX FOLDER AND RUN ENTIRE SCRIPT AGAIN
-orbitList = step3(orbitList, mtpNumber, copVersion)
-#THE FOLLOWING FILES WILL BE GENERATED IN COP_ROWS/MTPXXX FOLDER:
-#CALIBRATION FILE MUST BE FILLED IN MANUALLY. USE VALUES FROM SOLAR_CALIBRATIONS.XLSX FILE FOR MINISCANS/FULLSCANS. SEE PREVIOUS MTPS FOR EXAMPLES.
-#THIS AND THE OTHER IR COP ROWS SHOULD BE CHECKED (COMPARE TO SUMMARY FILES FROM BOJAN/CLAUDIO), PARTICULARLY TIMINGS AND NUMBER OF ROWS IN FILES
-#LNO ORBIT NUMBER FILE, FOR UVIS OPS TEAM
-#JOINT OCCULTATION FILE, FOR ACS TEAM. THIS WILL BE SENT BY BOJAN/CLAUDIO TO THE SOC.
-#SEND ALL FILES IN THE COP_ROW/MTPXXX FOLDER TO NOMAD.IOPS@AERONOMIE.BE
+def step4(orbitList, mtpConstants, paths):
 
-print("Done! (%s)" %(datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
-#PROGRAM FINISHED
+
+    printStatement("Getting final mtp plan from file and merging with orbit list")
+    finalMtpPlan = getMtpPlanXlsx(mtpConstants, paths, "plan")
+    orbitList = mergeMtpPlan(orbitList, finalMtpPlan, "finalOrbitPlan", "completeOrbitPlan") #read in final plan, make finalOrbitPlan, checking it matches the previous completeOrbitPlan
+    printStatement("Reducing LNO dayside nadir observations to fit thermal rule")
+    fitNadirToThermalRule(orbitList)
+    printStatement("Finding and adding COP rows to orbit list")
+    copTableDict = getCopTables(mtpConstants)
+    orbitList = addIrCopRows(orbitList, copTableDict, mtpConstants)
+    orbitList = addUvisCopRows(orbitList, copTableDict, mtpConstants, paths)
+    printStatement("Writing COP rows to text files")
+    writeIrCopRowsTxt(orbitList, mtpConstants, paths)
+    printStatement("Writing LNO and Curosity/SAM joint observation file")   
+    writeLnoSamJointObsInfo(orbitList, mtpConstants, paths)
+    printStatement("Writing mtp occultation webpage")
+    writeOccultationWebpage(orbitList, mtpConstants, paths)
+    printStatement("Writing mtp nadir webpage")
+    writeNadirWebpage(orbitList, mtpConstants, paths)
+    printStatement("Making order plots and writing mtp overview page")
+    makeOverviewPage(orbitList, mtpConstants, paths)
+    printStatement("Writing joint observation number files for ACS")
+    writeAcsJointObsNumbers(orbitList, mtpConstants, paths)
+    printStatement("Writing master page for this MTP and updating main index webpage")
+    writeMtpMasterPage(mtpConstants, paths)
+    writeIndexWebpage(mtpConstants, paths)
+    printStatement("Done!")
+    return orbitList
+
+
+
 
 #for orbit in orbitList: 
 #    if "occultationRegions" in orbit.keys():
