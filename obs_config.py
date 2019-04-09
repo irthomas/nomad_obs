@@ -104,8 +104,10 @@ def setupPaths(mtpConstants):
 #load spiceypy kernels
 import spiceypy as sp
 print("KERNEL_DIRECTORY=%s, METAKERNEL_NAME=%s" %(KERNEL_DIRECTORY, METAKERNEL_NAME))
-sp.furnsh(KERNEL_DIRECTORY+os.sep+METAKERNEL_NAME)
+os.chdir(KERNEL_DIRECTORY)
+sp.furnsh(METAKERNEL_NAME)
 print(sp.tkvrsn("toolkit"))
+os.chdir(BASE_DIRECTORY)
 
 
 
