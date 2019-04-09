@@ -64,7 +64,10 @@ if sys.platform == "win32":
     METAKERNEL_NAME = "em16_plan_win.tm"
 #    METAKERNEL_NAME = "em16_ops.tm" #don't use for planning!!
 elif sys.platform == "linux":
-    METAKERNEL_NAME = "em16_plan_v320_20181206_002.tm"
+    #find planning kernel in directory
+    for fileName in os.listdir(KERNEL_DIRECTORY):
+        if "em16_plan_" in fileName:
+            METAKERNEL_NAME = fileName
 
 
 
@@ -102,7 +105,7 @@ def setupPaths(mtpConstants):
 import spiceypy as sp
 sp.furnsh(KERNEL_DIRECTORY+os.sep+METAKERNEL_NAME)
 print(sp.tkvrsn("toolkit"))
-print("KERNEL_DIRECTORY=%s" %KERNEL_DIRECTORY)
+print("KERNEL_DIRECTORY=%s, METAKERNEL_NAME=%s" %(KERNEL_DIRECTORY, METAKERNEL_NAME))
 
 
 
