@@ -22,7 +22,7 @@ if sys.platform == "win32":
 #    BASE_DIRECTORY = os.path.normcase(os.getcwd())
     BASE_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "nomad_obs")
 elif sys.platform == "linux":
-    BASE_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "Observation_planning")
+    BASE_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "nomad_obs")
 
 
 
@@ -30,15 +30,15 @@ elif sys.platform == "linux":
 if sys.platform == "win32":
     OBS_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "nomad_obs", "observations")
 elif sys.platform == "linux":
-    OBS_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "Observation_planning", "nomad_obs", "observations")
+    OBS_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "nomad_obs", "observations")
 
 
 """dev website directory, for placing a copy of all the files generated, to be put online"""
 #not yet implemented
-if sys.platform == "win32":
-    DEV_DIRECTORY = os.path.join("w:", os.sep, "websites", "dev", "mars", "en", "exomars", "observations")
-elif sys.platform == "linux":
-    DEV_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "Observation_planning", "observations")
+#if sys.platform == "win32":
+#    DEV_DIRECTORY = os.path.join("w:", os.sep, "websites", "dev", "mars", "en", "exomars", "observations")
+#elif sys.platform == "linux":
+#    DEV_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "Observation_planning", "observations")
 
 
 """where to find cop tables? Note that COP patches are done at the end of an MTP, and so planning the MTP after must be done with the new tables!"""
