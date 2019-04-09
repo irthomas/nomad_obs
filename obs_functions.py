@@ -22,8 +22,7 @@ import spiceypy as sp
 
 from obs_config import BASE_DIRECTORY, COP_TABLE_DIRECTORY, OBS_DIRECTORY
 #from run_planning import mtpNumber
-from obs_inputs import SOC_JOINT_OBSERVATION_NAMES, SOC_JOINT_OBSERVATION_TYPES
-#from obs_inputs import getMtpConstants
+from obs_inputs import SOC_JOINT_OBSERVATION_NAMES, SOC_JOINT_OBSERVATION_TYPES, getMtpConstants
 from obs_inputs import nadirObservationDict, nadirRegionsOfInterest, occultationObservationDict, occultationRegionsOfInterest, nadirRegionsObservations, occultationRegionsObservations
 from obs_inputs import OCCULTATION_KEYS, OCCULTATION_MERGED_KEYS, OCCULTATION_GRAZING_KEYS, USE_TWO_SCIENCES
 from obs_inputs import NADIR_KEYS, NADIR_LIMB_KEYS, NADIR_NIGHTSIDE_KEYS
@@ -1524,12 +1523,40 @@ def makeCompleteOrbitPlan(orbit_list):
 
 
 
+def addCorrectNadirObservations(orbit_list):
+    """add some final tweaks to ensure dayside/limb/nightside observations are correct e.g. include uvis 3 x TC20s, etc"""
+
+    for orbit in orbit_list:    
+        finalOrbitPlan = orbit["finalOrbitPlan"]
+        
+        #first, find all allowed occultation measurement types for orbit
+        irMeasuredObsTypes = [occultationType for occultationType in orbit["allowedObservationTypes"][:] if occultationType in ["ingress", "egress", "merged", "grazing"]]
+        uvisMeasuredObsTypes = [occultationType for occultationType in orbit["allowedObservationTypes"][:] if occultationType in ["ingress", "egress", "merged", "grazing"]]
+        #add nadir types
+        if finalOrbitPlan["irDayside"] != "": #limb is simply a dayside
+            irMeasuredObsTypes.append("dayside")
+        if finalOrbitPlan["irNightside"] != "":
+            irMeasuredObsTypes.append("nightside")
+        if finalOrbitPlan["uvisDayside"] != "":
+            uvisMeasuredObsTypes.append("dayside")
+
+            #some orbit types have 3 x uvis nadirs
+            if finalOrbitPlan["orbitType"] in UVIS_MULTIPLE_TC_NADIR_ORBIT_TYPES:
+                uvisMeasuredObsTypes.append("dayside2")
+                uvisMeasuredObsTypes.append("dayside3")
+
+        if finalOrbitPlan["uvisNightside"] != "":
+            uvisMeasuredObsTypes.append("nightside")
+
+        orbit["irMeasuredObsTypes"] = irMeasuredObsTypes
+        orbit["uvisMeasuredObsTypes"] = uvisMeasuredObsTypes
+
+    return orbit_list
 
 
 
 
-
-"""function to read in cop tables, given channe and name"""
+"""function to read in cop tables, given channel and name"""
 def outputCopTable(copVersion,channel,cop):
     if channel=="so" or channel=="lno":
         csvFilename=COP_TABLE_DIRECTORY+os.sep+"%s" %copVersion+os.sep+"%s_%s_table.csv" %(channel,cop)
@@ -1601,6 +1628,133 @@ def getCopTables(mtpConstants):
             }
 
     return copTableDict
+
+
+def makeCopTableDict(channelCode, copTableDict, silent=True):
+
+    subdomainList = {0:copTableDict["soSubdomainList"], 1:copTableDict["lnoSubdomainList"]}[channelCode]
+    scienceList = {0:copTableDict["soScienceList"], 1:copTableDict["lnoScienceList"]}[channelCode]
+    aotfList = {0:copTableDict["soAotfList"], 1:copTableDict["lnoAotfList"]}[channelCode]
+    
+    #degf	dvaf	sbsf	aotfPointer	steppingPointer	accumulationCount	binningFactor	integrationTime
+    
+    subdomainIndices = []
+    aotfOrdersAll = []
+    integrationTimesAll = []
+    windowHeightAll = []
+    rhythmAll = []
+    
+#    subdomainRow = subdomainList[1000]
+    for rowIndex, subdomainRow in enumerate(subdomainList):
+        nSubdomains = 6 - subdomainRow.count("0")
+        
+        steppingIndices = []
+        accumulations = []
+        binningFactors = []
+        integrationTimes = []
+        aotfOrders = []
+        
+        errorFound = False
+        calibration = False
+
+        if nSubdomains == 0:
+            calibration = True       
+        
+        for index in range(nSubdomains):
+            scienceIndex = int(subdomainRow[index])
+            scienceRow = scienceList[scienceIndex]
+        
+            steppingIndex = int(scienceRow[4])
+            steppingIndices.append(steppingIndex)
+            
+            accumulation = int(scienceRow[5])
+            accumulations.append(accumulation)
+        
+            binningFactor = int(scienceRow[6])
+            binningFactors.append(binningFactor)
+        
+            integrationTime = int(scienceRow[7]) / 1000.0
+            integrationTimes.append(integrationTime)
+        
+            aotfIndex = int(scienceRow[3])
+            aotfRow = aotfList[aotfIndex]
+            if "ORDER_" in aotfRow[2]:
+                aotfOrder = int(aotfRow[2].replace("ORDER_",""))
+            elif aotfIndex == 0:
+                aotfOrder = 0
+    
+            if steppingIndices[0] > 0:
+                calibration = True
+        
+            aotfOrders.append(aotfOrder)
+        
+        aotfOrdersSorted = sorted(aotfOrders)
+                
+            
+        if len(set(binningFactors)) == 1: #if more than one binning factor in the observation
+            binningFactorSingle = binningFactors[0]
+            windowHeightTotal = 24.0 / nSubdomains * (binningFactorSingle + 1)
+            if np.round(windowHeightTotal) == windowHeightTotal:
+                windowHeightTotal = int(windowHeightTotal)
+            else:
+                print("Binning rounding error row %i" %rowIndex)
+        else:
+            if not silent: print("Binning error row %i" %rowIndex)
+            if not silent: print(binningFactors)
+            errorFound = True
+        
+        
+        if len(set(accumulations)) == 1: #if n accumulations is the same for all observations
+            accumulationSingle = accumulations[0]
+        else:
+            if not silent: print("Accumulation error row %i" %rowIndex)
+            if not silent: print(accumulations)
+            errorFound = True
+        
+        
+        if len(set(integrationTimes)) == 1: #if more than one integration time in the observation
+            integrationTimeSingle = integrationTimes[0]
+        else:
+            if not silent: print("Int time error row %i" %rowIndex)
+            if not silent: print(integrationTimes)
+            errorFound = True
+        
+            
+        if nSubdomains > 1: 
+            if sum(steppingIndices[1:6]) > 0:
+                if not silent: print("Stpping error row %i" %rowIndex)
+                errorFound = True
+        
+        if not calibration:
+            executionTime = calcExecutionTime(accumulationSingle, windowHeightTotal, integrationTimeSingle)
+            executionTimeTotal = executionTime * nSubdomains
+        
+            if 650.0 < executionTimeTotal < 1000.0:
+                rhythm = 1
+            elif 1700.0 < executionTimeTotal < 2000.0:
+                rhythm = 2
+            elif 3400.0 < executionTimeTotal < 4000.0:
+                rhythm = 4
+            elif 7000.0 < executionTimeTotal < 8000.0:
+                rhythm = 8
+            elif 14000.0 < executionTimeTotal < 15000.0:
+                rhythm = 15
+            else:
+                if not silent: print("Exec time error row %i" %rowIndex)
+                errorFound = True
+        
+        if not errorFound and not calibration:
+            subdomainIndices.append(rowIndex)
+            aotfOrdersAll.append(aotfOrdersSorted)
+            integrationTimesAll.append(integrationTimeSingle)
+            windowHeightAll.append(windowHeightTotal)
+            rhythmAll.append(rhythm)
+            
+    copTableCombinations = {"index":subdomainIndices, "orders":aotfOrdersAll, "integrationTime":integrationTimesAll, "rhythm":rhythmAll, "windowHeight":windowHeightAll}
+    return copTableCombinations
+
+
+
 
     
 
@@ -1777,7 +1931,7 @@ def findFixedCopRow(channel,copTableDict, centreRow,nRows,rhythm,silent=False): 
 
 
 """output text description of measurement given input rows"""
-def getObservationDescription(channel,copTableDict, fixedRow,copRow,silent=False):
+def getObservationDescription(channel, copTableDict, fixedRow, copRow, silent=False):
     if copRow == -1:
         return "%s off" %channel.upper()
     
@@ -1804,7 +1958,7 @@ def getObservationDescription(channel,copTableDict, fixedRow,copRow,silent=False
                 if steppingType=="AOTF_IX":
                     observationText = "Diffraction order stepping (fullscan): %i orders from %i to %i in steps of %s (%s order(s) per %s second(s))" %(int(steppingCount),int(aotfOrder),int(aotfOrder)+int(steppingCount),int(steppingValue),int(steppingSpeed)+1,int(fixedRhythm))
                 elif steppingType=="WINDOW_TOP":
-                    observationText = "Detector window stepping: %i steps covering detector lines %i to %i (%s step(s) per %s second(s))" %(int(steppingCount),int(fixedTop),int(fixedTop)+int(steppingCount)*int(steppingValue),int(steppingSpeed)+1,int(fixedRhythm))
+                    observationText = "Detector window stepping: %i step(s) covering detector lines %i to %i (%s step(s) per %s second(s))" %(int(steppingCount),int(fixedTop),int(fixedTop)+int(steppingCount)*int(steppingValue),int(steppingSpeed)+1,int(fixedRhythm))
                 elif steppingType=="INTEGRATION_TIME":
                     observationText = "Detector integration time stepping: %i integration times from %i to %ims in steps of %ims for detector lines %i to %i (%s step(s) per %s second(s))" %(int(steppingCount),int(integrationTime),int(integrationTime)*int(steppingCount)*int(steppingValue),int(steppingValue),int(fixedTop),int(fixedTop)+int(fixedHeight)+1,int(steppingSpeed)+1,int(fixedRhythm))
                 elif steppingType=="AOTF_FREQ":
@@ -1835,92 +1989,90 @@ def getObservationDescription(channel,copTableDict, fixedRow,copRow,silent=False
 
 
 
+
+
+def getObsParameters(observation_name, dictionary):
+    if observation_name in list(dictionary.keys()):
+        orders_out, inttime_out, rhythm_out, rows_out, channel_code = dictionary[observation_name]
+        return sorted(orders_out), inttime_out, rhythm_out, rows_out, channel_code
+    else:
+        return [-999], -1, -1, -1, -1
+#        print("Observation name %s not found in dictionary for orbit number %i" %(observation_name, orbitNumber))
+        
+        
+
+def calcExecutionTime(number_accumulations, window_height, integration_time): #real number of rows (16, 20, 24), int time in milliseconds
+    return ((number_accumulations+1.0) * ((integration_time * 1000.0) + 71.0 + 320.0 * window_height + 1000.0) + 337.0) / 1000.0
+
+
+def uniqueDiffractionOrders(aotf_order_list):
+    tuples = [tuple(i) for i in aotf_order_list]
+    uniqueTuples = set(tuples)
+    unique_orders = [list(i) for i in uniqueTuples]
+    return unique_orders
+
+
+
 """return dictionary containing COP rows and description of measurement given input dictionary containing observation parameters"""
-def getCopRows(channel,copTableDict, observationType,inputDict,silent=False):
+def getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=False):
+
+    diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getObsParameters(observationName, observationDict)
+    if diffractionOrders[0] == -999:
+        print("Observation name %s not found in dictionary" %(observationName))
+
+
+    detectorCentreLine = centreDetectorLines[channelCode]
+    copTableCombinations = copTableCombinationDict[channelCode]
+
+    if channelCode in [0,1]:
+        channel = {0:"so", 1:"lno"}[channelCode]
+    else:
+        print("Error: channel %i not defined" %channelCode)
+
 
     """do fixed table first"""
-    nRows = inputDict["nRows"]
-    fixedCopRow = findFixedCopRow(channel,copTableDict, inputDict["centreDetectorLine"],nRows,inputDict["rhythm"], silent=silent)
+    fixedCopRow = findFixedCopRow(channel, copTableDict, detectorCentreLine, windowHeight, rhythm, silent=silent)
     if fixedCopRow == -999:
         print("Error: incorrect fixed row")
         stop()
                 
-
+    
+    
     """then do subdomain table"""
     scienceCopRow = -999
-    if observationType in ["irIngressHigh","irIngressLow","irEgressHigh","irEgressLow"]:
-        if channel=="so":
-            #get data from input dictionary
-#            observationName = inputDict["observationName"]
-            integrationTime = inputDict["integrationTime"]
-            orders = inputDict["orders"]
-            
-            if type(orders[0]) != int:
-                if "COP#" in orders[0]:
-                    scienceCopRow = int(orders[0].split("#")[1])
-                    print("SO manual mode: COP row %i" %scienceCopRow)
-                else:
-                    print("Error: COP rows must be integers or must be specified manually e.g. COP#1")
-                    stop()
-            else:
-                #look in cop tables for correct subdomain rows
-                scienceCopRow = findCopRows(channel,copTableDict, orders,integrationTime,nRows,silent=silent)
-
-
-            if scienceCopRow < 0:
-                print("Error: COP row 1 not found")
-                print(orders)
-                stop()
-            
-            #put SCI1 and 2 in correct order
-
-            #find description of observation
-            description = getObservationDescription(channel,copTableDict, fixedCopRow,scienceCopRow,silent=True)
-            outputDict = {"scienceCopRow":scienceCopRow, "fixedCopRow":fixedCopRow, "copRowDescription":description}
-
-        elif channel=="lno":
-            print("Warning: LNO occultations not yet implemented")
-
-    elif observationType in ["irDayside","irNightside"]:
-        if channel=="so":
-            print("Error: SO cannot operate in nadir")
-
-        if channel=="lno":
-            #get data from input dictionary
-#            observationName = inputDict["observationName"]
-            integrationTime = inputDict["integrationTime"]
-            orders = inputDict["orders"]
-            nRows = inputDict["nRows"]
-
-            if type(orders[0]) != int:
-                if "COP#" in orders[0]:
-                    scienceCopRow = int(orders[0].split("#")[1])
-                    print("LNO manual mode: COP row %i" %scienceCopRow)
-                else:
-                    print("Error: COP rows must be integers or must be specified manually e.g. COP#1")
-                    stop()
-            else:
-                #look in cop tables for correct subdomain rows
-                scienceCopRow = findCopRows(channel,copTableDict, orders,integrationTime,nRows,silent=silent)
-            
-            #find description of observation
-            description = getObservationDescription(channel,copTableDict, fixedCopRow,scienceCopRow,silent=True)
-            outputDict = {"scienceCopRow":scienceCopRow, "fixedCopRow":fixedCopRow, "copRowDescription":description}
-   
+    
+    if type(diffractionOrders[0]) != int:
+        if "COP#" in diffractionOrders[0]:
+            scienceCopRow = int(diffractionOrders[0].split("#")[1])
+            print("Manual mode: COP row %i" %(scienceCopRow))
+        else:
+            print("Error: COP rows must be integers or must be specified manually e.g. COP#1")
+            stop()
     else:
-        print("Error")
-    return outputDict
+        #look in cop tables for correct subdomain rows
+        for indexCop, diffractionOrdersCop, integrationTimeCop, rhythmCop, windowHeightCop in zip(copTableCombinations["index"], copTableCombinations["orders"], copTableCombinations["integrationTime"], copTableCombinations["rhythm"], copTableCombinations["windowHeight"]):
+            if diffractionOrders == diffractionOrdersCop:
+                if integrationTime == integrationTimeCop:
+                    if rhythm == rhythmCop:
+                        if windowHeight == windowHeightCop:
+                            scienceCopRow = indexCop
+                
+    
+    if scienceCopRow < 0:
+        print("Error: COP row 1 not found")
+        print(diffractionOrders)
+        stop()
+    
+    #find description of observation
+    description = getObservationDescription(channel, copTableDict, fixedCopRow, scienceCopRow, silent=True)
+    outputDict = {"scienceCopRow":scienceCopRow, "fixedCopRow":fixedCopRow, "copRowDescription":description}
+    
+    return outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode
 
 
 
-def getObsParameters(observation_name, dictionary, orbit):
-    if observation_name in list(dictionary.keys()):
-        orders_out, inttime_out, rhythm_out, rows_out, channel_code = dictionary[observation_name]
-        return sorted(orders_out), inttime_out, rhythm_out, rows_out
-    else:
-        orbitNumber = orbit["orbitNumber"]
-        print("Observation name %s not found in dictionary for orbit number %i" %(observation_name, orbitNumber))
-        
+
+
         
 
 
@@ -1928,111 +2080,72 @@ def getObsParameters(observation_name, dictionary, orbit):
 
 def addIrCopRows(orbit_list, copTableDict, mtpConstants):
     """find cop rows that match observation names in final plan, add to orbit list"""
-    soCentreDetectorLine = mtpConstants["soCentreDetectorLine"]
-    # TODO: rewrite all cop row finding parts
+    centreDetectorLines = {
+            0:mtpConstants["soCentreDetectorLine"], \
+            1:LNO_CENTRE_DETECTOR_LINE #for lno occultations only
+            }
     
-    
-    for orbit in orbit_list:    
-        finalOrbitPlan = orbit["finalOrbitPlan"]
+    copTableCombinationDict = {
+            0:makeCopTableDict(0, copTableDict), \
+            1:makeCopTableDict(1, copTableDict)
+            }
         
-        #first, find all allowed occultation measurement types for orbit
-        irMeasuredObsTypes = [occultationType for occultationType in orbit["allowedObservationTypes"][:] if occultationType in ["ingress", "egress", "merged", "grazing"]]
-        uvisMeasuredObsTypes = [occultationType for occultationType in orbit["allowedObservationTypes"][:] if occultationType in ["ingress", "egress", "merged", "grazing"]]
-        #add nadir types
-        if finalOrbitPlan["irDayside"] != "": #limb is simply a dayside
-            irMeasuredObsTypes.append("dayside")
-        if finalOrbitPlan["irNightside"] != "":
-            irMeasuredObsTypes.append("nightside")
-        if finalOrbitPlan["uvisDayside"] != "":
-            uvisMeasuredObsTypes.append("dayside")
-
-            #some orbit types have 3 x uvis nadirs
-            if finalOrbitPlan["orbitType"] in UVIS_MULTIPLE_TC_NADIR_ORBIT_TYPES:
-                uvisMeasuredObsTypes.append("dayside2")
-                uvisMeasuredObsTypes.append("dayside3")
-
-        if finalOrbitPlan["uvisNightside"] != "":
-            uvisMeasuredObsTypes.append("nightside")
-
-        orbit["irMeasuredObsTypes"] = irMeasuredObsTypes
-        orbit["uvisMeasuredObsTypes"] = uvisMeasuredObsTypes
-
+    
+    for orbit in orbit_list:
+        print(orbit["orbitNumber"])
+        finalOrbitPlan = orbit["finalOrbitPlan"]
+        irMeasuredObsTypes = orbit["irMeasuredObsTypes"]
+        uvisMeasuredObsTypes = orbit["uvisMeasuredObsTypes"]
 
 
         #now check each allowed type and add cop rows
         if "ingress" in irMeasuredObsTypes or "merged" in irMeasuredObsTypes or "grazing" in irMeasuredObsTypes:
             for obsType in ["irIngressHigh","irIngressLow"]:
+                
+                
                 observationName = finalOrbitPlan[obsType]
-                diffractionOrders, integrationTime, rhythm, detectorRows = getObsParameters(observationName, occultationObservationDict, orbit)
-                detectorCentreLine = soCentreDetectorLine #LNO occultations not yet implemented
-                channel = "so" #LNO occultations not yet implemented
-                channelCode = SO_CHANNEL_CODE #LNO occultations not yet implemented
-
-                inputDict = {"observationName":observationName, \
-                             "integrationTime":integrationTime, \
-                             "orders":diffractionOrders, \
-                             "centreDetectorLine":detectorCentreLine, \
-                             "nRows":detectorRows, \
-                             "rhythm":rhythm, \
-                             }
-                outputDict = getCopRows(channel, copTableDict, obsType, inputDict, silent=True)
+                observationDict = occultationObservationDict
+                
+                outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=False)
                     
                 finalOrbitPlan[obsType+"ObservationName"] = observationName
                 finalOrbitPlan[obsType+"Orders"] = diffractionOrders
                 finalOrbitPlan[obsType+"IntegrationTime"] = integrationTime
                 finalOrbitPlan[obsType+"Rhythm"] = rhythm
-                finalOrbitPlan[obsType+"DetectorRows"] = detectorRows
+                finalOrbitPlan[obsType+"DetectorRows"] = windowHeight
                 finalOrbitPlan[obsType+"ChannelCode"] = channelCode
                 finalOrbitPlan[obsType+"CopRows"] = outputDict
 
 
         if "egress" in irMeasuredObsTypes:
             for obsType in ["irEgressHigh","irEgressLow"]:
-                observationName = finalOrbitPlan[obsType]
-                diffractionOrders, integrationTime, rhythm, detectorRows = getObsParameters(observationName, occultationObservationDict, orbit)
-                detectorCentreLine = soCentreDetectorLine #LNO occultations not yet implemented
-                channel = "so" #LNO occultations not yet implemented
-                channelCode = SO_CHANNEL_CODE #LNO occultations not yet implemented
 
-                inputDict = {"observationName":observationName, \
-                             "integrationTime":integrationTime, \
-                             "orders":diffractionOrders, \
-                             "centreDetectorLine":detectorCentreLine, \
-                             "nRows":detectorRows, \
-                             "rhythm":rhythm, \
-                             }
-                outputDict = getCopRows(channel, copTableDict, obsType, inputDict, silent=True)
+                observationName = finalOrbitPlan[obsType]
+                observationDict = occultationObservationDict
+                
+                outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=False)
                     
                 finalOrbitPlan[obsType+"ObservationName"] = observationName
                 finalOrbitPlan[obsType+"Orders"] = diffractionOrders
                 finalOrbitPlan[obsType+"IntegrationTime"] = integrationTime
                 finalOrbitPlan[obsType+"Rhythm"] = rhythm
-                finalOrbitPlan[obsType+"DetectorRows"] = detectorRows
+                finalOrbitPlan[obsType+"DetectorRows"] = windowHeight
                 finalOrbitPlan[obsType+"ChannelCode"] = channelCode
                 finalOrbitPlan[obsType+"CopRows"] = outputDict
 
         if "dayside" in irMeasuredObsTypes:
             obsType  = "irDayside"
+            
             observationName = finalOrbitPlan[obsType]
-            diffractionOrders, integrationTime, rhythm, detectorRows = getObsParameters(observationName, nadirObservationDict, orbit)
-            detectorCentreLine = LNO_CENTRE_DETECTOR_LINE #LNO occultations not yet implemented
-            channel = "lno" #LNO occultations not yet implemented
-            channelCode = LNO_CHANNEL_CODE #LNO occultations not yet implemented
-
-            inputDict = {"observationName":observationName, \
-                         "integrationTime":integrationTime, \
-                         "orders":diffractionOrders, \
-                         "centreDetectorLine":detectorCentreLine, \
-                         "nRows":detectorRows, \
-                         "rhythm":rhythm, \
-                         }
-            outputDict = getCopRows(channel, copTableDict, obsType, inputDict, silent=True)
+            observationDict = nadirObservationDict
+            
+            outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=False)
                 
             finalOrbitPlan[obsType+"ObservationName"] = observationName
             finalOrbitPlan[obsType+"Orders"] = diffractionOrders
             finalOrbitPlan[obsType+"IntegrationTime"] = integrationTime
             finalOrbitPlan[obsType+"Rhythm"] = rhythm
-            finalOrbitPlan[obsType+"DetectorRows"] = detectorRows
+            finalOrbitPlan[obsType+"DetectorRows"] = windowHeight
             finalOrbitPlan[obsType+"ChannelCode"] = channelCode
             finalOrbitPlan[obsType+"CopRows"] = outputDict
             
@@ -2057,26 +2170,17 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants):
 
         if "nightside" in irMeasuredObsTypes:
             obsType  = "irNightside"
+            
             observationName = finalOrbitPlan[obsType]
-            diffractionOrders, integrationTime, rhythm, detectorRows = getObsParameters(observationName, nadirObservationDict, orbit)
-            detectorCentreLine = LNO_CENTRE_DETECTOR_LINE #LNO occultations not yet implemented
-            channel = "lno" #LNO occultations not yet implemented
-            channelCode = LNO_CHANNEL_CODE #LNO occultations not yet implemented
-
-            inputDict = {"observationName":observationName, \
-                         "integrationTime":integrationTime, \
-                         "orders":diffractionOrders, \
-                         "centreDetectorLine":detectorCentreLine, \
-                         "nRows":detectorRows, \
-                         "rhythm":rhythm, \
-                         }
-            outputDict = getCopRows(channel, copTableDict, obsType, inputDict, silent=True)
+            observationDict = nadirObservationDict
+            
+            outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=False)
                 
             finalOrbitPlan[obsType+"ObservationName"] = observationName
             finalOrbitPlan[obsType+"Orders"] = diffractionOrders
             finalOrbitPlan[obsType+"IntegrationTime"] = integrationTime
             finalOrbitPlan[obsType+"Rhythm"] = rhythm
-            finalOrbitPlan[obsType+"DetectorRows"] = detectorRows
+            finalOrbitPlan[obsType+"DetectorRows"] = windowHeight
             finalOrbitPlan[obsType+"ChannelCode"] = channelCode
             finalOrbitPlan[obsType+"CopRows"] = outputDict
         else: #if uvis operating, still write COP rows for nadirs
@@ -2348,7 +2452,6 @@ def writeIrCopRowsTxt(orbit_list, mtpConstants, paths):
 
         #find which variable name contains cop row info
         #remember order is reversed for egress
-        #TODO: add LNO occultations
         obsTypeNames = {"ingress":["irIngressHigh","irIngressLow"], "merged":["irIngressHigh","irIngressLow"], "grazing":["irIngressHigh","irIngressLow"], "egress":["irEgressLow","irEgressHigh"]}
         for measuredObsType in obsTypeNames.keys():
             obsType1, obsType2 = obsTypeNames[measuredObsType]
@@ -2358,7 +2461,10 @@ def writeIrCopRowsTxt(orbit_list, mtpConstants, paths):
                 precoolingRow = PRECOOLING_COP_ROW
                 fixedRow = finalOrbitPlan[obsType1+"CopRows"]["fixedCopRow"]
                 channelCode = finalOrbitPlan[obsType1+"ChannelCode"]
-                obsComment = "SO ON"
+                if channelCode == SO_CHANNEL_CODE:
+                    obsComment = "SO ON"
+                elif channelCode == LNO_CHANNEL_CODE:
+                    obsComment = "LNO ON"
                 obsTypeOut = measuredObsType
 
                 outputLineToWrite = "%i,%i,%i,%i,%i,%i,%s,%s,%s" %(fixedRow, precoolingRow, copRow1, copRow2, channelCode, orbit["orbitNumber"], obsTypeOut, orbit[measuredObsType]["utcStart"], obsComment)
@@ -2715,19 +2821,19 @@ def writeLnoUvisJointObsNumbers(orbit_list, mtpConstants, paths):
     writeOutputTxt(os.path.join(paths["ORBIT_PLAN_PATH"], "nomad_mtp%03d_lno_orbits" %mtpNumber), lnoOperatingOrbits)
 
 
-def writeLnoSamJointObsInfo(orbit_list, mtpConstants, paths):
+def writeLnoGroundAssetJointObsInfo(orbit_list, mtpConstants, paths, ground_asset_name):
     """ write NOMAD + SAM-TLS joint obs info - start/end time, incidence angle, COP rows used"""
     mtpNumber = mtpConstants["mtpNumber"]
 
     ORBIT_PLAN_NAME = "finalOrbitPlan"
     
-    lnoSamJointObs = ["UTC TIME WHEN LNO OBSERVING CLOSE TO CURIOSITY, INCIDENCE ANGLE, LOCAL SOLAR TIME, LNO DIFFRACTION ORDERS MEASURED"]
+    lnoGroundAssetJointObs = ["UTC TIME WHEN LNO OBSERVING CLOSE TO %s, INCIDENCE ANGLE, LOCAL SOLAR TIME, LNO DIFFRACTION ORDERS MEASURED" %ground_asset_name.upper()]
     for orbit in orbit_list:
         if "irDayside" in orbit[ORBIT_PLAN_NAME].keys(): #check if dayside
             if orbit[ORBIT_PLAN_NAME]["irDayside"] != "": #check if LNO observing
                 if "daysideRegions" in orbit.keys(): #check if any regions of interest observed
                     for daysideRegion in orbit["daysideRegions"]: 
-                        if "CURIOSITY" in daysideRegion["name"]: #check if curiosity
+                        if ground_asset_name.upper() in daysideRegion["name"]: #check if curiosity
                             print(orbit["orbitNumber"])
                             ordersMeasured = orbit[ORBIT_PLAN_NAME]["irDaysideOrders"]
                             orders = "#"+" #".join(str(order) for order in ordersMeasured)
@@ -2736,10 +2842,10 @@ def writeLnoSamJointObsInfo(orbit_list, mtpConstants, paths):
                             lstMeasured = daysideRegion["lst"]
                             
                             outputText = "%s, %0.1f, %0.1f, %s" %(utcTimeMeasured, incidenceAngleMeasured, lstMeasured, orders)
-                            lnoSamJointObs.append(outputText)
+                            lnoGroundAssetJointObs.append(outputText)
                             print(outputText)
 
-    writeOutputTxt(os.path.join(paths["ORBIT_PLAN_PATH"], "nomad_mtp%03d_lno_sam_joint_obs" %mtpNumber), lnoSamJointObs)
+    writeOutputTxt(os.path.join(paths["ORBIT_PLAN_PATH"], "nomad_mtp%03d_lno_%s_joint_obs" %(mtpNumber, ground_asset_name.lower())), lnoGroundAssetJointObs)
 
 
 def writeAcsJointObsNumbers(orbit_list, mtpConstants, paths):
@@ -2794,8 +2900,8 @@ def writeOrbitPlanCsv(orbit_List, mtpConstants, paths):
 def fitNadirToThermalRule(orbit_list):
     """check for clashing start/end times and reduce LNO on time to fit within thermal rule"""
     #TODO: check for clashes between nadirs and occultations and adjust nadir start/end times accordingly
-
     ORBIT_PLAN_NAME = "completeOrbitPlan"
+
     
     for orbit in orbit_list:
         irMeasuredObsTypes = [occultationType for occultationType in orbit["allowedObservationTypes"][:] if occultationType in ["ingress", "egress", "merged", "grazing"]]
@@ -2827,6 +2933,8 @@ def fitNadirToThermalRule(orbit_list):
 
 
 def getMtpTimes(mtpNumber):
+    """find mtp start/end times and ls for an mtp"""
+    
     def lsubs(et):
         return sp.lspcn("MARS",et,SPICE_ABCORR) * sp.dpr()
 
@@ -2854,6 +2962,7 @@ def makeOverviewPage(orbit_list, mtpConstants, paths):
     """plot occultation orders for mtp overview page"""
     mtpNumber = mtpConstants["mtpNumber"]
     obsTypeNames = {"ingress":"irIngressLow", "egress":"irEgressLow"}
+
     
     #loop through once to find list of all orders measured
     ordersAll = []
@@ -3023,7 +3132,7 @@ def makeOverviewPage(orbit_list, mtpConstants, paths):
         h += r"<th>%s</th>" %header
     h += r"</tr>"+"\n"
     for key in sorted(occultationObservationDict.keys()):
-        orders, integrationTime, rhythm, detectorRows = getObsParameters(key, occultationObservationDict, {})
+        orders, integrationTime, rhythm, detectorRows, channelCode = getObsParameters(key, occultationObservationDict)
     
         h += r"<tr>"+"\n"
         h += r"<td>%s</td>" %(key)
@@ -3052,7 +3161,7 @@ def makeOverviewPage(orbit_list, mtpConstants, paths):
         h += r"<th>%s</th>" %header
     h += r"</tr>"
     for key in sorted(nadirObservationDict.keys()):
-        orders, integrationTime, rhythm, detectorRows = getObsParameters(key, nadirObservationDict, {})
+        orders, integrationTime, rhythm, detectorRows, channelCode = getObsParameters(key, nadirObservationDict)
     
         h += r"<tr>"+"\n"
         h += r"<td>%s</td>" %(key)
@@ -3089,8 +3198,9 @@ def makeOverviewPage(orbit_list, mtpConstants, paths):
 
 
 def writeMtpMasterPage(mtpConstants, paths):
-    
+    """write the master page up to the current mtp"""
     mtpNumber = mtpConstants["mtpNumber"]
+
 
     mtpStartString, mtpEndString, mtpStartLs, mtpEndLs = getMtpTimes(mtpNumber)
         
@@ -3125,6 +3235,8 @@ def writeMtpMasterPage(mtpConstants, paths):
 def writeIndexWebpage(mtpConstants, paths):
     """update website index page with latest mtp"""    
     mtpNumber = mtpConstants["mtpNumber"]
+
+
 
     MASTER_PAGE_NAMES = ["EXM-NO-SNO-AER-00028-iss0rev4-SO_LNO_COP_Table_Order_Combinations-180528.htm", \
               "EXM-NO-SNO-AER-00027-iss0rev8-Science_Orbit_Observation_Rules-180306.pdf", \
@@ -3178,16 +3290,11 @@ def writeIndexWebpage(mtpConstants, paths):
         pagename = "nomad_mtp%03d.html" %(mtpIndex); desc="Medium Term Planning MTP%03d (%s - %s, Ls: %0.0f - %0.0f)" %(mtpIndex, mtpStartString, mtpEndString, mtpStartLs, mtpEndLs)
         h += r"<p><a href=%s>%s</a> - %s</p>" \
             %(("mtp_pages/mtp%03d" %mtpIndex +os.sep+pagename),pagename,desc)+"\n"
-        
-
-
 
     h += r"<br>"+"\n"
 
     pagename = "science_calibrations.html"; desc="Calibrations During Nominal Science Period"
     h += r"<p><a href=%s>%s</a> - %s</p>" %("calibrations/"+pagename,pagename,desc)+"\n"
-
-        
     h += r"<br>"+"\n"
     h += r"<br>"+"\n"
     h += r"<p>Page last modified: %s</p>" %(datetime.now().strftime('%a, %d %b %Y %H:%M:%S')) +"\n"
@@ -3199,6 +3306,7 @@ def writeIndexWebpage(mtpConstants, paths):
 
 
 def printStatement(string_in):
+    """write statement with current utc time"""
     print("%s (%s)" %(string_in, datetime.strftime(datetime.now(), SPICE_DATETIME_FORMAT)))
 
 
@@ -3207,17 +3315,168 @@ def printStatement(string_in):
 
 
 
+def writeCalibrationWebpage(paths):
+    """write the science calibration webpage from Bojan's input file (place in OBS_DIRECTORY/calibrations)"""
 
-# TODO: write calibration page, starting from existing script
-    #search for filename matching sequence
-    #read lines
-    #remove unneeded lines
-    #split by MTP
-    #get copVersion for each MTP
-    #get obs description from COP row
+
+    def readCalibrationsFromFile(paths):
+        """read latest calibration file from Bojan/Claudio"""
+        calibrationPath = paths["CALIBRATION_PATH"]
+        calibrationFilePath = ""
+        
+        #check directory for calibration files
+        #search for filename matching sequence
+        lastMtps = []
+        for fileName in os.listdir(calibrationPath):
+            if "NOMAD_calibrations" in fileName:
+                lastMtp = int(fileName.split("-")[1].replace(".txt",""))
+                lastMtps.append(lastMtp)
+        lastMtpInt = "-%03i.txt" %sorted(lastMtps)[-1] #get newest file from list of potential files
+        
+        for fileName in os.listdir(calibrationPath):
+            if "NOMAD_calibrations" in fileName:
+                if lastMtpInt in fileName:
+                    calibrationFilePath = os.path.join(calibrationPath, fileName)
+        
+        #read lines
+        if calibrationFilePath != "": #if file actually found
+            with open(calibrationFilePath) as f:
+                lines = []
+                titles = []
+                calibrations = []
+                #remove unneeded lines
+                for index, line in enumerate(f):
+                    if line[0:3] == "MTP":
+                        if index > 0:
+                            calibrations.append(lines)
+                            lines = []
+                        content = line.strip().strip("%")
+                        titles.append(content)
+                    elif line[0] == "#":
+                        lines.append(line.replace("# ",""))
+        else:
+            titles = []
+            calibrations = []
+    
+        return titles, calibrations
+    
+    
+    
+    
+    def textToNum(string):
+        """convert string to int if possible"""
+        try:
+            return int(string)
+        except ValueError:
+            return -999
+    
+    h=r""
+    h += r"<h1>NOMAD Science Phase Calibrations</h1>"+"\n"
+    h += r"<h2>This page lists calibration observations only, and is maintained by hand (so may be out of date)</h2>"+"\n"
+    h += r"<h2>Note that these are the predicted execution times. Real times could differ by up to 2 minutes</h2>"+"\n"
+    h += r"<h2>Typically there are only 1 or 2 calibrations allowed per MTP</h2>"+"\n"
+    
+    
+    titlesText, calibrationsText = readCalibrationsFromFile(paths)
+    
+    for title, calibration in zip(titlesText, calibrationsText):
+        #find MTP
+        calibrationMtpText = title.replace("MTP","").split("-")[0]
+        calibrationMtp = textToNum(calibrationMtpText)
+        
+        if calibrationMtp > -1 and len(calibration) != 0:
+            #get copVersion for each MTP
+            mtpConstants = getMtpConstants(calibrationMtp)
+            copVersion = mtpConstants["copVersion"]
+            copTableDict = getCopTables(mtpConstants)
+    
+        
+            
+            
+                    
+            #get obs description from COP row
+            soAotfHeaders,soAotfList = outputCopTable(copVersion,"so",'aotf')
+            soFixedHeaders,soFixedList = outputCopTable(copVersion,"so",'fixed')
+            soScienceHeaders,soScienceList = outputCopTable(copVersion,"so",'science')
+            soSteppingHeaders,soSteppingList = outputCopTable(copVersion,"so",'stepping')
+            soSubdomainHeaders,soSubdomainList = outputCopTable(copVersion,"so",'sub_domain')
+            
+            lnoAotfHeaders,lnoAotfList = outputCopTable(copVersion,"lno",'aotf')
+            lnoFixedHeaders,lnoFixedList = outputCopTable(copVersion,"lno",'fixed')
+            lnoScienceHeaders,lnoScienceList = outputCopTable(copVersion,"lno",'science')
+            lnoSteppingHeaders,lnoSteppingList = outputCopTable(copVersion,"lno",'stepping')
+            lnoSubdomainHeaders,lnoSubdomainList = outputCopTable(copVersion,"lno",'sub_domain')
+            
+            uvisHeaders,uvisList = outputCopTable(copVersion,"uvis","")
+    
+            
+            soFixedRow = [int(value.replace("SO_COP_GENERAL = ","")) for value in calibration if "SO_COP_GENERAL" in value][0]
+            lnoFixedRow = [int(value.replace("LNO_COP_GENERAL = ","")) for value in calibration if "LNO_COP_GENERAL" in value][0]
+            
+            soCopRow1 = [int(value.replace("SO_COP_SCIENCE_1 = ","")) for value in calibration if "SO_COP_SCIENCE_1" in value][0]
+            soCopRow2 = [int(value.replace("SO_COP_SCIENCE_2 = ","")) for value in calibration if "SO_COP_SCIENCE_2" in value][0]
+            lnoCopRow1 = [int(value.replace("LNO_COP_SCIENCE_1 = ","")) for value in calibration if "LNO_COP_SCIENCE_1" in value][0]
+            lnoCopRow2 = [int(value.replace("LNO_COP_SCIENCE_2 = ","")) for value in calibration if "LNO_COP_SCIENCE_2" in value][0]
+            
+            uvisCopRow = [int(value.replace("UVIS_COP_ROW = ","")) for value in calibration if "UVIS_COP_ROW" in value][0]
+            
+            
+            if soCopRow1 == soCopRow2:
+                if soCopRow1 > 0:
+                    soCopRows = [soCopRow1]
+                else:
+                    soCopRows = []
+            else:
+                soCopRows = [soCopRow1, soCopRow2]
+    
+            if lnoCopRow1 == lnoCopRow2:
+                if lnoCopRow1 > 0:
+                    lnoCopRows = [lnoCopRow1]
+                else:
+                    lnoCopRows = []
+            else:
+                lnoCopRows = [lnoCopRow1, lnoCopRow2]
+                
+            if uvisCopRow > 0:
+                uvisCopRows = [uvisCopRow]
+            else:
+                uvisCopRows = []
+    
+    
+            title = ""
+            for soCopRow in soCopRows:
+                channel = "so"
+                description = getObservationDescription(channel, copTableDict, soFixedRow, soCopRow, silent=True)
+                title += "<br>%s: %s" %(channel.upper(), description)
+    
+            for lnoCopRow in lnoCopRows:
+                channel = "lno"
+                description = getObservationDescription(channel, copTableDict, lnoFixedRow, lnoCopRow, silent=True)
+                title += "<br>%s: %s" %(channel.upper(), description)
+            
+            for uvisCopRow in uvisCopRows:
+                channel = "uvis"
+                description = getObservationDescription(channel, copTableDict, 0, uvisCopRow, silent=True)
+                title += "<br>%s: %s" %(channel.upper(), description)
+    
+    
+            h += r"<h3>"+title+r"</h3>"+"\n"
+            if len(calibration) > 0:
+                h += r"<textarea rows=""38"" cols=""150"">"+"\n"
+                for textLine in calibration:
+                    h += textLine
+                h += r"</textarea>"
+    
+    
+    h += r"<br>"+"\n"
+    h += r"<br>"+"\n"
+    h += r"<p>Page last modified: %s</p>" %(datetime.now().strftime('%a, %d %b %Y %H:%M:%S')) +"\n"
+    
     #write html page
-
-
+    with open(os.path.join(paths["CALIBRATION_PATH"], "science_calibrations.html"), 'w') as f:
+        f.write(h)
+            
+    
 
 
 
@@ -3283,6 +3542,7 @@ def step4(orbitList, mtpConstants, paths):
     printStatement("Getting final mtp plan from file and merging with orbit list")
     finalMtpPlan = getMtpPlanXlsx(mtpConstants, paths, "plan")
     orbitList = mergeMtpPlan(orbitList, finalMtpPlan, "finalOrbitPlan", "completeOrbitPlan") #read in final plan, make finalOrbitPlan, checking it matches the previous completeOrbitPlan
+    orbitList = addCorrectNadirObservations(orbitList)
     printStatement("Reducing LNO dayside nadir observations to fit thermal rule")
     fitNadirToThermalRule(orbitList)
     printStatement("Finding and adding COP rows to orbit list")
@@ -3292,7 +3552,9 @@ def step4(orbitList, mtpConstants, paths):
     printStatement("Writing COP rows to text files")
     writeIrCopRowsTxt(orbitList, mtpConstants, paths)
     printStatement("Writing LNO and Curosity/SAM joint observation file")   
-    writeLnoSamJointObsInfo(orbitList, mtpConstants, paths)
+    writeLnoGroundAssetJointObsInfo(orbitList, mtpConstants, paths, "Curiosity")
+    writeLnoGroundAssetJointObsInfo(orbitList, mtpConstants, paths, "Insight")
+    writeLnoGroundAssetJointObsInfo(orbitList, mtpConstants, paths, "AEOLIS MENSAE MFF")
     printStatement("Writing mtp occultation webpage")
     writeOccultationWebpage(orbitList, mtpConstants, paths)
     printStatement("Writing mtp nadir webpage")
@@ -3304,6 +3566,8 @@ def step4(orbitList, mtpConstants, paths):
     printStatement("Writing master page for this MTP and updating main index webpage")
     writeMtpMasterPage(mtpConstants, paths)
     writeIndexWebpage(mtpConstants, paths)
+    printStatement("Updating science calibrations webpage")
+    writeCalibrationWebpage(paths)
     printStatement("Done!")
     return orbitList
 

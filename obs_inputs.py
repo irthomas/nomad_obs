@@ -167,7 +167,7 @@ nadirObservationDict = {
 "Surface Ice 3SUBD 8S 01":[[199, 194, 188], 180, 8, 144, 1],
 
 "Surface Ice 4SUBD 01":[[199, 194, 193, 187], 195, 15, 144, 1],
-"Surface Ice 6SUBD 01":[[199, 198, 194, 193, 187, 186], 220, 15, 144, 1],
+#"Surface Ice 6SUBD 01":[[199, 198, 194, 193, 187, 186], 220, 15, 144, 1], #ERROR IN COP TABLES
 "Surface Ice 4SUBD 02":[[199, 189, 188, 187], 195, 15, 144, 1],
 "Surface Ice 3SUBD 01":[[199, 194, 188], 205, 15, 144, 1],
     
@@ -227,88 +227,133 @@ def getMtpConstants(mtpNumber):
         return utcString
 
     if mtpNumber == 0:
-        utcstringDaysideNadirStart = "2018MAR24-11:50:00 UTC" #in general, choose a time just after passing from day to night
-        utcstringOccultationStart = utcstringDaysideNadirStart
-        utcstringDaysideNadirEnd = "2018APR21-20:00:00 UTC"
-        utcstringOccultationEnd = utcstringDaysideNadirEnd
-        copVersion = "20180313_091700" #desired cop table folder
-        MAPPS_EVENT_FILE = "ian_mtp000_180307.tgo" #no occultations, using updated LTP post-aerobraking
-        NADIR_ONLY = True
-        SO_CENTRE_DETECTOR_LINE = 128
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20180313_091700" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+
+        #TODO: convert these to correct format
+#        utcstringDaysideNadirStart = "2018MAR24-11:50:00 UTC" #in general, choose a time just after passing from day to night
+#        utcstringOccultationStart = utcstringDaysideNadirStart
+#        utcstringDaysideNadirEnd = "2018APR21-20:00:00 UTC"
+#        utcstringOccultationEnd = utcstringDaysideNadirEnd
+#        copVersion = "20180313_091700" #desired cop table folder
+#        MAPPS_EVENT_FILE = "ian_mtp000_180307.tgo" #no occultations, using updated LTP post-aerobraking
+#        NADIR_ONLY = True
+#        SO_CENTRE_DETECTOR_LINE = 128
     
     if mtpNumber == 1:
-        #first ingress at midday. nadir starts around 12:50pm
-        utcstringDaysideNadirStart = "2018APR21-18:40:00 UTC" #in general, choose a time just after passing from day to night
-        utcstringOccultationStart = "2018APR21-17:35:00 UTC"
-        utcstringDaysideNadirEnd = "2018MAY19-16:30:00 UTC"
-        utcstringOccultationEnd = utcstringDaysideNadirEnd
-        copVersion = "20180313_091700" #desired cop table folder
-        MAPPS_EVENT_FILE = "LEVF_M001_SOC_PLANNING.EVF"
-        NADIR_ONLY = False
-        SO_CENTRE_DETECTOR_LINE = 128
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20180313_091700" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+
+#        utcstringDaysideNadirStart = "2018APR21-18:40:00 UTC" #in general, choose a time just after passing from day to night
+#        utcstringOccultationStart = "2018APR21-17:35:00 UTC"
+#        utcstringDaysideNadirEnd = "2018MAY19-16:30:00 UTC"
+#        utcstringOccultationEnd = utcstringDaysideNadirEnd
+#        copVersion = "20180313_091700" #desired cop table folder
+#        MAPPS_EVENT_FILE = "LEVF_M001_SOC_PLANNING.EVF"
+#        NADIR_ONLY = False
+#        SO_CENTRE_DETECTOR_LINE = 128
     
     elif mtpNumber == 2:
-        utcstringDaysideNadirStart = "2018MAY19-16:20:00 UTC" #in general, choose a time just after passing from day to night
-        utcstringOccultationStart = utcstringDaysideNadirStart
-        utcstringDaysideNadirEnd = "2018JUN16-16:00:00 UTC"
-        utcstringOccultationEnd = utcstringDaysideNadirEnd
-        copVersion = "20180313_091700" #desired cop table folder
-        MAPPS_EVENT_FILE = "LEVF_M002_SOC_PLANNING.EVF"
-        NADIR_ONLY = False
-        SO_CENTRE_DETECTOR_LINE = 130 #boresight misaligned - sun centred on line 130 now
-        # TODO : change back
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20180313_091700" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+
+#        utcstringDaysideNadirStart = "2018MAY19-16:20:00 UTC" #in general, choose a time just after passing from day to night
+#        utcstringOccultationStart = utcstringDaysideNadirStart
+#        utcstringDaysideNadirEnd = "2018JUN16-16:00:00 UTC"
+#        utcstringOccultationEnd = utcstringDaysideNadirEnd
+#        copVersion = "20180313_091700" #desired cop table folder
+#        MAPPS_EVENT_FILE = "LEVF_M002_SOC_PLANNING.EVF"
+#        NADIR_ONLY = False
+#        SO_CENTRE_DETECTOR_LINE = 130 #boresight misaligned - sun centred on line 130 now
+
     elif mtpNumber == 3:
-#        utcstringDaysideNadirStart = '2018JUN27-14:17:00' #in general, choose a time just after passing from day to night
-        utcstringDaysideNadirStart = "2018JUN16-14:17:00" #in general, choose a time just after passing from day to night
-        utcstringOccultationStart = utcstringDaysideNadirStart
-        utcstringDaysideNadirEnd = '2018JUN28-17:17:00'
-#        utcstringDaysideNadirEnd = "2018JUL14-13:00:00 UTC"
-        utcstringOccultationEnd = utcstringDaysideNadirEnd
-        copVersion = "20180616_110400" #desired cop table folder
-        MAPPS_EVENT_FILE = "LEVF_M003_SOC_PLANNING.EVF"
-        NADIR_ONLY = False
-        SO_CENTRE_DETECTOR_LINE = 131 #boresight misaligned - sun centred on line 131 now
-    
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20180616_110400" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+
+#        utcstringDaysideNadirStart = "2018JUN16-14:17:00" #in general, choose a time just after passing from day to night
+#        utcstringOccultationStart = utcstringDaysideNadirStart
+#        utcstringDaysideNadirEnd = '2018JUN28-17:17:00'
+#        utcstringOccultationEnd = utcstringDaysideNadirEnd
+#        copVersion = "20180616_110400" #desired cop table folder
+#        MAPPS_EVENT_FILE = "LEVF_M003_SOC_PLANNING.EVF"
+#        NADIR_ONLY = False
+#        SO_CENTRE_DETECTOR_LINE = 131 #boresight misaligned - sun centred on line 131 now
     
     elif mtpNumber == 4:
-        utcstringDaysideNadirStart = "2018JUL14-15:03:00" #in general, choose a time just after passing from day to night
-        utcstringOccultationStart = utcstringDaysideNadirStart
-        utcstringDaysideNadirEnd = "2018AUG11-13:00:00 UTC"
-        utcstringOccultationEnd = utcstringDaysideNadirEnd
-        copVersion = "20180714_120000" #desired cop table folder
-        MAPPS_EVENT_FILE = "LEVF_M004_SOC_PLANNING.EVF" #no modifications for this MTP
-        NADIR_ONLY = False
-        SO_CENTRE_DETECTOR_LINE = 131 #boresight misaligned - sun centred on line 131 now
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20180714_120000" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+
+#        utcstringDaysideNadirStart = "2018JUL14-15:03:00" #in general, choose a time just after passing from day to night
+#        utcstringOccultationStart = utcstringDaysideNadirStart
+#        utcstringDaysideNadirEnd = "2018AUG11-13:00:00 UTC"
+#        utcstringOccultationEnd = utcstringDaysideNadirEnd
+#        copVersion = "20180714_120000" #desired cop table folder
+#        MAPPS_EVENT_FILE = "LEVF_M004_SOC_PLANNING.EVF" #no modifications for this MTP
+#        NADIR_ONLY = False
+#        SO_CENTRE_DETECTOR_LINE = 131 #boresight misaligned - sun centred on line 131 now
     
     elif mtpNumber == 5:
-        utcstringDaysideNadirStart = "2018AUG11-14:55:00" #in general, choose a time just after passing from day to night
-        utcstringOccultationStart = utcstringDaysideNadirStart
-        utcstringDaysideNadirEnd = "2018SEP08-13:15:00 UTC"
-        utcstringOccultationEnd = utcstringDaysideNadirEnd
-        copVersion = "20180714_120000" #desired cop table folder
-        MAPPS_EVENT_FILE = "LEVF_M005_SOC_PLANNING.EVF"
-        NADIR_ONLY = False
-        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20180714_120000" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+
+#        utcstringDaysideNadirStart = "2018AUG11-14:55:00" #in general, choose a time just after passing from day to night
+#        utcstringOccultationStart = utcstringDaysideNadirStart
+#        utcstringDaysideNadirEnd = "2018SEP08-13:15:00 UTC"
+#        utcstringOccultationEnd = utcstringDaysideNadirEnd
+#        copVersion = "20180714_120000" #desired cop table folder
+#        MAPPS_EVENT_FILE = "LEVF_M005_SOC_PLANNING.EVF"
+#        NADIR_ONLY = False
+#        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
     
     elif mtpNumber == 6:
-        utcstringDaysideNadirStart = "2018SEP08-15:15:00 UTC" #in general, choose a time just after passing from day to night. Bojan will specify which orbit to start on!
-        utcstringOccultationStart = utcstringDaysideNadirStart
-        utcstringDaysideNadirEnd = "2018OCT06-13:15:00 UTC" #in general, choose a time just after the end of the event file on the nightside
-        utcstringOccultationEnd = utcstringDaysideNadirEnd
-        copVersion = "20180714_120000" #desired cop table folder
-        MAPPS_EVENT_FILE = "LEVF_M006_SOC_PLANNING.EVF"
-        NADIR_ONLY = False
-        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20180714_120000" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+
+#        utcstringDaysideNadirStart = "2018SEP08-15:15:00 UTC" #in general, choose a time just after passing from day to night. Bojan will specify which orbit to start on!
+#        utcstringOccultationStart = utcstringDaysideNadirStart
+#        utcstringDaysideNadirEnd = "2018OCT06-13:15:00 UTC" #in general, choose a time just after the end of the event file on the nightside
+#        utcstringOccultationEnd = utcstringDaysideNadirEnd
+#        copVersion = "20180714_120000" #desired cop table folder
+#        MAPPS_EVENT_FILE = "LEVF_M006_SOC_PLANNING.EVF"
+#        NADIR_ONLY = False
+#        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
     
     elif mtpNumber == 7:
-        utcstringDaysideNadirStart = "2018OCT06-15:05:00 UTC" #in general, choose a time a few minutes after passing from day to night. Bojan will specify which orbit to start on!
-        utcstringOccultationStart = utcstringDaysideNadirStart
-        utcstringDaysideNadirEnd = "2018NOV03-12:15:00 UTC" #in general, choose a time just after the end of the event file on the nightside
-        utcstringOccultationEnd = utcstringDaysideNadirEnd
-        copVersion = "20181006_120000" #desired cop table folder
-        MAPPS_EVENT_FILE = "LEVF_M007_SOC_PLANNING.EVF"
-        NADIR_ONLY = False
-        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20181006_120000" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+
+#        utcstringDaysideNadirStart = "2018OCT06-15:05:00 UTC" #in general, choose a time a few minutes after passing from day to night. Bojan will specify which orbit to start on!
+#        utcstringOccultationStart = utcstringDaysideNadirStart
+#        utcstringDaysideNadirEnd = "2018NOV03-12:15:00 UTC" #in general, choose a time just after the end of the event file on the nightside
+#        utcstringOccultationEnd = utcstringDaysideNadirEnd
+#        copVersion = "20181006_120000" #desired cop table folder
+#        MAPPS_EVENT_FILE = "LEVF_M007_SOC_PLANNING.EVF"
+#        NADIR_ONLY = False
+#        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
     
     elif mtpNumber == 8: #2018-11-03T13:00:13Z (actually started orbit after:2018-11-03T14:58:06Z)     EXMGEO_TN2D - 2018-12-01T12:02:30Z     EXMGEO_TD2N
         mtpStart = "2018-11-03T14:58:06Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -404,9 +449,15 @@ def getMtpConstants(mtpNumber):
         soCentreDetectorLine = 128 #boresight corrected from MTP005 onwards
 
 
-
-    utcstringStart = convertInputTimeStrings(mtpStart)
-    utcstringEnd = convertInputTimeStrings(mtpEnd)
+    if mtpStart != "":
+        utcstringStart = convertInputTimeStrings(mtpStart)
+    else:
+        utcstringStart = ""
+        
+    if mtpEnd != "":
+        utcstringEnd = convertInputTimeStrings(mtpEnd)
+    else:
+        utcstringEnd = ""
     
     mtpConstantsDict = {"mtpNumber":mtpNumber, \
                         "utcStringStart":utcstringStart, \
@@ -510,8 +561,9 @@ nadirRegionsOfInterest = \
 ["NILI FOSSAE", 13.0, 33.0, 65.0, 82.0],
 ["MAWRTH VALLIS-ARAM CHAOS", -2.0, 30.0, -30.0, -10.0],
 ["MERIDIANI SULPHATES", -5.0, 5.0, -5.0, 5.0],
-["CURIOSITY",-4.5895-LATITUDE_RANGE,-4.5895+LATITUDE_RANGE,137.4417-LONGITUDE_RANGE,137.4417+LONGITUDE_RANGE],
+["AEOLIS MENSAE MFF",-2.8-LATITUDE_RANGE,-2.8+LATITUDE_RANGE,145.7-LONGITUDE_RANGE,145.7+LONGITUDE_RANGE],
 ["INSIGHT",4.5-LATITUDE_RANGE,4.5+LATITUDE_RANGE,135.0-LONGITUDE_RANGE,135.0+LONGITUDE_RANGE],
+["CURIOSITY",-4.5895-LATITUDE_RANGE,-4.5895+LATITUDE_RANGE,137.4417-LONGITUDE_RANGE,137.4417+LONGITUDE_RANGE],
 ]
 
 nadirRegionsObservations = \
@@ -519,8 +571,9 @@ nadirRegionsObservations = \
 "NILI FOSSAE":"Surface 3SUBD 02",
 "MAWRTH VALLIS-ARAM CHAOS":"Surface 3SUBD 02",
 "MERIDIANI SULPHATES":"Surface 3SUBD 02",
+"AEOLIS MENSAE MFF":"CH4 2SUBD 02",
+"INSIGHT":"H2O 2SUBD 01",
 "CURIOSITY":"CH4 2SUBD 02",
-"INSIGHT":"CH4 2SUBD 02",
 }
 
 
