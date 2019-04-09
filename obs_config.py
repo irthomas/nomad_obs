@@ -30,10 +30,11 @@ elif sys.platform == "linux":
 if sys.platform == "win32":
     OBS_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "nomad_obs", "observations")
 elif sys.platform == "linux":
-    OBS_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "Observation_planning", "observations")
+    OBS_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "Observation_planning", "nomad_obs", "observations")
 
 
 """dev website directory, for placing a copy of all the files generated, to be put online"""
+#not yet implemented
 if sys.platform == "win32":
     DEV_DIRECTORY = os.path.join("w:", os.sep, "websites", "dev", "mars", "en", "exomars", "observations")
 elif sys.platform == "linux":
@@ -77,6 +78,7 @@ def setupPaths(mtpConstants):
     mtpNumber = mtpConstants["mtpNumber"]
     
     paths = {
+            "OBS_DIRECTORY":os.path.join(OBS_DIRECTORY), \
             "COP_ROW_BASE_PATH":os.path.join(OBS_DIRECTORY, "cop_rows"), \
             "ORBIT_PLAN_BASE_PATH":os.path.join(OBS_DIRECTORY, "orbit_plans"), \
             "SUMMARY_FILE_BASE_PATH":os.path.join(OBS_DIRECTORY, "summary_files"), \
