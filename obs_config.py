@@ -35,10 +35,10 @@ elif sys.platform == "linux":
 
 """dev website directory, for placing a copy of all the files generated, to be put online"""
 #not yet implemented
-#if sys.platform == "win32":
-#    DEV_DIRECTORY = os.path.join("w:", os.sep, "websites", "dev", "mars", "en", "exomars", "observations")
-#elif sys.platform == "linux":
-#    DEV_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "Observation_planning", "observations")
+if sys.platform == "win32":
+    DEV_DIRECTORY = os.path.join("w:", os.sep, "websites", "dev", "mars", "en", "exomars", "observations")
+elif sys.platform == "linux":
+    DEV_DIRECTORY = os.path.join(os.sep, "bira-iasb", "websites", "dev", "mars", "en", "exomars", "observations")
 
 
 """where to find cop tables? Note that COP patches are done at the end of an MTP, and so planning the MTP after must be done with the new tables!"""
@@ -47,7 +47,6 @@ if sys.platform == "win32":
 #    COP_TABLE_DIRECTORY = os.path.join("W:", os.sep, "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "cop_tables")
 elif sys.platform == "linux":
     COP_TABLE_DIRECTORY = os.path.join(os.sep, "bira-iasb", "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "cop_tables")
-
 
 
 """where to find the SPICE metakernel?"""
@@ -84,14 +83,16 @@ def setupPaths(mtpConstants):
             "SUMMARY_FILE_BASE_PATH":os.path.join(OBS_DIRECTORY, "summary_files"), \
             "MTP_BASE_PATH":os.path.join(OBS_DIRECTORY, "mtp_pages"), \
             "HTML_BASE_PATH":os.path.join(OBS_DIRECTORY, "pages"), \
+
+            "EVENT_FILE_PATH":os.path.join(OBS_DIRECTORY, "event_files"), \
+            "ITL_FILE_PATH":os.path.join(OBS_DIRECTORY, "itls"), \
+            "CALIBRATION_PATH":os.path.join(OBS_DIRECTORY, "calibrations"), \
             
             "COP_ROW_PATH":os.path.join(OBS_DIRECTORY, "cop_rows", "mtp%03d" %mtpNumber), \
-            "EVENT_FILE_PATH":os.path.join(OBS_DIRECTORY, "event_files"), \
             "ORBIT_PLAN_PATH":os.path.join(OBS_DIRECTORY, "orbit_plans", "mtp%03d" %mtpNumber), \
             "SUMMARY_FILE_PATH":os.path.join(OBS_DIRECTORY, "summary_files", "mtp%03d" %mtpNumber), \
             "HTML_MTP_PATH":os.path.join(OBS_DIRECTORY, "mtp_pages", "mtp%03d" %mtpNumber), \
             "IMG_MTP_PATH":os.path.join(OBS_DIRECTORY, "mtp_pages", "mtp%03d" %mtpNumber, "img"), \
-            "CALIBRATION_PATH":os.path.join(OBS_DIRECTORY, "calibrations"), \
             }    
     
     #make directories if not already existing
@@ -101,6 +102,28 @@ def setupPaths(mtpConstants):
             os.mkdir(path)
 
     return paths
+
+
+
+
+
+def devWebsitePaths(mtpConstants):
+    """set up paths to output files"""
+    mtpNumber = mtpConstants["mtpNumber"]
+    
+    paths = {
+            "OBS_DIRECTORY":os.path.join(DEV_DIRECTORY), \
+            "CALIBRATION_PATH":os.path.join(DEV_DIRECTORY, "calibrations"), \
+            "COP_ROW_PATH":os.path.join(DEV_DIRECTORY, "cop_rows", "mtp%03d" %mtpNumber), \
+            "EVENT_FILE_PATH":os.path.join(DEV_DIRECTORY, "event_files"), \
+            "ITL_FILE_PATH":os.path.join(DEV_DIRECTORY, "itls"), \
+            "HTML_MTP_PATH":os.path.join(DEV_DIRECTORY, "mtp_pages", "mtp%03d" %mtpNumber), \
+            "ORBIT_PLAN_PATH":os.path.join(DEV_DIRECTORY, "orbit_plans", "mtp%03d" %mtpNumber), \
+            "SUMMARY_FILE_PATH":os.path.join(DEV_DIRECTORY, "summary_files", "mtp%03d" %mtpNumber), \
+            }    
+    return paths
+
+
 
 
 #load spiceypy kernels

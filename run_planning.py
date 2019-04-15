@@ -8,8 +8,8 @@ Created on Mon Mar  4 08:22:23 2019
 
 
 from obs_inputs import getMtpConstants
-from obs_config import setupPaths
-from obs_functions import step1, step2, step3, step4
+from obs_config import setupPaths, devWebsitePaths
+from obs_functions import step1, step2, step3, step4, step5
 
 __project__   = "NOMAD Observation Planning"
 __author__    = "Ian Thomas"
@@ -29,25 +29,24 @@ mtpNumber = 15
 orbitList = []
 mtpConstants = getMtpConstants(mtpNumber)
 paths = setupPaths(mtpConstants)
+devPaths = devWebsitePaths(mtpConstants)
 
 orbitList = step1(orbitList, mtpConstants, paths)
 #GENERIC ORBIT PLAN WILL BE PLACED IN BASE DIRECTORY. SEND THIS TO NOMAD.IOPS
-#WHEN MODIFIED VERSION IS SENT BACK, CHECK FOR ERRORS
+#WHEN MODIFIED VERSION IS SENT BACK, UPDATE NIGHTSIDES, ADD LNO ONY LIMBS, AND CHECK FOR ERRORS
 
 #IF ALL IS OK THEN PLACE IT IN THE ORBIT_PLANS/MTPXXX FOLDER AND RUN ENTIRE SCRIPT AGAIN
+
+
 orbitList = step2(orbitList, mtpConstants, paths)
 
-#THE FOLLOWING FILES WILL BE GENERATED IN THE BASE DIRECTORY:
-#LNO-UVIS JOINT OBSERVATION FILE WILL BE CREATED IN BASE DIRECTORY. SEND THIS AND THE GENERIC ORBIT PLAN TO NOMAD.IOPS
-
-
-
+#LNO-UVIS JOINT OBSERVATION FILE WILL BE CREATED IN BASE DIRECTORY.
+#SEND THIS AND THE UPDATED GENERIC ORBIT PLAN TO NOMAD.IOPS
 
 
 orbitList = step3(orbitList, mtpConstants, paths)
 #FINAL ORBIT PLAN WILL BE PLACED IN BASE DIRECTORY. CHECK FOR ISSUES
 #IF ALL OK THEN PLACE IT IN THE ORBIT_PLANS/MTPXXX FOLDER AND RUN ENTIRE SCRIPT AGAIN
-
 
 
 orbitList = step4(orbitList, mtpConstants, paths)
@@ -59,6 +58,10 @@ orbitList = step4(orbitList, mtpConstants, paths)
 #SEND ALL FILES IN THE COP_ROW/MTPXXX FOLDER TO NOMAD.IOPS@AERONOMIE.BE
 
 #NEW WEBPAGES ARE UPDATED AUTOMATICALLY IN THE LOCAL OBS_DIRECTORY
-#COPY THESE TO THE DEV SITE AND THEN RUN THE SCRIPT TO COPY THEM TO THE PROD SITE
+
+"""only run step5 when final COP rows are delivered"""
+#step5(paths, devPaths)
+#COPY FILES TO THE DEV SITE
+#RUN THE SCRIPT TO COPY THEM TO THE PROD SITE
 
 #PROGRAM FINISHED
