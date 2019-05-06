@@ -21,7 +21,7 @@ __contact__   = "ian.thomas@aeronomie.be"
 
 """change this number, add the correct info to the mtp in obs_inputs, and run this script"""
 
-mtpNumber = 15
+mtpNumber = 16
 
 
 
@@ -60,7 +60,7 @@ orbitList = step4(orbitList, mtpConstants, paths)
 #NEW WEBPAGES ARE UPDATED AUTOMATICALLY IN THE LOCAL OBS_DIRECTORY
 
 """only run step5 when final COP rows are delivered"""
-#step5(paths, devPaths)
+step5(paths, devPaths)
 #COPY FILES TO THE DEV SITE
 #RUN THE SCRIPT TO COPY THEM TO THE PROD SITE
 

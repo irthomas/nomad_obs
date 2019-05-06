@@ -61,7 +61,7 @@ elif sys.platform == "linux":
 
 """which SPICE metakernel to use?"""
 if sys.platform == "win32":
-    METAKERNEL_NAME = "em16_plan_win.tm"
+    METAKERNEL_NAME = "em16_plan.tm"
 #    METAKERNEL_NAME = "em16_ops.tm" #don't use for planning!!
 elif sys.platform == "linux":
     #find planning kernel in directory

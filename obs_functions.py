@@ -185,10 +185,15 @@ def getNadirData(orbit_list, mtpConstants):
     """get all nadir data, add to orbit list"""
     utc_string_start = mtpConstants["utcStringStart"]
     utc_string_end = mtpConstants["utcStringEnd"]
+    copVersion = mtpConstants["copVersion"]
 
     adjust = 0
     nintvals = 500
     stepSize = 1.0
+    
+    if utc_string_start == "" or utc_string_end == "" or copVersion == "":
+        print("Error: Either utc_string_start, utc_string_end or copVersion have not been defined in obs_inputs.py. Please update and try again")
+        sys.exit()
     
     daysideConfinementWindow = sp.stypes.SPICEDOUBLE_CELL(2)
     sp.wninsd(sp.utc2et(utc_string_start), sp.utc2et(utc_string_end), daysideConfinementWindow)
@@ -734,15 +739,17 @@ def regionsOfInterestNadir(orbit_list, regions_of_interest, silent=True):
             incidence_angles = daysideData[:, 2]
             lst = daysideData[:, 3]
             
+            #write all found regions of interest to orbit
             for regionOfInterest in regions_of_interest:
                 matches = np.logical_and(
-                        np.logical_and((regionOfInterest[1] < lats), (regionOfInterest[2] > lats)),
-                        np.logical_and((regionOfInterest[3] < lons), (regionOfInterest[4] > lons))
+                        np.logical_and((regionOfInterest[2] < lats), (regionOfInterest[3] > lats)),
+                        np.logical_and((regionOfInterest[4] < lons), (regionOfInterest[5] > lons))
                         )
                 if np.any(matches):
                     i = int(np.mean(np.where(matches)[0])) #find centre index
                     if incidence_angles[i] < MAXIMUM_SEARCH_INCIDENCE_ANGLE: #check if solar angle too low
                         regionDict = {"name":regionOfInterest[0], \
+                             "priority":regionOfInterest[1], \
                              "et":ets[i], "utc":et2utc(ets[i]), \
                              "lon":lons[i], "lat":lats[i], \
                              "incidenceAngle":incidence_angles[i], "lst":lst[i]}
@@ -821,14 +828,21 @@ def findMatchingRegions(orbit_list, silent=True):
     """add flag to file where obsevations match a region of interest"""
     for orbit in orbit_list:
         if "daysideRegions" in orbit.keys():
+            priority = 999 #start with large number = lowest priority
             for region in orbit["daysideRegions"]:
+                    
                 if not silent: 
                     print("Match found: %s, orbit %i, incidence angle %0.1f at %s" %(region["name"], orbit["orbitNumber"], region["incidenceAngle"], region["utc"]))
     
                 if region["name"] in nadirRegionsObservations.keys():
-                    orbit["dayside"]["observationName"] = nadirRegionsObservations[region["name"]]
-                    if not silent: 
-                        print("%s observation added" %nadirRegionsObservations[region["name"]])
+                    if region["priority"] < priority: #if region has higher priority, write to file
+                        priority = region["priority"] #save new priority for checking against next region
+                        orbit["dayside"]["observationName"] = nadirRegionsObservations[region["name"]]
+                        if not silent: 
+                            print("%s observation added" %nadirRegionsObservations[region["name"]])
+                    else:
+                        print("Matching region of interest found (%s), but superseded by higher priority region (%s)" %(region["name"], orbit["dayside"]["observationName"]))
+
                 else:
                     print("Warning: %s not found in observation list" %region["name"])
     
