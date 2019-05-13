@@ -59,7 +59,7 @@ orbitList = step4(orbitList, mtpConstants, paths)
 
 #NEW WEBPAGES ARE UPDATED AUTOMATICALLY IN THE LOCAL OBS_DIRECTORY
 
-"""only run step5 when final COP rows are delivered"""
+"""only run step5 when final COP rows are delivered. Must be at BIRA"""
 step5(paths, devPaths)
 #COPY FILES TO THE DEV SITE
 #RUN THE SCRIPT TO COPY THEM TO THE PROD SITE

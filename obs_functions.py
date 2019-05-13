@@ -722,6 +722,40 @@ def addMappsEvents(orbit_list, mtpConstants, paths):
 
 
 
+def plotRegionsOfInterest(paths, occultationRegionsOfInterest, occultationRegionsObservations, nadirRegionsOfInterest, nadirRegionsObservations):
+    """Plot all regions of interest and observation types on empty map"""
+
+    def plotRectangle(axis, lon_corner0, lon_corner1, lat_corner0, lat_corner1, colour):
+        
+        corners = np.asfarray([[lon_corner0, lat_corner0], \
+                   [lon_corner0, lat_corner1], \
+                   [lon_corner1, lat_corner1], \
+                   [lon_corner1, lat_corner0], \
+                   [lon_corner0, lat_corner0]])
+        axis.plot(corners[:, 0], corners[:, 1], color=colour)
+    
+    
+    fig = plt.figure(figsize=(FIG_X, FIG_Y))
+    ax = fig.add_subplot(111, projection="mollweide")
+    ax.grid(True)
+    plt.title("Nadir (red) and occultation (blue) regions of interest")
+    
+    horizontal_offset = 0.1
+    for regionOfInterest in occultationRegionsOfInterest:
+        
+        plotRectangle(ax, regionOfInterest[4]/sp.dpr(), regionOfInterest[5]/sp.dpr(), regionOfInterest[2]/sp.dpr(), regionOfInterest[3]/sp.dpr(), "b")
+        ax.annotate(regionOfInterest[0]+" "+occultationRegionsObservations[regionOfInterest[0]], [np.mean((regionOfInterest[4], regionOfInterest[5]))/sp.dpr()+horizontal_offset, np.mean((regionOfInterest[2], regionOfInterest[2], regionOfInterest[3]))/sp.dpr()], color="b")
+    
+    for regionOfInterest in nadirRegionsOfInterest:
+        verticalOffset = 0.1
+        plotRectangle(ax, regionOfInterest[4]/sp.dpr(), regionOfInterest[5]/sp.dpr(), regionOfInterest[2]/sp.dpr(), regionOfInterest[3]/sp.dpr(), "r")
+        ax.annotate(regionOfInterest[0]+" "+nadirRegionsObservations[regionOfInterest[0]], [np.mean((regionOfInterest[4], regionOfInterest[5]))/sp.dpr()+horizontal_offset, np.mean((regionOfInterest[2], regionOfInterest[2], regionOfInterest[3]))/sp.dpr()+verticalOffset], color="r")
+    
+    plt.savefig(os.path.join(paths["OBS_DIRECTORY"], "regions_of_interest.png"))
+    plt.close()
+    
+
+
 def regionsOfInterestNadir(orbit_list, regions_of_interest, silent=True):
     """check for nadir observations near regions of interest"""
     #loop through each observation, making lat/lon steps and check against regions of interest
@@ -1336,6 +1370,14 @@ def makeCompleteOrbitPlan(orbit_list):
             else:
                 irIngressHigh = genericObsTypes["irIngressHigh"] #use preselected targeted obs
                 irIngressLow = genericObsTypes["irIngressLow"] #use preselected targeted obs
+                #determine if merged or grazing, then set UVIS accordingly
+                if "merged" in orbit["allowedObservationTypes"]:
+                    uvisIngress = "uvisMerged"
+                elif "grazing" in orbit["allowedObservationTypes"]:
+                    uvisIngress = "uvisGrazing"
+                else:
+                    print("Error: orbit type %i must have a merged or grazing occulatation" %orbitType)
+                    
             irEgressHigh = ""
             irEgressLow = ""
             uvisEgress = ""
@@ -1353,11 +1395,9 @@ def makeCompleteOrbitPlan(orbit_list):
                     uvisDayside = "uvisDayside"
     
             elif genericObsTypes["irDayside"] == "": #LNO off
-                if orbitType == 6:
                     irDayside = ""
                     uvisDayside = "uvisDayside"
-                else:
-                    uvisDayside = "uvisDayside"
+
             else: #use preselected targeted obs
                 if orbitType == 6:
                     print("Error: orbit type 6 cannot have LNO dayside")
@@ -2122,7 +2162,7 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants):
                 observationName = finalOrbitPlan[obsType]
                 observationDict = occultationObservationDict
                 
-                outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=False)
+                outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
                     
                 finalOrbitPlan[obsType+"ObservationName"] = observationName
                 finalOrbitPlan[obsType+"Orders"] = diffractionOrders
@@ -2139,7 +2179,7 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants):
                 observationName = finalOrbitPlan[obsType]
                 observationDict = occultationObservationDict
                 
-                outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=False)
+                outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
                     
                 finalOrbitPlan[obsType+"ObservationName"] = observationName
                 finalOrbitPlan[obsType+"Orders"] = diffractionOrders
@@ -2155,7 +2195,7 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants):
             observationName = finalOrbitPlan[obsType]
             observationDict = nadirObservationDict
             
-            outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=False)
+            outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
                 
             finalOrbitPlan[obsType+"ObservationName"] = observationName
             finalOrbitPlan[obsType+"Orders"] = diffractionOrders
@@ -2190,7 +2230,7 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants):
             observationName = finalOrbitPlan[obsType]
             observationDict = nadirObservationDict
             
-            outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=False)
+            outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
                 
             finalOrbitPlan[obsType+"ObservationName"] = observationName
             finalOrbitPlan[obsType+"Orders"] = diffractionOrders
@@ -3581,6 +3621,8 @@ def step1(orbitList, mtpConstants, paths):
     orbitList = regionsOfInterestOccultation(orbitList, occultationRegionsOfInterest)
     printStatement("Adding flags to file where obsevations match a region of interest")
     orbitList = findMatchingRegions(orbitList)
+#    printStatement("Plotting occultation and nadir regions of interest")
+#    plotRegionsOfInterest(paths, occultationRegionsOfInterest, occultationRegionsObservations, nadirRegionsOfInterest, nadirRegionsObservations)
     printStatement("Adding generic orbit plan to orbit list (no nightsides or limbs, to be added manually)")
     orbitList = makeGenericOrbitPlan(orbitList)
     printStatement("Writing generic observation plan to file")
