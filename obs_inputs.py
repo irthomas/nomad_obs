@@ -16,6 +16,8 @@ PATCHES:
     E.G. 121, 149, 165, 186, 188, 190
     E.G. 121, 134, 149, 165, 168, 186
     
+    ADD 164 ONLY LIMB
+    
     ADD LNO OCCULTATION USING SAME ORDER
     ADD LNO FIXED LINE FOR OCC 16 ROWS
     
@@ -51,16 +53,6 @@ SOC_JOINT_OBSERVATION_TYPES = [
 DON'T MODIFY OR DELETE ANY OBSERVATIONS - JUST ADD NEW ONES"""
 #name:[[orders], int time, rhythm, lines, so=0/lno=1]
 occultationObservationDict = {
-"BgSubTest 03":[[121,134,149,165,168,190], 4, 1, 16, 0],
-"BgSubTest 04":[[119,136,148,166,168,189], 4, 1, 16, 0],
-
-"Dust H2O 01":[[119,130,145,171,191,0], 4, 1, 16, 0],
-"Water Ice 01":[[119,140,153,170,191,0], 4, 1, 16, 0],
-"CO 01":[[167,188,189,190,191,0], 4, 1, 16, 0],
-"HDO 01":[[168,134,124,129,190,0], 4, 1, 16, 0],
-"AER 01":[[119,133,143,154,169,0], 4, 1, 16, 0],
-"CH4 01":[[168,133,134,135,136,0], 4, 1, 16, 0],
-
 "Nominal Science 1xCO2 LA01":[[168,134,190,121,149,0], 4, 1, 16, 0], #no CO2 50-120km
 "Nominal Science 1xCO2 HA01":[[168,134,190,121,165,0], 4, 1, 16, 0],
 "Nominal Science 1xCO2 LA02":[[168,134,190,119,149,0], 4, 1, 16, 0], #no CO2 50-120km
@@ -70,6 +62,24 @@ occultationObservationDict = {
 "Nominal Science 1xCO2 HA03":[[168,134,189,121,165,0], 4, 1, 16, 0],
 "Nominal Science 1xCO2 LA04":[[168,136,189,119,149,0], 4, 1, 16, 0], #no CO2 50-120km
 "Nominal Science 1xCO2 HA04":[[168,136,189,119,165,0], 4, 1, 16, 0],
+
+"Nominal Science 1xCO2 LA05":[[190,169,148,136,121,0], 4, 1, 16, 0], #SWITCHING TO 169 FOR WATER. NO SCI2
+"Nominal Science 1xCO2 LA06":[[190,169,148,134,121,0], 4, 1, 16, 0], #SWITCHING TO 169 FOR WATER. NO SCI2
+
+"BgSubTest 03":[[121,134,149,165,168,190], 4, 1, 16, 0],
+"BgSubTest 04":[[119,136,148,166,168,189], 4, 1, 16, 0],
+
+"BgSubTest 05":[[121,134,148,167,169,190], 4, 1, 16, 0], #SWITCHING TO 169 FOR WATER
+"BgSubTest 06":[[121,136,148,167,169,189], 4, 1, 16, 0], #SWITCHING TO 169 FOR WATER
+
+
+"Dust H2O 01":[[119,130,145,171,191,0], 4, 1, 16, 0],
+"Water Ice 01":[[119,140,153,170,191,0], 4, 1, 16, 0],
+"CO 01":[[167,188,189,190,191,0], 4, 1, 16, 0],
+"HDO 01":[[168,134,124,129,190,0], 4, 1, 16, 0],
+"AER 01":[[119,133,143,154,169,0], 4, 1, 16, 0],
+"CH4 01":[[168,133,134,135,136,0], 4, 1, 16, 0],
+
 
 
 "Nominal Science with CO 01":[[169,134,186,121,147,0], 4, 1, 16, 0], #186 for CO
@@ -130,16 +140,23 @@ occultationObservationDict = {
 nadirObservationDict = {
 "Nominal 6SUBD 01":[[149,134,168,119,190,196], 220, 15, 144, 1],
 "H2O 2SUBD 01":[[167,169], 200, 15, 144, 1],
+"H2O 3SUBD 01":[[167,169], 200, 15, 144, 1],
 "HDO CO 3SUBD 01":[[167,121,190], 205, 15, 144, 1],
+"HDO CO 3SUBD 02":[[168,121,190], 205, 15, 144, 1],
 "AER H2Oi 3SUBD 01":[[169,131,127], 205, 15, 144, 1],
-"CH4 2SUBD 02":[[134,136], 200, 15, 144, 1], #USE FOR CURIOSITY
+"CH4 2SUBD 02":[[134,136], 200, 15, 144, 1], #OLD TARGET FOR CURIOSITY. USE OCCASIONALLY
 "CH4 3SUBD 01":[[168,134,136], 205, 15, 144, 1],
+"CH4 3SUBD 03":[[134,134,134], 205, 15, 144, 1],
 "CO 2SUBD 02":[[167,189], 200, 15, 144, 1],
 "HDO Fullscan":[["COP#140"], 0, 15, 144, 1],
 
-"HDO H2O 2SUBD 02":[[168,124], 200, 15, 144, 1], #USE FOR SOFIA/EXES JOINT TARGETS
                  
-"Surface 3SUBD 01":[[168, 190, 191], 205, 15, 144, 1], #OLD TARGET FOR FA NADIR TARGETS
+"HDO H2O 2SUBD 02":[[168,124], 200, 15, 144, 1], #S.AOKI
+"HDO H2O 2SUBD 03":[[121,168], 200, 15, 144, 1],
+
+"H20 CO 2SUBD 01":[[168,189], 200, 15, 144, 1],
+"CO H20 3SUBD 01":[[191,190,168], 205, 15, 144, 1],
+"Nominal 4SUBD 01":[[168,134,121,190], 195, 15, 144, 1],
                  
 "Limb 2SUBD 01":[[161,162], 200, 15, 144, 1],
 "Limb 2SUBD 02":[[162,163], 200, 15, 144, 1],
@@ -147,14 +164,14 @@ nadirObservationDict = {
 "Limb 2SUBD 04":[[164,165], 200, 15, 144, 1],
 "Limb 2SUBD 05":[[165,166], 200, 15, 144, 1],
 "Limb 2SUBD 06":[[166,167], 200, 15, 144, 1],
+"Nominal Limb 01":[[164,169], 200, 15, 144, 1], #NEW LIMB <50KM
+"Limb 2SUBD 07":[[164,164], 200, 15, 144, 1], #NEW LIMB >50KM
 
 "CO2 Fullscan":[["COP#144"], 0, 15, 144, 1],
 "CO Fullscan":[["COP#124"], 0, 15, 144, 1],
 "H2O Fullscan":[["COP#116"], 0, 15, 144, 1],
 "CH4 Fullscan":[["COP#104"], 0, 15, 144, 1],
 
-"Nominal Nightside 02":[[162,163], 200, 15, 144, 1],
-"Nominal Limb 01":[[164,169], 200, 15, 144, 1],
 
 #surface ice variable rhythms  #MTP010+ when lst is low
 "Surface Ice 4SUBD 8S 01":[[199, 194, 193, 187], 220, 8, 144, 1],
@@ -172,18 +189,14 @@ nadirObservationDict = {
 "Surface Ice 2SUBD 4S 03":[[193, 194], 205, 4, 144, 1],
 "Surface Ice 2SUBD 4S 04":[[199, 187], 205, 4, 144, 1],
 
-"LNO Ice Index 2SUBD 01":[[153, 158], 200, 15, 144, 1], #MTP013+ FS
 
-
-"Surface 3SUBD 02":[[191,194,196], 205, 15, 144, 1], #USE FOR FA NADIR TARGETS MTP010+
-
-
-
+"LNO Ice Index 2SUBD 01":[[153, 158], 200, 15, 144, 1], #MTP013+ F.SCHMIDT
+"Surface 3SUBD 02":[[191,194,196], 205, 15, 144, 1], #USE FOR F.ALTIERI NADIR TARGETS MTP010+
+"CH4 H2O 2SUBD 01":[[168,134], 200, 15, 144, 1], #USE FOR CURIOSITY ALTERNATING WITH CO
 
 
 #old
 "Nominal 6SUBD 02":[[167,134,168,121,189,197], 220, 15, 144, 1],
-"Nominal 4SUBD 01":[[168,134,121,190], 195, 15, 144, 1],
 "Nominal 3SUBD 01":[[167,169,190], 205, 15, 144, 1],
 
 "CH4 2SUBD 01":[[167,134], 200, 15, 144, 1],
@@ -192,8 +205,10 @@ nadirObservationDict = {
 "HDO 3SUBD 01":[[121,171,124], 205, 15, 144, 1],
 "AER H2Oi CO2i 4SUBD 01":[[164,169,131,127], 195, 15, 144, 1],
 "HDO H2O 2SUBD 01":[[121,169], 200, 15, 144, 1],
+"Surface 3SUBD 01":[[168, 190, 191], 205, 15, 144, 1], #OLD TARGET FOR FA NADIR TARGETS
 
 "Nominal Nightside 01":[[169,190], 200, 15, 144, 1],
+"Nominal Nightside 02":[[162,163], 200, 15, 144, 1],
 
 
 }
@@ -406,21 +421,21 @@ def getMtpConstants(mtpNumber):
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 17:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
-        copVersion = "" #desired cop table folder - remember to update if patched
+        mtpStart = "2019-07-13T14:46:20Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2019-08-10T12:57:59Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 18:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
-        copVersion = "" #desired cop table folder - remember to update if patched
+        mtpStart = "2019-08-10T14:55:55Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2019-08-22T12:00:55Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 19:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
-        copVersion = "" #desired cop table folder - remember to update if patched
+        mtpStart = "2019-09-14T16:36:17Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2019-10-05T13:48:59Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 20:
@@ -430,7 +445,7 @@ def getMtpConstants(mtpNumber):
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
-
+    #add corrections for certain changes in planning since beginning of mission
     mappsEventFilename = "LEVF_M%03d_SOC_PLANNING.EVF" %mtpNumber
     if mtpNumber < 13:
         acsStartAltitude = 250 #km
@@ -444,7 +459,7 @@ def getMtpConstants(mtpNumber):
     else:
         soCentreDetectorLine = 128 #boresight corrected from MTP005 onwards
 
-
+    #convert input times if given, if not leave blank and throw error in main script asking for inputs
     if mtpStart != "":
         utcstringStart = convertInputTimeStrings(mtpStart)
     else:
@@ -548,26 +563,13 @@ occultationRegionsObservations = \
 "NILI FOSSAE COLOE FOSSAE":"CH4 01",
 }
 
-LATITUDE_RANGE = 5 #degrees
-LONGITUDE_RANGE = 5 #degress
 
 #name, priority, min lat, max lat, min lon, max lon
-nadirRegionsOfInterest = \
-[
-["NILI FOSSAE", 25, 23.0-LATITUDE_RANGE, 23.0+LATITUDE_RANGE, 73.0-LONGITUDE_RANGE, 73.0+LONGITUDE_RANGE],
-["MAWRTH VALLIS-ARAM CHAOS", 24, 14.0-LATITUDE_RANGE, 14.0+LATITUDE_RANGE, -20.0-LONGITUDE_RANGE, -20.0+LONGITUDE_RANGE],
-["MERIDIANI SULPHATES", 23, 0.0-LATITUDE_RANGE, 0.0+LATITUDE_RANGE, 0.0-LONGITUDE_RANGE, 0.0+LONGITUDE_RANGE],
-
-["AEOLIS MENSAE MFF", 3, -2.8-LATITUDE_RANGE,-2.8+LATITUDE_RANGE,145.7-LONGITUDE_RANGE,145.7+LONGITUDE_RANGE],
-["INSIGHT", 2, 4.5-LATITUDE_RANGE,4.5+LATITUDE_RANGE,135.0-LONGITUDE_RANGE,135.0+LONGITUDE_RANGE],
-["CURIOSITY", 1, -4.5895-LATITUDE_RANGE,-4.5895+LATITUDE_RANGE,137.4417-LONGITUDE_RANGE,137.4417+LONGITUDE_RANGE],
-]
 
 LATITUDE_RANGE = 1 #degrees
 LONGITUDE_RANGE = 1 #degress
 
-
-nadirRegionsOfInterest.extend( [
+nadirRegionsOfInterest = [
 ["ACIDALIA MUD VOLCANOES NE", 4, 44.68-LATITUDE_RANGE,44.68+LATITUDE_RANGE,-20.80-LONGITUDE_RANGE,-20.80+LONGITUDE_RANGE],
 ["ACIDALIA MUD VOLCANOES BASIN", 5, 40.93-LATITUDE_RANGE,40.93+LATITUDE_RANGE,-25.61-LONGITUDE_RANGE,-25.61+LONGITUDE_RANGE],
 ["CERBERUS FOSSAE", 6, 10.14-LATITUDE_RANGE,10.14+LATITUDE_RANGE,157.40-LONGITUDE_RANGE,157.40+LONGITUDE_RANGE],
@@ -588,7 +590,28 @@ nadirRegionsOfInterest.extend( [
 ["EAST THAUMASIA", 20, -31.0-LATITUDE_RANGE,-31.0+LATITUDE_RANGE,-71.0-LONGITUDE_RANGE,-71.0+LONGITUDE_RANGE],
 ["ULYSSES FOSSAE", 21, 10.5-LATITUDE_RANGE,10.5+LATITUDE_RANGE,-122.5-LONGITUDE_RANGE,-122.5+LONGITUDE_RANGE],
 ["COPRATES RISE", 22, -21.0-LATITUDE_RANGE,-21.0+LATITUDE_RANGE,-60.0-LONGITUDE_RANGE,-60.0+LONGITUDE_RANGE],
+]
+
+LATITUDE_RANGE = 3 #degrees
+LONGITUDE_RANGE = 3 #degress
+
+nadirRegionsOfInterest.extend([
+["NILI FOSSAE", 25, 23.0-LATITUDE_RANGE, 23.0+LATITUDE_RANGE, 73.0-LONGITUDE_RANGE, 73.0+LONGITUDE_RANGE],
+["MAWRTH VALLIS-ARAM CHAOS", 24, 14.0-LATITUDE_RANGE, 14.0+LATITUDE_RANGE, -20.0-LONGITUDE_RANGE, -20.0+LONGITUDE_RANGE],
+["MERIDIANI SULPHATES", 23, 0.0-LATITUDE_RANGE, 0.0+LATITUDE_RANGE, 0.0-LONGITUDE_RANGE, 0.0+LONGITUDE_RANGE],
 ])
+
+LATITUDE_RANGE = 5 #degrees
+LONGITUDE_RANGE = 5 #degress
+
+nadirRegionsOfInterest.extend([
+["AEOLIS MENSAE MFF", 3, -2.8-LATITUDE_RANGE,-2.8+LATITUDE_RANGE,145.7-LONGITUDE_RANGE,145.7+LONGITUDE_RANGE],
+["INSIGHT", 2, 4.5-LATITUDE_RANGE,4.5+LATITUDE_RANGE,135.0-LONGITUDE_RANGE,135.0+LONGITUDE_RANGE],
+["CURIOSITY", 1, -4.5895-LATITUDE_RANGE,-4.5895+LATITUDE_RANGE,137.4417-LONGITUDE_RANGE,137.4417+LONGITUDE_RANGE],
+])
+
+
+
 
 
 
@@ -600,7 +623,7 @@ nadirRegionsObservations = \
 "AEOLIS MENSAE MFF":"CH4 2SUBD 02",
 
 "INSIGHT":"H2O 2SUBD 01",
-"CURIOSITY":"CH4 2SUBD 02",
+"CURIOSITY":"CH4 H2O 2SUBD 01",
 
 "ACIDALIA MUD VOLCANOES NE":"CH4 2SUBD 02",
 "ACIDALIA MUD VOLCANOES BASIN":"CH4 2SUBD 02",
@@ -642,8 +665,8 @@ nadirRegionsObservations = \
 
 
 """For nominal science observations, use a different order combination for low and high altitude?"""
-USE_TWO_SCIENCES = True
-#USE_TWO_SCIENCES = False
+#USE_TWO_SCIENCES = True
+USE_TWO_SCIENCES = False
 
 """don't put 1 odd 1 even (otherwise most ingresses/egresses will be of a particular type!)"""
 OCCULTATION_KEYS = [
@@ -652,60 +675,60 @@ OCCULTATION_KEYS = [
 
 
 #        "132 with 1xDark", #special calibration
-        "BgSubTest 03", 
-        "CH4 01",
         "BgSubTest 03",
+        "CH4 01",
+        "BgSubTest 04",
         "AER 01",
         "Nominal Science with CO 01", 
-        "BgSubTest 03", 
+        "BgSubTest 05",
+        "BgSubTest 06",
         "BgSubTest 03",
-        "BgSubTest 04",
 #        "133 with 1xDark", #special calibration
         "Dust H2O 01",
-        "Nominal Science 1xCO2 LA01",
-        "BgSubTest 03",
+        "Nominal Science 1xCO2 LA05",
+        "BgSubTest 04",
         "Water Ice 01",
         "Nominal Science with CO 01",
         "CO 01",
-        "Nominal Science 1xCO2 LA01",
+        "Nominal Science 1xCO2 LA06",
 #        "All Fullscan Fast", #only for long occultations
-        "Nominal Science 1xCO2 LA03",
+        "Nominal Science 1xCO2 LA05",
+        "BgSubTest 05",
+        "BgSubTest 06",
         "BgSubTest 03",
-        "BgSubTest 03",
+#        "Nominal Science 1xCO2 LA02",
         "BgSubTest 04",
-        "Nominal Science 1xCO2 LA02",
-        "BgSubTest 03",
         "134 with 1xDark", #special calibration
         "HDO 01",
-        "BgSubTest 03",
+        "BgSubTest 05",
         "Nominal Science with CO 01",
-        "BgSubTest 04",
+        "BgSubTest 06",
         "CO 01",
         "CO Fullscan Fast",
         "CH4 01",
         "BgSubTest 03",
         "AER 01",
         "BgSubTest 04",
-        "Nominal Science 1xCO2 LA01",
-        "BgSubTest 03",
-        "BgSubTest 03",
+        "Nominal Science 1xCO2 LA06",
+        "BgSubTest 05",
+        "BgSubTest 06",
 #        "135 with 1xDark", #special calibration
         "Dust H2O 01",
-        "Nominal Science 1xCO2 LA01",
+#        "Nominal Science 1xCO2 LA01",
         "BgSubTest 03",
         "Water Ice 01",
-        "BgSubTest 03",
         "BgSubTest 04",
+        "BgSubTest 05",
         "Nominal Science with CO 01",
         "CO 01",
-        "Nominal Science 1xCO2 LA01",
+        "Nominal Science 1xCO2 LA05",
         "CO2 Fullscan Fast",
-        "BgSubTest 03",
-        "Nominal Science 1xCO2 LA03",
-        "BgSubTest 03",
+        "BgSubTest 06",
+        "Nominal Science 1xCO2 LA06",
+        "BgSubTest 05",
 #        "134 with 1xDark", #special calibration
-        "Nominal Science 1xCO2 LA02",
-        "BgSubTest 03",
+#        "Nominal Science 1xCO2 LA02",
+        "BgSubTest 06",
 #        "All Fullscan Slow", #use very rarely, good for checking boresight alignment
         "HDO 01",
 
@@ -721,14 +744,14 @@ UVIS_OCCULTATION_KEYS = [
         ] * 100
         
 OCCULTATION_MERGED_KEYS = [
-        "Nominal Science 1xCO2 LA01",
-        "BgSubTest 03",
-        "Nominal Science 1xCO2 LA04",
-        "BgSubTest 03",
+        "Nominal Science 1xCO2 LA05",
+        "BgSubTest 05",
+        "Nominal Science 1xCO2 LA05",
+        "BgSubTest 06",
         "All Fullscan Fast",
         "CH4 01",
         "134 with 1xDark", #special calibration
-        ] * 10
+        ] * 100
 
         
 OCCULTATION_GRAZING_KEYS = [
@@ -737,30 +760,38 @@ OCCULTATION_GRAZING_KEYS = [
         "Nominal Science 1xCO2 LA01",
         "CH4 01",
         "Nominal Science 1xCO2 LA01",
-        ] * 10
+        ] * 100
 
 OCCULTATION_ACS_RIDEALONG_KEYS = [
-        "ACS Ridealong Science 6SUBD 01",
-        "ACS Ridealong Science 6SUBD 02",
+#        "ACS Ridealong Science 6SUBD 01",
+#        "ACS Ridealong Science 6SUBD 02",
         "ACS Ridealong Science 2SUBD 01",
-        ]
+        ] * 100
 
         
 NADIR_KEYS = [
-        "LNO Ice Index 2SUBD 01", #MTP013+
-        "H2O 2SUBD 01",
-        "HDO H2O 2SUBD 01",
-        "HDO CO 3SUBD 01",
-        "AER H2Oi 3SUBD 01",
-        "CH4 2SUBD 02",
-        "LNO Ice Index 2SUBD 01", #MTP013+
-        "CH4 3SUBD 01",
-        "CO 2SUBD 02",
-        "Nominal 6SUBD 01",
-        "CH4 2SUBD 02",
-        "CO 2SUBD 02",
-        "HDO H2O 2SUBD 01",
+        "LNO Ice Index 2SUBD 01", #MTP013+ F.SCHMIDT
+        "H2O 2SUBD 01", #167 & 169
+        "HDO H2O 2SUBD 02", #168 & 124 S.AOKI
+        "HDO CO 3SUBD 02", #121, 168, 190
+        "AER H2Oi 3SUBD 01", #127, 131, 169 AEROSOLS
+        "CH4 3SUBD 01", #134, 136, 168
+        "HDO H2O 2SUBD 03", #121 & 168 
+        "Nominal 6SUBD 01", #6 ORDERS DUST
+        "H20 CO 2SUBD 01", #168, 190
+        "HDO H2O 2SUBD 03", #121 & 168 
+        "CO H20 3SUBD 01", #191, 190, 168
+        "CH4 3SUBD 03", #134 x 3
+        "Nominal 4SUBD 01", #121, 134, 168, 190
         
+
+#        "HDO CO 3SUBD 01", #121, 167, 190
+#        "CH4 2SUBD 02", #134 & 136
+#        "LNO Ice Index 2SUBD 01", #MTP013+ F.SCHMIDT
+#        "CH4 2SUBD 02", #134 & 136
+#        "CO 2SUBD 02", #167 & 189
+#        "HDO H2O 2SUBD 01", #121 & 169
+#        "CO 2SUBD 02", #167 & 189
 
 #        "Surface Ice 4SUBD 8S 01",  #MTP010+ #only to be added when 6 < LST < 7
 #        "Surface Ice 6SUBD 8S 01",
@@ -787,10 +818,11 @@ UVIS_NADIR_KEYS = [
 
         
 #limb 3 and 4 are more important than the others
+#ORDER 164 FOR LIMBS > 50KM, CONTINUE 163-165 COMBINATIONS FOR CASSIS LIMBS
 NADIR_LIMB_KEYS = [
 #        "Limb 2SUBD 01",
-        "Limb 2SUBD 03",
-        "Limb 2SUBD 04",
+#        "Limb 2SUBD 03",
+#        "Limb 2SUBD 04",
 #        "Limb 2SUBD 02",
 #        "Limb 2SUBD 03",
 #        "Limb 2SUBD 04",
@@ -800,7 +832,9 @@ NADIR_LIMB_KEYS = [
 #        "Limb 2SUBD 06",
 #        "Limb 2SUBD 03",
 #        "Limb 2SUBD 04",
-        ] * 15
+        "Limb 2SUBD 07",
+        "Nominal Limb 01",
+        ] * 100
 
 NADIR_NIGHTSIDE_KEYS= [
         "Nominal Nightside 02",

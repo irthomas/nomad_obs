@@ -22,6 +22,10 @@ import xlsxwriter
 import xlrd
 import spiceypy as sp
 
+import MySQLdb
+import decimal
+
+
 from obs_config import BASE_DIRECTORY, COP_TABLE_DIRECTORY, OBS_DIRECTORY
 #from run_planning import mtpNumber
 from obs_inputs import SOC_JOINT_OBSERVATION_NAMES, SOC_JOINT_OBSERVATION_TYPES, getMtpConstants
@@ -1612,8 +1616,9 @@ def addCorrectNadirObservations(orbit_list):
 
 
 
-"""function to read in cop tables, given channel and name"""
 def outputCopTable(copVersion,channel,cop):
+    """function to read in cop tables, given channel and name"""
+
     if channel=="so" or channel=="lno":
         csvFilename=COP_TABLE_DIRECTORY+os.sep+"%s" %copVersion+os.sep+"%s_%s_table.csv" %(channel,cop)
     elif channel=="uvis":
@@ -2339,24 +2344,32 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, paths):
 #            print(orbit["orbitNumber"])
             if "ingress" in orbit["allowedObservationTypes"]:
                 ingressCounter += 1
+                if ingressCounter == len(uvisInputDict["uvis_ingress_occultations"]):
+                    print("Error: insufficient COP rows, index %i" %ingressCounter)
                 copRow = uvisInputDict["uvis_ingress_occultations"][ingressCounter]
                 finalOrbitPlan["uvisIngressCopRows"]["scienceCopRow"] = copRow
                 finalOrbitPlan["uvisIngressCopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
         
             if "merged" in orbit["allowedObservationTypes"]: #merged is same as ingress
                 ingressCounter += 1
+                if ingressCounter == len(uvisInputDict["uvis_ingress_occultations"]):
+                    print("Error: insufficient COP rows, index %i" %ingressCounter)
                 copRow = uvisInputDict["uvis_ingress_occultations"][ingressCounter]
                 finalOrbitPlan["uvisIngressCopRows"]["scienceCopRow"] = copRow
                 finalOrbitPlan["uvisIngressCopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
         
             if "grazing" in orbit["allowedObservationTypes"]: #grazing is taken from a different file but added to ingress orbit plan
                 grazingCounter += 1
+                if grazingCounter == len(uvisInputDict["uvis_grazing_occultations"]):
+                    print("Error: insufficient COP rows, index %i" %grazingCounter)
                 copRow = uvisInputDict["uvis_grazing_occultations"][grazingCounter]
                 finalOrbitPlan["uvisIngressCopRows"]["scienceCopRow"] = copRow
                 finalOrbitPlan["uvisIngressCopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
         
             if "egress" in orbit["allowedObservationTypes"]:
                 egressCounter += 1
+                if egressCounter == len(uvisInputDict["uvis_egress_occultations"]):
+                    print("Error: insufficient COP rows, index %i" %egressCounter)
                 copRow = uvisInputDict["uvis_egress_occultations"][egressCounter]
                 finalOrbitPlan["uvisEgressCopRows"]["scienceCopRow"] = copRow
                 finalOrbitPlan["uvisEgressCopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
@@ -2536,7 +2549,129 @@ def writeIrCopRowsTxt(orbit_list, mtpConstants, paths):
 
 
 
+class obsDB(object):
+    #db=MySQLdb.connect(host="sqlprod1-ae",user='nomad_user',passwd='Kr7NkoaN',db='nomad')
+    def connect(self):
+        """replace with ini script reader"""
+        host = "sqldatadev2-ae"
+        user = "nomad_user"
+        passwd = "Bt11Mw5X"
+        db = "data_nomad"
+        print("Connecting to database %s" %host)
+        self.db = MySQLdb.connect(host=host, user=user, passwd=passwd, db=db)
+        
+    def __init__(self):
+        self.connect()
+        self.cursor = self.db.cursor()
 
+    def close(self):
+        print("Disconnecting from mysql database")
+        self.cursor.close()
+        self.db.close()
+        
+
+    def query(self, input_query):
+        self.cursor.execute((input_query))
+        output = self.cursor.fetchall()
+        return output
+
+
+    def read_table(self, table_name):
+        query_string = "SELECT * FROM %s" %table_name
+        table = self.query(query_string)
+
+        new_table = []
+        for row in table:
+            new_table.append([float(element) if type(element) == decimal.Decimal else element for element in row])
+        
+        return new_table
+    
+    def convert_table_datetimes(self, table_fields, table_rows):
+        """convert all spice format strings to datetimes in preparation for writing sql"""
+        table_fields_not_key_datetimes = [True if "datetime" in field["type"] else False for field in table_fields if "primary" not in field.keys()]
+        table_rows_datetime = []
+        for table_row in table_rows:
+            table_row_datetime = []
+            for table_element, table_is_datetime in zip(table_row, table_fields_not_key_datetimes):
+                if table_is_datetime and table_element != "-": #normal datetimes
+                    table_row_datetime.append(datetime.strptime(table_element, SPICE_DATETIME_FORMAT))
+                elif table_element == "-": #any blank values in datetime or other
+                    table_row_datetime.append("NULL")
+                else:
+                    table_row_datetime.append(table_element)
+            table_rows_datetime.append(table_row_datetime)
+        
+        return table_rows_datetime
+
+    
+    def insert_rows(self, table_name, table_fields, table_rows, check_duplicates=False, duplicate_columns=[]):
+        table_fields_not_key = [field["name"] for field in table_fields if "primary" not in field.keys()]
+        if len(table_fields_not_key) != len(table_rows[0]):
+            print("Error: Field names and data are not the same length")
+            
+        if check_duplicates: #check if any column value already exists. Use on datetimes primarily
+            existing_table = self.read_table(table_name) 
+            
+
+        print("Inserting %i rows into table %s" %(len(table_rows), table_name))
+        for row_index, table_row in enumerate(table_rows):
+            duplicates = 0
+            if check_duplicates:
+                for existing_row in existing_table:
+                    for column_number in duplicate_columns:
+                        if table_row[column_number] == existing_row[column_number+1]:
+                            duplicates += 1
+                            
+            if duplicates > 0:
+                print("Error: Row %i contains elements matching existing rows" %row_index)
+
+            else:
+                query_string = "INSERT INTO %s (" %table_name
+                for table_field in table_fields_not_key:
+                    query_string += "%s, " %table_field
+                query_string = query_string[:-2]
+                query_string += ") VALUES ("
+                for table_element in table_row:
+                    if type(table_element) == str:
+                        if table_element == "NULL":
+                            query_string += "%s, " %table_element #nulls must not have inverted commas
+                        else:
+                            query_string += "\"%s\", " %table_element #other strings must have inverted commas
+                    elif type(table_element) == datetime: #datetimes must be written as strings
+                        query_string += "\"%s\", " %table_element
+                    else: #values must not have inverted commas
+                        query_string += "%s, " %table_element
+                query_string = query_string[:-2]
+                query_string += ")"
+                self.query(query_string)
+
+    def new_table(self, table_name, table_fields):
+        table_not_key = []
+        for field in table_fields:
+            if "primary" in field.keys():
+                table_key = field["name"]
+            else:
+                table_not_key.append(field["name"])
+        
+        query_string = "CREATE TABLE %s" %table_name + "(%s INT NOT NULL AUTO_INCREMENT" %table_key + ", PRIMARY KEY (%s), " %table_key
+        for field in table_fields:
+            if field["name"] != table_key:
+                query_string += "%s %s, " %(field["name"], field["type"])
+        query_string = query_string[:-2]
+        query_string += ")"
+
+        print("Creating table %s" %table_name)
+        self.query(query_string)
+    
+    def drop_table(self, table_name):
+        query_string = "DROP TABLE IF EXISTS %s" %table_name
+        print("Dropping table %s" %table_name)
+        self.query(query_string)
+        
+
+
+
+    
 
 def writeHtmlTable(html_page_name, html_title, html_header, html_rows, paths, linkNameDesc="", extraComments=[]):
     """make html observation file"""
@@ -2581,17 +2716,20 @@ def writeHtmlTable(html_page_name, html_title, html_header, html_rows, paths, li
 
 
 
+
+
 def writeNadirWebpage(orbit_list, mtpConstants, paths):
     """write nadir website page"""
     mtpNumber = mtpConstants["mtpNumber"]
     mappsEventFilename = mtpConstants["mappsEventFilename"]
 
-    htmlHeader = ["Orbit Index", "UTC Start Time", "UTC Centre Time", "UTC End Time", "Duration (s)", \
+    htmlHeader = ["Orbit Index", "Nadir Type", "UTC Start Time", "UTC Centre Time", "UTC End Time", "Duration (s)", \
                 "Start Longitude", "Centre Longitude", "End Longitude", \
                 "Start Latitude", "Centre Latitude", "End Latitude", \
                 "Centre Incidence Angle", "Centre Local Time (hrs)", \
                 "Orbit Type", "IR Observation Name", "IR Description", "UVIS Description", "Orbit Comment"]
     linesToWrite = ["".join(column+"\t" for column in htmlHeader)]
+    sql_table_rows = []
     
     htmlRows = []
     plotData = {"incidence":[], "et":[]}
@@ -2616,7 +2754,7 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths):
             irObservationName = "-"
         comment = "" #no nightside nadir comment
     
-        lineToWrite = [orbit["orbitNumber"], nightside["utcStart"], nightside["utcMidpoint"], nightside["utcEnd"], "%0.1f" %nightside["duration"], \
+        lineToWrite = [orbit["orbitNumber"], "Nightside", nightside["utcStart"], nightside["utcMidpoint"], nightside["utcEnd"], "%0.1f" %nightside["duration"], \
                        "%0.1f" %nightside["lonStart"], "%0.1f" %nightside["lonMidpoint"], "%0.1f" %nightside["lonEnd"], \
                        "%0.1f" %nightside["latStart"], "%0.1f" %nightside["latMidpoint"], "%0.1f" %nightside["latEnd"], \
                        "%0.1f" %nightside["incidenceMidpoint"], "%0.1f" %nightside["lstMidpoint"], \
@@ -2624,13 +2762,12 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths):
                        orbitType, irObservationName, irDescription, uvisDescription, comment
                        ]
         linesToWrite.append("".join(str(element)+"\t" for element in lineToWrite))
+        sql_table_rows.append(lineToWrite)
     
         rowColour = "b2b2b2"
         htmlRow = lineToWrite+[rowColour]
         htmlRows.append(htmlRow)
         
-
-
 
 
 
@@ -2664,7 +2801,7 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths):
             irObservationName = "-"
         comment = orbit["finalOrbitPlan"]["comment"]
     
-        lineToWrite = [orbit["orbitNumber"], dayside["utcStart"], dayside["utcMidpoint"], dayside["utcEnd"], "%0.1f" %dayside["duration"], \
+        lineToWrite = [orbit["orbitNumber"], "Dayside", dayside["utcStart"], dayside["utcMidpoint"], dayside["utcEnd"], "%0.1f" %dayside["duration"], \
                        "%0.1f" %dayside["lonStart"], "%0.1f" %dayside["lonMidpoint"], "%0.1f" %dayside["lonEnd"], \
                        "%0.1f" %dayside["latStart"], "%0.1f" %dayside["latMidpoint"], "%0.1f" %dayside["latEnd"], \
                        "%0.1f" %dayside["incidenceMidpoint"], "%0.1f" %dayside["lstMidpoint"], \
@@ -2672,6 +2809,7 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths):
                        orbitType, irObservationName, irDescription, uvisDescription, comment
                        ]
         linesToWrite.append("".join(str(element)+"\t" for element in lineToWrite))
+        sql_table_rows.append(lineToWrite)
     
         rowColour = "98fab4"
         htmlRow = lineToWrite+[rowColour]
@@ -2713,6 +2851,44 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths):
 
 
 
+    """write occultation data to sql database"""
+    table_fields = [
+            {"name":"obs_id", "type":"int NOT NULL AUTO_INCREMENT", "primary":True}, \
+            {"name":"orbit_number", "type":"int NOT NULL"}, \
+            {"name":"nadir_type", "type":"varchar(100) NOT NULL"}, \
+            {"name":"utc_start_time", "type":"datetime NOT NULL"}, \
+            {"name":"utc_centre_time", "type":"datetime NOT NULL"}, \
+            {"name":"utc_end_time", "type":"datetime NOT NULL"}, \
+            {"name":"duration", "type":"decimal NOT NULL"}, \
+            
+            {"name":"start_longitude", "type":"decimal NOT NULL"}, \
+            {"name":"centre_longitude", "type":"decimal NOT NULL"}, \
+            {"name":"end_longitude", "type":"decimal NOT NULL"}, \
+    
+            {"name":"start_latitude", "type":"decimal NOT NULL"}, \
+            {"name":"centre_latitude", "type":"decimal NOT NULL"}, \
+            {"name":"end_latitude", "type":"decimal NOT NULL"}, \
+    
+            {"name":"centre_incidence_angle", "type":"decimal NOT NULL"}, \
+            {"name":"centre_local_time", "type":"decimal NOT NULL"}, \
+            
+            {"name":"orbit_type", "type":"int NOT NULL"}, \
+            {"name":"ir_observation_name", "type":"varchar(100) NULL DEFAULT NULL"}, \
+            {"name":"ir_description", "type":"varchar(1000) NULL DEFAULT NULL"}, \
+            {"name":"uvis_description", "type":"varchar(1000) NULL DEFAULT NULL"}, \
+            {"name":"orbit_comment", "type":"varchar(1000) NULL DEFAULT NULL"}, \
+            ]
+        
+    db_obj = obsDB()
+#    db_obj.drop_table("nomad_nadirs")
+    db_obj.new_table("nomad_nadirs", table_fields)
+    sql_table_rows_datetime = db_obj.convert_table_datetimes(table_fields, sql_table_rows)
+    db_obj.insert_rows("nomad_nadirs", table_fields, sql_table_rows_datetime, check_duplicates=True, duplicate_columns=[2, 3, 4])
+    
+#    table = db_obj.read_table("nomad_nadirs")
+    db_obj.close()
+
+
 
 
 
@@ -2736,7 +2912,8 @@ def writeOccultationWebpage(orbit_list, mtpConstants, paths):
                 "Start Latitude", alt+" Latitude", "End Latitude", alt+" Local Time (hrs)", \
                 "Orbit Type", "IR Observation Name", "IR Description", "UVIS Description", "Orbit Comment"]
     linesToWrite = ["".join(column+"\t" for column in htmlHeader)]
-    
+    sql_table_rows = []
+
     occultationNames = ["ingress","egress","merged","grazing"]
     irObsTypeNames = {"ingress":["irIngressHigh","irIngressLow"], "merged":["irIngressHigh","irIngressLow"], "grazing":["irIngressHigh","irIngressLow"], "egress":["irEgressLow","irEgressHigh"]}
     uvisObsTypeNames = {"ingress":"uvisIngress", "merged":"uvisIngress", "grazing":"uvisIngress", "egress":"uvisEgress"}
@@ -2792,6 +2969,8 @@ def writeOccultationWebpage(orbit_list, mtpConstants, paths):
                                orbitType, irObservationName, irDescription, uvisDescription, comment
                                ]
                 linesToWrite.append("".join(str(element)+"\t" for element in lineToWrite))
+                sql_table_rows.append(lineToWrite)
+        
             
                 rowColour = occultation["rowColour"]
                 htmlRow = lineToWrite+[rowColour]
@@ -2855,6 +3034,44 @@ def writeOccultationWebpage(orbit_list, mtpConstants, paths):
     plt.legend()
     plt.savefig(os.path.join(paths["HTML_MTP_PATH"], "mtp%03d_occultation_lat.png" %mtpNumber))
     plt.close()
+    
+
+
+    table_fields = [
+            {"name":"obs_id", "type":"int NOT NULL AUTO_INCREMENT", "primary":True}, \
+            {"name":"prime_instrument", "type":"varchar(100) NOT NULL"}, \
+            {"name":"orbit_number", "type":"int NOT NULL"}, \
+            {"name":"occultation_type", "type":"varchar(100) NOT NULL"}, \
+            {"name":"utc_start_time", "type":"datetime NOT NULL"}, \
+            {"name":"utc_transition_time", "type":"datetime NULL DEFAULT NULL"}, \
+            {"name":"utc_end_time", "type":"datetime NOT NULL"}, \
+            {"name":"duration", "type":"decimal NOT NULL"}, \
+            
+            {"name":"start_longitude", "type":"decimal NOT NULL"}, \
+            {"name":"transition_longitude", "type":"decimal NULL DEFAULT NULL"}, \
+            {"name":"end_longitude", "type":"decimal NOT NULL"}, \
+    
+            {"name":"start_latitude", "type":"decimal NOT NULL"}, \
+            {"name":"transition_latitude", "type":"decimal NULL DEFAULT NULL"}, \
+            {"name":"end_latitude", "type":"decimal NOT NULL"}, \
+    
+            {"name":"transition_local_time", "type":"decimal NULL DEFAULT NULL"}, \
+            
+            {"name":"orbit_type", "type":"int NOT NULL"}, \
+            {"name":"ir_observation_name", "type":"varchar(100) NULL DEFAULT NULL"}, \
+            {"name":"ir_description", "type":"varchar(1000) NULL DEFAULT NULL"}, \
+            {"name":"uvis_description", "type":"varchar(1000) NULL DEFAULT NULL"}, \
+            {"name":"orbit_comment", "type":"varchar(1000) NULL DEFAULT NULL"}, \
+    ]
+
+    db_obj = obsDB()
+#    db_obj.drop_table("nomad_occultations")
+#    db_obj.new_table("nomad_occultations", table_fields)
+    table_rows_datetime = db_obj.convert_table_datetimes(table_fields, sql_table_rows)
+    db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime)
+    db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime)
+    db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime, check_duplicates=True, duplicate_columns=[3, 4, 5])
+    db_obj.close()
     
 
 
