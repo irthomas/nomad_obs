@@ -36,15 +36,15 @@ elif sys.platform == "linux":
 """dev website directory, for placing a copy of all the files generated, to be put online"""
 #not yet implemented
 if sys.platform == "win32":
-    DEV_DIRECTORY = os.path.join("w:", os.sep, "websites", "dev", "mars", "en", "exomars", "observations")
+    DEV_DIRECTORY = os.path.join("W:", os.sep, "websites", "dev", "mars", "en", "exomars", "observations")
 elif sys.platform == "linux":
     DEV_DIRECTORY = os.path.join(os.sep, "bira-iasb", "websites", "dev", "mars", "en", "exomars", "observations")
 
 
 """where to find cop tables? Note that COP patches are done at the end of an MTP, and so planning the MTP after must be done with the new tables!"""
 if sys.platform == "win32":
-    COP_TABLE_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "data", "cop_tables")
-#    COP_TABLE_DIRECTORY = os.path.join("W:", os.sep, "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "cop_tables")
+#    COP_TABLE_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "data", "cop_tables")
+    COP_TABLE_DIRECTORY = os.path.join("W:", os.sep, "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "cop_tables")
 elif sys.platform == "linux":
     COP_TABLE_DIRECTORY = os.path.join(os.sep, "bira-iasb", "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "cop_tables")
 
@@ -53,7 +53,7 @@ elif sys.platform == "linux":
 if sys.platform == "win32":
     KERNEL_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Documents", "DATA", "local_spice_kernels", "kernels", "mk")
 #    KERNEL_DIRECTORY = os.path.join("C", "Users", "ithom", "Documents", "Work", "kernels", "mk")
-#    KERNEL_DIRECTORY = os.path.join("W", "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "kernels", "mk")
+#    KERNEL_DIRECTORY = os.path.join("W:", os.sep, "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "kernels", "mk")
 elif sys.platform == "linux":
     KERNEL_DIRECTORY = os.path.join(os.sep, "bira-iasb", "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "kernels", "mk")
 

@@ -2881,7 +2881,7 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths):
         
     db_obj = obsDB()
 #    db_obj.drop_table("nomad_nadirs")
-    db_obj.new_table("nomad_nadirs", table_fields)
+#    db_obj.new_table("nomad_nadirs", table_fields)
     sql_table_rows_datetime = db_obj.convert_table_datetimes(table_fields, sql_table_rows)
     db_obj.insert_rows("nomad_nadirs", table_fields, sql_table_rows_datetime, check_duplicates=True, duplicate_columns=[2, 3, 4])
     
