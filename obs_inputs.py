@@ -16,10 +16,22 @@ PATCHES:
     E.G. 121, 149, 165, 186, 188, 190
     E.G. 121, 134, 149, 165, 168, 186
     
+    SEE PRESENTATION FOR MORE
+    
     ADD LNO OCCULTATION USING SAME ORDER
     ADD LNO FIXED LINE FOR OCC 16 ROWS
     
     ADD CURIOSITY CO CH4 E.G. 190+134/136
+    
+    ADD 24 LINE SCIENCE OBS (TO CHECK SUN SCAN WOBBLES)
+    ADD MINISCANS WITH FEWER ACCS
+    
+    ADD 10 ORDER FULLSCANS STARTING AT ORDER 125, 135, ETC: DONE
+    
+    ADD HIGHER DAC CODES?: NO
+    
+    
+    ADD F. SCHMIDT HIGHER ORDERS CO2 ICE 193 + OTHERS
     
     
     
@@ -53,6 +65,25 @@ SOC_JOINT_OBSERVATION_TYPES = [
 DON'T MODIFY OR DELETE ANY OBSERVATIONS - JUST ADD NEW ONES"""
 #name:[[orders], int time, rhythm, lines, so=0/lno=1]
 occultationObservationDict = {
+        
+        
+
+#"6SUBD Nominal #1":[[121, 134, 149, 169, 186, 190], 4, 1, 16, 0],
+#"6SUBD Nominal #2":[[119, 136, 149, 169, 186, 189], 4, 1, 16, 0],
+#
+#
+#"6SUBD Nom CO2 #1":[[121, 134, 149, 164, 165, 169], 4, 1, 16, 0],
+#"6SUBD Nom CO2 #2":[[121, 149, 164, 165, 186, 190], 4, 1, 16, 0],
+#
+#"6SUBD Nom CO #1":[[121, 149, 186, 187, 189, 190], 4, 1, 16, 0],
+#"6SUBD Nom CO #2":[[134, 169, 186, 187, 189, 190], 4, 1, 16, 0],
+#
+#"6SUBD CH4 #1":[[121, 133, 134, 135, 136, 169], 4, 1, 16, 0],
+#"6SUBD CH4 #2":[[134, 134, 134, 134, 134, 134], 4, 1, 16, 0],
+#"6SUBD CH4 #3":[[136, 136, 136, 136, 136, 136], 4, 1, 16, 0],
+
+        
+        
 "Nominal Science 1xCO2 LA01":[[168,134,190,121,149,0], 4, 1, 16, 0], #no CO2 50-120km
 "Nominal Science 1xCO2 HA01":[[168,134,190,121,165,0], 4, 1, 16, 0],
 "Nominal Science 1xCO2 LA02":[[168,134,190,119,149,0], 4, 1, 16, 0], #no CO2 50-120km
@@ -86,51 +117,51 @@ occultationObservationDict = {
 
 "All Fullscan Fast":[["COP#293"], 0, 1, 16, 0],
 "All Fullscan Slow":[["COP#107"], 0, 1, 24, 0],
-
+#
 "CO2 Fullscan Fast":[["COP#239"], 0, 1, 16, 0],
 "CO Fullscan Fast":[["COP#254"], 0, 1, 16, 0],
-                      
-"ACS Ridealong Science 6SUBD 01":[[121,134,149,165,168,190], 10, 4, 20, 0],
-"ACS Ridealong Science 6SUBD 02":[[121,134,149,165,168,190], 20, 4, 20, 0],
-"ACS Ridealong Science 2SUBD 01":[[164,165], 40, 4, 24, 0],
-
-"LNO Occultation Nominal Science 1xCO2 01":[["COP#697"], 2, 1, 20, 1],
+#                      
+#"ACS Ridealong Science 6SUBD 01":[[121,134,149,165,168,190], 10, 4, 20, 0],
+#"ACS Ridealong Science 6SUBD 02":[[121,134,149,165,168,190], 20, 4, 20, 0],
+#"ACS Ridealong Science 2SUBD 01":[[164,165], 40, 4, 24, 0],
+#
+#"LNO Occultation Nominal Science 1xCO2 01":[["COP#697"], 2, 1, 20, 1],
 "LNO Occultation Fullscan 01":[["COP#93"], 2, 1, 20, 1],
-"LNO Occultation Fullscan 02":[["COP#93"], 2, 1, 16, 1], #MTP013+
-
-"119 with 1xDark":[["COP#1460"], 4, 1, 16, 0],
-"120 with 1xDark":[["COP#1461"], 4, 1, 16, 0],
-"121 with 1xDark":[["COP#1462"], 4, 1, 16, 0],
-"122 with 1xDark":[["COP#1463"], 4, 1, 16, 0],
-"123 with 1xDark":[["COP#1464"], 4, 1, 16, 0],
-
+##"LNO Occultation Fullscan 02":[["COP#93"], 2, 1, 16, 1], #MTP013+ NOT YET USED NO SUITABLE FIXED ROW
+#
+#"119 with 1xDark":[["COP#1460"], 4, 1, 16, 0],
+#"120 with 1xDark":[["COP#1461"], 4, 1, 16, 0],
+#"121 with 1xDark":[["COP#1462"], 4, 1, 16, 0],
+#"122 with 1xDark":[["COP#1463"], 4, 1, 16, 0],
+#"123 with 1xDark":[["COP#1464"], 4, 1, 16, 0],
+#
 "132 with 1xDark":[["COP#1465"], 4, 1, 16, 0],
 "133 with 1xDark":[["COP#1466"], 4, 1, 16, 0],
 "134 with 1xDark":[["COP#1467"], 4, 1, 16, 0],
 "135 with 1xDark":[["COP#1468"], 4, 1, 16, 0],
 "136 with 1xDark":[["COP#1469"], 4, 1, 16, 0],
-"190 with 1xDark":[["COP#1487"], 4, 1, 16, 0],
+#"190 with 1xDark":[["COP#1487"], 4, 1, 16, 0],
 
 
 
                     
-"134 with 5xDark":[["COP#4088"], 4, 1, 16, 0], #MTP010+
-"136 with 5xDark":[["COP#4090"], 4, 1, 16, 0], #MTP010+
-"Nominal Science 1xCO2 TOA":[[168,135,190,121,164,0], 4, 1, 16, 0], #MTP010+
+#"134 with 5xDark":[["COP#4088"], 4, 1, 16, 0], #MTP010+
+#"136 with 5xDark":[["COP#4090"], 4, 1, 16, 0], #MTP010+
+#"Nominal Science 1xCO2 TOA":[[168,135,190,121,164,0], 4, 1, 16, 0], #MTP010+
 
                     
                     
 #old
-"BgSubTest 01":[[121,134,149,165,167,190], 4, 1, 16, 0],
-"BgSubTest 02":[[168,136,189,119,166,148], 4, 1, 16, 0],
-"CO2 01":[[167,146,147,148,154,0], 4, 1, 16, 0],
-"CO2 02":[[167,155,159,164,148,0], 4, 1, 16, 0],
-"Dust H2O 02":[[121,130,145,169,195,0], 4, 1, 16, 0],
-"AER 02":[[120,133,143,154,181,0], 4, 1, 16, 0],
-"CO2 Fullscan":[["COP#239"], 0, 1, 16, 0],
-
-"ACS Ridealong Science":[["COP#1550"], 0, 1, 16, 0],
-"ACS Ridealong Science All Fullscan Fast":[["COP#294"], 0, 1, 16, 0],
+#"BgSubTest 01":[[121,134,149,165,167,190], 4, 1, 16, 0],
+#"BgSubTest 02":[[168,136,189,119,166,148], 4, 1, 16, 0],
+#"CO2 01":[[167,146,147,148,154,0], 4, 1, 16, 0],
+#"CO2 02":[[167,155,159,164,148,0], 4, 1, 16, 0],
+#"Dust H2O 02":[[121,130,145,169,195,0], 4, 1, 16, 0],
+#"AER 02":[[120,133,143,154,181,0], 4, 1, 16, 0],
+#"CO2 Fullscan":[["COP#239"], 0, 1, 16, 0],
+#
+#"ACS Ridealong Science":[["COP#1550"], 0, 1, 16, 0],
+#"ACS Ridealong Science All Fullscan Fast":[["COP#294"], 0, 1, 16, 0],
                                             
 }
 
@@ -196,7 +227,9 @@ nadirObservationDict = {
 "Surface Ice 2SUBD 4S 04":[[199, 187], 205, 4, 144, 1],
 
 
-"LNO Ice Index 2SUBD 01":[[153, 158], 200, 15, 144, 1], #MTP013+ F.SCHMIDT
+"LNO Ice Index 2SUBD 01":[[153, 158], 200, 15, 144, 1], #OLD MTP013+ F.SCHMIDT SIGNAL TOO LOW
+"LNO Ice Index 2SUBD 02":[[193, 194], 200, 15, 144, 1], #MTP013+ F.SCHMIDT NEW. LST 6-8AM AND AT HIGH LATS ONLY
+
 "Surface 3SUBD 02":[[191,194,196], 205, 15, 144, 1], #USE FOR F.ALTIERI NADIR TARGETS MTP010+
 
 
@@ -444,9 +477,16 @@ def getMtpConstants(mtpNumber):
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 20:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
-        copVersion = "" #desired cop table folder - remember to update if patched
+        mtpStart = "2019-10-05T15:46:51Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2019-11-02T13:09:33Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 21:
+        #TODO: change!
+        mtpStart = "2019-10-05T15:46:51Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2019-11-02T13:09:33Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "mtp21_proposed" #desired cop table folder - remember to update if patched
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -679,7 +719,7 @@ OCCULTATION_KEYS = [
         "136 with 1xDark", #MTP010+
 
 
-#        "132 with 1xDark", #special calibration
+        "132 with 1xDark", #special calibration
         "BgSubTest 03",
         "CH4 01",
         "BgSubTest 04",
@@ -688,7 +728,7 @@ OCCULTATION_KEYS = [
         "BgSubTest 05",
         "BgSubTest 06",
         "BgSubTest 03",
-#        "133 with 1xDark", #special calibration
+        "133 with 1xDark", #special calibration
         "Dust H2O 01",
         "Nominal Science 1xCO2 LA05",
         "BgSubTest 04",
@@ -717,7 +757,7 @@ OCCULTATION_KEYS = [
         "Nominal Science 1xCO2 LA06",
         "BgSubTest 05",
         "BgSubTest 06",
-#        "135 with 1xDark", #special calibration
+        "135 with 1xDark", #special calibration
         "Dust H2O 01",
 #        "Nominal Science 1xCO2 LA01",
         "BgSubTest 03",

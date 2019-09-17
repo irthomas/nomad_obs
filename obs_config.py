@@ -14,6 +14,8 @@ __author__    = "Ian Thomas"
 __contact__   = "ian.thomas@aeronomie.be"
 
 
+OFFLINE = True #if working remotely, don't write obs to sql db
+#OFFLINE = False #write obs to sql db
 
 ###############################set up directory paths##############################################################
 
@@ -36,15 +38,18 @@ elif sys.platform == "linux":
 """dev website directory, for placing a copy of all the files generated, to be put online"""
 #not yet implemented
 if sys.platform == "win32":
-    DEV_DIRECTORY = os.path.join("W:", os.sep, "websites", "dev", "mars", "en", "exomars", "observations")
+    if OFFLINE:
+        DEV_DIRECTORY = BASE_DIRECTORY
+    else:
+        DEV_DIRECTORY = os.path.join("W:", os.sep, "websites", "dev", "mars", "en", "exomars", "observations")
 elif sys.platform == "linux":
     DEV_DIRECTORY = os.path.join(os.sep, "bira-iasb", "websites", "dev", "mars", "en", "exomars", "observations")
 
 
 """where to find cop tables? Note that COP patches are done at the end of an MTP, and so planning the MTP after must be done with the new tables!"""
 if sys.platform == "win32":
-#    COP_TABLE_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "data", "cop_tables")
-    COP_TABLE_DIRECTORY = os.path.join("W:", os.sep, "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "cop_tables")
+    COP_TABLE_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "data", "cop_tables")
+#    COP_TABLE_DIRECTORY = os.path.join("W:", os.sep, "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "cop_tables")
 elif sys.platform == "linux":
     COP_TABLE_DIRECTORY = os.path.join(os.sep, "bira-iasb", "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "cop_tables")
 

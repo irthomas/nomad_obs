@@ -26,7 +26,7 @@ import MySQLdb
 import decimal
 
 
-from obs_config import BASE_DIRECTORY, COP_TABLE_DIRECTORY, OBS_DIRECTORY
+from obs_config import BASE_DIRECTORY, COP_TABLE_DIRECTORY, OBS_DIRECTORY, OFFLINE
 #from run_planning import mtpNumber
 from obs_inputs import SOC_JOINT_OBSERVATION_NAMES, SOC_JOINT_OBSERVATION_TYPES, getMtpConstants
 from obs_inputs import nadirObservationDict, nadirRegionsOfInterest, occultationObservationDict, occultationRegionsOfInterest, nadirRegionsObservations, occultationRegionsObservations
@@ -2333,6 +2333,7 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, paths):
         ingressCounter = -1
         nightsideCounter = -1
         
+        #TODO: come up with better way of doing this
         #fudge for mtp010, probably because with new kernels an old grazing occultation is now a merged occ
         if mtpNumber == 10:
             orbit_list[227]["allowedObservationTypes"] = ["dayside", "grazing"]
@@ -2878,15 +2879,17 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths):
             {"name":"uvis_description", "type":"varchar(1000) NULL DEFAULT NULL"}, \
             {"name":"orbit_comment", "type":"varchar(1000) NULL DEFAULT NULL"}, \
             ]
-        
-    db_obj = obsDB()
-#    db_obj.drop_table("nomad_nadirs")
-#    db_obj.new_table("nomad_nadirs", table_fields)
-    sql_table_rows_datetime = db_obj.convert_table_datetimes(table_fields, sql_table_rows)
-    db_obj.insert_rows("nomad_nadirs", table_fields, sql_table_rows_datetime, check_duplicates=True, duplicate_columns=[2, 3, 4])
-    
-#    table = db_obj.read_table("nomad_nadirs")
-    db_obj.close()
+     
+    if not OFFLINE:
+        db_obj = obsDB()
+#       db_obj.drop_table("nomad_nadirs")
+#       db_obj.new_table("nomad_nadirs", table_fields)
+        sql_table_rows_datetime = db_obj.convert_table_datetimes(table_fields, sql_table_rows)
+        db_obj.insert_rows("nomad_nadirs", table_fields, sql_table_rows_datetime, check_duplicates=True, duplicate_columns=[2, 3, 4])
+#       table = db_obj.read_table("nomad_nadirs")
+        db_obj.close()
+    else:
+        print("Warning: working offline - no observations added to sql db")
 
 
 
@@ -3064,14 +3067,17 @@ def writeOccultationWebpage(orbit_list, mtpConstants, paths):
             {"name":"orbit_comment", "type":"varchar(1000) NULL DEFAULT NULL"}, \
     ]
 
-    db_obj = obsDB()
-#    db_obj.drop_table("nomad_occultations")
-#    db_obj.new_table("nomad_occultations", table_fields)
-    table_rows_datetime = db_obj.convert_table_datetimes(table_fields, sql_table_rows)
-    db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime)
-    db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime)
-    db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime, check_duplicates=True, duplicate_columns=[3, 4, 5])
-    db_obj.close()
+    if not OFFLINE:
+        db_obj = obsDB()
+#       db_obj.drop_table("nomad_occultations")
+#       db_obj.new_table("nomad_occultations", table_fields)
+        table_rows_datetime = db_obj.convert_table_datetimes(table_fields, sql_table_rows)
+        db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime)
+        db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime)
+        db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime, check_duplicates=True, duplicate_columns=[3, 4, 5])
+        db_obj.close()
+    else:
+        print("Warning: working offline - no observations added to sql db")
     
 
 
@@ -3914,11 +3920,12 @@ def step4(orbitList, mtpConstants, paths):
 
 def step5(paths, devPaths):
     
-
-    printStatement("Copying web pages to aeronomie dev website")
-    copyWebpagesToDevSite(paths, devPaths)
-    printStatement("Done!")
-
+    if not OFFLINE:
+        printStatement("Copying web pages to aeronomie dev website")
+        copyWebpagesToDevSite(paths, devPaths)
+        printStatement("Done!")
+    else:
+        printStatement("Warning: working offline, dev website will not be updated")
 
 
 
