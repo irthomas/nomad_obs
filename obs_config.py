@@ -14,9 +14,11 @@ __author__    = "Ian Thomas"
 __contact__   = "ian.thomas@aeronomie.be"
 
 
-OFFLINE = True #if working remotely, don't write obs to sql db
-#OFFLINE = False #write obs to sql db
+#OFFLINE = True #if working remotely, don't write obs to sql db
+OFFLINE = False #write obs to sql db and copy to dev website
 
+if OFFLINE:
+    input("Warning: you are operating in offline mode. This means that nothing will be written to the SQL database and the old website will not be updated. Press any key to continue (or exit now)")
 ###############################set up directory paths##############################################################
 
 """where to find scripts?"""
@@ -48,8 +50,10 @@ elif sys.platform == "linux":
 
 """where to find cop tables? Note that COP patches are done at the end of an MTP, and so planning the MTP after must be done with the new tables!"""
 if sys.platform == "win32":
-    COP_TABLE_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "data", "cop_tables")
-#    COP_TABLE_DIRECTORY = os.path.join("W:", os.sep, "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "cop_tables")
+    if OFFLINE:
+        COP_TABLE_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "data", "cop_tables")
+    else:
+        COP_TABLE_DIRECTORY = os.path.join("W:", os.sep, "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "cop_tables")
 elif sys.platform == "linux":
     COP_TABLE_DIRECTORY = os.path.join(os.sep, "bira-iasb", "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "cop_tables")
 

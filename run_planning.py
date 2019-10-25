@@ -17,11 +17,11 @@ __contact__   = "ian.thomas@aeronomie.be"
 
 
 
-
+#add orders 126-129 to planning
 
 """change this number, add the correct info to the mtp in obs_inputs, and run this script"""
 
-mtpNumber = 20
+mtpNumber = 22
 
 
 
@@ -65,3 +65,20 @@ step5(paths, devPaths)
 #RUN THE SCRIPT TO COPY THEM TO THE PROD SITE
 
 #PROGRAM FINISHED
+
+
+
+
+
+        
+
+#windows only
+#run planning script in pop-out window so user can continue working
+#import os
+#import sys
+#if sys.platform == "win32":
+#    if __name__ == "__main__":
+#        os.system("python -i run_planning.py")
+
+
+

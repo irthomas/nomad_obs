@@ -24,15 +24,17 @@ import spiceypy as sp
 
 import MySQLdb
 import decimal
-
+import random
 
 from obs_config import BASE_DIRECTORY, COP_TABLE_DIRECTORY, OBS_DIRECTORY, OFFLINE
 #from run_planning import mtpNumber
 from obs_inputs import SOC_JOINT_OBSERVATION_NAMES, SOC_JOINT_OBSERVATION_TYPES, getMtpConstants
-from obs_inputs import nadirObservationDict, nadirRegionsOfInterest, occultationObservationDict, occultationRegionsOfInterest, nadirRegionsObservations, occultationRegionsObservations
-from obs_inputs import OCCULTATION_KEYS, OCCULTATION_MERGED_KEYS, OCCULTATION_GRAZING_KEYS, USE_TWO_SCIENCES
-from obs_inputs import NADIR_KEYS, NADIR_LIMB_KEYS, NADIR_NIGHTSIDE_KEYS
+#from obs_inputs import nadirObservationDict, nadirRegionsOfInterest, occultationObservationDict, occultationRegionsOfInterest, nadirRegionsObservations, occultationRegionsObservations
+#from obs_inputs import OCCULTATION_KEYS, OCCULTATION_MERGED_KEYS, OCCULTATION_GRAZING_KEYS
+#from obs_inputs import NADIR_KEYS, NADIR_LIMB_KEYS, NADIR_NIGHTSIDE_KEYS
 
+from obs_inputs import nadirObservationDict, nadirRegionsOfInterest, occultationObservationDict, occultationRegionsOfInterest
+from obs_inputs import observationCycles, USE_TWO_SCIENCES
 
 __project__   = "NOMAD Observation Planning"
 __author__    = "Ian Thomas"
@@ -747,21 +749,21 @@ def plotRegionsOfInterest(paths, occultationRegionsOfInterest, occultationRegion
     horizontal_offset = 0.1
     for regionOfInterest in occultationRegionsOfInterest:
         
-        plotRectangle(ax, regionOfInterest[4]/sp.dpr(), regionOfInterest[5]/sp.dpr(), regionOfInterest[2]/sp.dpr(), regionOfInterest[3]/sp.dpr(), "b")
-        ax.annotate(regionOfInterest[0]+" "+occultationRegionsObservations[regionOfInterest[0]], [np.mean((regionOfInterest[4], regionOfInterest[5]))/sp.dpr()+horizontal_offset, np.mean((regionOfInterest[2], regionOfInterest[2], regionOfInterest[3]))/sp.dpr()], color="b")
+        plotRectangle(ax, regionOfInterest[5]/sp.dpr(), regionOfInterest[6]/sp.dpr(), regionOfInterest[3]/sp.dpr(), regionOfInterest[4]/sp.dpr(), "b")
+        ax.annotate(regionOfInterest[0]+" "+occultationRegionsObservations[regionOfInterest[0]], [np.mean((regionOfInterest[5], regionOfInterest[6]))/sp.dpr()+horizontal_offset, np.mean((regionOfInterest[3], regionOfInterest[3], regionOfInterest[4]))/sp.dpr()], color="b")
     
     for regionOfInterest in nadirRegionsOfInterest:
         verticalOffset = 0.1
-        plotRectangle(ax, regionOfInterest[4]/sp.dpr(), regionOfInterest[5]/sp.dpr(), regionOfInterest[2]/sp.dpr(), regionOfInterest[3]/sp.dpr(), "r")
-        ax.annotate(regionOfInterest[0]+" "+nadirRegionsObservations[regionOfInterest[0]], [np.mean((regionOfInterest[4], regionOfInterest[5]))/sp.dpr()+horizontal_offset, np.mean((regionOfInterest[2], regionOfInterest[2], regionOfInterest[3]))/sp.dpr()+verticalOffset], color="r")
+        plotRectangle(ax, regionOfInterest[5]/sp.dpr(), regionOfInterest[6]/sp.dpr(), regionOfInterest[3]/sp.dpr(), regionOfInterest[4]/sp.dpr(), "r")
+        ax.annotate(regionOfInterest[0]+" "+nadirRegionsObservations[regionOfInterest[0]], [np.mean((regionOfInterest[5], regionOfInterest[6]))/sp.dpr()+horizontal_offset, np.mean((regionOfInterest[3], regionOfInterest[3], regionOfInterest[4]))/sp.dpr()+verticalOffset], color="r")
     
     plt.savefig(os.path.join(paths["OBS_DIRECTORY"], "regions_of_interest.png"))
     plt.close()
     
 
 
-def regionsOfInterestNadir(orbit_list, regions_of_interest, silent=True):
-    """check for nadir observations near regions of interest"""
+def regionsOfInterestNadir(orbit_list, regions_of_interest, observationCycles, silent=True):
+    """check for nadir observations near regions of interest. Add region dictionary to orbit list where matches are found"""
     #loop through each observation, making lat/lon steps and check against regions of interest
     for orbit in orbit_list:
         if "dayside" in orbit.keys():
@@ -780,14 +782,21 @@ def regionsOfInterestNadir(orbit_list, regions_of_interest, silent=True):
             #write all found regions of interest to orbit
             for regionOfInterest in regions_of_interest:
                 matches = np.logical_and(
-                        np.logical_and((regionOfInterest[2] < lats), (regionOfInterest[3] > lats)),
-                        np.logical_and((regionOfInterest[4] < lons), (regionOfInterest[5] > lons))
+                        np.logical_and((regionOfInterest[3] < lats), (regionOfInterest[4] > lats)),
+                        np.logical_and((regionOfInterest[5] < lons), (regionOfInterest[6] > lons))
                         )
                 if np.any(matches):
                     i = int(np.mean(np.where(matches)[0])) #find centre index
                     if incidence_angles[i] < MAXIMUM_SEARCH_INCIDENCE_ANGLE: #check if solar angle too low
+
+                        #get random observation name from cycleName:
+                        cycleName = regionOfInterest[2]
+                        observationName = random.choice(observationCycles[cycleName][1])
+
                         regionDict = {"name":regionOfInterest[0], \
                              "priority":regionOfInterest[1], \
+                             "cycleName":cycleName, \
+                             "observationName":observationName, \
                              "et":ets[i], "utc":et2utc(ets[i]), \
                              "lon":lons[i], "lat":lats[i], \
                              "incidenceAngle":incidence_angles[i], "lst":lst[i]}
@@ -801,7 +810,7 @@ def regionsOfInterestNadir(orbit_list, regions_of_interest, silent=True):
 
 
 
-def regionsOfInterestOccultation(orbit_list, regions_of_interest, silent=True):
+def regionsOfInterestOccultation(orbit_list, regions_of_interest, observationCycles, silent=True):
     """check for occultation observations near regions of interest"""
     #loop through each observation, making lat/lon steps and check against regions of interest
     for orbit in orbit_list:
@@ -824,10 +833,10 @@ def regionsOfInterestOccultation(orbit_list, regions_of_interest, silent=True):
                 
                 warning_1_given = False
                 warning_2_given = False
-                for region_of_interest in regions_of_interest:
+                for regionOfInterest in regions_of_interest:
                     matches = np.logical_and(
-                            np.logical_and((region_of_interest[1] < lats), (region_of_interest[2] > lats)),
-                            np.logical_and((region_of_interest[3] < lons), (region_of_interest[4] > lons))
+                            np.logical_and((regionOfInterest[3] < lats), (regionOfInterest[4] > lats)),
+                            np.logical_and((regionOfInterest[5] < lons), (regionOfInterest[6] > lons))
                             )
                     if np.any(matches): #if match found
                         #for merged occultation, check altitude to determine if real or viewing planet
@@ -848,19 +857,39 @@ def regionsOfInterestOccultation(orbit_list, regions_of_interest, silent=True):
                             i = int(np.where(alts[matches] == min_altitude)[0]) #find index corresponding to minimum altitude
                             #i = int(np.mean(np.where(matches)[0])) #find centre index
                             
+                            #get random observation name from cycleName:
+                            cycleName = regionOfInterest[2]
+                            observationName = random.choice(observationCycles[cycleName][1])
+                            
                             #get data for minimum altitude point
-                            regionDict = {"occultationType":occultation_type, "name":region_of_interest[0], \
-                                 "et":ets[i], "utc":et2utc(ets[i]), \
-                                 "lon":lons[i], "lat":lats[i], \
-                                 "lst":lst[i]}
+                            regionDict = {"occultationType":occultation_type,
+                                     "name":regionOfInterest[0], \
+                                     "priority":regionOfInterest[1], \
+                                     "cycleName":cycleName, \
+                                     "observationName":observationName, \
+                                     "et":ets[i], "utc":et2utc(ets[i]), \
+                                     "lon":lons[i], "lat":lats[i], \
+                                     "lst":lst[i]}
                             if "occultationRegions" not in orbit.keys():
                                 orbit["occultationRegions"] = []
                             orbit["occultationRegions"].append(regionDict)
     return orbit_list
 
 
+def findIndex(valueIn,listIn):
+    if valueIn in listIn:
+        indexOut = [index for index,value in enumerate(listIn) if value == valueIn]
+        if len(indexOut) > 1:
+            print("Error: Multiple values found")
+        else:
+            return indexOut[0]
+    else:
+        print("Error: Not found")
+    
 
 
+
+    
 
 def findMatchingRegions(orbit_list, silent=True):
     """add flag to file where obsevations match a region of interest"""
@@ -872,30 +901,31 @@ def findMatchingRegions(orbit_list, silent=True):
                 if not silent: 
                     print("Match found: %s, orbit %i, incidence angle %0.1f at %s" %(region["name"], orbit["orbitNumber"], region["incidenceAngle"], region["utc"]))
     
-                if region["name"] in nadirRegionsObservations.keys():
-                    if region["priority"] < priority: #if region has higher priority, write to file
-                        priority = region["priority"] #save new priority for checking against next region
-                        orbit["dayside"]["observationName"] = nadirRegionsObservations[region["name"]]
-                        if not silent: 
-                            print("%s observation added" %nadirRegionsObservations[region["name"]])
-                    else:
-                        print("Matching region of interest found (%s), but superseded by higher priority region (%s)" %(region["name"], orbit["dayside"]["observationName"]))
-
+                if region["priority"] < priority: #if region has higher priority, write to orbit list
+                    priority = region["priority"] #save new priority for checking against next region
+                    orbit["dayside"]["observationName"] = region["observationName"]
+                    if not silent: 
+                        print("%s observation added" %orbit["dayside"]["observationName"])
                 else:
-                    print("Warning: %s not found in observation list" %region["name"])
+                    print("Matching region of interest found (%s), but superseded by higher priority region (%s)" %(region["name"], orbit["dayside"]["observationName"]))
+
     
         if "occultationRegions" in orbit.keys():
+            priority = 999 #start with large number = lowest priority
             for region in orbit["occultationRegions"]:
                 matchingOccultationType = region["occultationType"]
+
                 if not silent: 
                     print("Match found: %s, orbit %i, %s occultation at %s" %(region["name"], orbit["orbitNumber"], matchingOccultationType, region["utc"]))
     
-                if region["name"] in occultationRegionsObservations.keys():
-                    orbit[matchingOccultationType]["observationName"] = occultationRegionsObservations[region["name"]]
+                if region["priority"] < priority: #if region has higher priority, write to orbit list
+                    priority = region["priority"] #save new priority for checking against next region
+                    orbit[matchingOccultationType]["observationName"] = region["observationName"]
                     if not silent: 
-                        print("%s observation added" %occultationRegionsObservations[region["name"]])
+                        print("%s observation added" %orbit["dayside"]["observationName"])
                 else:
-                    print("Warning: %s not found in observation list" %region["name"])
+                    print("Matching region of interest found (%s), but superseded by higher priority region (%s)" %(region["name"], orbit[matchingOccultationType]["observationName"]))
+
     return orbit_list
 
 
@@ -1232,17 +1262,26 @@ def mergeMtpPlan(orbit_list, mtp_plan, new_dict_name, old_dict_name):
 
 
 def checkKeys(occultationObservationDict, nadirObservationDict):
-    """check if all keys above can be found in the observation dictionaries"""
-    for key_file in [OCCULTATION_KEYS, OCCULTATION_MERGED_KEYS, OCCULTATION_GRAZING_KEYS]:
-        for observation_name in key_file:
-            if observation_name not in list(occultationObservationDict.keys()):
-                print("Error: %s not found in occultation dictionary!" %observation_name)
+    """check if all keys in the observation cycles can be found in the observation dictionaries"""
+    occultationObservationNames = []
+    for key, value in observationCycles.items():
+        if value[0] == "Occultation":
+            occultationObservationNames.extend(value[1])
+    uniqueOccultationObservationNames = list(set(occultationObservationNames))        
     
-    for key_file in [NADIR_KEYS, NADIR_LIMB_KEYS]:
-        for observation_name in key_file:
-            if observation_name not in list(nadirObservationDict.keys()):
-                print("Error: %s not found in nadir dictionary!" %observation_name)
+    nadirObservationNames = []
+    for key, value in observationCycles.items():
+        if value[0] == "Nadir":
+            nadirObservationNames.extend(value[1])
+    uniqueNadirObservationNames = list(set(nadirObservationNames))        
 
+    for observation_name in uniqueOccultationObservationNames:
+        if observation_name not in list(occultationObservationDict.keys()):
+            print("Error: %s not found in occultation dictionary!" %observation_name)
+    
+    for observation_name in uniqueNadirObservationNames:
+        if observation_name not in list(nadirObservationDict.keys()):
+            print("Error: %s not found in nadir dictionary!" %observation_name)
 
 
 
@@ -1250,13 +1289,13 @@ def checkKeys(occultationObservationDict, nadirObservationDict):
 
 def makeCompleteOrbitPlan(orbit_list):
     """fill in generic plan with real observation names"""
-    occultationCounter = -1
-    occultationMergedCounter = -1
-    occultationGrazingCounter = -1
+#    occultationCounter = -1
+#    occultationMergedCounter = -1
+#    occultationGrazingCounter = -1
 #    occultationRidealongCounter = -1
-    nadirCounter = -1
-    nadirLimbCounter = -1
-    nadirNightsideCounter = -1
+#    nadirCounter = -1
+#    nadirLimbCounter = -1
+#    nadirNightsideCounter = -1
     
     for orbit in orbit_list:
     
@@ -1282,28 +1321,26 @@ def makeCompleteOrbitPlan(orbit_list):
                 irIngressLow = ""
                 uvisIngress = ""
             elif genericObsTypes["irIngressHigh"] == "irIngress": #generic observation
-                occultationCounter += 1
-                irIngressHigh = OCCULTATION_KEYS[occultationCounter]
-                irIngressLow = OCCULTATION_KEYS[occultationCounter]
+#                occultationCounter += 1
                 uvisIngress = "uvisIngress"
+
+                irIngressHigh = random.choice(observationCycles["OccultationCycleNominal"][1])
                 #special obs where high and low altitude obs are different
                 if USE_TWO_SCIENCES:
-                    if OCCULTATION_KEYS[occultationCounter]=="Nominal Science 1xCO2 LA01":
+                    if irIngressHigh == "Nominal Science 1xCO2 LA01" or irIngressHigh == "Nominal Science 1xCO2 HA01":
                         irIngressHigh = "Nominal Science 1xCO2 HA01"
                         irIngressLow = "Nominal Science 1xCO2 LA01"
-                    elif OCCULTATION_KEYS[occultationCounter]=="Nominal Science 1xCO2 LA02":
+                    elif irIngressHigh == "Nominal Science 1xCO2 LA02" or irIngressHigh == "Nominal Science 1xCO2 HA02":
                         irIngressHigh = "Nominal Science 1xCO2 HA02"
                         irIngressLow = "Nominal Science 1xCO2 LA02"
-                    elif OCCULTATION_KEYS[occultationCounter]=="Nominal Science 1xCO2 LA03":
+                    elif irIngressHigh == "Nominal Science 1xCO2 LA03" or irIngressHigh == "Nominal Science 1xCO2 HA03":
                         irIngressHigh = "Nominal Science 1xCO2 HA03"
                         irIngressLow = "Nominal Science 1xCO2 LA03"
-                    elif OCCULTATION_KEYS[occultationCounter]=="Nominal Science 1xCO2 LA04":
+                    elif irIngressHigh == "Nominal Science 1xCO2 LA04" or irIngressHigh == "Nominal Science 1xCO2 HA04":
                         irIngressHigh = "Nominal Science 1xCO2 HA04"
                         irIngressLow = "Nominal Science 1xCO2 LA04"
-    #        elif occ1High in ["Ingress_ACS","Egress_ACS"]:
-    #            occultationRidealongCounter += 1
-    #            irIngressHigh = OCCULTATION_ACS_RIDEALONG_KEYS[occultationRidealongCounter]
-    #            irIngressLow = OCCULTATION_ACS_RIDEALONG_KEYS[occultationRidealongCounter]
+                else:
+                    irIngressLow = irIngressHigh
     
             else:
                 irIngressHigh = genericObsTypes["irIngressHigh"] #use preselected targeted obs
@@ -1316,28 +1353,27 @@ def makeCompleteOrbitPlan(orbit_list):
                 irEgressLow = ""
                 uvisEgress = ""
             elif genericObsTypes["irEgressHigh"] == "irEgress": #generic observation
-                occultationCounter += 1
-                irEgressHigh = OCCULTATION_KEYS[occultationCounter]
-                irEgressLow = OCCULTATION_KEYS[occultationCounter]
+#                occultationCounter += 1
                 uvisEgress = "uvisEgress"
+
+                irEgressHigh = random.choice(observationCycles["OccultationCycleNominal"][1])
                 #special obs where high and low altitude obs are different
                 if USE_TWO_SCIENCES:
-                    if OCCULTATION_KEYS[occultationCounter]=="Nominal Science 1xCO2 LA01":
+                    if irEgressHigh == "Nominal Science 1xCO2 LA01" or irEgressHigh == "Nominal Science 1xCO2 HA01":
                         irEgressHigh = "Nominal Science 1xCO2 HA01"
                         irEgressLow = "Nominal Science 1xCO2 LA01"
-                    elif OCCULTATION_KEYS[occultationCounter]=="Nominal Science 1xCO2 LA02":
+                    elif irEgressHigh == "Nominal Science 1xCO2 LA02" or irEgressHigh == "Nominal Science 1xCO2 HA02":
                         irEgressHigh = "Nominal Science 1xCO2 HA02"
                         irEgressLow = "Nominal Science 1xCO2 LA02"
-                    elif OCCULTATION_KEYS[occultationCounter]=="Nominal Science 1xCO2 LA03":
+                    elif irEgressHigh == "Nominal Science 1xCO2 LA03" or irEgressHigh == "Nominal Science 1xCO2 HA03":
                         irEgressHigh = "Nominal Science 1xCO2 HA03"
                         irEgressLow = "Nominal Science 1xCO2 LA03"
-                    elif OCCULTATION_KEYS[occultationCounter]=="Nominal Science 1xCO2 LA04":
+                    elif irEgressHigh == "Nominal Science 1xCO2 LA04" or irEgressHigh == "Nominal Science 1xCO2 HA04":
                         irEgressHigh = "Nominal Science 1xCO2 HA04"
                         irEgressLow = "Nominal Science 1xCO2 LA04"
-    #        elif occ2High in ["Ingress_ACS","Egress_ACS"]:
-    #            occultationRidealongCounter += 1
-    #            irEgressHigh = OCCULTATION_ACS_RIDEALONG_KEYS[occultationRidealongCounter]
-    #            irEgressLow = OCCULTATION_ACS_RIDEALONG_KEYS[occultationRidealongCounter]
+                else:
+                    irEgressLow = irEgressHigh
+
             else:
                 irEgressHigh = genericObsTypes["irEgressHigh"] #use preselected targeted obs
                 irEgressLow = genericObsTypes["irEgressLow"] #use preselected targeted obs
@@ -1348,8 +1384,8 @@ def makeCompleteOrbitPlan(orbit_list):
                 irDayside = ""
                 uvisDayside = "uvisDayside"
             elif genericObsTypes["irDayside"] in ["irDayside", "irShortDayside", "irLongDayside"]: #generic observation
-                nadirCounter += 1
-                irDayside = NADIR_KEYS[nadirCounter]
+#                nadirCounter += 1
+                irDayside = random.choice(observationCycles["NadirCycleNominal"][1])
                 uvisDayside = "uvisDayside"
             else: #use preselected targeted obs
                 irDayside = genericObsTypes["irDayside"]
@@ -1362,14 +1398,14 @@ def makeCompleteOrbitPlan(orbit_list):
     
         if orbitType in [5, 6]: #merged/grazing with UVIS and/or LNO nadir
             if genericObsTypes["irIngressHigh"] == "irMerged": #generic observation
-                occultationMergedCounter += 1
-                irIngressHigh = OCCULTATION_MERGED_KEYS[occultationMergedCounter]
-                irIngressLow = OCCULTATION_MERGED_KEYS[occultationMergedCounter]
+#                occultationMergedCounter += 1
+                irIngressHigh = random.choice(observationCycles["OccultationCycleMerged"][1])
+                irIngressLow = irIngressHigh
                 uvisIngress = "uvisMerged"
             elif genericObsTypes["irIngressHigh"] == "irGrazing": #generic observation
-                occultationGrazingCounter += 1
-                irIngressHigh = OCCULTATION_GRAZING_KEYS[occultationGrazingCounter]
-                irIngressLow = OCCULTATION_GRAZING_KEYS[occultationGrazingCounter]
+#                occultationGrazingCounter += 1
+                irIngressHigh = random.choice(observationCycles["OccultationCycleGrazing"][1])
+                irIngressLow = irIngressHigh
                 uvisIngress = "uvisGrazing"
             else:
                 irIngressHigh = genericObsTypes["irIngressHigh"] #use preselected targeted obs
@@ -1394,8 +1430,8 @@ def makeCompleteOrbitPlan(orbit_list):
                     irDayside = ""
                     uvisDayside = "uvisDayside"
                 else:
-                    nadirCounter += 1
-                    irDayside = NADIR_KEYS[nadirCounter]
+#                    nadirCounter += 1
+                    irDayside = random.choice(observationCycles["NadirCycleNominal"][1])
                     uvisDayside = "uvisDayside"
     
             elif genericObsTypes["irDayside"] == "": #LNO off
@@ -1441,8 +1477,8 @@ def makeCompleteOrbitPlan(orbit_list):
     
             if genericObsTypes["irDayside"] in ["irDayside", "irShortDayside", "irLongDayside"]: #LNO generic dayside nadir
                 if orbitType == 3:
-                    nadirCounter += 1
-                    irDayside = NADIR_KEYS[nadirCounter]
+#                    nadirCounter += 1
+                    irDayside = random.choice(observationCycles["NadirCycleNominal"][1])
                 elif orbitType == 4:
                     print("Error: orbit type 4 cannot have LNO dayside")
                     irDayside=""
@@ -1485,8 +1521,8 @@ def makeCompleteOrbitPlan(orbit_list):
             orbit["allowedObservationTypes"].append("nightside")
     
             if genericObsTypes["irDayside"] in ["irDayside", "irShortDayside", "irLongDayside"]: #dayside nadir
-                nadirCounter += 1
-                irDayside = NADIR_KEYS[nadirCounter]
+#                nadirCounter += 1
+                irDayside = random.choice(observationCycles["NadirCycleNominal"][1])
                 uvisDayside = "uvisDayside"
             elif genericObsTypes["irDayside"] == "": #LNO off
                 irDayside = ""
@@ -1505,8 +1541,8 @@ def makeCompleteOrbitPlan(orbit_list):
             else: #if LNO nightside or preselected targeted obs
                 if orbitType == 7:
                     if genericObsTypes["irNightside"] == "irNightside": #if generic obs
-                        nadirNightsideCounter += 1
-                        irNightside = NADIR_NIGHTSIDE_KEYS[nadirNightsideCounter]
+#                        nadirNightsideCounter += 1
+                        irNightside = random.choice(observationCycles["NadirCycleNightside"][1])
                         uvisNightside = "uvisNightside"
                     else:
                         irNightside = genericObsTypes["irNightside"] #use preselected targeted obs
@@ -1541,8 +1577,8 @@ def makeCompleteOrbitPlan(orbit_list):
                     uvisDayside = "uvisOnlyLimb"
     
             elif genericObsTypes["irDayside"] == "irLimb": #LNO off
-                nadirLimbCounter += 1
-                irDayside = NADIR_LIMB_KEYS[nadirLimbCounter]
+#                nadirLimbCounter += 1
+                irDayside = random.choice(observationCycles["NadirCycleLimb"][1])
     
                 if orbitType == 8:
                     uvisDayside = "uvisDayside"
@@ -1643,16 +1679,6 @@ def outputCopTable(copVersion,channel,cop):
 
 
 
-def findIndex(valueIn,listIn):
-    
-    if valueIn in listIn:
-        indexOut = [index for index,value in enumerate(listIn) if value == valueIn]
-        if len(indexOut) > 1:
-            print("Error: Multiple values found")
-        else:
-            return indexOut[0]
-    else:
-        print("Error: Not found")
     
 
 def getCopTables(mtpConstants):
@@ -2105,7 +2131,7 @@ def getCopRows(observationName, observationDict, copTableDict, copTableCombinati
     if type(diffractionOrders[0]) != int:
         if "COP#" in diffractionOrders[0]:
             scienceCopRow = int(diffractionOrders[0].split("#")[1])
-            print("Manual mode: COP row %i" %(scienceCopRow))
+#            print("Manual mode: COP row %i" %(scienceCopRow))
         else:
             print("Error: COP rows must be integers or must be specified manually e.g. COP#1")
             stop()
@@ -2153,7 +2179,7 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants):
         
     
     for orbit in orbit_list:
-        print(orbit["orbitNumber"])
+#        print(orbit["orbitNumber"])
         finalOrbitPlan = orbit["finalOrbitPlan"]
         irMeasuredObsTypes = orbit["irMeasuredObsTypes"]
         uvisMeasuredObsTypes = orbit["uvisMeasuredObsTypes"]
@@ -2333,10 +2359,15 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, paths):
         ingressCounter = -1
         nightsideCounter = -1
         
+        """manually assign occultation observation type to orbit"""
         #TODO: come up with better way of doing this
-        #fudge for mtp010, probably because with new kernels an old grazing occultation is now a merged occ
+        #fudges for certain MTPs where grazing occultation is now a merged occ or vice versa
         if mtpNumber == 10:
             orbit_list[227]["allowedObservationTypes"] = ["dayside", "grazing"]
+        if mtpNumber == 20:
+            orbit_list[150]["allowedObservationTypes"] = ["dayside", "merged"]
+        if mtpNumber == 21:
+            orbit_list[4]["allowedObservationTypes"] = ["dayside", "grazing"]
             
             
        
@@ -2603,7 +2634,55 @@ class obsDB(object):
             table_rows_datetime.append(table_row_datetime)
         
         return table_rows_datetime
+    
+    #column_names = db_obj.query("SELECT * FROM information_schema.columns WHERE table_name = 'nomad_nadirs'")
+    #copy table: db_obj.query("CREATE TABLE nomad_nadirs2 LIKE nomad_nadirs"); db_obj.query("INSERT nomad_nadirs2 SELECT * FROM nomad_nadirs")
+    
+    def find_record_id(self, search_table_name, search_field, search_value, return_duplicates=False):
+        
+        query = "SELECT * FROM %s WHERE %s LIKE '%s'" %(search_table_name, search_field, search_value)
+        found_record = self.query(query)
+        if len(found_record) == 0:
+            print("Warning: matching record not found for query %s" %query)
+        elif len(found_record) > 1:
+            print("Warning: multiple matching records found for query %s" %query)
+            for each_found_record in found_record:
+                print(each_found_record)
+            found_record
+            if return_duplicates:
+                return [duplicate_found_record[0] for duplicate_found_record in found_record]
+        else:
+            found_record_id = found_record[0][0]
 
+            return found_record_id
+        
+    def update_row(self, table_name, existing_table_row_id, table_fields, new_row_data):
+        
+        table_fields_not_key = [field["name"] for field in table_fields if "primary" not in field.keys()]
+
+        subquery = ""
+        for table_field, new_row_value in zip(table_fields_not_key, new_row_data):
+            subquery += "%s = '%s', " %(table_field, new_row_value)
+        subquery = subquery[:-2]
+        query = "UPDATE %s SET %s WHERE obs_id = %s" %(table_name, subquery, existing_table_row_id)
+        query = query.replace("'NULL'", "NULL") #NULLs must not be surrounded by commas
+        print(query)
+        self.query(query)
+        
+    def delete_duplicates(self, table_name):
+        
+        existing_table = self.read_table(table_name)
+        utc_start_times = [value[4] for value in existing_table]
+        
+        for utc_start_time in utc_start_times:
+            duplicate_record_ids = self.find_record_id(table_name, "utc_start_time", utc_start_time, return_duplicates=True)
+            
+            if not type(duplicate_record_ids) == int: #if more than one record found:
+                for duplicate_record_id in duplicate_record_ids[:-1]:
+                    query = "DELETE FROM %s WHERE obs_id = %s" %(table_name, duplicate_record_id)
+                    print(query)
+                    self.query(query)
+                    
     
     def insert_rows(self, table_name, table_fields, table_rows, check_duplicates=False, duplicate_columns=[]):
         table_fields_not_key = [field["name"] for field in table_fields if "primary" not in field.keys()]
@@ -2615,16 +2694,24 @@ class obsDB(object):
             
 
         print("Inserting %i rows into table %s" %(len(table_rows), table_name))
+        #loop through new rows
         for row_index, table_row in enumerate(table_rows):
             duplicates = 0
             if check_duplicates:
-                for existing_row in existing_table:
-                    for column_number in duplicate_columns:
+                for existing_row in existing_table: #loop through existing rows
+                    for column_number in duplicate_columns: #loop through specific columns
                         if table_row[column_number] == existing_row[column_number+1]:
                             duplicates += 1
                             
             if duplicates > 0:
-                print("Error: Row %i contains elements matching existing rows" %row_index)
+                print("Row %i contains elements matching existing rows. Updating" %row_index)
+                
+                search_field_name = "utc_start_time"
+                #find index of search field name in 
+                search_field_index = [index for index, table_field in enumerate(table_fields_not_key) if table_field == search_field_name][0]
+                search_value = table_row[search_field_index]
+                record_id = self.find_record_id(table_name, search_field_name, search_value)
+                self.update_row(table_name, record_id, table_fields, table_row)
 
             else:
                 query_string = "INSERT INTO %s (" %table_name
@@ -3072,8 +3159,8 @@ def writeOccultationWebpage(orbit_list, mtpConstants, paths):
 #       db_obj.drop_table("nomad_occultations")
 #       db_obj.new_table("nomad_occultations", table_fields)
         table_rows_datetime = db_obj.convert_table_datetimes(table_fields, sql_table_rows)
-        db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime)
-        db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime)
+#        db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime)
+#        db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime)
         db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime, check_duplicates=True, duplicate_columns=[3, 4, 5])
         db_obj.close()
     else:
@@ -3839,9 +3926,9 @@ def step1(orbitList, mtpConstants, paths):
     printStatement("Checking for corresponding MAPPS events")
     orbitList = addMappsEvents(orbitList, mtpConstants, paths)
     printStatement("Finding dayside nadir observations in regions of interest")
-    orbitList = regionsOfInterestNadir(orbitList, nadirRegionsOfInterest)
+    orbitList = regionsOfInterestNadir(orbitList, nadirRegionsOfInterest, observationCycles)
     printStatement("Finding occultation observations in regions of interest")
-    orbitList = regionsOfInterestOccultation(orbitList, occultationRegionsOfInterest)
+    orbitList = regionsOfInterestOccultation(orbitList, occultationRegionsOfInterest, observationCycles)
     printStatement("Adding flags to file where obsevations match a region of interest")
     orbitList = findMatchingRegions(orbitList)
 #    printStatement("Plotting occultation and nadir regions of interest")
