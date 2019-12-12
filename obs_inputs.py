@@ -6,35 +6,10 @@ Created on Wed Oct 18 13:56:09 2017
 
 @author: iant
 
-PATCHES:
-    ADD LOTS MORE LINES WITH SBSF OFF
-    E.G. CH4 133, 134, 135, 136, 137, 167
-    E.G. CH4 133, 134, 135, 136, 137, 168
-    E.G. CH4 133, 134, 135, 136, 137, 169
-    
-    ADD CO NON-SATURATED TO NOMINAL MEASUREMENT
-    E.G. 121, 149, 165, 186, 188, 190
-    E.G. 121, 134, 149, 165, 168, 186
-    
-    SEE PRESENTATION FOR MORE
-    
-    ADD LNO OCCULTATION USING SAME ORDER
-    ADD LNO FIXED LINE FOR OCC 16 ROWS
-    
-    ADD CURIOSITY CO CH4 E.G. 190+134/136
-    
-    ADD 24 LINE SCIENCE OBS (TO CHECK SUN SCAN WOBBLES)
-    ADD MINISCANS WITH FEWER ACCS
-    
-    ADD 10 ORDER FULLSCANS STARTING AT ORDER 125, 135, ETC: DONE
-    
-    ADD HIGHER DAC CODES?: NO
-    
-    
-    ADD F. SCHMIDT HIGHER ORDERS CO2 ICE 193 + OTHERS
-    
-    
-    
+
+
+   #add orders 126-129 to planning
+
 
 """
 
@@ -46,17 +21,35 @@ __contact__   = "ian.thomas@aeronomie.be"
 
 
 #ACS joint observation names. Don't modify unless instructed to do so by SOC/ACS.
+#SOC_JOINT_OBSERVATION_NAMES = {
+##        "Nominal Science 1xCO2 LA01":"NOM_01",
+##        "Dust H2O 01":"DUST01",
+##        "Water Ice 01":"ICE_01",
+##        "AER 01":"AER_01"
+#
+#        }
+
 SOC_JOINT_OBSERVATION_NAMES = {
-        "Nominal Science 1xCO2 LA01":"NOM_01",
-        "Dust H2O 01":"DUST01",
-        "Water Ice 01":"ICE_01",
-        "AER 01":"AER_01"
-        }
+    "NOM_02":["6SUBD Nominal #1", "6SUBD Nominal #2"],
+    "NOM_03":["6SUBD Nominal #3"],
+    "CO_001":["6SUBD Nom CO #1", "6SUBD Nom CO #2", "6SUBD Nom CO #3", "6SUBD Nom CO #4", "6SUBD Nom CO #5"],
+    "CO2_01":["6SUBD Nom CO2 #1", "6SUBD Nom CO2 #2"],
+    
+    "AER_01":["AER 01"],
+    "DUST01":["Dust H2O 01"],
+    "HDO_01":["HDO 01"],
+    "ICE_01":["Water Ice 01"],
+    
+    "NOM_01":["Nominal Science 1xCO2 LA01"],
+    }
+
+
+
 SOC_JOINT_OBSERVATION_TYPES = [
         "OCCEG",
         "OCCIN",
         "OCCME",
-        "OCCGR"
+#        "OCCGR" #ACS doesn't run grazings
         ]
         
 
@@ -89,7 +82,7 @@ occultationObservationDict = {
 "6SUBD CH4 #1":[[121, 133, 134, 135, 136, 169], 4, 1, 16, 0],
 
 "6SUBD CO H2O #1":[[134,169,186,187,189,190], 4, 1, 16, 0],
-"6SUBD CO H20 #2":[[136,169,186,187,189,190], 4, 1, 16, 0],
+"6SUBD CO H2O #2":[[136,169,186,187,189,190], 4, 1, 16, 0],
 
 "6SUBD CO2 CO #1":[[119,149,164,165,186,190], 4, 1, 16, 0],
 
@@ -208,6 +201,7 @@ occultationObservationDict = {
 
 
 
+
 #name:[[orders], int time, rhythm, lines, channel (not used)]
 nadirObservationDict = {
         
@@ -231,8 +225,8 @@ nadirObservationDict = {
 "HDO H2O 2SUBD 02":[[168,124], 200, 15, 144, 1], #S.AOKI
 "HDO H2O 2SUBD 03":[[121,168], 200, 15, 144, 1],
 
-"H20 CO 2SUBD 01":[[168,189], 200, 15, 144, 1],
-"CO H20 3SUBD 01":[[191,190,168], 205, 15, 144, 1],
+"H2O CO 2SUBD 01":[[168,189], 200, 15, 144, 1],
+"CO H2O 3SUBD 01":[[191,190,168], 205, 15, 144, 1],
                  
 "Nominal Limb 01":[[164,169], 200, 15, 144, 1], #NEW LIMB <50KM
 "Limb 2SUBD 07":[[164,164], 200, 15, 144, 1], #NEW LIMB >50KM
@@ -549,14 +543,14 @@ def getMtpConstants(mtpNumber):
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 23:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2019-12-28T15:48:47Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2020-01-25T12:11:37Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20191102_120000" #desired cop table folder - remember to update if patched
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 24:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2020-01-25T14:09:32Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2020-02-22T13:15:02Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20191102_120000" #desired cop table folder - remember to update if patched
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
@@ -648,10 +642,16 @@ def getMtpConstants(mtpNumber):
 LATITUDE_RANGE = 2 #degrees
 LONGITUDE_RANGE = 2 #degress
 
-#name, cycle_type, min lat, max lat, min lon, max lon
+#name, priority, cycle_type, min lat, max lat, min lon, max lon
 occultationRegionsOfInterest = \
 [
-["ACIDALIA MUD VOLCANOES NE", 25, "OccultationCycleCH4", 44.68-LATITUDE_RANGE,44.68+LATITUDE_RANGE,-20.80-LONGITUDE_RANGE,-20.80+LONGITUDE_RANGE],
+["ALBA MONS", 30, "OccultationCycleCH4", 40.0-LATITUDE_RANGE,40.0+LATITUDE_RANGE,-109.6-LONGITUDE_RANGE,-109.6+LONGITUDE_RANGE],
+["ALBA MONS VOLCANIC CONES S", 29, "OccultationCycleCH4", 23.0-LATITUDE_RANGE,23.0+LATITUDE_RANGE,-110.0-LONGITUDE_RANGE,-110.0+LONGITUDE_RANGE],
+["OLYMPUS MONS VOLCANIC CONES E", 28, "OccultationCycleCH4", 15.0-LATITUDE_RANGE,15.0+LATITUDE_RANGE,-127.0-LONGITUDE_RANGE,-127.0+LONGITUDE_RANGE],
+["PAVONIS MONS VOLCANIC CONES SE", 27, "OccultationCycleCH4", -2.0-LATITUDE_RANGE,-2.0+LATITUDE_RANGE,-107.0-LONGITUDE_RANGE,-107.0+LONGITUDE_RANGE],
+["ARSIA MONS VOLCANIC CONES NE", 26, "OccultationCycleCH4", -5.0-LATITUDE_RANGE,-5.0+LATITUDE_RANGE,-114.0-LONGITUDE_RANGE,-114.0+LONGITUDE_RANGE],
+
+ ["ACIDALIA MUD VOLCANOES NE", 25, "OccultationCycleCH4", 44.68-LATITUDE_RANGE,44.68+LATITUDE_RANGE,-20.80-LONGITUDE_RANGE,-20.80+LONGITUDE_RANGE],
 ["ACIDALIA MUD VOLCANOES BASIN", 24, "OccultationCycleCH4", 40.93-LATITUDE_RANGE,40.93+LATITUDE_RANGE,-25.61-LONGITUDE_RANGE,-25.61+LONGITUDE_RANGE],
 ["NILI FOSSAE FORSTERITE", 23, "OccultationCycleCH4", 21.72-LATITUDE_RANGE,21.72+LATITUDE_RANGE,78.51-LONGITUDE_RANGE,78.51+LONGITUDE_RANGE],
 ["NILI FOSSAE FAULT", 22, "OccultationCycleCH4", 23.93-LATITUDE_RANGE,23.93+LATITUDE_RANGE,78.79-LONGITUDE_RANGE,78.79+LONGITUDE_RANGE],
@@ -675,11 +675,14 @@ occultationRegionsOfInterest = \
 ["ULYSSES FOSSAE", 5, "OccultationCycleCH4", 10.5-LATITUDE_RANGE,10.5+LATITUDE_RANGE,-122.5-LONGITUDE_RANGE,-122.5+LONGITUDE_RANGE],
 ["COPRATES RISE", 4, "OccultationCycleCH4", -21.0-LATITUDE_RANGE,-21.0+LATITUDE_RANGE,-60.0-LONGITUDE_RANGE,-60.0+LONGITUDE_RANGE],
 ["NILI FOSSAE COLOE FOSSAE", 3, "OccultationCycleCH4", 29.0-LATITUDE_RANGE,29.0+LATITUDE_RANGE,64.5-LONGITUDE_RANGE,64.5+LONGITUDE_RANGE],
+]
+LATITUDE_RANGE = 5 #degrees
+LONGITUDE_RANGE = 5 #degress
 
+occultationRegionsOfInterest.extend([
 ["INSIGHT", 2, "OccultationCycleH2O", 4.5-LATITUDE_RANGE,4.5+LATITUDE_RANGE,135.0-LONGITUDE_RANGE,135.0+LONGITUDE_RANGE],
 ["CURIOSITY", 1, "OccultationCycleCH4", -4.5895-LATITUDE_RANGE,-4.5895+LATITUDE_RANGE,137.4417-LONGITUDE_RANGE,137.4417+LONGITUDE_RANGE],
-
-]
+])
 #[print("\"%s\":\"CH4 01\"," %region[0]) for region in occultationRegionsOfInterest]
 
 
@@ -813,10 +816,10 @@ OCCULTATION_KEYS = [
      
     ["6SUBD CH4 #1"] * 3,
     ["6SUBD CO H2O #1"] * 3,
-    ["6SUBD CO H20 #2"] * 3,
+    ["6SUBD CO H2O #2"] * 3,
     ["6SUBD CO2 CO #1"] * 3,
     ["6SUBD CH4 H2O #1"] * 3,
-    ["All Fullscan Fast #2"] * 1,
+    ["All Fullscan Fast #2"] * 3,
     ["All Fullscan Slow #2"] * 1,
     ["CO2 Fullscan Fast #2"] * 1,
     ["CO Fullscan Fast #2"] * 1,
@@ -836,17 +839,17 @@ OCCULTATION_KEYS = [
     ["BgSubTest 04"] * 5,
     ["BgSubTest 05"] * 5,
     ["BgSubTest 06"] * 5,
-    ["Nominal Science 1xCO2 LA05"] * 5,
-    ["Nominal Science 1xCO2 LA06"] * 5,
-    ["Nominal Science 1xCO2 LA01"] * 5,
-    ["Nominal Science 1xCO2 HA01"] * 5,
-    ["Nominal Science 1xCO2 LA02"] * 5,
-    ["Nominal Science 1xCO2 HA02"] * 5,
-    ["Nominal Science 1xCO2 LA03"] * 5,
-    ["Nominal Science 1xCO2 HA03"] * 5,
-    ["Nominal Science 1xCO2 LA04"] * 5,
-    ["Nominal Science 1xCO2 HA04"] * 5,
-    ["Nominal Science with CO 01"] * 5,
+    ["Nominal Science 1xCO2 LA05"] * 4,
+    ["Nominal Science 1xCO2 LA06"] * 4,
+    ["Nominal Science 1xCO2 LA01"] * 4,
+    ["Nominal Science 1xCO2 HA01"] * 4,
+    ["Nominal Science 1xCO2 LA02"] * 4,
+    ["Nominal Science 1xCO2 HA02"] * 4,
+    ["Nominal Science 1xCO2 LA03"] * 4,
+    ["Nominal Science 1xCO2 HA03"] * 4,
+    ["Nominal Science 1xCO2 LA04"] * 4,
+    ["Nominal Science 1xCO2 HA04"] * 4,
+    ["Nominal Science with CO 01"] * 4,
     ["Dust H2O 01"] * 1,
     ["Water Ice 01"] * 1,
     ["CO 01"] * 1,
@@ -918,8 +921,8 @@ NADIR_KEYS = [
 #        ["CH4 3SUBD 01"] * 1, #134, 136, 168
 #        ["HDO H2O 2SUBD 03"] * 1, #121 & 168 
 #        ["Nominal 6SUBD 01"] * 1, #6 ORDERS DUST
-#        ["H20 CO 2SUBD 01"] * 1, #168, 190
-#        ["CO H20 3SUBD 01"] * 1, #191, 190, 168
+#        ["H2O CO 2SUBD 01"] * 1, #168, 190
+#        ["CO H2O 3SUBD 01"] * 1, #191, 190, 168
 #        ["CH4 2SUBD 03"] * 1, #136 x 2
 #        ["Nominal 4SUBD 01"] * 1, #121, 134, 168, 190
 
@@ -927,8 +930,8 @@ NADIR_KEYS = [
     ["Nominal 4SUBD 01"] * 5,
     ["Nominal 3SUBD 01"] * 5,
     ["H2O 2SUBD 01"] * 3,
-    ["H20 CO 2SUBD 01"] * 3,
-    ["CO H20 3SUBD 01"] * 3,
+    ["H2O CO 2SUBD 01"] * 3,
+    ["CO H2O 3SUBD 01"] * 3,
     ["Ice CH4 2SUBD #1"] * 3,
     ["Ice H2O 2SUBD #1"] * 3,
     ["Ice CO 2SUBD #1"] * 3,
@@ -1009,6 +1012,11 @@ observationCycles = {
 
 
 
+"""list NOMAD ACS joint occultations"""
+#for obsLists in SOC_JOINT_OBSERVATION_NAMES.values():
+#    for obs in obsLists:
+#        orders = occultationObservationDict[obs][0]
+#        print ("%s;" %obs + " %i," * len(orders) % tuple(orders))
 
 
 

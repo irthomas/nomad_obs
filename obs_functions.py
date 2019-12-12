@@ -728,7 +728,7 @@ def addMappsEvents(orbit_list, mtpConstants, paths):
 
 
 
-def plotRegionsOfInterest(paths, occultationRegionsOfInterest, occultationRegionsObservations, nadirRegionsOfInterest, nadirRegionsObservations):
+def plotRegionsOfInterest(paths, occultationRegionsOfInterest, nadirRegionsOfInterest):
     """Plot all regions of interest and observation types on empty map"""
 
     def plotRectangle(axis, lon_corner0, lon_corner1, lat_corner0, lat_corner1, colour):
@@ -741,21 +741,21 @@ def plotRegionsOfInterest(paths, occultationRegionsOfInterest, occultationRegion
         axis.plot(corners[:, 0], corners[:, 1], color=colour)
     
     
-    fig = plt.figure(figsize=(FIG_X, FIG_Y))
+    fig = plt.figure(figsize=(FIG_X+4, FIG_Y+4))
     ax = fig.add_subplot(111, projection="mollweide")
     ax.grid(True)
     plt.title("Nadir (red) and occultation (blue) regions of interest")
     
-    horizontal_offset = 0.1
+    horizontal_offset = 0.05
     for regionOfInterest in occultationRegionsOfInterest:
         
         plotRectangle(ax, regionOfInterest[5]/sp.dpr(), regionOfInterest[6]/sp.dpr(), regionOfInterest[3]/sp.dpr(), regionOfInterest[4]/sp.dpr(), "b")
-        ax.annotate(regionOfInterest[0]+" "+occultationRegionsObservations[regionOfInterest[0]], [np.mean((regionOfInterest[5], regionOfInterest[6]))/sp.dpr()+horizontal_offset, np.mean((regionOfInterest[3], regionOfInterest[3], regionOfInterest[4]))/sp.dpr()], color="b")
+        ax.annotate(regionOfInterest[0], [np.mean((regionOfInterest[5], regionOfInterest[6]))/sp.dpr()+horizontal_offset, np.mean((regionOfInterest[3], regionOfInterest[3], regionOfInterest[4]))/sp.dpr()], color="b")
     
     for regionOfInterest in nadirRegionsOfInterest:
-        verticalOffset = 0.1
+        verticalOffset = 0.05
         plotRectangle(ax, regionOfInterest[5]/sp.dpr(), regionOfInterest[6]/sp.dpr(), regionOfInterest[3]/sp.dpr(), regionOfInterest[4]/sp.dpr(), "r")
-        ax.annotate(regionOfInterest[0]+" "+nadirRegionsObservations[regionOfInterest[0]], [np.mean((regionOfInterest[5], regionOfInterest[6]))/sp.dpr()+horizontal_offset, np.mean((regionOfInterest[3], regionOfInterest[3], regionOfInterest[4]))/sp.dpr()+verticalOffset], color="r")
+        ax.annotate(regionOfInterest[0], [np.mean((regionOfInterest[5], regionOfInterest[6]))/sp.dpr()+horizontal_offset, np.mean((regionOfInterest[3], regionOfInterest[3], regionOfInterest[4]))/sp.dpr()+verticalOffset], color="r")
     
     plt.savefig(os.path.join(paths["OBS_DIRECTORY"], "regions_of_interest.png"))
     plt.close()
@@ -814,6 +814,7 @@ def regionsOfInterestOccultation(orbit_list, regions_of_interest, observationCyc
     """check for occultation observations near regions of interest"""
     #loop through each observation, making lat/lon steps and check against regions of interest
     for orbit in orbit_list:
+#        print(orbit["orbitNumber"])
         for occultation_type in orbit["allowedObservationTypes"]:
 #            print(occultation_type)
             
@@ -854,7 +855,8 @@ def regionsOfInterestOccultation(orbit_list, regions_of_interest, observationCyc
          
                         else:
                             min_altitude = np.nanmin(alts[matches]) #find minimum valid altitude
-                            i = int(np.where(alts[matches] == min_altitude)[0]) #find index corresponding to minimum altitude
+#                            print(min_altitude)
+                            i = int(np.where(alts[matches] == min_altitude)[0][0]) #find index corresponding to minimum altitude
                             #i = int(np.mean(np.where(matches)[0])) #find centre index
                             
                             #get random observation name from cycleName:
@@ -3187,6 +3189,8 @@ def writeLnoUvisJointObsNumbers(orbit_list, mtpConstants, paths):
     writeOutputTxt(os.path.join(paths["ORBIT_PLAN_PATH"], "nomad_mtp%03d_lno_orbits" %mtpNumber), lnoOperatingOrbits)
 
 
+
+
 def writeLnoGroundAssetJointObsInfo(orbit_list, mtpConstants, paths, ground_asset_name):
     """ write NOMAD + SAM-TLS joint obs info - start/end time, incidence angle, COP rows used"""
     mtpNumber = mtpConstants["mtpNumber"]
@@ -3200,7 +3204,7 @@ def writeLnoGroundAssetJointObsInfo(orbit_list, mtpConstants, paths, ground_asse
                 if "daysideRegions" in orbit.keys(): #check if any regions of interest observed
                     for daysideRegion in orbit["daysideRegions"]: 
                         if ground_asset_name.upper() in daysideRegion["name"]: #check if curiosity
-                            print(orbit["orbitNumber"])
+#                            print(orbit["orbitNumber"])
                             ordersMeasured = orbit[ORBIT_PLAN_NAME]["irDaysideOrders"]
                             orders = "#"+" #".join(str(order) for order in ordersMeasured)
                             utcTimeMeasured = daysideRegion["utc"]
@@ -3209,9 +3213,41 @@ def writeLnoGroundAssetJointObsInfo(orbit_list, mtpConstants, paths, ground_asse
                             
                             outputText = "%s, %0.1f, %0.1f, %s" %(utcTimeMeasured, incidenceAngleMeasured, lstMeasured, orders)
                             lnoGroundAssetJointObs.append(outputText)
-                            print(outputText)
+#                            print(outputText)
 
     writeOutputTxt(os.path.join(paths["ORBIT_PLAN_PATH"], "nomad_mtp%03d_lno_%s_joint_obs" %(mtpNumber, ground_asset_name.lower())), lnoGroundAssetJointObs)
+
+
+#def writeAcsJointObsNumbers(orbit_list, mtpConstants, paths):
+#    """write ACS joint obs"""
+#    """note that a check is NOT made to see if this file arlready exists. It should be identical each time it is made and should never be edited by hand"""
+#    mtpNumber = mtpConstants["mtpNumber"]
+#
+#
+#    obsTypeNames = {"ingress":"irIngressLow", "merged":"irIngressLow", "grazing":"irIngressLow", "egress":"irEgressLow"}
+#    outputStrings = []
+#    for obsName, socObsName in SOC_JOINT_OBSERVATION_NAMES.items(): #loop through all joint observation names
+#    
+#        for socObsType in SOC_JOINT_OBSERVATION_TYPES: #loop through egress, ingress, merged
+#            outputString = "%s, %s" %(socObsName, socObsType)
+#            found = False
+#            
+#            for orbit in orbit_list:
+#                occultationObsTypes = [occultationType for occultationType in orbit["allowedObservationTypes"][:] if occultationType in ["ingress", "egress", "merged", "grazing"]]
+#                for occultationObsType in occultationObsTypes:
+#                    if occultationObsType in orbit.keys():
+#                        obsTypeName = obsTypeNames[occultationObsType]
+#                        if obsName == orbit["finalOrbitPlan"][obsTypeName]:
+#                            eventDescription = orbit[occultationObsType]["occultationEventFileCounts"]
+#                            if socObsType in eventDescription:
+#                                eventOrbitNumber = eventDescription.split("-")[-1]
+#                                outputString += ", %s" %eventOrbitNumber
+#                                found = True
+#            if found:
+#                outputStrings.append(outputString)
+#
+#    writeOutputCsv(os.path.join(paths["COP_ROW_PATH"], "joint_occ_mtp%03d" %mtpNumber), outputStrings)
+
 
 
 def writeAcsJointObsNumbers(orbit_list, mtpConstants, paths):
@@ -3222,9 +3258,9 @@ def writeAcsJointObsNumbers(orbit_list, mtpConstants, paths):
 
     obsTypeNames = {"ingress":"irIngressLow", "merged":"irIngressLow", "grazing":"irIngressLow", "egress":"irEgressLow"}
     outputStrings = []
-    for obsName, socObsName in SOC_JOINT_OBSERVATION_NAMES.items():
+    for socObsName, obsNames in SOC_JOINT_OBSERVATION_NAMES.items(): #loop through all joint observation names
     
-        for socObsType in SOC_JOINT_OBSERVATION_TYPES:
+        for socObsType in SOC_JOINT_OBSERVATION_TYPES: #loop through egress, ingress, merged
             outputString = "%s, %s" %(socObsName, socObsType)
             found = False
             
@@ -3233,17 +3269,17 @@ def writeAcsJointObsNumbers(orbit_list, mtpConstants, paths):
                 for occultationObsType in occultationObsTypes:
                     if occultationObsType in orbit.keys():
                         obsTypeName = obsTypeNames[occultationObsType]
-                        if obsName == orbit["finalOrbitPlan"][obsTypeName]:
-                            eventDescription = orbit[occultationObsType]["occultationEventFileCounts"]
-                            if socObsType in eventDescription:
-                                eventOrbitNumber = eventDescription.split("-")[-1]
-                                outputString += ", %s" %eventOrbitNumber
-                                found = True
+                        for obsName in obsNames:
+                            if obsName == orbit["finalOrbitPlan"][obsTypeName]:
+                                eventDescription = orbit[occultationObsType]["occultationEventFileCounts"]
+                                if socObsType in eventDescription:
+                                    eventOrbitNumber = eventDescription.split("-")[-1]
+                                    outputString += ", %s" %eventOrbitNumber
+                                    found = True
             if found:
                 outputStrings.append(outputString)
 
     writeOutputCsv(os.path.join(paths["COP_ROW_PATH"], "joint_occ_mtp%03d" %mtpNumber), outputStrings)
-
 
 
 
@@ -3931,8 +3967,8 @@ def step1(orbitList, mtpConstants, paths):
     orbitList = regionsOfInterestOccultation(orbitList, occultationRegionsOfInterest, observationCycles)
     printStatement("Adding flags to file where obsevations match a region of interest")
     orbitList = findMatchingRegions(orbitList)
-#    printStatement("Plotting occultation and nadir regions of interest")
-#    plotRegionsOfInterest(paths, occultationRegionsOfInterest, occultationRegionsObservations, nadirRegionsOfInterest, nadirRegionsObservations)
+    printStatement("Plotting occultation and nadir regions of interest")
+    plotRegionsOfInterest(paths, occultationRegionsOfInterest, nadirRegionsOfInterest)
     printStatement("Adding generic orbit plan to orbit list (no nightsides or limbs, to be added manually)")
     orbitList = makeGenericOrbitPlan(orbitList)
     printStatement("Writing generic observation plan to file")
@@ -3986,7 +4022,7 @@ def step4(orbitList, mtpConstants, paths):
     printStatement("Writing LNO and Curosity + InSight joint observation files")   
     writeLnoGroundAssetJointObsInfo(orbitList, mtpConstants, paths, "Curiosity")
     writeLnoGroundAssetJointObsInfo(orbitList, mtpConstants, paths, "Insight")
-    writeLnoGroundAssetJointObsInfo(orbitList, mtpConstants, paths, "AEOLIS MENSAE MFF")
+#    writeLnoGroundAssetJointObsInfo(orbitList, mtpConstants, paths, "AEOLIS MENSAE MFF")
     printStatement("Writing mtp occultation webpage")
     writeOccultationWebpage(orbitList, mtpConstants, paths)
     printStatement("Writing mtp nadir webpage")

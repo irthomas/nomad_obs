@@ -17,11 +17,10 @@ __contact__   = "ian.thomas@aeronomie.be"
 
 
 
-#add orders 126-129 to planning
 
 """change this number, add the correct info to the mtp in obs_inputs, and run this script"""
 
-mtpNumber = 22
+mtpNumber = 24
 
 
 
