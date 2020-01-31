@@ -47,6 +47,16 @@ if sys.platform == "win32":
 elif sys.platform == "linux":
     DEV_DIRECTORY = os.path.join(os.sep, "bira-iasb", "websites", "dev", "mars", "en", "exomars", "observations")
 
+"""sql database config file directory, for getting access rights to internal sql database"""
+#not yet implemented
+if sys.platform == "win32":
+    if OFFLINE:
+        SQL_INI_DIRECTORY = BASE_DIRECTORY
+    else:
+        SQL_INI_DIRECTORY = os.path.join("W:", os.sep, "websites", "prod", "readonly", "nomad", "components", "com_nomad")
+elif sys.platform == "linux":
+    SQL_INI_DIRECTORY = os.path.join(os.sep, "bira-iasb", "websites", "prod", "readonly", "nomad", "components", "com_nomad")
+
 
 """where to find cop tables? Note that COP patches are done at the end of an MTP, and so planning the MTP after must be done with the new tables!"""
 if sys.platform == "win32":
@@ -102,6 +112,8 @@ def setupPaths(mtpConstants):
             "SUMMARY_FILE_PATH":os.path.join(OBS_DIRECTORY, "summary_files", "mtp%03d" %mtpNumber), \
             "HTML_MTP_PATH":os.path.join(OBS_DIRECTORY, "mtp_pages", "mtp%03d" %mtpNumber), \
             "IMG_MTP_PATH":os.path.join(OBS_DIRECTORY, "mtp_pages", "mtp%03d" %mtpNumber, "img"), \
+
+            "SQL_INI_PATH":os.path.join(SQL_INI_DIRECTORY), \
             }    
     
     #make directories if not already existing

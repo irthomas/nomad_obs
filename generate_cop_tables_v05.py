@@ -44,7 +44,8 @@ AUXILIARY_DIRECTORY = os.path.join(BASE_DIRECTORY, "data", "pfm_auxiliary_files"
 
 MODEL = "PFM"
 
-channels=["so","lno"]
+#channels=["so","lno"]
+channels=["so"]
 
 #PRINT_FLAG=True
 PRINT_FLAG=False

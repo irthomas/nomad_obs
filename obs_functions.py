@@ -13,6 +13,7 @@ import os
 import sys
 import shutil
 from distutils.dir_util import copy_tree
+import configparser
 
 #import numpy as np
 #import os
@@ -129,6 +130,8 @@ NOMAD_GRAZING_START_CODES = ["NOMAD_OCCGR_START"]
 NOMAD_GRAZING_END_CODES = ["NOMAD_OCCGR_END"]
 NOMAD_LIMB_START_CODES = ["NOMAD_LIMB_START"]
 NOMAD_LIMB_END_CODES = ["NOMAD_LIMB_END"]
+NOMAD_NIGHT_LIMB_START_CODES = ["NOMAD_LIMB_NIGHT_START"]
+NOMAD_NIGHT_LIMB_END_CODES = ["NOMAD_LIMB_NIGHT_END"]
 
 """Old list - new list for MTP008 onwards is below"""
 #ACS_INGRESS_START_CODES = ["ACS_MIR_OCCIN_START", "ACS_NIR_OCCIN_RA_START", "ACS_TIRSUN_OCCIN_START"]
@@ -650,6 +653,30 @@ def readMappsEventFile(instrument, mappsObservationType, mtpConstants, paths):
                     limbStartFound = False
                     limbEndFound = False
 
+    elif mappsObservationType == "nightlimb":
+        mappsEvent = []
+        
+        nightLimbStartFound = False
+        nightLimbEndFound = False
+        eventIndex = 0
+        
+        EVENT_CODES = NOMAD_NIGHT_LIMB_START_CODES + NOMAD_NIGHT_LIMB_END_CODES
+        
+        for eventTime, eventName, eventCount in lines:
+            if eventName in EVENT_CODES:
+                eventTime = eventTime[0:-1] #remove Z
+                if eventName in NOMAD_NIGHT_LIMB_START_CODES:
+                    mappsNightLimbStart = sp.str2et(eventTime)
+                    nightLimbStartFound = True
+                elif eventName in NOMAD_NIGHT_LIMB_END_CODES:
+                    mappsNightLimbEnd = sp.str2et(eventTime)
+                    nightLimbEndFound = True
+                if nightLimbStartFound and nightLimbEndFound:
+                    mappsEvent.append([eventIndex, "NightLimb", mappsNightLimbStart, mappsNightLimbEnd, eventCount])
+                    eventIndex += 1
+                    nightLimbStartFound = False
+                    nightLimbEndFound = False
+
     return mappsEvent
 
 
@@ -681,6 +708,9 @@ def addMappsEvents(orbit_list, mtpConstants, paths):
 
     mappsLimbEvents = readMappsEventFile("", "limb", mtpConstants, paths)
     mappsLimbEventStartTimes = [eventTime for _, eventName, eventTime, _, _ in mappsLimbEvents if eventName in ["Limb"]]
+
+    mappsNightLimbEvents = readMappsEventFile("", "nightlimb", mtpConstants, paths)
+    mappsNightLimbEventStartTimes = [eventTime for _, eventName, eventTime, _, _ in mappsNightLimbEvents if eventName in ["NightLimb"]]
 
     for orbit in orbit_list:
 #        orbit["obsTypes"] = []
@@ -722,6 +752,12 @@ def addMappsEvents(orbit_list, mtpConstants, paths):
         for limbStartTime in mappsLimbEventStartTimes:
             if orbit["dayside"]["etStart"] < limbStartTime < orbit["dayside"]["etEnd"]:
                 orbit["allowedObservationTypes"].append("trueLimb")
+
+        #check if night limb measurement lies within the nightside nadir of this orbit
+        for nightLimbStartTime in mappsNightLimbEventStartTimes:
+            if orbit["nightside"]["etStart"] < nightLimbStartTime < orbit["nightside"]["etEnd"]:
+                print("Night limb timing found")
+                orbit["allowedObservationTypes"].append("trueNightLimb")
             
     return orbit_list
 
@@ -951,12 +987,12 @@ def makeGenericOrbitPlan(orbit_list, silent=True):
         generic_orbit_type = UVIS_DEFAULT_ORBIT_TYPE
         generic_orbit_comment = ""
         
-        generic_orbit["irNightside"] = "" #irNightside not defined in generic plan
-        generic_orbit["uvisNightside"] = "" #uvisNightside not defined in generic plan
-
         """check for possible OCMs (Saturday afternoons, 11 - 4pm)"""
         timeStringOut = orbit["dayside"]["utcStart"]
         orbitNumber = orbit["orbitNumber"]
+
+        generic_orbit["irNightside"] = "" #default irNightside to always off unless nightside limb added below
+        generic_orbit["uvisNightside"] = ""  #default irNightside to always off unless nightside limb added below
     
         #first check for OCMs
         ocm = False
@@ -967,20 +1003,40 @@ def makeGenericOrbitPlan(orbit_list, silent=True):
                         generic_orbit_comment += "&possibleOCM; "
                         ocm = True
 
-        #next check for true (UVIS+LNO) limbs
+        #special section for true dayside limbs. Set dayside limb to type 28 first to avoid routine dayside nadirs being added
         if "trueLimb" in orbit["allowedObservationTypes"]:
             generic_orbit_type = 28
-            generic_orbit["irDayside"] = "irLimb"
-            generic_orbit["uvisDayside"] = "uvisLimb"
-            generic_orbit["irIngressHigh"] = ""
+            generic_orbit["irIngressHigh"] = "" #no occultations ever on true limb orbits
             generic_orbit["irIngressLow"] = ""
             generic_orbit["uvisIngress"] = ""
             generic_orbit["irEgressHigh"] = ""
             generic_orbit["irEgressLow"] = ""
             generic_orbit["uvisEgress"] = ""
+            generic_orbit["irDayside"] = "irLimb"
+            generic_orbit["uvisDayside"] = "uvisLimb"
+            generic_orbit_comment = "&trueDayLimb; "
+
+        
+        #night limbs must be done here so that region of interests on the dayside can be added after
+        if "trueNightLimb" in orbit["allowedObservationTypes"]:
+            print("Adding trueNightLimb")
+            generic_orbit_type = 47
+            generic_orbit["irIngressHigh"] = "" #no occultations ever on true limb orbits
+            generic_orbit["irIngressLow"] = ""
+            generic_orbit["uvisIngress"] = ""
+            generic_orbit["irEgressHigh"] = ""
+            generic_orbit["irEgressLow"] = ""
+            generic_orbit["uvisEgress"] = ""
+            generic_orbit["irDayside"] = ""
+            generic_orbit["uvisDayside"] = "uvisDayside"
+            generic_orbit["irNightside"] = "irNightLimb"
+            generic_orbit["uvisNightside"] = "uvisNightLimb"
+            generic_orbit_comment += "&trueNightLimb; "
+
 
     
         for occultation_type in orbit["allowedObservationTypes"]:
+
             if occultation_type == "ingress":
                 generic_orbit["irIngressHigh"] = "irIngress"
                 generic_orbit["irIngressLow"] = "irIngress"
@@ -1065,7 +1121,7 @@ def makeGenericOrbitPlan(orbit_list, silent=True):
 
 
     
-        if generic_orbit_type in [4, 14]: #if no occultations
+        if generic_orbit_type in [4, 14]: #if no occultations - nadir only
     
             generic_orbit["irIngressHigh"] = ""
             generic_orbit["irIngressLow"] = ""
@@ -1110,29 +1166,20 @@ def makeGenericOrbitPlan(orbit_list, silent=True):
                     elif generic_orbit_type == 14: #if 1x UVIS TCs
                         generic_orbit["uvisDayside"] = "uvisDayside"
 
-        else: #if not orbit type 14, still check for nadir regions
-            #check nadir regions of interest
-            if "daysideRegions" in orbit.keys(): #if nadir obs matches region of interest, set LNO on
-                for region in orbit["daysideRegions"]:
-                    generic_orbit_comment += "&daysideMatch:%s; " %(region["name"])
-    
-            #check nadir regions of interest in orbit list
-            if "observationName" in orbit["dayside"].keys(): #if dedicated obs type found, overwrite generic obs
-                generic_orbit["irDayside"] = orbit["dayside"]["observationName"]
+        else: #if not orbit types 4 or 14, still check for nadir regions
+            
+            if generic_orbit_type not in [28]: #if dayside limb, don't check for regions of interest
+
+                #check nadir regions of interest
+                if "daysideRegions" in orbit.keys(): #if nadir obs matches region of interest, set LNO on
+                    for region in orbit["daysideRegions"]:
+                        generic_orbit_comment += "&daysideMatch:%s; " %(region["name"])
+        
+                #check nadir regions of interest in orbit list
+                if "observationName" in orbit["dayside"].keys(): #if dedicated obs type found, overwrite generic obs
+                    generic_orbit["irDayside"] = orbit["dayside"]["observationName"]
 
             
-        #special section for true limbs
-        if "trueLimb" in orbit["allowedObservationTypes"]:
-            generic_orbit_type = 28
-            generic_orbit["irIngressHigh"] = ""
-            generic_orbit["irIngressLow"] = ""
-            generic_orbit["uvisIngress"] = ""
-            generic_orbit["irEgressHigh"] = ""
-            generic_orbit["irEgressLow"] = ""
-            generic_orbit["uvisEgress"] = ""
-            generic_orbit["irDayside"] = "irLimb"
-            generic_orbit["uvisDayside"] = "uvisLimb"
-            generic_orbit_comment = "&trueLimb"
         
     
         orbit["genericOrbitPlanOut"] = {"orbitType":generic_orbit_type, "orbitTypes":generic_orbit, "comment":generic_orbit_comment}
@@ -1567,7 +1614,7 @@ def makeCompleteOrbitPlan(orbit_list):
             irEgressLow=""
             uvisEgress = ""
 
-            orbit["allowedObservationTypes"].append("dayside")
+            orbit["allowedObservationTypes"].append("dayside") #activaes dayside
     
             if genericObsTypes["irDayside"] == "": #LNO off
                 irDayside = ""
@@ -1578,7 +1625,7 @@ def makeCompleteOrbitPlan(orbit_list):
                 else:
                     uvisDayside = "uvisOnlyLimb"
     
-            elif genericObsTypes["irDayside"] == "irLimb": #LNO off
+            elif genericObsTypes["irDayside"] == "irLimb": #LNO on
 #                nadirLimbCounter += 1
                 irDayside = random.choice(observationCycles["NadirCycleLimb"][1])
     
@@ -1598,7 +1645,48 @@ def makeCompleteOrbitPlan(orbit_list):
                 
             irNightside = ""
             uvisNightside = ""
+
+
+
+        if orbitType in [47]: #LNO and/or UVIS nightside limb
     
+            irIngressHigh=""
+            irIngressLow=""
+            uvisIngress = ""
+            irEgressHigh=""
+            irEgressLow=""
+            uvisEgress = ""
+            uvisDayside = "uvisDayside"
+            uvisNightside = "uvisNightLimb"
+
+            orbit["allowedObservationTypes"].append("dayside") #comment out?
+            orbit["allowedObservationTypes"].append("nightside") #comment out?
+
+    
+            if genericObsTypes["irNightside"] == "": #LNO off
+                irNightside = ""
+                print("Warning: orbit type 47 found with blank night limb observation")
+    
+            elif genericObsTypes["irNightside"] == "irNightLimb": #LNO on
+                irNightside = random.choice(observationCycles["NadirCycleNightLimb"][1])
+
+            else: #use LNO night limb preselected targeted obs
+                irNightside = genericObsTypes["irNightside"]
+                print("Warning: check that observation %s is suitable for an LNO night limb measurement" %irNightside)
+
+
+
+            #set LNO dayside to ON only for targeted observations
+            if genericObsTypes["irDayside"] == "": #LNO off
+                irDayside = ""
+    
+            elif irDayside in ["irDayside", "irShortDayside", "irLongDayside"]: #this should not happen - no generic daysides on night limbs
+                print("Error: LNO generic dayside observation %s on same orbit at nightside limb" %irDayside)
+                sys.exit()
+
+            else: #use LNO dayside preselected targeted obs
+                irDayside = genericObsTypes["irDayside"]
+                print("LNO targeted dayside observation %s on same orbit at nightside limb" %irDayside)
             
         orbit["completeOrbitPlan"] = \
             {
@@ -2581,20 +2669,23 @@ def writeIrCopRowsTxt(orbit_list, mtpConstants, paths):
 
 
 
-
-
 class obsDB(object):
     #db=MySQLdb.connect(host="sqlprod1-ae",user='nomad_user',passwd='Kr7NkoaN',db='nomad')
     def connect(self):
         """replace with ini script reader"""
-        host = "sqldatadev2-ae"
-        user = "nomad_user"
-        passwd = "Bt11Mw5X"
-        db = "data_nomad"
+        config = configparser.ConfigParser()
+        config.read(os.path.join(self.paths["SQL_INI_PATH"], "nomad_db.ini"))
+        host = config["data_db"]["host"].strip('"')
+        user = config["data_db"]["user"].strip('"')
+        passwd = config["data_db"]["password"].strip('"')
+        db = config["data_db"]["database"].strip('"')
+
+
         print("Connecting to database %s" %host)
         self.db = MySQLdb.connect(host=host, user=user, passwd=passwd, db=db)
         
-    def __init__(self):
+    def __init__(self, paths):
+        self.paths = paths
         self.connect()
         self.cursor = self.db.cursor()
 
@@ -2970,7 +3061,7 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths):
             ]
      
     if not OFFLINE:
-        db_obj = obsDB()
+        db_obj = obsDB(paths)
 #       db_obj.drop_table("nomad_nadirs")
 #       db_obj.new_table("nomad_nadirs", table_fields)
         sql_table_rows_datetime = db_obj.convert_table_datetimes(table_fields, sql_table_rows)
@@ -3157,7 +3248,7 @@ def writeOccultationWebpage(orbit_list, mtpConstants, paths):
     ]
 
     if not OFFLINE:
-        db_obj = obsDB()
+        db_obj = obsDB(paths)
 #       db_obj.drop_table("nomad_occultations")
 #       db_obj.new_table("nomad_occultations", table_fields)
         table_rows_datetime = db_obj.convert_table_datetimes(table_fields, sql_table_rows)
@@ -3357,6 +3448,12 @@ def getMtpTimes(mtpNumber):
     
     return mtpStartString, mtpEndString, mtpStartLs, mtpEndLs
 
+
+"""code to print MTP start/end times as a table"""
+#print("MTP Number,Start Date,End Date,Start Ls,End Ls")
+#for mtpNumber in range(41):
+#    mtpStartString, mtpEndString, mtpStartLs, mtpEndLs = getMtpTimes(mtpNumber)
+#    print("MTP%03i,%s,%s,%0.1f,%0.1f" %(mtpNumber, mtpStartString, mtpEndString, mtpStartLs, mtpEndLs))
 
 
 
@@ -3653,13 +3750,13 @@ def writeIndexWebpage(mtpConstants, paths):
 
 
 
-    MASTER_PAGE_NAMES = ["EXM-NO-SNO-AER-00028-iss0rev4-SO_LNO_COP_Table_Order_Combinations-180528.htm", \
-              "EXM-NO-SNO-AER-00027-iss0rev8-Science_Orbit_Observation_Rules-180306.pdf", \
-              "EXM-NO-PRS-AER-00172-iss0rev0-HDF5_Files_Description_180712.pdf"]
-
-    MASTER_PAGE_DESCRIPTIONS = ["SO and LNO diffraction order combinations", \
-                     "NOMAD Orbit Types and Observation Rules", \
-                     "Description of NOMAD Data and Observations"]
+#    MASTER_PAGE_NAMES = ["EXM-NO-SNO-AER-00028-iss0rev4-SO_LNO_COP_Table_Order_Combinations-180528.htm", \
+#              "EXM-NO-SNO-AER-00027-iss0rev8-Science_Orbit_Observation_Rules-180306.pdf", \
+#              "EXM-NO-PRS-AER-00172-iss0rev0-HDF5_Files_Description_180712.pdf"]
+#
+#    MASTER_PAGE_DESCRIPTIONS = ["SO and LNO diffraction order combinations", \
+#                     "NOMAD Orbit Types and Observation Rules", \
+#                     "Description of NOMAD Data and Observations"]
 
 
     allMtps = range(1, mtpNumber+1)
@@ -3668,14 +3765,17 @@ def writeIndexWebpage(mtpConstants, paths):
     
     h = r""
     h += r"<h1>NOMAD Observation Page</h1>"+"\n"
-    h += r"<h2>Miscellaneous Information</h2>"+"\n"
+#    h += r"<h2>Miscellaneous Information</h2>"+"\n"
+    h += r"<h2>These pages are being merged into the new website at <a href='https://nomad.aeronomie.be'>nomad.aeronomie.be</a></h2>"+"\n"
+    h += r"<br>"+"\n"
+    h += r"<br>"+"\n"
 
-    pagename = "nomad_faqs.html"
-    desc = "***Frequently Asked Questions***"
-    h += r"<p><a href=%s>%s</a></p>" %("pages/"+pagename,desc)+"\n"
+#    pagename = "nomad_faqs.html"
+#    desc = "***Frequently Asked Questions***"
+#    h += r"<p><a href=%s>%s</a></p>" %("pages/"+pagename,desc)+"\n"
 
-    for pageName,pageDescription in zip(MASTER_PAGE_NAMES,MASTER_PAGE_DESCRIPTIONS):
-        h += r"<p><a href=%s>%s</a> - %s</p>" %("pages/"+pageName,pageName,pageDescription)+"\n"
+#    for pageName,pageDescription in zip(MASTER_PAGE_NAMES,MASTER_PAGE_DESCRIPTIONS):
+#        h += r"<p><a href=%s>%s</a> - %s</p>" %("pages/"+pageName,pageName,pageDescription)+"\n"
 
    
     h += r"<h2>NOMAD Past Observations</h2>"+"\n"
