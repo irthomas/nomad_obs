@@ -1,0 +1,5 @@
+Obs Type Index,Obs Type,TC Start Time,TC20 PRECOOLING,TC20 FIXED,TC20 SCI1,TC20 SCI2,
+240,Nightside_Nadir,-,1,1,1125,1125,
+241,Nightside_Nadir,-,1,1,1125,1125,
+243,Nightside_Nadir,-,1,1,1125,1125,
+244,Nightside_Nadir,-,1,1,1125,1125,

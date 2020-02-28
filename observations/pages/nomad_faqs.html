@@ -1,0 +1,70 @@
+<h1>NOMAD Frequently Asked Questions</h1>
+<h2>Most Important Links</h2>
+<ul>
+<li><b><a href=nomad_data.html>***New: NOMAD data pipeline level descriptions***</a></b></li>
+<li><b><a href=nomad_observation_types.html>Observation types</a></b></li>
+<li><b><a href=Time_vs_Ls.txt>UTC time versus Mars longitude Ls</a></b></li>
+<li><b><a href=SO_Diffraction_Order_Wavenumbers.txt>SO diffraction order to wavenumber conversion table</a></b></li>
+<li><b><a href=LNO_Diffraction_Order_Wavenumbers.txt>LNO diffraction order to wavenumber conversion table</a></b></li>
+<li><b><a href=SO_AOTF_Diffraction_Order.txt>SO AOTF to diffraction order conversion table (2017 inflight calibration)</a></b></li>
+<li><b><a href=LNO_AOTF_Diffraction_Order.txt>LNO AOTF to diffraction order conversion table (2017 inflight calibration)</a></b></li>
+<li><b><a href=../obs-overview/index.php>Observation overview database</a></b></li>
+<li><b><a href=EXM-NO-ICD-AER-00001-iss1rev11-EAICD_NOMAD_181026.pdf>NOMAD experiment-to-archive interface document (EAICD)</a></b></li>
+<li><b><a href=EXM-NO-SNO-AER-00015-iss0rev30-CROSSDRIVE_HDF5_Data_Format_180528.htm>List of parameters contained in the HDF5 files</a></b></li>
+<li><b><a href=http://mars.aeronomie.be/en/exomars/publications.htm>NOMAD publication list</a></b></li>
+<li>More resources can be found on the <a href=index.html>main page</a></li>
+</ul>
+<h2>Data</h2>
+<h3>Data access rules</h3>
+<ul><li>
+Access to proprietary data is restricted to NOMAD team members and is conditional on acceptance of the NOMAD and ExoMars Rules of the Road document. Please contact Ann Carine Vandaele for more information.
+</li></ul>
+<h3>Data access methods</h3>
+<ul><li>
+Means to access the data were presented in the Data Workshop during the NOMAD SWT in Brussels May 2017. Due to their sensitive nature, the instructions are not available online.
+</li></ul>
+<h2>Planning and Observations</h2>
+<h3>General questions</h3>
+<ul>
+<li>
+<h4>What scientific observations have been performed so far?</h4>
+In addition to many calibration measurements, NOMAD has also made some nadir measurements of Mars with the UVIS and LNO nadir channels. These can be summarised as follows:
+<ul>
+<li>22nd November 2016 (equatorial orbit, good illumination angles)</li>
+<li>26th November 2016 (equatorial orbit, good illumination angles, inertial pointing from space to limb to dayside to limb to space and finally Phobos)</li>
+<li>28th February 2017 (inclined orbit, poor illumination angles, CO2 test: diffraction orders 148,155,156,157, 166, 167, 168 only)</li>
+<li>1st March 2017 (chosen observation parameters resulted in no useable information)</li>
+<li>5th March 2017 (UVIS full frame only, no LNO)</li>
+<li>6th March 2017 (inclined orbit, poor illumination angles, LNO fullscan all orders)</li>
+</ul>
+</li>
+<li>
+<h4>MCO-1 observations: on the <a href=MCO/nomad_mco_obs.html>observation page</a>, what is in the Obs type column?</h4>
+The page is generated automatically, and so the information may be difficult to understand. In general, this column lists the spacecraft pointing type, including which channel boresight was used for the solar pointing (the spacecraft -Y direction was always used for nadir).<br>
+Almost all the observations were calibration or test measurements here, except for two dayside nadir measurements (2016 NOV 22 15:49:06 and 2016 NOV 26 22:19:00). For the former, (labelled Mars nadir) the spacecraft attitude was controlled so that the nadir channels were pointing towards the centre of Mars at all times; for the latter (labelled Mars Inertial Limb), the spacecraft attitude was fixed in inertial space so that the nadir boresight drifted from dark space, across the limb, then the dayside, the second limb of Mars, and finally to dark space. The pointing was chosen so that Phobos also passed through the FOV after the second limb crossing.
+</li>
+<li>
+<h4>MCO-1 observations: how do I distinguish SO/LNO/UVIS observations?</h4>
+For nadir measurements, only UVIS and LNO can operate, and so these are always clear. For calibration measurements there can be some confusion, as the SO boresight is typically used for all measurements. In the Obs parameters column, UVIS observations always include the detector readout type (vertical bin/full frame), readout pixels in brackets, Tint = xx and the ADC bitsize (16 or 20 bit). For SO measurements, the parameter typically includes the observation type in capital letters (DARK_SKY, MINISCAN, INDEX_SLOW, etc.) followed by information on diffraction order, integration time, binning etc. The WTop (first line readout on the detector) parameter can generally be used to distinguish SO from LNO: SO solar pointing measurements usually use WHeight=23 and WTop=116 (i.e. 24 detector lines read out, centred on line 128) while LNO uses WHeight=23 and WTop=140 (24 lines read out, centred on line 152). 128 and 152 correspond to the centre of the slit as observed on the detector when illuminated.
+</li>
+<li>
+<h4>MCO-1 observations: why do the times listed here not match those in the HDF5 filenames?</h4>
+There is a 10 min 10 second difference between the SO/LNO times, due to the wait time between sending a telecommand +precooling the detector and starting the measurement. This will be fixed in future and the corresponding filename added to the 2nd column. There is a 10second difference for UVIS-only measurements for the same reason.
+</li>
+</ul>
+<h2>Instrument/Calibration</h2>
+<h3>How do I convert AOTF frequency to diffraction order to spectral interval?</h3>
+<ul><li>
+The conversion tables can be found at the top of the page for SO and LNO. Note that the pixel spectral calibration is temperature dependent, hence the exact values will vary. SO and LNO science files (observation types E, I, D and N) of levels 0.3A and above are spectrally calibrated - the Science/X field contains the wavenumber scale per pixel.
+</li></ul>
+<h3>Instrument throughput</h3>
+<ul><li>
+The instrument throughput was determined by G. Villaneuva for the <a href=https://psg.gsfc.nasa.gov/>Planetary Spectrum Generator</a>, using the data from a solar fullscan measurement. As an approximation, the SO channel can operate from order 110 to 220, and LNO nadir can operate from order 115 to 210.
+</li></ul>
+<h3>Observation geometry</h3>
+<ul><li>
+The HDF5 files from level 0.2a onwards contain observation geometry derived from the TGO SPICE kernels. The FOV is determined using a number of points, and the geometry is calculated for each. The number of points depends on the channel - SO occultation and LNO nadir contain 5 points (0 = FOV centre; 1-4 are the corners of rectangular FOV); UVIS nadir contains 9 points (FOV centre plus octagon around circular FOV). The Geometry/Point/PointXY field gives the coordinates relative to the field of view e.g. the SO FOV has size 30x2arcminutes, so PointXY[1,1] = [+15arcminutes,+2arcminutes] from the centre. Geometry/Point0/PointXY is always 0,0. An attribute GeometryPoints specifies how many points can be found in the file.
+</li></ul>
+<br>
+<br>
+<p>Page last modified: Tue, 06 Nov 2018 10:42:40</p>

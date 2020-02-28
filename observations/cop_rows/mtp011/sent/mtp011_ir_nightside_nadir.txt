@@ -1,0 +1,22 @@
+TC20 FIXED,TC20 PRECOOLING,TC20 SCI1,TC20 SCI2,LNO_OBSERVING (1=YES;0=NO),OBSERVATION NUMBER,OBSERVATION TYPE,APPROX TC START TIME,COMMENTS
+-1,-1,-1,-1,1,-1,Nightside_Nadir,NONE,NONE
+1,1,1779,1779,1,9,Dayside_Nadir,2019 JAN 27 03:34:13,OBSERVATION_COMMENT
+1,1,4000,4000,1,24,Dayside_Nadir,2019 JAN 27 21:17:09,OBSERVATION_COMMENT
+1,1,4000,4000,1,64,Dayside_Nadir,2019 JAN 29 16:32:49,OBSERVATION_COMMENT
+-1,-1,-1,-1,1,-1,Nightside_Nadir,NONE,NONE
+-1,-1,-1,-1,1,-1,Nightside_Nadir,NONE,NONE
+1,1,4000,4000,1,90,Dayside_Nadir,2019 JAN 30 23:59:29,OBSERVATION_COMMENT
+1,1,4000,4000,1,101,Dayside_Nadir,2019 JAN 31 13:44:49,OBSERVATION_COMMENT
+-1,-1,-1,-1,1,-1,Nightside_Nadir,NONE,NONE
+-1,-1,-1,-1,1,-1,Nightside_Nadir,NONE,NONE
+-1,-1,-1,-1,1,-1,Nightside_Nadir,NONE,NONE
+-1,-1,-1,-1,1,-1,Nightside_Nadir,NONE,NONE
+-1,-1,-1,-1,1,-1,Nightside_Nadir,NONE,NONE
+-1,-1,-1,-1,1,-1,Nightside_Nadir,NONE,NONE
+-1,-1,-1,-1,1,-1,Nightside_Nadir,NONE,NONE
+-1,-1,-1,-1,1,-1,Nightside_Nadir,NONE,NONE
+-1,-1,-1,-1,1,-1,Nightside_Nadir,NONE,NONE
+-1,-1,-1,-1,1,-1,Nightside_Nadir,NONE,NONE
+-1,-1,-1,-1,1,-1,Nightside_Nadir,NONE,NONE
+-1,-1,-1,-1,1,-1,Nightside_Nadir,NONE,NONE
+-1,-1,-1,-1,1,-1,Nightside_Nadir,NONE,NONE

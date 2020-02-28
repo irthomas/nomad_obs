@@ -1,0 +1,1606 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 14">
+<link id=Main-File rel=Main-File
+href="../EXM-NO-SNO-AER-00015-iss0rev30-CROSSDRIVE_HDF5_Data_Format_180528.htm">
+<link rel=File-List href=filelist.xml>
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+x\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<link rel=Stylesheet href=stylesheet.css>
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+@page
+	{margin:.75in .7in .75in .7in;
+	mso-header-margin:.3in;
+	mso-footer-margin:.3in;}
+-->
+</style>
+<![if !supportTabStrip]><script language="JavaScript">
+<!--
+function fnUpdateTabs()
+ {
+  if (parent.window.g_iIEVer>=4) {
+   if (parent.document.readyState=="complete"
+    && parent.frames['frTabs'].document.readyState=="complete")
+   parent.fnSetActiveSheet(4);
+  else
+   window.setTimeout("fnUpdateTabs();",150);
+ }
+}
+
+if (window.name!="frSheet")
+ window.location.replace("../EXM-NO-SNO-AER-00015-iss0rev30-CROSSDRIVE_HDF5_Data_Format_180528.htm");
+else
+ fnUpdateTabs();
+//-->
+</script>
+<![endif]>
+</head>
+
+<body link=blue vlink=purple class=xl124>
+
+<table border=0 cellpadding=0 cellspacing=0 width=2651 style='border-collapse:
+ collapse;table-layout:fixed;width:1989pt'>
+ <col class=xl124 width=247 style='mso-width-source:userset;mso-width-alt:9033;
+ width:185pt'>
+ <col class=xl124 width=425 style='mso-width-source:userset;mso-width-alt:15542;
+ width:319pt'>
+ <col class=xl124 width=116 style='mso-width-source:userset;mso-width-alt:4242;
+ width:87pt'>
+ <col class=xl124 width=113 style='mso-width-source:userset;mso-width-alt:4132;
+ width:85pt'>
+ <col class=xl124 width=191 style='mso-width-source:userset;mso-width-alt:6985;
+ width:143pt'>
+ <col class=xl124 width=197 style='mso-width-source:userset;mso-width-alt:7204;
+ width:148pt'>
+ <col class=xl124 width=221 style='mso-width-source:userset;mso-width-alt:8082;
+ width:166pt'>
+ <col class=xl124 width=373 style='mso-width-source:userset;mso-width-alt:13641;
+ width:280pt'>
+ <col class=xl124 width=64 span=12 style='width:48pt'>
+ <tr height=200 style='height:150.0pt'>
+  <td height=200 class=xl122 width=247 style='height:150.0pt;width:185pt'></td>
+  <td class=xl121 width=425 style='width:319pt'></td>
+  <td colspan=2 class=xl139 width=229 style='width:172pt'>To be compatible with
+  what we already have done with OMEGA and PFS data: leave the Nbins everywhere
+  - For NOMAD, it will be always =1 <br>
+    if Nbins = 1: no need to use 2D (3D) matrices; for example AOTFFrequency
+  will be a 1-column matrix (vector) of length Nspectra</td>
+  <td class=xl122 width=191 style='width:143pt'>All dimensions are of the
+  following: [Number of spectra] x [Number of bins] x [Number of pixels]</td>
+  <td class=xl121 width=197 style='width:148pt'>(1 subdomain, 1 detector bin) =
+  1 spectrum <br>
+    !! For SO and LNO: Nbins = 1; and<span style='mso-spacerun:yes'> 
+  </span><br>
+    Nspectra = [Nb_observationsx Nb_Detector Bins]</td>
+  <td class=xl121 width=221 style='width:166pt'>for UVIS : Nbins = 1;<span
+  style='mso-spacerun:yes'>  </span><br>
+    Nspectra = Nb_observations</td>
+  <td class=xl124 width=373 style='width:280pt'></td>
+  <td class=xl124 width=64 style='width:48pt'></td>
+  <td class=xl124 width=64 style='width:48pt'></td>
+  <td class=xl124 width=64 style='width:48pt'></td>
+  <td class=xl124 width=64 style='width:48pt'></td>
+  <td class=xl124 width=64 style='width:48pt'></td>
+  <td class=xl124 width=64 style='width:48pt'></td>
+  <td class=xl124 width=64 style='width:48pt'></td>
+  <td class=xl124 width=64 style='width:48pt'></td>
+  <td class=xl124 width=64 style='width:48pt'></td>
+  <td class=xl124 width=64 style='width:48pt'></td>
+  <td class=xl124 width=64 style='width:48pt'></td>
+  <td class=xl124 width=64 style='width:48pt'></td>
+ </tr>
+ <tr class=xl125 height=31 style='height:23.25pt'>
+  <td height=31 class=xl124 style='height:23.25pt'></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl122 width=191 style='width:143pt'></td>
+  <td class=xl121 width=197 style='width:148pt'></td>
+  <td class=xl121 width=221 style='width:166pt'></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+ </tr>
+ <tr height=31 style='height:23.25pt'>
+  <td height=31 class=xl126 style='height:23.25pt'>All : SO/LNO/UVIS</td>
+  <td class=xl126>Description</td>
+  <td class=xl126>Units</td>
+  <td class=xl126>Types</td>
+  <td class=xl126>Shape</td>
+  <td class=xl126>SO/LNO Example</td>
+  <td class=xl126>UVIS Example</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl102 width=247 style='height:15.0pt;width:185pt'>SpectralResolution</td>
+  <td class=xl102 width=425 style='width:319pt'>FWHM spectral resolution<span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl124>SAME AS X AXIS</td>
+  <td class=xl103>float</td>
+  <td class=xl102 width=191 style='width:143pt'>[Nspectra x Nbins]</td>
+  <td class=xl102 width=197 style='width:148pt'>0.156</td>
+  <td class=xl102 width=221 style='width:166pt'>0.156</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=80 style='height:60.0pt'>
+  <td height=80 class=xl102 width=247 style='height:60.0pt;width:185pt'>PixelSpectralCoefficents</td>
+  <td class=xl102 width=425 style='width:319pt'>Values of the polynomial
+  coefficients for calculating X values. SpectralCoefficients can vary by
+  temperature, time, and possibly by bin. Recorded to ensure that the X-axis
+  calibration can be checked</td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>float</td>
+  <td class=xl103>[Nspectra x Nbins] x [3]</td>
+  <td class=xl102 width=197 style='width:148pt'>X = Coeff[0] . (Pixel +
+  Pixel1)^2 + Coeff[1] . (Pixel + Pixel1) + Coeff[2]</td>
+  <td class=xl102 width=221 style='width:166pt'>X = Coeff[0] . (Pixel +
+  Pixel1)^2 + Coeff[1] . (Pixel + Pixel1) + Coeff[2]</td>
+  <td class=xl127></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 class=xl102 width=247 style='height:30.0pt;width:185pt'>Pixel1</td>
+  <td class=xl102 width=425 style='width:319pt'>Value of first pixel used to
+  calibrate X axis from coefficients</td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>float</td>
+  <td class=xl102 width=191 style='width:143pt'>[Nspectra x Nbins]</td>
+  <td class=xl102 width=197 style='width:148pt'>0.5 for LNO in most cases (0.5
+  for SOIR)</td>
+  <td class=xl102 width=221 style='width:166pt'>9 for UVIS</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl102 width=247 style='height:15.0pt;width:185pt'>ILSFlag</td>
+  <td class=xl102 width=425 style='width:319pt'>Flag to denote type of ILS
+  function. 1=Sinc,2=Sinc2, 3=Gaussian</td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>integer</td>
+  <td class=xl102 width=191 style='width:143pt'>[Nspectra x Nbins]</td>
+  <td class=xl102 width=197 style='width:148pt'>0</td>
+  <td class=xl102 width=221 style='width:166pt'>0</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr class=xl129 height=40 style='height:30.0pt'>
+  <td height=40 class=xl128 width=247 style='height:30.0pt;width:185pt'><s>SpectralResolutionUnitFlag
+  (always assumed to be same as X units)</s></td>
+  <td class=xl128 width=425 style='width:319pt'><s>Units of spectral
+  resolution. 0 = cm-1, 1= nm, 2 = um</s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl130><s>float</s></td>
+  <td class=xl128 width=191 style='width:143pt'><s>Nspectra x Nbins</s></td>
+  <td class=xl128 width=197 style='width:148pt'><s>e.g. 0</s></td>
+  <td class=xl128 width=221 style='width:166pt'><s>e.g. 0</s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+ </tr>
+ <tr class=xl125 height=31 style='height:23.25pt'>
+  <td height=31 class=xl102 width=247 style='height:23.25pt;width:185pt'></td>
+  <td class=xl102 width=425 style='width:319pt'></td>
+  <td class=xl124></td>
+  <td class=xl103></td>
+  <td class=xl102 width=191 style='width:143pt'></td>
+  <td class=xl102 width=197 style='width:148pt'></td>
+  <td class=xl102 width=221 style='width:166pt'></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+ </tr>
+ <tr height=31 style='height:23.25pt'>
+  <td height=31 class=xl126 style='height:23.25pt'>Dataset SO/LNO</td>
+  <td class=xl126>Description</td>
+  <td class=xl126>Units</td>
+  <td class=xl126>Types</td>
+  <td class=xl126>Shape</td>
+  <td class=xl126>SO/LNO Example</td>
+  <td class=xl126>UVIS Example</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=60 style='height:45.0pt'>
+  <td height=60 class=xl131 style='height:45.0pt'>AOTFBandwidth</td>
+  <td class=xl119 width=425 style='width:319pt'>Either raw values or FWHM
+  parameters. If raw values, provide xstart,xend,xstep,yvalues as for SOIR
+  where units same as those of X dataset</td>
+  <td class=xl103>SAME AS X AXIS</td>
+  <td class=xl103>float</td>
+  <td class=xl102 width=191 style='width:143pt'>[Nspectra x Nbins] x
+  NbParameters</td>
+  <td class=xl103>-100,100,0.1,yvalues…</td>
+  <td class=xl124></td>
+  <td class=xl119 width=373 style='width:280pt'>NbParameters= 1 for Flag = 1,
+  2, 3<br>
+    =15 for Flag=4<br>
+    =nb Pts+3 if Flag=0 (data)</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=120 style='height:90.0pt'>
+  <td height=120 class=xl131 style='height:90.0pt'>AOTFBandwidthFlag</td>
+  <td class=xl119 width=425 style='width:319pt'>Flag to denote AOTFBandwidth
+  type. 0=raw values, 1=Sinc, 2=Sinc2, 3=Gaussian, 4=5sinc2(with 15 parameters
+  SOIR), 5=sinc2+gaussian (goddard model with 4 parameters I0, w, IG, sigmaG)</td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl102 width=191 style='width:143pt'>[Nspectra x Nbins]</td>
+  <td class=xl103>0</td>
+  <td class=xl124></td>
+  <td class=xl119 width=373 style='width:280pt'>SOIR: 15 parameters must be
+  given: 5 center wavenumbr (first one =0.0; next 4 relative to the first); 5
+  FWHM; 5 relative intensity (first one =1.0; next 4 , relative to first
+  one)<br>
+    !! These parameters depend on the order nb -&gt; should be calculated
+  outside this file</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 class=xl131 style='height:30.0pt'>BlazeFunction</td>
+  <td class=xl119 width=425 style='width:319pt'>Either raw values or
+  parameters. If raw values, provide pixelstart, pixelend, pixelstep, yvalues
+  as for SOIR</td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>float</td>
+  <td class=xl102 width=191 style='width:143pt'>[Nspectra x Nbins] x [Ncoeffs
+  or Nvalues]</td>
+  <td class=xl124>0,319,1,yvalues…</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=140 style='height:105.0pt'>
+  <td height=140 class=xl131 style='height:105.0pt'>BlazeFunctionFlag</td>
+  <td class=xl119 width=425 style='width:319pt'>Flag to denote BlazeFunction
+  type. 0=raw values; 1=SOIR parameters: theta, gamma, alphaB, sigma in radians
+  or metres; 2=sinc2 parameters Goddard model: [wp2, wp1, wp0, b2, b1(=0.23),
+  b0(=160.25)]</td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl102 width=191 style='width:143pt'>[Nspectra x Nbins]</td>
+  <td class=xl103>0</td>
+  <td class=xl124></td>
+  <td width=373 style='width:280pt' align=left valign=top><!--[if gte vml 1]><v:shapetype
+   id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+   path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+   <v:stroke joinstyle="miter"/>
+   <v:formulas>
+    <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+    <v:f eqn="sum @0 1 0"/>
+    <v:f eqn="sum 0 0 @1"/>
+    <v:f eqn="prod @2 1 2"/>
+    <v:f eqn="prod @3 21600 pixelWidth"/>
+    <v:f eqn="prod @3 21600 pixelHeight"/>
+    <v:f eqn="sum @0 0 1"/>
+    <v:f eqn="prod @6 1 2"/>
+    <v:f eqn="prod @7 21600 pixelWidth"/>
+    <v:f eqn="sum @8 21600 0"/>
+    <v:f eqn="prod @7 21600 pixelHeight"/>
+    <v:f eqn="sum @10 21600 0"/>
+   </v:formulas>
+   <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" aspectratio="t"/>
+  </v:shapetype><v:shape id="Picture_x0020_1" o:spid="_x0000_s2049" type="#_x0000_t75"
+   style='position:absolute;margin-left:50.25pt;margin-top:83.25pt;width:182.25pt;
+   height:42.75pt;z-index:1;visibility:visible' o:gfxdata="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
+">
+   <v:imagedata src="image065.png" o:title=""/>
+   <x:ClientData ObjectType="Pict">
+    <x:SizeWithCells/>
+    <x:CF>Bitmap</x:CF>
+    <x:AutoPict/>
+   </x:ClientData>
+  </v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;
+  position:absolute;z-index:1;margin-left:67px;margin-top:111px;width:243px;
+  height:57px'><img width=243 height=57 src=image066.png v:shapes="Picture_x0020_1"></span><![endif]><span
+  style='mso-ignore:vglayout2'>
+  <table cellpadding=0 cellspacing=0>
+   <tr>
+    <td height=140 class=xl119 width=373 style='height:105.0pt;width:280pt'>Blaze
+    function goddard model:<br>
+        p = pixels 0 to 319<br>
+        wp = FSR width*0.9 measured in pixels = wp2*order^2 + wp1*order +
+    wp0<br>
+        p0 = FSR centre measured in pixels = b2*order^2 + b1*order + b0<br>
+        </td>
+   </tr>
+  </table>
+  </span></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>AOTFFrequency</td>
+  <td class=xl119 width=425 style='width:319pt'>Frequency of AOTF rounded to
+  nearest integer</td>
+  <td class=xl103>KILOHERTZ</td>
+  <td class=xl103>Integer</td>
+  <td class=xl102 width=191 style='width:143pt'>[Nspectra x Nbins]</td>
+  <td class=xl103>16000</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>BackgroundSubtraction</td>
+  <td class=xl124>0=Off, 1=On</td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl102 width=191 style='width:143pt'>[Nspectra x Nbins]</td>
+  <td class=xl103>0</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>Binning</td>
+  <td class=xl119 width=425 style='width:319pt'>Number of detector lines summed
+  to make each spectrum</td>
+  <td class=xl103>PIXELS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl102 width=191 style='width:143pt'>[Nspectra x Nbins]</td>
+  <td class=xl103>23</td>
+  <td class=xl124></td>
+  <td></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>Exponent</td>
+  <td class=xl124>Exponent returned for each bin in frame</td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl102 width=191 style='width:143pt'>[Nspectra x Nbins]</td>
+  <td class=xl103>4</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>IntegrationTime</td>
+  <td class=xl124>Integration time of measurement</td>
+  <td class=xl103>MILLISECONDS</td>
+  <td class=xl103>float</td>
+  <td class=xl102 width=191 style='width:143pt'>[Nspectra x Nbins]</td>
+  <td class=xl103>590</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>NumberOfAccumulations</td>
+  <td class=xl124>Number of detector accumulations<span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl103>ACCUMULATIONS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl102 width=191 style='width:143pt'>[Nspectra x Nbins]</td>
+  <td class=xl103>4</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr class=xl129 height=20 style='height:15.0pt'>
+  <td height=20 class=xl130 style='height:15.0pt'><s>TimeTag</s></td>
+  <td class=xl129><s>Time offset for calculating exact execution time</s></td>
+  <td class=xl130><s>MILLISECONDS</s></td>
+  <td class=xl130><s>float</s></td>
+  <td class=xl128 width=191 style='width:143pt'><s>[Nspectra x Nbins]</s></td>
+  <td class=xl130><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+  <td class=xl129><s></s></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>WindowHeight</td>
+  <td class=xl124>Number of detector lines readout for whole frame. 0=1 line</td>
+  <td class=xl103>PIXELS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl102 width=191 style='width:143pt'>[Nspectra x Nbins]</td>
+  <td class=xl103>143</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>WindowTop</td>
+  <td class=xl124>Top detector line readout for whole frame. 0=first line</td>
+  <td class=xl103>PIXELS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl102 width=191 style='width:143pt'>[Nspectra x Nbins]</td>
+  <td class=xl103>80</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>AOTFWnCoefficients</td>
+  <td class=xl127>Coefficients for converting AOTF frequency to wavenumber</td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>float</td>
+  <td class=xl103>[Nspectra x Nbins] x [3]</td>
+  <td class=xl103>0.123, 0.456, 0.789</td>
+  <td class=xl127></td>
+  <td class=xl127 colspan=10 style='mso-ignore:colspan'>This is required to
+  make the AOTF shape fit the diffraction order correctly (in case the AOTF
+  freq is not correctly centred on the middle of the detector)</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>WnAOTFCoefficients</td>
+  <td class=xl127>Coefficients for converting wavenumber to AOTF frequency</td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>float</td>
+  <td class=xl103>[Nspectra x Nbins] x [3]</td>
+  <td class=xl103>0.123, 0.456, 0.789</td>
+  <td class=xl127></td>
+  <td class=xl127 colspan=10 style='mso-ignore:colspan'>This is required to
+  make the AOTF shape fit the diffraction order correctly (in case the AOTF
+  freq is not correctly centred on the middle of the detector)</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>AOTFOrderCoefficients</td>
+  <td class=xl127>Coefficients for converting AOTF frequency to diffraction
+  order</td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>float</td>
+  <td class=xl103>[Nspectra x Nbins] x [3]</td>
+  <td class=xl103>0.123, 0.456, 0.789</td>
+  <td class=xl127></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>OrderAOTFCoefficients</td>
+  <td class=xl127>Coefficients for converting order to AOTF frequency</td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>float</td>
+  <td class=xl103>[Nspectra x Nbins] x [3]</td>
+  <td class=xl103>0.123, 0.456, 0.789</td>
+  <td class=xl127></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl102 width=247 style='height:15.0pt;width:185pt'>DiffractionOrder</td>
+  <td class=xl118 width=425 style='width:319pt'>Diffraction order</td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>float</td>
+  <td class=xl102 width=191 style='width:143pt'>Nspectra x Nbins</td>
+  <td class=xl103>134</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr class=xl125 height=31 style='height:23.25pt'>
+  <td height=31 class=xl102 width=247 style='height:23.25pt;width:185pt'>IndBin</td>
+  <td class=xl118 width=425 style='width:319pt'>Bin number</td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl102 width=191 style='width:143pt'>Nspectra x Nbins</td>
+  <td class=xl103>0</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=31 style='height:23.25pt'>
+  <td height=31 class=xl132 style='height:23.25pt'></td>
+  <td class=xl127></td>
+  <td class=xl124></td>
+  <td class=xl127></td>
+  <td class=xl127></td>
+  <td class=xl127></td>
+  <td class=xl127></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+  <td class=xl125></td>
+ </tr>
+ <tr height=31 style='height:23.25pt'>
+  <td height=31 class=xl126 style='height:23.25pt'>Dataset UVIS</td>
+  <td class=xl126>Description</td>
+  <td class=xl126>Units</td>
+  <td class=xl126>Types</td>
+  <td class=xl126>Shape</td>
+  <td class=xl126>SO/LNO Example</td>
+  <td class=xl126>UVIS Example</td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl124 style='height:15.0pt'></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>AcquisitionDelay</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Float</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>AcquisitionMode</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>B0LEDControl</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>B1LoopDark</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>B2IntegrationTimeIncrement</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>B3SciHSK</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>B4LocateDark</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>B5LED</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>B6MotorHold</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>B7SetOnOffChipBinning</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>BiasAverage</td>
+  <td class=xl124></td>
+  <td class=xl103>ACQUISITIONS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>ControlBits</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>DarkAverage</td>
+  <td class=xl124></td>
+  <td class=xl103>ACQUISITIONS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>DarkToObservationSteps</td>
+  <td class=xl124></td>
+  <td class=xl103>STEPS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>HEnd</td>
+  <td class=xl124></td>
+  <td class=xl103>PIXEL</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>HStart</td>
+  <td class=xl124></td>
+  <td class=xl103>PIXEL</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>HorizontalAndCombinedBinningSize</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>IntegrationTime</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Float</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>Mode</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>MotorDelay</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>MotorStartPosition</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>NumberOfAcquisitions</td>
+  <td class=xl124></td>
+  <td class=xl103>ACQUISITIONS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>NumberOfFlushes</td>
+  <td class=xl124></td>
+  <td class=xl103>FLUSHES</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>ObservationToDarkSteps</td>
+  <td class=xl124></td>
+  <td class=xl103>STEPS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>ReverseFlagAndDataTypeFlagRegister</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>ScienceAverage</td>
+  <td class=xl124></td>
+  <td class=xl103>ACQUISITIONS</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>StartDelay</td>
+  <td class=xl124></td>
+  <td class=xl103>NO UNITS</td>
+  <td class=xl103>Float</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>VEnd</td>
+  <td class=xl124></td>
+  <td class=xl103>PIXEL</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl131 style='height:15.0pt'>VStart</td>
+  <td class=xl124></td>
+  <td class=xl103>PIXEL</td>
+  <td class=xl103>Integer</td>
+  <td class=xl103>Npackets</td>
+  <td class=xl103></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+  <td class=xl124></td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=247 style='width:185pt'></td>
+  <td width=425 style='width:319pt'></td>
+  <td width=116 style='width:87pt'></td>
+  <td width=113 style='width:85pt'></td>
+  <td width=191 style='width:143pt'></td>
+  <td width=197 style='width:148pt'></td>
+  <td width=221 style='width:166pt'></td>
+  <td width=373 style='width:280pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>

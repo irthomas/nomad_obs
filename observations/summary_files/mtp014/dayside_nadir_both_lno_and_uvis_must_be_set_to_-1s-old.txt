@@ -1,0 +1,17 @@
+Dayside nadir observation number
+4
+15
+28
+52
+85
+86
+89
+91
+128
+171
+178
+217
+256
+257
+318
+

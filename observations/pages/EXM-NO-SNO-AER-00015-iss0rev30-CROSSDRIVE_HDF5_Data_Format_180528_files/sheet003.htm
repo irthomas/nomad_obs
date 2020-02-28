@@ -1,0 +1,350 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 14">
+<link id=Main-File rel=Main-File
+href="../EXM-NO-SNO-AER-00015-iss0rev30-CROSSDRIVE_HDF5_Data_Format_180528.htm">
+<link rel=File-List href=filelist.xml>
+<link rel=Stylesheet href=stylesheet.css>
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+@page
+	{margin:.75in .7in .75in .7in;
+	mso-header-margin:.3in;
+	mso-footer-margin:.3in;}
+-->
+</style>
+<![if !supportTabStrip]><script language="JavaScript">
+<!--
+function fnUpdateTabs()
+ {
+  if (parent.window.g_iIEVer>=4) {
+   if (parent.document.readyState=="complete"
+    && parent.frames['frTabs'].document.readyState=="complete")
+   parent.fnSetActiveSheet(2);
+  else
+   window.setTimeout("fnUpdateTabs();",150);
+ }
+}
+
+if (window.name!="frSheet")
+ window.location.replace("../EXM-NO-SNO-AER-00015-iss0rev30-CROSSDRIVE_HDF5_Data_Format_180528.htm");
+else
+ fnUpdateTabs();
+//-->
+</script>
+<![endif]>
+</head>
+
+<body link=blue vlink=purple>
+
+<table border=0 cellpadding=0 cellspacing=0 width=2005 style='border-collapse:
+ collapse;table-layout:fixed;width:1505pt'>
+ <col class=xl89 width=105 style='mso-width-source:userset;mso-width-alt:3840;
+ width:79pt'>
+ <col width=501 style='mso-width-source:userset;mso-width-alt:18322;width:376pt'>
+ <col width=218 style='mso-width-source:userset;mso-width-alt:7972;width:164pt'>
+ <col width=281 style='mso-width-source:userset;mso-width-alt:10276;width:211pt'>
+ <col width=287 style='mso-width-source:userset;mso-width-alt:10496;width:215pt'>
+ <col width=613 style='mso-width-source:userset;mso-width-alt:22418;width:460pt'>
+ <tr class=xl119 height=125 style='height:93.75pt'>
+  <td height=125 class=xl120 width=105 style='height:93.75pt;width:79pt'></td>
+  <td class=xl123 width=501 style='width:376pt'>To be compatible with what we
+  already have done with OMEGA and PFS data: leave the Nbins everywhere - For
+  NOMAD, it will be always =1 <br>
+    if Nbins = 1: no need to use 2D (3D) matrices; for example AOTFFrequency
+  will be a 1-column matrix (vector) of length Nspectra</td>
+  <td class=xl122 width=218 style='width:164pt'>All dimensions are of the
+  following: [Number of spectra] x [Number of bins] x [Number of pixels]</td>
+  <td class=xl121 width=281 style='width:211pt'>(1 subdomain, 1 detector bin) =
+  1 spectrum <br>
+    !! For SO and LNO: Nbins = 1; and<span style='mso-spacerun:yes'> 
+  </span><br>
+    Nspectra = [Nb_observationsx Nb_Detector Bins]</td>
+  <td class=xl121 width=287 style='width:215pt'>for UVIS : Nbins = 1;<span
+  style='mso-spacerun:yes'>  </span><br>
+    Nspectra = Nb_observations</td>
+  <td class=xl119 width=613 style='width:460pt'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl89 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr class=xl95 height=31 style='height:23.25pt'>
+  <td height=31 class=xl94 style='height:23.25pt'>Dataset</td>
+  <td class=xl94>Description</td>
+  <td class=xl94>Dimension</td>
+  <td class=xl94>SO/LNO Example</td>
+  <td class=xl94>UVIS Example</td>
+  <td class=xl95>Notes</td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 class=xl100 width=105 style='height:30.0pt;width:79pt'>Bins</td>
+  <td class=xl100 width=501 style='width:376pt'>Start and end rows of each bin
+  in the spectrum</td>
+  <td class=xl100 width=218 style='width:164pt'>[Nspectra x Nbins] x [2]</td>
+  <td class=xl100 width=281 style='width:211pt'>[116,119],[120,123],….</td>
+  <td class=xl100 width=287 style='width:215pt'>[0,15] for UVIS full frame.
+  [vstart,end] for binned spectrum</td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=105 style='height:15.0pt;width:79pt'>X</td>
+  <td class=xl100 width=501 style='width:376pt'>X values</td>
+  <td class=xl100 width=218 style='width:164pt'>[Nspectra x Nbins] x [YNb]</td>
+  <td class=xl100 width=281 style='width:211pt'>2100.00, 2100.20, 2100.40cm-1</td>
+  <td class=xl100 width=287 style='width:215pt'>200,201,202nm</td>
+  <td></td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 class=xl100 width=105 style='height:30.0pt;width:79pt'>XUnitFlag</td>
+  <td class=xl100 width=501 style='width:376pt'>Unit of X axis. 0 = pixel, 1 =
+  cm-1, 2 = nm, 3 = um, 4 = Relative cm-1 (used in SOIR)</td>
+  <td class=xl100 width=218 style='width:164pt'>[Nspectra x Nbins]</td>
+  <td class=xl100 width=281 style='width:211pt'>0</td>
+  <td class=xl100 width=287 style='width:215pt'>0</td>
+  <td></td>
+ </tr>
+ <tr class=xl107 height=40 style='height:30.0pt'>
+  <td height=40 class=xl106 width=105 style='height:30.0pt;width:79pt'><s>Y</s></td>
+  <td class=xl106 width=501 style='width:376pt'><s>Y values for the full
+  reconstructed detector frame</s></td>
+  <td class=xl106 width=218 style='width:164pt'><s>Nspectra x Npixels_vertical
+  x Npixels_horizontal</s></td>
+  <td class=xl106 width=281 style='width:211pt'><s>e.g. detector pixel DNs,
+  320x256</s></td>
+  <td class=xl106 width=287 style='width:215pt'><s>e.g. detector pixel DNs</s></td>
+  <td class=xl107><s></s></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=105 style='height:15.0pt;width:79pt'>YError</td>
+  <td class=xl100 width=501 style='width:376pt'>Error on Y values</td>
+  <td class=xl100 width=218 style='width:164pt'>[Nspectra x Nbins] x [YNb]</td>
+  <td class=xl100 width=281 style='width:211pt'>Detector pixel DNs error</td>
+  <td class=xl100 width=287 style='width:215pt'>Detector pixel DNs error</td>
+  <td></td>
+ </tr>
+ <tr height=60 style='height:45.0pt'>
+  <td height=60 class=xl100 width=105 style='height:45.0pt;width:79pt'>YErrorFlag</td>
+  <td class=xl100 width=501 style='width:376pt'>Flag indicating if and what
+  kind of error is supplied. =0 : no error given<span
+  style='mso-spacerun:yes'>  </span>(YErrorNb =0), =1 : only one value of noise
+  for all data points (YErrorNb =1), =2 : one value of noise for each Y value
+  (YErrorNb = YNb)</td>
+  <td class=xl100 width=218 style='width:164pt'>[Nspectra x Nbins]</td>
+  <td class=xl100 width=281 style='width:211pt'>0</td>
+  <td class=xl100 width=287 style='width:215pt'>0</td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=105 style='height:15.0pt;width:79pt'>YNb</td>
+  <td class=xl100 width=501 style='width:376pt'>Number of data points</td>
+  <td class=xl100 width=218 style='width:164pt'>[Nspectra x Nbins]</td>
+  <td class=xl100 width=281 style='width:211pt'>320</td>
+  <td class=xl100 width=287 style='width:215pt'>1048</td>
+  <td></td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 class=xl100 width=105 style='height:30.0pt;width:79pt'>YTypeFlag</td>
+  <td class=xl100 width=501 style='width:376pt'>Type of Y values. 0 = raw DN
+  (digital number), 1 = radiance, 2 = transmittance, 3 = radiance factor</td>
+  <td class=xl100 width=218 style='width:164pt'>[Nspectra x Nbins]</td>
+  <td class=xl100 width=281 style='width:211pt'>0</td>
+  <td class=xl100 width=287 style='width:215pt'>0</td>
+  <td></td>
+ </tr>
+ <tr height=40 style='height:30.0pt'>
+  <td height=40 class=xl100 width=105 style='height:30.0pt;width:79pt'>YUnitFlag</td>
+  <td class=xl100 width=501 style='width:376pt'>Units of Y axis. 0 =
+  uncalibrated, 1 = none (but calibrated), 2 = W/cm2/Sr/cm-1, 3 = Brightness
+  Temperature (K), 4=W/m2/Sr/nm</td>
+  <td class=xl100 width=218 style='width:164pt'>[Nspectra x Nbins]</td>
+  <td class=xl100 width=281 style='width:211pt'>0</td>
+  <td class=xl100 width=287 style='width:215pt'>0</td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=105 style='height:15.0pt;width:79pt'>Y</td>
+  <td class=xl100 width=501 style='width:376pt'>Y values for each bin</td>
+  <td class=xl100 width=218 style='width:164pt'>[Nspectra x Nbins] x [YNb]</td>
+  <td class=xl100 width=281 style='width:211pt'>Detector pixel DNs</td>
+  <td class=xl100 width=287 style='width:215pt'>Detector pixel DNs</td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl89 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=31 style='height:23.25pt'>
+  <td height=31 class=xl94 style='height:23.25pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl89 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=105 style='width:79pt'></td>
+  <td width=501 style='width:376pt'></td>
+  <td width=218 style='width:164pt'></td>
+  <td width=281 style='width:211pt'></td>
+  <td width=287 style='width:215pt'></td>
+  <td width=613 style='width:460pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>

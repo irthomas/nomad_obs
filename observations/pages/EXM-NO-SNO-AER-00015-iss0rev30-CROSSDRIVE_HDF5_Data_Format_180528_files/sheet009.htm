@@ -1,0 +1,2181 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 14">
+<link id=Main-File rel=Main-File
+href="../EXM-NO-SNO-AER-00015-iss0rev30-CROSSDRIVE_HDF5_Data_Format_180528.htm">
+<link rel=File-List href=filelist.xml>
+<link rel=Stylesheet href=stylesheet.css>
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+@page
+	{margin:.75in .7in .75in .7in;
+	mso-header-margin:.3in;
+	mso-footer-margin:.3in;}
+-->
+</style>
+<![if !supportTabStrip]><script language="JavaScript">
+<!--
+function fnUpdateTabs()
+ {
+  if (parent.window.g_iIEVer>=4) {
+   if (parent.document.readyState=="complete"
+    && parent.frames['frTabs'].document.readyState=="complete")
+   parent.fnSetActiveSheet(8);
+  else
+   window.setTimeout("fnUpdateTabs();",150);
+ }
+}
+
+if (window.name!="frSheet")
+ window.location.replace("../EXM-NO-SNO-AER-00015-iss0rev30-CROSSDRIVE_HDF5_Data_Format_180528.htm");
+else
+ fnUpdateTabs();
+//-->
+</script>
+<![endif]>
+</head>
+
+<body link=blue vlink=purple>
+
+<table border=0 cellpadding=0 cellspacing=0 width=1673 style='border-collapse:
+ collapse;table-layout:fixed;width:1254pt'>
+ <col class=xl93 width=156 style='mso-width-source:userset;mso-width-alt:5705;
+ width:117pt'>
+ <col class=xl93 width=219 style='mso-width-source:userset;mso-width-alt:8009;
+ width:164pt'>
+ <col class=xl93 width=116 style='mso-width-source:userset;mso-width-alt:4242;
+ width:87pt'>
+ <col class=xl93 width=67 style='mso-width-source:userset;mso-width-alt:2450;
+ width:50pt'>
+ <col class=xl93 width=411 style='mso-width-source:userset;mso-width-alt:15030;
+ width:308pt'>
+ <col width=64 span=11 style='width:48pt'>
+ <tr height=31 style='height:23.25pt'>
+  <td height=31 class=xl115 colspan=2 width=375 style='height:23.25pt;
+  mso-ignore:colspan;width:281pt'>NOT CORRECT! TO BE UPDATED!</td>
+  <td class=xl93 width=116 style='width:87pt'></td>
+  <td class=xl93 width=67 style='width:50pt'></td>
+  <td class=xl93 width=411 style='width:308pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'></td>
+  <td class=xl93></td>
+  <td class=xl93></td>
+  <td class=xl93></td>
+  <td class=xl93></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr class=xl95 height=31 style='height:23.25pt'>
+  <td height=31 class=xl94 style='height:23.25pt'>Group</td>
+  <td class=xl94>Dataset</td>
+  <td class=xl94>Units</td>
+  <td class=xl94>Types</td>
+  <td class=xl94>Shape</td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'></td>
+  <td class=xl93>Time</td>
+  <td class=xl93></td>
+  <td class=xl93></td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td class=xl104 colspan=10 style='mso-ignore:colspan'>SO/LNO is no longer
+  split by subdomain into separate files : 1 file with all bins of all
+  subdomains</td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'></td>
+  <td class=xl93>Date</td>
+  <td class=xl93></td>
+  <td class=xl93></td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td colspan=3 style='mso-ignore:colspan'>Nspectra = Npackets</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'></td>
+  <td class=xl93>Name</td>
+  <td class=xl93></td>
+  <td class=xl93></td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td colspan=4 style='mso-ignore:colspan'>Nframes = number of light frames</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl93>AOTF_FREQUENCY</td>
+  <td class=xl93>KILOHERTZ</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra <font class="font28">x Nbin</font><font class="font0"><span
+  style='mso-spacerun:yes'>  </span></font></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl93>BACKGROUND_SUBTRACTION</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl93>BINNING</td>
+  <td class=xl93>PIXELS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl93>EXPONENT</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl93>INTEGRATION_TIME</td>
+  <td class=xl93>MILLISECONDS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra<font class="font28"> x Nbin</font></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl93>NUMBER_OF_ACCUMULATIONS</td>
+  <td class=xl93>ACCUMULATIONS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Nspectra<font class="font28"> x Nbin</font></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl93>TIME_TAG</td>
+  <td class=xl93>MILLISECONDS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra<span style='mso-spacerun:yes'>  </span><font
+  class="font28">x Nbin</font></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl93>WINDOW_HEIGHT</td>
+  <td class=xl93>PIXELS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Nspectra<font class="font28"> x Nbin</font></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl93>WINDOW_TOP</td>
+  <td class=xl93>PIXELS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Nspectra<font class="font28"> x Nbin</font></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Geometry</td>
+  <td class=xl93>Observation_Date</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>String</td>
+  <td class=xl93>Nspectra x Nbin x (Nframes x2)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Geometry</td>
+  <td class=xl93>Observation_Time</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>String</td>
+  <td class=xl93>Nspectra x Nbin x (Nframes x2)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>+12V_LNO_CCC</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>+2.5V_LNO_CCC</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>+3.3V_LNO_CCC</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>+5V_LNO_HSK</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>+8.5V_LNO_HSK</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>-12V_LNO_CCC</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>-5V_LNO_HSK</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>-8.5V_LNO_HSK</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>FPA1_FULL_SCALE_TEMP_LNO</td>
+  <td class=xl93>KELVIN</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>GROUND_POTENTIAL_LNO_HSK</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>MOTOR_POWER_DAC_CODE_LNO</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>RF_AMPLITUDE_LNO</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>SENSOR_1_TEMP_LNO</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>SENSOR_2_TEMP_LNO</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>SENSOR_3_TEMP_LNO</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>ADC1_REF_VOLT_0V</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>ADC1_REF_VOLT_3.3V</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>ADC2_REF_VOLT_3.3V</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>DC_DC_MODULE_TEMP</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>HEATER_CURRENT</td>
+  <td class=xl93>AMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>HOUSEKEEPING_DATE</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>String</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>HOUSEKEEPING_TIME</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>String</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>LNO_COLD_SECTION_TEMP</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>LNO_CURRENT</td>
+  <td class=xl93>AMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>LNO_TEMP</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>LNO_VOLTAGE</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>POWER_BOARD_TEMP</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>SO_CURRENT</td>
+  <td class=xl93>AMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>SO_TEMP</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>SO_VOLTAGE</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>UVIS_CURRENT</td>
+  <td class=xl93>AMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>UVIS_TEMP</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>UVIS_VOLTAGE</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>HSK_Out_Of_Bounds</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>HSK_First_Packet_Disturbed</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>HSK_Disturbed_Throughout</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Reserved_4</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Reserved_5</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Bad_Pixels_Present</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Bad_Pixels_Interpolated</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Bad_Pixels_Masked</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Reserved_9</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Reserved_10</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Reserved_11</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Detector_Saturated</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Detector_First_Packet_Disturbed</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Detector_Disturbed_Throughout</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Discarded_Packet</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Other_Packet_Issue</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Reserved_17</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Reserved_18</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Reserved_19</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Reserved_20</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>High_Temperature</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>High_Temperature_Drift</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Reserved_23</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Reserved_24</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Predicted_Pointing</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Predicted_Ephemeris</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>No_Pointing</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>No_Ephemeris</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Reserved_29</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Reserved_30</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>Reserved_31</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl93>QualityFlag_Unused</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>Bins</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Nspectra x (Nbins x 2)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>Pixel_1</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>X</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra x Npixels (spectral direction)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>XNb</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl101>XTypeFlag</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl101>XUnitFlag</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>Y</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Nspectra x Npixels (spatial direction) x Npixels (spectral
+  direction)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>YError</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>YErrorFlag</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>YNb</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>YType</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>YUnits</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Nspectra</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNO_COP_GENERAL</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNO_COP_PRECOOLING</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNO_COP_SCIENCE_1</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNO_COP_SCIENCE_2</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNO_DURATION_REFERENCE_1</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNO_DURATION_REFERENCE_2</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNO_DURATION_TIME</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNO_START_SCIENCE_1</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNO_START_SCIENCE_2</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNO_START_TIME</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SO_COP_GENERAL</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SO_COP_PRECOOLING</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SO_COP_SCIENCE_1</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SO_COP_SCIENCE_2</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SO_DURATION_REFERENCE_1</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SO_DURATION_REFERENCE_2</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SO_DURATION_TIME</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SO_START_SCIENCE_1</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SO_START_SCIENCE_2</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SO_START_TIME</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>UVIS_COP_ROW</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>UVIS_DURATION_TIME</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>UVIS_START_TIME</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=156 style='width:117pt'></td>
+  <td width=219 style='width:164pt'></td>
+  <td width=116 style='width:87pt'></td>
+  <td width=67 style='width:50pt'></td>
+  <td width=411 style='width:308pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>

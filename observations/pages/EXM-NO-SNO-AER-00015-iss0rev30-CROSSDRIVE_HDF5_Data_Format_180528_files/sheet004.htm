@@ -1,0 +1,495 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 14">
+<link id=Main-File rel=Main-File
+href="../EXM-NO-SNO-AER-00015-iss0rev30-CROSSDRIVE_HDF5_Data_Format_180528.htm">
+<link rel=File-List href=filelist.xml>
+<link rel=Stylesheet href=stylesheet.css>
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+@page
+	{margin:.75in .7in .75in .7in;
+	mso-header-margin:.3in;
+	mso-footer-margin:.3in;}
+-->
+</style>
+<![if !supportTabStrip]><script language="JavaScript">
+<!--
+function fnUpdateTabs()
+ {
+  if (parent.window.g_iIEVer>=4) {
+   if (parent.document.readyState=="complete"
+    && parent.frames['frTabs'].document.readyState=="complete")
+   parent.fnSetActiveSheet(3);
+  else
+   window.setTimeout("fnUpdateTabs();",150);
+ }
+}
+
+if (window.name!="frSheet")
+ window.location.replace("../EXM-NO-SNO-AER-00015-iss0rev30-CROSSDRIVE_HDF5_Data_Format_180528.htm");
+else
+ fnUpdateTabs();
+//-->
+</script>
+<![endif]>
+</head>
+
+<body link=blue vlink=purple>
+
+<table border=0 cellpadding=0 cellspacing=0 width=1283 style='border-collapse:
+ collapse;table-layout:fixed;width:963pt'>
+ <col class=xl89 width=194 style='mso-width-source:userset;mso-width-alt:7094;
+ width:146pt'>
+ <col width=204 style='mso-width-source:userset;mso-width-alt:7460;width:153pt'>
+ <col width=501 style='mso-width-source:userset;mso-width-alt:18322;width:376pt'>
+ <col width=64 span=6 style='width:48pt'>
+ <tr height=31 style='height:23.25pt'>
+  <td height=31 class=xl97 width=194 style='height:23.25pt;width:146pt'></td>
+  <td class=xl96 width=204 style='width:153pt'></td>
+  <td class=xl96 width=501 style='width:376pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl89 style='height:15.0pt'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr class=xl95 height=31 style='height:23.25pt'>
+  <td height=31 class=xl94 style='height:23.25pt'>Bit</td>
+  <td class=xl94>Name</td>
+  <td class=xl94>Description</td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 0 (LSB)</td>
+  <td class=xl100 width=204 style='width:153pt'>HSKOutOfBounds</td>
+  <td class=xl100 width=501 style='width:376pt'>Housekeeping values are out of
+  bounds</td>
+  <td></td>
+  <td colspan=5 style='mso-ignore:colspan'>The following table defines the
+  Quality Flag bits</td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 1</td>
+  <td class=xl100 width=204 style='width:153pt'>HSKFirstPacketDisturbed</td>
+  <td class=xl100 width=501 style='width:376pt'>Housekeeping values in first
+  packet are disturbed by electrical interference</td>
+  <td></td>
+  <td colspan=5 style='mso-ignore:colspan'>Values are set to 1 to indicate an
+  issue is present</td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 2</td>
+  <td class=xl100 width=204 style='width:153pt'>HSKDisturbedThroughout</td>
+  <td class=xl100 width=501 style='width:376pt'>Housekeeping values throughout
+  are disturbed by electrical interference</td>
+  <td></td>
+  <td colspan=4 style='mso-ignore:colspan'>A value of 0 indicates no issues</td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 3</td>
+  <td class=xl100 width=204 style='width:153pt'>Reserved4</td>
+  <td class=xl100 width=501 style='width:376pt'>Reserved for future use</td>
+  <td></td>
+  <td colspan=5 style='mso-ignore:colspan'>If the MSB=1 than the Quality Flag
+  is not in use</td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 4</td>
+  <td class=xl100 width=204 style='width:153pt'>Reserved5</td>
+  <td class=xl100 width=501 style='width:376pt'>Reserved for future use</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 5</td>
+  <td class=xl100 width=204 style='width:153pt'>BadPixelsPresent</td>
+  <td class=xl100 width=501 style='width:376pt'>Bad pixels are present in the
+  data and have not been modified</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 6</td>
+  <td class=xl100 width=204 style='width:153pt'>BadPixelsHInterpolated</td>
+  <td class=xl100 width=501 style='width:376pt'>Bad pixels have been removed by
+  horizontal interpolation</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 7</td>
+  <td class=xl100 width=204 style='width:153pt'>BadPixelsVInterpolated</td>
+  <td class=xl100 width=501 style='width:376pt'>Bad pixels have been removed by
+  vertical interpolation</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 8</td>
+  <td class=xl100 width=204 style='width:153pt'>BadPixelsMasked</td>
+  <td class=xl100 width=501 style='width:376pt'>Bad pixels have been removed by
+  masking</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 9</td>
+  <td class=xl100 width=204 style='width:153pt'>CosmicRayDisturbance</td>
+  <td class=xl100 width=501 style='width:376pt'>Cosmic rays detected in data</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 10</td>
+  <td class=xl100 width=204 style='width:153pt'>Reserved11</td>
+  <td class=xl100 width=501 style='width:376pt'>Reserved for future use</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 11</td>
+  <td class=xl100 width=204 style='width:153pt'>DetectorSaturated</td>
+  <td class=xl100 width=501 style='width:376pt'>Detector saturated during
+  measurement (N/A for integration time stepping)</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 12</td>
+  <td class=xl100 width=204 style='width:153pt'>DetectorFirstPacketDisturbed</td>
+  <td class=xl100 width=501 style='width:376pt'>Detector data in first packet
+  are disturbed by electrical interference</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 13</td>
+  <td class=xl100 width=204 style='width:153pt'>DetectorDisturbedThroughout</td>
+  <td class=xl100 width=501 style='width:376pt'>Detector data throughout
+  observation are disturbed by electrical interference</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 14</td>
+  <td class=xl100 width=204 style='width:153pt'>DiscardedPackets</td>
+  <td class=xl100 width=501 style='width:376pt'>Packet(s) were discarded during
+  this observation</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 15</td>
+  <td class=xl100 width=204 style='width:153pt'>OtherPacketIssue</td>
+  <td class=xl100 width=501 style='width:376pt'>Another issue occurred which
+  makes the data unreliable</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 16</td>
+  <td class=xl100 width=204 style='width:153pt'>Reserved17</td>
+  <td class=xl100 width=501 style='width:376pt'>Reserved for future use</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 17</td>
+  <td class=xl100 width=204 style='width:153pt'>Reserved18</td>
+  <td class=xl100 width=501 style='width:376pt'>Reserved for future use</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 18</td>
+  <td class=xl100 width=204 style='width:153pt'>Reserved19</td>
+  <td class=xl100 width=501 style='width:376pt'>Reserved for future use</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 19</td>
+  <td class=xl100 width=204 style='width:153pt'>Reserved20</td>
+  <td class=xl100 width=501 style='width:376pt'>Reserved for future use</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 20</td>
+  <td class=xl100 width=204 style='width:153pt'>HighInstrumentTemperature</td>
+  <td class=xl100 width=501 style='width:376pt'>Channel temperature exceeds
+  nominal operating temperature</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 21</td>
+  <td class=xl100 width=204 style='width:153pt'>HighDriftTemperature</td>
+  <td class=xl100 width=501 style='width:376pt'>Temperature drift exceeds a
+  tolerable value</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 22</td>
+  <td class=xl100 width=204 style='width:153pt'>Reserved23</td>
+  <td class=xl100 width=501 style='width:376pt'>Reserved for future use</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 23</td>
+  <td class=xl100 width=204 style='width:153pt'>Reserved24</td>
+  <td class=xl100 width=501 style='width:376pt'>Reserved for future use</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 24</td>
+  <td class=xl100 width=204 style='width:153pt'>PredictedPointing</td>
+  <td class=xl100 width=501 style='width:376pt'>Predictive SPICE kernels used
+  to generate pointing geometry</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 25</td>
+  <td class=xl100 width=204 style='width:153pt'>PredictedEphemeris</td>
+  <td class=xl100 width=501 style='width:376pt'>Predictive SPICE kernels used
+  to generate ephemeris geometry</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 26</td>
+  <td class=xl100 width=204 style='width:153pt'>NoPointing</td>
+  <td class=xl100 width=501 style='width:376pt'>No predictive SPICE kernels
+  available to generate pointing geometry</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 27</td>
+  <td class=xl100 width=204 style='width:153pt'>NoEphemeris</td>
+  <td class=xl100 width=501 style='width:376pt'>No predictive SPICE kernels
+  available to generate ephemeris geometry</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 28</td>
+  <td class=xl100 width=204 style='width:153pt'>Reserved29</td>
+  <td class=xl100 width=501 style='width:376pt'>Reserved for future use</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 29</td>
+  <td class=xl100 width=204 style='width:153pt'>Reserved30</td>
+  <td class=xl100 width=501 style='width:376pt'>Reserved for future use</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 30</td>
+  <td class=xl100 width=204 style='width:153pt'>Reserved31</td>
+  <td class=xl100 width=501 style='width:376pt'>Reserved for future use</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl100 width=194 style='height:15.0pt;width:146pt'>Quality
+  Flag Bit 31 (MSB)</td>
+  <td class=xl100 width=204 style='width:153pt'>QualityFlagsUnused</td>
+  <td class=xl100 width=501 style='width:376pt'>Flag set to one if quality flag
+  is not implemented</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=194 style='width:146pt'></td>
+  <td width=204 style='width:153pt'></td>
+  <td width=501 style='width:376pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>

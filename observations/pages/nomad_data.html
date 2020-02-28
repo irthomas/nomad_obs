@@ -1,0 +1,553 @@
+<html>
+<body>
+<h1>NOMAD Observation and Measurement Types</h1>
+NOMAD can make a wide variety of observations, for example occultation, dayside nadir, limb, etc; and for each observation it can measure in one of many different measurement types. This page aims to:
+<ul><li>Explain how each observation/measurement type is made</li>
+<li>Give a list of possible advantages/disadvantages and limitations of each type</li>
+<li>Explain how the data pipeline processes the data</li>
+<li>Describe how the data is stored within the hdf5 files made available to the science team</li></ul>
+
+<h2>Observation Types</h2>
+<table border=1>
+<tr><th>Observation Types</th><th>Description</th></tr>
+
+<tr><td>Ingress solar occultation</td><td>Normal solar occultation starting when the line of sight is above the atmosphere and ending when sun is blocked by the surface</td></tr>
+<tr><td>Egress solar occultation</td><td>Normal solar occultation starting when the line of sight to the sun is blocked by the surface and ending when it is above the atmosphere</td></tr>
+<tr><td>Merged solar occultation</td><td>Double solar occultation, consisting of an ingress, starting above atmosphere, and an egress, ending above atmosphere. These occur when there is insufficient time between the ingress and egress to cool down the infrared detector for the second measurement</td></tr>
+<tr><td>Grazing solar occultation</td><td>Solar occultation where, due to orbital geometry, the sun is never blocked by the surface. Starting above the atmosphere, the line of sight passes through the atmosphere to a minimum altitude, then increases to end above the atmosphere</td></tr>
+<tr><td>Dayside Nadir</td><td>Nadir measurement on the illuminated side of the planet. Observations can be of variable length, beginning and ending near the nightside terminator to cover the whole dayside, or shorter and centred on the subsolar latitude. Can also be split into 3 separate measurements</td></tr>
+<tr><td>Nightside Nadir</td><td>Nadir measurement on the nightside of the planet</td></tr>
+<tr><td>Limb</td><td>Measurement of the illuminated limb of the planet</td></tr>
+<tr><td>Calibration</td><td>Many types e.g. sun pointing, solar line scan, etc.</td></tr>
+</table>
+
+<h2>Measurement Types</h2>
+<table border=1>
+<tr><th>Measurement Types - SO/LNO Channels</th><th>Description</th></tr>
+
+<tr><td>Solar occultation (50km switch)</td><td>5 diffraction orders + 1 dark per second. When the line of sight reaches 50km , the combination of diffraction orders being measured is changed. No onboard background subtraction</td></tr>
+<tr><td>Solar occultation (0-250km)</td><td>5 diffraction orders + 1 dark per second, same order selection throughout. No onboard background subtraction</td></tr>
+<tr><td>Solar occultation (50km switch, dark subtraction)</td><td>6 diffraction orders per second, diffraction order selection changed at 50km. Dark frames subtracted onboard</td></tr>
+<tr><td>Solar occultation (0-250km, dark subtraction)</td><td>6 diffraction orders per second, same order selection throughout. Dark frames subtracted onboard</td></tr>
+<tr><td>Nadir</td><td>Nadir measurement of 2 to 6 diffraction orders per 15 seconds, dark subtracted onboard</td></tr>
+<tr><td>Limb</td><td>Limb measurement of 2 diffraction orders per 15 seconds, dark subtracted onboard</td></tr>
+<tr><td>ACS Boresight Limb</td><td>Special limb measurement of 2+ diffraction orders, measured during an ACS/MIR or ACS/TIRVIM solar occultation where line of sight is pointed close to the sun but not directly at the solar disk. Onboard dark subtraction</td></tr>
+<tr><td>Fullscan (slow)</td><td>Nadir, limb or occultation diffraction order stepping over any range/number of orders, dark subtracted onboard</td></tr>
+<tr><td>Fullscan (fast)</td><td>Solar occultation order stepping over any range/number of orders at a high cadence rate, dark subtracted onboard</td></tr>
+<tr><td>Calibration</td><td>Many types e.g. line of sight, solar fullscan, solar miniscan, integration time stepping, etc.</td></tr>
+
+<tr><th>Measurement Types - UVIS Channel</th><th>Description</th></tr>
+
+<tr><td>Solar occultation (binned)</td><td>Detector pixel values are vertically binned onboard. 3 full or partial spectra are recorded per second. No dark subtraction is made onboard</td></tr>
+<tr><td>Solar occultation (unbinned)</td><td>Each pixel value is stored individually. Full or partial spectra can be transmitted to Earth at a variety of cadence rates. No dark subtraction is made onboard</td></tr>
+<tr><td>Nadir (binned)</td><td>Detector pixel values are vertically binned onboard. Full or partial spectra can be transmitted to Earth at a variety of cadence rates. Occasional dark frames are taken and transmitted to Earth</td></tr
+<tr><td>Nadir (unbinned)</td><td>Each pixel value is stored individually. Full or partial spectra can be transmitted to Earth at a variety of cadence rates. Occasional dark frames are taken and transmitted to Earth</td></tr>
+<tr><td>Calibration</td><td>Many types e.g. line of sight, integration time tests, etc.</td></tr>
+</table>
+
+
+
+
+
+
+<h1>Data Pipeline Processing of Observations</h1>
+Every HDF5 file has an observation type letter in its name. As can be seen above, there are many many possible combinations of observation and measurement types; far too many to assign a letter to each. The observation type letter can be used to find certain observation types, but <b>the primary use is to direct the file through the correct branch of the data processing pipeline.</b><br>
+<br>
+Below is a description of each type of observation/measurement type and what steps are taken to convert the raw telemetry into a calibrated HDF5 file.<br>
+<br>
+<table border=1>
+<tr><th>Observation Type(s)</th><td>Ingress Solar Occultation</td><td>Egress Solar Occultation</td></tr>
+<tr><th>Measurement Type(s)</th><td>SO Solar Occultation (50km switch)</td><td>SO Solar Occultation (0-250km)</td></tr>
+<tr><th>Processing Step(s)</th><td colspan=2>
+<h4>Level 0.1A</h4>
+<a href="#hsk">Housekeeping calibration</a><br>
+<h4>Level 0.1D</h4>
+<a href="#split">Split by diffraction order</a><br>
+<a href="#expand">Expand filenames</a><br>
+<h4>Level 0.1E</h4>
+<a href="#non_linearity">Non-linearity</a><br>
+<a href="#bad_pixel">Bad pixel</a><br>
+<h4>Level 0.2A</h4>
+<a href="#geom_so">Solar occultation geometry</a><br>
+<h4>Level 0.3A</h4>
+<a href="#spec_ir">Infrared spectral calibration</a><br>
+<h4>Level 1.0A</h4>
+<a href="#trans">Transmittance calibration</a><br>
+</td></tr>
+</table>
+
+<br>
+<table border=1>
+<tr><th>Observation Type(s)</th><td>Dayside Nadir</td><td>Nightside Nadir</td></tr>
+<tr><th>Measurement Type(s)</th><td>UVIS nadir (unbinned)</td><td>UVIS nadir (binned)</td></tr>
+<tr><th>Processing Step(s)</th><td colspan=2>
+<h4>Level 0.1A</h4>
+<a href="#hsk">Housekeeping calibration</a><br>
+<h4>Level 0.2A</h4>
+<a href="#geom_nad">Nadir geometry</a><br>
+<h4>Level 0.3B</h4>
+<a href="#uvis_reshape">UVIS reshape dataset</a><br>
+<a href="#dynamic_range">UVIS dynamic range correction</a><br>
+<a href="#saturation">UVIS detector saturation detection</a><br>
+
+<h4>Level 0.3C</h4>
+<a href="#uvis_dc">UVIS dark current removal</a><br>
+<a href="#anomaly">UVIS anomaly detection</a><br>
+<h4>Level 0.3D</h4>
+<a href="#spec_uvis">UVIS spectral calibration</a><br>
+<h4>Level 0.3E</h4>
+<a href="#uvis_straylight">UVIS straylight removal</a><br>
+
+
+</table>
+<!--
+<h4>Level </h4>
+<a href="#"></a><br>
+-->
+
+
+
+
+<hr>
+<h1>Level 0.1A</h1>
+<h2 id="hsk">Housekeeping calibration</h2>
+Conversion of housekeeping to physical units<br>
+
+
+
+
+<hr>
+<h1>Level 0.1D</h1>
+<h2 id="split">Split by diffraction order</h2>
+All SO/LNO files, except fullscans, are split into one file per diffraction order. If the diffraction orders are switched at 50km, then two sets of files are created, appended by the OrderSet (<b>_1</b> or <b>_2</b>, where 1 is chronologically first).
+
+<h2 id="expand">Expand filenames</h2>
+Observation type letter and diffraction order added to filename. Naming now follows the following convention:
+<p><b>YYYYMMDD_hhmmss_Level_Channel_OrderSet_ObservationTypeLetter_DiffractionOrder.h5</b></p>
+<ul>
+<li><b>YYYY</b> is the observation start year</li>
+<li><b>MM</b> is the observation start month</li>
+<li><b>DD</b> is the observation start date</li>
+<li><b>hh</b> is the observation start time hour</li>
+<li><b>mm</b> is the observation start time minute</li>
+<li><b>ss</b> is the observation start time second</li>
+<li><b>Level</b> is the data level with a letter p to replace the point, e.g. 0p1a, 0p3a, 1p0a, etc.</li>
+<li><b>Channel</b> is either SO, LNO or UVIS</li>
+<li><em>(SO/LNO only)</em> <b>OrderSet</b> is either 1 or 2 indicating the set of diffraction orders used. The orders can change during an occultation, therefore the first set is 1 and the second set is 2. If the same order combination is used throughout, this is always 1.</li>
+<li><b>ObservationTypeLetter</b> is defined <a href="nomad_observation_types.html">here</a></li>
+<li><em>(SO/LNO only and not for fullscans)</em> <b>DiffractionOrder</b> is the diffraction order</li>
+</ul>
+
+
+
+<hr>
+<h1>Level 0.1E</h1>
+<h2 id="lno_straylight">LNO straylight</h2>
+Straylight can be observed in the data when the LNO channel is observing in nadir and the spacecraft is in a particular geometry which only occurs when slewing to an ACS solar occultation. This happens only on the nightside of the planet and so no science is lost. However, a signal is observed in the data, and so the affected frames are removed to avoid misinterpretation of the spectra.<br>
+<img src="img/lno_straylight.png" height=400><br>
+
+Frames containing this straylight are removed automatically, based on a set of detection criteria - i.e. spacecraft orientation with respect to the Sun, and anomalous detector values. The frames directly before and after are also removed, to ensure that all incorrect data is removed.<br>
+
+The data is not recoverable when straylight is present, and so all data in the affected frames in <b>Science/Y</b> are set to NaN. The filed <b>Science/YValidFlag</b> is used to indicate which spectra are valid, where:
+<ul><li>1 = spectrum is valid</li>
+<li>0 = spectrum is invalid</li></ul>
+
+The data therefore is in the following format, assuming straylight has been detected in measurement frame 4:<br><br>
+<table style="display: inline-block" border=1>
+<tr><th colspan=4>Science/Y</th>
+<tr><td>Measurement 1, Pixel 1 Value</td><td>Pixel 2 Value</td><td>...</td><td>Pixel 320 Value</td></tr>
+<tr><td>Measurement 2, Pixel 1 Value</td><td>Pixel 2 Value</td><td>...</td><td>Pixel 320 Value</td></tr>
+<tr><td>NaN</td><td>NaN</td><td>...</td><td>NaN</td></tr>
+<tr><td>NaN</td><td>NaN</td><td>...</td><td>NaN</td></tr>
+<tr><td>NaN</td><td>NaN</td><td>...</td><td>NaN</td></tr>
+<tr><td>Measurement 6, Pixel 1 Value</td><td>Pixel 2 Value</td><td>...</td><td>Pixel 320 Value</td></tr>
+</table>
+&nbsp;
+<table style="display: inline-block" border=1>
+<tr><th>Science/YValidFlag</th>
+<tr><td>1</td></tr>
+<tr><td>1</td></tr>
+<tr><td>0</td></tr>
+<tr><td>0</td></tr>
+<tr><td>0</td></tr>
+<tr><td>1</td></tr>
+</table><br>
+
+
+<h2 id="non_linearity">SO non-linearity</h2>
+The SO and LNO detectors and readout electronics have a slightly non-linear response the radiance when the incident radiance is very small. The SO channel observes the sun during a solar occultation, and so low integration times (~4ms) are used to avoid saturation. This means that when the input radiance is low (e.g. when viewing the lower atmosphere, or planet, or when taking a dark frame) then the signal could be within the non-linear region. This never applies to nadir or limb data, as the lower signal means that the long integration times (~200ms) are required.<br>
+<br>
+The correction is derived from integration time stepping measurements viewing dark space.<br>
+<img src="img/non_linearity.png" height=400><br>
+
+The integration time is stepped from 0 to 1400ms, and a linear fit is made to the data from 200-1400ms to calculate the difference between expected and measured counts in the non-linear region. This is done for every pixel individually, though the variation between pixels is very small. The figure above shows the deviation from non-linearity for a single pixel  - the region is compared to the entire detector region (a pixel saturates around 12000 counts), and when zoomed in the deviation from the linear fit remains small.<br>
+<br>
+Every detector count is checked to see if the value is within the non-linear region. If so, that value is replaced by the linear-equivalent value from the line of best fit.
+
+
+<h2 id="bad_pixel">SO/LNO bad pixel</h2>
+<img src="img/so_bad_pixel.png" height=400><br>
+Two methods were attempted to remove the bad pixels. The first used a bad pixel map, as above, derived from integration time stepping measurements for every pixel. Bad pixels are easily identifiable from the slope of the linearity curves and deviation from a linear fit. Pixels in white show the greatest deviation, whilst the manufacturing pattern can be seen on the remainder of the pixel. The bad pixel map defines all pixels as either bad or good, and so care must be taken to tune the cut-off value correctly to avoid missing bad pixels or adding good pixels to the bad pixel map. Three bad pixel maps were made - normal, sensitive, and very sensitive - to test the best cut-off value (where very sensitive means that pixels with even a small deviation are designated as bad pixels).<br>
+<br>
+Another method is to analyse all spectra and determine the pixels that behave anomalously compared to adjacent pixels throughout a measurement. This method works even for the narrowest absorption lines, as there is always a spectral overlap between consecutive pixels, and so an anomalous value in one pixel only can only be due to the pixel, not the atmosphere or surface of Mars. As above, the detection is sensitive to the cut-off value used to define whether the behaviour of a given pixel is "good" or "bad".<br>
+<br>
+Both methods described above had problems, either with bad pixels remaining in the data or good pixels being corrected. In particular, some bad pixels occur intermittently and so are missed from the first method and not picked up by the second. Instead, a hybrid approach is now used, combining the sensitive bad pixel map with a check of all spectra. If a pixel behaves anomalously and is on the list of bad pixels, then the pixel is corrected by linearly interpolating from adjacent pixels. Pixels at the edge of the detector, where the signal is already very small, are not corrected.<br>
+<br>
+
+<h2 id="offset">LNO detector offsets</h2>
+<img src="img/lno_detector_offsets.png" height=400><br>
+The zero offset level can shift up and down due to the detector grounding and the very small values generated by a nadir measurement. To correct this, an offset correction is calculated from the mean of the first 50 pixels. The offsets are subtracted from each spectrum to remove the anomalous offset. The subtracted offset values (one per spectrum) are stored in the attribute <b>DetectorOffsetsSubtracted</b>.<br>
+
+<img src="img/lno_detector_offset_applied.png" height=400><br>
+Removing the offset means that the first pixels can be less than zero, therefore a second offset is subsequently added to the data. This offset is derived from solar calibration measurements of the same diffraction order, where a ratio is calculated between the mean of the centre pixels [160-240] and the mean of the first 50 pixels when pointing at the sun. 
+<img src="img/lno_detector_offset_added.png" height=400><br>
+An offset is then added to each nadir spectrum so that the same ratio is present in the data. The added offset values (one per spectrum) are stored in the attribute <b>DetectorOffsetsAdded</b>.
+<br>
+<h2 id="binned">LNO nadir data vertically binned</h2>
+The applies only to LNO nadir data. The SNR of the LNO channel is low, and so the spectra measured for each detector bin (of the same measurement) and summed together to give one spectrum.
+
+All detector rows for each diffraction order are vertically binned, to give a single spectrum per measurement. The detector bins observe different locations on the planet, but this spatial information is lost when the data is binned - though individual bins do not have sufficient signal to be scientifically useful.<br>
+<img src="img/lno_nadir_orders.png" height=300><br>
+The SO and LNO channel always return 24 lines per measurement period (where the period is 1 second for occultation or 15 seconds for nadir observations). Therefore here, 3 orders are measured per period and so 8 spectra are returned per order. If 4 orders were measured, 6 spectra would be returned; if 2 orders then 12 spectra would be returned, etc. LNO nadir data is then orders 
+<br>
+
+<h2 id="flatten">SO/LNO detector bins flattened</h2>
+SO and LNO <b>Science/Y</b> datasets (except LNO nadir) are converted from a 3D array (size = number of observations x number of bins x 320 pixels) to a 2D array (size = [number of observations x number of bins] x 320 pixels). <b>Science/Bins</b> contains the start and bin detector row for each bin.<br>
+LNO nadir observations have already been vertically binned into a 2D array.<br>
+
+
+
+
+
+
+<hr>
+<h2>Level 0.2A</h2>
+There are three types of shape models used to calculate geometric parameters:
+<ul><li><b>Ellipsoid</b> - this is the most basic shape model, where Mars is modelled as a tri-axial ellipsoid of radii 3396.19km x 3396.19km x 3376.2km</li>
+<li><b>Areoid</b> - this is the equivalent to a "sea level" for Mars, where the gravitational and rotational potential is constant across the entire surface. The zero level is defined by MGS/MOLA using a 4 pixels per degree model</li>
+<li><b>Surface</b> - this is the real surface elevation, calculated from a digital shape kernel (DSK) by MGS/MOLA at a resolution of 4 pixels per degree using the MGM1025 model (Lemoine et al., 2001)</li></ul>
+<img src="img/ellipsoid.png" height=300><br>
+
+
+
+<h2 id="geom_so">Solar occultation geometry</h2>
+<h3>Description</h3>
+<img src="img/occultation_fov.png" height=300><br>
+<br>
+Geometry is stored for each point. There are 5 points for SO/LNO solar occultations:
+<ul><li><b>Geometry/Point0</b> is the centre of the field of view</li>
+<li><b>Geometry/Point1</b> to <b>Geometry/Point4</b> define the corners</li></ul>
+
+UVIS has a circular aperture, defined by 9 points: 
+<ul><li><b>Geometry/Point0</b> is the centre of the field of view</li>
+<li><b>Geometry/Point1</b> to <b>Geometry/Point8</b> form an octagon around the edge</li></ul>
+
+Within each point are the geometry datasets. There is one row per spectrum acquired, and two columns for the start and end geometry of that acquisition:<br>
+<table style="display: inline-block" border=1>
+<tr><th>Dataset Name</th><th>Description</th>
+<tr><td><b>Geometry/PointN/Lat</b></td><td>
+<tr><td><b>Geometry/PointN/Lon</b></td><td>
+<tr><td><b>Geometry/PointN/LOSAngle</b></td><td>
+<tr><td><b>Geometry/PointN/LST</b></td><td>
+<tr><td><b>Geometry/PointN/PointXY</b></td><td>
+<tr><td><b>Geometry/PointN/SurfaceAltAreoid</b></td><td>
+<tr><td><b>Geometry/PointN/SurfaceRadius</b></td><td>
+<tr><td><b>Geometry/PointN/TangentAlt</b></td><td>
+<tr><td><b>Geometry/PointN/TangentAltAreoid</b></td><td>
+<tr><td><b>Geometry/PointN/TangentAltSurface</b></td><td>
+
+</table><br><br>
+
+Geometric parameters that do not depend on pointing direction are stored in the <b>Geometry</b> group. These are:<br>
+<table style="display: inline-block" border=1>
+<tr><th>Dataset Name</th><th>Description</th>
+<tr><td><b>Geometry/DistToSun</b></td><td>
+<tr><td><b>Geometry/LSubS</b></td><td>
+<tr><td><b>Geometry/ObsAlt</b></td><td>
+<tr><td><b>Geometry/ObservationDateTime</b></td><td>
+<tr><td><b>Geometry/ObservationEphemerisTime</b></td><td>
+<tr><td><b>Geometry/SpdObsSun</b></td><td>
+<tr><td><b>Geometry/SpdTargetSun</b></td><td>
+<tr><td><b>Geometry/SubObsLat</b></td><td>
+<tr><td><b>Geometry/SubObsLon</b></td><td>
+<tr><td><b>Geometry/SubSolLat</b></td><td>
+<tr><td><b>Geometry/SubSolLon</b></td><td>
+<tr><td><b>Geometry/TiltAngle</b></td><td>
+
+</table><br><br>
+
+
+<h3>SO/LNO Occultation (50km switch)</h3>
+<img src="img/solar_occultation_50km_switch.png" height=400><br>
+<h3>SO/LNO/UVIS Occultation (0-250km)</h3>
+<img src="img/solar_occultation_no_switch.png" height=400><br>
+
+
+
+
+
+<p>Data Format - one row per spectrum acquired</p>
+<table style="display: inline-block" border=1>
+<tr><th colspan=4>Science/Y</th>
+<tr><td>Measurement 1, Bin 1, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Measurement 1, Bin 2, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Measurement 1, Bin 3, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Measurement 1, Bin 4, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Measurement 2, Bin 1, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Measurement 2, Bin 2, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+</table>
+&nbsp;
+<table style="display: inline-block" border=1>
+<tr><th colspan=2>Science/Bins</th>
+<tr><td>Bin 1 Detector Row Start</td><td>Bin 1 Detector Row End</td></tr>
+<tr><td>Bin 2 Detector Row Start</td><td>Bin 2 Detector Row End</td></tr>
+<tr><td>Bin 3 Detector Row Start</td><td>Bin 3 Detector Row End</td></tr>
+<tr><td>Bin 4 Detector Row Start</td><td>Bin 4 Detector Row End</td></tr>
+<tr><td>Bin 1 Detector Row Start</td><td>Bin 1 Detector Row End</td></tr>
+<tr><td>Bin 2 Detector Row Start</td><td>Bin 2 Detector Row End</td></tr>
+</table><br><br>
+
+
+
+
+<h3>SO/LNO occultation fullscan fast</h3>
+<img src="img/solar_occultation_fullscan_fast.png" height=400><br>
+
+<p>Data Format</p>
+<table style="display: inline-block" border=1>
+<tr><th colspan=4>Science/Y</th>
+<tr><td>Order 1, Bin 1, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Order 1, Bin 2, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Order 1, Bin 3, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Order 1, Bin 4, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Order 2, Bin 1, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Order 2, Bin 2, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+</table>
+&nbsp;
+<table style="display: inline-block" border=1>
+<tr><th colspan=2>Science/Bins</th>
+<tr><td>Bin 1 Detector Row Start</td><td>Bin 1 Detector Row End</td></tr>
+<tr><td>Bin 2 Detector Row Start</td><td>Bin 2 Detector Row End</td></tr>
+<tr><td>Bin 3 Detector Row Start</td><td>Bin 3 Detector Row End</td></tr>
+<tr><td>Bin 4 Detector Row Start</td><td>Bin 4 Detector Row End</td></tr>
+<tr><td>Bin 1 Detector Row Start</td><td>Bin 1 Detector Row End</td></tr>
+<tr><td>Bin 2 Detector Row Start</td><td>Bin 2 Detector Row End</td></tr>
+</table><br><br>
+
+
+<h3>SO/LNO occultation fullscan slow</h3>
+<img src="img/solar_occultation_fullscan_slow.png" height=400><br>
+
+<p>Data Format</p>
+<table style="display: inline-block" border=1>
+<tr><th colspan=4>Science/Y</th>
+<tr><td>Order 1, Row 1, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Order 1, Row 2, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Order 1, ..., Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Order 1, Row 23, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Order 1, Row 24, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Order 2, Row 1, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Order 2, Row 2, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+</table>
+&nbsp;
+<table style="display: inline-block" border=1>
+<tr><th colspan=2>Science/Bins</th>
+<tr><td>Detector Row 1</td><td>Detector Row 1</td></tr>
+<tr><td>Detector Row 2</td><td>Detector Row 2</td></tr>
+<tr><td>Detector Row ...</td><td>Detector Row ...</td></tr>
+<tr><td>Detector Row 23</td><td>Detector Row 23</td></tr>
+<tr><td>Detector Row 24</td><td>Detector Row 24</td></tr>
+<tr><td>Detector Row 1</td><td>Detector Row 1</td></tr>
+<tr><td>Detector Row 2</td><td>Detector Row 1</td></tr>
+</table><br><br>
+
+
+<h2 id="geom_nad">Nadir geometry</h2>
+Description<br>
+<img src="img/nadir_fov.png" height=300><br>
+
+<h3>LNO nadir</h3>
+<img src="img/lno_nadir_orders.png" height=300><br>
+
+<p>Data Format</p>
+<table style="display: inline-block" border=1>
+<tr><th colspan=4>Science/Y</th>
+<tr><td>Measurement 1, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Measurement 2, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Measurement 3, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+<tr><td>Measurement 4, Pixel 1</td><td>Pixel 2</td><td>...</td><td>Pixel 320</td></tr>
+</table>
+&nbsp;
+<table style="display: inline-block" border=1>
+<tr><th colspan=2>Science/Bins</th>
+<tr><td>Detector Row Start</td><td>Detector Row End</td></tr>
+<tr><td>Detector Row Start</td><td>Detector Row End</td></tr>
+<tr><td>Detector Row Start</td><td>Detector Row End</td></tr>
+<tr><td>Detector Row Start</td><td>Detector Row End</td></tr>
+</table><br>
+Note that, as the detector has been vertically binned, all rows in <b>Science/Bins</b> are identical<br>
+<br>
+Incidence/emission/phase angles etc. now reflect real contours of surface to 4 px per degree<br>
+Each spectrum has 5 points to define geometry
+Point0 = centre of FOV
+Points1 to points4 = corners
+Point0/PointXY defines relative pointing within bin
+I.e. [0,0]=centre, [±1, ±1] = corners
+
+Datasets<br>
+<br>
+
+
+<h3>UVIS nadir</h3>
+
+
+<h3>LNO nadir fullscan</h3>
+<img src="img/lno_fullscan.png" height=300><br>
+
+
+<h2 id="geom_limb">Limb geometry</h2>
+At present only LNO can observe the limb, and only in a passive mode with no control over pointing. When full spacecraft commanding is allowed, it is hoped that the UVIS nadir boresight will also be able to view the limb.<br>
+<img src="img/limb_fov.png" height=300><br>
+
+<h3>LNO limb</h3>
+Y data arranged as follows.
+
+
+
+
+
+<hr>
+<h1>Level 0.3A</h1>
+<h2 id="spec_ir">SO/LNO spectral calibration</h2>
+Description<br>
+
+
+<hr>
+<h1>Level 0.3B</h1>
+<h2 id="uvis_reshape">UVIS reshape dataset</h2>
+If dataset is unbinned, remove unmeasured detector rows from old Y and YError datasets (size = number of observations x 256 x 1048) to reflect the detector region used (size = number of observations x [VSTART - VEND + 1] x 1048).<br>
+If detector is vertically binned, replace old Y (size = number of observations x 256 x 1048) by a single line per observation (size = number of observations x 1048).<br>
+
+<h2 id="dynamic_range">UVIS dynamic range correction</h2>
+Reconstruct the spectra correcting the jump bug
+
+<h2 id="saturation">UVIS detector saturation detection</h2>
+Check for saturated pixels.<br>
+If detected, set relevant pixel in YMask to 1.<br>
+If detector is vertically binned, pixel saturation is detected only when all measured pixels of a column are saturated.<br>
+
+
+<hr>
+<h1>Level 0.3C</h1>
+<h2 id="uvis_dc">UVIS dark current removal</h2>
+<li>Temperature dependent dark frame is interpolated from the two dark measurements performed directly before and after each measured frame</li>
+<li>Dark frame is removed from Y dataset</li>
+
+
+<h2 id="anomaly">UVIS anomaly detection</h2>
+Check the presence of anomaly at the level of the pixels. Cosmic Ray and dummy pixels and update of the YMask.<br>
+
+		
+		
+<hr>
+<h1>Level 0.3D</h1>
+<h2 id="spec_uvis">UVIS spectral calibration</h2>
+Convert the pixel number into real wavelength (nm) updating X and XUnitFlag.<br>
+
+<hr>
+<h1>Level 0.3E</h1>
+<h2 id="uvis_straylight">UVIS straylight removal</h2>
+<ul><li>Bin the data (doesn't take into account the YMask yet)</li>
+<li>Remove the IR Straylight (based on the estimation of an IR spectra with M. Wolff simulation, and the corresponding of the spectrometer between 650 and 1100nm)</li>
+<li>Remove the UV-Visible Straylight (based on Yuquin NIST method)</li>
+<li>Divide the Y value by the number of the lines in the ROI</li>
+<li>Update the Y</li></ul>
+
+		
+
+
+
+
+
+
+
+
+<hr>
+<h1>Level 1.0A</h1>
+<h2>SO dark frame subtraction</h2>
+Description<br>
+
+<h2>SO merge high and low altitude orders</h2>
+Description<br>
+
+<h2 id="trans">SO occultation transmittance calibration</h2>
+Description<br>
+
+<h2>UVIS occultation transmittance calibration</h2>
+Description<br>
+
+<h2>LNO nadir/limb radiance calibration</h2>
+Description<br>
+
+<h2>UVIS nadir radiance calibration</h2>
+Convert detector pixel counts into radiance (W/m2/nm/sr) and save to Y dataset.<br>
+Set YUnitFlag and YTypeFlag.<br>
+Set the errors (currently set to 100%) updating YError.<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!--
+<h1>Data Format in HDF5 Files</h1>
+This section describes the data format of the highest level file for each channel. For SO/LNO this is currently Level 0.3A. For UVIS this is currently 0.2A.
+
+<h1>SO Channel</h1>
+<h2>All Measurement Types</h2>
+Description<br>
+
+<h2>SO Occultation (50km switch)</h2>
+Description<br>
+<img src="img/solar_occultation_50km_switch.png" width=800><br>
+
+<h2>SO Occultation (0-250km)</h2>
+Description<br>
+<img src="img/solar_occultation_no_switch.png" width=800><br>
+
+<h2>SO Fullscan Fast</h2>
+Description<br>
+<img src="img/solar_occultation_fullscan_fast.png" width=800><br>
+
+<h2>SO Fullscan Slow</h2>
+Description<br>
+<img src="img/solar_occultation_fullscan_slow.png" width=800><br>
+
+
+<h1>LNO Channel</h1>
+<h2>All Measurement Types</h2>
+Description<br>
+
+<h2>LNO Nadir</h2>
+Description<br>
+<img src="img/lno_nadir_orders.png" width=800><br>
+
+<h2>LNO Limb</h2>
+Description<br>
+<img src="img/limb_fov.png" width=800><br>
+
+<h2>LNO Fullscan Slow</h2>
+Description<br>
+-->
+
+
+<h1>Pipeline flowchart</h1>
+<img src="img/data_pipeline.png">
+<br>
+<br>
+
+<b><a href="http://mars.aeronomie.be/en/exomars/observations">Back to main page</a></b>
+<br>
+<br>
+<p>Page last modified: Thu, 16 August 2018 10:47:19</p>
+</body>
+</html>

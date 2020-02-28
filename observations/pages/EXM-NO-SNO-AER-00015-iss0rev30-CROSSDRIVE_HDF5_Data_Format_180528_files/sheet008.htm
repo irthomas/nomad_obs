@@ -1,0 +1,1425 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 14">
+<link id=Main-File rel=Main-File
+href="../EXM-NO-SNO-AER-00015-iss0rev30-CROSSDRIVE_HDF5_Data_Format_180528.htm">
+<link rel=File-List href=filelist.xml>
+<link rel=Stylesheet href=stylesheet.css>
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+@page
+	{margin:.75in .7in .75in .7in;
+	mso-header-margin:.3in;
+	mso-footer-margin:.3in;}
+-->
+</style>
+<![if !supportTabStrip]><script language="JavaScript">
+<!--
+function fnUpdateTabs()
+ {
+  if (parent.window.g_iIEVer>=4) {
+   if (parent.document.readyState=="complete"
+    && parent.frames['frTabs'].document.readyState=="complete")
+   parent.fnSetActiveSheet(7);
+  else
+   window.setTimeout("fnUpdateTabs();",150);
+ }
+}
+
+if (window.name!="frSheet")
+ window.location.replace("../EXM-NO-SNO-AER-00015-iss0rev30-CROSSDRIVE_HDF5_Data_Format_180528.htm");
+else
+ fnUpdateTabs();
+//-->
+</script>
+<![endif]>
+</head>
+
+<body link=blue vlink=purple>
+
+<table border=0 cellpadding=0 cellspacing=0 width=1397 style='border-collapse:
+ collapse;table-layout:fixed;width:1049pt'>
+ <col class=xl93 width=178 style='mso-width-source:userset;mso-width-alt:6509;
+ width:134pt'>
+ <col class=xl93 width=320 style='mso-width-source:userset;mso-width-alt:11702;
+ width:240pt'>
+ <col class=xl93 width=174 style='mso-width-source:userset;mso-width-alt:6363;
+ width:131pt'>
+ <col class=xl93 width=130 style='mso-width-source:userset;mso-width-alt:4754;
+ width:98pt'>
+ <col class=xl93 width=275 style='mso-width-source:userset;mso-width-alt:10057;
+ width:206pt'>
+ <col width=64 span=5 style='width:48pt'>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 width=178 style='height:15.0pt;width:134pt'></td>
+  <td class=xl93 width=320 style='width:240pt'></td>
+  <td class=xl93 width=174 style='width:131pt'></td>
+  <td class=xl93 width=130 style='width:98pt'></td>
+  <td class=xl93 width=275 style='width:206pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'></td>
+  <td class=xl93></td>
+  <td class=xl93></td>
+  <td class=xl93></td>
+  <td class=xl93></td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr class=xl95 height=31 style='height:23.25pt'>
+  <td height=31 class=xl94 style='height:23.25pt'>Group</td>
+  <td class=xl94>Dataset</td>
+  <td class=xl94>Units</td>
+  <td class=xl94>Types</td>
+  <td class=xl94>Shape</td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+  <td class=xl95></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'></td>
+  <td class=xl93>Date</td>
+  <td class=xl93></td>
+  <td class=xl93></td>
+  <td class=xl93>Npackets</td>
+  <td></td>
+  <td colspan=3 style='mso-ignore:colspan'>Npackets = Number of packets</td>
+  <td></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'></td>
+  <td class=xl93>Name</td>
+  <td class=xl93></td>
+  <td class=xl93></td>
+  <td class=xl93>Npackets</td>
+  <td></td>
+  <td colspan=4 style='mso-ignore:colspan'>Each packet contains 1-15 spectra</td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'></td>
+  <td class=xl93>Time</td>
+  <td class=xl93></td>
+  <td class=xl93></td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>AcquisitionDelay</td>
+  <td class=xl93>X5 MILLISECONDS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>AcquisitionMode</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>B0LEDControl</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>B1LoopDark</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>B2IntegrationTimeIncrement</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>B3SciHSK</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>B4LocateDark</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>B5LED</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>B6MotorHold</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>B7SetOnOffChipBinning</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>BiasAverage</td>
+  <td class=xl93>ACQUISITIONS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>ControlBits</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>DarkAverage</td>
+  <td class=xl93>ACQUISITIONS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>DarkToObservationSteps</td>
+  <td class=xl93>STEPS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>HEnd</td>
+  <td class=xl93>PIXEL</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>HStart</td>
+  <td class=xl93>PIXEL</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>HorizontalAndCombinedBinningSize</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>IntegrationTime</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>Mode</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>MotorDelay</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>MotorStartPosition</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>NumberOfAcquisitions</td>
+  <td class=xl93>ACQUISITIONS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>NumberOfFlushes</td>
+  <td class=xl93>FLUSHES</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>ObservationToDarkSteps</td>
+  <td class=xl93>STEPS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>ReverseFlagAndDataTypeFlagRegister</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>ScienceAverage</td>
+  <td class=xl93>ACQUISITIONS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>StartDelay</td>
+  <td class=xl93>X5 MILLISECONDS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>VEnd</td>
+  <td class=xl93>PIXEL</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Channel</td>
+  <td class=xl113>VStart</td>
+  <td class=xl93>PIXEL</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Geometry</td>
+  <td class=xl93>Observation_Date</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>String</td>
+  <td class=xl93>Npackets x 2</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Geometry</td>
+  <td class=xl93>Observation_Time</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>String</td>
+  <td class=xl93>Npackets x 2</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>+10V_RAIL_VOLTAGE</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>+12V_RAIL_CURRENT</td>
+  <td class=xl93>MILLIAMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>+5V_RAIL_CURRENT</td>
+  <td class=xl93>MILLIAMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>+5V_RAIL_VOLTAGE</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>-10V_RAIL_VOLTAGE</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>-12V_RAIL_CURRENT</td>
+  <td class=xl93>MILLIAMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>-5V_RAIL_CURRENT</td>
+  <td class=xl93>MILLIAMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>-5V_RAIL_VOLTAGE</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>CCD_IMAGE_CLOCK_HIGH</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>CCD_IMAGE_CLOCK_LOW</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>CCD_READOUT_REG_HIGH</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>CCD_READOUT_REG_LOW</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>DIODE_DRAIN_VOLTAGE_VDD</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>MOTOR_CURRENT_A</td>
+  <td class=xl93>MILLIAMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>OUTPUT_DRAIN_VOLTAGE_VOD</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>OUTPUT_GATE_VOLTAGE_VOG</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>RESET_DRAIN_VOLTAGE_VRD</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>SUBSTRATE_VOLTAGE_VSS</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>TEMP_1_PROXIMITY_BOARD</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>TEMP_2_CCD</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>TEMP_3_DETECTOR_BOARD</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>VOD_VALUE</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Housekeeping</td>
+  <td class=xl93>VRD_VALUE</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>ADC1_REF_VOLT_0V</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>ADC1_REF_VOLT_3.3V</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>ADC2_REF_VOLT_3.3V</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>DC_DC_MODULE_TEMP</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>HEATER_CURRENT</td>
+  <td class=xl93>AMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>HOUSEKEEPING_DATE</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>String</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>HOUSEKEEPING_TIME</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>String</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>LNO_COLD_SECTION_TEMP</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>LNO_CURRENT</td>
+  <td class=xl93>AMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>LNO_TEMP</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>LNO_VOLTAGE</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>POWER_BOARD_TEMP</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>SO_CURRENT</td>
+  <td class=xl93>AMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>SO_TEMP</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>SO_VOLTAGE</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>UVIS_CURRENT</td>
+  <td class=xl93>AMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>UVIS_TEMP</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>NOMAD_Housekeeping</td>
+  <td class=xl93>UVIS_VOLTAGE</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping (1 per 30 seconds)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>HSKOutOfBounds</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>HSKFirstPacketDisturbed</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>HSKDisturbedThroughout</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>Reserved4</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>Reserved5</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>BadPixelsPresent</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>BadPixelsHInterpolated</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>BadPixelsVInterpolated</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>BadPixelsMasked</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>CosmicRayDisturbance</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>Reserved11</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>DetectorSaturated</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>DetectorFirstPacketDisturbed</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>DetectorDisturbedThroughout</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>DiscardedPackets</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>OtherPacketIssue</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>Reserved17</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>Reserved18</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>Reserved19</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>Reserved20</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>HighInstrumentTemperature</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>HighDriftTemperature</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>Reserved23</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>Reserved24</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>PredictedPointing</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>PredictedEphemeris</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>NoPointing</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>NoEphemeris</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>Reserved29</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>Reserved30</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>Reserved31</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>QualityFlag</td>
+  <td class=xl100 width=320 style='width:240pt'>QualityFlagsUnused</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Bit</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>Pixel1</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>X</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets x Npixels (spectral direction)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl114 style='height:15.0pt'><s>Science</s></td>
+  <td class=xl106 width=320 style='width:240pt'><s>XNb</s></td>
+  <td class=xl114><s>N/A</s></td>
+  <td class=xl114><s>Integer</s></td>
+  <td class=xl106 width=275 style='width:206pt'><s>Npackets</s></td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl114 style='height:15.0pt'><s>Science</s></td>
+  <td class=xl106 width=320 style='width:240pt'><s>XTypeFlag</s></td>
+  <td class=xl114><s>N/A</s></td>
+  <td class=xl114><s>Integer</s></td>
+  <td class=xl106 width=275 style='width:206pt'><s>Npackets</s></td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl101>XUnitFlag</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>Y</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets x 15 x Npixels (spectral direction)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>YError</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>YErrorFlag</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>YNb</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>YType</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Science</td>
+  <td class=xl93>YUnits</td>
+  <td class=xl93>N/A</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>Npackets</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNOCOPGeneral</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNOCOPPrecooling</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNOCOPScience1</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNOCOPScience2</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNODurationReference1</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNODurationReference2</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNODurationTime</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNOStartScience1</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNOStartScience2</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>LNOStartTime</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SOCOPGeneral</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SOCOPPrecooling</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SOCOPScience1</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SOCOPScience2</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SODurationReference1</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SODurationReference2</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SODurationTime</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SOStartScience1</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SOStartScience2</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>SOStartTime</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>UVISCOPRow</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>UVISDurationTime</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>Telecommand20</td>
+  <td class=xl93>UVISStartTime</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>Integer</td>
+  <td class=xl93>1</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>+10V_RAIL_VOLTAGE</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>+12V_RAIL_CURRENT</td>
+  <td class=xl93>MILLIAMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>+5V_RAIL_CURRENT</td>
+  <td class=xl93>MILLIAMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>+5V_RAIL_VOLTAGE</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>-10V_RAIL_VOLTAGE</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>-12V_RAIL_CURRENT</td>
+  <td class=xl93>MILLIAMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>-5V_RAIL_CURRENT</td>
+  <td class=xl93>MILLIAMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>-5V_RAIL_VOLTAGE</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>CCD_IMAGE_CLOCK_HIGH</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>CCD_IMAGE_CLOCK_LOW</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>CCD_READOUT_REG_HIGH</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>CCD_READOUT_REG_LOW</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>DIODE_DRAIN_VOLTAGE_VDD</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>HOUSEKEEPING_DATE</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>String</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>HOUSEKEEPING_TIME</td>
+  <td class=xl93>NO UNITS</td>
+  <td class=xl93>String</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>MOTOR_CURRENT_A</td>
+  <td class=xl93>MILLIAMPERES</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>OUTPUT_DRAIN_VOLTAGE_VOD</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>OUTPUT_GATE_VOLTAGE_VOG</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>RESET_DRAIN_VOLTAGE_VRD</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>SUBSTRATE_VOLTAGE_VSS</td>
+  <td class=xl93>VOLTS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>TEMP_1_PROXIMITY_BOARD</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>TEMP_2_CCD</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=20 style='height:15.0pt'>
+  <td height=20 class=xl93 style='height:15.0pt'>TM29_Housekeeping</td>
+  <td class=xl93>TEMP_3_DETECTOR_BOARD</td>
+  <td class=xl93>CELSIUS</td>
+  <td class=xl93>Float</td>
+  <td class=xl93>Nhousekeeping TM29 (1 per second)</td>
+  <td colspan=5 style='mso-ignore:colspan'></td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=178 style='width:134pt'></td>
+  <td width=320 style='width:240pt'></td>
+  <td width=174 style='width:131pt'></td>
+  <td width=130 style='width:98pt'></td>
+  <td width=275 style='width:206pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+  <td width=64 style='width:48pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>
