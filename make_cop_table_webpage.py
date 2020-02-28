@@ -440,5 +440,3 @@ for channelCode in [0,1]:
 
 
 
-
-

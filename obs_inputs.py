@@ -1057,4 +1057,3 @@ observationCycles = {
 #    print("%0.1f%%,%s,%s" %((count/totalCounts)*100.0, obsName, ("%s" %obsData[0]).replace("[","").replace("]","").replace(" ","")))
     
     
-    

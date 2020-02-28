@@ -1,4 +1,4 @@
-p# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Created on Thu Feb 21 14:41:19 2019
 
@@ -4165,7 +4165,6 @@ def step5(paths, devPaths):
 #for orbit in orbitList: 
 #    if "occultationRegions" in orbit.keys():
 #        print(orbit["orbitNumber"])
-
 
 
 
