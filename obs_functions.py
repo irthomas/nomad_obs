@@ -2456,15 +2456,20 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, paths):
         ingressCounter = -1
         nightsideCounter = -1
         
-        """manually assign occultation observation type to orbit"""
+        """manually assign occultation observation type to orbit for reading"""
         #TODO: come up with better way of doing this
         #fudges for certain MTPs where grazing occultation is now a merged occ or vice versa
+        #find correct orbit and set allowedObservationTypes to that specified by ops team
         if mtpNumber == 10:
             orbit_list[227]["allowedObservationTypes"] = ["dayside", "grazing"]
         if mtpNumber == 20:
             orbit_list[150]["allowedObservationTypes"] = ["dayside", "merged"]
         if mtpNumber == 21:
             orbit_list[4]["allowedObservationTypes"] = ["dayside", "grazing"]
+        if mtpNumber == 25:
+            orbit_list[6]["allowedObservationTypes"] = ["dayside", "grazing"]
+        if mtpNumber == 26:
+            orbit_list[167]["allowedObservationTypes"] = ["dayside", "grazing"]
             
             
        
@@ -3987,10 +3992,10 @@ def writeCalibrationWebpage(paths):
     
             h += r"<h3>"+title+r"</h3>"+"\n"
             if len(calibration) > 0:
-                h += r"<textarea rows=""38"" cols=""150"">"+"\n"
+                h += r"<p>"+"\n"
                 for textLine in calibration:
-                    h += textLine
-                h += r"</textarea>"
+                    h += textLine + "<br>"
+                h += r"</p>"
     
     
     h += r"<br>"+"\n"

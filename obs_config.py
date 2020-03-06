@@ -14,8 +14,8 @@ __author__    = "Ian Thomas"
 __contact__   = "ian . thomas AT aeronomie . be"
 
 
-OFFLINE = True #if working remotely, don't write obs to sql db
-#OFFLINE = False #write obs to sql db and copy to dev website
+#OFFLINE = True #if working remotely, don't write obs to sql db
+OFFLINE = False #write obs to sql db and copy to dev website
 
 if OFFLINE:
     input("Warning: you are operating in offline mode. This means that nothing will be written to the SQL database and the old website will not be updated. Press any key to continue (or exit now)")
@@ -24,7 +24,7 @@ if OFFLINE:
 """where to find scripts?"""
 if sys.platform == "win32":
 #    BASE_DIRECTORY = os.path.normcase(os.getcwd())
-    BASE_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "nomad_obs")
+    BASE_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Documents", "PROGRAMS", "nomad_obs")
 elif sys.platform == "linux":
     BASE_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "nomad_obs")
 
@@ -32,9 +32,9 @@ elif sys.platform == "linux":
 
 """where to put input and output files and build master copy of website?"""
 if sys.platform == "win32":
-    OBS_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "nomad_obs", "observations")
+    OBS_DIRECTORY = os.path.join(BASE_DIRECTORY, "observations")
 elif sys.platform == "linux":
-    OBS_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "nomad_obs", "observations")
+    OBS_DIRECTORY = os.path.join(BASE_DIRECTORY, "observations")
 
 
 """dev website directory, for placing a copy of all the files generated, to be put online"""
