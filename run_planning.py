@@ -20,7 +20,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 """change this number, add the correct info to the mtp in obs_inputs, and run this script"""
 
-mtpNumber = 27
+mtpNumber = 28
 
 
 

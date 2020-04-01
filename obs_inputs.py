@@ -113,6 +113,7 @@ occultationObservationDict = {
 
 "126 only #2":[[126, 126, 126, 126, 126, 126], 4, 1, 16, 0],
 "127 only #2":[[127, 127, 127, 127, 127, 127], 4, 1, 16, 0],
+"129 only #2":[[129, 129, 129, 129, 129, 129], 4, 1, 16, 0],
 
 "132 only #2":[[132, 132, 132, 132, 132, 132], 4, 1, 16, 0],
 "133 only #2":[[133, 133, 133, 133, 133, 133], 4, 1, 16, 0],
@@ -568,8 +569,8 @@ def getMtpConstants(mtpNumber):
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 28:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2020-05-16T14:35:18Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2020-06-13T13:19:57Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20200222_120000" #desired cop table folder - remember to update if patched
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
@@ -823,8 +824,9 @@ OCCULTATION_KEYS = [
     ["120 only #2"] * 1,
     ["121 only #2"] * 1,
 
-    ["126 only #2"] * 2,
-    ["127 only #2"] * 2,
+#    ["126 only #2"] * 2,
+    ["127 only #2"] * 5,
+    ["129 only #2"] * 3,
      
     ["133 only #2"] * 1,
     ["134 only #2"] * 5,
@@ -834,7 +836,7 @@ OCCULTATION_KEYS = [
     ["BgSubTest 04"] * 3,
     ["BgSubTest 05"] * 3,
     ["BgSubTest 06"] * 3,
-    ["Nominal Science 1xCO2 LA05"] * 2,
+    ["Nominal Science 1xCO2 LA05"] * 2, #reduce by one in MTP029
     ["Nominal Science 1xCO2 LA06"] * 2,
     ["Nominal Science 1xCO2 LA01"] * 2,
     ["Nominal Science 1xCO2 HA01"] * 2,
