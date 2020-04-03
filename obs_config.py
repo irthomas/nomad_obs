@@ -14,8 +14,8 @@ __author__    = "Ian Thomas"
 __contact__   = "ian . thomas AT aeronomie . be"
 
 
-OFFLINE = True #if working remotely, don't write obs to sql db
-#OFFLINE = False #write obs to sql db and copy to dev website
+#OFFLINE = True #if working remotely, don't write obs to sql db
+OFFLINE = False #write obs to sql db and copy to dev website
 
 if OFFLINE:
     input("Warning: you are operating in offline mode. This means that nothing will be written to the SQL database and the old website will not be updated. Press any key to continue (or exit now)")
@@ -74,8 +74,7 @@ if sys.platform == "win32":
 #    KERNEL_DIRECTORY = os.path.join("C", "Users", "ithom", "Documents", "Work", "kernels", "mk")
 #    KERNEL_DIRECTORY = os.path.join("W:", os.sep, "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "kernels", "mk")
 elif sys.platform == "linux":
-    KERNEL_DIRECTORY = os.path.join(os.sep, "bira-iasb", "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "kernels", "mk")
-
+    KERNEL_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "exomars2016", "kernels", "mk")
 
 ####INSERT PERSONAL CONFIG LOCATIONS HERE####
 
@@ -87,9 +86,10 @@ if sys.platform == "win32":
 #    METAKERNEL_NAME = "em16_ops.tm" #don't use for planning!!
 elif sys.platform == "linux":
     #find planning kernel in directory
-    for fileName in os.listdir(KERNEL_DIRECTORY):
-        if "em16_plan_" in fileName:
-            METAKERNEL_NAME = fileName
+    METAKERNEL_NAME = "em16_plan.tm"
+#    for fileName in os.listdir(KERNEL_DIRECTORY):
+#        if "em16_plan_" in fileName:
+#            METAKERNEL_NAME = fileName
 
 
 
