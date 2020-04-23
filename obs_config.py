@@ -45,7 +45,9 @@ if sys.platform == "win32":
     else:
         DEV_DIRECTORY = os.path.join("W:", os.sep, "websites", "dev", "mars", "en", "exomars", "observations")
 elif sys.platform == "linux":
-    DEV_DIRECTORY = os.path.join(os.sep, "bira-iasb", "websites", "dev", "mars", "en", "exomars", "observations")
+    #crunch can't access websites. Must set as local dir and update old website manually
+    #DEV_DIRECTORY = os.path.join(os.sep, "bira-iasb", "websites", "dev", "mars", "en", "exomars", "observations")
+    DEV_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "website")
 
 """sql database config file directory, for getting access rights to internal sql database"""
 #not yet implemented
@@ -55,7 +57,7 @@ if sys.platform == "win32":
     else:
         SQL_INI_DIRECTORY = os.path.join("W:", os.sep, "websites", "prod", "readonly", "nomad", "components", "com_nomad")
 elif sys.platform == "linux":
-    SQL_INI_DIRECTORY = os.path.join(os.sep, "bira-iasb", "websites", "prod", "readonly", "nomad", "components", "com_nomad")
+    SQL_INI_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning")
 
 
 """where to find cop tables? Note that COP patches are done at the end of an MTP, and so planning the MTP after must be done with the new tables!"""
@@ -74,22 +76,18 @@ if sys.platform == "win32":
 #    KERNEL_DIRECTORY = os.path.join("C", "Users", "ithom", "Documents", "Work", "kernels", "mk")
 #    KERNEL_DIRECTORY = os.path.join("W:", os.sep, "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "kernels", "mk")
 elif sys.platform == "linux":
-    KERNEL_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "exomars2016", "kernels", "mk")
+    KERNEL_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "kernels", "kernels", "mk")
 
 ####INSERT PERSONAL CONFIG LOCATIONS HERE####
 
 
 
+
+####END####
+    
 """which SPICE metakernel to use?"""
-if sys.platform == "win32":
-    METAKERNEL_NAME = "em16_plan.tm"
-#    METAKERNEL_NAME = "em16_ops.tm" #don't use for planning!!
-elif sys.platform == "linux":
-    #find planning kernel in directory
-    METAKERNEL_NAME = "em16_plan.tm"
-#    for fileName in os.listdir(KERNEL_DIRECTORY):
-#        if "em16_plan_" in fileName:
-#            METAKERNEL_NAME = fileName
+METAKERNEL_NAME = "em16_plan.tm"
+#METAKERNEL_NAME = "em16_ops.tm" #don't use for planning!!
 
 
 
@@ -116,7 +114,7 @@ def setupPaths(mtpConstants):
             "HTML_MTP_PATH":os.path.join(OBS_DIRECTORY, "mtp_pages", "mtp%03d" %mtpNumber), \
             "IMG_MTP_PATH":os.path.join(OBS_DIRECTORY, "mtp_pages", "mtp%03d" %mtpNumber, "img"), \
 
-            "SQL_INI_PATH":os.path.join(SQL_INI_DIRECTORY), \
+            "SQL_INI_PATH":SQL_INI_DIRECTORY, \
             }    
     
     #make directories if not already existing

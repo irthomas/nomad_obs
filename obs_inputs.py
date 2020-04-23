@@ -7,9 +7,6 @@ Created on Wed Oct 18 13:56:09 2017
 @author: iant
 
 
-
-   #add orders 126-129 to planning
-   
    #add Surface Ice obs to final orbit plan when beta angle is high
 
 
@@ -35,7 +32,7 @@ SOC_JOINT_OBSERVATION_NAMES = {
     "NOM_02":["6SUBD Nominal #1", "6SUBD Nominal #2"],
     "NOM_03":["6SUBD Nominal #3"],
     "CO_001":["6SUBD Nom CO #1", "6SUBD Nom CO #2", "6SUBD Nom CO #3", "6SUBD Nom CO #4", "6SUBD Nom CO #5"],
-    "CO2_01":["6SUBD Nom CO2 #1", "6SUBD Nom CO2 #2"],
+    "CO2_01":["6SUBD Nom CO2 #1", "6SUBD Nom CO2 #2", "CO2 100km #1", "6SUBD CO2 #1", "6SUBD CO2 #10"],
     
     "AER_01":["AER 01"],
     "DUST01":["Dust H2O 01"],
@@ -44,7 +41,6 @@ SOC_JOINT_OBSERVATION_NAMES = {
     
     "NOM_01":["Nominal Science 1xCO2 LA01"],
     }
-
 
 
 SOC_JOINT_OBSERVATION_TYPES = [
@@ -65,6 +61,7 @@ occultationObservationDict = {
 #new MTP025+
 "6SUBD CO2 #1":[[156,116,118,140,154,158], 4, 1, 16, 0],
 "6SUBD CO2 #10":[[156,116,118,169,154,158], 4, 1, 16, 0],
+"6SUBD CO2 Dipole #1":[[132, 133, 134, 136, 137, 169], 4, 1, 16, 0],
 
         
 #new MTP021+
@@ -99,8 +96,10 @@ occultationObservationDict = {
 
 "All Fullscan Fast #2":[["COP#53"], 4, 1, 16, 0],
 "All Fullscan Slow #2":[["COP#31"], 4, 1, 24, 0],
-#
+
+
 "CO2 Fullscan Fast #2":[["COP#41"], 4, 1, 16, 0], #160-170
+"CO2 Fullscan Fast #3":[["COP#34"], 4, 1, 16, 0], #125-135
 "CO Fullscan Fast #2":[["COP#46"], 4, 1, 16, 0], #185-195
 "LNO Occultation Fullscan Fast #2":[["COP#56"], 2, 1, 16, 1],
 
@@ -741,59 +740,6 @@ USE_TWO_SCIENCES = False
 
 """don't put 1 odd 1 even (otherwise most ingresses/egresses will be of a particular type!)"""
 OCCULTATION_KEYS = [
-#        "136 with 1xDark", #MTP010+
-#        "132 with 1xDark", #special calibration
-#        "BgSubTest 03",
-#        "CH4 01",
-#        "BgSubTest 04",
-#        "AER 01",
-#        "Nominal Science with CO 01", 
-#        "BgSubTest 05",
-#        "BgSubTest 06",
-#        "BgSubTest 03",
-#        "133 with 1xDark", #special calibration
-#        "Dust H2O 01",
-#        "Nominal Science 1xCO2 LA05",
-#        "BgSubTest 04",
-#        "Water Ice 01",
-#        "Nominal Science with CO 01",
-#        "CO 01",
-#        "Nominal Science 1xCO2 LA06",
-#        "Nominal Science 1xCO2 LA05",
-#        "BgSubTest 05",
-#        "BgSubTest 06",
-#        "BgSubTest 03",
-#        "BgSubTest 04",
-#        "134 with 1xDark", #special calibration
-#        "HDO 01",
-#        "BgSubTest 05",
-#        "Nominal Science with CO 01",
-#        "BgSubTest 06",
-#        "CO 01",
-#        "CO Fullscan Fast",
-#        "CH4 01",
-#        "BgSubTest 03",
-#        "AER 01",
-#        "BgSubTest 04",
-#        "Nominal Science 1xCO2 LA06",
-#        "BgSubTest 05",
-#        "BgSubTest 06",
-#        "135 with 1xDark", #special calibration
-#        "Dust H2O 01",
-#        "BgSubTest 03",
-#        "Water Ice 01",
-#        "BgSubTest 04",
-#        "BgSubTest 05",
-#        "Nominal Science with CO 01",
-#        "CO 01",
-#        "Nominal Science 1xCO2 LA05",
-#        "CO2 Fullscan Fast",
-#        "BgSubTest 06",
-#        "Nominal Science 1xCO2 LA06",
-#        "BgSubTest 05",
-#        "BgSubTest 06",
-#        "HDO 01",
-#        "LNO Occultation Fullscan 01",
 
     ["6SUBD Nominal #1"] * 20, 
     ["6SUBD Nominal #2"] * 20, 
@@ -819,19 +765,11 @@ OCCULTATION_KEYS = [
     ["All Fullscan Slow #2"] * 1,
     ["CO2 Fullscan Fast #2"] * 1,
     ["CO Fullscan Fast #2"] * 1,
-    ["LNO Occultation Fullscan Fast #2"] * 1,
+    ["LNO Occultation Fullscan Fast #2"] * 3,
     ["119 only #2"] * 1,
     ["120 only #2"] * 1,
     ["121 only #2"] * 1,
 
-#    ["126 only #2"] * 2,
-    ["127 only #2"] * 5,
-    ["129 only #2"] * 3,
-     
-    ["133 only #2"] * 1,
-    ["134 only #2"] * 5,
-    ["135 only #2"] * 1,
-    ["136 only #2"] * 5,
     ["BgSubTest 03"] * 3, #reduce by one in MTP029
     ["BgSubTest 04"] * 3,
     ["BgSubTest 05"] * 3,
@@ -853,9 +791,19 @@ OCCULTATION_KEYS = [
     ["AER 01"] * 1,
     
     #new MTP025+
-    ["6SUBD CO2 #1"] * 10, #reduce after MTP025
-    ["6SUBD CO2 #10"] * 10, #reduce after MTP025
+    ["6SUBD CO2 #1"] * 9, #reduce at MTP029
+    ["6SUBD CO2 #10"] * 9, #reduce at MTP029
 
+    #MTP028+ CO2 M1/E2 and HCl
+    ["126 only #2"] * 7,
+    ["127 only #2"] * 7,
+    ["129 only #2"] * 7,
+     
+    ["132 only #2"] * 5,
+    ["133 only #2"] * 7,
+    ["134 only #2"] * 5,
+    ["6SUBD CO2 Dipole #1"] * 5,
+    ["CO2 Fullscan Fast #3"] * 5,
 
 ]
 
