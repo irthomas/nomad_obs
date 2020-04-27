@@ -1,0 +1,37 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Apr 27 17:03:29 2020
+
+@author: iant
+
+SOMETIMES THE OPS TEAM'S OCCULTATION CALCULATIONS DIFFER
+THIS CAN LEAD TO INCORRECT OCCULTATION TYPE E.G. MERGED INSTEAD OF GRAZING
+THEREFORE COP ROWS CAN BE INSERTED INTO WRONG OUTPUT FILE AND UVIS INPUTS
+HAVE INCORRECT LENGTH.
+
+MANUALLY UPDATE SPECIFIC ORBITS TO MATCH BOJAN/CLADIO'S ORBIT TYPE ASSIGNMENT
+"""
+
+
+def updateWrongOrbitTypes(orbit_list, mtpConstants):
+    """fudges for certain MTPs where grazing occultation is now a merged occ or vice versa
+    find correct orbit and set allowedObservationTypes to that specified by ops team"""
+    #TODO: come up with better way of doing this
+    
+    mtpNumber = mtpConstants["mtpNumber"]
+
+    if mtpNumber == 10:
+        orbit_list[227]["allowedObservationTypes"] = ["dayside", "grazing"]
+    if mtpNumber == 20:
+        orbit_list[150]["allowedObservationTypes"] = ["dayside", "merged"]
+    if mtpNumber == 21:
+        orbit_list[4]["allowedObservationTypes"] = ["dayside", "grazing"]
+    if mtpNumber == 25:
+        orbit_list[6]["allowedObservationTypes"] = ["dayside", "grazing"]
+    if mtpNumber == 26:
+        orbit_list[167]["allowedObservationTypes"] = ["dayside", "grazing"]
+            
+    return orbit_list
+
+
+

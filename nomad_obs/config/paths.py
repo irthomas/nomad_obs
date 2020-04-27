@@ -7,6 +7,7 @@ Created on Wed Nov 14 09:58:57 2018
 
 import os
 import sys
+import spiceypy as sp
 
 
 __project__   = "NOMAD Observation Planning"
@@ -41,7 +42,7 @@ elif sys.platform == "linux":
 #not yet implemented
 if sys.platform == "win32":
     if OFFLINE:
-        DEV_DIRECTORY = BASE_DIRECTORY
+        DEV_DIRECTORY = os.path.join(BASE_DIRECTORY, "website")
     else:
         DEV_DIRECTORY = os.path.join("W:", os.sep, "websites", "dev", "mars", "en", "exomars", "observations")
 elif sys.platform == "linux":
@@ -63,7 +64,7 @@ elif sys.platform == "linux":
 """where to find cop tables? Note that COP patches are done at the end of an MTP, and so planning the MTP after must be done with the new tables!"""
 if sys.platform == "win32":
     if OFFLINE:
-        COP_TABLE_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Dropbox", "NOMAD", "Python", "data", "cop_tables")
+        COP_TABLE_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Documents", "DATA", "cop_tables")
     else:
         COP_TABLE_DIRECTORY = os.path.join("W:", os.sep, "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "cop_tables")
 elif sys.platform == "linux":
@@ -149,7 +150,6 @@ def devWebsitePaths(mtpConstants):
 
 
 #load spiceypy kernels
-import spiceypy as sp
 print("KERNEL_DIRECTORY=%s, METAKERNEL_NAME=%s" %(KERNEL_DIRECTORY, METAKERNEL_NAME))
 os.chdir(KERNEL_DIRECTORY)
 sp.furnsh(METAKERNEL_NAME)
