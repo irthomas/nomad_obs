@@ -27,7 +27,7 @@ To run the planning with the same settings are the previous MTP, only two script
 Script Name | Description
 --- | ---
 `run_planning.py` | (Unsurprisingly) this runs the planning. Here the `mtpNumber` must be changed to the current MTP.
-`nomad_obs/mtp_inputs.py` | Info about all MTPs run so far. `mtpStart` and `mtpEnd` are the EXMGEO_TD2N and EXMGEO_TD2N times specified by Bojan or Claudio. `copVersion` is the COP table directory name used for this MTP. After each patch is executed onboard, this must be updated to reflect the new COP rows. If no patching has taken place this is the same as the previous MTP.
+`nomad_obs/mtp_inputs.py` | Info about all MTPs run so far. `mtpStart` and `mtpEnd` are the *EXMGEO_TD2N* and *EXMGEO_TD2N* times specified by Bojan or Claudio. `copVersion` is the COP table directory name used for this MTP. After each patch is executed onboard, this must be updated to reflect the new COP rows. If no patching has taken place this is the same as the previous MTP.
 
 
 
@@ -35,7 +35,7 @@ In addition, there are five scripts that can be modified if desired.
 Script Name | Description
 --- | ---
 `acs_so_joint_occultations.py` | 
-`observation_names.py` | Dictionaries of all user-defined observations, of the form:<br/>name:[[list of diffraction orders], integration time, rhythm, number of detector lines, channel]<br/>Where integration time is in milliseconds, rhythm is in seconds (usually 1 for occultation, 15 for nadir); the number of detector lines is usually 16 for occultation and 144 for nadir; and channel=0 for SO and 1 for LNO.<br/>These names are used in the final orbit plan.<br/>Every observation must be included in the COP tables onboard NOMAD.
+`observation_names.py` | Dictionaries of all user-defined observations, of the form:<br/>*name:[[list of diffraction orders], integration time, rhythm, number of detector lines, channel]*<br/>Where *integration time* is in milliseconds, *rhythm* is in seconds (usually 1 for occultation, 15 for nadir); the *number of detector lines* is usually 16 for occultation and 144 for nadir; and *channel* is 0 for SO and 1 for LNO.<br/>These names are used in the final orbit plan.<br/>Every observation must be included in the COP tables onboard NOMAD.
 `observation_weights.py` | Select which observations are run for each observation type (nadir, occultation, etc.) and their weights i.e. the relative number of observations in relation to the other observation types.
 `options.py` | Other user-modifiable options. In general do not change.
 `regions_of_interest.py` | Add or modify the surface regions of interest defined by the science team for nadir or occultations observations.
@@ -74,7 +74,7 @@ Variable name | Description
 `DEV_DIRECTORY` | Base directory for the website, to be placed on the web dev server. A copy of all images and files will be made here. The BIRA Linux compute servers cannot access the real directory, so they are placed in the temporary directory
 `SQL_INI_DIRECTORY` | Directory containing the SQL database ini file (a copy of the inaccessible ini file in the website directory).
 `COP_TABLE_DIRECTORY` | Directory containing the COP table directories. This can be temporarily modified to a local folder for testing new cop table patches in the system.
-`KERNEL_DIRECTORY` | Directory containing the latest SPICE kernels. The subdirectories contain each type of kernel e.g. mk, ck, ik, etc. inside this directory.
+`KERNEL_DIRECTORY` | Directory containing the latest SPICE kernels. The subdirectories contain each type of kernel e.g. `mk`, `ck`, `ik`, etc. inside this directory.
 
 The metakernel name, given by `METAKERNEL_NAME`, should be specified. This should always be `em16_plan.tm` for planning purposes.
 
@@ -124,15 +124,18 @@ The generic script always includes too many LNO dayside nadirs. Remove some by d
 
 * If the observation corresponds to a region of interest, this will be indicated in the last column – it is better to keep most of these observations and remove others nearby. However it is not necessary to keep all.
 * The number of observations depends on the TGO orbit characteristics. See Appendix A for approximate duty cycles.
-* Do not delete limbs e.g. orbit type 28.
-* If a row has no SO or LNO observations, the orbit type in the 1st column must be changed to type 14.
+* Do not delete limbs e.g. orbit type `28`.
+* If a row has no SO or LNO observations, the orbit type in the 1st column must be changed to type `14`.
 
-See previous MTPs for examples. When ready, send `nomad_mtp015_plan_generic.xlsx` to `nomad.iops@aeronomie.be` for the OU to add UVIS observations.
+==> New constraint for MTP029 onwards: LNO orbits should be preferentially chosen when TGO and MRO orbits overlap, so UVIS and MARCI can perform joint observations. These are given in file `nomad_obs/summary_files/mtpxxx/YYYY/TGO_AND_MRO_OVERLAP_IN_ONE_MTP_5deg.txt` where YYYY specifies the observational constraint. `2deg_latlon_15min_LST` contains the tightest (and best) constraints, but there are fewer joint observations as a result. These should be prioritised over `5deg_latlon_30min_LST`, which contains the loosest constraints, however as many should be matched as possible whilst trying the spread out LNO observations evenly between orbits. This is performed manually at present. 
+
+
+When ready, send `nomad_mtp015_plan_generic.xlsx` to `nomad.iops@aeronomie.be` for the OU to add UVIS observations.
 
 
 ### Finalise generic orbit plan
 
-When the modified version is received from the OU, check for errors - e.g. remove observations that are not allowed, for example UVIS observations scheduled during OCMs. 
+When the modified version is received from the OU, check for errors - e.g. remove observations that are not allowed, for example UVIS observations scheduled during OCMs (orbital correction manoeuvres) which occur on Saturday afternoons. 
 
 
 
@@ -140,67 +143,81 @@ When the modified version is received from the OU, check for errors - e.g. remov
 
 There are two types of UVIS nightsides, which will normally be highlighted in blue or yellow:
 
-* Those in yellow are UVIS calibration measurements. If desired, LNO can run nightside measurements in these slots (change orbit type to 7 and add “irNightside” to irNightside column)
-* Those in blue are UVIS nightside measurements. LNO and UVIS must be switched off on the previous orbit dayside (irDayside and uvisDayside must be blank), and LNO must not run on this nightside (irNightside must be blank). Note that observations on the dayside in the chosen orbit are acceptable.
+* Those in yellow are UVIS calibration measurements. If desired, LNO can run nightside measurements in these slots (change orbit type to `7` and add `irNightside` in the `irNightside` column). Normally, only 1 or 2 LNO nightside observations are run per MTP, however these are not essential.
+* Those in blue are UVIS nightside measurements. LNO and UVIS must be switched off on the previous orbit dayside (`irDayside` and `uvisDayside` must be blank), and LNO must not run on this nightside (`irNightside` must be blank). Note that observations on the dayside in the chosen orbit are acceptable.
 
-For all nightsides (of both types), add “uvisNightside” to uvisNightside column if not present.
+For all nightsides (of both types), add `uvisNightside` in the `uvisNightside` column if not present.  LNO should not measure continuously - if there are LNO dayside measurements on the previous or same orbits, these must be removed (delete the entry/entries in `irDayside` column blank).
 
 
 #### Add LNO limb measurements
 
-Orbits with types 4, 14 and 3 can be changed to LNO limb. These should correspond with CaSSIS off-nadir observations where possible, using the list provided by the ops team. This allows measurements to be made when the boresight is pointing closer to the ground than when flying in pure nadir-pointing mode. To do this, change the orbit type to “8” and add “irLimb” to the irDayside column. Note that nightside limbs are not yet implemented. Remember that LNO should not measure continuously - if there are LNO measurements on previous/next orbits these should be removed (by setting irDayside column blank).
+Orbits with types `4`, `14` and `3` can be changed to LNO limb orbit type `8`. These should correspond with CaSSIS off-nadir observations where possible, using the list `MARS_IN_UVIS_OCC_FOV.txt` provided by Bojan or Claudio. This txt file contains the times when the boresight is pointing closer to the ground than when flying in pure nadir-pointing mode. 
+
+There are typically around 5 limb observations per MTP, however during periods without occultations it is possible to run many more (see Appendix A). 
+
+At present, limb observations are added manually: To do this, change the orbit type to `8` and add `irLimb` to the `irDayside` column. 
 
 
 
-#### Additional LNO nightside measurements
 
-If desired.
+### Make LNO orbit list file and final orbit plan
 
-
-
-### Make LNO-UVIS joint observation list
-
-Place the new generic orbit plan file in the `orbit_plans/mtpxxx` folder and run entire script again. The LNO-UVIS joint observation file will be created in the orbit plan directory. Send this and the generic orbit plan to `nomad.iops@aeronomie.be`
+When the orbit plan is ready, move it to the directory `orbit_plans/mtpxxx` folder and run entire script again. The file containing the list of orbits where LNO is operating `nomad_mtpxxx_lno_orbits.txt` will be created in the orbit plan directory. Send this and the generic orbit plan to `nomad.iops@aeronomie.be`.
 
 
-
-### Make final files
-
-When the script is run to make the joint observation list, the final orbit plan will also be created in the base directory. Here the 
+When the script is run above to make the joint observation list, the final orbit plan will also be created in the `BASE_DIRECTORY`. Here the table has been filled in with observation names taken from the lists in `observation_names.py` and `observation_weights.py`.
 
 
-If there are no errors, place the final orbit plan in the `orbit_plans/mtpxxx` folder and run the entire script again. The output COP row files will be generated in `cop_rows/mtpxxx folder`. 
+If there are no errors, place the final orbit plan in the `orbit_plans/mtpxxx` folder and run the entire script again. The output COP row files will be generated in `cop_rows/mtpxxx folder`. The joint occultation file `joint_occ_mtpxxx.csv` will also be created for the ACS team. This will be sent by Bojan or Claudio to ESAC.
+
 
 
 #### Compare to summary files
 
-This and the other SO/LNO cop rows should be checked (compare to summary files from bojan/claudio), particularly timings and number of rows in files
-LNO occultations are implemented. In the 5th column, 0 is changed to 1.
+Once the final orbit plan is sent to Bojan and Claudio, they will generate the summary files, typically within a few days. Place a copy of all the .xlsx or .ods files in the directory `observations\summary_files\mtpxxx`.
 
-The joint occultation file is created for the ACS team. This will be sent by Bojan or Claudio to ESAC.
+The SO/LNO cop rows generated by the script should be compared to the summary files: particularly the number of rows in the file, and the *approximate* start and end times to check that the rows in the file line up correctly. Any rows in orange or red in the summary files should be set to `-1` in the corresponding COP row.
+
+* `NOMAD_dayside_nadir_summary` should be compared to `mtpxxx_ir_dayside_nadir.txt`
+* `NOMAD_egress_solar_occulations_summary` should be compared to `mtpxxx_ir_egress_occultations.txt`
+* `NOMAD_grazing_solar_occulations_summary` should be compared to `mtpxxx_ir_grazing_occultations.txt`
+* `NOMAD_ingress_and_merged_solar_occulations_summary` should be compared to `mtpxxx_ir_ingress_occultations.txt`
+* `NOMAD_nightside_nadir_summary` should be compared to `mtpxxx_ir_nightside_nadir.txt`
+
+See Appendix B if the number of COP rows does not match the number in the summary file.
+
+
+
 
 
 
 #### Calibration file
-The calibration file must be filled in manually. Use values from solar_calibrations.xlsx file for miniscans/fullscans. See previous mtps for examples.
 
-Send all files in the `cop_row/mtpxxx` folder to `nomad.iops@aeronomie.be`
+The calibration file must be created manually as `cop_row/mtpxxx/mtpxxx_ir_calibrations.txt`. There are two types of solar calibration: *linescan* (to define the boresight vector) and *solar pointing* (to run fullscans or miniscans). 
 
-Rerun when UVIS COP rows are ready
+If the calibration is a boresight linescan, use these values:
+```
+TC20 FIXED,TC20 PRECOOLING,TC20 SCI1,TC20 SCI2,LNO_OBSERVING (1=YES;0=NO),OBSERVATION NUMBER,OBSERVATION TYPE,APPROX TC START TIME,COMMENTS
+1,1,2915,2915,0,-1,NONE,NONE,SO LINE SCAN SO BORESIGHT
+```
+
+Otherwise, use values from the `solar_calibrations.xlsx` file for miniscans/fullscans. See previous MTPs for examples. LNO fullscans are useful if it is not clear what to run:
+
+```
+TC20 FIXED,TC20 PRECOOLING,TC20 SCI1,TC20 SCI2,LNO_OBSERVING (1=YES;0=NO),OBSERVATION NUMBER,OBSERVATION TYPE,APPROX TC START TIME,COMMENTS
+3,1,34,34,1,-1,NONE,NONE,LNO FULLSCAN
+```
+Note that the number and type (linescan or solar pointing) of calibration observations should match the number of calibrations in the MTP. This is given in the overview email from Bojan and Claudio.
+
+
+#### COP rows
+
+Send all files in the `cop_row/mtpxxx` directory, including the `joint_occ_mtpxxx.csv` file to `nomad.iops@aeronomie.be`. Make a new directory `cop_row/mtpxxx/sent` and copy all the sent files here. This will avoid overwriting the final COP rows if the pipeline is run again and something is changed.
+
+When UVIS COP rows are provided by the OU, place them also in the `cop_row/mtpxxx` directory and rerun the pipeline. This will add the UVIS COP rows to the SQL database.
 
 
 
-
-#### Important things to remember:
-
-* 1st observation after OCM slot should always be LNO+UVIS to keep instrument warm
-* Check all orbit type 28 have been added for LNO+UVIS limbs
-* Remember to check what calibrations there are, and send calibration COP rows separately!
-
-
-
-Add manually to comment section where required:
-&PDHUMaintenanceSlot
 
 
 ---
@@ -212,19 +229,22 @@ Add manually to comment section where required:
 TGO orbits can be divided, approximately, into 3 categories:
 
 Number of occultations | TGO orbit description | LNO nadir quality
+--- | --- | ---
 No occultations per orbit | TGO orbit is close to the terminator and does not pass behind the planet | **LNO signal is poor** due to bad solar zenith angle. Ices may be visible if orbit passes near sunrise terminator.
 Merged or two occultations per orbit | TGO orbit is between subsolar point and terminator | **LNO signal is acceptable**, but instrument temperature is the highest.
 One occultation per orbit | TGO orbit is close to subsolar/antisolar point | **LNO signal is good**, as solar zenith angle is low.
 
 
 In general:
-* If there are no occultations, LNO should operate on approximately *1 in 4* to *1 in 6* orbits. Approximately 25% of all LNO observations should be limb measurements (orbit type 8).
+* If there are no occultations, LNO should operate on approximately *1 in 4* to *1 in 6* orbits. Approximately 25% of all LNO observations should be limb measurements (orbit type `8`).
 * If there are two occultations per orbit, LNO should operate on approximately *1 in 3* or *1 in 4* orbits.
 * If there is one occultation per orbit, LNO should operate on approximately *1 in 3* orbits.
 
+Note that LNO can also make limb and nightside observations - these must be taken into account when considered the number of LNO observations.
 
 
+### Appendix B: Bugs and fixes
 
+An error can occur when the occultation types defined by this planning software do not match those defined by Bojan and Claudio. In these cases, Bojan and Claudio's definition is always taken as correct and therefore the `orbitList` must be altered. This is normally clear if the number of rows in the output files `mtpxxx_ir_grazing_occultations.txt` and `mtpxxx_ir_ingress_occultations.txt` do not match the summary files.
 
-
-
+Modifying the `orbitList` using the script `nomad_obs/update_orbit_list.py` to manually select the orbit number and occultation type. There are examples in the script already. 
