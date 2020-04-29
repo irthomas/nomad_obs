@@ -127,12 +127,14 @@ The generic script always includes too many LNO dayside nadirs. Remove some by d
 * Do not delete limbs e.g. orbit type 28.
 * If a row has no SO or LNO observations, the orbit type in the 1st column must be changed to type 14.
 
-See previous MTPs for examples. When read, send `nomad_mtp015_plan_generic.xlsx` to `nomad.iops@aeronomie.be` for the OU to add UVIS observations.
+See previous MTPs for examples. When ready, send `nomad_mtp015_plan_generic.xlsx` to `nomad.iops@aeronomie.be` for the OU to add UVIS observations.
 
 
 ### Finalise generic orbit plan
 
 When the modified version is received from the OU, check for errors - e.g. remove observations that are not allowed, for example UVIS observations scheduled during OCMs. 
+
+
 
 #### Check nightsides
 
@@ -144,9 +146,7 @@ There are two types of UVIS nightsides, which will normally be highlighted in bl
 For all nightsides (of both types), add “uvisNightside” to uvisNightside column if not present.
 
 
-
-
-#### Additional LNO limb measurements
+#### Add LNO limb measurements
 
 Orbits with types 4, 14 and 3 can be changed to LNO limb. These should correspond with CaSSIS off-nadir observations where possible, using the list provided by the ops team. This allows measurements to be made when the boresight is pointing closer to the ground than when flying in pure nadir-pointing mode. To do this, change the orbit type to “8” and add “irLimb” to the irDayside column. Note that nightside limbs are not yet implemented. Remember that LNO should not measure continuously - if there are LNO measurements on previous/next orbits these should be removed (by setting irDayside column blank).
 
@@ -158,53 +158,44 @@ If desired.
 
 
 
-#### Targeted observations
-
-Check targeted nadir: 
-Curiosity (134/136)
-Francesca surface hydration sites (191)
-Add more CH4 release sites (134/136)
-
-
 ### Make LNO-UVIS joint observation list
 
-Place the new generic orbit plan file in the orbit_plans/mtpxxx folder and run entire script again. The LNO-UVIS joint observation file will be created in the orbit plan directory. Send this and the generic orbit plan to nomad.iops
+Place the new generic orbit plan file in the `orbit_plans/mtpxxx` folder and run entire script again. The LNO-UVIS joint observation file will be created in the orbit plan directory. Send this and the generic orbit plan to `nomad.iops@aeronomie.be`
+
 
 
 ### Make final files
-If all is ok then place generic orbit plan in the orbit_plans/mtpxxx folder and run entire script again
 
-The final orbit plan will be placed in base directory.
-If there are no errors, place the final orbit plan in the orbit_plans/mtpxxx folder and run the entire script again.
-The output COP row files will be generated in cop_rows/mtpxxx folder:
-This and the other ir cop rows should be checked (compare to summary files from bojan/claudio), particularly timings and number of rows in files
+When the script is run to make the joint observation list, the final orbit plan will also be created in the base directory. Here the 
+
+
+If there are no errors, place the final orbit plan in the `orbit_plans/mtpxxx` folder and run the entire script again. The output COP row files will be generated in `cop_rows/mtpxxx folder`. 
+
+
+#### Compare to summary files
+
+This and the other SO/LNO cop rows should be checked (compare to summary files from bojan/claudio), particularly timings and number of rows in files
 LNO occultations are implemented. In the 5th column, 0 is changed to 1.
 
-The joint occultation file is created for the ACS team. This will be sent by bojan/claudio to the soc.
+The joint occultation file is created for the ACS team. This will be sent by Bojan or Claudio to ESAC.
+
 
 
 #### Calibration file
 The calibration file must be filled in manually. Use values from solar_calibrations.xlsx file for miniscans/fullscans. See previous mtps for examples.
 
-Send all files in the cop_row/mtpxxx folder to nomad.iops@aeronomie.be
+Send all files in the `cop_row/mtpxxx` folder to `nomad.iops@aeronomie.be`
 
 Rerun when UVIS COP rows are ready
 
 
-#### Update website (not working on crunch)
-* Run step5
-* Then log in to Tethys, change directory to “/bira-iasb/websites/dev/mars>”
-* Then run  “./sync_to_prod.sh”
-
 
 
 #### Important things to remember:
+
 * 1st observation after OCM slot should always be LNO+UVIS to keep instrument warm
 * Check all orbit type 28 have been added for LNO+UVIS limbs
-
-
-
-Remember to check what calibrations there are, and send calibration COP rows separately!
+* Remember to check what calibrations there are, and send calibration COP rows separately!
 
 
 
