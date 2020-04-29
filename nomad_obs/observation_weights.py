@@ -65,15 +65,16 @@ OCCULTATION_WEIGHTS = [
     ["6SUBD CO2 #10"] * 9, #reduce at MTP029
 
     #MTP028+ CO2 M1/E2 and HCl
-    ["126 only #2"] * 7,
-    ["127 only #2"] * 7,
-    ["129 only #2"] * 7,
+    ["126 only #2"] * 9,
+    ["127 only #2"] * 9,
+    ["129 only #2"] * 9,
+
      
-    ["132 only #2"] * 5,
-    ["133 only #2"] * 7,
+    ["132 only #2"] * 3,
+    ["133 only #2"] * 4,
     ["134 only #2"] * 5,
-    ["6SUBD CO2 Dipole #1"] * 5,
-    ["CO2 Fullscan Fast #3"] * 5,
+    ["6SUBD CO2 Dipole #1"] * 4,
+    ["CO2 Fullscan Fast #3"] * 4,
 
 ]
 

@@ -9,108 +9,137 @@
 All the above are available on crunch7.
 
 
+### Directories
+
+Within the base directory there are four directories
+
+Directory Name | Description
+--- | ---
+`cop_patching` | Scripts to generate patches to the COP tables onboard NOMAD.
+`nomad_obs` | Scripts to run the observation planning.
+`observations` | Input and output files, website pages, etc.
+`website` | Temporary website directory
+
 
 ### Scripts
 
-There are four scripts:
-
-
+To run the planning with the same settings are the previous MTP, only two scripts must be modified:
 Script Name | Description
 --- | ---
-obs_config.py | Contains hardcoded paths to main directories to find e.g. cop tables, spice kernels, etc. Modify before running program (if required)
-obs_functions.py | Contains the functions and calculations that do the obs planning. In general, do not modify unless there is a problem.
-obs_inputs.py | Contains the information for all previous mtps and is where new information is to be added by the user for the upcoming mtps. E.g. observation types, mtp start/end times, regions of interest, lists of observation types to be added. Information must be added here before the script is run for a new mtp.
-run_planning.py | This is the script to be run. In general, do not modify, except to set the correct MTP number
+`run_planning.py` | (Unsurprisingly) this runs the planning. Here the `mtpNumber` must be changed to the current MTP.
+`nomad_obs/mtp_inputs.py` | Info about all MTPs run so far. `mtpStart` and `mtpEnd` are the EXMGEO_TD2N and EXMGEO_TD2N times specified by Bojan or Claudio. `copVersion` is the COP table directory name used for this MTP. After each patch is executed onboard, this must be updated to reflect the new COP rows. If no patching has taken place this is the same as the previous MTP.
+
+
+
+In addition, there are five scripts that can be modified if desired.
+Script Name | Description
+--- | ---
+`acs_so_joint_occultations.py` | 
+`observation_names.py` | Dictionaries of all user-defined observations, of the form:<br/>name:[[list of diffraction orders], integration time, rhythm, number of detector lines, channel]<br/>Where integration time is in milliseconds, rhythm is in seconds (usually 1 for occultation, 15 for nadir); the number of detector lines is usually 16 for occultation and 144 for nadir; and channel=0 for SO and 1 for LNO.<br/>These names are used in the final orbit plan.<br/>Every observation must be included in the COP tables onboard NOMAD.
+`observation_weights.py` | Select which observations are run for each observation type (nadir, occultation, etc.) and their weights i.e. the relative number of observations in relation to the other observation types.
+`options.py` | Other user-modifiable options. In general do not change.
+`regions_of_interest.py` | Add or modify the surface regions of interest defined by the science team for nadir or occultations observations.
+
+
+There is a final script named `update_orbit_list.py`, which allows the user to override the SPICE geometry calculation for orbits in the MTP. In general this should not be done, except if there is a discrepancy between Bojan or Claudio's calculations and this planning software. This is described later.
+
+
+
+### Observation planning general overview
+
+When Bojan and Claudio distribute the MTP overview, the planning can begin. The general steps are outlined here:
+1. Analyse geometry and inputs and create orbit plan, populating it with generic observation types e.g. _irIngress_, _irDayside_, etc.
+2. Send to OU for iteration.
+3. Finalise generic orbit plan and send to Bojan and Claudio, along with list of orbits on which LNO operates.
+4. Populate the orbit plan with real observation names
+5. Generate COP rows, web pages, update SQL database, etc. Generate list of joint ACS-NIR/NOMAD-SO occultation numbers for ESAC.
+6. Following step (3), a few days later Bojan or Claudio will distribute the summary files. Check COP rows against these summary files.
+7. Manually define solar calibrations.
+8. When ready, send COP rows and joint NIR-SO file to Bojan and Claudio
+
+Orbit type definitions can be found on the website: https://nomad.aeronomie.be/index.php/observations/observation-planning-orbit-rules
+
+All emails must be sent to `nomad.iops@aeronomie.be`
 
 
 ### Set up paths
 
-If running on Windows, or if you are on Linux and prefer to run the planning in a directory other than the default, modify obs_config.py as required. There are five paths to be specified:
+To run on crunch7, all the paths are already pointing to the default locations on the servers. If running on Windows, or if you are on Linux and prefer to run the planning in a directory other than the default, modify `nomad_obs/config/paths.py` as required. There are five paths to be specified:
 
 
 Variable name | Description
 --- | ---
-BASE_DIRECTORY | This is the directory containing the 4 scripts, and is where new orbit plans will be placed.
-OBS_DIRECTORY | This is the base directory for the master version of the website. All input files must be placed here, and all output files, webpages and images will be generated here.
-DEV_DIRECTORY | This is the base directory for the website, to be placed on the web dev server. A copy of all images and files will be made here.
-COP_TABLE_DIRECTORY | This is the directory containing the cop table directories. Can be temporarily modified to a local folder for testing new cop table patches in the system.
-KERNEL_DIRECTORY | This is the base directory containing up to date spice kernels. The subdirectories contain each type of kernel e.g. mk, ck, ik, etc. inside this directory.
+`BASE_DIRECTORY` | The working directory, and where new orbit plans will be placed. 
+`OBS_DIRECTORY` | Base directory for inputs and outputs. All input files must be placed here, and all output files, webpages and images will be generated here except new orbit plans.
+`DEV_DIRECTORY` | Base directory for the website, to be placed on the web dev server. A copy of all images and files will be made here. The BIRA Linux compute servers cannot access the real directory, so they are placed in the temporary directory
+`SQL_INI_DIRECTORY` | Directory containing the SQL database ini file (a copy of the inaccessible ini file in the website directory).
+`COP_TABLE_DIRECTORY` | Directory containing the COP table directories. This can be temporarily modified to a local folder for testing new cop table patches in the system.
+`KERNEL_DIRECTORY` | Directory containing the latest SPICE kernels. The subdirectories contain each type of kernel e.g. mk, ck, ik, etc. inside this directory.
 
-The metakernel name, given by METAKERNEL_NAME, should be specified. This should always be em16_plan.tm for planning purposes.
+The metakernel name, given by `METAKERNEL_NAME`, should be specified. This should always be `em16_plan.tm` for planning purposes.
 
-### Linux servers
-
-To run on crunch7, all the paths are already pointing to the default locations on the servers. The latest planning kernels will need to be downloaded as follows:
-
-* cd /bira-iasb/projects/NOMAD/Science/Planning/kernels/
-* git pull
-
-This must be done before each MTP.
+`OFFLINE` should be set to True only if you are operating on a local machine that doesn't have access to the BIRA servers. In this mode, the SQL database is not updated.
 
 ---
 
+
 ## Instructions for running
+
+### SPICE kernels
+
+The latest planning kernels will need to be downloaded as follows:
+
+* `cd /bira-iasb/projects/NOMAD/Science/Planning/kernels/`
+* `git pull`
+
+This must be done before each MTP.
+
 
 ### Set up MTP and observation parameters
 
-Add required information to obs_inputs for the mtp to be planned. Minimum required:
-
-
-Variable Name | Description
---- | ---
-mtpStart | This is the EXMGEO_TD2N start time as specified by Bojan or Claudio
-mtpEnd | This is the EXMGEO_TD2N end time as specified by Bojan or Claudio
-copVersion | This is the cop table folder for this MTP. Remember that after each patch is executed onboard, this must be updated to reflect the new COP rows.
-
-
-
-Optional additions - modify the following parameters if desired:
-
-
-Variable Name | Description
---- | ---
-occultationObservationDict<br/>nadirObservationDict | These are the dictionaries of all known observation types, of the form:<br/>name:[[list of diffraction orders], integration time, rhythm, number of detector lines, channel]<br/>Where integration time is in milliseconds, rhythm is in seconds (usually 1 for occultation, 15 for nadir); the number of detector lines is usually 16 for occultation and 144 for nadir; and channel=0 for SO and 1 for LNO.<br/>These names are used in the final orbit plan.<br/>
-occultationRegionsOfInterest<br/>nadirRegionsOfInterest | TBD
-occultationRegionsObservations<br/>nadirRegionsObservations | TBD
-USE_TWO_SCIENCES | TBD
-OCCULTATION_KEYS<br>OCCULTATION_MERGED_KEYS<br>OCCULTATION_GRAZING_KEYS<br>NADIR_KEYS<br>NADIR_LIMB_KEYS<br>NADIR_NIGHTSIDE_KEYS | TBD
-
+* As a minimum, add `mtpStart`, `mtpEnd` and `copVersion` info to `nomad_obs/mtp_inputs`
+* Update the other files in the `nomad_obs` directory if desired e.g. observations, weights, ACS-SO joint occultation types, regions of interest, etc.
+* Copy the SOC event file `LEVF_Mxxx_SOC_PLANNING.EVF` for the MTP into the directory `observations/event_files`. This file can be found in the zip file from Bojan or Claudio.
+* (Recommended) copy the solar limb events file `MARS_IN_UVIS_OCC_FOV.txt` and MRO joint obs from the zip file into `observations/summary_files/mtpxxx`. These will be needed later.
 
 
 
 ### Make generic orbit plan
 
-In run_planning.py, change mtpNumber to the desired value. To start the planning script on crunch7:
+In run_planning.py, change mtpNumber to the desired value. 
 
-* ssh -X crunch7
-* module load 18/py36
-* cd /bira-iasb/projects/NOMAD/Science/Planning/nomad_obs/
-* python3 run_planning.py
+To start the planning script on crunch7 (from hera):
 
-Then wait a few minutes for the geometry calculations to be completed. 
+* `ssh -X crunch7`
+* `module load 18/py36` (if python 3 is not already loaded)
+* `cd /bira-iasb/projects/NOMAD/Science/Planning/nomad_obs/`
+* `python3 run_planning.py`
+
+Then wait a few minutes for the geometry calculations to be completed. The variable `orbitList` will be populated with all the geometric data for the MTP, and the generic orbit plan `nomad_mtpxxx_plan_generic.xlsx` will be placed in the `BASE_DIRECTORY`. 
 
 
-Step 1 will be initiated, and the orbitList list will be populated with all the geometric data for the MTP
-The generic orbit plan nomad_mtpxxx_plan_generic.xlsx will be placed in base directory. The generic script generally includes too many LNO dayside nadirs. Remove some by deleting some of the entries in the LNO dayside column (a blank entry means no observation will be run). Note that:
+#### Select LNO dayside nadirs
 
-* If the observation corresponds to a region of interest, this will be indicated in the last column – it is better to keep these observations and remove others before/after to keep to the LNO 50% duty cycle. 
+The generic script always includes too many LNO dayside nadirs. Remove some by deleting some of the entries in the LNO dayside column (a blank entry means no observation will be run). Note that:
+
+* If the observation corresponds to a region of interest, this will be indicated in the last column – it is better to keep most of these observations and remove others before/after to keep to the LNO 50% duty cycle. It is not necessary to keep all.
 * Do not delete limbs.
 * If a row has no SO or LNO observations, the orbit type in the 1st column must be changed to type 14.
 
 
 LNO on average should have a 50% duty cycle i.e. half of all rows should be of type 4 or 14. See appendix A for more information.
-See previous MTPs for examples. Send nomad_mtp015_plan_generic.xlsx to nomad.iops@aeronomie.be
+See previous MTPs for examples. Send nomad_mtp015_plan_generic.xlsx to 
 
 
 ### Finalise generic orbit plan
 
-When the modified version is received from the OU, check for errors - e.g. remove observations that are not allowed, for example UVIS observations scheduled during OCMs. There are two types of UVIS nightsides, which will be highlighted in blue or yellow:
+When the modified version is received from the OU, check for errors - e.g. remove observations that are not allowed, for example UVIS observations scheduled during OCMs. There are two types of UVIS nightsides, which will normally be highlighted in blue or yellow:
 
 * Those in yellow are UVIS calibration measurements. If desired, LNO can run nightside measurements in these slots (change orbit type to 7 and add “irNightside” to irNightside column)
 * Those in blue are UVIS nightside measurements. LNO and UVIS must be switched off on the previous orbit dayside (irDayside and uvisDayside must be blank), and LNO must not run on this nightside (irNightside must be blank). Note that observations on the dayside in the chosen orbit are acceptable.
 
 
-For all nightsides, add “uvisNightside” to uvisNightside column if not present.
+For all nightsides (of both types), add “uvisNightside” to uvisNightside column if not present.
 
 
 
@@ -119,9 +148,13 @@ For all nightsides, add “uvisNightside” to uvisNightside column if not prese
 
 Orbits with types 4, 14 and 3 can be changed to LNO limb. These should correspond with CaSSIS off-nadir observations where possible, using the list provided by the ops team. This allows measurements to be made when the boresight is pointing closer to the ground than when flying in pure nadir-pointing mode. To do this, change the orbit type to “8” and add “irLimb” to the irDayside column. Note that nightside limbs are not yet implemented. Remember that LNO should not measure continuously - if there are LNO measurements on previous/next orbits these should be removed (by setting irDayside column blank).
 
+
+
 #### Additional LNO nightside measurements
 
 If desired.
+
+
 
 #### Targeted observations
 

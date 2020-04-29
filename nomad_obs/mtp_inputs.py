@@ -285,12 +285,42 @@ def getMtpConstants(mtpNumber):
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 29:
+        mtpStart = "2020-06-13T15:17:54Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2020-07-11T13:34:20Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20200222_120000" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 30:
         mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "" #desired cop table folder - remember to update if patched
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
-    elif mtpNumber == 30:
+    elif mtpNumber == 31:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 32:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 33:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 34:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 35:
         mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "" #desired cop table folder - remember to update if patched

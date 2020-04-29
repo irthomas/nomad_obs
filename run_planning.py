@@ -12,7 +12,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 ### THESE CAN BE MODIFIED ####
 #select the MTP number to be run
-mtpNumber = 28
+mtpNumber = 29
 
 #add the correct MTP info in obs_inputs
 from nomad_obs.mtp_inputs import getMtpConstants
