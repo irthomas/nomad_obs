@@ -50,7 +50,7 @@ There is a final script named `update_orbit_list.py`, which allows the user to o
 When Bojan and Claudio distribute the MTP overview, the planning can begin. The general steps are outlined here:
 1. Analyse geometry and inputs and create orbit plan, populating it with generic observation types e.g. _irIngress_, _irDayside_, etc.
 2. Send to OU for iteration.
-3. Finalise generic orbit plan and send to Bojan and Claudio, along with list of orbits on which LNO operates.
+3. Finalise generic orbit plan and rerun script. This checks the plan is good and makes a list of orbits on which LNO operates. Send these outputs to Bojan and Claudio.
 4. Populate the orbit plan with real observation names
 5. Generate COP rows, web pages, update SQL database, etc. Generate list of joint ACS-NIR/NOMAD-SO occultation numbers for ESAC.
 6. Following step (3), a few days later Bojan or Claudio will distribute the summary files. Check COP rows against these summary files.
@@ -122,22 +122,24 @@ Then wait a few minutes for the geometry calculations to be completed. The varia
 
 The generic script always includes too many LNO dayside nadirs. Remove some by deleting some of the entries in the LNO dayside column (a blank entry means no observation will be run). Note that:
 
-* If the observation corresponds to a region of interest, this will be indicated in the last column – it is better to keep most of these observations and remove others before/after to keep to the LNO 50% duty cycle. It is not necessary to keep all.
-* Do not delete limbs.
+* If the observation corresponds to a region of interest, this will be indicated in the last column – it is better to keep most of these observations and remove others nearby. However it is not necessary to keep all.
+* The number of observations depends on the TGO orbit characteristics. See Appendix A for approximate duty cycles.
+* Do not delete limbs e.g. orbit type 28.
 * If a row has no SO or LNO observations, the orbit type in the 1st column must be changed to type 14.
 
-
-LNO on average should have a 50% duty cycle i.e. half of all rows should be of type 4 or 14. See appendix A for more information.
-See previous MTPs for examples. Send nomad_mtp015_plan_generic.xlsx to 
+See previous MTPs for examples. When read, send `nomad_mtp015_plan_generic.xlsx` to `nomad.iops@aeronomie.be` for the OU to add UVIS observations.
 
 
 ### Finalise generic orbit plan
 
-When the modified version is received from the OU, check for errors - e.g. remove observations that are not allowed, for example UVIS observations scheduled during OCMs. There are two types of UVIS nightsides, which will normally be highlighted in blue or yellow:
+When the modified version is received from the OU, check for errors - e.g. remove observations that are not allowed, for example UVIS observations scheduled during OCMs. 
+
+#### Check nightsides
+
+There are two types of UVIS nightsides, which will normally be highlighted in blue or yellow:
 
 * Those in yellow are UVIS calibration measurements. If desired, LNO can run nightside measurements in these slots (change orbit type to 7 and add “irNightside” to irNightside column)
 * Those in blue are UVIS nightside measurements. LNO and UVIS must be switched off on the previous orbit dayside (irDayside and uvisDayside must be blank), and LNO must not run on this nightside (irNightside must be blank). Note that observations on the dayside in the chosen orbit are acceptable.
-
 
 For all nightsides (of both types), add “uvisNightside” to uvisNightside column if not present.
 
@@ -212,14 +214,22 @@ Add manually to comment section where required:
 
 ---
 
-## Appendix A: Typical orbit plans
-The TGO orbit can be divided, approximately, into 3 categories:
+## Appendix
 
-* Periods where there are no occultations (due to high beta angle)
-* Periods with short occultations, typically either ingress or egress in one orbit
-* Periods with long or multiple occultations in the same orbit
-The temperature of NOMAD is lowest in case (1) and highest in case (3) and so this must be offset by running the appropriate number of LNO observations. The script, in general, tends to place too many LNO nadirs during the periods where occultations are prevalent and not enough nadirs when there are no occultations.
+### Appendix A: LNO dayside nadir orbit selection
 
+TGO orbits can be divided, approximately, into 3 categories:
+
+Number of occultations | TGO orbit description | LNO nadir quality
+No occultations per orbit | TGO orbit is close to the terminator and does not pass behind the planet | **LNO signal is poor** due to bad solar zenith angle. Ices may be visible if orbit passes near sunrise terminator.
+Merged or two occultations per orbit | TGO orbit is between subsolar point and terminator | **LNO signal is acceptable**, but instrument temperature is the highest.
+One occultation per orbit | TGO orbit is close to subsolar/antisolar point | **LNO signal is good**, as solar zenith angle is low.
+
+
+In general:
+* If there are no occultations, LNO should operate on approximately *1 in 4* to *1 in 6* orbits. Approximately 25% of all LNO observations should be limb measurements (orbit type 8).
+* If there are two occultations per orbit, LNO should operate on approximately *1 in 3* or *1 in 4* orbits.
+* If there is one occultation per orbit, LNO should operate on approximately *1 in 3* orbits.
 
 
 
