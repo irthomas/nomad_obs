@@ -59,7 +59,7 @@ When Bojan and Claudio distribute the MTP overview, the planning can begin. The 
 
 Orbit type definitions can be found on the website: https://nomad.aeronomie.be/index.php/observations/observation-planning-orbit-rules
 
-All emails must be sent to `nomad.iops@aeronomie.be`
+**All emails must be sent to `nomad.iops@aeronomie.be`**
 
 
 ### Set up paths
@@ -122,15 +122,41 @@ Then wait a few minutes for the geometry calculations to be completed. The varia
 
 The generic script always includes too many LNO dayside nadirs. Remove some by deleting some of the entries in the LNO dayside column (a blank entry means no observation will be run). Note that:
 
-* If the observation corresponds to a region of interest, this will be indicated in the last column – it is better to keep most of these observations and remove others nearby. However it is not necessary to keep all.
-* The number of observations depends on the TGO orbit characteristics. See Appendix A for approximate duty cycles.
-* Do not delete limbs e.g. orbit type `28`.
-* If a row has no SO or LNO observations, the orbit type in the 1st column must be changed to type `14`.
+* The six columns of solar occultation observations should not be modified. 
+* If the observation corresponds to a region of interest, the observation type and region will be indicated in the last column in the orbit plan e.g. `&daysideMatch:CURIOSITY;` means that the dayside nadir orbit passes near Gale Crater. It is better to keep most of these observations and remove others nearby; however it is not necessary to keep all. Priority should be given to Curiosity where possible.
+* The number of observations to be deleted depends on the TGO orbit characteristics. See Appendix A for approximate duty cycles.
+* Do not delete limbs e.g. dayside limb orbit type `28` or nightside limb type `47`.
+* Every Saturday afternoon there is an OCM (orbit correction manoeuvre) where observations are not allowed. This is added automatically by the script and the orbit type is set to `14`. The text `&possibleOCM;` will be added to the last column.
+* If a row has no occultations or LNO observations, the orbit type in the 1st column must be changed to type `14`:
 
-==> New constraint for MTP029 onwards: LNO orbits should be preferentially chosen when TGO and MRO orbits overlap, so UVIS and MARCI can perform joint observations. These are given in file `nomad_obs/summary_files/mtpxxx/YYYY/TGO_AND_MRO_OVERLAP_IN_ONE_MTP_5deg.txt` where YYYY specifies the observational constraint. `2deg_latlon_15min_LST` contains the tightest (and best) constraints, but there are fewer joint observations as a result. These should be prioritised over `5deg_latlon_30min_LST`, which contains the loosest constraints, however as many should be matched as possible whilst trying the spread out LNO observations evenly between orbits. This is performed manually at present. 
+
+orbitType | irIngressHigh | irIngressLow | uvisIngress | irEgressHigh | irEgressLow | uvisEgress | irDayside | uvisDayside
+--- | --- | --- | --- | --- | --- | --- | --- | ---
+14  |     |     |     |     |     |     |     | uvisDayside
 
 
-When ready, send `nomad_mtp015_plan_generic.xlsx` to `nomad.iops@aeronomie.be` for the OU to add UVIS observations.
+==> New constraint for MTP029 onwards: LNO orbits should be preferentially chosen when TGO and MRO orbits overlap, so UVIS and MARCI can perform joint observations. These are given in file `observations/summary_files/mtpxxx/YYYY/TGO_AND_MRO_OVERLAP_IN_ONE_MTP_5deg.txt` where YYYY specifies the observational constraint. `2deg_latlon_15min_LST` contains the tightest (and best) constraints, but there are fewer joint observations as a result. These should be prioritised over `5deg_latlon_30min_LST`, which contains the loosest constraints, however as many should be matched as possible whilst trying the spread out LNO observations evenly between orbits. This is performed manually at present. 
+
+* Orbit type `14` cannot include any LNO observations, so if a dayside nadir is added to a type `14` orbit to satisfy a TGO-MRO overlap, the orbit type must be changed to type `3`:
+
+orbitType | irIngressHigh | irIngressLow | uvisIngress | irEgressHigh | irEgressLow | uvisEgress | irDayside | uvisDayside
+--- | --- | --- | --- | --- | --- | --- | --- | ---
+3   |     |     |     |     |     |     | irLongDayside | uvisDayside
+
+* If the orbit type contains occultations, the dayside nadir can be kept or deleted without changing the orbit type. Both of these are valid:
+
+orbitType | irIngressHigh | irIngressLow | uvisIngress | irEgressHigh | irEgressLow | uvisEgress | irDayside | uvisDayside
+--- | --- | --- | --- | --- | --- | --- | --- | ---
+1   | irIngressHigh | irIngressLow | uvisIngress | irEgressHigh | irEgressLow | uvisEgress | irShortDayside | uvisDayside
+1   | irIngressHigh | irIngressLow | uvisIngress | irEgressHigh | irEgressLow | uvisEgress |   | uvisDayside
+
+
+* There is no distinction between `irShortDayside`, `irDayside`, or `irLongDayside` at present.
+* It is highly recommended that the orbits with type `3` and `14` are checked thoroughly (3 = irDayside, 14 = no irDayside), as errors can affect the UVIS observations on those orbits and/or may lead to problems later. Once the summary files are made this cannot be changed. <br/> This can be checked in Excel as follows `=IF(AND(A2=3,H2=""),"Error",0)` and `=IF(AND(A2=14,NOT(H2="")),"Error",0)` however care must be taken to delete all traces of additional columns. Columns `N` and onwards **must** be completely empty.
+
+
+
+**When ready, send `nomad_mtp015_plan_generic.xlsx` to `nomad.iops@aeronomie.be` for the OU to add UVIS observations.**
 
 
 ### Finalise generic orbit plan
@@ -162,7 +188,7 @@ At present, limb observations are added manually: To do this, change the orbit t
 
 ### Make LNO orbit list file and final orbit plan
 
-When the orbit plan is ready, move it to the directory `orbit_plans/mtpxxx` folder and run entire script again. The file containing the list of orbits where LNO is operating `nomad_mtpxxx_lno_orbits.txt` will be created in the orbit plan directory. Send this and the generic orbit plan to `nomad.iops@aeronomie.be`.
+When the orbit plan is ready, move it to the directory `orbit_plans/mtpxxx` folder and run entire script again. The file containing the list of orbits where LNO is operating `nomad_mtpxxx_lno_orbits.txt` will be created in the orbit plan directory. **Send this and the generic orbit plan to `nomad.iops@aeronomie.be`.**
 
 
 When the script is run above to make the joint observation list, the final orbit plan will also be created in the `BASE_DIRECTORY`. Here the table has been filled in with observation names taken from the lists in `observation_names.py` and `observation_weights.py`.
@@ -212,7 +238,7 @@ Note that the number and type (linescan or solar pointing) of calibration observ
 
 #### COP rows
 
-Send all files in the `cop_row/mtpxxx` directory, including the `joint_occ_mtpxxx.csv` file to `nomad.iops@aeronomie.be`. Make a new directory `cop_row/mtpxxx/sent` and copy all the sent files here. This will avoid overwriting the final COP rows if the pipeline is run again and something is changed.
+**Send all files in the `cop_row/mtpxxx` directory, including the `joint_occ_mtpxxx.csv` file to `nomad.iops@aeronomie.be`**. Make a new directory `cop_row/mtpxxx/sent` and copy all the sent files here. This will avoid overwriting the final COP rows if the pipeline is run again and something is changed.
 
 When UVIS COP rows are provided by the OU, place them also in the `cop_row/mtpxxx` directory and rerun the pipeline. This will add the UVIS COP rows to the SQL database.
 
