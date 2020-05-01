@@ -111,9 +111,10 @@ In run_planning.py, change mtpNumber to the desired value.
 To start the planning script on crunch7 (from hera):
 
 * `ssh -X crunch7`
-* `module load 18/py36` (if python 3 is not already loaded)
+* `module load 19g/py37` (if python 3 is not already loaded. Note that 18/py36 does not work at present)
 * `cd /bira-iasb/projects/NOMAD/Science/Planning/nomad_obs/`
 * `python3 run_planning.py`
+
 
 Then wait a few minutes for the geometry calculations to be completed. The variable `orbitList` will be populated with all the geometric data for the MTP, and the generic orbit plan `nomad_mtpxxx_plan_generic.xlsx` will be placed in the `BASE_DIRECTORY`. 
 
