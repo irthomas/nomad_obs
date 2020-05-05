@@ -54,10 +54,8 @@ OCCULTATION_WEIGHTS = [
     ["Nominal Science 1xCO2 HA03"] * 2,
     ["Nominal Science 1xCO2 LA04"] * 2,
     ["Nominal Science 1xCO2 HA04"] * 2,
-    ["Dust H2O 01"] * 1,
     ["Water Ice 01"] * 1,
     ["CO 01"] * 1,
-    ["HDO 01"] * 1,
     ["AER 01"] * 1,
     
     #new MTP025+
@@ -68,6 +66,8 @@ OCCULTATION_WEIGHTS = [
     ["126 only #2"] * 9,
     ["127 only #2"] * 9,
     ["129 only #2"] * 9,
+    ["HDO 01"] * 15,
+    ["Dust H2O 01"] * 15,
 
      
     ["132 only #2"] * 3,
