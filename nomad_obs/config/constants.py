@@ -55,6 +55,11 @@ ACCEPTABLE_MTP_NADIR_TIME_ERROR = 20.0 #s
 MAXIMUM_SEARCH_INCIDENCE_ANGLE = 60.0 #max solar incidence angle when searching for nadir regions of interest. Higher value = lower quality data but more matches.
 
 
+#MRO overlap constraints
+MRO_OVERLAP_LATLON_CONSTRAINT = 5
+MRO_OVERLAP_LST_CONSTRAINT = 30
+
+
 
 #orbit types. Remember to add type numbers to functions if more are created!
 UVIS_MULTIPLE_TC_NADIR_ORBIT_TYPES = [2, 4, 6]

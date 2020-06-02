@@ -10,7 +10,7 @@ from datetime import datetime
 import random
 
 
-
+from nomad_obs.io.read_mro_overlap_file import getMroOverlaps
 from nomad_obs.config.constants import SPICE_DATETIME_FORMAT
 from nomad_obs.options import USE_TWO_SCIENCES
 from nomad_obs.config.constants import UVIS_MULTIPLE_TC_NADIR_ORBIT_TYPES, UVIS_DEFAULT_ORBIT_TYPE
@@ -19,18 +19,22 @@ from nomad_obs.other.generic_functions import stop
 
 
 
-def makeGenericOrbitPlan(orbit_list, silent=True):
+def makeGenericOrbitPlan(orbit_list, mtp_constants, paths, silent=True):
     """save generic plan to orbit list. This doesn't have nightsides or limbs, just occs and dayside nadirs"""
     """baseline orbit plan orbit types: 1 or 5 if occultations, 14 if not, 3 if nadir region of interest detected"""
     # Potential improvment: automatically add some limbs and nightsides to fill in the times when occultations cannot be performed
 
 
     #inputs for defining generic orbit plan
-    LNO_CYCLE = ["ON", "OFF"] * 200 #i.e. 50% duty cycle for orbits without occultations. 
+    LNO_CYCLE = ["ON", "OFF", "OFF"] * 200 #i.e. 33% duty cycle for orbits without occultations. 
     #This should begin with a 3 so that first observation after OCM is an LNO
-    #The script automatically starts with a 4 if the preceding orbit has a measurement to avoid scheduling too many consecutive observations.
+    #The script automatically starts with an LNO OFF orbit if the preceding orbit has a measurement to avoid scheduling too many consecutive observations.
  
     lno_cycle = -1
+    
+    mroOverlapOrbits = getMroOverlaps(paths)
+    
+    
     for orbit in orbit_list:
 
         lstMidpoint = orbit["dayside"]["lstMidpoint"]
@@ -48,13 +52,13 @@ def makeGenericOrbitPlan(orbit_list, silent=True):
         generic_orbit["uvisNightside"] = ""  #default irNightside to always off unless nightside limb added below
     
         #first check for OCMs
-        ocm = False
+        all_off = False
         if datetime.strptime(timeStringOut, SPICE_DATETIME_FORMAT).isoweekday() == 6:
             if orbitNumber != 1: #if not first orbit
                 if orbitNumber != len(orbit_list): #if not last orbit
                     if 12 < datetime.strptime(timeStringOut, SPICE_DATETIME_FORMAT).hour < 16:
                         generic_orbit_comment += "&possibleOCM; "
-                        ocm = True
+                        all_off = True
 
         #special section for true dayside limbs. Set dayside limb to type 28 first to avoid routine dayside nadirs being added
         if "trueLimb" in orbit["allowedObservationTypes"]:
@@ -86,6 +90,15 @@ def makeGenericOrbitPlan(orbit_list, silent=True):
             generic_orbit["uvisNightside"] = "uvisNightLimb"
             generic_orbit_comment += "&trueNightLimb; "
 
+        #solar calibrations prevent all observations from occuring
+        if "nomadSolarCalibration" in orbit["allowedObservationTypes"]:
+            print("Adding NOMAD Solar Calibration")
+            all_off = True
+            generic_orbit_comment += "&nomadSolarCalibration; "
+        if "acsSolarCalibration" in orbit["allowedObservationTypes"]:
+            print("Adding ACS Solar Calibration")
+            all_off = True
+            generic_orbit_comment += "&acsSolarCalibration; "
 
     
         for occultation_type in orbit["allowedObservationTypes"]:
@@ -174,7 +187,6 @@ def makeGenericOrbitPlan(orbit_list, silent=True):
                             print("Warning: region of interest found but no dedicated observation type has been specified")
 
 
-    
         if generic_orbit_type in [4, 14]: #if no occultations - nadir only
     
             generic_orbit["irIngressHigh"] = ""
@@ -184,41 +196,35 @@ def makeGenericOrbitPlan(orbit_list, silent=True):
             generic_orbit["irEgressLow"] = ""
             generic_orbit["uvisEgress"] = ""
     
-            if ocm: #NOMAD must be off during correction maneouvres
-                generic_orbit["irDayside"] = ""
-                generic_orbit["uvisDayside"] = ""
-                lno_cycle = -1 #reset lno to on
-
-            else:
-                #check nadir regions of interest
-                if "daysideRegions" in orbit.keys(): #if nadir obs matches region of interest, set LNO on
-                    lno_on_off = "ON"
-                    lno_cycle = 0 #reset lno to off
-                    
-                    for region in orbit["daysideRegions"]:
-                        generic_orbit_comment += "&daysideMatch:%s; " %(region["name"])
-                        
-                else:
-                    lno_cycle += 1
-                    lno_on_off = LNO_CYCLE[lno_cycle]
+            #check nadir regions of interest
+            if "daysideRegions" in orbit.keys(): #if nadir obs matches region of interest, set LNO on
+                lno_on_off = "ON"
+                lno_cycle = 0 #reset lno to off
                 
-                if lno_on_off == "ON":
-                    generic_orbit_type = 3
-                    generic_orbit["irDayside"] = "irLongDayside"
-                    generic_orbit["uvisDayside"] = "uvisDayside"
-
-                    #check nadir regions of interest in orbit list
-                    if "observationName" in orbit["dayside"].keys(): #if dedicated obs type found, overwrite generic obs
-                        generic_orbit["irDayside"] = orbit["dayside"]["observationName"]
-
+                for region in orbit["daysideRegions"]:
+                    generic_orbit_comment += "&daysideMatch:%s; " %(region["name"])
+                    
+            else:
+                lno_cycle += 1
+                lno_on_off = LNO_CYCLE[lno_cycle]
             
-                else: #if lno off and no occultations
-                    generic_orbit["irDayside"] = ""
-                    if generic_orbit_type == 4: #if 3x UVIS TCs
-                        generic_orbit["uvisDayside"] = "uvisDayside"
-                        
-                    elif generic_orbit_type == 14: #if 1x UVIS TCs
-                        generic_orbit["uvisDayside"] = "uvisDayside"
+            if lno_on_off == "ON":
+                generic_orbit_type = 3
+                generic_orbit["irDayside"] = "irLongDayside"
+                generic_orbit["uvisDayside"] = "uvisDayside"
+
+                #check nadir regions of interest in orbit list
+                if "observationName" in orbit["dayside"].keys(): #if dedicated obs type found, overwrite generic obs
+                    generic_orbit["irDayside"] = orbit["dayside"]["observationName"]
+
+        
+            else: #if lno off and no occultations
+                generic_orbit["irDayside"] = ""
+                if generic_orbit_type == 4: #if 3x UVIS TCs
+                    generic_orbit["uvisDayside"] = "uvisDayside"
+                    
+                elif generic_orbit_type == 14: #if 1x UVIS TCs
+                    generic_orbit["uvisDayside"] = "uvisDayside"
 
         else: #if not orbit types 4 or 14, still check for nadir regions
             
@@ -233,7 +239,35 @@ def makeGenericOrbitPlan(orbit_list, silent=True):
                 if "observationName" in orbit["dayside"].keys(): #if dedicated obs type found, overwrite generic obs
                     generic_orbit["irDayside"] = orbit["dayside"]["observationName"]
 
-            
+
+
+        #now add MRO overlaps to comments
+        if orbitNumber in mroOverlapOrbits:
+            generic_orbit_comment += "&mroOverlap; "
+            #if LNO is off, switch on and change orbit type to 3
+            generic_orbit["irDayside"] = "irDayside"
+
+            if generic_orbit_type in [4, 14]:
+                generic_orbit_type = 3
+    
+
+
+        if all_off:
+            generic_orbit_type = 14
+            generic_orbit["irIngressHigh"] = "" #no occultations ever on solar cal orbits
+            generic_orbit["irIngressLow"] = ""
+            generic_orbit["uvisIngress"] = ""
+            generic_orbit["irEgressHigh"] = ""
+            generic_orbit["irEgressLow"] = ""
+            generic_orbit["uvisEgress"] = ""
+            generic_orbit["irDayside"] = ""
+            generic_orbit["uvisDayside"] = ""
+            generic_orbit["irNightside"] = ""
+            generic_orbit["uvisNightside"] = ""
+            lno_cycle = -1 #reset lno to on for next orbit
+
+        
+        #if after all that, the comment is still empty, add lst and solar incidence angle    
         if generic_orbit_comment == "":
             generic_orbit_comment = "&LST=%0.1fhrs; &Angle=%i; " %(lstMidpoint, incidenceMidpoint)
 

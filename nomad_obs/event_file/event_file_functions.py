@@ -8,7 +8,19 @@ import os
 import numpy as np
 import spiceypy as sp
 
-from nomad_obs.event_file.event_file_codes import NOMAD_INGRESS_START_CODES, NOMAD_INGRESS_END_CODES, NOMAD_EGRESS_START_CODES, NOMAD_EGRESS_END_CODES, NOMAD_MERGED_START_CODES, NOMAD_MERGED_END_CODES, NOMAD_GRAZING_START_CODES, NOMAD_GRAZING_END_CODES, NOMAD_LIMB_START_CODES, NOMAD_LIMB_END_CODES, NOMAD_NIGHT_LIMB_START_CODES, NOMAD_NIGHT_LIMB_END_CODES, ACS_INGRESS_START_CODES, ACS_INGRESS_END_CODES, ACS_EGRESS_START_CODES, ACS_EGRESS_END_CODES, ACS_MERGED_START_CODES, ACS_MERGED_END_CODES, ACS_GRAZING_START_CODES, ACS_GRAZING_END_CODES
+from nomad_obs.event_file.event_file_codes import \
+NOMAD_INGRESS_START_CODES, NOMAD_INGRESS_END_CODES, \
+NOMAD_EGRESS_START_CODES, NOMAD_EGRESS_END_CODES, \
+NOMAD_MERGED_START_CODES, NOMAD_MERGED_END_CODES, \
+NOMAD_GRAZING_START_CODES, NOMAD_GRAZING_END_CODES, \
+NOMAD_LIMB_START_CODES, NOMAD_LIMB_END_CODES, \
+NOMAD_NIGHT_LIMB_START_CODES, NOMAD_NIGHT_LIMB_END_CODES, \
+ACS_INGRESS_START_CODES, ACS_INGRESS_END_CODES, \
+ACS_EGRESS_START_CODES, ACS_EGRESS_END_CODES, \
+ACS_MERGED_START_CODES, ACS_MERGED_END_CODES, \
+ACS_GRAZING_START_CODES, ACS_GRAZING_END_CODES, \
+NOMAD_SOLAR_CALIBRATION_START_CODES, NOMAD_SOLAR_CALIBRATION_END_CODES, \
+ACS_SOLAR_CALIBRATION_START_CODES, ACS_SOLAR_CALIBRATION_END_CODES
 from nomad_obs.config.constants import ACCEPTABLE_MTP_OCCULTATION_TIME_ERROR
 
 
@@ -17,11 +29,11 @@ from nomad_obs.config.constants import ACCEPTABLE_MTP_OCCULTATION_TIME_ERROR
 
 def readMappsEventFile(instrument, mappsObservationType, mtpConstants, paths):
     """read in the LTP  planning file from the SOC and find NOMAD or ACS events (occultations) or terminator crossings (nadir)"""
+
     mappsEventFilename = mtpConstants["mappsEventFilename"]
-    
-    
     mappsEventFilepath = os.path.join(paths["EVENT_FILE_PATH"], mappsEventFilename)
-    lines = [line.rstrip('\n').split()[0:3] for line in open(mappsEventFilepath) if line[0] != "#"]
+#    lines = [line.rstrip('\n').split()[0:3] for line in open(mappsEventFilepath) if line[0] != "#"]
+    lines = [line.rstrip('\n').split()[0:3] for line in open(mappsEventFilepath)]
 
     if mappsObservationType == "occultation":
         mappsEvent = []
@@ -171,6 +183,36 @@ def readMappsEventFile(instrument, mappsObservationType, mtpConstants, paths):
                     nightLimbStartFound = False
                     nightLimbEndFound = False
 
+    elif mappsObservationType == "solarCalibration":
+        mappsEvent = []
+                
+        solarCalibrationStartFound = False
+        solarCalibrationEndFound = False
+        eventIndex = 0
+
+        if instrument == "NOMAD":
+            EVENT_CODES = NOMAD_SOLAR_CALIBRATION_START_CODES + NOMAD_SOLAR_CALIBRATION_END_CODES
+        elif instrument == "ACS":
+            EVENT_CODES = ACS_SOLAR_CALIBRATION_START_CODES + ACS_SOLAR_CALIBRATION_END_CODES
+        
+        
+        for eventTime, eventName, eventCount in lines:
+            if eventName in EVENT_CODES:
+                eventTime = eventTime[0:-1] #remove Z
+                if eventName in NOMAD_SOLAR_CALIBRATION_START_CODES:
+                    mappsSolarCalibrationStart = sp.str2et(eventTime)
+                    solarCalibrationStartFound = True
+                    print("Start Found")
+                elif eventName in NOMAD_SOLAR_CALIBRATION_END_CODES:
+                    mappsSolarCalibrationEnd = sp.str2et(eventTime)
+                    solarCalibrationEndFound = True
+                    print("End Found")
+                if solarCalibrationStartFound and solarCalibrationEndFound:
+                    mappsEvent.append([eventIndex, "SolarCalibration", mappsSolarCalibrationStart, mappsSolarCalibrationEnd, eventCount])
+                    eventIndex += 1
+                    solarCalibrationStartFound = False
+                    solarCalibrationEndFound = False
+
     return mappsEvent
 
 
@@ -205,6 +247,12 @@ def addMappsEvents(orbit_list, mtpConstants, paths):
 
     mappsNightLimbEvents = readMappsEventFile("", "nightlimb", mtpConstants, paths)
     mappsNightLimbEventStartTimes = [eventTime for _, eventName, eventTime, _, _ in mappsNightLimbEvents if eventName in ["NightLimb"]]
+
+    mappsNomadSolarCalibrationEvents = readMappsEventFile("NOMAD", "solarCalibration", mtpConstants, paths)
+    mappsNomadSolarCalibrationEventStartTimes = [eventTime for _, eventName, eventTime, _, _ in mappsNomadSolarCalibrationEvents if eventName in ["SolarCalibration"]]
+
+    mappsAcsSolarCalibrationEvents = readMappsEventFile("ACS", "solarCalibration", mtpConstants, paths)
+    mappsAcsSolarCalibrationEventStartTimes = [eventTime for _, eventName, eventTime, _, _ in mappsAcsSolarCalibrationEvents if eventName in ["SolarCalibration"]]
 
     for orbit in orbit_list:
 #        orbit["obsTypes"] = []
@@ -252,6 +300,17 @@ def addMappsEvents(orbit_list, mtpConstants, paths):
             if orbit["nightside"]["etStart"] < nightLimbStartTime < orbit["nightside"]["etEnd"]:
                 print("Night limb timing found")
                 orbit["allowedObservationTypes"].append("trueNightLimb")
+
+        #check if solar calibration lies within this orbit
+        for nomadSolarCalibrationStartTime in mappsNomadSolarCalibrationEventStartTimes:
+            if orbit["nightside"]["etStart"] < nomadSolarCalibrationStartTime < orbit["dayside"]["etEnd"]:
+                print("NOMAD solar calibration timing found")
+                orbit["allowedObservationTypes"].append("nomadSolarCalibration")
+        for acsSolarCalibrationStartTime in mappsAcsSolarCalibrationEventStartTimes:
+            if orbit["nightside"]["etStart"] < acsSolarCalibrationStartTime < orbit["dayside"]["etEnd"]:
+                print("ACS solar calibration timing found")
+                orbit["allowedObservationTypes"].append("acsSolarCalibration")
+
             
     return orbit_list
 

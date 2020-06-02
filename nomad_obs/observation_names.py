@@ -8,7 +8,7 @@ Created on Wed Oct 18 13:56:09 2017
 
 
    #add Surface Ice obs to final orbit plan when beta angle is high
-
+   #replace 191 and most 190 obs by 189!
 
 """
 
@@ -187,11 +187,12 @@ nadirObservationDict = {
 "HDO H2O 2SUBD 02":[[168,124], 200, 15, 144, 1], #S.AOKI
 "HDO H2O 2SUBD 03":[[121,168], 200, 15, 144, 1],
 
-"H2O CO 2SUBD 01":[[168,189], 200, 15, 144, 1],
 "CO H2O 3SUBD 01":[[191,190,168], 205, 15, 144, 1],
                  
 "Nominal Limb 01":[[164,169], 200, 15, 144, 1], #NEW LIMB <50KM
 "Limb 2SUBD 07":[[164,164], 200, 15, 144, 1], #NEW LIMB >50KM
+
+"Night Limb #1":[[158,158], 200, 15, 144, 1],
 
 
 "CO Fullscan #2":[["COP#71"], 0, 15, 144, 1], #ORDERS 185-195
@@ -221,6 +222,16 @@ nadirObservationDict = {
 "Ice CO 2SUBD #1":[[193,190], 200, 15, 144, 1],
 
 "Surface 3SUBD 02":[[191,194,196], 205, 15, 144, 1], #USE FOR F.ALTIERI NADIR TARGETS MTP010+
+
+
+
+#Adding more 189 orders for CO
+"H2O CO 3SUBD #2":[[168,189,190], 205, 15, 144, 1],
+"H2O CO 2SUBD #1":[[168,189], 200, 15, 144, 1],
+"CH4 CO 2SUBD #3":[[189,136], 200, 15, 144, 1],
+"CH4 CO 2SUBD #4":[[189,134], 200, 15, 144, 1],
+"Surface 3SUBD #3":[[189,194,196], 205, 15, 144, 1], #USE FOR F.ALTIERI NADIR TARGETS MTP010+
+"Ice CO 2SUBD #2":[[193,189], 200, 15, 144, 1],
 
 
 

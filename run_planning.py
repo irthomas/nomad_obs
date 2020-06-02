@@ -12,7 +12,8 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 ### THESE CAN BE MODIFIED ####
 #select the MTP number to be run
-mtpNumber = 29
+mtpNumber = 30
+"""excel =IF(OR(AND(A2=3,H2=""),AND(A2=14,NOT(H2=""))), 1, 0)"""
 
 #add the correct MTP info in obs_inputs
 from nomad_obs.mtp_inputs import getMtpConstants
@@ -94,7 +95,7 @@ orbitList = findMatchingRegions(orbitList)
 printStatement("Plotting occultation and nadir regions of interest")
 plotRegionsOfInterest(paths, occultationRegionsOfInterest, nadirRegionsOfInterest)
 printStatement("Adding generic orbit plan to orbit list (no nightsides or limbs, to be added manually)")
-orbitList = makeGenericOrbitPlan(orbitList)
+orbitList = makeGenericOrbitPlan(orbitList, mtpConstants, paths)
 printStatement("Writing generic observation plan to file")
 writeOrbitPlanXlsx(orbitList, mtpConstants, paths, "plan_generic")
 #GENERIC ORBIT PLAN WILL BE PLACED IN BASE DIRECTORY. REMOVE NADIRS AND SEND THIS TO NOMAD.IOPS

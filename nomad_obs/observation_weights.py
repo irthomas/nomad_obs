@@ -133,23 +133,12 @@ OCCULTATION_H2O_REGION_WEIGHTS = [
         
 #IN GENERAL, USE LESS CH4 ORDERS AS THESE ARE NORMALLY ADDED WHEN CROSSING OVER INTERESTING REGIONS
 NADIR_WEIGHTS = [
-#        ["LNO Ice Index 2SUBD 01"] * 1, #MTP013+ F.SCHMIDT
-#        ["H2O 2SUBD 01"] * 1, #167 & 169
-#        ["HDO H2O 2SUBD 02"] * 1, #168 & 124 S.AOKI
-#        ["AER H2Oi 3SUBD 01"] * 1, #127, 131, 169 AEROSOLS
-#        ["CH4 3SUBD 01"] * 1, #134, 136, 168
-#        ["HDO H2O 2SUBD 03"] * 1, #121 & 168 
-#        ["Nominal 6SUBD 01"] * 1, #6 ORDERS DUST
-#        ["H2O CO 2SUBD 01"] * 1, #168, 190
-#        ["CO H2O 3SUBD 01"] * 1, #191, 190, 168
-#        ["CH4 2SUBD 03"] * 1, #136 x 2
-#        ["Nominal 4SUBD 01"] * 1, #121, 134, 168, 190
 
     ["Nominal 6SUBD 01"] * 10,
     ["Nominal 4SUBD 01"] * 10,
-    ["Nominal 3SUBD 01"] * 10,
+    ["Nominal 3SUBD 01"] * 5,
     ["H2O 2SUBD 01"] * 6,
-    ["H2O CO 2SUBD 01"] * 6,
+    ["H2O CO 2SUBD 01"] * 1,
     ["CO H2O 3SUBD 01"] * 6,
 
     ["HDO CO 3SUBD 02"] * 4,
@@ -158,8 +147,8 @@ NADIR_WEIGHTS = [
     ["CH4 H2O 2SUBD 01"] * 4,
     ["CH4 2SUBD 03"] * 4,
     ["CH4 2SUBD 02"] * 4,
-    ["CH4 CO 2SUBD 01"] * 4,
-    ["CH4 CO 2SUBD 02"] * 4,
+    ["CH4 CO 2SUBD 01"] * 1,
+    ["CH4 CO 2SUBD 02"] * 1,
     ["HDO H2O 2SUBD 02"] * 4,
     ["HDO H2O 2SUBD 03"] * 4,
     ["CO Fullscan #2"] * 1,
@@ -167,12 +156,19 @@ NADIR_WEIGHTS = [
 
     ["Ice CH4 2SUBD #1"] * 5,
     ["Ice H2O 2SUBD #1"] * 5,
-    ["Ice CO 2SUBD #1"] * 5,
+    ["Ice CO 2SUBD #1"] * 2,
 
     ["Surface Ice 4SUBD 01"] * 1, #increase when beta angle high
     ["Surface Ice 6SUBD 01"] * 1,
     ["Surface Ice 4SUBD 02"] * 1,
     ["Surface Ice 3SUBD 01"] * 1,
+
+    #CO order 189 obs
+    ["H2O CO 3SUBD #2"] * 10,
+    ["CH4 CO 2SUBD #3"] * 10,
+    ["CH4 CO 2SUBD #4"] * 10,
+    ["H2O CO 2SUBD #1"] * 10,
+    ["Ice CO 2SUBD #2"] * 10,
      
 ]
 
@@ -183,15 +179,20 @@ NADIR_WEIGHTS = [
 NADIR_LIMB_WEIGHTS = [
     ["Limb 2SUBD 07"] * 3,
     ["Nominal Limb 01"] * 1,
+    
 ]
 
 NADIR_NIGHT_LIMB_WEIGHTS = [
-    ["Limb 2SUBD 07"] * 3,
-    ["Nominal Limb 01"] * 1,
+#    ["Limb 2SUBD 07"] * 3,
+#    ["Nominal Limb 01"] * 1,
+    ["Night Limb #1"] * 1,
+
 ]
         
 NADIR_NIGHTSIDE_WEIGHTS = [
-    ["Limb 2SUBD 07"] * 1,
+#    ["Limb 2SUBD 07"] * 1,
+    ["Night Limb #1"] * 1,
+
 ]
 
         
@@ -200,12 +201,12 @@ NADIR_NIGHTSIDE_WEIGHTS = [
         
 NADIR_CH4_REGION_WEIGHTS = [
     ["CH4 3SUBD 01"] * 1,
-    ["CH4 H2O 2SUBD 02"] * 2,
+    ["CH4 H2O 2SUBD 02"] * 4,
     ["CH4 H2O 2SUBD 01"] * 1,
-    ["CH4 2SUBD 03"] * 2,
-    ["CH4 2SUBD 02"] * 1,
-    ["CH4 CO 2SUBD 01"] * 2,
-    ["CH4 CO 2SUBD 02"] * 1,        
+    ["CH4 2SUBD 03"] * 1,
+    ["CH4 CO 2SUBD #3"] * 4,
+
+
 ]        
 
 NADIR_H2O_REGION_WEIGHTS = [
@@ -215,8 +216,8 @@ NADIR_H2O_REGION_WEIGHTS = [
         
 
 NADIR_SURFACE_REGION_WEIGHTS = [
-    ["Surface 3SUBD 02"] * 3,
-    ["Nominal 3SUBD 01"] * 1,
+    ["Surface 3SUBD 02"] * 2,
+    ["Surface 3SUBD #3"] * 5,
 ]
     
 observationCycles = {
