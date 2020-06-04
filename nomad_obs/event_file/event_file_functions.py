@@ -202,11 +202,9 @@ def readMappsEventFile(instrument, mappsObservationType, mtpConstants, paths):
                 if eventName in NOMAD_SOLAR_CALIBRATION_START_CODES:
                     mappsSolarCalibrationStart = sp.str2et(eventTime)
                     solarCalibrationStartFound = True
-                    print("Start Found")
                 elif eventName in NOMAD_SOLAR_CALIBRATION_END_CODES:
                     mappsSolarCalibrationEnd = sp.str2et(eventTime)
                     solarCalibrationEndFound = True
-                    print("End Found")
                 if solarCalibrationStartFound and solarCalibrationEndFound:
                     mappsEvent.append([eventIndex, "SolarCalibration", mappsSolarCalibrationStart, mappsSolarCalibrationEnd, eventCount])
                     eventIndex += 1

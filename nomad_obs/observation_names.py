@@ -192,7 +192,6 @@ nadirObservationDict = {
 "Nominal Limb 01":[[164,169], 200, 15, 144, 1], #NEW LIMB <50KM
 "Limb 2SUBD 07":[[164,164], 200, 15, 144, 1], #NEW LIMB >50KM
 
-"Night Limb #1":[[158,158], 200, 15, 144, 1],
 
 
 "CO Fullscan #2":[["COP#71"], 0, 15, 144, 1], #ORDERS 185-195
@@ -225,13 +224,20 @@ nadirObservationDict = {
 
 
 
-#Adding more 189 orders for CO
-"H2O CO 3SUBD #2":[[168,189,190], 205, 15, 144, 1],
-"H2O CO 2SUBD #1":[[168,189], 200, 15, 144, 1],
-"CH4 CO 2SUBD #3":[[189,136], 200, 15, 144, 1],
-"CH4 CO 2SUBD #4":[[189,134], 200, 15, 144, 1],
-"Surface 3SUBD #3":[[189,194,196], 205, 15, 144, 1], #USE FOR F.ALTIERI NADIR TARGETS MTP010+
-"Ice CO 2SUBD #2":[[193,189], 200, 15, 144, 1],
+#More 189 orders for CO
+#"H2O CO 3SUBD #2":[[168,189,190], 205, 15, 144, 1], #NEEDS PATCH
+"H2O CO 2SUBD #1":[[168,189], 200, 15, 144, 1], #GOOD
+#"CH4 CO 2SUBD #3":[[189,136], 200, 15, 144, 1], #NEEDS PATCH
+#"CH4 CO 2SUBD #4":[[189,134], 200, 15, 144, 1], #NEEDS PATCH
+#"Surface 3SUBD #3":[[189,194,196], 205, 15, 144, 1], #NEEDS PATCH. USE FOR F.ALTIERI NADIR TARGETS MTP010+ (NOW WITH 189)
+#"Ice CO 2SUBD #2":[[193,189], 200, 15, 144, 1], #NEEDS PATCH
+
+"Nominal 6SUBD #2":[[196,189,168,149,134,121], 220, 15, 144, 1], #GOOD
+"Nominal 4SUBD #2":[[168,134,121,189], 195, 15, 144, 1], #GOOD
+
+#OH Meinel Bands
+"Night Limb #1":[[158,153], 200, 15, 144, 1], #SUBOPTIMAL BUT ORDER 158 ONLY DOESN'T EXIST YET
+#"Night Limb #2":[[158,158], 200, 15, 144, 1], #NEEDS PATCH
 
 
 

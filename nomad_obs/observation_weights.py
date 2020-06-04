@@ -59,8 +59,8 @@ OCCULTATION_WEIGHTS = [
     ["AER 01"] * 1,
     
     #new MTP025+
-    ["6SUBD CO2 #1"] * 9, #reduce at MTP029
-    ["6SUBD CO2 #10"] * 9, #reduce at MTP029
+    ["6SUBD CO2 #1"] * 8, #reduce from MTP029 onwards to 5
+    ["6SUBD CO2 #10"] * 8, #reduce from MTP029 onwards to 5
 
     #MTP028+ CO2 M1/E2 and HCl
     ["126 only #2"] * 9,
@@ -134,12 +134,11 @@ OCCULTATION_H2O_REGION_WEIGHTS = [
 #IN GENERAL, USE LESS CH4 ORDERS AS THESE ARE NORMALLY ADDED WHEN CROSSING OVER INTERESTING REGIONS
 NADIR_WEIGHTS = [
 
-    ["Nominal 6SUBD 01"] * 10,
-    ["Nominal 4SUBD 01"] * 10,
+    ["Nominal 6SUBD 01"] * 5, #REDUCE, REPLACE WITH ORDER 189
+    ["Nominal 4SUBD 01"] * 5,
     ["Nominal 3SUBD 01"] * 5,
     ["H2O 2SUBD 01"] * 6,
-    ["H2O CO 2SUBD 01"] * 1,
-    ["CO H2O 3SUBD 01"] * 6,
+#    ["CO H2O 3SUBD 01"] * 6,
 
     ["HDO CO 3SUBD 02"] * 4,
     ["CH4 3SUBD 01"] * 4,
@@ -158,17 +157,22 @@ NADIR_WEIGHTS = [
     ["Ice H2O 2SUBD #1"] * 5,
     ["Ice CO 2SUBD #1"] * 2,
 
-    ["Surface Ice 4SUBD 01"] * 1, #increase when beta angle high
-    ["Surface Ice 6SUBD 01"] * 1,
-    ["Surface Ice 4SUBD 02"] * 1,
-    ["Surface Ice 3SUBD 01"] * 1,
+    ["Surface Ice 4SUBD 01"] * 4, #increase when beta angle high
+    ["Surface Ice 6SUBD 01"] * 4,
+    ["Surface Ice 4SUBD 02"] * 4,
+    ["Surface Ice 3SUBD 01"] * 4,
 
-    #CO order 189 obs
-    ["H2O CO 3SUBD #2"] * 10,
-    ["CH4 CO 2SUBD #3"] * 10,
-    ["CH4 CO 2SUBD #4"] * 10,
-    ["H2O CO 2SUBD #1"] * 10,
-    ["Ice CO 2SUBD #2"] * 10,
+    #CO order 189 obs - exist in COP table
+    ["Nominal 6SUBD #2"] * 10,
+    ["Nominal 4SUBD #2"] * 10,
+    ["H2O CO 2SUBD #1"] * 50, #optimal observation
+
+
+#    ["H2O CO 3SUBD #2"] * 10, #PATCHED FOR MTP031+
+#    ["CH4 CO 2SUBD #3"] * 10, #PATCHED FOR MTP031+
+#    ["CH4 CO 2SUBD #4"] * 10, #PATCHED FOR MTP031+
+#    ["Ice CO 2SUBD #2"] * 10, #PATCHED FOR MTP031+
+
      
 ]
 
@@ -186,12 +190,14 @@ NADIR_NIGHT_LIMB_WEIGHTS = [
 #    ["Limb 2SUBD 07"] * 3,
 #    ["Nominal Limb 01"] * 1,
     ["Night Limb #1"] * 1,
+#    ["Night Limb #2"] * 1, #PATCHED FOR MTP031+
 
 ]
         
 NADIR_NIGHTSIDE_WEIGHTS = [
 #    ["Limb 2SUBD 07"] * 1,
     ["Night Limb #1"] * 1,
+#    ["Night Limb #2"] * 1, #PATCHED FOR MTP031+
 
 ]
 
@@ -201,23 +207,25 @@ NADIR_NIGHTSIDE_WEIGHTS = [
         
 NADIR_CH4_REGION_WEIGHTS = [
     ["CH4 3SUBD 01"] * 1,
-    ["CH4 H2O 2SUBD 02"] * 4,
+    ["CH4 H2O 2SUBD 02"] * 3,
     ["CH4 H2O 2SUBD 01"] * 1,
     ["CH4 2SUBD 03"] * 1,
-    ["CH4 CO 2SUBD #3"] * 4,
+    ["H2O CO 2SUBD #1"] * 4,
+#    ["CH4 CO 2SUBD #3"] * 4, #PATCHED FOR MTP031+
 
 
 ]        
 
 NADIR_H2O_REGION_WEIGHTS = [
-    ["H2O 2SUBD 01"] * 4,        
-    ["Nominal 3SUBD 01"] * 1,
+    ["H2O 2SUBD 01"] * 2,        
+    ["H2O CO 2SUBD #1"] * 1,
 ]        
-        
+
 
 NADIR_SURFACE_REGION_WEIGHTS = [
+    ["H2O CO 2SUBD #1"] * 1,
     ["Surface 3SUBD 02"] * 2,
-    ["Surface 3SUBD #3"] * 5,
+#    ["Surface 3SUBD #3"] * 3, #PATCHED FOR MTP031+
 ]
     
 observationCycles = {
