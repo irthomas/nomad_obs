@@ -30,16 +30,19 @@ import numpy as np
 import os
 from datetime import datetime
 import xlrd
-from generate_cop_tables_dictionaries_v05 import MAX_EXECUTION_TIME, MAX_ROWS, MIN_EXECUTION_TIME, MINISCAN_ROWS
-from generate_cop_tables_dictionaries_v05 import MINISCAN_STARTING_ORDERS, FIXED_ROWS, FULLSCAN_ROWS, WINDOW_STEPPING_ROWS
-from generate_cop_tables_dictionaries_v05 import INTEGRATION_TIME_STEPPING_ROWS, SCIENCE_ROWS, STEPPING_ROWS
-from generate_cop_tables_dictionaries_v05 import DEFAULT_FIXED_ROWS, SUBDOMAIN_SCIENCE_ROWS
+import re
+
+
+from cop_patching.generate_cop_tables_dictionaries_v05 import MAX_EXECUTION_TIME, MAX_ROWS, MIN_EXECUTION_TIME, MINISCAN_ROWS
+from cop_patching.generate_cop_tables_dictionaries_v05 import MINISCAN_STARTING_ORDERS, FIXED_ROWS, FULLSCAN_ROWS, WINDOW_STEPPING_ROWS
+from cop_patching.generate_cop_tables_dictionaries_v05 import INTEGRATION_TIME_STEPPING_ROWS, SCIENCE_ROWS, STEPPING_ROWS
+from cop_patching.generate_cop_tables_dictionaries_v05 import DEFAULT_FIXED_ROWS, SUBDOMAIN_SCIENCE_ROWS
+
+from nomad_obs.config.paths import BASE_DIRECTORY
+
 
 
 ORDER_COMBINATION_FILE = "EXM-NO-SNO-AER-00028-iss0rev4-SO_LNO_COP_Table_Order_Combinations-180528.xlsx"
-
-BASE_DIRECTORY = os.path.normcase(r"C:\Users\iant\Dropbox\NOMAD\Python")
-AUXILIARY_DIRECTORY = os.path.join(BASE_DIRECTORY, "data", "pfm_auxiliary_files")
 
 
 MODEL = "PFM"
@@ -51,8 +54,8 @@ channels=["so"]
 PRINT_FLAG=False
 
 
-folder_name = datetime.now().strftime("%Y%m%d_%H%M%S")
-OUTPUT_DIRECTORY = os.path.join(BASE_DIRECTORY, "data", "cop_tables", folder_name)
+FOLDER_NAME = datetime.now().strftime("%Y%m%d_%H%M%S")
+OUTPUT_DIRECTORY = os.path.join(BASE_DIRECTORY, "cop_tables", FOLDER_NAME)
 
 
 
@@ -179,7 +182,6 @@ def load_order_combinations(channel,nsubd):
 
 def readScienceComments(scienceLines, nScienceCalRows):
     """get science lines from list, remove calibration lines. Extract data from comments"""
-    import re
 
     newScienceTable = []
     NA_LINE = ["-999"]*4
@@ -205,19 +207,22 @@ def readScienceComments(scienceLines, nScienceCalRows):
 
 
 
-def writeTable(channel, table_name, lines):
+def writeTable(channel, table_name, lines, output_directory=""):
     """write cop csv file"""
-    os.makedirs(OUTPUT_DIRECTORY, exist_ok=True)
-    with open(OUTPUT_DIRECTORY+os.sep+"%s_%s_table.csv" %(channel,table_name), "w") as f:
+    
+    if output_directory == "":
+        output_directory = OUTPUT_DIRECTORY
+
+    os.makedirs(output_directory, exist_ok=True)
+    with open(output_directory+os.sep+"%s_%s_table.csv" %(channel,table_name), "w") as f:
         for line in lines:
             f.write(line+"\n")
 
 
 def stop():
-#    import sys
+    import sys
     print("**********Fatal Error********")
-    halt
-#    sys.exit() #breaks program
+    sys.exit() #breaks program
     return 0
 
 
@@ -463,9 +468,7 @@ def makeScienceTable(channel):
     return scienceLines, nScienceCalRows
 
 
-
-for channel in channels:
-
+def makeSubdomainTable(channel):
 
     """MAKE SUBDOMAIN TABLE"""
     steppingLines = makeSteppingTable(channel)
@@ -487,14 +490,13 @@ for channel in channels:
 
     
     if channel == "so":
-        from generate_cop_tables_order_combinations_v05 import newSoObservationDict as newObservationDict
-        from generate_cop_tables_order_combinations_v05 import specialSoObservationDict as specialObservationDict
+        from cop_patching.generate_cop_tables_order_combinations_v05 import newSoObservationDict as newObservationDict
+        from cop_patching.generate_cop_tables_order_combinations_v05 import specialSoObservationDict as specialObservationDict
     elif channel == "lno":
-        from generate_cop_tables_order_combinations_v05 import newLnoObservationDict as newObservationDict
-        from generate_cop_tables_order_combinations_v05 import specialLnoObservationDict as specialObservationDict
+        from cop_patching.generate_cop_tables_order_combinations_v05 import newLnoObservationDict as newObservationDict
+        from cop_patching.generate_cop_tables_order_combinations_v05 import specialLnoObservationDict as specialObservationDict
     
     
-    nSubdomainRows = 0
     subdomain_headers = ["science_1","science_2","science_3","science_4","science_5","science_6"]
     subdomainLines = [",".join(subdomain_headers)]
 
@@ -531,7 +533,7 @@ for channel in channels:
     #get order combinations from existing and new dictionaries, then combine with all options to make 
     for nsubdRequired, observations in orderCombinationDict[channel].items():
         for obsName, orderCombination in observations.items():
-            nLightOrders = sum([1 for order in orderCombination if order>0])
+#            nLightOrders = sum([1 for order in orderCombination if order>0])
             nDarkOrders = sum([1 for order in orderCombination if order == 0])
             if nDarkOrders > 0:
                 sbsfRequired = 0
@@ -586,7 +588,7 @@ for channel in channels:
 
         inttimeRequired *= 1000 #stored in ms in dictionary
         nsubdRequired = len(orderCombination)
-        nLightOrders = sum([1 for order in orderCombination if order>0])
+#        nLightOrders = sum([1 for order in orderCombination if order>0])
         nDarkOrders = sum([1 for order in orderCombination if order == 0])
         if nDarkOrders > 0:
             sbsfRequired = 0
@@ -662,8 +664,11 @@ for channel in channels:
 
 
 """function to read in cop tables, given channel and name"""
-def read_in_cop_table(channel,cop):
-    csv_filename=OUTPUT_DIRECTORY+os.sep+"%s_%s_table.csv" %(channel,cop)
+def read_in_cop_table(channel,cop, output_directory=""):
+    
+    if output_directory == "":
+        output_directory = OUTPUT_DIRECTORY
+    csv_filename = output_directory + os.sep + "%s_%s_table.csv" %(channel, cop)
     with open(csv_filename) as f:
         cop_list=[]
         for index,line in enumerate(f):
@@ -683,42 +688,43 @@ def read_in_cop_table(channel,cop):
 
 
 
-
-for channel in channels:
-
-    subdomainHeaders, subdomainList = read_in_cop_table(channel, "sub_domain")
-    scienceHeaders, scienceList = read_in_cop_table(channel, "science")
-    fixedHeaders, fixedList = read_in_cop_table(channel, "fixed")
+def generate_cop_tables(channels):
     
-    allWindowHeights = list(set([int(fixedLine[0]) for fixedLine in fixedList if fixedLine[0] != "0"]))
+    for channel in channels:
     
-    for subdomainLine in subdomainList:
-        sciencePointers = [int(subdomainLine[index]) for index in range(6) if subdomainLine[index] != "0"]
-        scienceLineAll = [[int(scienceList[sciencePointer][index]) for index in range(8)]+[scienceList[sciencePointer][8]] for sciencePointer in sciencePointers]
-        nSubdomains = len(scienceLineAll)
-        if nSubdomains > 1:
-            totalExecTime = 0
-            comments = []
-            for scienceLine in scienceLineAll:
-                _,_,sbsf,aotfPointer,steppingPointer,accumulationCount,binningFactor,integrationTime,comment = scienceLine
-                windowHeight = getWindowHeight(binningFactor, nSubdomains)
-                
-                if windowHeight not in allWindowHeights:
-                    print("Error: window height not found in fixed table")
-                totalExecTime += exec_time(accumulationCount, windowHeight, integrationTime)
-                comments.append(comment)
-                
-            #check all comments identical
-            nComments = len(list(set(comments)))
-            if nComments > 1:
-                print("Error: comments don't match")
-    
-            if not checkExecTime(totalExecTime, 1, silent=True):
-                if not checkExecTime(totalExecTime, 2, silent=True):
-                    if not checkExecTime(totalExecTime, 4, silent=True):
-                        if not checkExecTime(totalExecTime, 8, silent=True):
-                            if not checkExecTime(totalExecTime, 15, silent=True):
-                                print("Error: bad execution time %i" %totalExecTime)
+        subdomainHeaders, subdomainList = read_in_cop_table(channel, "sub_domain")
+        scienceHeaders, scienceList = read_in_cop_table(channel, "science")
+        fixedHeaders, fixedList = read_in_cop_table(channel, "fixed")
+        
+        allWindowHeights = list(set([int(fixedLine[0]) for fixedLine in fixedList if fixedLine[0] != "0"]))
+        
+        for subdomainLine in subdomainList:
+            sciencePointers = [int(subdomainLine[index]) for index in range(6) if subdomainLine[index] != "0"]
+            scienceLineAll = [[int(scienceList[sciencePointer][index]) for index in range(8)]+[scienceList[sciencePointer][8]] for sciencePointer in sciencePointers]
+            nSubdomains = len(scienceLineAll)
+            if nSubdomains > 1:
+                totalExecTime = 0
+                comments = []
+                for scienceLine in scienceLineAll:
+                    _,_,sbsf,aotfPointer,steppingPointer,accumulationCount,binningFactor,integrationTime,comment = scienceLine
+                    windowHeight = getWindowHeight(binningFactor, nSubdomains)
+                    
+                    if windowHeight not in allWindowHeights:
+                        print("Error: window height not found in fixed table")
+                    totalExecTime += exec_time(accumulationCount, windowHeight, integrationTime)
+                    comments.append(comment)
+                    
+                #check all comments identical
+                nComments = len(list(set(comments)))
+                if nComments > 1:
+                    print("Error: comments don't match")
+        
+                if not checkExecTime(totalExecTime, 1, silent=True):
+                    if not checkExecTime(totalExecTime, 2, silent=True):
+                        if not checkExecTime(totalExecTime, 4, silent=True):
+                            if not checkExecTime(totalExecTime, 8, silent=True):
+                                if not checkExecTime(totalExecTime, 15, silent=True):
+                                    print("Error: bad execution time %i" %totalExecTime)
 
 
 

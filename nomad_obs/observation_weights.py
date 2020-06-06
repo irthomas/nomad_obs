@@ -35,34 +35,34 @@ OCCULTATION_WEIGHTS = [
     ["All Fullscan Slow #2"] * 1,
     ["CO2 Fullscan Fast #2"] * 1,
     ["CO Fullscan Fast #2"] * 1,
-    ["LNO Occultation Fullscan Fast #2"] * 3,
+    ["LNO Occultation Fullscan Fast #2"] * 5,
     ["119 only #2"] * 1,
     ["120 only #2"] * 1,
     ["121 only #2"] * 1,
 
-    ["BgSubTest 03"] * 3, #reduce by one in MTP029
-    ["BgSubTest 04"] * 3,
-    ["BgSubTest 05"] * 3,
-    ["BgSubTest 06"] * 3,
-    ["Nominal Science 1xCO2 LA05"] * 2, #reduce by one in MTP029
-    ["Nominal Science 1xCO2 LA06"] * 2,
-    ["Nominal Science 1xCO2 LA01"] * 2,
-    ["Nominal Science 1xCO2 HA01"] * 2,
-    ["Nominal Science 1xCO2 LA02"] * 2,
-    ["Nominal Science 1xCO2 HA02"] * 2,
-    ["Nominal Science 1xCO2 LA03"] * 2,
-    ["Nominal Science 1xCO2 HA03"] * 2,
-    ["Nominal Science 1xCO2 LA04"] * 2,
-    ["Nominal Science 1xCO2 HA04"] * 2,
+    ["BgSubTest 03"] * 2, #reduce by one in MTP033
+    ["BgSubTest 04"] * 2,
+    ["BgSubTest 05"] * 2,
+    ["BgSubTest 06"] * 2,
+    ["Nominal Science 1xCO2 LA05"] * 1, #remove in MTP033
+    ["Nominal Science 1xCO2 LA06"] * 1,
+    ["Nominal Science 1xCO2 LA01"] * 1,
+    ["Nominal Science 1xCO2 HA01"] * 1,
+    ["Nominal Science 1xCO2 LA02"] * 1,
+    ["Nominal Science 1xCO2 HA02"] * 1,
+    ["Nominal Science 1xCO2 LA03"] * 1,
+    ["Nominal Science 1xCO2 HA03"] * 1,
+    ["Nominal Science 1xCO2 LA04"] * 1,
+    ["Nominal Science 1xCO2 HA04"] * 1,
     ["Water Ice 01"] * 1,
     ["CO 01"] * 1,
     ["AER 01"] * 1,
     
     #new MTP025+
-    ["6SUBD CO2 #1"] * 8, #reduce from MTP029 onwards to 5
-    ["6SUBD CO2 #10"] * 8, #reduce from MTP029 onwards to 5
+    ["6SUBD CO2 #1"] * 7, #reduce from MTP029 onwards to 5
+    ["6SUBD CO2 #10"] * 7, #reduce from MTP029 onwards to 5
 
-    #MTP028+ CO2 M1/E2 and HCl
+    #MTP028+ CO2 M1/E2 and HCl. reduce when new patches become available.
     ["126 only #2"] * 9,
     ["127 only #2"] * 9,
     ["129 only #2"] * 9,

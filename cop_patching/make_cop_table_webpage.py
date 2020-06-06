@@ -13,17 +13,19 @@ import numpy as np
 import os
 
 
-from obs_config import BASE_DIRECTORY, COP_TABLE_DIRECTORY
-from obs_inputs import getMtpConstants
+from nomad_obs.config.paths import BASE_DIRECTORY#, COP_TABLE_DIRECTORY
+from nomad_obs.mtp_inputs import getMtpConstants
 
+
+COP_TABLE_DEV_DIRECTORY = os.path.join(BASE_DIRECTORY, "cop_tables")
 
 def outputCopTable(copVersion,channel,cop):
     """function to read in cop tables, given channel and name"""
 
     if channel=="so" or channel=="lno":
-        csvFilename=COP_TABLE_DIRECTORY+os.sep+"%s" %copVersion+os.sep+"%s_%s_table.csv" %(channel,cop)
+        csvFilename=COP_TABLE_DEV_DIRECTORY+os.sep+"%s" %copVersion+os.sep+"%s_%s_table.csv" %(channel,cop)
     elif channel=="uvis":
-        csvFilename=COP_TABLE_DIRECTORY+os.sep+"%s" %copVersion+os.sep+"uvis_table.csv"
+        csvFilename=COP_TABLE_DEV_DIRECTORY+os.sep+"%s" %copVersion+os.sep+"uvis_table.csv"
     with open(csvFilename) as f:
         copList=[]
         for index,line in enumerate(f):
@@ -257,7 +259,7 @@ def makeCopTableDict(channelCode, copTableDict, silent=True):
 
 
 
-mtpNumber = 21
+mtpNumber = 31
 
 for channelCode in [0,1]:
     mtpConstants = getMtpConstants(mtpNumber)
@@ -282,7 +284,8 @@ for channelCode in [0,1]:
     
     defaultColour = "FFFFFF"
     colourDict = {119:"FF8F8F", 120:"FF5656", 121:"FF0000", 122:"D90000", 123:"BE0000",
-                  130:"FAFAFA", 131:"E9E9E9", 132:"DADADA", 133:"BCBCBC", 134:"9C9C9C", 135:"838383", 136:"6D6D6D",
+                  126:"B6FFF4", 127:"20FEDB", 129:"00B699", 130:"008671",
+                  131:"E9E9E9", 132:"DADADA", 133:"BCBCBC", 134:"9C9C9C", 135:"838383", 136:"6D6D6D",
                   146:"FFFFA0", 147:"FFFF6F", 148:"FFFF21", 149:"E9E900", 150:"D8D800",
                   163:"FFD4FF", 164:"FFA4FE", 165:"FF5FFD", 166:"FF00FC",
                   167:"CEFFA8", 168:"B4FF7A", 169:"92FF3F", 170:"5BD300", 171:"4FB800",
@@ -294,7 +297,9 @@ for channelCode in [0,1]:
         
         if 119 <= order <= 123:
             molecule = "HDO/CO2 (SO <60km)"
-        elif 130 <= order <=136:
+        elif 126 <= order <=130:
+            molecule = "HCL (SO)"
+        elif 131 <= order <=136:
             molecule = "CH4/H2O (SO <60km)"
         elif 146 <= order <= 150:
             molecule = "CO2 (SO 60-100km)"
@@ -339,8 +344,8 @@ for channelCode in [0,1]:
     tables = {0:"", 1:"", 2:"", 3:"", 4:"", 5:"", 6:""}
     
     #make table in html and add to all tables
-    h = r"<div style='white-space:pre;overflow:auto;width:2000px;padding:10px;'>"
-    h += r"<table border=1 style='width:1600px;'>"+"\n"
+    h = r"<div style='white-space:pre;overflow:auto;width:1000px;padding:10px;'>"
+    h += r"<table border=1 style='width:1000px;'>"+"\n"
     h += r"<tr>"+"\n"
     for headerColumn in html_header:
         h += r"<th>%s</th>" %headerColumn +"\n"
@@ -414,8 +419,8 @@ for channelCode in [0,1]:
     h = r""
     h += r"<h1>%s</h1>" %html_title +"\n"
     
-    h += r"<div style='white-space:pre;overflow:auto;width:2000px;padding:10px;'>"
-    h += r"<table border=1 style='width:1600px;'>"+"\n"
+    h += r"<div style='white-space:pre;overflow:auto;width:1000px;padding:10px;'>"
+    h += r"<table border=1 style='width:1000px;'>"+"\n"
     h += r"<tr>"+"\n"
     for headerColumn in ["Order", "Molecule(s)"]:
         h += r"<th>%s</th>" %headerColumn +"\n"
