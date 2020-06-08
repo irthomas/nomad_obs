@@ -299,7 +299,7 @@ def getMtpConstants(mtpNumber):
     elif mtpNumber == 31:
         mtpStart = "2020-07-11T15:32:12Z" #CHANGE!!!
         mtpEnd = "2020-08-08T12:50:58Z" #CHANGE!!!
-        copVersion = "mtp031_proposed" #desired cop table folder - remember to update if patched
+        copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 32:

@@ -97,11 +97,11 @@ This must be done before each MTP.
 
 ### Set up MTP and observation parameters
 
-* As a minimum, add `mtpStart`, `mtpEnd` and `copVersion` info to `nomad_obs/mtp_inputs`
+* As a minimum, add `mtpStart`, `mtpEnd` and `copVersion` info to `nomad_obs/mtp_inputs` from the email from the Ops team.
 * Update the other files in the `nomad_obs` directory if desired e.g. observations, weights, ACS-SO joint occultation types, regions of interest, etc.
 * Copy the SOC event file `LEVF_Mxxx_SOC_PLANNING.EVF` for the MTP into the directory `observations/event_files`. This file can be found in the zip file from Bojan or Claudio.
-* (Recommended) copy the solar limb events file `MARS_IN_UVIS_OCC_FOV.txt` and MRO joint obs from the zip file into `observations/summary_files/mtpxxx`. These will be needed later.
-
+* Copy the MRO overlap directories into `observations/summary_files/mtpxxx`. There are four: `2deg_latlon_15min_LST`, `2deg_latlon_30min_LST`, `5deg_latlon_15min_LST`, and `5deg_latlon_30min_LST`. From MTP030 onwards, the latter must be present for the pipeline to run.
+* (Recommended) copy the solar limb events files `SOLAR_LOS/MARS_IN_UVIS_OCC_FOV.txt` and `SOLAR_LOS/MARS_IN_LNO_OCC_FOV.txt` from the zip file into `observations/summary_files/mtpxxx`. These will be needed later.
 
 
 ### Make generic orbit plan
@@ -156,8 +156,16 @@ orbitType | irIngressHigh | irIngressLow | uvisIngress | irEgressHigh | irEgress
 * It is highly recommended that the orbits with type `3` and `14` are checked thoroughly (3 = irDayside, 14 = no irDayside), as errors can affect the UVIS observations on those orbits and/or may lead to problems later. Once the summary files are made this cannot be changed. <br/> This can be checked in Excel as follows `=IF(AND(A2=3,H2=""),"Error",0)` and `=IF(AND(A2=14,NOT(H2="")),"Error",0)` however care must be taken to delete all traces of additional columns. Columns `N` and onwards **must** be completely empty.
 
 
+In general:
 
-**When ready, send `nomad_mtp015_plan_generic.xlsx` to `nomad.iops@aeronomie.be` for the OU to add UVIS observations.**
+* Try to keep LNO on for the targeted observations
+* Try to keep LNO on for the MRO overlaps
+* LNO should always be switched on the orbit directly after an OCM
+* When the solar incidence angle > 60 degrees, swap some H2O / CO observations for Surface Ice observations
+
+
+
+**When ready, send `nomad_mtpxxx_plan_generic.xlsx` to `nomad.iops@aeronomie.be` for the OU to add UVIS observations.**
 
 
 ### Finalise generic orbit plan
@@ -195,7 +203,7 @@ When the orbit plan is ready, move it to the directory `orbit_plans/mtpxxx` fold
 When the script is run above to make the joint observation list, the final orbit plan will also be created in the `BASE_DIRECTORY`. Here the table has been filled in with observation names taken from the lists in `observation_names.py` and `observation_weights.py`.
 
 
-If there are no errors, place the final orbit plan in the `orbit_plans/mtpxxx` folder and run the entire script again. The output COP row files will be generated in `cop_rows/mtpxxx folder`. The joint occultation file `joint_occ_mtpxxx.csv` will also be created for the ACS team. This will be sent by Bojan or Claudio to ESAC.
+If there are no errors, place the final orbit plan in the `orbit_plans/mtpxxx` folder and run the entire script again. The output COP row files will be generated in `cop_rows/mtpxxx folder`. The joint occultation file `joint_occ_mtpxxx.csv` will also be created for the ACS team. When this is sent to Bojan or Claudio they will 
 
 
 
@@ -265,7 +273,7 @@ One occultation per orbit | TGO orbit is close to subsolar/antisolar point | **L
 In general:
 * If there are no occultations, LNO should operate on approximately *1 in 4* to *1 in 6* orbits. Approximately 25% of all LNO observations should be limb measurements (orbit type `8`).
 * If there are two occultations per orbit, LNO should operate on approximately *1 in 3* or *1 in 4* orbits.
-* If there is one occultation per orbit, LNO should operate on approximately *1 in 3* orbits.
+* If there is one occultation per orbit, LNO should operate on approximately *1 in 3* orbits. This happens when the spacecraft musted be flipped each orbit (low beta angle). Note that merged and grazing are counted as 2 orbits.
 
 Note that LNO can also make limb and nightside observations - these must be taken into account when considered the number of LNO observations.
 
