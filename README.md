@@ -118,6 +118,8 @@ To start the planning script on crunch7 (from hera):
 
 Then wait a few minutes for the geometry calculations to be completed. The variable `orbitList` will be populated with all the geometric data for the MTP, and the generic orbit plan `nomad_mtpxxx_plan_generic.xlsx` will be placed in the `BASE_DIRECTORY`. 
 
+One line in the orbit plan corresponds to a nightside followed by a dayside i.e. it starts at a day-to-night terminator and ends on the day-to-night terminator. One column in the orbit plan gives the night-to-day terminator crossing time, which is therefore at the mid-point of that orbit. Each orbit is 2 hours long, and so nightside observations will occur in the 1 hour before the night-to-day crossing time; and dayside nadirs/limbs will be measured within the hour after the night-to-day crossing time.
+
 
 #### Select LNO dayside nadirs
 
@@ -176,17 +178,14 @@ When the modified version is received from the OU, check for errors - e.g. remov
 
 #### Check nightsides
 
-There are two types of UVIS nightsides, which will normally be highlighted in blue or yellow:
+Typically the only modification is to add UVIS nightside nadir observations. To keep the instrument as cool as possible, it is better that LNO dayside nadir observations are removed from the orbit before each UVIS nightside. This is not essential: regions of interest, MRO overlaps, etc. should not be cancelled. Since the LNO duty cycle is now <50%, NOMAD remains cold at all times and so this is less critical. LNO can run with UVIS on the occasional nightside - if so, change the orbit type to `7` and add `irNightside` to the `irNightside` column. Note that all observations on the dayside in the chosen orbit are unaffected, as the dayside observation always comes after the nightside observation. Note that LNO must not measure continuously - if there are LNO dayside measurements on the previous or same orbits, these must be removed (the `irDayside` column must be blank).
 
-* Those in yellow are UVIS calibration measurements. If desired, LNO can run nightside measurements in these slots (change orbit type to `7` and add `irNightside` in the `irNightside` column). Normally, only 1 or 2 LNO nightside observations are run per MTP, however these are not essential.
-* Those in blue are UVIS nightside measurements. LNO and UVIS must be switched off on the previous orbit dayside (`irDayside` and `uvisDayside` must be blank), and LNO must not run on this nightside (`irNightside` must be blank). Note that observations on the dayside in the chosen orbit are acceptable.
-
-For all nightsides (of both types), add `uvisNightside` in the `uvisNightside` column if not present.  LNO should not measure continuously - if there are LNO dayside measurements on the previous or same orbits, these must be removed (delete the entry/entries in `irDayside` column blank).
+Optionally, add `uvisNightside` in the `uvisNightside` column if not present for all UVIS nightsides. 
 
 
 #### Add LNO limb measurements
 
-Orbits with types `4`, `14` and `3` can be changed to LNO limb orbit type `8`. These should correspond with CaSSIS off-nadir observations where possible, using the list `MARS_IN_UVIS_OCC_FOV.txt` provided by Bojan or Claudio. This txt file contains the times when the boresight is pointing closer to the ground than when flying in pure nadir-pointing mode. 
+Orbits with types `4`, `14` and `3` can be changed to LNO limb orbit type `8`. These should correspond with CaSSIS off-nadir observations where possible, using the list `SOLAR_LOS/MARS_IN_LNO_OCC_FOV.txt` or `SOLAR_LOS/MARS_IN_UVIS_OCC_FOV.txt` provided by Bojan or Claudio. This txt file contains the times when the boresight is pointing closer to the ground than when flying in pure nadir-pointing mode. Each row in the orbit plan contains the night-to-day terminator crossing time - dayside limbs for that orbit will therefore take place within the 1 hour after the crossing time.
 
 There are typically around 5 limb observations per MTP, however during periods without occultations it is possible to run many more (see Appendix A). 
 
@@ -266,7 +265,7 @@ TGO orbits can be divided, approximately, into 3 categories:
 Number of occultations | TGO orbit description | LNO nadir quality
 --- | --- | ---
 No occultations per orbit | TGO orbit is close to the terminator and does not pass behind the planet | **LNO signal is poor** due to bad solar zenith angle. Ices may be visible if orbit passes near sunrise terminator.
-Merged or two occultations per orbit | TGO orbit is between subsolar point and terminator | **LNO signal is acceptable**, but instrument temperature is the highest.
+Merged/grazing or two occultations per orbit | TGO orbit is between subsolar point and terminator | **LNO signal is acceptable**, but instrument temperature is the highest.
 One occultation per orbit | TGO orbit is close to subsolar/antisolar point | **LNO signal is good**, as solar zenith angle is low.
 
 
