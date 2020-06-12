@@ -50,6 +50,7 @@ def makeGenericOrbitPlan(orbit_list, mtp_constants, paths, silent=True):
 
         generic_orbit["irNightside"] = "" #default irNightside to always off unless nightside limb added below
         generic_orbit["uvisNightside"] = ""  #default irNightside to always off unless nightside limb added below
+        generic_orbit["irDayside"] = "" #default
     
         #first check for OCMs
         all_off = False
@@ -244,9 +245,10 @@ def makeGenericOrbitPlan(orbit_list, mtp_constants, paths, silent=True):
         #now add MRO overlaps to comments
         if orbitNumber in mroOverlapOrbits:
             generic_orbit_comment += "&mroOverlap; "
-            #if LNO is off, switch on and change orbit type to 3
-            generic_orbit["irDayside"] = "irDayside"
 
+            #if LNO is off, switch on and change orbit type to 3. If LNO already on, leave alone
+            if generic_orbit["irDayside"] == "":
+                generic_orbit["irDayside"] = "irDayside"
             if generic_orbit_type in [4, 14]:
                 generic_orbit_type = 3
     
