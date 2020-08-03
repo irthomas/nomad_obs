@@ -126,11 +126,24 @@ One line in the orbit plan corresponds to a nightside followed by a dayside i.e.
 The generic script always includes too many LNO dayside nadirs. Remove some by deleting some of the entries in the LNO dayside column (a blank entry means no observation will be run). Note that:
 
 * The six columns of solar occultation observations should not be modified. 
-* If the observation corresponds to a region of interest, the observation type and region will be indicated in the last column in the orbit plan e.g. `&daysideMatch:CURIOSITY;` means that the dayside nadir orbit passes near Gale Crater. It is better to keep most of these observations and remove others nearby; however it is not necessary to keep all. Priority should be given to Curiosity where possible.
+* If the observation corresponds to a region of interest, the observation type and region will be indicated in the last column in the orbit plan e.g. `&daysideMatch:CURIOSITY;` means that the dayside nadir orbit passes near Gale Crater. It is better to keep most of these observations and remove others nearby; however it is not necessary to keep all. Priority should be given to the highest priority regions in the table below, where possible.
 * The number of observations to be deleted depends on the TGO orbit characteristics. See Appendix A for approximate duty cycles.
 * Do not delete limbs e.g. dayside limb orbit type `28` or nightside limb type `47`.
 * Every Saturday afternoon there is an OCM (orbit correction manoeuvre) where observations are not allowed. This is added automatically by the script and the orbit type is set to `14`. The text `&possibleOCM;` will be added to the last column.
 * If a row has no occultations or LNO observations, the orbit type in the 1st column must be changed to type `14`:
+
+
+Region | Priority
+--- | ---
+Olympus Mons             | Highest
+Curiosity                | Highest
+Acidalia Planitia        | High
+Nili Fossae              | High
+Mawrth Vallis/Aram Chaos | High
+Meridiani Sulfates       | High
+Mawrth Vallis            | High
+Other targets            | Medium
+
 
 
 orbitType | irIngressHigh | irIngressLow | uvisIngress | irEgressHigh | irEgressLow | uvisEgress | irDayside | uvisDayside
