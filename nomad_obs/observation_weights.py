@@ -11,18 +11,18 @@ ALLOCATE WEIGHTS TO EACH OBSERVATION NAME FOR EACH OBSERVATION TYPE
 #observation name and weighting
 OCCULTATION_WEIGHTS = [
 
-    ["6SUBD Nominal #1"] * 20, 
-    ["6SUBD Nominal #2"] * 20, 
-    ["6SUBD Nominal #3"] * 20, 
+    ["6SUBD Nominal #1"] * 5, 
+    ["6SUBD Nominal #2"] * 5, 
+    ["6SUBD Nominal #3"] * 5, 
     ["6SUBD Nom CO2 #1"] * 5,
     ["6SUBD Nom CO2 #2"] * 5,
     ["6SUBD Nom CH4 #1"] * 5,
     ["6SUBD Nom CH4 #2"] * 5,
-    ["6SUBD Nom CO #1"] * 5,
-    ["6SUBD Nom CO #2"] * 5,
-    ["6SUBD Nom CO #3"] * 5,
-    ["6SUBD Nom CO #4"] * 5,
-    ["6SUBD Nom CO #5"] * 5,
+    ["6SUBD Nom CO #1"] * 3,
+    ["6SUBD Nom CO #2"] * 3,
+    ["6SUBD Nom CO #3"] * 3,
+    ["6SUBD Nom CO #4"] * 3,
+    ["6SUBD Nom CO #5"] * 3,
      
     ["CO2 100km #1"] * 10,
      
@@ -31,83 +31,113 @@ OCCULTATION_WEIGHTS = [
     ["6SUBD CO H2O #2"] * 3,
     ["6SUBD CO2 CO #1"] * 3,
     ["6SUBD CH4 H2O #1"] * 3,
-    ["All Fullscan Fast #2"] * 3,
-    ["All Fullscan Slow #2"] * 1,
-    ["CO2 Fullscan Fast #2"] * 1,
-    ["CO Fullscan Fast #2"] * 1,
+    ["All Fullscan Fast #2"] * 10,
+    ["All Fullscan Slow #2"] * 5,
+    ["CO2 Fullscan Fast #2"] * 3,
+    ["CO Fullscan Fast #2"] * 3,
     ["LNO Occultation Fullscan Fast #2"] * 5,
-    ["119 only #2"] * 1,
-    ["120 only #2"] * 1,
-    ["121 only #2"] * 1,
+#    ["119 only #2"] * 1,
+#    ["120 only #2"] * 1,
+#    ["121 only #2"] * 1,
 
-    ["BgSubTest 03"] * 2, #reduce by one in MTP033
-    ["BgSubTest 04"] * 2,
-    ["BgSubTest 05"] * 2,
-    ["BgSubTest 06"] * 2,
-    ["Nominal Science 1xCO2 LA05"] * 1, #remove in MTP033
-    ["Nominal Science 1xCO2 LA06"] * 1,
-    ["Nominal Science 1xCO2 LA01"] * 1,
-    ["Nominal Science 1xCO2 HA01"] * 1,
-    ["Nominal Science 1xCO2 LA02"] * 1,
-    ["Nominal Science 1xCO2 HA02"] * 1,
-    ["Nominal Science 1xCO2 LA03"] * 1,
-    ["Nominal Science 1xCO2 HA03"] * 1,
-    ["Nominal Science 1xCO2 LA04"] * 1,
-    ["Nominal Science 1xCO2 HA04"] * 1,
-    ["Water Ice 01"] * 1,
-    ["CO 01"] * 1,
-    ["AER 01"] * 1,
+#    ["BgSubTest 03"] * 2, #reduce by one in MTP033
+#    ["BgSubTest 04"] * 2,
+#    ["BgSubTest 05"] * 2,
+#    ["BgSubTest 06"] * 2,
+#    ["Nominal Science 1xCO2 LA05"] * 1, #remove in MTP033
+#    ["Nominal Science 1xCO2 LA06"] * 1,
+#    ["Nominal Science 1xCO2 LA01"] * 1,
+#    ["Nominal Science 1xCO2 HA01"] * 1,
+#    ["Nominal Science 1xCO2 LA02"] * 1,
+#    ["Nominal Science 1xCO2 HA02"] * 1,
+#    ["Nominal Science 1xCO2 LA03"] * 1,
+#    ["Nominal Science 1xCO2 HA03"] * 1,
+#    ["Nominal Science 1xCO2 LA04"] * 1,
+#    ["Nominal Science 1xCO2 HA04"] * 1,
+#    ["Water Ice 01"] * 1,
+#    ["CO 01"] * 1,
+#    ["AER 01"] * 1,
     
     #new MTP025+
-    ["6SUBD CO2 #1"] * 7, #reduce from MTP029 onwards to 5
-    ["6SUBD CO2 #10"] * 7, #reduce from MTP029 onwards to 5
+    ["6SUBD CO2 #1"] * 5, #reduce from MTP029 onwards to 5
+    ["6SUBD CO2 #10"] * 5, #reduce from MTP029 onwards to 5
 
     #MTP028+ CO2 M1/E2 and HCl. reduce when new patches become available.
-    ["126 only #2"] * 9,
-    ["127 only #2"] * 9,
-    ["129 only #2"] * 9,
-    ["HDO 01"] * 15,
-    ["Dust H2O 01"] * 15,
+#    ["126 only #2"] * 5,
+#    ["127 only #2"] * 5,
+    ["129 only #2"] * 10,
+    ["HDO 01"] * 5,
+    ["Dust H2O 01"] * 5,
 
-     
+
     ["132 only #2"] * 3,
     ["133 only #2"] * 4,
     ["134 only #2"] * 5,
     ["6SUBD CO2 Dipole #1"] * 4,
     ["CO2 Fullscan Fast #3"] * 4,
 
+    ["HCL #4"] * 5, #129 + others
+    ["HCL #5"] * 5, #130 + others
+    ["HCL #8"] * 5, #129 + others
+    ["HCL #9"] * 5, #130 + others
+    ["HCL #10"] * 5, #all HCL
+    ["HCL #11"] * 5, #all HCL
+
+    ["6SUBD Nominal #42"] * 10, #nominal + 129
+    ["6SUBD Nominal #45"] * 10, #nominal + 129
+    ["6SUBD Nominal #48"] * 10, #nominal + 129
+    ["6SUBD Nominal #51"] * 10, #nominal + 129
+    ["6SUBD Nominal #11"] * 10, #nominal + 126/129
+    ["6SUBD Nominal #12"] * 10, #nominal + 127/129
+
+
 ]
 
         
 OCCULTATION_MERGED_WEIGHTS = [
-#        ["Nominal Science 1xCO2 LA05"] * 1,
-#        ["BgSubTest 05"] * 1,
-#        ["Nominal Science 1xCO2 LA05"] * 1,
-#        ["BgSubTest 06"] * 1,
-#        ["All Fullscan Fast"] * 1,
-#        ["CH4 01"] * 1,
-#        ["134 with 1xDark"] * 1, #special calibration
+#    ["Nominal Science 1xCO2 LA05"] * 1,
+#    ["BgSubTest 05"] * 1,
+#    ["Nominal Science 1xCO2 LA05"] * 1,
+#    ["BgSubTest 06"] * 1,
+#    ["All Fullscan Fast"] * 1,
+#    ["CH4 01"] * 1,
+#    ["134 with 1xDark"] * 1, #special calibration
 
-    ["6SUBD Nominal #1"] * 3, 
-    ["6SUBD Nominal #2"] * 3, 
-    ["6SUBD Nominal #3"] * 3, 
-    ["6SUBD CH4 #1"] * 1,
-    ["All Fullscan Fast #2"] * 1,
-    ["134 only #2"] * 1,
-    ["136 only #2"] * 1,
+#    ["6SUBD Nominal #1"] * 3, 
+#    ["6SUBD Nominal #2"] * 3, 
+#    ["6SUBD Nominal #3"] * 3, 
+#    ["6SUBD CH4 #1"] * 1,
+#    ["134 only #2"] * 1,
+#    ["136 only #2"] * 1,
     
+    ["All Fullscan Fast #2"] * 1,
+    ["6SUBD Nominal #42"] * 1, #nominal + 129
+    ["6SUBD Nominal #45"] * 1, #nominal + 129
+    ["6SUBD Nominal #48"] * 1, #nominal + 129
+    ["6SUBD Nominal #51"] * 1, #nominal + 129
+    ["6SUBD Nominal #11"] * 1, #nominal + 126/129
+    ["6SUBD Nominal #12"] * 1, #nominal + 127/129
     
 ]
 
         
 OCCULTATION_GRAZING_WEIGHTS = [
-    ["6SUBD Nominal #1"] * 2, 
-    ["6SUBD Nominal #2"] * 2, 
-    ["6SUBD Nominal #3"] * 2, 
-    ["6SUBD CH4 #1"] * 1,
+#    ["6SUBD Nominal #1"] * 2, 
+#    ["6SUBD Nominal #2"] * 2, 
+#    ["6SUBD Nominal #3"] * 2, 
+#    ["6SUBD CH4 #1"] * 1,
+#    ["All Fullscan Fast #2"] * 1,
+#    ["134 only #2"] * 1,
+#    ["136 only #2"] * 1,
+
     ["All Fullscan Fast #2"] * 1,
-    ["134 only #2"] * 1,
-    ["136 only #2"] * 1,
+    ["6SUBD Nominal #42"] * 1, #nominal + 129
+    ["6SUBD Nominal #45"] * 1, #nominal + 129
+    ["6SUBD Nominal #48"] * 1, #nominal + 129
+    ["6SUBD Nominal #51"] * 1, #nominal + 129
+    ["6SUBD Nominal #11"] * 1, #nominal + 126/129
+    ["6SUBD Nominal #12"] * 1, #nominal + 127/129
+     
 ]
 
 OCCULTATION_ACS_RIDEALONG_WEIGHTS = [
