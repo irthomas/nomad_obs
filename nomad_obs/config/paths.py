@@ -15,8 +15,8 @@ __author__    = "Ian Thomas"
 __contact__   = "ian . thomas AT aeronomie . be"
 
 
-OFFLINE = True #if working remotely, don't write obs to sql db
-#OFFLINE = False #write obs to sql db and copy to dev website
+# OFFLINE = True #if working remotely, don't write obs to sql db
+OFFLINE = False #write obs to sql db and copy to dev website
 
 if OFFLINE:
     input("Warning: you are operating in offline mode. This means that nothing will be written to the SQL database and the old website will not be updated. Press any key to continue (or exit now)")
