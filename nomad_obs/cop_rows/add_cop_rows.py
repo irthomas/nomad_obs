@@ -174,7 +174,7 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants, occultationObservationD
 def addUvisCopRows(orbit_list, copTableDict, mtpConstants, paths):
     """get UVIS COP rows from file (if they already exist)"""
     mtpNumber = mtpConstants["mtpNumber"]
-
+    
     uvisFilesAvailable = os.path.isfile(os.path.join(paths["COP_ROW_PATH"], "mtp%03d_uvis_dayside_nadir.txt" %mtpNumber))
     uvisGrazingAvailable = os.path.isfile(os.path.join(paths["COP_ROW_PATH"], "mtp%03d_uvis_grazing_occultations.txt" %mtpNumber)) #grazing file only present if there are grazing occultations
     
@@ -193,7 +193,7 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, paths):
                     content = line.strip('\n')
                     if index > 0: #if first line
                         uvisInputDict[uvisInputName].append(int(content))
-
+    
         if not uvisGrazingAvailable: #create empty grazing dictionary
             uvisInputDict["uvis_grazing_occultations"] = []
             
@@ -209,7 +209,7 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, paths):
        
         for orbit in orbit_list:
             finalOrbitPlan = orbit["finalOrbitPlan"]
-#            print(orbit["orbitNumber"])
+            print(orbit["orbitNumber"])
             if "ingress" in orbit["allowedObservationTypes"]:
                 ingressCounter += 1
                 if ingressCounter == len(uvisInputDict["uvis_ingress_occultations"]):
@@ -273,7 +273,8 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, paths):
 
             if "nightside" in orbit["allowedObservationTypes"]:
                 nightsideCounter += 1
-                copRow = uvisInputDict["uvis_dayside_nadir"][daysideCounter]
+                print("nightsideCounter=", nightsideCounter)
+                copRow = uvisInputDict["uvis_nightside_nadir"][nightsideCounter]
                 finalOrbitPlan["uvisNightsideCopRows"]["scienceCopRow"] = copRow
                 finalOrbitPlan["uvisNightsideCopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
                 

@@ -1,0 +1,683 @@
+Instrument	Orbit Number	Occultation Type	UTC Start Time	UTC Transition Time	UTC End Time	Duration (s)	Start Longitude	50km Longitude	End Longitude	Start Latitude	50km Latitude	End Latitude	50km Local Time (hrs)	Orbit Type	IR Observation Name	IR Description	UVIS Description	Orbit Comment	
+N/A	1	Ingress	2020 OCT 03 15:43:59	2020 OCT 03 15:47:07	2020 OCT 03 15:47:47	228.0	-101.3	-109.4	-111.4	56.6	59.8	60.5	14.7	3	-	-	-	&mroOverlap; 	
+N/A	1	Egress	2020 OCT 03 16:27:04	2020 OCT 03 16:27:45	2020 OCT 03 16:31:08	244.0	90.3	89.4	84.7	-37.9	-38.9	-43.4	4.6	3	-	-	-	&mroOverlap; 	
+NOMAD	2	Ingress	2020 OCT 03 17:41:54	2020 OCT 03 17:45:02	2020 OCT 03 17:45:41	227.0	-130.0	-138.1	-140.1	56.7	59.8	60.5	14.7	1	6SUBD CH4 H2O #1	Science: orders #169, #132, #133, #134, #136, #137, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	2	Egress	2020 OCT 03 18:25:00	2020 OCT 03 18:25:41	2020 OCT 03 18:29:03	243.0	61.5	60.5	55.9	-38.2	-39.1	-43.6	4.6	1	-	-	-		
+N/A	3	Ingress	2020 OCT 03 19:39:52	2020 OCT 03 19:42:59	2020 OCT 03 19:43:38	226.0	-158.8	-166.8	-168.8	56.7	59.8	60.5	14.7	14	-	-	-		
+ACS	3	Egress	2020 OCT 03 20:23:00	2020 OCT 03 20:23:41	2020 OCT 03 20:27:02	242.0	32.6	31.6	27.0	-38.4	-39.4	-43.8	4.6	14	-	-	-		
+NOMAD	4	Ingress	2020 OCT 03 21:37:52	2020 OCT 03 21:40:58	2020 OCT 03 21:41:37	225.0	172.3	164.4	162.5	56.8	59.9	60.5	14.7	1	6SUBD Nominal #3	Science: orders #167, #136, #169, #121, #190, #192, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:AEOLIS MENSAE MFF; &daysideMatch:CURIOSITY; 	
+N/A	4	Egress	2020 OCT 03 22:21:02	2020 OCT 03 22:21:43	2020 OCT 03 22:25:04	242.0	3.7	2.7	-1.9	-38.7	-39.6	-44.0	4.6	1	-	-	-	&daysideMatch:AEOLIS MENSAE MFF; &daysideMatch:CURIOSITY; 	
+N/A	5	Ingress	2020 OCT 03 23:35:50	2020 OCT 03 23:38:56	2020 OCT 03 23:39:35	225.0	143.5	135.7	133.7	56.9	59.9	60.5	14.7	14	-	-	-		
+ACS	5	Egress	2020 OCT 04 00:19:02	2020 OCT 04 00:19:43	2020 OCT 04 00:23:03	241.0	-25.3	-26.2	-30.8	-39.0	-39.9	-44.2	4.6	14	-	-	-		
+N/A	6	Ingress	2020 OCT 04 01:33:46	2020 OCT 04 01:36:52	2020 OCT 04 01:37:31	225.0	114.7	106.9	104.9	57.0	60.0	60.6	14.7	14	-	-	-	&mroOverlap; &acsSolarCalibration	
+N/A	6	Egress	2020 OCT 04 02:17:00	2020 OCT 04 02:17:41	2020 OCT 04 02:21:01	241.0	-54.2	-55.1	-59.7	-39.3	-40.2	-44.5	4.5	14	-	-	-	&mroOverlap; &acsSolarCalibration	
+N/A	7	Ingress	2020 OCT 04 03:31:40	2020 OCT 04 03:34:46	2020 OCT 04 03:35:25	225.0	85.9	78.0	76.1	57.0	60.0	60.6	14.7	14	-	-	-		
+N/A	7	Egress	2020 OCT 04 04:14:56	2020 OCT 04 04:15:37	2020 OCT 04 04:18:57	241.0	-83.1	-84.0	-88.6	-39.5	-40.5	-44.7	4.5	14	-	-	-		
+NOMAD	8	Ingress	2020 OCT 04 05:29:35	2020 OCT 04 05:32:40	2020 OCT 04 05:33:19	224.0	57.0	49.3	47.4	57.1	60.1	60.7	14.7	1	All Fullscan Fast #2	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 		
+N/A	8	Egress	2020 OCT 04 06:12:52	2020 OCT 04 06:13:32	2020 OCT 04 06:16:52	240.0	-111.9	-112.8	-117.4	-39.7	-40.7	-44.8	4.5	1	-	-	-		
+N/A	9	Ingress	2020 OCT 04 07:27:32	2020 OCT 04 07:30:36	2020 OCT 04 07:31:15	223.0	28.3	20.7	18.8	57.1	60.0	60.6	14.7	1	-	-	-		
+NOMAD	9	Egress	2020 OCT 04 08:10:50	2020 OCT 04 08:11:30	2020 OCT 04 08:14:48	238.0	-140.8	-141.7	-146.2	-40.0	-40.9	-45.0	4.5	1	HCL #11	Science: orders #121, #136, #126, #127, #129, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	10	Ingress	2020 OCT 04 09:25:30	2020 OCT 04 09:28:34	2020 OCT 04 09:29:13	223.0	-0.4	-8.0	-9.9	57.2	60.0	60.6	14.7	14	-	-	-		
+N/A	10	Egress	2020 OCT 04 10:08:51	2020 OCT 04 10:09:31	2020 OCT 04 10:12:49	238.0	-169.7	-170.6	-175.1	-40.3	-41.2	-45.2	4.5	14	-	-	-		
+N/A	11	Ingress	2020 OCT 04 11:23:31	2020 OCT 04 11:26:34	2020 OCT 04 11:27:13	222.0	-29.3	-36.8	-38.7	57.3	60.1	60.7	14.7	7	-	-	-		
+N/A	11	Egress	2020 OCT 04 12:06:53	2020 OCT 04 12:07:33	2020 OCT 04 12:10:51	238.0	161.3	160.4	155.9	-40.6	-41.5	-45.5	4.5	7	-	-	-		
+N/A	12	Ingress	2020 OCT 04 13:21:28	2020 OCT 04 13:24:31	2020 OCT 04 13:25:10	222.0	-58.2	-65.7	-67.6	57.4	60.2	60.8	14.6	1	-	-	-	&mroOverlap; 	
+NOMAD	12	Egress	2020 OCT 04 14:04:52	2020 OCT 04 14:05:32	2020 OCT 04 14:08:50	238.0	132.4	131.5	127.0	-40.9	-41.7	-45.7	4.5	1	134 only #2	Science: orders #134, #134, #134, #134, #134, #134, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
+ACS	13	Ingress	2020 OCT 04 15:19:23	2020 OCT 04 15:22:26	2020 OCT 04 15:23:04	221.0	-87.1	-94.5	-96.4	57.5	60.2	60.8	14.6	14	-	-	-	&daysideMatch:ARSIA MONS; &daysideMatch:OLYMPICA FOSSAE-JOVIS THOLUS; 	
+N/A	13	Egress	2020 OCT 04 16:02:48	2020 OCT 04 16:03:28	2020 OCT 04 16:06:46	238.0	103.5	102.6	98.1	-41.1	-42.0	-46.0	4.4	14	-	-	-	&daysideMatch:ARSIA MONS; &daysideMatch:OLYMPICA FOSSAE-JOVIS THOLUS; 	
+N/A	14	Ingress	2020 OCT 04 17:17:16	2020 OCT 04 17:20:19	2020 OCT 04 17:20:57	221.0	-115.8	-123.2	-125.0	57.5	60.2	60.8	14.6	1	-	-	-	&mroOverlap; 	
+NOMAD	14	Egress	2020 OCT 04 18:00:42	2020 OCT 04 18:01:22	2020 OCT 04 18:04:39	237.0	74.7	73.8	69.3	-41.4	-42.2	-46.1	4.4	1	All Fullscan Slow #2	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (1 order(s) per 1 second(s))	COP row -1: 	&mroOverlap; 	
+ACS	15	Ingress	2020 OCT 04 19:15:13	2020 OCT 04 19:18:15	2020 OCT 04 19:18:53	220.0	-144.5	-151.9	-153.6	57.5	60.3	60.8	14.6	14	-	-	-		
+N/A	15	Egress	2020 OCT 04 19:58:41	2020 OCT 04 19:59:21	2020 OCT 04 20:02:37	236.0	45.8	44.9	40.4	-41.6	-42.4	-46.3	4.4	14	-	-	-		
+N/A	16	Ingress	2020 OCT 04 21:13:11	2020 OCT 04 21:16:13	2020 OCT 04 21:16:51	220.0	-173.3	179.4	177.6	57.6	60.3	60.8	14.6	1	-	-	-		
+NOMAD	16	Egress	2020 OCT 04 21:56:42	2020 OCT 04 21:57:22	2020 OCT 04 22:00:37	235.0	16.9	16.0	11.5	-41.8	-42.7	-46.4	4.4	1	129 only #2	Science: orders #129, #129, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	17	Ingress	2020 OCT 04 23:11:11	2020 OCT 04 23:14:12	2020 OCT 04 23:14:50	219.0	157.8	150.6	148.9	57.7	60.3	60.9	14.6	1	6SUBD CH4 #1	Science: orders #121, #133, #134, #135, #136, #169, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	17	Egress	2020 OCT 04 23:54:43	2020 OCT 04 23:55:23	2020 OCT 04 23:58:38	235.0	-12.1	-13.0	-17.4	-42.1	-42.9	-46.7	4.4	1	-	-	-		
+N/A	18	Ingress	2020 OCT 05 01:09:08	2020 OCT 05 01:12:09	2020 OCT 05 01:12:47	219.0	129.0	121.9	120.1	57.7	60.4	60.9	14.6	14	-	-	-		
+ACS	18	Egress	2020 OCT 05 01:52:42	2020 OCT 05 01:53:21	2020 OCT 05 01:56:36	234.0	-41.0	-41.9	-46.3	-42.4	-43.2	-46.9	4.4	14	-	-	-		
+NOMAD	19	Ingress	2020 OCT 05 03:07:03	2020 OCT 05 03:10:04	2020 OCT 05 03:10:42	219.0	100.2	93.1	91.3	57.8	60.4	60.9	14.6	1	CO2 Fullscan Fast #3	Diffraction order stepping (fullscan): 10 orders from 125 to 135 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 	&mroOverlap; 	
+N/A	19	Egress	2020 OCT 05 03:50:38	2020 OCT 05 03:51:17	2020 OCT 05 03:54:33	235.0	-69.9	-70.8	-75.2	-42.6	-43.4	-47.1	4.4	1	-	-	-	&mroOverlap; 	
+N/A	20	Ingress	2020 OCT 05 05:04:58	2020 OCT 05 05:07:58	2020 OCT 05 05:08:36	218.0	71.3	64.3	62.5	57.9	60.5	61.0	14.6	14	-	-	-	&mroOverlap; 	
+ACS	20	Egress	2020 OCT 05 05:48:34	2020 OCT 05 05:49:13	2020 OCT 05 05:52:28	234.0	-98.8	-99.7	-104.1	-42.9	-43.7	-47.3	4.3	14	-	-	-	&mroOverlap; 	
+NOMAD	21	Ingress	2020 OCT 05 07:02:54	2020 OCT 05 07:05:53	2020 OCT 05 07:06:31	217.0	42.6	35.6	33.9	58.0	60.5	61.0	14.6	1	132 only #2	Science: orders #132, #132, #132, #132, #132, #132, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
+N/A	21	Egress	2020 OCT 05 07:46:31	2020 OCT 05 07:47:10	2020 OCT 05 07:50:24	233.0	-127.6	-128.5	-132.9	-43.1	-43.9	-47.4	4.3	1	-	-	-	&mroOverlap; 	
+N/A	22	Ingress	2020 OCT 05 09:00:51	2020 OCT 05 09:03:50	2020 OCT 05 09:04:28	217.0	13.9	7.0	5.3	58.0	60.4	61.0	14.6	14	-	-	-	&daysideMatch:MAWRTH VALLIS-ARAM CHAOS; 	
+ACS	22	Egress	2020 OCT 05 09:44:31	2020 OCT 05 09:45:10	2020 OCT 05 09:48:23	232.0	-156.6	-157.4	-161.8	-43.3	-44.1	-47.6	4.3	14	-	-	-	&daysideMatch:MAWRTH VALLIS-ARAM CHAOS; 	
+NOMAD	23	Ingress	2020 OCT 05 10:58:50	2020 OCT 05 11:01:49	2020 OCT 05 11:02:27	217.0	-14.9	-21.8	-23.5	58.0	60.5	61.0	14.6	1	CO2 100km #1	Science: orders #167, #155, #159, #164, #148, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	23	Egress	2020 OCT 05 11:42:32	2020 OCT 05 11:43:11	2020 OCT 05 11:46:24	232.0	174.5	173.6	169.3	-43.6	-44.4	-47.8	4.3	1	-	-	-		
+N/A	24	Ingress	2020 OCT 05 12:56:50	2020 OCT 05 12:59:48	2020 OCT 05 13:00:26	216.0	-43.8	-50.6	-52.3	58.1	60.5	61.1	14.6	1	-	-	-		
+NOMAD	24	Egress	2020 OCT 05 13:40:32	2020 OCT 05 13:41:11	2020 OCT 05 13:44:25	233.0	145.5	144.7	140.3	-43.9	-44.7	-48.1	4.3	1	6SUBD CH4 #1	Science: orders #121, #133, #134, #135, #136, #169, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	25	Ingress	2020 OCT 05 14:54:45	2020 OCT 05 14:57:44	2020 OCT 05 14:58:21	216.0	-72.7	-79.5	-81.1	58.2	60.6	61.1	14.6	14	-	-	-	&daysideMatch:ASCRAEUS MONS; 	
+N/A	25	Egress	2020 OCT 05 15:38:29	2020 OCT 05 15:39:08	2020 OCT 05 15:42:22	233.0	116.6	115.7	111.4	-44.2	-44.9	-48.3	4.3	14	-	-	-	&daysideMatch:ASCRAEUS MONS; 	
+N/A	26	Ingress	2020 OCT 05 16:52:38	2020 OCT 05 16:55:37	2020 OCT 05 16:56:14	216.0	-101.4	-108.2	-109.8	58.3	60.6	61.1	14.6	1	-	-	-	&daysideMatch:OLYMPUS MONS; 	
+NOMAD	26	Egress	2020 OCT 05 17:36:23	2020 OCT 05 17:37:02	2020 OCT 05 17:40:15	232.0	87.7	86.9	82.5	-44.4	-45.1	-48.5	4.3	1	HCL #8	Science: orders #121, #136, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:OLYMPUS MONS; 	
+ACS	27	Ingress	2020 OCT 05 18:50:32	2020 OCT 05 18:53:30	2020 OCT 05 18:54:07	215.0	-130.1	-136.8	-138.4	58.3	60.6	61.1	14.6	14	-	-	-		
+N/A	27	Egress	2020 OCT 05 19:34:18	2020 OCT 05 19:34:57	2020 OCT 05 19:38:09	231.0	58.9	58.0	53.7	-44.6	-45.3	-48.6	4.2	14	-	-	-		
+N/A	28	Ingress	2020 OCT 05 20:48:31	2020 OCT 05 20:51:28	2020 OCT 05 20:52:05	214.0	-158.9	-165.5	-167.1	58.4	60.6	61.1	14.6	1	-	-	-		
+NOMAD	28	Egress	2020 OCT 05 21:32:18	2020 OCT 05 21:32:57	2020 OCT 05 21:36:08	230.0	30.0	29.1	24.8	-44.8	-45.5	-48.8	4.2	1	CO2 100km #1	Science: orders #167, #155, #159, #164, #148, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	29	Ingress	2020 OCT 05 22:46:29	2020 OCT 05 22:49:26	2020 OCT 05 22:50:03	214.0	172.3	165.7	164.1	58.4	60.7	61.1	14.6	1	CO2 100km #1	Science: orders #167, #155, #159, #164, #148, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:INSIGHT; &daysideMatch:CURIOSITY; 	
+N/A	29	Egress	2020 OCT 05 23:30:19	2020 OCT 05 23:30:58	2020 OCT 05 23:34:09	230.0	1.0	0.2	-4.1	-45.0	-45.8	-49.0	4.2	1	-	-	-	&daysideMatch:INSIGHT; &daysideMatch:CURIOSITY; 	
+N/A	30	Ingress	2020 OCT 06 00:44:27	2020 OCT 06 00:47:24	2020 OCT 06 00:48:01	214.0	143.5	137.0	135.4	58.5	60.7	61.2	14.6	14	-	-	-		
+ACS	30	Egress	2020 OCT 06 01:28:18	2020 OCT 06 01:28:57	2020 OCT 06 01:32:07	229.0	-27.9	-28.8	-33.0	-45.3	-46.0	-49.2	4.2	14	-	-	-		
+NOMAD	31	Ingress	2020 OCT 06 02:42:22	2020 OCT 06 02:45:19	2020 OCT 06 02:45:56	214.0	114.7	108.2	106.6	58.5	60.7	61.2	14.6	1	6SUBD Nominal #2	Science: orders #119, #136, #149, #169, #186, #189, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	31	Egress	2020 OCT 06 03:26:15	2020 OCT 06 03:26:54	2020 OCT 06 03:30:04	229.0	-56.8	-57.7	-61.9	-45.6	-46.3	-49.4	4.2	1	-	-	-		
+N/A	32	Ingress	2020 OCT 06 04:40:16	2020 OCT 06 04:43:13	2020 OCT 06 04:43:50	214.0	85.8	79.4	77.9	58.6	60.8	61.3	14.6	3	-	-	-	&mroOverlap; 	
+ACS	32	Egress	2020 OCT 06 05:24:11	2020 OCT 06 05:24:50	2020 OCT 06 05:28:00	229.0	-85.7	-86.6	-90.8	-45.8	-46.5	-49.6	4.2	3	-	-	-	&mroOverlap; 	
+NOMAD	33	Ingress	2020 OCT 06 06:38:12	2020 OCT 06 06:41:08	2020 OCT 06 06:41:45	213.0	57.0	50.7	49.2	58.7	60.8	61.3	14.6	1	6SUBD Nominal #3	Science: orders #167, #136, #169, #121, #190, #192, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
+N/A	33	Egress	2020 OCT 06 07:22:07	2020 OCT 06 07:22:45	2020 OCT 06 07:25:55	228.0	-114.6	-115.4	-119.6	-46.0	-46.7	-49.7	4.2	1	-	-	-	&mroOverlap; 	
+N/A	34	Ingress	2020 OCT 06 08:36:09	2020 OCT 06 08:39:04	2020 OCT 06 08:39:41	212.0	28.4	22.1	20.6	58.7	60.8	61.2	14.6	1	-	-	-	&mroOverlap; 	
+NOMAD	34	Egress	2020 OCT 06 09:20:05	2020 OCT 06 09:20:43	2020 OCT 06 09:23:52	227.0	-143.5	-144.3	-148.5	-46.2	-46.9	-49.8	4.1	1	6SUBD Nom CO #3	Science: orders #136, #169, #186, #187, #189, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
+ACS	35	Ingress	2020 OCT 06 10:34:07	2020 OCT 06 10:37:02	2020 OCT 06 10:37:39	212.0	-0.4	-6.6	-8.1	58.7	60.8	61.2	14.6	14	-	-	-		
+N/A	35	Egress	2020 OCT 06 11:18:05	2020 OCT 06 11:18:43	2020 OCT 06 11:21:52	227.0	-172.5	-173.3	-177.4	-46.5	-47.1	-50.0	4.1	14	-	-	-		
+N/A	36	Ingress	2020 OCT 06 12:32:07	2020 OCT 06 12:35:02	2020 OCT 06 12:35:39	212.0	-29.2	-35.4	-36.9	58.8	60.8	61.3	14.6	14	-	-	-		
+N/A	36	Egress	2020 OCT 06 13:16:06	2020 OCT 06 13:16:44	2020 OCT 06 13:19:53	227.0	158.6	157.7	153.6	-46.7	-47.4	-50.3	4.1	14	-	-	-		
+N/A	37	Ingress	2020 OCT 06 14:30:04	2020 OCT 06 14:32:58	2020 OCT 06 14:33:35	211.0	-58.2	-64.2	-65.7	58.9	60.9	61.3	14.5	1	-	-	-		
+NOMAD	37	Egress	2020 OCT 06 15:14:04	2020 OCT 06 15:14:42	2020 OCT 06 15:17:52	228.0	129.6	128.8	124.6	-47.0	-47.6	-50.5	4.1	1	6SUBD Nominal #2	Science: orders #119, #136, #149, #169, #186, #189, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	38	Ingress	2020 OCT 06 16:27:58	2020 OCT 06 16:30:52	2020 OCT 06 16:31:29	211.0	-87.0	-93.0	-94.5	58.9	60.9	61.4	14.5	3	-	-	-	&daysideMatch:ULYSSES FOSSAE; &mroOverlap; 	
+N/A	38	Egress	2020 OCT 06 17:11:59	2020 OCT 06 17:12:37	2020 OCT 06 17:15:46	227.0	100.7	99.9	95.7	-47.2	-47.8	-50.7	4.1	3	-	-	-	&daysideMatch:ULYSSES FOSSAE; &mroOverlap; 	
+N/A	39	Ingress	2020 OCT 06 18:25:51	2020 OCT 06 18:28:46	2020 OCT 06 18:29:22	211.0	-115.6	-121.7	-123.1	59.0	61.0	61.4	14.5	1	-	-	-	&mroOverlap; 	
+NOMAD	39	Egress	2020 OCT 06 19:09:53	2020 OCT 06 19:10:31	2020 OCT 06 19:13:39	226.0	71.9	71.0	66.9	-47.4	-48.0	-50.8	4.1	1	6SUBD Nom CO #2	Science: orders #134, #169, #186, #187, #189, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
+ACS	40	Ingress	2020 OCT 06 20:23:48	2020 OCT 06 20:26:42	2020 OCT 06 20:27:18	210.0	-144.4	-150.3	-151.7	59.0	61.0	61.4	14.5	3	-	-	-	&mroOverlap; 	
+N/A	40	Egress	2020 OCT 06 21:07:51	2020 OCT 06 21:08:29	2020 OCT 06 21:11:37	226.0	43.0	42.1	38.1	-47.6	-48.2	-50.9	4.1	3	-	-	-	&mroOverlap; 	
+N/A	41	Ingress	2020 OCT 06 22:21:48	2020 OCT 06 22:24:41	2020 OCT 06 22:25:17	209.0	-173.2	-179.0	179.6	59.1	61.0	61.4	14.5	1	-	-	-	&daysideMatch:AEOLIS MENSAE MFF; 	
+NOMAD	41	Egress	2020 OCT 06 23:05:52	2020 OCT 06 23:06:30	2020 OCT 06 23:09:37	225.0	14.0	13.2	9.2	-47.8	-48.4	-51.1	4.0	1	6SUBD Nominal #11	Science: orders #121, #134, #126, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:AEOLIS MENSAE MFF; 	
+NOMAD	42	Ingress	2020 OCT 07 00:19:46	2020 OCT 07 00:22:39	2020 OCT 07 00:23:15	209.0	158.0	152.2	150.9	59.1	61.0	61.4	14.5	1	CO2 Fullscan Fast #3	Diffraction order stepping (fullscan): 10 orders from 125 to 135 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 	&mroOverlap; 	
+N/A	42	Egress	2020 OCT 07 01:03:52	2020 OCT 07 01:04:30	2020 OCT 07 01:07:37	225.0	-14.9	-15.8	-19.8	-48.1	-48.6	-51.3	4.0	1	-	-	-	&mroOverlap; 	
+N/A	43	Ingress	2020 OCT 07 02:17:42	2020 OCT 07 02:20:35	2020 OCT 07 02:21:11	209.0	129.2	123.5	122.1	59.2	61.0	61.4	14.5	14	-	-	-		
+ACS	43	Egress	2020 OCT 07 03:01:49	2020 OCT 07 03:02:27	2020 OCT 07 03:05:34	225.0	-43.9	-44.7	-48.7	-48.3	-48.9	-51.5	4.0	14	-	-	-		
+NOMAD	44	Ingress	2020 OCT 07 04:15:36	2020 OCT 07 04:18:29	2020 OCT 07 04:19:05	209.0	100.4	94.7	93.3	59.2	61.1	61.5	14.5	1	HCL #4	Science: orders #121, #134, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	44	Egress	2020 OCT 07 04:59:45	2020 OCT 07 05:00:23	2020 OCT 07 05:03:30	225.0	-72.8	-73.6	-77.6	-48.5	-49.1	-51.7	4.0	1	-	-	-		
+N/A	45	Ingress	2020 OCT 07 06:13:30	2020 OCT 07 06:16:23	2020 OCT 07 06:16:59	209.0	71.6	65.9	64.6	59.3	61.1	61.5	14.5	14	-	-	-		
+ACS	45	Egress	2020 OCT 07 06:57:40	2020 OCT 07 06:58:18	2020 OCT 07 07:01:25	225.0	-101.7	-102.5	-106.5	-48.7	-49.3	-51.8	4.0	14	-	-	-		
+NOMAD	46	Ingress	2020 OCT 07 08:11:27	2020 OCT 07 08:14:19	2020 OCT 07 08:14:55	208.0	42.9	37.3	36.0	59.3	61.1	61.5	14.5	1	6SUBD Nominal #48	Science: orders #121, #134, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	46	Egress	2020 OCT 07 08:55:37	2020 OCT 07 08:56:15	2020 OCT 07 08:59:21	224.0	-130.6	-131.4	-135.4	-48.9	-49.5	-52.0	4.0	1	-	-	-		
+N/A	47	Ingress	2020 OCT 07 10:09:24	2020 OCT 07 10:12:16	2020 OCT 07 10:12:52	208.0	14.2	8.7	7.4	59.3	61.1	61.5	14.5	3	-	-	-	&daysideMatch:MAWRTH VALLIS-ARAM CHAOS; &daysideMatch:MAWRTH VALLIS; 	
+ACS	47	Egress	2020 OCT 07 10:53:36	2020 OCT 07 10:54:13	2020 OCT 07 10:57:19	223.0	-159.5	-160.3	-164.3	-49.1	-49.7	-52.1	3.9	3	-	-	-	&daysideMatch:MAWRTH VALLIS-ARAM CHAOS; &daysideMatch:MAWRTH VALLIS; 	
+NOMAD	48	Ingress	2020 OCT 07 12:07:24	2020 OCT 07 12:10:15	2020 OCT 07 12:10:51	207.0	-14.6	-20.0	-21.3	59.4	61.1	61.5	14.5	1	All Fullscan Slow #2	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (1 order(s) per 1 second(s))	COP row -1: 		
+N/A	48	Egress	2020 OCT 07 12:51:37	2020 OCT 07 12:52:14	2020 OCT 07 12:55:20	223.0	171.5	170.7	166.8	-49.4	-49.9	-52.3	3.9	1	-	-	-		
+N/A	49	Ingress	2020 OCT 07 14:05:22	2020 OCT 07 14:08:13	2020 OCT 07 14:08:49	207.0	-43.5	-48.9	-50.1	59.5	61.2	61.5	14.5	1	-	-	-	&daysideMatch:SOUTH THAUMASIA; 	
+NOMAD	49	Egress	2020 OCT 07 14:49:36	2020 OCT 07 14:50:13	2020 OCT 07 14:53:19	223.0	142.5	141.7	137.8	-49.6	-50.1	-52.5	3.9	1	HCL #5	Science: orders #121, #134, #130, #130, #130, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:SOUTH THAUMASIA; 	
+ACS	50	Ingress	2020 OCT 07 16:03:17	2020 OCT 07 16:06:08	2020 OCT 07 16:06:44	207.0	-72.4	-77.7	-78.9	59.5	61.2	61.6	14.5	14	-	-	-	&daysideMatch:CERAUNIUS FOSSAE; 	
+N/A	50	Egress	2020 OCT 07 16:47:32	2020 OCT 07 16:48:09	2020 OCT 07 16:51:16	224.0	113.6	112.8	108.9	-49.9	-50.4	-52.7	3.9	14	-	-	-	&daysideMatch:CERAUNIUS FOSSAE; 	
+N/A	51	Ingress	2020 OCT 07 18:01:10	2020 OCT 07 18:04:01	2020 OCT 07 18:04:37	207.0	-101.1	-106.3	-107.6	59.6	61.2	61.6	14.5	1	-	-	-	&mroOverlap; 	
+NOMAD	51	Egress	2020 OCT 07 18:45:25	2020 OCT 07 18:46:02	2020 OCT 07 18:49:08	223.0	84.7	83.9	80.0	-50.0	-50.5	-52.8	3.9	1	6SUBD CO2 #10	Science: orders #156, #116, #118, #169, #154, #158, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
+ACS	52	Ingress	2020 OCT 07 19:59:05	2020 OCT 07 20:01:55	2020 OCT 07 20:02:31	206.0	-129.8	-134.9	-136.2	59.6	61.2	61.6	14.5	14	-	-	-	&mroOverlap; 	
+N/A	52	Egress	2020 OCT 07 20:43:21	2020 OCT 07 20:43:58	2020 OCT 07 20:47:03	222.0	55.8	55.0	51.2	-50.2	-50.7	-53.0	3.9	14	-	-	-	&mroOverlap; 	
+N/A	53	Ingress	2020 OCT 07 21:57:03	2020 OCT 07 21:59:53	2020 OCT 07 22:00:29	206.0	-158.5	-163.6	-164.8	59.6	61.2	61.6	14.5	1	-	-	-	&mroOverlap; 	
+NOMAD	53	Egress	2020 OCT 07 22:41:21	2020 OCT 07 22:41:58	2020 OCT 07 22:45:03	222.0	26.9	26.1	22.3	-50.4	-50.9	-53.1	3.8	1	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
+NOMAD	54	Ingress	2020 OCT 07 23:55:03	2020 OCT 07 23:57:52	2020 OCT 07 23:58:28	205.0	172.7	167.7	166.5	59.7	61.2	61.6	14.5	1	6SUBD Nominal #48	Science: orders #121, #134, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:INSIGHT; &daysideMatch:CURIOSITY; 	
+N/A	54	Egress	2020 OCT 08 00:39:21	2020 OCT 08 00:39:58	2020 OCT 08 00:43:02	221.0	-2.1	-2.9	-6.6	-50.6	-51.1	-53.3	3.8	1	-	-	-	&daysideMatch:INSIGHT; &daysideMatch:CURIOSITY; 	
+N/A	55	Ingress	2020 OCT 08 01:53:00	2020 OCT 08 01:55:49	2020 OCT 08 01:56:25	205.0	143.9	138.9	137.7	59.7	61.3	61.6	14.5	14	-	-	-		
+ACS	55	Egress	2020 OCT 08 02:37:20	2020 OCT 08 02:37:57	2020 OCT 08 02:41:01	221.0	-31.1	-31.9	-35.6	-50.9	-51.3	-53.5	3.8	14	-	-	-		
+NOMAD	56	Ingress	2020 OCT 08 03:50:54	2020 OCT 08 03:53:44	2020 OCT 08 03:54:20	206.0	115.1	110.1	109.0	59.8	61.3	61.6	14.5	1	6SUBD CH4 H2O #1	Science: orders #169, #132, #133, #134, #136, #137, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	56	Egress	2020 OCT 08 04:35:16	2020 OCT 08 04:35:53	2020 OCT 08 04:38:57	221.0	-60.1	-60.8	-64.5	-51.1	-51.6	-53.6	3.8	1	-	-	-		
+N/A	57	Ingress	2020 OCT 08 05:48:49	2020 OCT 08 05:51:38	2020 OCT 08 05:52:14	205.0	86.3	81.4	80.2	59.9	61.3	61.7	14.5	14	-	-	-		
+ACS	57	Egress	2020 OCT 08 06:33:11	2020 OCT 08 06:33:48	2020 OCT 08 06:36:52	221.0	-89.0	-89.7	-93.4	-51.3	-51.7	-53.8	3.8	14	-	-	-		
+NOMAD	58	Ingress	2020 OCT 08 07:46:44	2020 OCT 08 07:49:34	2020 OCT 08 07:50:09	205.0	57.5	52.7	51.6	59.9	61.3	61.7	14.5	1	6SUBD Nominal #3	Science: orders #167, #136, #169, #121, #190, #192, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
+N/A	58	Egress	2020 OCT 08 08:31:06	2020 OCT 08 08:31:43	2020 OCT 08 08:34:46	220.0	-117.9	-118.6	-122.3	-51.5	-51.9	-53.9	3.8	1	-	-	-	&mroOverlap; 	
+N/A	59	Ingress	2020 OCT 08 09:44:42	2020 OCT 08 09:47:31	2020 OCT 08 09:48:06	204.0	28.9	24.1	23.0	59.9	61.3	61.6	14.5	1	-	-	-		
+NOMAD	59	Egress	2020 OCT 08 10:29:04	2020 OCT 08 10:29:41	2020 OCT 08 10:32:43	219.0	-146.8	-147.5	-151.1	-51.7	-52.1	-54.0	3.7	1	HCL #4	Science: orders #121, #134, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	60	Ingress	2020 OCT 08 11:42:40	2020 OCT 08 11:45:29	2020 OCT 08 11:46:04	204.0	0.1	-4.6	-5.6	59.9	61.3	61.6	14.5	3	-	-	-	&mroOverlap; 	
+N/A	60	Egress	2020 OCT 08 12:27:04	2020 OCT 08 12:27:41	2020 OCT 08 12:30:43	219.0	-175.8	-176.5	179.9	-51.9	-52.3	-54.2	3.7	3	-	-	-	&mroOverlap; 	
+N/A	61	Ingress	2020 OCT 08 13:40:39	2020 OCT 08 13:43:28	2020 OCT 08 13:44:03	204.0	-28.7	-33.4	-34.4	60.0	61.4	61.7	14.5	14	-	-	-	&mroOverlap; 	
+N/A	61	Egress	2020 OCT 08 14:25:04	2020 OCT 08 14:25:41	2020 OCT 08 14:28:44	220.0	155.2	154.5	150.9	-52.1	-52.5	-54.4	3.7	14	-	-	-	&mroOverlap; 	
+N/A	62	Ingress	2020 OCT 08 15:38:36	2020 OCT 08 15:41:24	2020 OCT 08 15:41:59	203.0	-57.6	-62.2	-63.2	60.1	61.4	61.7	14.5	1	-	-	-		
+NOMAD	62	Egress	2020 OCT 08 16:23:01	2020 OCT 08 16:23:38	2020 OCT 08 16:26:41	220.0	126.2	125.5	121.9	-52.3	-52.7	-54.6	3.7	1	6SUBD Nominal #48	Science: orders #121, #134, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	63	Ingress	2020 OCT 08 17:36:29	2020 OCT 08 17:39:17	2020 OCT 08 17:39:52	203.0	-86.4	-90.9	-92.0	60.1	61.5	61.7	14.5	14	-	-	-		
+N/A	63	Egress	2020 OCT 08 18:20:55	2020 OCT 08 18:21:32	2020 OCT 08 18:24:35	220.0	97.3	96.6	93.0	-52.5	-52.9	-54.7	3.7	14	-	-	-		
+N/A	64	Ingress	2020 OCT 08 19:34:23	2020 OCT 08 19:37:11	2020 OCT 08 19:37:46	203.0	-115.1	-119.5	-120.5	60.1	61.4	61.7	14.5	1	-	-	-		
+NOMAD	64	Egress	2020 OCT 08 20:18:49	2020 OCT 08 20:19:26	2020 OCT 08 20:22:28	219.0	68.4	67.7	64.2	-52.7	-53.1	-54.9	3.7	1	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	65	Ingress	2020 OCT 08 21:32:21	2020 OCT 08 21:35:08	2020 OCT 08 21:35:43	202.0	-143.8	-148.1	-149.2	60.2	61.4	61.7	14.5	14	-	-	-		
+N/A	65	Egress	2020 OCT 08 22:16:48	2020 OCT 08 22:17:25	2020 OCT 08 22:20:27	219.0	39.5	38.8	35.3	-52.9	-53.2	-55.0	3.6	14	-	-	-		
+N/A	66	Ingress	2020 OCT 08 23:30:19	2020 OCT 08 23:33:06	2020 OCT 08 23:33:41	202.0	-172.6	-176.8	-177.8	60.2	61.4	61.7	14.5	1	-	-	-	&daysideMatch:AEOLIS MENSAE MFF; 	
+NOMAD	66	Egress	2020 OCT 09 00:14:48	2020 OCT 09 00:15:25	2020 OCT 09 00:18:26	218.0	10.5	9.8	6.4	-53.1	-53.4	-55.1	3.6	1	6SUBD Nominal #42	Science: orders #121, #134, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:AEOLIS MENSAE MFF; 	
+NOMAD	67	Ingress	2020 OCT 09 01:28:17	2020 OCT 09 01:31:04	2020 OCT 09 01:31:39	202.0	158.7	154.4	153.5	60.2	61.5	61.7	14.5	1	133 only #2	Science: orders #133, #133, #133, #133, #133, #133, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	67	Egress	2020 OCT 09 02:12:47	2020 OCT 09 02:13:24	2020 OCT 09 02:16:25	218.0	-18.5	-19.2	-22.6	-53.3	-53.6	-55.3	3.6	1	-	-	-		
+N/A	68	Ingress	2020 OCT 09 03:26:12	2020 OCT 09 03:28:59	2020 OCT 09 03:29:34	202.0	129.8	125.7	124.7	60.3	61.5	61.8	14.5	14	-	-	-		
+ACS	68	Egress	2020 OCT 09 04:10:43	2020 OCT 09 04:11:20	2020 OCT 09 04:14:21	218.0	-47.5	-48.2	-51.5	-53.5	-53.9	-55.5	3.6	14	-	-	-		
+NOMAD	69	Ingress	2020 OCT 09 05:24:06	2020 OCT 09 05:26:53	2020 OCT 09 05:27:28	202.0	101.0	96.9	96.0	60.4	61.5	61.8	14.5	1	6SUBD Nominal #12	Science: orders #121, #134, #127, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	69	Egress	2020 OCT 09 06:08:38	2020 OCT 09 06:09:15	2020 OCT 09 06:12:16	218.0	-76.4	-77.1	-80.5	-53.7	-54.0	-55.6	3.6	1	-	-	-		
+N/A	70	Ingress	2020 OCT 09 07:22:00	2020 OCT 09 07:24:47	2020 OCT 09 07:25:22	202.0	72.3	68.2	67.3	60.4	61.6	61.8	14.5	14	-	-	-		
+ACS	70	Egress	2020 OCT 09 08:06:33	2020 OCT 09 08:07:09	2020 OCT 09 08:10:11	218.0	-105.3	-106.0	-109.3	-53.8	-54.2	-55.7	3.6	14	-	-	-		
+NOMAD	71	Ingress	2020 OCT 09 09:19:57	2020 OCT 09 09:22:43	2020 OCT 09 09:23:18	201.0	43.6	39.7	38.7	60.4	61.5	61.8	14.5	1	6SUBD Nominal #12	Science: orders #121, #134, #127, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:MERIDIANI SULPHATES; &mroOverlap; 	
+N/A	71	Egress	2020 OCT 09 10:04:29	2020 OCT 09 10:05:05	2020 OCT 09 10:08:06	217.0	-134.3	-134.9	-138.2	-54.0	-54.3	-55.9	3.5	1	-	-	-	&daysideMatch:MERIDIANI SULPHATES; &mroOverlap; 	
+N/A	72	Ingress	2020 OCT 09 11:17:55	2020 OCT 09 11:20:41	2020 OCT 09 11:21:16	201.0	14.9	11.0	10.1	60.4	61.5	61.8	14.5	14	-	-	-	&daysideMatch:ARGYRE; &mroOverlap; 	
+ACS	72	Egress	2020 OCT 09 12:02:28	2020 OCT 09 12:03:04	2020 OCT 09 12:06:04	216.0	-163.2	-163.9	-167.1	-54.2	-54.5	-56.0	3.5	14	-	-	-	&daysideMatch:ARGYRE; &mroOverlap; 	
+NOMAD	73	Ingress	2020 OCT 09 13:15:54	2020 OCT 09 13:18:40	2020 OCT 09 13:19:15	201.0	-13.9	-17.7	-18.6	60.5	61.5	61.8	14.5	1	6SUBD CO2 #10	Science: orders #156, #116, #118, #169, #154, #158, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:EASTERN COPRATES; 	
+N/A	73	Egress	2020 OCT 09 14:00:28	2020 OCT 09 14:01:04	2020 OCT 09 14:04:05	217.0	167.7	167.1	163.9	-54.4	-54.7	-56.2	3.5	1	-	-	-	&daysideMatch:EASTERN COPRATES; 	
+N/A	74	Ingress	2020 OCT 09 15:13:52	2020 OCT 09 15:16:38	2020 OCT 09 15:17:13	201.0	-42.7	-46.5	-47.4	60.5	61.6	61.8	14.5	1	-	-	-		
+NOMAD	74	Egress	2020 OCT 09 15:58:26	2020 OCT 09 15:59:02	2020 OCT 09 16:02:03	217.0	138.7	138.1	134.9	-54.6	-54.9	-56.3	3.5	1	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	75	Ingress	2020 OCT 09 17:11:46	2020 OCT 09 17:14:32	2020 OCT 09 17:15:07	201.0	-71.6	-75.3	-76.1	60.6	61.6	61.9	14.5	14	-	-	-		
+N/A	75	Egress	2020 OCT 09 17:56:21	2020 OCT 09 17:56:57	2020 OCT 09 17:59:58	217.0	109.8	109.1	106.0	-54.8	-55.1	-56.5	3.5	14	-	-	-		
+N/A	76	Ingress	2020 OCT 09 19:09:38	2020 OCT 09 19:12:24	2020 OCT 09 19:12:59	201.0	-100.2	-103.9	-104.8	60.6	61.6	61.9	14.5	1	-	-	-		
+NOMAD	76	Egress	2020 OCT 09 19:54:14	2020 OCT 09 19:54:50	2020 OCT 09 19:57:50	216.0	80.8	80.2	77.1	-55.0	-55.3	-56.6	3.4	1	6SUBD Nominal #3	Science: orders #167, #136, #169, #121, #190, #192, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	77	Ingress	2020 OCT 09 21:07:35	2020 OCT 09 21:10:20	2020 OCT 09 21:10:55	200.0	-128.9	-132.5	-133.3	60.6	61.6	61.8	14.5	14	-	-	-		
+N/A	77	Egress	2020 OCT 09 21:52:10	2020 OCT 09 21:52:46	2020 OCT 09 21:55:46	216.0	51.9	51.3	48.2	-55.1	-55.4	-56.7	3.4	14	-	-	-		
+N/A	78	Ingress	2020 OCT 09 23:05:33	2020 OCT 09 23:08:18	2020 OCT 09 23:08:53	200.0	-157.7	-161.2	-162.0	60.6	61.6	61.8	14.5	1	-	-	-		
+NOMAD	78	Egress	2020 OCT 09 23:50:10	2020 OCT 09 23:50:46	2020 OCT 09 23:53:46	216.0	23.0	22.3	19.3	-55.3	-55.6	-56.8	3.4	1	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	79	Ingress	2020 OCT 10 01:03:31	2020 OCT 10 01:06:16	2020 OCT 10 01:06:51	200.0	173.6	170.1	169.3	60.7	61.6	61.8	14.5	1	6SUBD Nom CO #1	Science: orders #121, #149, #186, #187, #189, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:INSIGHT; &mroOverlap; 	
+N/A	79	Egress	2020 OCT 10 01:48:10	2020 OCT 10 01:48:46	2020 OCT 10 01:51:45	215.0	-6.1	-6.7	-9.6	-55.5	-55.8	-57.0	3.4	1	-	-	-	&daysideMatch:INSIGHT; &mroOverlap; 	
+N/A	80	Ingress	2020 OCT 10 03:01:28	2020 OCT 10 03:04:13	2020 OCT 10 03:04:48	200.0	144.8	141.4	140.6	60.7	61.6	61.9	14.5	14	-	-	-		
+ACS	80	Egress	2020 OCT 10 03:46:07	2020 OCT 10 03:46:43	2020 OCT 10 03:49:42	215.0	-35.1	-35.7	-38.6	-55.7	-56.0	-57.2	3.4	14	-	-	-		
+NOMAD	81	Ingress	2020 OCT 10 04:59:23	2020 OCT 10 05:02:08	2020 OCT 10 05:02:43	200.0	116.0	112.6	111.9	60.8	61.7	61.9	14.5	1	6SUBD CH4 #1	Science: orders #121, #133, #134, #135, #136, #169, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:NILI FOSSAE; 	
+N/A	81	Egress	2020 OCT 10 05:44:03	2020 OCT 10 05:44:39	2020 OCT 10 05:47:39	216.0	-64.1	-64.7	-67.6	-55.9	-56.2	-57.3	3.3	1	-	-	-	&daysideMatch:NILI FOSSAE; 	
+N/A	82	Ingress	2020 OCT 10 06:57:17	2020 OCT 10 07:00:02	2020 OCT 10 07:00:37	200.0	87.2	83.9	83.1	60.8	61.7	61.9	14.5	14	-	-	-		
+ACS	82	Egress	2020 OCT 10 07:41:57	2020 OCT 10 07:42:33	2020 OCT 10 07:45:33	216.0	-93.0	-93.6	-96.5	-56.1	-56.3	-57.4	3.3	14	-	-	-		
+NOMAD	83	Ingress	2020 OCT 10 08:55:13	2020 OCT 10 08:57:58	2020 OCT 10 08:58:32	199.0	58.5	55.3	54.6	60.9	61.7	61.9	14.5	1	6SUBD Nominal #12	Science: orders #121, #134, #127, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	83	Egress	2020 OCT 10 09:39:53	2020 OCT 10 09:40:29	2020 OCT 10 09:43:28	215.0	-122.0	-122.5	-125.4	-56.2	-56.5	-57.5	3.3	1	-	-	-		
+N/A	84	Ingress	2020 OCT 10 10:53:10	2020 OCT 10 10:55:55	2020 OCT 10 10:56:29	199.0	29.8	26.7	26.0	60.9	61.7	61.9	14.5	14	-	-	-	&nomadSolarCalibration; &mroOverlap; 	
+N/A	84	Egress	2020 OCT 10 11:37:50	2020 OCT 10 11:38:26	2020 OCT 10 11:41:24	214.0	-150.9	-151.5	-154.3	-56.4	-56.6	-57.7	3.3	14	-	-	-	&nomadSolarCalibration; &mroOverlap; 	
+N/A	85	Ingress	2020 OCT 10 12:51:09	2020 OCT 10 12:53:54	2020 OCT 10 12:54:28	199.0	1.1	-2.0	-2.7	60.9	61.7	61.9	14.5	14	-	-	-	&possibleOCM; 	
+N/A	85	Egress	2020 OCT 10 13:35:50	2020 OCT 10 13:36:26	2020 OCT 10 13:39:24	214.0	-180.0	179.5	176.8	-56.6	-56.8	-57.8	3.3	14	-	-	-	&possibleOCM; 	
+N/A	86	Ingress	2020 OCT 10 14:49:07	2020 OCT 10 14:51:52	2020 OCT 10 14:52:26	199.0	-27.8	-30.8	-31.4	60.9	61.7	61.9	14.5	14	-	-	-	&possibleOCM; 	
+N/A	86	Egress	2020 OCT 10 15:33:49	2020 OCT 10 15:34:25	2020 OCT 10 15:37:24	215.0	151.0	150.4	147.7	-56.8	-57.0	-58.0	3.3	14	-	-	-	&possibleOCM; 	
+N/A	87	Ingress	2020 OCT 10 16:47:04	2020 OCT 10 16:49:48	2020 OCT 10 16:50:22	198.0	-56.6	-59.5	-60.2	61.0	61.8	61.9	14.5	3	-	-	-		
+N/A	87	Egress	2020 OCT 10 17:31:45	2020 OCT 10 17:32:21	2020 OCT 10 17:35:20	215.0	122.0	121.4	118.8	-57.0	-57.2	-58.1	3.2	3	-	-	-		
+N/A	88	Ingress	2020 OCT 10 18:44:55	2020 OCT 10 18:47:40	2020 OCT 10 18:48:14	199.0	-85.4	-88.2	-88.9	61.1	61.8	61.9	14.5	1	-	-	-		
+NOMAD	88	Egress	2020 OCT 10 19:29:38	2020 OCT 10 19:30:14	2020 OCT 10 19:33:13	215.0	93.0	92.5	89.8	-57.1	-57.3	-58.3	3.2	1	HCL #4	Science: orders #121, #134, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	89	Ingress	2020 OCT 10 20:42:50	2020 OCT 10 20:45:34	2020 OCT 10 20:46:08	198.0	-114.0	-116.8	-117.5	61.1	61.8	61.9	14.5	14	-	-	-		
+N/A	89	Egress	2020 OCT 10 21:27:32	2020 OCT 10 21:28:08	2020 OCT 10 21:31:06	214.0	64.1	63.5	61.0	-57.3	-57.5	-58.3	3.2	14	-	-	-		
+N/A	90	Ingress	2020 OCT 10 22:40:47	2020 OCT 10 22:43:31	2020 OCT 10 22:44:05	198.0	-142.7	-145.4	-146.0	61.1	61.8	61.9	14.5	1	-	-	-		
+NOMAD	90	Egress	2020 OCT 10 23:25:30	2020 OCT 10 23:26:06	2020 OCT 10 23:29:04	214.0	35.1	34.6	32.1	-57.4	-57.6	-58.5	3.2	1	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	91	Ingress	2020 OCT 11 00:38:46	2020 OCT 11 00:41:30	2020 OCT 11 00:42:04	198.0	-171.5	-174.1	-174.7	61.1	61.8	61.9	14.5	3	-	-	-	&daysideMatch:AEOLIS MENSAE MFF; &daysideMatch:CURIOSITY; &mroOverlap; 	
+N/A	91	Egress	2020 OCT 11 01:23:30	2020 OCT 11 01:24:06	2020 OCT 11 01:27:04	214.0	6.1	5.6	3.1	-57.6	-57.8	-58.6	3.2	3	-	-	-	&daysideMatch:AEOLIS MENSAE MFF; &daysideMatch:CURIOSITY; &mroOverlap; 	
+N/A	92	Ingress	2020 OCT 11 02:36:43	2020 OCT 11 02:39:27	2020 OCT 11 02:40:01	198.0	159.8	157.2	156.6	61.1	61.8	61.9	14.5	1	-	-	-	&mroOverlap; 	
+NOMAD	92	Egress	2020 OCT 11 03:21:28	2020 OCT 11 03:22:04	2020 OCT 11 03:25:02	214.0	-23.0	-23.5	-25.9	-57.8	-58.0	-58.7	3.1	1	CO2 100km #1	Science: orders #167, #155, #159, #164, #148, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
+ACS	93	Ingress	2020 OCT 11 04:34:38	2020 OCT 11 04:37:22	2020 OCT 11 04:37:56	198.0	131.0	128.4	127.9	61.2	61.8	61.9	14.5	14	-	-	-		
+N/A	93	Egress	2020 OCT 11 05:19:23	2020 OCT 11 05:19:59	2020 OCT 11 05:22:57	214.0	-52.0	-52.5	-54.9	-58.0	-58.1	-58.9	3.1	14	-	-	-		
+N/A	94	Ingress	2020 OCT 11 06:32:32	2020 OCT 11 06:35:16	2020 OCT 11 06:35:50	198.0	102.2	99.7	99.1	61.2	61.8	62.0	14.5	1	-	-	-		
+NOMAD	94	Egress	2020 OCT 11 07:17:17	2020 OCT 11 07:17:53	2020 OCT 11 07:20:51	214.0	-81.0	-81.5	-83.8	-58.1	-58.3	-59.0	3.1	1	HCL #9	Science: orders #121, #136, #130, #130, #130, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	95	Ingress	2020 OCT 11 08:30:26	2020 OCT 11 08:33:10	2020 OCT 11 08:33:44	198.0	73.5	71.0	70.5	61.3	61.8	62.0	14.5	1	6SUBD CO H2O #1	Science: orders #134, #169, #186, #187, #189, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	95	Egress	2020 OCT 11 09:15:11	2020 OCT 11 09:15:47	2020 OCT 11 09:18:45	214.0	-109.9	-110.4	-112.7	-58.3	-58.4	-59.1	3.1	1	-	-	-		
+N/A	96	Ingress	2020 OCT 11 10:28:23	2020 OCT 11 10:31:06	2020 OCT 11 10:31:40	197.0	44.8	42.5	42.0	61.3	61.8	61.9	14.5	3	-	-	-	&daysideMatch:MERIDIANI SULPHATES; 	
+ACS	96	Egress	2020 OCT 11 11:13:08	2020 OCT 11 11:13:44	2020 OCT 11 11:16:41	213.0	-138.9	-139.4	-141.6	-58.4	-58.6	-59.2	3.1	3	-	-	-	&daysideMatch:MERIDIANI SULPHATES; 	
+NOMAD	97	Ingress	2020 OCT 11 12:26:21	2020 OCT 11 12:29:04	2020 OCT 11 12:29:38	197.0	16.1	13.9	13.4	61.3	61.8	61.9	14.5	1	HCL #9	Science: orders #121, #136, #130, #130, #130, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	97	Egress	2020 OCT 11 13:11:06	2020 OCT 11 13:11:42	2020 OCT 11 13:14:39	213.0	-167.9	-168.4	-170.5	-58.6	-58.7	-59.3	3.0	1	-	-	-		
+N/A	98	Ingress	2020 OCT 11 14:24:20	2020 OCT 11 14:27:03	2020 OCT 11 14:27:37	197.0	-12.7	-14.8	-15.3	61.3	61.8	61.9	14.5	8	-	-	-		
+N/A	98	Egress	2020 OCT 11 15:09:05	2020 OCT 11 15:09:41	2020 OCT 11 15:12:38	213.0	163.0	162.5	160.5	-58.8	-58.9	-59.5	3.0	8	-	-	-		
+N/A	99	Ingress	2020 OCT 11 16:22:17	2020 OCT 11 16:25:00	2020 OCT 11 16:25:34	197.0	-41.5	-43.6	-44.1	61.4	61.9	62.0	14.5	14	-	-	-		
+ACS	99	Egress	2020 OCT 11 17:07:03	2020 OCT 11 17:07:39	2020 OCT 11 17:10:37	214.0	133.9	133.5	131.4	-58.9	-59.1	-59.6	3.0	14	-	-	-		
+NOMAD	100	Ingress	2020 OCT 11 18:20:11	2020 OCT 11 18:22:54	2020 OCT 11 18:23:28	197.0	-70.3	-72.4	-72.8	61.4	61.9	62.0	14.5	1	6SUBD Nom CO #1	Science: orders #121, #149, #186, #187, #189, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:OLYMPICA FOSSAE-JOVIS THOLUS; &mroOverlap; 	
+N/A	100	Egress	2020 OCT 11 19:04:57	2020 OCT 11 19:05:33	2020 OCT 11 19:08:31	214.0	104.9	104.5	102.5	-59.1	-59.2	-59.8	3.0	1	-	-	-	&daysideMatch:OLYMPICA FOSSAE-JOVIS THOLUS; &mroOverlap; 	
+N/A	101	Ingress	2020 OCT 11 20:18:03	2020 OCT 11 20:20:46	2020 OCT 11 20:21:20	197.0	-99.0	-101.0	-101.4	61.4	61.9	62.0	14.5	14	-	-	-		
+ACS	101	Egress	2020 OCT 11 21:02:49	2020 OCT 11 21:03:25	2020 OCT 11 21:06:22	213.0	76.0	75.5	73.6	-59.2	-59.3	-59.9	2.9	14	-	-	-		
+NOMAD	102	Ingress	2020 OCT 11 22:15:59	2020 OCT 11 22:18:42	2020 OCT 11 22:19:16	197.0	-127.6	-129.5	-130.0	61.4	61.9	61.9	14.5	1	6SUBD Nom CO #4	Science: orders #121, #136, #190, #191, #192, #193, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	102	Egress	2020 OCT 11 23:00:46	2020 OCT 11 23:01:22	2020 OCT 11 23:04:19	213.0	47.0	46.6	44.7	-59.4	-59.5	-59.9	2.9	1	-	-	-		
+N/A	103	Ingress	2020 OCT 12 00:13:59	2020 OCT 12 00:16:41	2020 OCT 12 00:17:15	196.0	-156.3	-158.2	-158.6	61.5	61.8	61.9	14.5	1	-	-	-		
+NOMAD	103	Egress	2020 OCT 12 00:58:45	2020 OCT 12 00:59:21	2020 OCT 12 01:02:18	213.0	18.0	17.6	15.8	-59.5	-59.6	-60.1	2.9	1	All Fullscan Fast #2	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 		
+ACS	104	Ingress	2020 OCT 12 02:11:56	2020 OCT 12 02:14:39	2020 OCT 12 02:15:13	197.0	174.9	173.1	172.7	61.5	61.9	61.9	14.5	14	-	-	-		
+N/A	104	Egress	2020 OCT 12 02:56:44	2020 OCT 12 02:57:20	2020 OCT 12 03:00:16	212.0	-11.1	-11.5	-13.2	-59.7	-59.8	-60.2	2.9	14	-	-	-		
+N/A	105	Ingress	2020 OCT 12 04:09:52	2020 OCT 12 04:12:35	2020 OCT 12 04:13:09	197.0	146.1	144.4	144.0	61.5	61.9	62.0	14.5	1	-	-	-		
+NOMAD	105	Egress	2020 OCT 12 04:54:41	2020 OCT 12 04:55:17	2020 OCT 12 04:58:13	212.0	-40.2	-40.6	-42.3	-59.9	-59.9	-60.3	2.9	1	129 only #2	Science: orders #129, #129, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	106	Ingress	2020 OCT 12 06:07:47	2020 OCT 12 06:10:30	2020 OCT 12 06:11:04	197.0	117.3	115.7	115.3	61.6	61.9	62.0	14.5	3	-	-	-	&daysideMatch:NILI FOSSAE; 	
+N/A	106	Egress	2020 OCT 12 06:52:35	2020 OCT 12 06:53:11	2020 OCT 12 06:56:08	213.0	-69.3	-69.6	-71.3	-60.0	-60.1	-60.5	2.8	3	-	-	-	&daysideMatch:NILI FOSSAE; 	
+N/A	107	Ingress	2020 OCT 12 08:05:41	2020 OCT 12 08:08:24	2020 OCT 12 08:08:58	197.0	88.6	87.0	86.6	61.6	61.9	62.0	14.5	1	-	-	-		
+NOMAD	107	Egress	2020 OCT 12 08:50:29	2020 OCT 12 08:51:05	2020 OCT 12 08:54:02	213.0	-98.2	-98.6	-100.2	-60.2	-60.2	-60.6	2.8	1	6SUBD Nominal #11	Science: orders #121, #134, #126, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	108	Ingress	2020 OCT 12 10:03:37	2020 OCT 12 10:06:19	2020 OCT 12 10:06:53	196.0	59.9	58.4	58.1	61.6	61.9	62.0	14.5	1	6SUBD Nominal #3	Science: orders #167, #136, #169, #121, #190, #192, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	108	Egress	2020 OCT 12 10:48:25	2020 OCT 12 10:49:01	2020 OCT 12 10:51:57	212.0	-127.2	-127.5	-129.0	-60.3	-60.3	-60.6	2.8	1	-	-	-		
+N/A	109	Ingress	2020 OCT 12 12:01:34	2020 OCT 12 12:04:16	2020 OCT 12 12:04:50	196.0	31.3	29.8	29.5	61.6	61.9	61.9	14.5	3	-	-	-	&daysideMatch:MAWRTH VALLIS-ARAM CHAOS; &daysideMatch:MAWRTH VALLIS; 	
+ACS	109	Egress	2020 OCT 12 12:46:22	2020 OCT 12 12:46:58	2020 OCT 12 12:49:54	212.0	-156.3	-156.6	-158.0	-60.4	-60.5	-60.8	2.8	3	-	-	-	&daysideMatch:MAWRTH VALLIS-ARAM CHAOS; &daysideMatch:MAWRTH VALLIS; 	
+NOMAD	110	Ingress	2020 OCT 12 13:59:33	2020 OCT 12 14:02:15	2020 OCT 12 14:02:49	196.0	2.5	1.2	0.9	61.7	61.9	61.9	14.5	1	6SUBD Nom CO2 #2	Science: orders #121, #149, #164, #165, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	110	Egress	2020 OCT 12 14:44:21	2020 OCT 12 14:44:57	2020 OCT 12 14:47:53	212.0	174.7	174.4	173.0	-60.6	-60.6	-60.9	2.7	1	-	-	-		
+N/A	111	Ingress	2020 OCT 12 15:57:31	2020 OCT 12 16:00:13	2020 OCT 12 16:00:47	196.0	-26.3	-27.6	-27.9	61.7	61.9	62.0	14.5	14	-	-	-		
+ACS	111	Egress	2020 OCT 12 16:42:19	2020 OCT 12 16:42:55	2020 OCT 12 16:45:52	213.0	145.6	145.3	144.0	-60.8	-60.8	-61.0	2.7	14	-	-	-		
+NOMAD	112	Ingress	2020 OCT 12 17:55:26	2020 OCT 12 17:58:08	2020 OCT 12 17:58:42	196.0	-55.1	-56.4	-56.6	61.8	62.0	62.0	14.5	1	129 only #2	Science: orders #129, #129, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:ASCRAEUS MONS; &mroOverlap; 	
+N/A	112	Egress	2020 OCT 12 18:40:14	2020 OCT 12 18:40:50	2020 OCT 12 18:43:47	213.0	116.5	116.2	115.0	-60.9	-61.0	-61.1	2.7	1	-	-	-	&daysideMatch:ASCRAEUS MONS; &mroOverlap; 	
+N/A	113	Ingress	2020 OCT 12 19:53:18	2020 OCT 12 19:56:00	2020 OCT 12 19:56:34	196.0	-83.9	-85.0	-85.3	61.8	62.0	62.0	14.5	1	-	-	-	&daysideMatch:OLYMPUS MONS; 	
+NOMAD	113	Egress	2020 OCT 12 20:38:06	2020 OCT 12 20:38:42	2020 OCT 12 20:41:39	213.0	87.5	87.2	86.0	-61.0	-61.1	-61.2	2.7	1	6SUBD CO2 #1	Science: orders #156, #116, #118, #140, #154, #158, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:OLYMPUS MONS; 	
+ACS	114	Ingress	2020 OCT 12 21:51:12	2020 OCT 12 21:53:54	2020 OCT 12 21:54:28	196.0	-112.5	-113.6	-113.8	61.8	61.9	62.0	14.5	14	-	-	-		
+N/A	114	Egress	2020 OCT 12 22:36:00	2020 OCT 12 22:36:36	2020 OCT 12 22:39:32	212.0	58.5	58.3	57.1	-61.2	-61.2	-61.3	2.7	14	-	-	-		
+N/A	115	Ingress	2020 OCT 12 23:49:10	2020 OCT 12 23:51:52	2020 OCT 12 23:52:26	196.0	-141.2	-142.2	-142.4	61.8	61.9	61.9	14.5	1	-	-	-		
+NOMAD	115	Egress	2020 OCT 13 00:33:58	2020 OCT 13 00:34:34	2020 OCT 13 00:37:30	212.0	29.5	29.3	28.2	-61.3	-61.3	-61.4	2.6	1	6SUBD Nom CO #3	Science: orders #136, #169, #186, #187, #189, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	116	Ingress	2020 OCT 13 01:47:08	2020 OCT 13 01:49:50	2020 OCT 13 01:50:24	196.0	-169.9	-170.8	-171.0	61.8	61.9	61.9	14.5	3	-	-	-	&daysideMatch:INSIGHT; &daysideMatch:CURIOSITY; 	
+N/A	116	Egress	2020 OCT 13 02:31:57	2020 OCT 13 02:32:33	2020 OCT 13 02:35:29	212.0	0.4	0.2	-0.8	-61.4	-61.5	-61.5	2.6	3	-	-	-	&daysideMatch:INSIGHT; &daysideMatch:CURIOSITY; 	
+N/A	117	Ingress	2020 OCT 13 03:45:05	2020 OCT 13 03:47:47	2020 OCT 13 03:48:21	196.0	161.3	160.5	160.3	61.9	61.9	61.9	14.5	1	-	-	-		
+NOMAD	117	Egress	2020 OCT 13 04:29:54	2020 OCT 13 04:30:30	2020 OCT 13 04:33:26	212.0	-28.8	-28.9	-29.8	-61.6	-61.6	-61.7	2.6	1	6SUBD CO2 Dipole #1	Science: orders #169, #132, #133, #134, #136, #137, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	118	Ingress	2020 OCT 13 05:43:00	2020 OCT 13 05:45:42	2020 OCT 13 05:46:16	196.0	132.5	131.7	131.6	61.9	62.0	62.0	14.5	14	-	-	-		
+N/A	118	Egress	2020 OCT 13 06:27:49	2020 OCT 13 06:28:25	2020 OCT 13 06:31:21	212.0	-57.9	-58.0	-58.9	-61.7	-61.8	-61.8	2.6	14	-	-	-		
+N/A	119	Ingress	2020 OCT 13 07:40:54	2020 OCT 13 07:43:36	2020 OCT 13 07:44:10	196.0	103.8	103.0	102.9	61.9	62.0	62.0	14.5	1	-	-	-		
+NOMAD	119	Egress	2020 OCT 13 08:25:43	2020 OCT 13 08:26:19	2020 OCT 13 08:29:16	213.0	-86.9	-87.0	-87.8	-61.9	-61.9	-61.9	2.5	1	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	120	Ingress	2020 OCT 13 09:38:48	2020 OCT 13 09:41:30	2020 OCT 13 09:42:04	196.0	75.1	74.4	74.3	62.0	62.0	62.0	14.5	1	CO2 100km #1	Science: orders #167, #155, #159, #164, #148, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
+N/A	120	Egress	2020 OCT 13 10:23:37	2020 OCT 13 10:24:13	2020 OCT 13 10:27:09	212.0	-115.9	-116.0	-116.7	-62.0	-62.0	-62.0	2.5	1	-	-	-	&mroOverlap; 	
+N/A	121	Ingress	2020 OCT 13 11:36:45	2020 OCT 13 11:39:27	2020 OCT 13 11:40:01	196.0	46.5	45.9	45.8	61.9	61.9	61.9	14.5	14	-	-	-		
+ACS	121	Egress	2020 OCT 13 12:21:33	2020 OCT 13 12:22:08	2020 OCT 13 12:25:04	211.0	-144.9	-145.0	-145.6	-62.1	-62.1	-62.1	2.5	14	-	-	-		
+N/A	122	Ingress	2020 OCT 13 13:34:43	2020 OCT 13 13:37:25	2020 OCT 13 13:37:59	196.0	17.8	17.3	17.2	62.0	61.9	61.9	14.5	47	-	-	-	&trueNightLimb; &mroOverlap; 	
+N/A	122	Egress	2020 OCT 13 14:19:31	2020 OCT 13 14:20:06	2020 OCT 13 14:23:02	211.0	-174.0	-174.1	-174.6	-62.3	-62.2	-62.2	2.5	47	-	-	-	&trueNightLimb; &mroOverlap; 	
+NOMAD	123	Ingress	2020 OCT 13 15:32:42	2020 OCT 13 15:35:24	2020 OCT 13 15:35:58	196.0	-11.0	-11.5	-11.5	62.0	61.9	61.9	14.5	1	6SUBD Nom CO #1	Science: orders #121, #149, #186, #187, #189, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:EAST THAUMASIA; 	
+N/A	123	Egress	2020 OCT 13 16:17:30	2020 OCT 13 16:18:06	2020 OCT 13 16:21:02	212.0	156.8	156.8	156.3	-62.4	-62.4	-62.3	2.4	1	-	-	-	&daysideMatch:EAST THAUMASIA; 	
+N/A	124	Ingress	2020 OCT 13 17:30:38	2020 OCT 13 17:33:20	2020 OCT 13 17:33:54	196.0	-39.8	-40.2	-40.3	62.1	62.0	61.9	14.5	14	-	-	-	&daysideMatch:CLARITAS RISE; 	
+ACS	124	Egress	2020 OCT 13 18:15:26	2020 OCT 13 18:16:02	2020 OCT 13 18:18:59	213.0	127.7	127.7	127.3	-62.5	-62.5	-62.4	2.4	14	-	-	-	&daysideMatch:CLARITAS RISE; 	
+NOMAD	125	Ingress	2020 OCT 13 19:28:32	2020 OCT 13 19:31:14	2020 OCT 13 19:31:48	196.0	-68.6	-68.9	-69.0	62.1	62.0	62.0	14.5	1	6SUBD Nominal #2	Science: orders #119, #136, #149, #169, #186, #189, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	125	Egress	2020 OCT 13 20:13:19	2020 OCT 13 20:13:55	2020 OCT 13 20:16:52	213.0	98.6	98.6	98.3	-62.7	-62.6	-62.5	2.4	1	-	-	-		
+N/A	126	Ingress	2020 OCT 13 21:26:25	2020 OCT 13 21:29:07	2020 OCT 13 21:29:41	196.0	-97.2	-97.5	-97.5	62.1	62.0	61.9	14.5	14	-	-	-		
+ACS	126	Egress	2020 OCT 13 22:11:11	2020 OCT 13 22:11:47	2020 OCT 13 22:14:43	212.0	69.6	69.6	69.4	-62.8	-62.7	-62.6	2.4	14	-	-	-		
+NOMAD	127	Ingress	2020 OCT 13 23:24:21	2020 OCT 13 23:27:03	2020 OCT 13 23:27:37	196.0	-125.9	-126.0	-126.1	62.1	61.9	61.9	14.5	1	CO Fullscan Fast #2	Diffraction order stepping (fullscan): 10 orders from 185 to 195 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 		
+N/A	127	Egress	2020 OCT 14 00:09:08	2020 OCT 14 00:09:44	2020 OCT 14 00:12:40	212.0	40.6	40.6	40.5	-62.9	-62.8	-62.7	2.3	1	-	-	-		
+N/A	128	Ingress	2020 OCT 14 01:22:20	2020 OCT 14 01:25:02	2020 OCT 14 01:25:36	196.0	-154.5	-154.7	-154.7	62.1	61.9	61.9	14.5	1	-	-	-	&daysideMatch:AEOLIS MENSAE MFF; 	
+NOMAD	128	Egress	2020 OCT 14 02:07:07	2020 OCT 14 02:07:43	2020 OCT 14 02:10:39	212.0	11.5	11.5	11.5	-63.0	-63.0	-62.8	2.3	1	HCL #8	Science: orders #121, #136, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:AEOLIS MENSAE MFF; 	
+ACS	129	Ingress	2020 OCT 14 03:20:18	2020 OCT 14 03:23:00	2020 OCT 14 03:23:34	196.0	176.7	176.7	176.7	62.1	61.9	61.9	14.5	14	-	-	-		
+N/A	129	Egress	2020 OCT 14 04:05:05	2020 OCT 14 04:05:41	2020 OCT 14 04:08:37	212.0	-17.7	-17.6	-17.6	-63.2	-63.1	-62.9	2.3	14	-	-	-		
+N/A	130	Ingress	2020 OCT 14 05:18:14	2020 OCT 14 05:20:56	2020 OCT 14 05:21:30	196.0	147.9	147.9	148.0	62.2	62.0	61.9	14.5	1	-	-	-	&mroOverlap; 	
+NOMAD	130	Egress	2020 OCT 14 06:03:01	2020 OCT 14 06:03:37	2020 OCT 14 06:06:33	212.0	-46.8	-46.8	-46.6	-63.3	-63.2	-63.0	2.2	1	6SUBD Nominal #12	Science: orders #121, #134, #127, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
+ACS	131	Ingress	2020 OCT 14 07:16:07	2020 OCT 14 07:18:50	2020 OCT 14 07:19:24	197.0	119.1	119.2	119.2	62.2	62.0	61.9	14.5	14	-	-	-		
+N/A	131	Egress	2020 OCT 14 08:00:55	2020 OCT 14 08:01:31	2020 OCT 14 08:04:28	213.0	-75.9	-75.9	-75.6	-63.4	-63.4	-63.1	2.2	14	-	-	-		
+N/A	132	Ingress	2020 OCT 14 09:14:02	2020 OCT 14 09:16:44	2020 OCT 14 09:17:18	196.0	90.4	90.6	90.6	62.2	62.0	61.9	14.5	1	-	-	-		
+NOMAD	132	Egress	2020 OCT 14 09:58:48	2020 OCT 14 09:59:24	2020 OCT 14 10:02:21	213.0	-104.9	-104.8	-104.5	-63.5	-63.5	-63.2	2.2	1	6SUBD Nom CO2 #2	Science: orders #121, #149, #164, #165, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	133	Ingress	2020 OCT 14 11:11:58	2020 OCT 14 11:14:40	2020 OCT 14 11:15:14	196.0	61.8	62.0	62.1	62.2	61.9	61.9	14.5	1	HCL #10	Science: orders #121, #134, #126, #127, #129, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	133	Egress	2020 OCT 14 11:56:44	2020 OCT 14 11:57:20	2020 OCT 14 12:00:16	212.0	-134.0	-133.9	-133.5	-63.6	-63.6	-63.3	2.2	1	-	-	-		
+N/A	134	Ingress	2020 OCT 14 13:09:55	2020 OCT 14 13:12:37	2020 OCT 14 13:13:11	196.0	33.2	33.5	33.6	62.2	61.9	61.8	14.6	3	-	-	-	&daysideMatch:MAWRTH VALLIS-ARAM CHAOS; &daysideMatch:MAWRTH VALLIS; 	
+ACS	134	Egress	2020 OCT 14 13:54:41	2020 OCT 14 13:55:17	2020 OCT 14 13:58:13	212.0	-163.1	-163.0	-162.5	-63.7	-63.7	-63.4	2.2	3	-	-	-	&daysideMatch:MAWRTH VALLIS-ARAM CHAOS; &daysideMatch:MAWRTH VALLIS; 	
+NOMAD	135	Ingress	2020 OCT 14 15:07:54	2020 OCT 14 15:10:36	2020 OCT 14 15:11:10	196.0	4.4	4.8	4.9	62.3	61.9	61.8	14.6	1	HCL #4	Science: orders #121, #134, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	135	Egress	2020 OCT 14 15:52:39	2020 OCT 14 15:53:15	2020 OCT 14 15:56:11	212.0	167.7	167.9	168.5	-63.9	-63.8	-63.5	2.1	1	-	-	-		
+N/A	136	Ingress	2020 OCT 14 17:05:52	2020 OCT 14 17:08:34	2020 OCT 14 17:09:08	196.0	-24.4	-23.9	-23.8	62.3	61.9	61.9	14.6	14	-	-	-		
+ACS	136	Egress	2020 OCT 14 17:50:36	2020 OCT 14 17:51:12	2020 OCT 14 17:54:09	213.0	138.6	138.7	139.4	-64.0	-63.9	-63.6	2.1	14	-	-	-		
+NOMAD	137	Ingress	2020 OCT 14 19:03:46	2020 OCT 14 19:06:28	2020 OCT 14 19:07:02	196.0	-53.2	-52.7	-52.5	62.3	62.0	61.9	14.6	1	6SUBD Nom CO #5	Science: orders #168, #136, #169, #121, #189, #193, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:CERAUNIUS FOSSAE; 	
+N/A	137	Egress	2020 OCT 14 19:48:31	2020 OCT 14 19:49:07	2020 OCT 14 19:52:05	214.0	109.4	109.6	110.4	-64.1	-64.0	-63.7	2.1	1	-	-	-	&daysideMatch:CERAUNIUS FOSSAE; 	
+N/A	138	Ingress	2020 OCT 14 21:01:38	2020 OCT 14 21:04:21	2020 OCT 14 21:04:55	197.0	-81.9	-81.3	-81.1	62.4	62.0	61.9	14.6	1	-	-	-	&daysideMatch:OLYMPUS MONS; 	
+NOMAD	138	Egress	2020 OCT 14 21:46:22	2020 OCT 14 21:46:58	2020 OCT 14 21:49:55	213.0	80.4	80.6	81.4	-64.2	-64.1	-63.7	2.0	1	6SUBD Nom CO #4	Science: orders #121, #136, #190, #191, #192, #193, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:OLYMPUS MONS; 	
+ACS	139	Ingress	2020 OCT 14 22:59:32	2020 OCT 14 23:02:15	2020 OCT 14 23:02:49	197.0	-110.5	-109.8	-109.7	62.4	61.9	61.8	14.6	14	-	-	-	&mroOverlap; 	
+N/A	139	Egress	2020 OCT 14 23:44:16	2020 OCT 14 23:44:52	2020 OCT 14 23:47:49	213.0	51.3	51.6	52.5	-64.3	-64.2	-63.8	2.0	14	-	-	-	&mroOverlap; 	
+N/A	140	Ingress	2020 OCT 15 00:57:32	2020 OCT 15 01:00:14	2020 OCT 15 01:00:48	196.0	-139.1	-138.4	-138.2	62.4	61.9	61.8	14.6	1	-	-	-	&mroOverlap; 	
+NOMAD	140	Egress	2020 OCT 15 01:42:15	2020 OCT 15 01:42:51	2020 OCT 15 01:45:48	213.0	22.2	22.5	23.6	-64.4	-64.3	-63.9	2.0	1	HCL #11	Science: orders #121, #136, #126, #127, #129, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
+ACS	141	Ingress	2020 OCT 15 02:55:30	2020 OCT 15 02:58:12	2020 OCT 15 02:58:46	196.0	-167.8	-167.0	-166.8	62.4	61.9	61.8	14.6	14	-	-	-	&daysideMatch:INSIGHT; &daysideMatch:CURIOSITY; 	
+N/A	141	Egress	2020 OCT 15 03:40:13	2020 OCT 15 03:40:49	2020 OCT 15 03:43:46	213.0	-7.0	-6.7	-5.5	-64.5	-64.4	-64.0	2.0	14	-	-	-	&daysideMatch:INSIGHT; &daysideMatch:CURIOSITY; 	
+N/A	142	Ingress	2020 OCT 15 04:53:26	2020 OCT 15 04:56:09	2020 OCT 15 04:56:43	197.0	163.4	164.3	164.5	62.4	61.9	61.8	14.6	1	-	-	-		
+NOMAD	142	Egress	2020 OCT 15 05:38:10	2020 OCT 15 05:38:46	2020 OCT 15 05:41:43	213.0	-36.2	-35.9	-34.6	-64.6	-64.6	-64.1	1.9	1	HCL #5	Science: orders #121, #134, #130, #130, #130, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	143	Ingress	2020 OCT 15 06:51:21	2020 OCT 15 06:54:04	2020 OCT 15 06:54:38	197.0	134.6	135.6	135.8	62.5	61.9	61.8	14.6	14	-	-	-		
+N/A	143	Egress	2020 OCT 15 07:36:04	2020 OCT 15 07:36:40	2020 OCT 15 07:39:37	213.0	-65.4	-65.0	-63.7	-64.8	-64.7	-64.2	1.9	14	-	-	-		
+N/A	144	Ingress	2020 OCT 15 08:49:15	2020 OCT 15 08:51:58	2020 OCT 15 08:52:32	197.0	105.8	106.9	107.1	62.5	62.0	61.8	14.6	1	-	-	-		
+NOMAD	144	Egress	2020 OCT 15 09:33:58	2020 OCT 15 09:34:34	2020 OCT 15 09:37:32	214.0	-94.4	-94.1	-92.6	-64.9	-64.8	-64.3	1.9	1	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	145	Ingress	2020 OCT 15 10:47:10	2020 OCT 15 10:49:53	2020 OCT 15 10:50:27	197.0	77.2	78.3	78.6	62.5	61.9	61.8	14.6	1	6SUBD Nominal #3	Science: orders #167, #136, #169, #121, #190, #192, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	145	Egress	2020 OCT 15 11:31:52	2020 OCT 15 11:32:28	2020 OCT 15 11:35:25	213.0	-123.5	-123.1	-121.5	-64.9	-64.8	-64.3	1.8	1	-	-	-		
+N/A	146	Ingress	2020 OCT 15 12:45:07	2020 OCT 15 12:47:50	2020 OCT 15 12:48:24	197.0	48.6	49.8	50.1	62.5	61.9	61.7	14.6	47	-	-	-	&trueNightLimb; 	
+N/A	146	Egress	2020 OCT 15 13:29:48	2020 OCT 15 13:30:24	2020 OCT 15 13:33:21	213.0	-152.6	-152.2	-150.5	-65.0	-64.9	-64.4	1.8	47	-	-	-	&trueNightLimb; 	
+N/A	147	Ingress	2020 OCT 15 14:43:06	2020 OCT 15 14:45:49	2020 OCT 15 14:46:23	197.0	19.9	21.2	21.5	62.5	61.9	61.7	14.6	14	-	-	-		
+N/A	147	Egress	2020 OCT 15 15:27:46	2020 OCT 15 15:28:22	2020 OCT 15 15:31:19	213.0	178.2	178.6	-179.6	-65.1	-65.0	-64.5	1.8	14	-	-	-		
+N/A	148	Ingress	2020 OCT 15 16:41:05	2020 OCT 15 16:43:48	2020 OCT 15 16:44:22	197.0	-8.8	-7.5	-7.2	62.5	61.9	61.7	14.6	14	-	-	-		
+N/A	148	Egress	2020 OCT 15 17:25:44	2020 OCT 15 17:26:20	2020 OCT 15 17:29:18	214.0	149.0	149.4	151.4	-65.3	-65.1	-64.6	1.7	14	-	-	-		
+N/A	149	Ingress	2020 OCT 15 18:39:01	2020 OCT 15 18:41:44	2020 OCT 15 18:42:18	197.0	-37.7	-36.3	-36.0	62.6	61.9	61.8	14.6	3	-	-	-		
+ACS	149	Egress	2020 OCT 15 19:23:40	2020 OCT 15 19:24:16	2020 OCT 15 19:27:15	215.0	119.8	120.2	122.3	-65.4	-65.2	-64.7	1.7	3	-	-	-		
+NOMAD	150	Ingress	2020 OCT 15 20:36:52	2020 OCT 15 20:39:36	2020 OCT 15 20:40:10	198.0	-66.4	-64.9	-64.6	62.6	61.9	61.8	14.6	1	134 only #2	Science: orders #134, #134, #134, #134, #134, #134, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	150	Egress	2020 OCT 15 21:21:32	2020 OCT 15 21:22:08	2020 OCT 15 21:25:07	215.0	90.6	91.1	93.3	-65.5	-65.3	-64.8	1.7	1	-	-	-		
+N/A	151	Ingress	2020 OCT 15 22:34:46	2020 OCT 15 22:37:30	2020 OCT 15 22:38:04	198.0	-95.0	-93.5	-93.2	62.6	61.9	61.7	14.6	14	-	-	-		
+ACS	151	Egress	2020 OCT 15 23:19:24	2020 OCT 15 23:20:00	2020 OCT 15 23:22:58	214.0	61.6	62.1	64.4	-65.5	-65.4	-64.8	1.7	14	-	-	-		
+NOMAD	152	Ingress	2020 OCT 16 00:32:44	2020 OCT 16 00:35:28	2020 OCT 16 00:36:02	198.0	-123.6	-122.0	-121.7	62.6	61.8	61.7	14.6	1	CO2 100km #1	Science: orders #167, #155, #159, #164, #148, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	152	Egress	2020 OCT 16 01:17:22	2020 OCT 16 01:17:58	2020 OCT 16 01:20:56	214.0	32.5	33.0	35.4	-65.6	-65.5	-64.9	1.6	1	-	-	-		
+N/A	153	Ingress	2020 OCT 16 02:30:42	2020 OCT 16 02:33:26	2020 OCT 16 02:34:00	198.0	-152.3	-150.6	-150.2	62.6	61.8	61.7	14.6	3	-	-	-	&daysideMatch:AEOLIS MENSAE MFF; 	
+ACS	153	Egress	2020 OCT 16 03:15:20	2020 OCT 16 03:15:56	2020 OCT 16 03:18:54	214.0	3.3	3.8	6.4	-65.7	-65.6	-65.0	1.6	3	-	-	-	&daysideMatch:AEOLIS MENSAE MFF; 	
+NOMAD	154	Ingress	2020 OCT 16 04:28:40	2020 OCT 16 04:31:24	2020 OCT 16 04:31:58	198.0	179.0	-179.3	-178.9	62.6	61.8	61.6	14.6	1	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	154	Egress	2020 OCT 16 05:13:17	2020 OCT 16 05:13:53	2020 OCT 16 05:16:51	214.0	-26.0	-25.4	-22.8	-65.8	-65.7	-65.1	1.6	1	-	-	-		
+N/A	155	Ingress	2020 OCT 16 06:26:35	2020 OCT 16 06:29:20	2020 OCT 16 06:29:54	199.0	150.2	152.0	152.4	62.7	61.9	61.7	14.6	1	-	-	-		
+NOMAD	155	Egress	2020 OCT 16 07:11:12	2020 OCT 16 07:11:48	2020 OCT 16 07:14:47	215.0	-55.3	-54.6	-51.9	-65.9	-65.8	-65.2	1.5	1	6SUBD CO2 #10	Science: orders #156, #116, #118, #169, #154, #158, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	156	Ingress	2020 OCT 16 08:24:28	2020 OCT 16 08:27:13	2020 OCT 16 08:27:47	199.0	121.4	123.3	123.7	62.7	61.9	61.7	14.6	14	-	-	-		
+N/A	156	Egress	2020 OCT 16 09:09:05	2020 OCT 16 09:09:41	2020 OCT 16 09:12:40	215.0	-84.4	-83.7	-80.9	-66.0	-65.9	-65.3	1.5	14	-	-	-		
+N/A	157	Ingress	2020 OCT 16 10:22:22	2020 OCT 16 10:25:07	2020 OCT 16 10:25:41	199.0	92.7	94.7	95.1	62.7	61.9	61.7	14.6	1	-	-	-		
+NOMAD	157	Egress	2020 OCT 16 11:06:58	2020 OCT 16 11:07:34	2020 OCT 16 11:10:33	215.0	-113.5	-112.8	-109.8	-66.1	-65.9	-65.3	1.5	1	6SUBD Nom CH4 #2	Science: orders #134, #136, #164, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	158	Ingress	2020 OCT 16 12:20:20	2020 OCT 16 12:23:04	2020 OCT 16 12:23:38	198.0	64.2	66.2	66.7	62.7	61.8	61.6	14.6	3	-	-	-	&daysideMatch:MERIDIANI SULPHATES; 	
+N/A	158	Egress	2020 OCT 16 13:04:53	2020 OCT 16 13:05:29	2020 OCT 16 13:08:28	215.0	-142.6	-141.9	-138.8	-66.1	-66.0	-65.4	1.4	3	-	-	-	&daysideMatch:MERIDIANI SULPHATES; 	
+N/A	159	Ingress	2020 OCT 16 14:18:17	2020 OCT 16 14:21:02	2020 OCT 16 14:21:36	199.0	35.5	37.6	38.1	62.7	61.8	61.6	14.6	1	-	-	-		
+NOMAD	159	Egress	2020 OCT 16 15:02:51	2020 OCT 16 15:03:27	2020 OCT 16 15:06:26	215.0	-171.8	-171.1	-167.8	-66.2	-66.1	-65.5	1.4	1	6SUBD CO2 #1	Science: orders #156, #116, #118, #140, #154, #158, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	160	Ingress	2020 OCT 16 16:16:16	2020 OCT 16 16:19:01	2020 OCT 16 16:19:35	199.0	6.8	9.0	9.5	62.7	61.8	61.6	14.6	1	HCL #11	Science: orders #121, #136, #126, #127, #129, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:EASTERN COPRATES; &daysideMatch:COPRATES RISE; 	
+N/A	160	Egress	2020 OCT 16 17:00:48	2020 OCT 16 17:01:24	2020 OCT 16 17:04:24	216.0	158.9	159.7	163.1	-66.3	-66.2	-65.5	1.4	1	-	-	-	&daysideMatch:EASTERN COPRATES; &daysideMatch:COPRATES RISE; 	
+N/A	161	Ingress	2020 OCT 16 18:14:13	2020 OCT 16 18:16:58	2020 OCT 16 18:17:32	199.0	-22.0	-19.7	-19.2	62.7	61.8	61.6	14.6	3	-	-	-	&mroOverlap; 	
+ACS	161	Egress	2020 OCT 16 18:58:45	2020 OCT 16 18:59:21	2020 OCT 16 19:02:21	216.0	129.7	130.5	134.0	-66.4	-66.3	-65.6	1.3	3	-	-	-	&mroOverlap; 	
+NOMAD	162	Ingress	2020 OCT 16 20:12:08	2020 OCT 16 20:14:52	2020 OCT 16 20:15:27	199.0	-50.8	-48.5	-47.9	62.8	61.8	61.6	14.6	1	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:PAVONIS MONS; 	
+N/A	162	Egress	2020 OCT 16 20:56:38	2020 OCT 16 20:57:14	2020 OCT 16 21:00:15	217.0	100.5	101.3	104.9	-66.5	-66.3	-65.7	1.3	1	-	-	-	&daysideMatch:PAVONIS MONS; 	
+N/A	163	Ingress	2020 OCT 16 22:09:59	2020 OCT 16 22:12:44	2020 OCT 16 22:13:19	200.0	-79.4	-77.0	-76.5	62.8	61.8	61.6	14.6	14	-	-	-		
+ACS	163	Egress	2020 OCT 16 22:54:29	2020 OCT 16 22:55:05	2020 OCT 16 22:58:05	216.0	71.4	72.2	75.9	-66.5	-66.4	-65.8	1.3	14	-	-	-		
+NOMAD	164	Ingress	2020 OCT 17 00:07:55	2020 OCT 17 00:10:40	2020 OCT 17 00:11:15	200.0	-108.0	-105.5	-105.0	62.8	61.8	61.5	14.7	1	CO Fullscan Fast #2	Diffraction order stepping (fullscan): 10 orders from 185 to 195 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 		
+N/A	164	Egress	2020 OCT 17 00:52:24	2020 OCT 17 00:53:00	2020 OCT 17 00:56:00	216.0	42.3	43.1	47.0	-66.6	-66.5	-65.8	1.3	1	-	-	-		
+N/A	165	Ingress	2020 OCT 17 02:05:54	2020 OCT 17 02:08:39	2020 OCT 17 02:09:14	200.0	-136.6	-134.1	-133.5	62.8	61.7	61.5	14.7	1	-	-	-		
+NOMAD	165	Egress	2020 OCT 17 02:50:23	2020 OCT 17 02:50:59	2020 OCT 17 02:53:59	216.0	13.1	14.0	18.0	-66.7	-66.5	-65.9	1.2	1	6SUBD Nominal #48	Science: orders #121, #134, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	166	Ingress	2020 OCT 17 04:03:53	2020 OCT 17 04:06:38	2020 OCT 17 04:07:13	200.0	-165.3	-162.7	-162.1	62.8	61.7	61.4	14.7	3	-	-	-	&daysideMatch:INSIGHT; 	
+N/A	166	Egress	2020 OCT 17 04:48:21	2020 OCT 17 04:48:57	2020 OCT 17 04:51:58	217.0	-16.2	-15.3	-11.1	-66.7	-66.6	-65.9	1.2	3	-	-	-	&daysideMatch:INSIGHT; 	
+N/A	167	Ingress	2020 OCT 17 06:01:49	2020 OCT 17 06:04:34	2020 OCT 17 06:05:09	200.0	165.9	168.6	169.2	62.8	61.7	61.5	14.7	1	-	-	-		
+NOMAD	167	Egress	2020 OCT 17 06:46:17	2020 OCT 17 06:46:53	2020 OCT 17 06:49:54	217.0	-45.6	-44.6	-40.3	-66.8	-66.7	-66.0	1.1	1	6SUBD CO2 CO #1	Science: orders #119, #149, #164, #165, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	168	Ingress	2020 OCT 17 07:59:43	2020 OCT 17 08:02:29	2020 OCT 17 08:03:04	201.0	137.1	139.9	140.5	62.9	61.7	61.5	14.7	14	-	-	-		
+N/A	168	Egress	2020 OCT 17 08:44:10	2020 OCT 17 08:44:46	2020 OCT 17 08:47:47	217.0	-74.8	-73.8	-69.4	-66.9	-66.8	-66.1	1.1	14	-	-	-		
+N/A	169	Ingress	2020 OCT 17 09:57:37	2020 OCT 17 10:00:23	2020 OCT 17 10:00:58	201.0	108.4	111.2	111.9	62.9	61.7	61.5	14.7	1	-	-	-	&mroOverlap; 	
+NOMAD	169	Egress	2020 OCT 17 10:42:04	2020 OCT 17 10:42:41	2020 OCT 17 10:45:42	218.0	-103.9	-102.9	-98.3	-66.9	-66.8	-66.2	1.1	1	6SUBD Nominal #42	Science: orders #121, #134, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
+ACS	170	Ingress	2020 OCT 17 11:55:33	2020 OCT 17 11:58:19	2020 OCT 17 11:58:54	201.0	79.8	82.7	83.4	62.9	61.7	61.4	14.7	14	-	-	-		
+N/A	170	Egress	2020 OCT 17 12:39:58	2020 OCT 17 12:40:34	2020 OCT 17 12:43:35	217.0	-133.1	-132.0	-127.3	-67.0	-66.9	-66.2	1.1	14	-	-	-		
+N/A	171	Ingress	2020 OCT 17 13:53:30	2020 OCT 17 13:56:16	2020 OCT 17 13:56:51	201.0	51.2	54.2	54.9	62.8	61.6	61.4	14.7	14	-	-	-	&possibleOCM; 	
+N/A	171	Egress	2020 OCT 17 14:37:54	2020 OCT 17 14:38:30	2020 OCT 17 14:41:31	217.0	-162.3	-161.2	-156.4	-67.1	-66.9	-66.3	1.0	14	-	-	-	&possibleOCM; 	
+N/A	172	Ingress	2020 OCT 17 15:51:29	2020 OCT 17 15:54:15	2020 OCT 17 15:54:50	201.0	22.5	25.6	26.3	62.9	61.6	61.3	14.7	14	-	-	-		
+N/A	172	Egress	2020 OCT 17 16:35:51	2020 OCT 17 16:36:28	2020 OCT 17 16:39:29	218.0	168.4	169.6	174.5	-67.1	-67.0	-66.3	1.0	14	-	-	-		
+N/A	173	Ingress	2020 OCT 17 17:49:28	2020 OCT 17 17:52:14	2020 OCT 17 17:52:49	201.0	-6.2	-3.1	-2.4	62.9	61.6	61.3	14.7	3	-	-	-		
+N/A	173	Egress	2020 OCT 17 18:33:48	2020 OCT 17 18:34:25	2020 OCT 17 18:37:27	219.0	139.2	140.3	145.5	-67.2	-67.1	-66.4	0.9	3	-	-	-		
+N/A	174	Ingress	2020 OCT 17 19:47:22	2020 OCT 17 19:50:09	2020 OCT 17 19:50:44	202.0	-35.0	-31.8	-31.1	62.9	61.7	61.4	14.7	1	-	-	-		
+NOMAD	174	Egress	2020 OCT 17 20:31:43	2020 OCT 17 20:32:20	2020 OCT 17 20:35:22	219.0	109.9	111.1	116.4	-67.2	-67.1	-66.5	0.9	1	6SUBD Nom CO2 #2	Science: orders #121, #149, #164, #165, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	175	Ingress	2020 OCT 17 21:45:15	2020 OCT 17 21:48:02	2020 OCT 17 21:48:37	202.0	-63.7	-60.5	-59.7	63.0	61.7	61.4	14.7	1	6SUBD Nominal #11	Science: orders #121, #134, #126, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	175	Egress	2020 OCT 17 22:29:34	2020 OCT 17 22:30:11	2020 OCT 17 22:33:13	219.0	80.7	81.9	87.3	-67.3	-67.2	-66.5	0.9	1	-	-	-		
+N/A	176	Ingress	2020 OCT 17 23:43:09	2020 OCT 17 23:45:56	2020 OCT 17 23:46:31	202.0	-92.3	-89.0	-88.2	62.9	61.6	61.3	14.7	14	-	-	-		
+ACS	176	Egress	2020 OCT 18 00:27:27	2020 OCT 18 00:28:04	2020 OCT 18 00:31:06	219.0	51.6	52.8	58.3	-67.3	-67.2	-66.6	0.8	14	-	-	-		
+NOMAD	177	Ingress	2020 OCT 18 01:41:07	2020 OCT 18 01:43:54	2020 OCT 18 01:44:29	202.0	-120.9	-117.5	-116.7	62.9	61.6	61.2	14.7	1	6SUBD CO H2O #2	Science: orders #136, #169, #186, #187, #189, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	177	Egress	2020 OCT 18 02:25:24	2020 OCT 18 02:26:01	2020 OCT 18 02:29:04	220.0	22.4	23.7	29.4	-67.4	-67.3	-66.6	0.8	1	-	-	-		
+N/A	178	Ingress	2020 OCT 18 03:39:06	2020 OCT 18 03:41:53	2020 OCT 18 03:42:28	202.0	-149.5	-146.0	-145.3	62.9	61.5	61.2	14.7	3	-	-	-	&daysideMatch:AEOLIS MENSAE MFF; &daysideMatch:CURIOSITY; 	
+ACS	178	Egress	2020 OCT 18 04:23:22	2020 OCT 18 04:23:59	2020 OCT 18 04:27:02	220.0	-6.9	-5.6	0.2	-67.4	-67.3	-66.7	0.8	3	-	-	-	&daysideMatch:AEOLIS MENSAE MFF; &daysideMatch:CURIOSITY; 	
+NOMAD	179	Ingress	2020 OCT 18 05:37:02	2020 OCT 18 05:39:50	2020 OCT 18 05:40:25	203.0	-178.3	-174.7	-173.9	62.9	61.5	61.2	14.7	1	6SUBD Nom CH4 #1	Science: orders #134, #136, #148, #164, #187, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	179	Egress	2020 OCT 18 06:21:18	2020 OCT 18 06:21:55	2020 OCT 18 06:24:58	220.0	-36.3	-34.9	-29.0	-67.5	-67.4	-66.8	0.7	1	-	-	-		
+N/A	180	Ingress	2020 OCT 18 07:34:57	2020 OCT 18 07:37:46	2020 OCT 18 07:38:21	204.0	152.9	156.6	157.4	63.0	61.6	61.2	14.7	3	-	-	-	&mroOverlap; 	
+ACS	180	Egress	2020 OCT 18 08:19:12	2020 OCT 18 08:19:49	2020 OCT 18 08:22:52	220.0	-65.6	-64.2	-58.1	-67.5	-67.4	-66.8	0.7	3	-	-	-	&mroOverlap; 	
+NOMAD	181	Ingress	2020 OCT 18 09:32:50	2020 OCT 18 09:35:39	2020 OCT 18 09:36:14	204.0	124.2	127.9	128.7	63.0	61.6	61.2	14.7	1	6SUBD Nominal #2	Science: orders #119, #136, #149, #169, #186, #189, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	181	Egress	2020 OCT 18 10:17:05	2020 OCT 18 10:17:42	2020 OCT 18 10:20:46	221.0	-94.8	-93.4	-87.1	-67.6	-67.5	-66.9	0.7	1	-	-	-		
+N/A	182	Ingress	2020 OCT 18 11:30:45	2020 OCT 18 11:33:34	2020 OCT 18 11:34:09	204.0	95.6	99.4	100.2	63.0	61.5	61.2	14.7	1	-	-	-		
+NOMAD	182	Egress	2020 OCT 18 12:14:58	2020 OCT 18 12:15:35	2020 OCT 18 12:18:39	221.0	-123.9	-122.5	-116.1	-67.6	-67.5	-66.9	0.6	1	HCL #4	Science: orders #121, #134, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	183	Ingress	2020 OCT 18 13:28:42	2020 OCT 18 13:31:31	2020 OCT 18 13:32:06	204.0	67.0	70.9	71.7	63.0	61.5	61.1	14.8	14	-	-	-	&nomadSolarCalibration; &daysideMatch:MERIDIANI SULPHATES; 	
+N/A	183	Egress	2020 OCT 18 14:12:53	2020 OCT 18 14:13:30	2020 OCT 18 14:16:34	221.0	-153.1	-151.7	-145.1	-67.6	-67.6	-67.0	0.6	14	-	-	-	&nomadSolarCalibration; &daysideMatch:MERIDIANI SULPHATES; 	
+N/A	184	Ingress	2020 OCT 18 15:26:40	2020 OCT 18 15:29:29	2020 OCT 18 15:30:04	204.0	38.4	42.3	43.2	63.0	61.4	61.1	14.8	14	-	-	-		
+N/A	184	Egress	2020 OCT 18 16:10:49	2020 OCT 18 16:11:26	2020 OCT 18 16:14:30	221.0	177.6	179.1	-174.2	-67.7	-67.6	-67.0	0.6	14	-	-	-		
+ACS	185	Ingress	2020 OCT 18 17:24:38	2020 OCT 18 17:27:27	2020 OCT 18 17:28:03	205.0	9.7	13.7	14.5	63.0	61.4	61.0	14.8	14	-	-	-		
+N/A	185	Egress	2020 OCT 18 18:08:47	2020 OCT 18 18:09:24	2020 OCT 18 18:12:29	222.0	148.3	149.8	156.7	-67.7	-67.6	-67.1	0.5	14	-	-	-		
+N/A	186	Ingress	2020 OCT 18 19:22:35	2020 OCT 18 19:25:24	2020 OCT 18 19:26:00	205.0	-19.1	-15.0	-14.1	63.0	61.4	61.1	14.8	1	-	-	-		
+NOMAD	186	Egress	2020 OCT 18 20:06:42	2020 OCT 18 20:07:19	2020 OCT 18 20:10:25	223.0	119.0	120.5	127.6	-67.7	-67.7	-67.1	0.5	1	129 only #2	Science: orders #129, #129, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	187	Ingress	2020 OCT 18 21:20:29	2020 OCT 18 21:23:18	2020 OCT 18 21:23:54	205.0	-47.9	-43.7	-42.8	63.1	61.5	61.1	14.8	14	-	-	-		
+N/A	187	Egress	2020 OCT 18 22:04:35	2020 OCT 18 22:05:12	2020 OCT 18 22:08:18	223.0	89.7	91.3	98.5	-67.8	-67.7	-67.2	0.4	14	-	-	-		
+N/A	188	Ingress	2020 OCT 18 23:18:21	2020 OCT 18 23:21:11	2020 OCT 18 23:21:47	206.0	-76.5	-72.3	-71.4	63.1	61.4	61.0	14.8	1	-	-	-	&mroOverlap; 	
+NOMAD	188	Egress	2020 OCT 19 00:02:25	2020 OCT 19 00:03:02	2020 OCT 19 00:06:08	223.0	60.5	62.1	69.5	-67.8	-67.7	-67.2	0.4	1	6SUBD CO H2O #2	Science: orders #136, #169, #186, #187, #189, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
+NOMAD	189	Ingress	2020 OCT 19 01:16:18	2020 OCT 19 01:19:08	2020 OCT 19 01:19:44	206.0	-105.0	-100.7	-99.8	63.0	61.4	60.9	14.8	1	6SUBD Nom CO2 #1	Science: orders #121, #134, #149, #164, #165, #169, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	189	Egress	2020 OCT 19 02:00:21	2020 OCT 19 02:00:58	2020 OCT 19 02:04:04	223.0	31.4	33.0	40.5	-67.8	-67.8	-67.3	0.4	1	-	-	-		
+N/A	190	Ingress	2020 OCT 19 03:14:17	2020 OCT 19 03:17:07	2020 OCT 19 03:17:43	206.0	-133.6	-129.3	-128.3	63.0	61.3	60.9	14.8	14	-	-	-	&daysideMatch:CERBERUS FOSSAE; 	
+ACS	190	Egress	2020 OCT 19 03:58:19	2020 OCT 19 03:58:57	2020 OCT 19 04:02:02	223.0	2.1	3.8	11.4	-67.8	-67.8	-67.3	0.4	14	-	-	-	&daysideMatch:CERBERUS FOSSAE; 	
+NOMAD	191	Ingress	2020 OCT 19 05:12:16	2020 OCT 19 05:15:06	2020 OCT 19 05:15:42	206.0	-162.3	-157.9	-156.9	63.0	61.3	60.9	14.8	1	HCL #5	Science: orders #121, #134, #130, #130, #130, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
+N/A	191	Egress	2020 OCT 19 05:56:16	2020 OCT 19 05:56:54	2020 OCT 19 06:00:00	224.0	-27.3	-25.5	-17.8	-67.9	-67.8	-67.4	0.3	1	-	-	-	&mroOverlap; 	
+N/A	192	Ingress	2020 OCT 19 07:10:11	2020 OCT 19 07:13:02	2020 OCT 19 07:13:38	207.0	168.9	173.4	174.4	63.1	61.3	60.9	14.8	14	-	-	-		
+ACS	192	Egress	2020 OCT 19 07:54:11	2020 OCT 19 07:54:49	2020 OCT 19 07:57:55	224.0	-56.7	-54.9	-47.0	-67.9	-67.9	-67.4	0.3	14	-	-	-		
+NOMAD	193	Ingress	2020 OCT 19 09:08:05	2020 OCT 19 09:10:57	2020 OCT 19 09:11:33	208.0	140.1	144.8	145.7	63.1	61.3	60.9	14.8	1	HCL #5	Science: orders #121, #134, #130, #130, #130, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:NILI FOSSAE; 	
+N/A	193	Egress	2020 OCT 19 09:52:04	2020 OCT 19 09:52:42	2020 OCT 19 09:55:49	225.0	-86.0	-84.1	-76.1	-67.9	-67.9	-67.5	0.2	1	-	-	-	&daysideMatch:NILI FOSSAE; 	
+N/A	194	Ingress	2020 OCT 19 11:05:59	2020 OCT 19 11:08:51	2020 OCT 19 11:09:27	208.0	111.5	116.2	117.1	63.1	61.3	60.9	14.8	1	-	-	-		
+NOMAD	194	Egress	2020 OCT 19 11:49:57	2020 OCT 19 11:50:35	2020 OCT 19 11:53:42	225.0	-115.1	-113.3	-105.1	-67.9	-67.9	-67.5	0.2	1	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	195	Ingress	2020 OCT 19 13:03:55	2020 OCT 19 13:06:47	2020 OCT 19 13:07:23	208.0	82.9	87.7	88.7	63.1	61.2	60.8	14.8	14	-	-	-		
+N/A	195	Egress	2020 OCT 19 13:47:51	2020 OCT 19 13:48:29	2020 OCT 19 13:51:36	225.0	-144.3	-142.4	-134.1	-67.9	-67.9	-67.5	0.2	14	-	-	-		
+N/A	196	Ingress	2020 OCT 19 15:01:53	2020 OCT 19 15:04:45	2020 OCT 19 15:05:21	208.0	54.4	59.2	60.2	63.1	61.2	60.7	14.8	1	-	-	-		
+NOMAD	196	Egress	2020 OCT 19 15:45:46	2020 OCT 19 15:46:24	2020 OCT 19 15:49:31	225.0	-173.6	-171.7	-163.2	-67.9	-67.9	-67.6	0.1	1	133 only #2	Science: orders #133, #133, #133, #133, #133, #133, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	197	Ingress	2020 OCT 19 16:59:51	2020 OCT 19 17:02:44	2020 OCT 19 17:03:20	209.0	25.7	30.6	31.6	63.1	61.1	60.7	14.8	14	-	-	-		
+N/A	197	Egress	2020 OCT 19 17:43:43	2020 OCT 19 17:44:21	2020 OCT 19 17:47:29	226.0	157.1	159.0	167.7	-68.0	-68.0	-67.6	0.1	14	-	-	-		
+N/A	198	Ingress	2020 OCT 19 18:57:49	2020 OCT 19 19:00:42	2020 OCT 19 19:01:18	209.0	-3.1	1.9	2.9	63.1	61.1	60.7	14.8	1	-	-	-		
+NOMAD	198	Egress	2020 OCT 19 19:41:40	2020 OCT 19 19:42:18	2020 OCT 19 19:45:27	227.0	127.8	129.7	138.6	-68.0	-68.0	-67.6	0.0	1	134 only #2	Science: orders #134, #134, #134, #134, #134, #134, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	199	Ingress	2020 OCT 19 20:55:45	2020 OCT 19 20:58:38	2020 OCT 19 20:59:14	209.0	-31.8	-26.8	-25.7	63.2	61.2	60.7	14.8	14	-	-	-		
+N/A	199	Egress	2020 OCT 19 21:39:33	2020 OCT 19 21:40:11	2020 OCT 19 21:43:21	228.0	98.5	100.4	109.5	-68.0	-68.0	-67.7	0.0	14	-	-	-		
+N/A	200	Ingress	2020 OCT 19 22:53:36	2020 OCT 19 22:56:30	2020 OCT 19 22:57:06	210.0	-60.6	-55.4	-54.3	63.2	61.2	60.7	14.9	1	-	-	-	&daysideMatch:OLYMPUS MONS; 	
+NOMAD	200	Egress	2020 OCT 19 23:37:24	2020 OCT 19 23:38:02	2020 OCT 19 23:41:12	228.0	69.2	71.2	80.4	-68.0	-68.0	-67.7	24.0	1	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:OLYMPUS MONS; 	
+NOMAD	201	Ingress	2020 OCT 20 00:51:31	2020 OCT 20 00:54:24	2020 OCT 20 00:55:01	210.0	-89.1	-83.9	-82.8	63.1	61.1	60.6	14.9	1	6SUBD Nominal #42	Science: orders #121, #134, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	201	Egress	2020 OCT 20 01:35:16	2020 OCT 20 01:35:54	2020 OCT 20 01:39:04	228.0	40.0	42.1	51.3	-68.0	-68.0	-67.8	23.9	1	-	-	-		
+N/A	202	Ingress	2020 OCT 20 02:49:29	2020 OCT 20 02:52:22	2020 OCT 20 02:52:59	210.0	-117.6	-112.4	-111.3	63.1	61.0	60.5	14.9	14	-	-	-		
+ACS	202	Egress	2020 OCT 20 03:33:13	2020 OCT 20 03:33:51	2020 OCT 20 03:37:01	228.0	10.8	12.8	22.3	-68.0	-68.0	-67.8	23.9	14	-	-	-		
+NOMAD	203	Ingress	2020 OCT 20 04:47:28	2020 OCT 20 04:50:21	2020 OCT 20 04:50:58	210.0	-146.2	-140.9	-139.8	63.1	61.0	60.5	14.9	1	6SUBD Nom CH4 #2	Science: orders #134, #136, #164, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:INSIGHT; &daysideMatch:CURIOSITY; 	
+N/A	203	Egress	2020 OCT 20 05:31:10	2020 OCT 20 05:31:48	2020 OCT 20 05:34:59	229.0	-18.6	-16.5	-6.9	-68.0	-68.0	-67.8	23.9	1	-	-	-	&daysideMatch:INSIGHT; &daysideMatch:CURIOSITY; 	
+N/A	204	Ingress	2020 OCT 20 06:45:25	2020 OCT 20 06:48:19	2020 OCT 20 06:48:56	211.0	-175.0	-169.6	-168.4	63.1	61.0	60.5	14.9	14	-	-	-		
+ACS	204	Egress	2020 OCT 20 07:29:06	2020 OCT 20 07:29:45	2020 OCT 20 07:32:55	229.0	-48.0	-45.8	-36.1	-68.0	-68.0	-67.9	23.8	14	-	-	-		
+NOMAD	205	Ingress	2020 OCT 20 08:43:19	2020 OCT 20 08:46:14	2020 OCT 20 08:46:51	212.0	156.2	161.7	162.9	63.2	61.0	60.5	14.9	1	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:UTOPIA; 	
+N/A	205	Egress	2020 OCT 20 09:26:59	2020 OCT 20 09:27:38	2020 OCT 20 09:30:49	230.0	-77.3	-75.2	-65.3	-67.9	-68.0	-67.9	23.8	1	-	-	-	&daysideMatch:UTOPIA; 	
+N/A	206	Ingress	2020 OCT 20 10:41:12	2020 OCT 20 10:44:07	2020 OCT 20 10:44:44	212.0	127.5	133.1	134.3	63.2	61.0	60.5	14.9	14	-	-	-		
+ACS	206	Egress	2020 OCT 20 11:24:51	2020 OCT 20 11:25:30	2020 OCT 20 11:28:41	230.0	-106.5	-104.3	-94.3	-67.9	-68.0	-67.9	23.7	14	-	-	-		
+NOMAD	207	Ingress	2020 OCT 20 12:39:07	2020 OCT 20 12:42:02	2020 OCT 20 12:42:39	212.0	99.0	104.6	105.8	63.2	60.9	60.4	14.9	1	All Fullscan Slow #2	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (1 order(s) per 1 second(s))	COP row -1: 		
+N/A	207	Egress	2020 OCT 20 13:22:44	2020 OCT 20 13:23:23	2020 OCT 20 13:26:34	230.0	-135.7	-133.5	-123.3	-67.9	-68.0	-67.9	23.7	1	-	-	-		
+N/A	208	Ingress	2020 OCT 20 14:37:04	2020 OCT 20 14:40:00	2020 OCT 20 14:40:37	213.0	70.4	76.1	77.3	63.1	60.9	60.3	14.9	1	-	-	-	&daysideMatch:VERNAL CRATER; 	
+NOMAD	208	Egress	2020 OCT 20 15:20:38	2020 OCT 20 15:21:17	2020 OCT 20 15:24:28	230.0	-165.0	-162.7	-152.5	-67.9	-68.0	-68.0	23.7	1	All Fullscan Slow #2	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (1 order(s) per 1 second(s))	COP row -1: 	&daysideMatch:VERNAL CRATER; 	
+ACS	209	Ingress	2020 OCT 20 16:35:02	2020 OCT 20 16:37:59	2020 OCT 20 16:38:36	214.0	41.8	47.6	48.8	63.1	60.8	60.2	14.9	14	-	-	-		
+N/A	209	Egress	2020 OCT 20 17:18:35	2020 OCT 20 17:19:14	2020 OCT 20 17:22:26	231.0	165.7	168.0	178.4	-67.9	-68.0	-68.0	23.6	14	-	-	-		
+N/A	210	Ingress	2020 OCT 20 18:33:01	2020 OCT 20 18:35:58	2020 OCT 20 18:36:35	214.0	13.1	19.0	20.2	63.2	60.8	60.2	14.9	3	-	-	-	&daysideMatch:EAST THAUMASIA; &mroOverlap; 	
+N/A	210	Egress	2020 OCT 20 19:16:31	2020 OCT 20 19:17:10	2020 OCT 20 19:20:23	232.0	136.4	138.7	149.3	-67.9	-68.0	-68.0	23.6	3	-	-	-	&daysideMatch:EAST THAUMASIA; &mroOverlap; 	
+N/A	211	Ingress	2020 OCT 20 20:30:58	2020 OCT 20 20:33:55	2020 OCT 20 20:34:32	214.0	-15.7	-9.7	-8.5	63.2	60.8	60.2	14.9	1	-	-	-	&daysideMatch:CLARITAS RISE; 	
+NOMAD	211	Egress	2020 OCT 20 21:14:26	2020 OCT 20 21:15:05	2020 OCT 20 21:18:19	233.0	107.1	109.4	120.2	-67.9	-68.0	-68.0	23.5	1	6SUBD Nominal #42	Science: orders #121, #134, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:CLARITAS RISE; 	
+ACS	212	Ingress	2020 OCT 20 22:28:50	2020 OCT 20 22:31:48	2020 OCT 20 22:32:25	215.0	-44.4	-38.4	-37.1	63.2	60.8	60.2	14.9	14	-	-	-	&daysideMatch:ARSIA MONS; 	
+N/A	212	Egress	2020 OCT 20 23:12:17	2020 OCT 20 23:12:56	2020 OCT 20 23:16:10	233.0	77.8	80.1	91.0	-67.8	-68.0	-68.1	23.5	14	-	-	-	&daysideMatch:ARSIA MONS; 	
+N/A	213	Ingress	2020 OCT 21 00:26:44	2020 OCT 21 00:29:42	2020 OCT 21 00:30:19	215.0	-73.0	-66.9	-65.6	63.2	60.7	60.2	14.9	1	-	-	-		
+NOMAD	213	Egress	2020 OCT 21 01:10:08	2020 OCT 21 01:10:47	2020 OCT 21 01:14:01	233.0	48.6	50.9	62.0	-67.8	-67.9	-68.1	23.5	1	LNO Occultation Fullscan Fast #2	Diffraction order stepping (fullscan): 105 orders from 110 to 215 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 		
+NOMAD	214	Ingress	2020 OCT 21 02:24:41	2020 OCT 21 02:27:39	2020 OCT 21 02:28:17	216.0	-101.5	-95.3	-94.1	63.2	60.7	60.1	15.0	1	6SUBD Nominal #12	Science: orders #121, #134, #127, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	214	Egress	2020 OCT 21 03:08:04	2020 OCT 21 03:08:43	2020 OCT 21 03:11:58	234.0	19.4	21.8	33.0	-67.8	-67.9	-68.1	23.4	1	-	-	-		
+N/A	215	Ingress	2020 OCT 21 04:22:40	2020 OCT 21 04:25:38	2020 OCT 21 04:26:16	216.0	-130.1	-123.9	-122.6	63.1	60.6	60.0	15.0	3	-	-	-	&daysideMatch:AEOLIS MENSAE MFF; 	
+ACS	215	Egress	2020 OCT 21 05:06:01	2020 OCT 21 05:06:40	2020 OCT 21 05:09:55	234.0	-9.9	-7.5	3.8	-67.7	-67.9	-68.1	23.4	3	-	-	-	&daysideMatch:AEOLIS MENSAE MFF; 	
+NOMAD	216	Ingress	2020 OCT 21 06:20:39	2020 OCT 21 06:23:37	2020 OCT 21 06:24:15	216.0	-158.7	-152.5	-151.2	63.1	60.6	59.9	15.0	1	CO2 100km #1	Science: orders #167, #155, #159, #164, #148, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	216	Egress	2020 OCT 21 07:03:57	2020 OCT 21 07:04:37	2020 OCT 21 07:07:52	235.0	-39.4	-36.9	-25.4	-67.7	-67.9	-68.2	23.4	1	-	-	-		
+N/A	217	Ingress	2020 OCT 21 08:18:34	2020 OCT 21 08:21:33	2020 OCT 21 08:22:11	217.0	172.5	178.9	-179.8	63.2	60.6	59.9	15.0	14	-	-	-		
+ACS	217	Egress	2020 OCT 21 09:01:51	2020 OCT 21 09:02:31	2020 OCT 21 09:05:46	235.0	-68.8	-66.3	-54.7	-67.7	-67.9	-68.2	23.3	14	-	-	-		
+NOMAD	218	Ingress	2020 OCT 21 10:16:27	2020 OCT 21 10:19:27	2020 OCT 21 10:20:05	218.0	143.7	150.2	151.5	63.2	60.6	59.9	15.0	1	6SUBD Nom CH4 #2	Science: orders #134, #136, #164, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	218	Egress	2020 OCT 21 10:59:44	2020 OCT 21 11:00:24	2020 OCT 21 11:03:40	236.0	-98.0	-95.5	-83.7	-67.6	-67.8	-68.2	23.3	1	-	-	-		
+N/A	219	Ingress	2020 OCT 21 12:14:22	2020 OCT 21 12:17:22	2020 OCT 21 12:18:00	218.0	115.1	121.7	123.0	63.2	60.5	59.9	15.0	1	-	-	-		
+NOMAD	219	Egress	2020 OCT 21 12:57:36	2020 OCT 21 12:58:16	2020 OCT 21 13:01:33	237.0	-127.1	-124.6	-112.7	-67.6	-67.8	-68.2	23.2	1	134 only #2	Science: orders #134, #134, #134, #134, #134, #134, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	220	Ingress	2020 OCT 21 14:12:19	2020 OCT 21 14:15:19	2020 OCT 21 14:15:57	218.0	86.7	93.2	94.6	63.1	60.5	59.8	15.0	14	-	-	-		
+N/A	220	Egress	2020 OCT 21 14:55:29	2020 OCT 21 14:56:09	2020 OCT 21 14:59:26	237.0	-156.4	-153.8	-141.8	-67.6	-67.8	-68.2	23.2	14	-	-	-		
+N/A	221	Ingress	2020 OCT 21 16:10:16	2020 OCT 21 16:13:17	2020 OCT 21 16:13:55	219.0	58.1	64.7	66.1	63.1	60.4	59.7	15.0	1	-	-	-	&daysideMatch:MAWRTH VALLIS-ARAM CHAOS; &daysideMatch:MAWRTH VALLIS; 	
+NOMAD	221	Egress	2020 OCT 21 16:53:25	2020 OCT 21 16:54:05	2020 OCT 21 16:57:22	237.0	174.3	176.9	-171.0	-67.5	-67.7	-68.2	23.2	1	6SUBD Nom CO2 #1	Science: orders #121, #134, #149, #164, #165, #169, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:MAWRTH VALLIS-ARAM CHAOS; &daysideMatch:MAWRTH VALLIS; 	
+ACS	222	Ingress	2020 OCT 21 18:08:15	2020 OCT 21 18:11:17	2020 OCT 21 18:11:55	220.0	29.4	36.2	37.5	63.1	60.3	59.7	15.0	14	-	-	-		
+N/A	222	Egress	2020 OCT 21 18:51:21	2020 OCT 21 18:52:01	2020 OCT 21 18:55:19	238.0	145.0	147.6	159.9	-67.5	-67.7	-68.2	23.1	14	-	-	-		
+N/A	223	Ingress	2020 OCT 21 20:06:13	2020 OCT 21 20:09:15	2020 OCT 21 20:09:53	220.0	0.7	7.5	8.9	63.2	60.3	59.7	15.0	1	-	-	-		
+NOMAD	223	Egress	2020 OCT 21 20:49:17	2020 OCT 21 20:49:57	2020 OCT 21 20:53:16	239.0	115.7	118.3	130.8	-67.4	-67.7	-68.3	23.1	1	HCL #4	Science: orders #121, #134, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	224	Ingress	2020 OCT 21 22:04:07	2020 OCT 21 22:07:10	2020 OCT 21 22:07:48	221.0	-28.1	-21.2	-19.8	63.2	60.3	59.6	15.0	14	-	-	-		
+N/A	224	Egress	2020 OCT 21 22:47:09	2020 OCT 21 22:47:49	2020 OCT 21 22:51:09	240.0	86.4	89.0	101.6	-67.4	-67.6	-68.3	23.0	14	-	-	-		
+N/A	225	Ingress	2020 OCT 22 00:01:59	2020 OCT 22 00:05:01	2020 OCT 22 00:05:40	221.0	-56.7	-49.8	-48.3	63.2	60.3	59.6	15.0	1	-	-	-	&daysideMatch:OLYMPUS MONS; 	
+NOMAD	225	Egress	2020 OCT 22 00:44:59	2020 OCT 22 00:45:40	2020 OCT 22 00:48:59	240.0	57.2	59.8	72.5	-67.3	-67.6	-68.3	23.0	1	6SUBD Nominal #48	Science: orders #121, #134, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:OLYMPUS MONS; 	
+NOMAD	226	Ingress	2020 OCT 22 01:59:54	2020 OCT 22 02:02:57	2020 OCT 22 02:03:36	222.0	-85.2	-78.2	-76.8	63.2	60.2	59.5	15.1	1	All Fullscan Slow #2	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (1 order(s) per 1 second(s))	COP row -1: 		
+N/A	226	Egress	2020 OCT 22 02:42:52	2020 OCT 22 02:43:33	2020 OCT 22 02:46:52	240.0	28.0	30.7	43.4	-67.2	-67.6	-68.3	23.0	1	-	-	-		
+N/A	227	Ingress	2020 OCT 22 03:57:54	2020 OCT 22 04:00:57	2020 OCT 22 04:01:36	222.0	-113.7	-106.7	-105.2	63.1	60.1	59.4	15.1	14	-	-	-		
+ACS	227	Egress	2020 OCT 22 04:40:49	2020 OCT 22 04:41:30	2020 OCT 22 04:44:50	241.0	-1.3	1.4	14.3	-67.2	-67.5	-68.3	22.9	14	-	-	-		
+NOMAD	228	Ingress	2020 OCT 22 05:55:52	2020 OCT 22 05:58:56	2020 OCT 22 05:59:35	223.0	-142.4	-135.2	-133.8	63.1	60.1	59.3	15.1	1	6SUBD Nom CO2 #1	Science: orders #121, #134, #149, #164, #165, #169, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:INSIGHT; &daysideMatch:CURIOSITY; 	
+N/A	228	Egress	2020 OCT 22 06:38:45	2020 OCT 22 06:39:26	2020 OCT 22 06:42:47	242.0	-30.7	-27.9	-14.9	-67.1	-67.5	-68.3	22.9	1	-	-	-	&daysideMatch:INSIGHT; &daysideMatch:CURIOSITY; 	
+N/A	229	Ingress	2020 OCT 22 07:53:49	2020 OCT 22 07:56:54	2020 OCT 22 07:57:33	224.0	-171.1	-163.8	-162.4	63.1	60.1	59.3	15.1	3	-	-	-	&mroOverlap; 	
+ACS	229	Egress	2020 OCT 22 08:36:40	2020 OCT 22 08:37:21	2020 OCT 22 08:40:42	242.0	-60.1	-57.3	-44.2	-67.0	-67.4	-68.3	22.8	3	-	-	-	&mroOverlap; 	
+NOMAD	230	Ingress	2020 OCT 22 09:51:43	2020 OCT 22 09:54:49	2020 OCT 22 09:55:28	225.0	160.1	167.5	169.0	63.2	60.1	59.3	15.1	1	CO2 100km #1	Science: orders #167, #155, #159, #164, #148, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	230	Egress	2020 OCT 22 10:34:32	2020 OCT 22 10:35:13	2020 OCT 22 10:38:35	243.0	-89.4	-86.6	-73.4	-67.0	-67.3	-68.3	22.8	1	-	-	-		
+N/A	231	Ingress	2020 OCT 22 11:49:37	2020 OCT 22 11:52:43	2020 OCT 22 11:53:22	225.0	131.5	138.9	140.4	63.2	60.1	59.3	15.1	14	-	-	-		
+ACS	231	Egress	2020 OCT 22 12:32:24	2020 OCT 22 12:33:05	2020 OCT 22 12:36:28	244.0	-118.5	-115.8	-102.3	-66.9	-67.3	-68.3	22.8	14	-	-	-		
+NOMAD	232	Ingress	2020 OCT 22 13:47:33	2020 OCT 22 13:50:39	2020 OCT 22 13:51:18	225.0	103.0	110.5	111.9	63.1	60.0	59.2	15.1	1	6SUBD Nom CO #5	Science: orders #168, #136, #169, #121, #189, #193, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	232	Egress	2020 OCT 22 14:30:17	2020 OCT 22 14:30:58	2020 OCT 22 14:34:21	244.0	-147.7	-145.0	-131.4	-66.8	-67.2	-68.3	22.7	1	-	-	-		
+N/A	233	Ingress	2020 OCT 22 15:45:30	2020 OCT 22 15:48:36	2020 OCT 22 15:49:16	226.0	74.5	82.0	83.5	63.1	59.9	59.1	15.1	1	-	-	-		
+NOMAD	233	Egress	2020 OCT 22 16:28:11	2020 OCT 22 16:28:52	2020 OCT 22 16:32:15	244.0	-177.0	-174.3	-160.6	-66.8	-67.2	-68.3	22.7	1	132 only #2	Science: orders #132, #132, #132, #132, #132, #132, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	234	Ingress	2020 OCT 22 17:43:29	2020 OCT 22 17:46:36	2020 OCT 22 17:47:16	227.0	45.8	53.4	55.0	63.1	59.8	59.0	15.1	14	-	-	-		
+N/A	234	Egress	2020 OCT 22 18:26:07	2020 OCT 22 18:26:49	2020 OCT 22 18:30:12	245.0	153.7	156.5	170.2	-66.7	-67.1	-68.3	22.7	14	-	-	-		
+N/A	235	Ingress	2020 OCT 22 19:41:27	2020 OCT 22 19:44:35	2020 OCT 22 19:45:15	228.0	17.1	24.8	26.4	63.1	59.8	59.0	15.1	7	-	-	-		
+N/A	235	Egress	2020 OCT 22 20:24:03	2020 OCT 22 20:24:45	2020 OCT 22 20:28:10	247.0	124.4	127.2	141.2	-66.6	-67.1	-68.3	22.6	7	-	-	-		
+N/A	236	Ingress	2020 OCT 22 21:39:24	2020 OCT 22 21:42:32	2020 OCT 22 21:43:12	228.0	-11.6	-3.8	-2.3	63.1	59.8	59.0	15.1	1	-	-	-		
+NOMAD	236	Egress	2020 OCT 22 22:21:57	2020 OCT 22 22:22:39	2020 OCT 22 22:26:05	248.0	95.1	98.0	112.0	-66.5	-67.0	-68.3	22.6	1	129 only #2	Science: orders #129, #129, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	237	Ingress	2020 OCT 22 23:37:16	2020 OCT 22 23:40:25	2020 OCT 22 23:41:05	229.0	-40.3	-32.4	-30.9	63.2	59.8	58.9	15.1	14	-	-	-		
+N/A	237	Egress	2020 OCT 23 00:19:47	2020 OCT 23 00:20:29	2020 OCT 23 00:23:55	248.0	65.9	68.7	82.8	-66.4	-66.9	-68.3	22.5	14	-	-	-		
+N/A	238	Ingress	2020 OCT 23 01:35:10	2020 OCT 23 01:38:20	2020 OCT 23 01:39:00	230.0	-68.9	-60.9	-59.3	63.1	59.7	58.8	15.2	1	-	-	-		
+NOMAD	238	Egress	2020 OCT 23 02:17:38	2020 OCT 23 02:18:20	2020 OCT 23 02:21:47	249.0	36.7	39.6	53.8	-66.4	-66.8	-68.3	22.5	1	6SUBD Nom CO2 #2	Science: orders #121, #149, #164, #165, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	239	Ingress	2020 OCT 23 03:33:09	2020 OCT 23 03:36:19	2020 OCT 23 03:36:59	230.0	-97.3	-89.3	-87.8	63.1	59.6	58.7	15.2	1	LNO Occultation Fullscan Fast #2	Diffraction order stepping (fullscan): 105 orders from 110 to 215 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 		
+N/A	239	Egress	2020 OCT 23 04:15:34	2020 OCT 23 04:16:16	2020 OCT 23 04:19:43	249.0	7.5	10.4	24.7	-66.3	-66.8	-68.3	22.5	1	-	-	-		
+N/A	240	Ingress	2020 OCT 23 05:31:08	2020 OCT 23 05:34:19	2020 OCT 23 05:34:59	231.0	-125.9	-117.8	-116.2	63.0	59.5	58.6	15.2	3	-	-	-	&daysideMatch:AEOLIS MENSAE MFF; 	
+ACS	240	Egress	2020 OCT 23 06:13:31	2020 OCT 23 06:14:13	2020 OCT 23 06:17:41	250.0	-21.8	-18.9	-4.5	-66.2	-66.7	-68.2	22.4	3	-	-	-	&daysideMatch:AEOLIS MENSAE MFF; 	
+NOMAD	241	Ingress	2020 OCT 23 07:29:06	2020 OCT 23 07:32:16	2020 OCT 23 07:32:57	231.0	-154.5	-146.4	-144.8	63.0	59.5	58.6	15.2	1	6SUBD CH4 #1	Science: orders #121, #133, #134, #135, #136, #169, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	241	Egress	2020 OCT 23 08:11:26	2020 OCT 23 08:12:09	2020 OCT 23 08:15:37	251.0	-51.2	-48.3	-33.8	-66.1	-66.6	-68.2	22.4	1	-	-	-		
+N/A	242	Ingress	2020 OCT 23 09:27:00	2020 OCT 23 09:30:12	2020 OCT 23 09:30:53	233.0	176.7	-175.1	-173.5	63.1	59.5	58.6	15.2	14	-	-	-		
+ACS	242	Egress	2020 OCT 23 10:09:18	2020 OCT 23 10:10:01	2020 OCT 23 10:13:30	252.0	-80.5	-77.6	-63.0	-66.0	-66.5	-68.2	22.3	14	-	-	-		
+NOMAD	243	Ingress	2020 OCT 23 11:24:54	2020 OCT 23 11:28:07	2020 OCT 23 11:28:48	234.0	147.9	156.3	157.9	63.1	59.5	58.5	15.2	1	133 only #2	Science: orders #133, #133, #133, #133, #133, #133, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	243	Egress	2020 OCT 23 12:07:10	2020 OCT 23 12:07:53	2020 OCT 23 12:11:23	253.0	-109.7	-106.8	-92.1	-65.9	-66.4	-68.2	22.3	1	-	-	-		
+N/A	244	Ingress	2020 OCT 23 13:22:49	2020 OCT 23 13:26:02	2020 OCT 23 13:26:43	234.0	119.4	127.8	129.4	63.1	59.4	58.4	15.2	1	-	-	-		
+NOMAD	244	Egress	2020 OCT 23 14:05:02	2020 OCT 23 14:05:45	2020 OCT 23 14:09:16	254.0	-138.8	-135.9	-121.0	-65.8	-66.4	-68.2	22.3	1	HCL #11	Science: orders #121, #136, #126, #127, #129, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	245	Ingress	2020 OCT 23 15:20:47	2020 OCT 23 15:24:00	2020 OCT 23 15:24:41	234.0	91.0	99.4	101.0	63.0	59.2	58.3	15.2	3	-	-	-	&daysideMatch:MERIDIANI SULPHATES; 	
+N/A	245	Egress	2020 OCT 23 16:02:55	2020 OCT 23 16:03:38	2020 OCT 23 16:07:09	254.0	-168.0	-165.1	-150.2	-65.7	-66.3	-68.2	22.2	3	-	-	-	&daysideMatch:MERIDIANI SULPHATES; 	
+NOMAD	246	Ingress	2020 OCT 23 17:18:45	2020 OCT 23 17:21:59	2020 OCT 23 17:22:40	235.0	62.4	70.9	72.5	63.0	59.2	58.2	15.3	1	6SUBD Nominal #48	Science: orders #121, #134, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	246	Egress	2020 OCT 23 18:00:50	2020 OCT 23 18:01:33	2020 OCT 23 18:05:04	254.0	162.7	165.6	-179.5	-65.6	-66.2	-68.1	22.2	1	All Fullscan Fast #2	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 		
+N/A	247	Ingress	2020 OCT 23 19:16:44	2020 OCT 23 19:19:59	2020 OCT 23 19:20:40	236.0	33.8	42.3	44.0	63.0	59.1	58.1	15.3	14	-	-	-	&daysideMatch:EASTERN COPRATES; &daysideMatch:COPRATES RISE; 	
+N/A	247	Egress	2020 OCT 23 19:58:46	2020 OCT 23 19:59:29	2020 OCT 23 20:03:02	256.0	133.4	136.3	151.4	-65.5	-66.1	-68.1	22.2	14	-	-	-	&daysideMatch:EASTERN COPRATES; &daysideMatch:COPRATES RISE; 	
+ACS	248	Ingress	2020 OCT 23 21:14:41	2020 OCT 23 21:17:56	2020 OCT 23 21:18:38	237.0	5.1	13.7	15.4	63.0	59.1	58.1	15.3	14	-	-	-		
+ACS	248	Egress	2020 OCT 23 21:56:40	2020 OCT 23 21:57:24	2020 OCT 23 22:00:57	257.0	104.2	107.2	122.3	-65.3	-66.0	-68.1	22.1	14	-	-	-		
+NOMAD	249	Ingress	2020 OCT 23 23:12:35	2020 OCT 23 23:15:51	2020 OCT 23 23:16:33	238.0	-23.7	-15.0	-13.2	63.0	59.1	58.1	15.3	1	6SUBD Nominal #12	Science: orders #121, #134, #127, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:PAVONIS MONS; 	
+NOMAD	249	Egress	2020 OCT 23 23:54:32	2020 OCT 23 23:55:16	2020 OCT 23 23:58:50	258.0	75.0	77.9	93.2	-65.2	-65.9	-68.1	22.1	1	6SUBD Nom CO #3	Science: orders #136, #169, #186, #187, #189, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:PAVONIS MONS; 	
+ACS	250	Ingress	2020 OCT 24 01:10:27	2020 OCT 24 01:13:44	2020 OCT 24 01:14:26	239.0	-52.3	-43.5	-41.8	63.0	59.0	58.0	15.3	14	-	-	-		
+ACS	250	Egress	2020 OCT 24 01:52:21	2020 OCT 24 01:53:05	2020 OCT 24 01:56:39	258.0	45.8	48.7	64.0	-65.1	-65.8	-68.1	22.1	14	-	-	-		
+NOMAD	251	Ingress	2020 OCT 24 03:08:25	2020 OCT 24 03:11:42	2020 OCT 24 03:12:24	239.0	-80.7	-71.9	-70.2	62.9	58.9	57.9	15.3	1	All Fullscan Fast #2	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 		
+NOMAD	251	Egress	2020 OCT 24 03:50:14	2020 OCT 24 03:50:58	2020 OCT 24 03:54:33	259.0	16.6	19.6	34.9	-65.0	-65.7	-68.0	22.0	1	129 only #2	Science: orders #129, #129, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	252	Ingress	2020 OCT 24 05:06:24	2020 OCT 24 05:09:42	2020 OCT 24 05:10:24	240.0	-109.2	-100.3	-98.6	62.9	58.8	57.7	15.3	1	CO2 100km #1	Science: orders #167, #155, #159, #164, #148, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:ELYSIUM CERBERUS PHLEGRA; 	
+NOMAD	252	Egress	2020 OCT 24 05:48:11	2020 OCT 24 05:48:55	2020 OCT 24 05:52:31	260.0	-12.6	-9.7	5.8	-64.9	-65.6	-68.0	22.0	1	6SUBD Nominal #11	Science: orders #121, #134, #126, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:ELYSIUM CERBERUS PHLEGRA; 	
+ACS	253	Ingress	2020 OCT 24 07:04:23	2020 OCT 24 07:07:42	2020 OCT 24 07:08:24	241.0	-137.8	-128.8	-127.1	62.9	58.7	57.7	15.3	3	-	-	-	&daysideMatch:INSIGHT; 	
+ACS	253	Egress	2020 OCT 24 07:46:06	2020 OCT 24 07:46:50	2020 OCT 24 07:50:27	261.0	-41.9	-39.0	-23.5	-64.7	-65.5	-68.0	21.9	3	-	-	-	&daysideMatch:INSIGHT; 	
+NOMAD	254	Ingress	2020 OCT 24 09:02:20	2020 OCT 24 09:05:39	2020 OCT 24 09:06:22	242.0	-166.5	-157.5	-155.7	62.9	58.7	57.6	15.3	1	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	254	Egress	2020 OCT 24 09:44:00	2020 OCT 24 09:44:45	2020 OCT 24 09:48:22	262.0	-71.3	-68.3	-52.8	-64.6	-65.4	-67.9	21.9	1	6SUBD Nominal #12	Science: orders #121, #134, #127, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	255	Ingress	2020 OCT 24 11:00:14	2020 OCT 24 11:03:34	2020 OCT 24 11:04:17	243.0	164.7	173.9	175.6	62.9	58.7	57.6	15.3	28	-	-	-	&trueDayLimb; 	
+N/A	255	Egress	2020 OCT 24 11:41:52	2020 OCT 24 11:42:37	2020 OCT 24 11:46:15	263.0	-100.5	-97.5	-81.9	-64.4	-65.2	-67.9	21.9	28	-	-	-	&trueDayLimb; 	
+N/A	256	Ingress	2020 OCT 24 12:58:08	2020 OCT 24 13:01:29	2020 OCT 24 13:02:12	244.0	136.1	145.3	147.1	62.9	58.6	57.5	15.3	14	-	-	-	&possibleOCM; 	
+N/A	256	Egress	2020 OCT 24 13:39:43	2020 OCT 24 13:40:28	2020 OCT 24 13:44:07	264.0	-129.6	-126.6	-110.9	-64.3	-65.2	-67.9	21.8	14	-	-	-	&possibleOCM; 	
+N/A	257	Ingress	2020 OCT 24 14:56:05	2020 OCT 24 14:59:26	2020 OCT 24 15:00:09	244.0	107.7	116.9	118.7	62.8	58.5	57.4	15.4	14	-	-	-	&possibleOCM; 	
+N/A	257	Egress	2020 OCT 24 15:37:35	2020 OCT 24 15:38:20	2020 OCT 24 15:42:00	265.0	-158.8	-155.8	-140.0	-64.2	-65.0	-67.9	21.8	14	-	-	-	&possibleOCM; 	
+N/A	258	Ingress	2020 OCT 24 16:54:03	2020 OCT 24 16:57:26	2020 OCT 24 16:58:09	246.0	79.1	88.5	90.2	62.8	58.4	57.3	15.4	3	-	-	-		
+N/A	258	Egress	2020 OCT 24 17:35:29	2020 OCT 24 17:36:14	2020 OCT 24 17:39:54	265.0	172.0	174.9	-169.3	-64.1	-64.9	-67.8	21.8	3	-	-	-		
+N/A	259	Ingress	2020 OCT 24 18:52:02	2020 OCT 24 18:55:26	2020 OCT 24 18:56:09	247.0	50.5	59.9	61.7	62.8	58.3	57.2	15.4	14	-	-	-		
+N/A	259	Egress	2020 OCT 24 19:33:25	2020 OCT 24 19:34:10	2020 OCT 24 19:37:51	266.0	142.8	145.7	161.5	-63.9	-64.8	-67.8	21.7	14	-	-	-		
+N/A	260	Ingress	2020 OCT 24 20:50:01	2020 OCT 24 20:53:24	2020 OCT 24 20:54:08	247.0	21.9	31.3	33.1	62.8	58.3	57.1	15.4	14	-	-	-		
+N/A	260	Egress	2020 OCT 24 21:31:20	2020 OCT 24 21:32:06	2020 OCT 24 21:35:48	268.0	113.6	116.6	132.5	-63.8	-64.7	-67.7	21.7	14	-	-	-		
+ACS	261	Ingress	2020 OCT 24 22:47:57	2020 OCT 24 22:51:21	2020 OCT 24 22:52:05	248.0	-6.8	2.7	4.5	62.8	58.2	57.1	15.4	3	-	-	-		
+ACS	261	Egress	2020 OCT 24 23:29:13	2020 OCT 24 23:29:59	2020 OCT 24 23:33:43	270.0	84.4	87.4	103.4	-63.6	-64.6	-67.7	21.7	3	-	-	-		
+NOMAD	262	Ingress	2020 OCT 25 00:45:49	2020 OCT 25 00:49:14	2020 OCT 25 00:49:58	249.0	-35.5	-25.9	-24.0	62.8	58.2	57.0	15.4	1	6SUBD CO2 Dipole #1	Science: orders #169, #132, #133, #134, #136, #137, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	262	Egress	2020 OCT 25 01:27:02	2020 OCT 25 01:27:48	2020 OCT 25 01:31:32	270.0	55.2	58.2	74.2	-63.5	-64.4	-67.7	21.6	1	6SUBD CO2 #1	Science: orders #156, #116, #118, #140, #154, #158, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	263	Ingress	2020 OCT 25 02:43:44	2020 OCT 25 02:47:10	2020 OCT 25 02:47:54	250.0	-64.0	-54.3	-52.5	62.8	58.1	56.9	15.4	14	-	-	-		
+ACS	263	Egress	2020 OCT 25 03:24:53	2020 OCT 25 03:25:39	2020 OCT 25 03:29:24	271.0	26.1	29.0	45.1	-63.3	-64.3	-67.6	21.6	14	-	-	-		
+NOMAD	264	Ingress	2020 OCT 25 04:41:43	2020 OCT 25 04:45:10	2020 OCT 25 04:45:54	251.0	-92.4	-82.7	-80.9	62.7	57.9	56.7	15.4	1	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	264	Egress	2020 OCT 25 05:22:48	2020 OCT 25 05:23:34	2020 OCT 25 05:27:20	272.0	-3.1	-0.1	16.0	-63.2	-64.2	-67.6	21.6	1	6SUBD Nom CH4 #1	Science: orders #134, #136, #148, #164, #187, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	265	Ingress	2020 OCT 25 06:39:43	2020 OCT 25 06:43:11	2020 OCT 25 06:43:55	252.0	-120.9	-111.2	-109.3	62.6	57.8	56.6	15.5	1	6SUBD Nominal #1	Science: orders #121, #134, #149, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:AEOLIS MENSAE MFF; &daysideMatch:CURIOSITY; 	
+NOMAD	265	Egress	2020 OCT 25 07:20:43	2020 OCT 25 07:21:30	2020 OCT 25 07:25:16	273.0	-32.3	-29.3	-13.2	-63.0	-64.0	-67.5	21.5	1	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:AEOLIS MENSAE MFF; &daysideMatch:CURIOSITY; 	
+ACS	266	Ingress	2020 OCT 25 08:37:41	2020 OCT 25 08:41:09	2020 OCT 25 08:41:54	253.0	-149.6	-139.8	-137.9	62.6	57.7	56.5	15.5	14	-	-	-		
+ACS	266	Egress	2020 OCT 25 09:18:37	2020 OCT 25 09:19:24	2020 OCT 25 09:23:11	274.0	-61.6	-58.7	-42.5	-62.8	-63.9	-67.5	21.5	14	-	-	-		
+NOMAD	267	Ingress	2020 OCT 25 10:35:35	2020 OCT 25 10:39:05	2020 OCT 25 10:39:50	255.0	-178.4	-168.4	-166.5	62.7	57.7	56.5	15.5	1	HCL #8	Science: orders #121, #136, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	267	Egress	2020 OCT 25 11:16:28	2020 OCT 25 11:17:15	2020 OCT 25 11:21:04	276.0	-90.9	-87.9	-71.7	-62.6	-63.7	-67.4	21.5	1	HCL #4	Science: orders #121, #134, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	268	Ingress	2020 OCT 25 12:33:28	2020 OCT 25 12:36:59	2020 OCT 25 12:37:44	256.0	153.0	163.0	164.9	62.7	57.7	56.4	15.5	14	-	-	-		
+ACS	268	Egress	2020 OCT 25 13:14:19	2020 OCT 25 13:15:06	2020 OCT 25 13:18:56	277.0	-119.9	-117.0	-100.7	-62.5	-63.6	-67.4	21.4	14	-	-	-		
+NOMAD	269	Ingress	2020 OCT 25 14:31:23	2020 OCT 25 14:34:55	2020 OCT 25 14:35:40	257.0	124.5	134.6	136.5	62.6	57.6	56.3	15.5	1	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	269	Egress	2020 OCT 25 15:12:10	2020 OCT 25 15:12:57	2020 OCT 25 15:16:48	278.0	-149.0	-146.1	-129.8	-62.4	-63.4	-67.3	21.4	1	6SUBD Nominal #12	Science: orders #121, #134, #127, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	270	Ingress	2020 OCT 25 16:29:21	2020 OCT 25 16:32:53	2020 OCT 25 16:33:39	258.0	96.1	106.2	108.1	62.6	57.4	56.1	15.5	1	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:MERIDIANI SULPHATES; 	
+NOMAD	270	Egress	2020 OCT 25 17:10:03	2020 OCT 25 17:10:51	2020 OCT 25 17:14:41	278.0	-178.2	-175.3	-159.0	-62.2	-63.3	-67.2	21.4	1	HCL #8	Science: orders #121, #136, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:MERIDIANI SULPHATES; 	
+ACS	271	Ingress	2020 OCT 25 18:27:21	2020 OCT 25 18:30:54	2020 OCT 25 18:31:40	259.0	67.5	77.7	79.6	62.5	57.3	56.0	15.5	14	-	-	-		
+ACS	271	Egress	2020 OCT 25 19:07:57	2020 OCT 25 19:08:45	2020 OCT 25 19:12:36	279.0	152.6	155.5	171.7	-62.0	-63.1	-67.2	21.3	14	-	-	-		
+N/A	272	Ingress	2020 OCT 25 20:25:20	2020 OCT 25 20:28:54	2020 OCT 25 20:29:40	260.0	38.9	49.1	51.1	62.5	57.2	55.9	15.5	14	-	-	-		
+N/A	272	Egress	2020 OCT 25 21:05:52	2020 OCT 25 21:06:40	2020 OCT 25 21:10:33	281.0	123.4	126.3	142.7	-61.8	-63.0	-67.1	21.3	14	-	-	-		
+NOMAD	273	Ingress	2020 OCT 25 22:23:17	2020 OCT 25 22:26:52	2020 OCT 25 22:27:38	261.0	10.2	20.5	22.5	62.5	57.2	55.8	15.5	1	HCL #4	Science: orders #121, #134, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	273	Egress	2020 OCT 25 23:03:45	2020 OCT 25 23:04:33	2020 OCT 25 23:08:28	283.0	94.2	97.2	113.6	-61.6	-62.8	-67.1	21.3	1	6SUBD Nom CO #5	Science: orders #168, #136, #169, #121, #189, #193, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	274	Ingress	2020 OCT 26 00:21:11	2020 OCT 26 00:24:47	2020 OCT 26 00:25:33	262.0	-18.5	-8.1	-6.1	62.5	57.1	55.8	15.5	14	-	-	-		
+ACS	274	Egress	2020 OCT 26 01:01:35	2020 OCT 26 01:02:24	2020 OCT 26 01:06:19	284.0	65.1	68.0	84.4	-61.5	-62.7	-67.0	21.2	14	-	-	-		
+NOMAD	275	Ingress	2020 OCT 26 02:19:03	2020 OCT 26 02:22:40	2020 OCT 26 02:23:27	264.0	-47.1	-36.6	-34.6	62.5	57.1	55.7	15.6	1	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	275	Egress	2020 OCT 26 02:59:24	2020 OCT 26 03:00:13	2020 OCT 26 03:04:09	285.0	36.0	38.9	55.3	-61.3	-62.5	-67.0	21.2	1	HCL #9	Science: orders #121, #136, #130, #130, #130, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	276	Ingress	2020 OCT 26 04:17:02	2020 OCT 26 04:20:40	2020 OCT 26 04:21:27	265.0	-75.4	-64.9	-63.0	62.4	56.9	55.5	15.6	1	6SUBD CO2 Dipole #1	Science: orders #169, #132, #133, #134, #136, #137, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	276	Egress	2020 OCT 26 04:57:17	2020 OCT 26 04:58:06	2020 OCT 26 05:02:03	286.0	6.9	9.8	26.2	-61.1	-62.4	-66.9	21.2	1	6SUBD Nom CH4 #2	Science: orders #134, #136, #164, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	277	Ingress	2020 OCT 26 06:15:02	2020 OCT 26 06:18:41	2020 OCT 26 06:19:28	266.0	-103.9	-93.3	-91.4	62.3	56.7	55.3	15.6	3	-	-	-	&daysideMatch:CERBERUS FOSSAE; 	
+ACS	277	Egress	2020 OCT 26 06:55:12	2020 OCT 26 06:56:01	2020 OCT 26 07:00:00	288.0	-22.3	-19.4	-2.9	-60.9	-62.2	-66.8	21.1	3	-	-	-	&daysideMatch:CERBERUS FOSSAE; 	
+NOMAD	278	Ingress	2020 OCT 26 08:13:02	2020 OCT 26 08:16:42	2020 OCT 26 08:17:29	267.0	-132.4	-121.9	-119.9	62.3	56.6	55.2	15.6	1	6SUBD CH4 #1	Science: orders #121, #133, #134, #135, #136, #169, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	278	Egress	2020 OCT 26 08:53:07	2020 OCT 26 08:53:57	2020 OCT 26 08:57:56	289.0	-51.6	-48.6	-32.2	-60.7	-62.0	-66.7	21.1	1	6SUBD Nom CO2 #2	Science: orders #121, #149, #164, #165, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	279	Ingress	2020 OCT 26 10:10:58	2020 OCT 26 10:14:39	2020 OCT 26 10:15:27	269.0	-161.2	-150.5	-148.5	62.3	56.6	55.1	15.6	14	-	-	-		
+ACS	279	Egress	2020 OCT 26 10:50:59	2020 OCT 26 10:51:49	2020 OCT 26 10:55:49	290.0	-80.8	-77.9	-61.5	-60.4	-61.8	-66.6	21.1	14	-	-	-		
+NOMAD	280	Ingress	2020 OCT 26 12:08:52	2020 OCT 26 12:12:34	2020 OCT 26 12:13:22	270.0	170.1	-179.1	-177.1	62.3	56.5	55.0	15.6	1	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:NILI FOSSAE; 	
+NOMAD	280	Egress	2020 OCT 26 12:48:49	2020 OCT 26 12:49:39	2020 OCT 26 12:53:41	292.0	-109.9	-107.0	-90.6	-60.2	-61.6	-66.6	21.0	1	6SUBD Nominal #3	Science: orders #167, #136, #169, #121, #190, #192, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:NILI FOSSAE; 	
+N/A	281	Ingress	2020 OCT 26 14:06:47	2020 OCT 26 14:10:30	2020 OCT 26 14:11:18	271.0	141.6	152.4	154.4	62.3	56.4	54.9	15.6	14	-	-	-		
+N/A	281	Egress	2020 OCT 26 14:46:40	2020 OCT 26 14:47:30	2020 OCT 26 14:51:34	294.0	-138.9	-136.1	-119.5	-60.1	-61.4	-66.6	21.0	14	-	-	-		
+ACS	282	Ingress	2020 OCT 26 16:04:44	2020 OCT 26 16:08:28	2020 OCT 26 16:09:16	272.0	113.2	124.1	126.0	62.2	56.2	54.7	15.7	14	-	-	-		
+ACS	282	Egress	2020 OCT 26 16:44:31	2020 OCT 26 16:45:22	2020 OCT 26 16:49:25	294.0	-168.1	-165.2	-148.8	-59.9	-61.3	-66.5	21.0	14	-	-	-		
+NOMAD	283	Ingress	2020 OCT 26 18:02:43	2020 OCT 26 18:06:28	2020 OCT 26 18:07:17	274.0	84.7	95.6	97.6	62.1	56.1	54.5	15.7	1	6SUBD Nominal #12	Science: orders #121, #134, #127, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	283	Egress	2020 OCT 26 18:42:24	2020 OCT 26 18:43:15	2020 OCT 26 18:47:19	295.0	162.8	165.6	-178.0	-59.6	-61.1	-66.4	20.9	1	6SUBD Nom CH4 #2	Science: orders #134, #136, #164, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	284	Ingress	2020 OCT 26 20:00:43	2020 OCT 26 20:04:29	2020 OCT 26 20:05:18	275.0	56.1	67.1	69.1	62.1	56.0	54.4	15.7	14	-	-	-		
+N/A	284	Egress	2020 OCT 26 20:40:19	2020 OCT 26 20:41:10	2020 OCT 26 20:45:16	297.0	133.6	136.4	152.9	-59.4	-60.9	-66.3	20.9	14	-	-	-		
+N/A	285	Ingress	2020 OCT 26 21:58:41	2020 OCT 26 22:02:29	2020 OCT 26 22:03:18	277.0	27.5	38.5	40.5	62.1	55.9	54.3	15.7	14	-	-	-		
+N/A	285	Egress	2020 OCT 26 22:38:12	2020 OCT 26 22:39:04	2020 OCT 26 22:43:12	300.0	104.5	107.4	123.9	-59.2	-60.7	-66.2	20.9	14	-	-	-		
+NOMAD	286	Ingress	2020 OCT 26 23:56:36	2020 OCT 27 00:00:24	2020 OCT 27 00:01:14	278.0	-1.2	9.9	12.0	62.1	55.9	54.2	15.7	1	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	286	Egress	2020 OCT 27 00:36:04	2020 OCT 27 00:36:56	2020 OCT 27 00:41:05	301.0	75.4	78.2	94.7	-59.0	-60.5	-66.2	20.8	1	6SUBD Nom CO #3	Science: orders #136, #169, #186, #187, #189, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	287	Ingress	2020 OCT 27 01:54:28	2020 OCT 27 01:58:18	2020 OCT 27 01:59:08	280.0	-29.9	-18.6	-16.6	62.1	55.8	54.2	15.7	3	-	-	-	&daysideMatch:OLYMPUS MONS; 	
+N/A	287	Egress	2020 OCT 27 02:33:51	2020 OCT 27 02:34:43	2020 OCT 27 02:38:53	302.0	46.3	49.1	65.6	-58.8	-60.3	-66.1	20.8	3	-	-	-	&daysideMatch:OLYMPUS MONS; 	
+ACS	288	Ingress	2020 OCT 27 03:52:24	2020 OCT 27 03:56:15	2020 OCT 27 03:57:05	281.0	-58.3	-47.0	-45.0	62.0	55.6	54.0	15.7	14	-	-	-		
+ACS	288	Egress	2020 OCT 27 04:31:41	2020 OCT 27 04:32:33	2020 OCT 27 04:36:44	303.0	17.2	20.0	36.4	-58.6	-60.1	-66.0	20.8	14	-	-	-		
+NOMAD	289	Ingress	2020 OCT 27 05:50:25	2020 OCT 27 05:54:17	2020 OCT 27 05:55:07	282.0	-86.6	-75.4	-73.3	61.9	55.4	53.7	15.8	1	6SUBD CH4 H2O #1	Science: orders #169, #132, #133, #134, #136, #137, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	289	Egress	2020 OCT 27 06:29:35	2020 OCT 27 06:30:28	2020 OCT 27 06:34:40	305.0	-11.9	-9.1	7.4	-58.3	-59.9	-65.9	20.8	1	6SUBD Nom CO #1	Science: orders #121, #149, #186, #187, #189, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	290	Ingress	2020 OCT 27 07:48:25	2020 OCT 27 07:52:18	2020 OCT 27 07:53:09	284.0	-115.1	-103.9	-101.8	61.8	55.2	53.5	15.8	3	-	-	-	&daysideMatch:INSIGHT; &daysideMatch:CURIOSITY; &mroOverlap; 	
+ACS	290	Egress	2020 OCT 27 08:27:29	2020 OCT 27 08:28:22	2020 OCT 27 08:32:36	307.0	-41.1	-38.3	-21.8	-58.1	-59.7	-65.8	20.7	3	-	-	-	&daysideMatch:INSIGHT; &daysideMatch:CURIOSITY; &mroOverlap; 	
+NOMAD	291	Ingress	2020 OCT 27 09:46:22	2020 OCT 27 09:50:17	2020 OCT 27 09:51:08	286.0	-143.8	-132.4	-130.3	61.8	55.1	53.4	15.8	1	6SUBD Nominal #1	Science: orders #121, #134, #149, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	291	Egress	2020 OCT 27 10:25:21	2020 OCT 27 10:26:14	2020 OCT 27 10:30:30	309.0	-70.3	-67.5	-51.1	-57.8	-59.4	-65.7	20.7	1	6SUBD CO2 Dipole #1	Science: orders #169, #132, #133, #134, #136, #137, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	292	Ingress	2020 OCT 27 11:44:16	2020 OCT 27 11:48:13	2020 OCT 27 11:49:04	288.0	-172.5	-161.0	-158.9	61.9	55.1	53.3	15.8	28	-	-	-	&trueDayLimb; 	
+N/A	292	Egress	2020 OCT 27 12:23:11	2020 OCT 27 12:24:05	2020 OCT 27 12:28:21	310.0	-99.4	-96.6	-80.3	-57.5	-59.2	-65.5	20.7	28	-	-	-	&trueDayLimb; 	
+N/A	293	Ingress	2020 OCT 27 13:42:10	2020 OCT 27 13:46:07	2020 OCT 27 13:46:59	289.0	158.9	170.4	172.5	61.9	55.0	53.2	15.8	14	-	-	-		
+N/A	293	Egress	2020 OCT 27 14:21:01	2020 OCT 27 14:21:55	2020 OCT 27 14:26:14	313.0	-128.4	-125.7	-109.2	-57.3	-59.0	-65.5	20.6	14	-	-	-		
+ACS	294	Ingress	2020 OCT 27 15:40:07	2020 OCT 27 15:44:05	2020 OCT 27 15:44:57	290.0	130.5	142.0	144.1	61.8	54.8	53.0	15.8	14	-	-	-		
+ACS	294	Egress	2020 OCT 27 16:18:51	2020 OCT 27 16:19:45	2020 OCT 27 16:24:05	314.0	-157.5	-154.7	-138.4	-57.1	-58.8	-65.4	20.6	14	-	-	-		
+NOMAD	295	Ingress	2020 OCT 27 17:38:06	2020 OCT 27 17:42:06	2020 OCT 27 17:42:58	292.0	102.1	113.7	115.7	61.7	54.6	52.8	15.8	1	6SUBD Nominal #2	Science: orders #119, #136, #149, #169, #186, #189, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:VERNAL CRATER; 	
+NOMAD	295	Egress	2020 OCT 27 18:16:42	2020 OCT 27 18:17:37	2020 OCT 27 18:21:57	315.0	173.4	176.1	-167.6	-56.8	-58.6	-65.3	20.6	1	6SUBD Nominal #1	Science: orders #121, #134, #149, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:VERNAL CRATER; 	
+NOMAD	296	Ingress	2020 OCT 27 19:36:05	2020 OCT 27 19:40:06	2020 OCT 27 19:40:59	294.0	73.5	85.2	87.3	61.6	54.5	52.6	15.8	1	6SUBD Nom CO2 #2	Science: orders #121, #149, #164, #165, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	296	Egress	2020 OCT 27 20:14:35	2020 OCT 27 20:15:30	2020 OCT 27 20:19:52	317.0	144.3	147.0	163.2	-56.5	-58.3	-65.2	20.5	1	6SUBD CH4 H2O #1	Science: orders #169, #132, #133, #134, #136, #137, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	297	Ingress	2020 OCT 27 21:34:04	2020 OCT 27 21:38:07	2020 OCT 27 21:39:00	296.0	44.9	56.7	58.8	61.6	54.3	52.5	15.9	14	-	-	-	&daysideMatch:EAST THAUMASIA; 	
+N/A	297	Egress	2020 OCT 27 22:12:29	2020 OCT 27 22:13:25	2020 OCT 27 22:17:48	319.0	115.2	117.9	134.2	-56.3	-58.1	-65.1	20.5	14	-	-	-	&daysideMatch:EAST THAUMASIA; 	
+ACS	298	Ingress	2020 OCT 27 23:32:02	2020 OCT 27 23:36:06	2020 OCT 27 23:36:59	297.0	16.3	28.1	30.2	61.6	54.2	52.4	15.9	14	-	-	-		
+ACS	298	Egress	2020 OCT 28 00:10:21	2020 OCT 28 00:11:17	2020 OCT 28 00:15:43	322.0	86.1	88.8	105.1	-56.0	-57.9	-65.0	20.5	14	-	-	-		
+N/A	299	Ingress	2020 OCT 28 01:29:55	2020 OCT 28 01:34:00	2020 OCT 28 01:34:54	299.0	-12.4	-0.5	1.7	61.6	54.2	52.3	15.9	3	-	-	-	&daysideMatch:ARSIA MONS; &daysideMatch:OLYMPICA FOSSAE-JOVIS THOLUS; 	
+N/A	299	Egress	2020 OCT 28 02:08:09	2020 OCT 28 02:09:05	2020 OCT 28 02:13:32	323.0	57.0	59.7	76.0	-55.8	-57.6	-64.9	20.5	3	-	-	-	&daysideMatch:ARSIA MONS; &daysideMatch:OLYMPICA FOSSAE-JOVIS THOLUS; 	
+NOMAD	300	Ingress	2020 OCT 28 03:27:49	2020 OCT 28 03:31:56	2020 OCT 28 03:32:50	301.0	-40.9	-28.9	-26.8	61.5	54.0	52.1	15.9	1	6SUBD Nominal #11	Science: orders #121, #134, #126, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	300	Egress	2020 OCT 28 04:05:57	2020 OCT 28 04:06:54	2020 OCT 28 04:11:21	324.0	28.0	30.7	46.8	-55.5	-57.4	-64.7	20.4	1	6SUBD Nominal #11	Science: orders #121, #134, #126, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	301	Ingress	2020 OCT 28 05:25:48	2020 OCT 28 05:29:56	2020 OCT 28 05:30:51	303.0	-69.2	-57.3	-55.1	61.4	53.8	51.8	15.9	14	-	-	-		
+ACS	301	Egress	2020 OCT 28 06:03:49	2020 OCT 28 06:04:46	2020 OCT 28 06:09:16	327.0	-1.1	1.6	17.8	-55.2	-57.2	-64.7	20.4	14	-	-	-		
+NOMAD	302	Ingress	2020 OCT 28 07:23:50	2020 OCT 28 07:28:00	2020 OCT 28 07:28:55	305.0	-97.6	-85.7	-83.5	61.3	53.5	51.5	15.9	1	6SUBD Nominal #1	Science: orders #121, #134, #149, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	302	Egress	2020 OCT 28 08:01:42	2020 OCT 28 08:02:39	2020 OCT 28 08:07:11	329.0	-30.2	-27.6	-11.4	-54.9	-56.9	-64.5	20.4	1	6SUBD Nominal #48	Science: orders #121, #134, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	303	Ingress	2020 OCT 28 09:21:49	2020 OCT 28 09:26:01	2020 OCT 28 09:26:56	307.0	-126.2	-114.1	-112.0	61.2	53.3	51.3	16.0	1	6SUBD Nominal #42	Science: orders #121, #134, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	303	Egress	2020 OCT 28 09:59:35	2020 OCT 28 10:00:33	2020 OCT 28 10:05:06	331.0	-59.4	-56.7	-40.7	-54.6	-56.6	-64.4	20.3	1	6SUBD Nominal #12	Science: orders #121, #134, #127, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	304	Ingress	2020 OCT 28 11:19:45	2020 OCT 28 11:23:58	2020 OCT 28 11:24:54	309.0	-154.8	-142.7	-140.6	61.2	53.3	51.2	16.0	14	-	-	-		
+ACS	304	Egress	2020 OCT 28 11:57:25	2020 OCT 28 11:58:23	2020 OCT 28 12:02:58	333.0	-88.5	-85.9	-69.9	-54.2	-56.3	-64.2	20.3	14	-	-	-		
+N/A	305	Ingress	2020 OCT 28 13:17:38	2020 OCT 28 13:21:54	2020 OCT 28 13:22:50	312.0	176.4	-171.3	-169.1	61.3	53.2	51.1	16.0	3	-	-	-	&daysideMatch:NILI FOSSAE; 	
+N/A	305	Egress	2020 OCT 28 13:55:14	2020 OCT 28 13:56:13	2020 OCT 28 14:00:50	336.0	-117.5	-114.9	-98.9	-54.0	-56.1	-64.1	20.3	3	-	-	-	&daysideMatch:NILI FOSSAE; 	
+NOMAD	306	Ingress	2020 OCT 28 15:15:35	2020 OCT 28 15:19:51	2020 OCT 28 15:20:48	313.0	148.0	160.2	162.4	61.2	53.0	50.9	16.0	1	6SUBD Nominal #11	Science: orders #121, #134, #126, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	306	Egress	2020 OCT 28 15:53:03	2020 OCT 28 15:54:02	2020 OCT 28 15:58:41	338.0	-146.5	-143.9	-127.9	-53.7	-55.9	-64.1	20.3	1	HCL #5	Science: orders #121, #134, #130, #130, #130, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	307	Ingress	2020 OCT 28 17:13:33	2020 OCT 28 17:17:51	2020 OCT 28 17:18:48	315.0	119.7	131.9	134.1	61.0	52.7	50.6	16.0	14	-	-	-		
+ACS	307	Egress	2020 OCT 28 17:50:53	2020 OCT 28 17:51:53	2020 OCT 28 17:56:32	339.0	-175.6	-173.0	-157.1	-53.4	-55.6	-63.9	20.2	14	-	-	-		
+NOMAD	308	Ingress	2020 OCT 28 19:11:33	2020 OCT 28 19:15:52	2020 OCT 28 19:16:50	317.0	91.2	103.4	105.6	60.9	52.5	50.4	16.0	1	CO2 Fullscan Fast #3	Diffraction order stepping (fullscan): 10 orders from 125 to 135 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 	&daysideMatch:MAWRTH VALLIS-ARAM CHAOS; &daysideMatch:MAWRTH VALLIS; 	
+NOMAD	308	Egress	2020 OCT 28 19:48:44	2020 OCT 28 19:49:44	2020 OCT 28 19:54:25	341.0	155.3	157.9	173.7	-53.1	-55.3	-63.7	20.2	1	HCL #5	Science: orders #121, #134, #130, #130, #130, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:MAWRTH VALLIS-ARAM CHAOS; &daysideMatch:MAWRTH VALLIS; 	
+N/A	309	Ingress	2020 OCT 28 21:09:33	2020 OCT 28 21:13:55	2020 OCT 28 21:14:53	320.0	62.6	75.0	77.2	60.9	52.4	50.1	16.0	14	-	-	-		
+N/A	309	Egress	2020 OCT 28 21:46:37	2020 OCT 28 21:47:38	2020 OCT 28 21:52:21	344.0	126.2	128.8	144.7	-52.8	-55.0	-63.6	20.2	14	-	-	-		
+NOMAD	310	Ingress	2020 OCT 28 23:07:31	2020 OCT 28 23:11:54	2020 OCT 28 23:12:53	322.0	34.0	46.4	48.6	60.8	52.2	50.0	16.1	1	6SUBD CO2 CO #1	Science: orders #119, #149, #164, #165, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	310	Egress	2020 OCT 28 23:44:29	2020 OCT 28 23:45:30	2020 OCT 28 23:50:16	347.0	97.2	99.8	115.6	-52.5	-54.7	-63.5	20.2	1	All Fullscan Fast #2	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 		
+N/A	311	Ingress	2020 OCT 29 01:05:26	2020 OCT 29 01:09:51	2020 OCT 29 01:10:50	324.0	5.4	17.9	20.1	60.8	52.1	49.9	16.1	14	-	-	-		
+N/A	311	Egress	2020 OCT 29 01:42:18	2020 OCT 29 01:43:20	2020 OCT 29 01:48:08	350.0	68.1	70.7	86.6	-52.2	-54.5	-63.4	20.1	14	-	-	-		
+ACS	312	Ingress	2020 OCT 29 03:03:19	2020 OCT 29 03:07:46	2020 OCT 29 03:08:45	326.0	-23.2	-10.6	-8.4	60.8	52.0	49.7	16.1	3	-	-	-	&daysideMatch:OLYMPUS MONS; &mroOverlap; 	
+ACS	312	Egress	2020 OCT 29 03:40:04	2020 OCT 29 03:41:06	2020 OCT 29 03:45:55	351.0	39.1	41.7	57.4	-51.8	-54.2	-63.2	20.1	3	-	-	-	&daysideMatch:OLYMPUS MONS; &mroOverlap; 	
+NOMAD	313	Ingress	2020 OCT 29 05:01:16	2020 OCT 29 05:05:45	2020 OCT 29 05:06:45	329.0	-51.6	-39.0	-36.8	60.7	51.7	49.4	16.1	1	6SUBD Nominal #42	Science: orders #121, #134, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	313	Egress	2020 OCT 29 05:37:52	2020 OCT 29 05:38:55	2020 OCT 29 05:43:46	354.0	10.0	12.6	28.3	-51.5	-53.9	-63.1	20.1	1	6SUBD CH4 H2O #1	Science: orders #169, #132, #133, #134, #136, #137, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	314	Ingress	2020 OCT 29 06:59:19	2020 OCT 29 07:03:49	2020 OCT 29 07:04:50	331.0	-79.8	-67.4	-65.1	60.5	51.4	49.0	16.1	14	-	-	-		
+ACS	314	Egress	2020 OCT 29 07:35:45	2020 OCT 29 07:36:48	2020 OCT 29 07:41:42	357.0	-19.0	-16.5	-0.8	-51.2	-53.6	-63.0	20.0	14	-	-	-		
+NOMAD	315	Ingress	2020 OCT 29 08:57:20	2020 OCT 29 09:01:52	2020 OCT 29 09:02:53	333.0	-108.3	-95.8	-93.6	60.4	51.1	48.7	16.1	1	HCL #11	Science: orders #121, #136, #126, #127, #129, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:INSIGHT; &daysideMatch:CURIOSITY; 	
+NOMAD	315	Egress	2020 OCT 29 09:33:36	2020 OCT 29 09:34:40	2020 OCT 29 09:39:35	359.0	-48.2	-45.6	-30.0	-50.8	-53.2	-62.8	20.0	1	6SUBD CH4 #1	Science: orders #121, #133, #134, #135, #136, #169, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:INSIGHT; &daysideMatch:CURIOSITY; 	
+ACS	316	Ingress	2020 OCT 29 10:55:18	2020 OCT 29 10:59:52	2020 OCT 29 11:00:54	336.0	-136.9	-124.3	-122.1	60.4	51.0	48.6	16.2	14	-	-	-		
+ACS	316	Egress	2020 OCT 29 11:31:26	2020 OCT 29 11:32:30	2020 OCT 29 11:37:28	362.0	-77.3	-74.8	-59.3	-50.3	-52.8	-62.6	20.0	14	-	-	-		
+N/A	317	Ingress	2020 OCT 29 12:53:12	2020 OCT 29 12:57:49	2020 OCT 29 12:58:51	339.0	-165.6	-152.9	-150.6	60.4	50.9	48.4	16.2	8	-	-	-		
+N/A	317	Egress	2020 OCT 29 13:29:14	2020 OCT 29 13:30:19	2020 OCT 29 13:35:19	365.0	-106.3	-103.8	-88.4	-50.0	-52.5	-62.4	20.0	8	-	-	-		
+NOMAD	318	Ingress	2020 OCT 29 14:51:06	2020 OCT 29 14:55:45	2020 OCT 29 14:56:48	342.0	165.8	178.6	-179.1	60.4	50.8	48.2	16.2	1	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	318	Egress	2020 OCT 29 15:27:02	2020 OCT 29 15:28:08	2020 OCT 29 15:33:10	368.0	-135.3	-132.8	-117.3	-49.7	-52.3	-62.3	19.9	1	132 only #2	Science: orders #132, #132, #132, #132, #132, #132, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	319	Ingress	2020 OCT 29 16:49:05	2020 OCT 29 16:53:46	2020 OCT 29 16:54:49	344.0	137.5	150.3	152.5	60.2	50.4	47.9	16.2	1	HCL #5	Science: orders #121, #134, #130, #130, #130, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	319	Egress	2020 OCT 29 17:24:50	2020 OCT 29 17:25:56	2020 OCT 29 17:31:00	370.0	-164.3	-161.8	-146.4	-49.3	-51.9	-62.1	19.9	1	6SUBD Nominal #42	Science: orders #121, #134, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	320	Ingress	2020 OCT 29 18:47:05	2020 OCT 29 18:51:48	2020 OCT 29 18:52:52	347.0	109.1	121.9	124.1	60.0	50.1	47.5	16.2	14	-	-	-		
+ACS	320	Egress	2020 OCT 29 19:22:39	2020 OCT 29 19:23:46	2020 OCT 29 19:28:51	372.0	166.6	169.1	-175.7	-48.9	-51.6	-61.9	19.9	14	-	-	-		
+NOMAD	321	Ingress	2020 OCT 29 20:45:05	2020 OCT 29 20:49:50	2020 OCT 29 20:50:55	350.0	80.6	93.4	95.7	60.0	49.9	47.3	16.2	1	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	321	Egress	2020 OCT 29 21:20:30	2020 OCT 29 21:21:37	2020 OCT 29 21:26:46	376.0	137.5	140.0	155.3	-48.5	-51.2	-61.8	19.9	1	HCL #11	Science: orders #121, #136, #126, #127, #129, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	322	Ingress	2020 OCT 29 22:43:05	2020 OCT 29 22:47:53	2020 OCT 29 22:48:58	353.0	52.1	65.0	67.2	59.9	49.7	47.0	16.3	14	-	-	-		
+N/A	322	Egress	2020 OCT 29 23:18:22	2020 OCT 29 23:19:30	2020 OCT 29 23:24:42	380.0	108.5	111.0	126.3	-48.1	-50.9	-61.7	19.8	14	-	-	-		
+N/A	323	Ingress	2020 OCT 30 00:41:02	2020 OCT 30 00:45:52	2020 OCT 30 00:46:58	356.0	23.4	36.4	38.7	59.9	49.6	46.8	16.3	7	-	-	-		
+N/A	323	Egress	2020 OCT 30 01:16:11	2020 OCT 30 01:17:20	2020 OCT 30 01:22:34	383.0	79.5	82.0	97.2	-47.8	-50.6	-61.5	19.8	7	-	-	-		
+ACS	324	Ingress	2020 OCT 30 02:38:55	2020 OCT 30 02:43:47	2020 OCT 30 02:44:54	359.0	-5.2	7.9	10.2	59.9	49.4	46.7	16.3	3	-	-	-	&daysideMatch:ULYSSES FOSSAE; 	
+ACS	324	Egress	2020 OCT 30 03:13:57	2020 OCT 30 03:15:06	2020 OCT 30 03:20:23	386.0	50.5	52.9	68.1	-47.4	-50.2	-61.3	19.8	3	-	-	-	&daysideMatch:ULYSSES FOSSAE; 	
+NOMAD	325	Ingress	2020 OCT 30 04:36:51	2020 OCT 30 04:41:46	2020 OCT 30 04:42:53	362.0	-33.6	-20.5	-18.2	59.7	49.1	46.3	16.3	1	All Fullscan Fast #2	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 		
+NOMAD	325	Egress	2020 OCT 30 05:11:43	2020 OCT 30 05:12:53	2020 OCT 30 05:18:11	388.0	21.4	23.9	39.0	-47.0	-49.9	-61.1	19.8	1	6SUBD Nominal #12	Science: orders #121, #134, #127, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	326	Ingress	2020 OCT 30 06:34:54	2020 OCT 30 06:39:51	2020 OCT 30 06:40:59	365.0	-61.8	-48.8	-46.5	59.5	48.7	45.8	16.3	14	-	-	-		
+ACS	326	Egress	2020 OCT 30 07:09:33	2020 OCT 30 07:10:44	2020 OCT 30 07:16:05	392.0	-7.6	-5.2	9.9	-46.6	-49.5	-61.0	19.7	14	-	-	-		
+NOMAD	327	Ingress	2020 OCT 30 08:32:57	2020 OCT 30 08:37:56	2020 OCT 30 08:39:05	368.0	-90.1	-77.2	-74.9	59.3	48.4	45.4	16.3	1	6SUBD Nominal #12	Science: orders #121, #134, #127, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:AEOLIS MENSAE MFF; 	
+NOMAD	327	Egress	2020 OCT 30 09:07:24	2020 OCT 30 09:08:36	2020 OCT 30 09:14:00	396.0	-36.7	-34.2	-19.2	-46.1	-49.1	-60.8	19.7	1	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:AEOLIS MENSAE MFF; 	
+NOMAD	328	Ingress	2020 OCT 30 10:30:56	2020 OCT 30 10:35:58	2020 OCT 30 10:37:08	372.0	-118.7	-105.7	-103.4	59.2	48.1	45.1	16.4	1	LNO Occultation Fullscan Fast #2	Diffraction order stepping (fullscan): 105 orders from 110 to 215 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 		
+NOMAD	328	Egress	2020 OCT 30 11:05:12	2020 OCT 30 11:06:25	2020 OCT 30 11:11:52	400.0	-65.8	-63.4	-48.5	-45.6	-48.7	-60.5	19.7	1	HCL #11	Science: orders #121, #136, #126, #127, #129, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	329	Ingress	2020 OCT 30 12:28:52	2020 OCT 30 12:33:57	2020 OCT 30 12:35:08	376.0	-147.4	-134.2	-131.9	59.3	48.0	44.9	16.4	14	-	-	-		
+N/A	329	Egress	2020 OCT 30 13:02:59	2020 OCT 30 13:04:12	2020 OCT 30 13:09:42	403.0	-94.9	-92.5	-77.7	-45.1	-48.2	-60.3	19.6	14	-	-	-		
+N/A	330	Ingress	2020 OCT 30 14:26:45	2020 OCT 30 14:31:54	2020 OCT 30 14:33:05	380.0	-176.0	-162.7	-160.4	59.3	47.8	44.7	16.4	14	-	-	-		
+N/A	330	Egress	2020 OCT 30 15:00:46	2020 OCT 30 15:02:00	2020 OCT 30 15:07:34	408.0	-123.8	-121.4	-106.6	-44.7	-47.9	-60.2	19.6	14	-	-	-		
+ACS	331	Ingress	2020 OCT 30 16:24:43	2020 OCT 30 16:29:54	2020 OCT 30 16:31:06	383.0	155.6	168.9	171.2	59.1	47.5	44.4	16.4	14	-	-	-		
+ACS	331	Egress	2020 OCT 30 16:58:33	2020 OCT 30 16:59:48	2020 OCT 30 17:05:24	411.0	-152.8	-150.4	-135.6	-44.3	-47.5	-60.0	19.6	14	-	-	-		
+NOMAD	332	Ingress	2020 OCT 30 18:22:44	2020 OCT 30 18:27:57	2020 OCT 30 18:29:10	386.0	127.4	140.6	142.9	58.9	47.1	43.9	16.4	1	6SUBD CH4 H2O #1	Science: orders #169, #132, #133, #134, #136, #137, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:MERIDIANI SULPHATES; 	
+NOMAD	332	Egress	2020 OCT 30 18:56:19	2020 OCT 30 18:57:35	2020 OCT 30 19:03:13	414.0	178.1	-179.5	-164.8	-43.8	-47.1	-59.8	19.6	1	HCL #8	Science: orders #121, #136, #129, #129, #129, #129, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:MERIDIANI SULPHATES; 	
+ACS	333	Ingress	2020 OCT 30 20:20:45	2020 OCT 30 20:26:02	2020 OCT 30 20:27:16	391.0	98.9	112.1	114.5	58.7	46.7	43.5	16.4	3	-	-	-	&daysideMatch:MAWRTH VALLIS-ARAM CHAOS; 	
+ACS	333	Egress	2020 OCT 30 20:54:08	2020 OCT 30 20:55:25	2020 OCT 30 21:01:06	418.0	149.1	151.5	166.1	-43.3	-46.7	-59.5	19.5	3	-	-	-	&daysideMatch:MAWRTH VALLIS-ARAM CHAOS; 	
+N/A	334	Ingress	2020 OCT 30 22:18:46	2020 OCT 30 22:24:06	2020 OCT 30 22:25:21	395.0	70.4	83.7	86.0	58.6	46.4	43.1	16.5	14	-	-	-		
+N/A	334	Egress	2020 OCT 30 22:51:58	2020 OCT 30 22:53:16	2020 OCT 30 22:59:01	423.0	120.0	122.4	137.1	-42.8	-46.2	-59.4	19.5	14	-	-	-		
+NOMAD	335	Ingress	2020 OCT 31 00:16:45	2020 OCT 31 00:22:07	2020 OCT 31 00:23:23	398.0	41.9	55.2	57.5	58.6	46.2	42.8	16.5	1	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:SOUTH THAUMASIA; 	
+NOMAD	335	Egress	2020 OCT 31 00:49:46	2020 OCT 31 00:51:05	2020 OCT 31 00:56:54	428.0	91.0	93.4	108.1	-42.4	-45.9	-59.2	19.5	1	6SUBD CO2 CO #1	Science: orders #119, #149, #164, #165, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:SOUTH THAUMASIA; 	
+N/A	336	Ingress	2020 OCT 31 02:14:40	2020 OCT 31 02:20:05	2020 OCT 31 02:21:22	402.0	13.2	26.7	29.0	58.5	46.0	42.6	16.5	14	-	-	-		
+N/A	336	Egress	2020 OCT 31 02:47:32	2020 OCT 31 02:48:52	2020 OCT 31 02:54:44	432.0	62.0	64.4	79.0	-41.9	-45.4	-59.0	19.5	14	-	-	-		
+NOMAD	337	Ingress	2020 OCT 31 04:12:33	2020 OCT 31 04:18:02	2020 OCT 31 04:19:20	407.0	-15.3	-1.8	0.6	58.5	45.7	42.3	16.5	1	6SUBD Nominal #12	Science: orders #121, #134, #127, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	337	Egress	2020 OCT 31 04:45:15	2020 OCT 31 04:46:36	2020 OCT 31 04:52:30	435.0	33.0	35.4	49.9	-41.4	-45.0	-58.7	19.5	1	6SUBD Nominal #1	Science: orders #121, #134, #149, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	338	Ingress	2020 OCT 31 06:10:34	2020 OCT 31 06:16:07	2020 OCT 31 06:17:26	412.0	-43.6	-30.1	-27.7	58.3	45.3	41.7	16.5	14	-	-	-		
+ACS	338	Egress	2020 OCT 31 06:43:00	2020 OCT 31 06:44:22	2020 OCT 31 06:50:20	440.0	4.0	6.4	20.8	-40.8	-44.5	-58.5	19.4	14	-	-	-		
+NOMAD	339	Ingress	2020 OCT 31 08:08:39	2020 OCT 31 08:14:15	2020 OCT 31 08:15:35	416.0	-71.8	-58.4	-56.1	58.0	44.7	41.1	16.6	1	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	339	Egress	2020 OCT 31 08:40:49	2020 OCT 31 08:42:12	2020 OCT 31 08:48:15	446.0	-25.1	-22.7	-8.3	-40.2	-44.0	-58.3	19.4	1	HCL #10	Science: orders #121, #134, #126, #127, #129, #130, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+ACS	340	Ingress	2020 OCT 31 10:06:40	2020 OCT 31 10:12:20	2020 OCT 31 10:13:42	422.0	-100.3	-86.8	-84.5	57.8	44.4	40.6	16.6	3	-	-	-	&daysideMatch:INSIGHT; 	
+ACS	340	Egress	2020 OCT 31 10:38:36	2020 OCT 31 10:40:01	2020 OCT 31 10:46:07	451.0	-54.2	-51.8	-37.5	-39.6	-43.5	-58.0	19.4	3	-	-	-	&daysideMatch:INSIGHT; 	
+NOMAD	341	Ingress	2020 OCT 31 12:04:39	2020 OCT 31 12:10:23	2020 OCT 31 12:11:46	427.0	-128.8	-115.3	-112.9	57.8	44.1	40.3	16.6	1	6SUBD CO H2O #1	Science: orders #134, #169, #186, #187, #189, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	341	Egress	2020 OCT 31 12:36:21	2020 OCT 31 12:37:47	2020 OCT 31 12:43:57	456.0	-83.2	-80.9	-66.7	-38.9	-42.9	-57.7	19.3	1	CO2 Fullscan Fast #3	Diffraction order stepping (fullscan): 10 orders from 125 to 135 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 		

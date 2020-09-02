@@ -445,7 +445,6 @@ def getObsParameters(observation_name, dictionary):
         return sorted(orders_out), inttime_out, rhythm_out, rows_out, channel_code
     else:
         return [-999], -1, -1, -1, -1
-#        print("Observation name %s not found in dictionary for orbit number %i" %(observation_name, orbitNumber))
         
         
 
@@ -483,7 +482,6 @@ def getCopRows(observationName, observationDict, copTableDict, copTableCombinati
     if fixedCopRow == -999:
         print("Error: incorrect fixed row")
         stop()
-                
     
     
     """then do subdomain table"""

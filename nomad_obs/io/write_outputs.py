@@ -192,36 +192,6 @@ def writeLnoGroundAssetJointObsInfo(orbit_list, mtpConstants, paths, ground_asse
     writeOutputTxt(os.path.join(paths["ORBIT_PLAN_PATH"], "nomad_mtp%03d_lno_%s_joint_obs" %(mtpNumber, ground_asset_name.lower())), lnoGroundAssetJointObs)
 
 
-#def writeAcsJointObsNumbers(orbit_list, mtpConstants, paths):
-#    """write ACS joint obs"""
-#    """note that a check is NOT made to see if this file arlready exists. It should be identical each time it is made and should never be edited by hand"""
-#    mtpNumber = mtpConstants["mtpNumber"]
-#
-#
-#    obsTypeNames = {"ingress":"irIngressLow", "merged":"irIngressLow", "grazing":"irIngressLow", "egress":"irEgressLow"}
-#    outputStrings = []
-#    for obsName, socObsName in SOC_JOINT_OBSERVATION_NAMES.items(): #loop through all joint observation names
-#    
-#        for socObsType in SOC_JOINT_OBSERVATION_TYPES: #loop through egress, ingress, merged
-#            outputString = "%s, %s" %(socObsName, socObsType)
-#            found = False
-#            
-#            for orbit in orbit_list:
-#                occultationObsTypes = [occultationType for occultationType in orbit["allowedObservationTypes"][:] if occultationType in ["ingress", "egress", "merged", "grazing"]]
-#                for occultationObsType in occultationObsTypes:
-#                    if occultationObsType in orbit.keys():
-#                        obsTypeName = obsTypeNames[occultationObsType]
-#                        if obsName == orbit["finalOrbitPlan"][obsTypeName]:
-#                            eventDescription = orbit[occultationObsType]["occultationEventFileCounts"]
-#                            if socObsType in eventDescription:
-#                                eventOrbitNumber = eventDescription.split("-")[-1]
-#                                outputString += ", %s" %eventOrbitNumber
-#                                found = True
-#            if found:
-#                outputStrings.append(outputString)
-#
-#    writeOutputCsv(os.path.join(paths["COP_ROW_PATH"], "joint_occ_mtp%03d" %mtpNumber), outputStrings)
-
 
 
 def writeAcsJointObsNumbers(orbit_list, mtpConstants, paths):
@@ -232,6 +202,9 @@ def writeAcsJointObsNumbers(orbit_list, mtpConstants, paths):
 
     obsTypeNames = {"ingress":"irIngressLow", "merged":"irIngressLow", "grazing":"irIngressLow", "egress":"irEgressLow"}
     outputStrings = []
+    
+    joint_obs_counter = 0
+    
     for socObsName, obsNames in SOC_JOINT_OBSERVATION_NAMES.items(): #loop through all joint observation names
     
         for socObsType in SOC_JOINT_OBSERVATION_TYPES: #loop through egress, ingress, merged
@@ -239,20 +212,24 @@ def writeAcsJointObsNumbers(orbit_list, mtpConstants, paths):
             found = False
             
             for orbit in orbit_list:
+                #get allowed occultation types for that orbit from orbit list
                 occultationObsTypes = [occultationType for occultationType in orbit["allowedObservationTypes"][:] if occultationType in ["ingress", "egress", "merged", "grazing"]]
-                for occultationObsType in occultationObsTypes:
+                for occultationObsType in occultationObsTypes: #loop through allowed occultations
                     if occultationObsType in orbit.keys():
                         obsTypeName = obsTypeNames[occultationObsType]
                         for obsName in obsNames:
-                            if obsName == orbit["finalOrbitPlan"][obsTypeName]:
-                                eventDescription = orbit[occultationObsType]["occultationEventFileCounts"]
-                                if socObsType in eventDescription:
-                                    eventOrbitNumber = eventDescription.split("-")[-1]
-                                    outputString += ", %s" %eventOrbitNumber
-                                    found = True
+                            if obsName == orbit["finalOrbitPlan"][obsTypeName]: #if the nomad observation name if found in the orbit list
+                                if obsName != "":
+                                    eventDescription = orbit[occultationObsType]["occultationEventFileCounts"]
+                                    if socObsType in eventDescription:
+                                        eventOrbitNumber = eventDescription.split("-")[-1]
+                                        outputString += ", %s" %eventOrbitNumber
+                                        found = True
+                                        joint_obs_counter += 1
             if found:
                 outputStrings.append(outputString)
 
+    print("%i joint occultations added to the ACS list" %(joint_obs_counter))
     writeOutputCsv(os.path.join(paths["COP_ROW_PATH"], "joint_occ_mtp%03d" %mtpNumber), outputStrings)
 
 
