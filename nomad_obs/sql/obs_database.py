@@ -9,12 +9,20 @@ Created on Mon Apr 27 12:37:20 2020
 
 import os
 import configparser
-import MySQLdb
 import decimal
 from datetime import datetime
 
 
 from nomad_obs.config.constants import SPICE_DATETIME_FORMAT
+from nomad_obs.config.python_version import python_version
+
+#no mysqldb in py3.8
+if python_version() >= 3.8:
+    CONNECTOR = True
+    import mysql.connector
+else:    
+    CONNECTOR = False
+    import MySQLdb
 
 
 
@@ -30,7 +38,10 @@ class obsDB(object):
 
 
         print("Connecting to database %s" %host)
-        self.db = MySQLdb.connect(host=host, user=user, passwd=passwd, db=db)
+        if CONNECTOR:
+            self.db = mysql.connector.connect(user=user, password=passwd, host=host, database=db)
+        else:
+            self.db = MySQLdb.connect(host=host, user=user, passwd=passwd, db=db)
         
     def __init__(self, paths):
         self.paths = paths
@@ -45,7 +56,15 @@ class obsDB(object):
 
     def query(self, input_query):
         self.cursor.execute((input_query))
-        output = self.cursor.fetchall()
+        
+        if CONNECTOR:
+            try:
+                output = self.cursor.fetchall()
+            except mysql.connector.InterfaceError:
+                output = ""
+        else:
+            output = self.cursor.fetchall()
+
         return output
 
 

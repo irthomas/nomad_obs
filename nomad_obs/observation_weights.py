@@ -65,7 +65,7 @@ OCCULTATION_WEIGHTS = [
     #MTP028+ CO2 M1/E2 and HCl. reduce when new patches become available.
 #    ["126 only #2"] * 5,
 #    ["127 only #2"] * 5,
-    ["129 only #2"] * 10,
+    ["129 only #2"] * 9,
     ["HDO 01"] * 5,
     ["Dust H2O 01"] * 5,
 
