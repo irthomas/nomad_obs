@@ -20,6 +20,8 @@ def updateWrongOrbitTypes(orbit_list, mtpConstants):
     
     mtpNumber = mtpConstants["mtpNumber"]
 
+
+    """note that index here is one less than the orbit number => orbit 228 is at index 226"""
     if mtpNumber == 10:
         orbit_list[227]["allowedObservationTypes"] = ["dayside", "grazing"]
     if mtpNumber == 20:
@@ -30,6 +32,11 @@ def updateWrongOrbitTypes(orbit_list, mtpConstants):
         orbit_list[6]["allowedObservationTypes"] = ["dayside", "grazing"]
     if mtpNumber == 26:
         orbit_list[167]["allowedObservationTypes"] = ["dayside", "grazing"]
+    if mtpNumber == 34:
+        orbit_list[29]["allowedObservationTypes"] = ["dayside", "grazing"]
+        orbit_list[232]["allowedObservationTypes"] = ["dayside", "grazing"]
+        orbit_list[29]["grazing"] = orbit_list[29].pop("merged")
+        orbit_list[232]["grazing"] = orbit_list[232].pop("merged")
             
     return orbit_list
 
