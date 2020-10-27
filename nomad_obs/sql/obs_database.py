@@ -28,23 +28,33 @@ else:
 
 class obsDB(object):
     def connect(self):
-        """replace with ini script reader"""
-        config = configparser.ConfigParser()
-        config.read(os.path.join(self.paths["SQL_INI_PATH"], "nomad_db.ini"))
-        host = config["data_db"]["host"].strip('"')
-        user = config["data_db"]["user"].strip('"')
-        passwd = config["data_db"]["password"].strip('"')
-        db = config["data_db"]["database"].strip('"')
+        
+        if self.server == "BIRA":
+            
+            config = configparser.ConfigParser()
+            config.read(os.path.join(self.paths["SQL_INI_PATH"], "nomad_db.ini"))
+            host = config["data_db"]["host"].strip('"')
+            user = config["data_db"]["user"].strip('"')
+            passwd = config["data_db"]["password"].strip('"')
+            dbname = config["data_db"]["database"].strip('"')
 
+        #for testing at home
+        elif self.server == "Home":
+            host = "localhost"
+            user = "root"
+            passwd = ""
+            dbname = self.dbname
 
         print("Connecting to database %s" %host)
         if CONNECTOR:
-            self.db = mysql.connector.connect(user=user, password=passwd, host=host, database=db)
+            self.db = mysql.connector.connect(user=user, password=passwd, host=host, database=dbname)
         else:
-            self.db = MySQLdb.connect(host=host, user=user, passwd=passwd, db=db)
+            self.db = MySQLdb.connect(host=host, user=user, passwd=passwd, db=dbname)
         
-    def __init__(self, paths):
+    def __init__(self, paths, server="BIRA", dbname=""):
         self.paths = paths
+        self.server = server
+        self.dbname = dbname
         self.connect()
         self.cursor = self.db.cursor()
 

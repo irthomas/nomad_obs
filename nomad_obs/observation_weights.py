@@ -34,6 +34,7 @@ OCCULTATION_WEIGHTS = [
     ["All Fullscan Fast #2"] * 10,
     ["All Fullscan Slow #2"] * 5,
     ["CO2 Fullscan Fast #2"] * 3,
+    ["CO2 Fullscan Fast #4"] * 10, #orders 165-175 #reduce gradually
     ["CO Fullscan Fast #2"] * 3,
     ["LNO Occultation Fullscan Fast #2"] * 5,
 #    ["119 only #2"] * 1,
@@ -111,6 +112,8 @@ OCCULTATION_MERGED_WEIGHTS = [
 #    ["136 only #2"] * 1,
     
     ["All Fullscan Fast #2"] * 1,
+    ["CO2 Fullscan Fast #4"] * 5, #orders 165-175 reduce gradually
+
     ["6SUBD Nominal #42"] * 1, #nominal + 129
     ["6SUBD Nominal #45"] * 1, #nominal + 129
     ["6SUBD Nominal #48"] * 1, #nominal + 129

@@ -12,8 +12,9 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 ### THESE CAN BE MODIFIED ####
 #select the MTP number to be run
-mtpNumber = 34
+mtpNumber = 35
 """excel =IF(OR(AND(A2=3,H2=""),AND(A2=14,NOT(H2=""))), 1, 0)"""
+"""remember to update spice kernels first..."""
 
 #add the correct MTP info in obs_inputs
 from nomad_obs.mtp_inputs import getMtpConstants
