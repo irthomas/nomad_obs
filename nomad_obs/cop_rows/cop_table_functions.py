@@ -466,6 +466,7 @@ def getCopRows(observationName, observationDict, copTableDict, copTableCombinati
     diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getObsParameters(observationName, observationDict)
     if diffractionOrders[0] == -999:
         print("Observation name %s not found in dictionary" %(observationName))
+        return {}, [], -1, -1, -1, -1
 
 
     detectorCentreLine = centreDetectorLines[channelCode]

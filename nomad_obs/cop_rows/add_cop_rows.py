@@ -9,7 +9,7 @@ import os
 from nomad_obs.config.constants import LNO_CENTRE_DETECTOR_LINE
 from nomad_obs.cop_rows.cop_table_functions import makeCopTableDict, getObservationDescription, getCopRows
 
-
+from nomad_obs.other.generic_functions import stop
 
 def addIrCopRows(orbit_list, copTableDict, mtpConstants, occultationObservationDict, nadirObservationDict):
     """find cop rows that match observation names in final plan, add to orbit list"""
@@ -40,6 +40,9 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants, occultationObservationD
                 observationDict = occultationObservationDict
                 
                 outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
+                if len(outputDict) == 0: #if error
+                    print("Error in orbit %i" %orbit["orbitNumber"])
+                    stop()
                     
                 finalOrbitPlan[obsType+"ObservationName"] = observationName
                 finalOrbitPlan[obsType+"Orders"] = diffractionOrders
@@ -57,6 +60,9 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants, occultationObservationD
                 observationDict = occultationObservationDict
                 
                 outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
+                if len(outputDict) == 0: #if error
+                    print("Error in orbit %i" %orbit["orbitNumber"])
+                    stop()
                     
                 finalOrbitPlan[obsType+"ObservationName"] = observationName
                 finalOrbitPlan[obsType+"Orders"] = diffractionOrders
@@ -73,6 +79,9 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants, occultationObservationD
             observationDict = nadirObservationDict
             
             outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
+            if len(outputDict) == 0: #if error
+                print("Error in orbit %i" %orbit["orbitNumber"])
+                stop()
                 
             finalOrbitPlan[obsType+"ObservationName"] = observationName
             finalOrbitPlan[obsType+"Orders"] = diffractionOrders
@@ -108,7 +117,10 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants, occultationObservationD
             observationDict = nadirObservationDict
             
             outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
-                
+            if len(outputDict) == 0: #if error
+                print("Error in orbit %i" %orbit["orbitNumber"])
+                stop()
+            
             finalOrbitPlan[obsType+"ObservationName"] = observationName
             finalOrbitPlan[obsType+"Orders"] = diffractionOrders
             finalOrbitPlan[obsType+"IntegrationTime"] = integrationTime

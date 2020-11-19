@@ -158,9 +158,15 @@ OCCULTATION_CH4_REGION_WEIGHTS = [
 
 
 OCCULTATION_H2O_REGION_WEIGHTS = [
-    ["6SUBD Nominal #1"] * 3, 
-    ["6SUBD Nominal #2"] * 1, 
-    ["6SUBD Nominal #3"] * 1, 
+    ["6SUBD Nominal #42"] * 1, #nominal + 129
+    ["6SUBD Nominal #45"] * 1, #nominal + 129
+    ["6SUBD Nominal #48"] * 1, #nominal + 129
+    ["6SUBD Nominal #51"] * 1, #nominal + 129
+    ["6SUBD Nominal #11"] * 1, #nominal + 126/129
+    ["6SUBD Nominal #12"] * 1, #nominal + 127/129
+    # ["6SUBD Nominal #1"] * 3, 
+    # ["6SUBD Nominal #2"] * 1, 
+    # ["6SUBD Nominal #3"] * 1, 
 ]
 
         
