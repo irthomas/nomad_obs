@@ -21,7 +21,8 @@ def updateWrongOrbitTypes(orbit_list, mtpConstants):
     mtpNumber = mtpConstants["mtpNumber"]
 
 
-    """note that index here is one less than the orbit number => orbit 228 is at index 226"""
+    """note that index here is one less than the orbit number => orbit 228 is at index 226
+    the index here is two less than the row number in the excel spreadsheet => row 188 is at index 186"""
     if mtpNumber == 10:
         orbit_list[227]["allowedObservationTypes"] = ["dayside", "grazing"]
     if mtpNumber == 20:
@@ -37,7 +38,10 @@ def updateWrongOrbitTypes(orbit_list, mtpConstants):
         orbit_list[232]["allowedObservationTypes"] = ["dayside", "grazing"]
         orbit_list[29]["grazing"] = orbit_list[29].pop("merged")
         orbit_list[232]["grazing"] = orbit_list[232].pop("merged")
-            
+    if mtpNumber == 36:
+        orbit_list[186]["allowedObservationTypes"] = ["dayside", "grazing"]
+        orbit_list[186]["grazing"] = orbit_list[186].pop("merged")
+           
     return orbit_list
 
 
