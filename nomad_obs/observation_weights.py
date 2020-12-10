@@ -18,11 +18,16 @@ OCCULTATION_WEIGHTS = [
     ["6SUBD Nom CO2 #2"] * 5,
     ["6SUBD Nom CH4 #1"] * 5,
     ["6SUBD Nom CH4 #2"] * 5,
-    ["6SUBD Nom CO #1"] * 3,
-    ["6SUBD Nom CO #2"] * 3,
-    ["6SUBD Nom CO #3"] * 3,
-    ["6SUBD Nom CO #4"] * 3,
-    ["6SUBD Nom CO #5"] * 3,
+
+    ["6SUBD Nom CO #1"] * 2,
+    ["6SUBD Nom CO #2"] * 2,
+    ["6SUBD Nom CO #3"] * 2,
+    ["6SUBD Nom CO #4"] * 2,
+    ["6SUBD Nom CO #5"] * 2,
+
+    ["6SUBD Nom CO #6"] * 15, #Mike Smith orders 148+186 together
+    ["6SUBD Nom CO #7"] * 15, #Mike Smith orders 148+186 together
+
      
     ["CO2 100km #1"] * 10,
      
@@ -66,23 +71,23 @@ OCCULTATION_WEIGHTS = [
     #MTP028+ CO2 M1/E2 and HCl. reduce when new patches become available.
 #    ["126 only #2"] * 5,
 #    ["127 only #2"] * 5,
-    ["129 only #2"] * 9,
+    ["129 only #2"] * 5,
     ["HDO 01"] * 5,
     ["Dust H2O 01"] * 5,
 
 
     ["132 only #2"] * 3,
-    ["133 only #2"] * 4,
+    ["133 only #2"] * 3,
     ["134 only #2"] * 5,
     ["6SUBD CO2 Dipole #1"] * 4,
     ["CO2 Fullscan Fast #3"] * 4,
 
-    ["HCL #4"] * 5, #129 + others
-    ["HCL #5"] * 5, #130 + others
-    ["HCL #8"] * 5, #129 + others
-    ["HCL #9"] * 5, #130 + others
-    ["HCL #10"] * 5, #all HCL
-    ["HCL #11"] * 5, #all HCL
+    ["HCL #4"] * 4, #129 + others
+    ["HCL #5"] * 4, #130 + others
+    ["HCL #8"] * 4, #129 + others
+    ["HCL #9"] * 4, #130 + others
+    ["HCL #10"] * 4, #all HCL
+    ["HCL #11"] * 4, #all HCL
 
     ["6SUBD Nominal #42"] * 10, #nominal + 129
     ["6SUBD Nominal #45"] * 10, #nominal + 129

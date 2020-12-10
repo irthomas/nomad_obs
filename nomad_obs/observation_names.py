@@ -9,6 +9,8 @@ Created on Wed Oct 18 13:56:09 2017
 
    #add Surface Ice obs to final orbit plan when beta angle is high
    #replace 191 and most 190 obs by 189!
+   
+   #patching: swap order 149 with 148/147
 
 """
 
@@ -35,14 +37,14 @@ occultationObservationDict = {
 "HCL #10":[[121, 134, 126, 127, 129, 130], 4, 1, 16, 0],
 "HCL #11":[[121, 136, 126, 127, 129, 130], 4, 1, 16, 0],
 
-"6SUBD Nominal #42":[[121, 134, 169, 129, 149, 165], 4, 1, 16, 0],
-"6SUBD Nominal #45":[[121, 136, 169, 129, 149, 165], 4, 1, 16, 0],
+"6SUBD Nominal #42":[[121, 134, 169, 129, 149, 165], 4, 1, 16, 0], #swap 149 for 147/148
+"6SUBD Nominal #45":[[121, 136, 169, 129, 149, 165], 4, 1, 16, 0], #swap 149 for 147/148
 "6SUBD Nominal #48":[[121, 134, 129, 169, 186, 190], 4, 1, 16, 0],
 "6SUBD Nominal #51":[[121, 136, 129, 169, 186, 190], 4, 1, 16, 0],
 "6SUBD Nominal #11":[[121, 134, 126, 129, 169, 190], 4, 1, 16, 0],
 "6SUBD Nominal #12":[[121, 134, 127, 129, 169, 190], 4, 1, 16, 0],
        
-        
+       
          
 
         
@@ -66,11 +68,21 @@ occultationObservationDict = {
 
 
 
+#MTP036+ for Mike Smith (148 and 186 measured together)
+"6SUBD Nom CO #6":[[167, 186, 187, 188, 190, 148], 4, 1, 16, 0],
+"6SUBD Nom CO #7":[[121, 135, 148, 169, 186, 190], 4, 1, 16, 0],
+
+
+#reduce a little and increase the MS CO obs
 "6SUBD Nom CO #1":[[121, 149, 186, 187, 189, 190], 4, 1, 16, 0],
 "6SUBD Nom CO #2":[[134, 169, 186, 187, 189, 190], 4, 1, 16, 0],
 "6SUBD Nom CO #3":[[136, 169, 186, 187, 189, 190], 4, 1, 16, 0],
 "6SUBD Nom CO #4":[[121, 136, 190, 191, 192, 193], 4, 1, 16, 0],
 "6SUBD Nom CO #5":[[121, 136, 168, 169, 189, 193], 4, 1, 16, 0],
+
+
+
+
 
 "6SUBD CH4 #1":[[121, 133, 134, 135, 136, 169], 4, 1, 16, 0],
 

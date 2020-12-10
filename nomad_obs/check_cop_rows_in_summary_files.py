@@ -15,7 +15,7 @@ import os
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 
-mtpNumber = 36
+mtpNumber = 37
 
 #add the correct MTP info in obs_inputs
 from nomad_obs.mtp_inputs import getMtpConstants
@@ -81,61 +81,70 @@ for cop_row_name, dictionary_data in cop_summary_dict.items():
         
     
     #open spreadsheet
-    wb = load_workbook(summary_row_path, data_only=True)
-    sheets = wb.sheetnames
-    Sheet1 = wb[dictionary_data["sheet_name"]]
-    
-    #choose some rows to compare
-    compare_indices = list(range(1, len(cop_row_data), int(len(cop_row_data)/5)))
-    
+    if not os.path.exists(summary_row_path):
+        print("########WARNING: %s does not exist#############" %summary_row_path)
 
-    #count number of entries in summary file
-    contains_data = []
-    for row_number in range(1000):
-        #check if summary file row contains data
-        contains_data.append(Sheet1.cell(row_number+1, dictionary_data["empty_column"]-1).value != None)
-    n_rows_summary_file = sum(contains_data)
-    
-    #compare
-    if n_rows_summary_file == len(cop_row_data):
-        print("Number of rows match")
     else:
-        print("Error: number of rows do not match")
-
-    
-    #add COP row data to summary file, one row at a time
-    for row_number in range(len(cop_row_data)):
-    
-        #get row colour
-        color_in_hex = Sheet1.cell(row_number+1, dictionary_data["empty_column"]-1).fill.start_color.index
+        wb = load_workbook(summary_row_path, data_only=True)
+        sheets = wb.sheetnames
+        Sheet1 = wb[dictionary_data["sheet_name"]]
         
-        
-        #loop through COP row values
-        for column_number in range(len(cop_row_data[0])):
-            column_index = column_number + dictionary_data["empty_column"]
+        #choose some rows to compare
+        if len(cop_row_data) > 4:
+            compare_indices = list(range(1, len(cop_row_data), int(len(cop_row_data)/5))) + [len(cop_row_data)-1]
+        elif len(cop_row_data) == 1: #if no data
+            compare_indices = []
+        else: #print all lines
+            compare_indices = list(range(1, len(cop_row_data)))
             
-            #copy COP row values to cells
-            Sheet1.cell(row_number+1, column_index+1).value = cop_row_data[row_number][column_number]
+    
+        #count number of entries in summary file
+        contains_data = []
+        for row_number in range(1000):
+            #check if summary file row contains data
+            contains_data.append(Sheet1.cell(row_number+1, dictionary_data["empty_column"]-1).value != None)
+        n_rows_summary_file = sum(contains_data)
+        
+        #compare
+        if n_rows_summary_file == len(cop_row_data):
+            print("Number of rows match")
+        else:
+            print("Error: number of rows do not match")
+    
+        
+        #add COP row data to summary file, one row at a time
+        for row_number in range(len(cop_row_data)):
+        
+            #get row colour
+            color_in_hex = Sheet1.cell(row_number+1, dictionary_data["empty_column"]-1).fill.start_color.index
+            
+            
+            #loop through COP row values
+            for column_number in range(len(cop_row_data[0])):
+                column_index = column_number + dictionary_data["empty_column"]
+                
+                #copy COP row values to cells
+                Sheet1.cell(row_number+1, column_index+1).value = cop_row_data[row_number][column_number]
+        
+                #if row has a colour, copy to each cell
+                if color_in_hex != '00000000':
+                    fill_pattern = PatternFill(start_color=color_in_hex, end_color=color_in_hex, fill_type='solid')
+                    Sheet1.cell(row_number+1, column_index+1).fill = fill_pattern
+                    
+            
+            #print comparison rows TC execution times
+            if row_number in compare_indices:
+                print(cop_row_data[row_number][7], "---", Sheet1.cell(row_number+1, dictionary_data["column_to_compare"]).value)
     
             #if row has a colour, copy to each cell
             if color_in_hex != '00000000':
-                fill_pattern = PatternFill(start_color=color_in_hex, end_color=color_in_hex, fill_type='solid')
-                Sheet1.cell(row_number+1, column_index+1).fill = fill_pattern
-                
+                if cop_row_data[row_number][0] > -1:
+                    print("Error: row %i contains observation data" %(row_number+1))
+                    print(cop_row_data[row_number])
         
-        #print comparison rows TC execution times
-        if row_number in compare_indices:
-            print(cop_row_data[row_number][7], "---", Sheet1.cell(row_number+1, dictionary_data["column_to_compare"]).value)
-
-        #if row has a colour, copy to each cell
-        if color_in_hex != '00000000':
-            if cop_row_data[row_number][0] > -1:
-                print("Error: row %i contains observation data" %(row_number+1))
-                print(cop_row_data[row_number])
-    
-    
-    #save and close file
-    wb.save(summary_row_path) 
+        
+        #save and close file
+        wb.save(summary_row_path) 
 
 
 
