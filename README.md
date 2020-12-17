@@ -48,14 +48,17 @@ There is a final script named `update_orbit_list.py`, which allows the user to o
 ### Observation planning general overview
 
 When Bojan and Claudio distribute the MTP overview, the planning can begin. The general steps are outlined here:
-1. Analyse geometry and inputs and create orbit plan, populating it with generic observation types e.g. _irIngress_, _irDayside_, etc.
-2. Send to OU for iteration.
-3. Finalise generic orbit plan and rerun script. This checks the plan is good and makes a list of orbits on which LNO operates. Send these outputs to Bojan and Claudio.
-4. Populate the orbit plan with real observation names
-5. Generate COP rows, web pages, update SQL database, etc. Generate list of joint ACS-NIR/NOMAD-SO occultation numbers for ESAC.
-6. Following step (3), a few days later Bojan or Claudio will distribute the summary files. Check COP rows against these summary files.
-7. Manually define solar calibrations.
-8. When ready, send COP rows and joint NIR-SO file to Bojan and Claudio
+1. Insert timing information from Ops team into `mtp_inputs` and change MTP number in main script.
+2. Analyse geometry and inputs and create orbit plan, populating it with generic observation types e.g. _irIngress_, _irDayside_, etc.
+3. ~~Send to OU for iteration~~ No longer required (no UVIS nightsides to plan).
+4. Finalise generic orbit plan and rerun script. This checks the plan is good and makes a list of orbits on which LNO operates. Send these outputs to Bojan and Claudio.
+5. Populate the orbit plan with real observation names
+6. Generate COP rows, web pages, update SQL database, etc. Generate list of joint ACS-NIR/NOMAD-SO occultation numbers for ESAC.
+7. Following step (3), a few days later Bojan or Claudio will distribute the summary files. Check COP rows against these summary files.
+8. Manually define solar calibrations.
+9. When ready, send COP rows and joint NIR-SO file to Bojan and Claudio
+
+Detailed information about each step can be found below.
 
 Orbit type definitions can be found on the website: https://nomad.aeronomie.be/index.php/observations/observation-planning-orbit-rules
 
@@ -176,7 +179,7 @@ In general:
 * Try to keep LNO on for the targeted observations
 * Try to keep LNO on for the MRO overlaps
 * LNO should always be switched on the orbit directly after an OCM
-* When the solar incidence angle > 60 degrees, swap some H2O / CO observations for Surface Ice observations
+* When the solar incidence angle > 60 degrees, swap some H2O / CO observations for Surface Ice observations e.g. `Ice H2O 2SUBD #1` or `Surface Ice 4SUBD 01`.
 
 
 
