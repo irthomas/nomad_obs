@@ -10,20 +10,30 @@ __author__    = "Ian Thomas"
 __contact__   = "ian . thomas AT aeronomie . be"
 
 
-### THESE CAN BE MODIFIED ####
 #select the MTP number to be run
-mtpNumber = 37
-"""excel =IF(OR(AND(A2=3,H2=""),AND(A2=14,NOT(H2=""))), 1, 0)
+mtpNumber = 38
+"""
+*Remove lots of LNO nadirs, trying to keep as many of the following:
+    
 Region                    Priority
 ------                    --------
 Olympus Mons	          Highest
 Curiosity	              Highest
+Perseverance              Highest
+MRO overlaps              High
 Acidalia Planitia	      High
 Nili Fossae	              High
 Mawrth Vallis/Aram Chaos  High
 Meridiani Sulfates	      High
 Mawrth Vallis	          High
 Other targets	          Medium
+
+*Add a few LNO nightsides (type 7), and a few LNO-only limbs (type 8) when FOV in range
+*If no occultations add some nadir surface ice obs e.g. Surface Ice 4SUBD 01
+*Use excel formula to check for incorrect orbit types 3 when no LNO obs:
+    =IF(OR(AND(A2=3,H2=""),AND(A2=14,NOT(H2=""))), 1, 0)
+
+*Ignore all UVIS inputs for now
 
 And remember to update spice kernels first..."""
 

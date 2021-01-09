@@ -9,7 +9,7 @@ READ IN LNO AND UVIS OCCULTATION-IN-SOLAR-FOV FILES AND MAKE A LIST TO COPY TO E
 
 import os
 
-mtpNumber = 37
+mtpNumber = 38
 
 from nomad_obs.mtp_inputs import getMtpConstants
 
@@ -35,7 +35,7 @@ uvis_orbit_numbers = [int(line.split(",")[-1].replace("\n", "")) for i, line in 
 
 last_orbit_number = max(lno_orbit_numbers)
 
-orbit_numbers = range(last_orbit_number)
+orbit_numbers = range(last_orbit_number+1)
 
 print("Mars in LNO/UVIS occultation FOVs")
 for orbit_number in orbit_numbers[1:]:
