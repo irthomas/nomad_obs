@@ -9,7 +9,7 @@ READ IN LNO AND UVIS OCCULTATION-IN-SOLAR-FOV FILES AND MAKE A LIST TO COPY TO E
 
 import os
 
-mtpNumber = 38
+mtpNumber = 39
 
 from nomad_obs.mtp_inputs import getMtpConstants
 
@@ -45,3 +45,4 @@ for orbit_number in orbit_numbers[1:]:
         print("LNO")
     else:
         print("")
+print("End")
