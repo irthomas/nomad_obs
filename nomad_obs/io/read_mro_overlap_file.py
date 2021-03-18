@@ -28,4 +28,4 @@ def getMroOverlaps(paths):
 
 
 
-mroOverlapOrbits = getMroOverlaps(paths)
+# mroOverlapOrbits = getMroOverlaps(paths)
