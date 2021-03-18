@@ -12,13 +12,14 @@ import matplotlib.pyplot as plt
 
 from nomad_obs.config.constants import ACCEPTABLE_MTP_NADIR_TIME_ERROR
 from nomad_obs.config.constants import FIG_X, FIG_Y
-from nomad_obs.config.paths import OFFLINE
+from nomad_obs.config.paths import SQLITE_PATH, OFFLINE
 
 from nomad_obs.html.make_webpage_table import writeHtmlTable
 from nomad_obs.io.write_outputs import writeOutputTxt
 from nomad_obs.planning.spice_functions import et2utc
 from nomad_obs.sql.obs_database import obsDB
-
+from nomad_obs.sql.obs_database_sqlite import connect_db, convert_table_datetimes, insert_rows, close_db
+from nomad_obs.sql.db_fields import nadir_table_fields
 
 
 
@@ -59,10 +60,10 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths):
             irObservationName = "-"
         comment = "" #no nightside nadir comment
     
-        lineToWrite = [orbit["orbitNumber"], "Nightside", nightside["utcStart"], nightside["utcMidpoint"], nightside["utcEnd"], "%0.1f" %nightside["duration"], \
-                       "%0.1f" %nightside["lonStart"], "%0.1f" %nightside["lonMidpoint"], "%0.1f" %nightside["lonEnd"], \
-                       "%0.1f" %nightside["latStart"], "%0.1f" %nightside["latMidpoint"], "%0.1f" %nightside["latEnd"], \
-                       "%0.1f" %nightside["incidenceMidpoint"], "%0.1f" %nightside["lstMidpoint"], \
+        lineToWrite = [orbit["orbitNumber"], "Nightside", nightside["utcStart"], nightside["utcMidpoint"], nightside["utcEnd"], "%0.2f" %nightside["duration"], \
+                       "%0.2f" %nightside["lonStart"], "%0.2f" %nightside["lonMidpoint"], "%0.2f" %nightside["lonEnd"], \
+                       "%0.2f" %nightside["latStart"], "%0.2f" %nightside["latMidpoint"], "%0.2f" %nightside["latEnd"], \
+                       "%0.2f" %nightside["incidenceMidpoint"], "%0.2f" %nightside["lstMidpoint"], \
                        
                        orbitType, irObservationName, irDescription, uvisDescription, comment
                        ]
@@ -108,10 +109,10 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths):
         if "&LST=" in comment:
             comment = ""
     
-        lineToWrite = [orbit["orbitNumber"], "Dayside", dayside["utcStart"], dayside["utcMidpoint"], dayside["utcEnd"], "%0.1f" %dayside["duration"], \
-                       "%0.1f" %dayside["lonStart"], "%0.1f" %dayside["lonMidpoint"], "%0.1f" %dayside["lonEnd"], \
-                       "%0.1f" %dayside["latStart"], "%0.1f" %dayside["latMidpoint"], "%0.1f" %dayside["latEnd"], \
-                       "%0.1f" %dayside["incidenceMidpoint"], "%0.1f" %dayside["lstMidpoint"], \
+        lineToWrite = [orbit["orbitNumber"], "Dayside", dayside["utcStart"], dayside["utcMidpoint"], dayside["utcEnd"], "%0.2f" %dayside["duration"], \
+                       "%0.2f" %dayside["lonStart"], "%0.2f" %dayside["lonMidpoint"], "%0.2f" %dayside["lonEnd"], \
+                       "%0.2f" %dayside["latStart"], "%0.2f" %dayside["latMidpoint"], "%0.2f" %dayside["latEnd"], \
+                       "%0.2f" %dayside["incidenceMidpoint"], "%0.2f" %dayside["lstMidpoint"], \
                        
                        orbitType, irObservationName, irDescription, uvisDescription, comment
                        ]
@@ -158,44 +159,24 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths):
 
 
 
-    """write occultation data to sql database"""
-    table_fields = [
-            {"name":"obs_id", "type":"int NOT NULL AUTO_INCREMENT", "primary":True}, \
-            {"name":"orbit_number", "type":"int NOT NULL"}, \
-            {"name":"nadir_type", "type":"varchar(100) NOT NULL"}, \
-            {"name":"utc_start_time", "type":"datetime NOT NULL"}, \
-            {"name":"utc_centre_time", "type":"datetime NOT NULL"}, \
-            {"name":"utc_end_time", "type":"datetime NOT NULL"}, \
-            {"name":"duration", "type":"decimal NOT NULL"}, \
-            
-            {"name":"start_longitude", "type":"decimal NOT NULL"}, \
-            {"name":"centre_longitude", "type":"decimal NOT NULL"}, \
-            {"name":"end_longitude", "type":"decimal NOT NULL"}, \
-    
-            {"name":"start_latitude", "type":"decimal NOT NULL"}, \
-            {"name":"centre_latitude", "type":"decimal NOT NULL"}, \
-            {"name":"end_latitude", "type":"decimal NOT NULL"}, \
-    
-            {"name":"centre_incidence_angle", "type":"decimal NOT NULL"}, \
-            {"name":"centre_local_time", "type":"decimal NOT NULL"}, \
-            
-            {"name":"orbit_type", "type":"int NOT NULL"}, \
-            {"name":"ir_observation_name", "type":"varchar(100) NULL DEFAULT NULL"}, \
-            {"name":"ir_description", "type":"varchar(1000) NULL DEFAULT NULL"}, \
-            {"name":"uvis_description", "type":"varchar(1000) NULL DEFAULT NULL"}, \
-            {"name":"orbit_comment", "type":"varchar(1000) NULL DEFAULT NULL"}, \
-            ]
+    """write nadir data to sql database"""
+    if OFFLINE:
+        from nomad_obs.sql.db_fields import nadir_table_fields_sqlite
+        #save to local sqlite db
+        con = connect_db(SQLITE_PATH)
+        
+        sql_table_rows_datetime = convert_table_datetimes(nadir_table_fields_sqlite, sql_table_rows)
+        insert_rows(con, "nadirs", nadir_table_fields_sqlite, sql_table_rows_datetime, check_duplicates=True, duplicate_columns=[2, 3, 4])
+        close_db(con)
      
-    if not OFFLINE:
+    else:
         db_obj = obsDB(paths)
 #       db_obj.drop_table("nomad_nadirs")
 #       db_obj.new_table("nomad_nadirs", table_fields)
-        sql_table_rows_datetime = db_obj.convert_table_datetimes(table_fields, sql_table_rows)
-        db_obj.insert_rows("nomad_nadirs", table_fields, sql_table_rows_datetime, check_duplicates=True, duplicate_columns=[2, 3, 4])
+        sql_table_rows_datetime = db_obj.convert_table_datetimes(nadir_table_fields, sql_table_rows)
+        db_obj.insert_rows("nomad_nadirs", nadir_table_fields, sql_table_rows_datetime, check_duplicates=True, duplicate_columns=[2, 3, 4])
 #       table = db_obj.read_table("nomad_nadirs")
         db_obj.close()
-    else:
-        print("Warning: working offline - no observations added to sql db")
 
 
 

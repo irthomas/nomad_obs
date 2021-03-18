@@ -26,15 +26,20 @@ def writeObservationPlan(worksheet, row, row_to_write):
 
 
 
-def writeOrbitPlanXlsx(orbit_list, mtpConstants, paths, version):
+def writeOrbitPlanXlsx(orbit_list, mtpConstants, paths, version, place_in_base_dir=True):
     """write generic observation plan to file if the file doesn't exist """
     mtp_number = mtpConstants["mtpNumber"]
     
     #check if file has already been placed in correct directory. If so, don't generate again
     fileExists = os.path.isfile(os.path.join(paths["ORBIT_PLAN_PATH"], "nomad_mtp%03d_%s.xlsx" %(mtp_number, version)))
         
-    if not fileExists:    
-        with xlsxwriter.Workbook(os.path.join(BASE_DIRECTORY, "nomad_mtp%03d_%s.xlsx" %(mtp_number, version))) as workbook:
+    if not fileExists:
+        if place_in_base_dir:
+            plan_path = os.path.join(BASE_DIRECTORY, "nomad_mtp%03d_%s.xlsx" %(mtp_number, version))
+        else:
+            plan_path = os.path.join(paths["ORBIT_PLAN_PATH"], "nomad_mtp%03d_%s.xlsx" %(mtp_number, version))
+            
+        with xlsxwriter.Workbook(plan_path) as workbook:
             worksheet = workbook.add_worksheet()
             
             if version == "plan_generic": #find name of the orbit plan

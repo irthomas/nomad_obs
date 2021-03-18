@@ -28,6 +28,4 @@ def getMroOverlaps(paths):
 
 
 
-#latlon_constraint = 5
-#lst_constraint = 30
-#mroOverlapOrbits = getMroOverlaps(paths, latlon_constraint, lst_constraint)
+mroOverlapOrbits = getMroOverlaps(paths)

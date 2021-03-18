@@ -11,7 +11,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 39
+mtpNumber = 40
 """
 *Remove lots of LNO nadirs, trying to keep as many of the following:
     

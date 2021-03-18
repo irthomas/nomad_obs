@@ -19,7 +19,7 @@ OFFLINE = True #if working remotely, don't write obs to sql db
 # OFFLINE = False #write obs to sql db and copy to dev website
 
 if OFFLINE:
-    input("Warning: you are operating in offline mode. This means that nothing will be written to the SQL database and the old website will not be updated. Press any key to continue (or exit now)")
+    print("Warning: you are operating in offline mode. This means that nothing will be written to the SQL database and the old website will not be updated.")
 ###############################set up directory paths##############################################################
 
 """where to find scripts?"""
@@ -39,7 +39,6 @@ elif sys.platform == "linux":
 
 
 """dev website directory, for placing a copy of all the files generated, to be put online"""
-#not yet implemented
 if sys.platform == "win32":
     if OFFLINE:
         DEV_DIRECTORY = os.path.join(BASE_DIRECTORY, "website")
@@ -51,7 +50,6 @@ elif sys.platform == "linux":
     DEV_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "website")
 
 """sql database config file directory, for getting access rights to internal sql database"""
-#not yet implemented
 if sys.platform == "win32":
     if OFFLINE:
         SQL_INI_DIRECTORY = BASE_DIRECTORY
@@ -60,11 +58,14 @@ if sys.platform == "win32":
 elif sys.platform == "linux":
     SQL_INI_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning")
 
+"""sqlite .db path"""
+SQLITE_PATH = os.path.join(BASE_DIRECTORY, "obs.db")
+
 
 """where to find cop tables? Note that COP patches are done at the end of an MTP, and so planning the MTP after must be done with the new tables!"""
 if sys.platform == "win32":
     if OFFLINE:
-        COP_TABLE_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Documents", "DATA", "cop_tables")
+        COP_TABLE_DIRECTORY = os.path.join(BASE_DIRECTORY, "cop_tables")
     else:
         COP_TABLE_DIRECTORY = os.path.join("W:", os.sep, "data", "SATELLITE", "TRACE-GAS-ORBITER", "NOMAD", "cop_tables")
 elif sys.platform == "linux":

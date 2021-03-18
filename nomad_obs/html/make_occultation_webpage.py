@@ -11,13 +11,14 @@ import matplotlib.pyplot as plt
 
 from nomad_obs.config.constants import SO_TRANSITION_ALTITUDE, ACCEPTABLE_MTP_OCCULTATION_TIME_ERROR
 from nomad_obs.config.constants import FIG_X, FIG_Y
-from nomad_obs.config.paths import OFFLINE
+from nomad_obs.config.paths import SQLITE_PATH, OFFLINE
 
 from nomad_obs.html.make_webpage_table import writeHtmlTable
 from nomad_obs.io.write_outputs import writeOutputTxt
 from nomad_obs.planning.spice_functions import et2utc
 from nomad_obs.sql.obs_database import obsDB
-
+from nomad_obs.sql.obs_database_sqlite import connect_db, convert_table_datetimes, insert_rows, close_db
+from nomad_obs.sql.db_fields import occultation_table_fields
 
 def writeOccultationWebpage(orbit_list, mtpConstants, paths):
     """write occultation website page"""
@@ -26,7 +27,7 @@ def writeOccultationWebpage(orbit_list, mtpConstants, paths):
 
     def getValue(key):
         if occultation[key] != "-":
-            return "%0.1f" %occultation[key]
+            return "%0.2f" %occultation[key]
         else:
             return "-"
     
@@ -89,9 +90,9 @@ def writeOccultationWebpage(orbit_list, mtpConstants, paths):
                     
         
                 lineToWrite = [occultation["primeInstrument"], orbit["orbitNumber"], occultationName.capitalize(), \
-                               occultation["utcStart"], occultation["utcTransition"], occultation["utcEnd"], "%0.1f" %occultation["duration"], \
-                               "%0.1f" %occultation["lonStart"], getValue("lonTransition"), "%0.1f" %occultation["lonEnd"], \
-                               "%0.1f" %occultation["latStart"], getValue("latTransition"), "%0.1f" %occultation["latEnd"], \
+                               occultation["utcStart"], occultation["utcTransition"], occultation["utcEnd"], "%0.2f" %occultation["duration"], \
+                               "%0.2f" %occultation["lonStart"], getValue("lonTransition"), "%0.2f" %occultation["lonEnd"], \
+                               "%0.2f" %occultation["latStart"], getValue("latTransition"), "%0.2f" %occultation["latEnd"], \
                                getValue("lstTransition"), 
                                
                                orbitType, irObservationName, irDescription, uvisDescription, comment
@@ -165,42 +166,24 @@ def writeOccultationWebpage(orbit_list, mtpConstants, paths):
     
 
 
-    table_fields = [
-            {"name":"obs_id", "type":"int NOT NULL AUTO_INCREMENT", "primary":True}, \
-            {"name":"prime_instrument", "type":"varchar(100) NOT NULL"}, \
-            {"name":"orbit_number", "type":"int NOT NULL"}, \
-            {"name":"occultation_type", "type":"varchar(100) NOT NULL"}, \
-            {"name":"utc_start_time", "type":"datetime NOT NULL"}, \
-            {"name":"utc_transition_time", "type":"datetime NULL DEFAULT NULL"}, \
-            {"name":"utc_end_time", "type":"datetime NOT NULL"}, \
-            {"name":"duration", "type":"decimal NOT NULL"}, \
-            
-            {"name":"start_longitude", "type":"decimal NOT NULL"}, \
-            {"name":"transition_longitude", "type":"decimal NULL DEFAULT NULL"}, \
-            {"name":"end_longitude", "type":"decimal NOT NULL"}, \
-    
-            {"name":"start_latitude", "type":"decimal NOT NULL"}, \
-            {"name":"transition_latitude", "type":"decimal NULL DEFAULT NULL"}, \
-            {"name":"end_latitude", "type":"decimal NOT NULL"}, \
-    
-            {"name":"transition_local_time", "type":"decimal NULL DEFAULT NULL"}, \
-            
-            {"name":"orbit_type", "type":"int NOT NULL"}, \
-            {"name":"ir_observation_name", "type":"varchar(100) NULL DEFAULT NULL"}, \
-            {"name":"ir_description", "type":"varchar(1000) NULL DEFAULT NULL"}, \
-            {"name":"uvis_description", "type":"varchar(1000) NULL DEFAULT NULL"}, \
-            {"name":"orbit_comment", "type":"varchar(1000) NULL DEFAULT NULL"}, \
-    ]
 
-    if not OFFLINE:
+    if OFFLINE:
+        from nomad_obs.sql.db_fields import occultation_table_fields_sqlite
+        #save to local sqlite db
+        con = connect_db(SQLITE_PATH)
+        
+        
+        table_rows_datetime = convert_table_datetimes(occultation_table_fields_sqlite, sql_table_rows)
+        insert_rows(con, "occultations", occultation_table_fields_sqlite, table_rows_datetime, check_duplicates=True, duplicate_columns=[3, 4, 5])
+        close_db(con)
+        
+    else:
         db_obj = obsDB(paths)
 #       db_obj.drop_table("nomad_occultations")
 #       db_obj.new_table("nomad_occultations", table_fields)
-        table_rows_datetime = db_obj.convert_table_datetimes(table_fields, sql_table_rows)
+        table_rows_datetime = db_obj.convert_table_datetimes(occultation_table_fields, sql_table_rows)
 #        db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime)
 #        db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime)
-        db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime, check_duplicates=True, duplicate_columns=[3, 4, 5])
+        db_obj.insert_rows("nomad_occultations", occultation_table_fields, table_rows_datetime, check_duplicates=True, duplicate_columns=[3, 4, 5])
         db_obj.close()
-    else:
-        print("Warning: working offline - no observations added to sql db")
     

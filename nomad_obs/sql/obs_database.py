@@ -82,11 +82,11 @@ class obsDB(object):
         query_string = "SELECT * FROM %s" %table_name
         table = self.query(query_string)
 
-        new_table = []
+        new_table_data = []
         for row in table:
-            new_table.append([float(element) if type(element) == decimal.Decimal else element for element in row])
+            new_table_data.append([float(element) if type(element) == decimal.Decimal else element for element in row])
         
-        return new_table
+        return new_table_data
     
     def convert_table_datetimes(self, table_fields, table_rows):
         """convert all spice format strings to datetimes in preparation for writing sql"""

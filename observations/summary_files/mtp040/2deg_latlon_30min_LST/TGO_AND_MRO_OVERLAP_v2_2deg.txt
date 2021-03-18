@@ -1,0 +1,4 @@
+S/C,UTC,UVIS nadir LOS surface intercept lat (deg),UVIS nadir LOS surface intercept lon (deg),S/C altitude (km),UVIS nadir LOS surface intercept LST (h),UVIS nadir LOS surface intercept Incidence angle (deg),UVIS nadir LOS surface intercept Emission angle (deg),UVIS nadir LOS surface intercept Phase angle (deg)
+MRO,2021 MAY 14 10:42:00,28.3609,-42.9248,284.0823,15.3772,47.5562,5.4349e-14,47.5562
+TGO,2021 MAY 14 10:36:00,30.3536,-41.9342,409.4438,15.3458,47.2553,0.14119,47.3837
+
