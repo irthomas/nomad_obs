@@ -11,11 +11,10 @@ COPY COP ROWS TO SUMMARY FILES AND COMPARE NUMBER OF ENTRIES AND DATETIMES
 import os
 
 
-# from openpyxl import workbook #pip install openpyxl
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 
-mtpNumber = 39
+mtpNumber = 41
 
 #add the correct MTP info in obs_inputs
 from nomad_obs.mtp_inputs import getMtpConstants

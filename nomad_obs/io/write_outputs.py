@@ -6,7 +6,8 @@ Created on Mon Apr 27 12:36:42 2020
 """
 
 import os
-
+import json
+import sys
 
 from nomad_obs.config.constants import SO_CHANNEL_CODE, LNO_CHANNEL_CODE, PRECOOLING_COP_ROW, OFF_COP_ROW
 from nomad_obs.config.constants import LIMB_ORBIT_TYPES
@@ -30,6 +31,20 @@ def writeOutputCsv(filepath, lines_to_write):
 
 
 
+
+def dump_json(orbit_list):
+    
+    print("Error: Dumping orbit list to json")
+    
+    orbit_dict = {(i+1):v for i,v in enumerate(orbit_list)}
+    
+    json_string = json.dumps(orbit_dict, indent=4)
+    with open('orbit_list.json', 'w') as f:
+        f.write(json_string)
+        
+    sys.exit()
+    
+    
 
 
 def writeIrCopRowsTxt(orbit_list, mtpConstants, paths):

@@ -6,11 +6,17 @@ Created on Wed Oct 18 13:56:09 2017
 
 @author: iant
 
+    Regular:
+        Add Surface Ice obs to final orbit plan when beta angle is high
 
-   #add Surface Ice obs to final orbit plan when beta angle is high
-   #replace 191 and most 190 obs by 189!
+    Done:
+        M.Smith - replace LNO nadir 191 and most 190 obs by 189!
+        Giuliano: order 129 is best for HCl isotopic ratio
    
-   #patching: swap order 149 with 148/147
+    Next patching: 
+        Swap order 149 with 148/147 -Miguel?
+        Giancarlo: Some LNO with AOTF off
+        Miguel: 121/148/149/155/164/165
 
 """
 
@@ -276,6 +282,7 @@ nadirObservationDict = {
 
 #old
 "HDO CO 3SUBD 01":[[167,121,190], 205, 15, 144, 1],
+"H2O CO 2SUBD 01":[[168,189], 200, 15, 144, 1],
 "CO 2SUBD 02":[[167,189], 200, 15, 144, 1],
 
 "CO2 Fullscan":[["COP#144"], 0, 15, 144, 1],
@@ -290,6 +297,7 @@ nadirObservationDict = {
 
 "CH4 2SUBD 01":[[167,134], 200, 15, 144, 1],
 "D/H 2SUBD 01":[[121,169], 200, 15, 144, 1],
+"CH4 3SUBD 03":[[134,134,134], 205, 15, 144, 1],
 "D/H 3SUBD 01":[[167,121,169], 205, 15, 144, 1],
 "HDO 3SUBD 01":[[121,171,124], 205, 15, 144, 1],
 "AER H2Oi CO2i 4SUBD 01":[[164,169,131,127], 195, 15, 144, 1],

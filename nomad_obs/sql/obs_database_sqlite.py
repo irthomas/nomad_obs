@@ -10,19 +10,19 @@ Created on Mon Apr 27 12:37:20 2020
 # import os
 # import configparser
 import decimal
-import datetime
+from datetime import datetime
 import sqlite3
 # import re
 
 from nomad_obs.config.constants import SPICE_DATETIME_FORMAT
 
 
-
+GENERIC_DATETIME_STR = "2000 JAN 01 00:00:00"
 
 
 def connect_db(db_path):
     print("Connecting to database %s" %db_path)
-    con = sqlite3.connect(db_path)
+    con = sqlite3.connect(db_path, detect_types=sqlite3.PARSE_DECLTYPES)
     return con
 
 
@@ -31,7 +31,7 @@ def close_db(con):
 
 
 def query(con, input_query):
-    print(input_query)
+    # print(input_query)
     cur = con.cursor()
     
     c = cur.execute(input_query)
@@ -63,19 +63,27 @@ def empty_db(con, table_name, table_fields):
 
 def convert_table_datetimes(table_fields, table_rows):
     """convert all spice format strings to datetimes in preparation for writing sql"""
-    table_fields_not_key_datetimes = [True if ("datetime" in field["type"]) or ("timestamp" in field["type"]) else False for field in table_fields if "primary" not in field.keys()]
+    table_fields_not_key_datetimes = [True if ("datetime" in field["type"]) or ("TIMESTAMP" in field["type"]) else False for field in table_fields if "primary" not in field.keys()]
     table_rows_datetime = []
+
     for table_row in table_rows:
         table_row_datetime = []
         for table_element, table_is_datetime in zip(table_row, table_fields_not_key_datetimes):
-            if table_is_datetime and table_element != "-": #normal datetimes
-                table_row_datetime.append(datetime.datetime.strptime(table_element, SPICE_DATETIME_FORMAT))
-            elif table_element == "-": #any blank values in datetime or other
-                table_row_datetime.append("NULL")
-            else:
-                table_row_datetime.append(table_element)
-        table_rows_datetime.append(table_row_datetime)
     
+            if table_is_datetime:
+                if table_element == "-": #any blank values in datetime or other
+                    table_row_datetime.append(datetime.strptime(GENERIC_DATETIME_STR, SPICE_DATETIME_FORMAT)) #save out of range date to file
+                elif table_element != "-": #normal datetimes
+                    table_row_datetime.append(datetime.strptime(table_element, SPICE_DATETIME_FORMAT))
+            
+            else:
+                if table_element == "-": #any blank values in datetime or other
+                    table_row_datetime.append("NULL")
+                else:
+                    table_row_datetime.append(table_element)
+    
+        table_rows_datetime.append(table_row_datetime)
+        
     return table_rows_datetime
 
 
@@ -121,7 +129,7 @@ def update_row(con, table_name, existing_table_row_id, table_fields, new_row_dat
     subquery = subquery[:-2]
     query_str = "UPDATE %s SET %s WHERE obs_id = %s" %(table_name, subquery, existing_table_row_id)
     query_str = query_str.replace("'NULL'", "NULL") #NULLs must not be surrounded by commas
-    print(query_str)
+    # print(query_str)
     query(con, query_str)
 
 
@@ -143,14 +151,16 @@ def insert_rows(con, table_name, table_fields, table_rows, check_duplicates=Fals
             for existing_row in existing_table: #loop through existing rows
                 for column_number in duplicate_columns: #loop through specific columns
                     if table_row[column_number] == existing_row[column_number+1]:
+                        # print(table_row[column_number], "matches with", existing_row[column_number+1])
                         duplicates += 1
                         
         if duplicates > 0:
-            print("Row %i contains elements matching existing rows. Updating" %row_index)
+            print("Row %i contains %i elements matching existing rows. Updating" %(row_index, duplicates))
             
             search_field_name = "utc_start_time"
             #find index of search field name in 
             search_field_index = [index for index, table_field in enumerate(table_fields_not_key) if table_field == search_field_name][0]
+            
             search_value = table_row[search_field_index]
             record_id = find_record_id(con, table_name, search_field_name, search_value)
             update_row(con, table_name, record_id, table_fields, table_row)
@@ -167,7 +177,7 @@ def insert_rows(con, table_name, table_fields, table_rows, check_duplicates=Fals
                         query_string += "%s, " %table_element #nulls must not have inverted commas
                     else:
                         query_string += "\"%s\", " %table_element #other strings must have inverted commas
-                elif type(table_element) == datetime.datetime: #datetimes must be written as strings
+                elif type(table_element) == datetime: #datetimes must be written as strings
                     query_string += "\"%s\", " %table_element
                 else: #values must not have inverted commas
                     query_string += "%s, " %table_element
@@ -175,15 +185,5 @@ def insert_rows(con, table_name, table_fields, table_rows, check_duplicates=Fals
             query_string += ")"
             query(con, query_string)
 
-
-
-
-# def make_db():
-
-# """sort through data and add it to empty sql db"""
-# con = connect_db(SQLITE_PATH)
-# empty_db(con, table_name, occultation_table_fields_sqlite)
-
-# close_db(con)
 
 

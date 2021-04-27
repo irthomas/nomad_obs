@@ -1,0 +1,5 @@
+MRO time overlap (UTC),MRO subSC lat (deg),MRO subSC lon (deg),MRO S/C altitude (km),MRO LST (h),MRO Incidence angle (deg),MRO Emission angle (deg),MRO Phase angle (deg),TGO time overlap (UTC),UVIS nadir LOS surface intercept lat (deg),UVIS nadir LOS surface intercept lon (deg),TGO S/C altitude (km),UVIS nadir LOS surface intercept LST (h),UVIS nadir LOS surface intercept Incidence angle (deg),UVIS nadir LOS surface intercept Emission angle (deg),UVIS nadir LOS surface intercept Phase angle (deg)
+2021 MAY 21 21:54:00,57.8281,-141.7526,304.5495,15.2333,53.0112,4.5092e-14,53.0112,2021 MAY 21 21:36:00,59.6386,-140.8225,427.1751,15.0033,52.3605,1.4201,53.1908
+2021 MAY 24 13:30:00,64.7371,8.4382,308.8366,15.1581,55.6576,1.8031e-14,55.6576,2021 MAY 24 13:48:00,63.3858,6.4648,382.4594,15.3183,55.8694,175.6708,119.982
+2021 MAY 30 13:30:00,73.7737,62.34,311.7764,14.9286,59.306,2.215e-14,59.306,2021 MAY 30 14:00:00,72.0953,60.4791,431.3404,15.2914,59.5545,0.93027,59.6691
+2021 JUN 08 08:45:00,73.248,-140.9806,313.2586,15.0139,58.2472,2.9495e-14,58.2472,2021 JUN 08 08:18:00,74.2108,-139.5605,432.9934,14.6706,57.8159,0.12662,57.8177

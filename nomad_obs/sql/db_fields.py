@@ -12,6 +12,7 @@ occultation_table_fields = [
         {"name":"obs_id", "type":"int NOT NULL AUTO_INCREMENT", "primary":True}, \
         {"name":"prime_instrument", "type":"varchar(100) NOT NULL"}, \
         {"name":"orbit_number", "type":"int NOT NULL"}, \
+        # {"name":"mtp_number", "type":"int NOT NULL"}, \
         {"name":"occultation_type", "type":"varchar(100) NOT NULL"}, \
         {"name":"utc_start_time", "type":"datetime NOT NULL"}, \
         {"name":"utc_transition_time", "type":"datetime NULL DEFAULT NULL"}, \
@@ -39,6 +40,7 @@ occultation_table_fields_sqlite = [
         {"name":"obs_id", "type":"INTEGER PRIMARY KEY AUTOINCREMENT", "primary":True}, \
         {"name":"prime_instrument", "type":"TEXT NOT NULL"}, \
         {"name":"orbit_number", "type":"INT NOT NULL"}, \
+        {"name":"mtp_number", "type":"INT NOT NULL"}, \
         {"name":"occultation_type", "type":"TEXT NOT NULL"}, \
         {"name":"utc_start_time", "type":"TIMESTAMP NOT NULL"}, \
         {"name":"utc_transition_time", "type":"TIMESTAMP NULL DEFAULT NULL"}, \
@@ -66,6 +68,7 @@ occultation_table_fields_sqlite = [
 nadir_table_fields = [
         {"name":"obs_id", "type":"int NOT NULL AUTO_INCREMENT", "primary":True}, \
         {"name":"orbit_number", "type":"int NOT NULL"}, \
+        # {"name":"mtp_number", "type":"int NOT NULL"}, \
         {"name":"nadir_type", "type":"varchar(100) NOT NULL"}, \
         {"name":"utc_start_time", "type":"datetime NOT NULL"}, \
         {"name":"utc_centre_time", "type":"datetime NOT NULL"}, \
@@ -95,6 +98,7 @@ nadir_table_fields = [
 nadir_table_fields_sqlite = [
         {"name":"obs_id", "type":"INTEGER PRIMARY KEY AUTOINCREMENT", "primary":True}, \
         {"name":"orbit_number", "type":"INT NOT NULL"}, \
+        {"name":"mtp_number", "type":"INT NOT NULL"}, \
         {"name":"nadir_type", "type":"TEXT NOT NULL"}, \
         {"name":"utc_start_time", "type":"TIMESTAMP NOT NULL"}, \
         {"name":"utc_centre_time", "type":"TIMESTAMP NOT NULL"}, \

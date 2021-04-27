@@ -221,7 +221,7 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, paths):
        
         for orbit in orbit_list:
             finalOrbitPlan = orbit["finalOrbitPlan"]
-            print(orbit["orbitNumber"])
+            print(orbit["orbitNumber"], end =", ")
             if "ingress" in orbit["allowedObservationTypes"]:
                 ingressCounter += 1
                 if ingressCounter == len(uvisInputDict["uvis_ingress_occultations"]):
@@ -285,7 +285,7 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, paths):
 
             if "nightside" in orbit["allowedObservationTypes"]:
                 nightsideCounter += 1
-                print("nightsideCounter=", nightsideCounter)
+                # print("nightsideCounter=", nightsideCounter)
                 copRow = uvisInputDict["uvis_nightside_nadir"][nightsideCounter]
                 finalOrbitPlan["uvisNightsideCopRows"]["scienceCopRow"] = copRow
                 finalOrbitPlan["uvisNightsideCopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)

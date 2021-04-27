@@ -14,9 +14,9 @@ from nomad_obs.sql.obs_database_sqlite import connect_db, close_db, empty_db
 from nomad_obs.sql.db_fields import occultation_table_fields_sqlite
 from nomad_obs.sql.db_fields import nadir_table_fields_sqlite
 
-
-con = connect_db(SQLITE_PATH)
-empty_db(con, "occultations", occultation_table_fields_sqlite)
-empty_db(con, "nadirs", nadir_table_fields_sqlite)
-close_db(con)
+def new_sqlite_db():
+    con = connect_db(SQLITE_PATH)
+    empty_db(con, "occultations", occultation_table_fields_sqlite)
+    empty_db(con, "nadirs", nadir_table_fields_sqlite)
+    close_db(con)
 

@@ -17,7 +17,6 @@ def stop():
     print("**********Fatal Error********")
 #    halt
     sys.exit() #breaks program
-    return 0
 
 
 def printStatement(string_in):

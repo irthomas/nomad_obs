@@ -24,7 +24,7 @@ from nomad_obs.sql.db_fields import nadir_table_fields
 
 
 
-def writeNadirWebpage(orbit_list, mtpConstants, paths):
+def writeNadirWebpage(orbit_list, mtpConstants, paths, make_figures=True):
     """write nadir website page"""
     mtpNumber = mtpConstants["mtpNumber"]
     mappsEventFilename = mtpConstants["mappsEventFilename"]
@@ -60,7 +60,7 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths):
             irObservationName = "-"
         comment = "" #no nightside nadir comment
     
-        lineToWrite = [orbit["orbitNumber"], "Nightside", nightside["utcStart"], nightside["utcMidpoint"], nightside["utcEnd"], "%0.2f" %nightside["duration"], \
+        lineToWrite = [orbit["orbitNumber"], mtpNumber, "Nightside", nightside["utcStart"], nightside["utcMidpoint"], nightside["utcEnd"], "%0.2f" %nightside["duration"], \
                        "%0.2f" %nightside["lonStart"], "%0.2f" %nightside["lonMidpoint"], "%0.2f" %nightside["lonEnd"], \
                        "%0.2f" %nightside["latStart"], "%0.2f" %nightside["latMidpoint"], "%0.2f" %nightside["latEnd"], \
                        "%0.2f" %nightside["incidenceMidpoint"], "%0.2f" %nightside["lstMidpoint"], \
@@ -109,7 +109,7 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths):
         if "&LST=" in comment:
             comment = ""
     
-        lineToWrite = [orbit["orbitNumber"], "Dayside", dayside["utcStart"], dayside["utcMidpoint"], dayside["utcEnd"], "%0.2f" %dayside["duration"], \
+        lineToWrite = [orbit["orbitNumber"], mtpNumber, "Dayside", dayside["utcStart"], dayside["utcMidpoint"], dayside["utcEnd"], "%0.2f" %dayside["duration"], \
                        "%0.2f" %dayside["lonStart"], "%0.2f" %dayside["lonMidpoint"], "%0.2f" %dayside["lonEnd"], \
                        "%0.2f" %dayside["latStart"], "%0.2f" %dayside["latMidpoint"], "%0.2f" %dayside["latEnd"], \
                        "%0.2f" %dayside["incidenceMidpoint"], "%0.2f" %dayside["lstMidpoint"], \
@@ -131,31 +131,32 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths):
 
 
 
-    linkName = "nomad_mtp%03d_nadir.txt" %mtpNumber
-    linkDescription = "Table data in text format"
-    extraComments = ["UTC Start Time = Terminator crossing time", \
-                     "UTC End Time = Terminator crossing time", \
-    #                 "Duration time includes extra time before and after terminator crossing", \
-                     "Dayside nadir timings do not include 10 second initialisation time", \
-                     "LTP file used for this analysis: %s" %mappsEventFilename, \
-                     "Timings may vary from SOC by up to %i seconds, due to orbit differences" %ACCEPTABLE_MTP_NADIR_TIME_ERROR, \
-                     "Colour code: Grey = nightside nadir; Green = dayside nadir"]
-    #                "Note that observation start/end times here have not yet been checked for clashes with other NOMAD observations"]
-    writeHtmlTable("nomad_mtp%03d_nadir" %mtpNumber, "NOMAD MTP%03d Nadir Observations" %mtpNumber, htmlHeader, htmlRows, paths, linkNameDesc=[linkName, linkDescription], extraComments=extraComments)
-    writeOutputTxt(os.path.join(paths["HTML_MTP_PATH"], "nomad_mtp%03d_nadir" %mtpNumber), linesToWrite)
-    
-    
-    plt.figure(figsize=(FIG_X, FIG_Y-2))
-    plt.plot(plotData["et"], plotData["incidence"])
-    xTickIndices = list(range(0, len(plotData["et"]), (np.int(len(plotData["et"])/4) -1)))
-    xTickLabels = [et2utc(plotData["et"][x])[0:11] for x in xTickIndices]
-    xTicks = [plotData["et"][x] for x in xTickIndices]
-    plt.xticks(xTicks, xTickLabels)
-    plt.xlabel("Observation Time")
-    plt.ylabel("Dayside nadir Minimum Solar Incidence Angle (deg)")
-    plt.title("MTP%03d Dayside Nadir Minimum Solar Incidence Angle" %mtpNumber)
-    plt.savefig(os.path.join(paths["HTML_MTP_PATH"], "mtp%03d_nadir_minimum_incidence_angle.png" %mtpNumber))
-    plt.close()
+    if make_figures:
+        linkName = "nomad_mtp%03d_nadir.txt" %mtpNumber
+        linkDescription = "Table data in text format"
+        extraComments = ["UTC Start Time = Terminator crossing time", \
+                         "UTC End Time = Terminator crossing time", \
+        #                 "Duration time includes extra time before and after terminator crossing", \
+                         "Dayside nadir timings do not include 10 second initialisation time", \
+                         "LTP file used for this analysis: %s" %mappsEventFilename, \
+                         "Timings may vary from SOC by up to %i seconds, due to orbit differences" %ACCEPTABLE_MTP_NADIR_TIME_ERROR, \
+                         "Colour code: Grey = nightside nadir; Green = dayside nadir"]
+        #                "Note that observation start/end times here have not yet been checked for clashes with other NOMAD observations"]
+        writeHtmlTable("nomad_mtp%03d_nadir" %mtpNumber, "NOMAD MTP%03d Nadir Observations" %mtpNumber, htmlHeader, htmlRows, paths, linkNameDesc=[linkName, linkDescription], extraComments=extraComments)
+        writeOutputTxt(os.path.join(paths["HTML_MTP_PATH"], "nomad_mtp%03d_nadir" %mtpNumber), linesToWrite)
+        
+        
+        plt.figure(figsize=(FIG_X, FIG_Y-2))
+        plt.plot(plotData["et"], plotData["incidence"])
+        xTickIndices = list(range(0, len(plotData["et"]), (np.int(len(plotData["et"])/4) -1)))
+        xTickLabels = [et2utc(plotData["et"][x])[0:11] for x in xTickIndices]
+        xTicks = [plotData["et"][x] for x in xTickIndices]
+        plt.xticks(xTicks, xTickLabels)
+        plt.xlabel("Observation Time")
+        plt.ylabel("Dayside nadir Minimum Solar Incidence Angle (deg)")
+        plt.title("MTP%03d Dayside Nadir Minimum Solar Incidence Angle" %mtpNumber)
+        plt.savefig(os.path.join(paths["HTML_MTP_PATH"], "mtp%03d_nadir_minimum_incidence_angle.png" %mtpNumber))
+        plt.close()
 
 
 
@@ -166,7 +167,7 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths):
         con = connect_db(SQLITE_PATH)
         
         sql_table_rows_datetime = convert_table_datetimes(nadir_table_fields_sqlite, sql_table_rows)
-        insert_rows(con, "nadirs", nadir_table_fields_sqlite, sql_table_rows_datetime, check_duplicates=True, duplicate_columns=[2, 3, 4])
+        insert_rows(con, "nadirs", nadir_table_fields_sqlite, sql_table_rows_datetime, check_duplicates=True, duplicate_columns=[3, 4, 5])
         close_db(con)
      
     else:
