@@ -9,7 +9,7 @@ READ IN LNO AND UVIS OCCULTATION-IN-SOLAR-FOV FILES AND MAKE A LIST TO COPY TO E
 
 import os
 
-mtpNumber = 40
+mtpNumber = 42
 
 from nomad_obs.mtp_inputs import getMtpConstants
 

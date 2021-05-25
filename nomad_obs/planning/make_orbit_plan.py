@@ -62,6 +62,7 @@ def makeGenericOrbitPlan(orbit_list, mtp_constants, paths, silent=True):
                         all_off = True
 
         #special section for true dayside limbs. Set dayside limb to type 28 first to avoid routine dayside nadirs being added
+        #type 18s (occultations with limbs) are added later
         if "trueLimb" in orbit["allowedObservationTypes"]:
             generic_orbit_type = 28
             generic_orbit["irIngressHigh"] = "" #no occultations ever on true limb orbits
@@ -105,11 +106,15 @@ def makeGenericOrbitPlan(orbit_list, mtp_constants, paths, silent=True):
         for occultation_type in orbit["allowedObservationTypes"]:
 
             if occultation_type == "ingress":
+                if "trueLimb" in orbit["allowedObservationTypes"]:
+                    generic_orbit_type = 28
+                else:
+                    generic_orbit_type = 1
+
                 generic_orbit["irIngressHigh"] = "irIngress"
                 generic_orbit["irIngressLow"] = "irIngress"
                 generic_orbit["uvisIngress"] = "uvisIngress"
     
-                generic_orbit_type = 1
                 if "egress" in orbit["allowedObservationTypes"]: #if 2 occultations in same orbit
                     generic_orbit["irDayside"] = "irShortDayside"
                 else:
@@ -121,11 +126,15 @@ def makeGenericOrbitPlan(orbit_list, mtp_constants, paths, silent=True):
                 generic_orbit["uvisDayside"] = "uvisDayside"
                 
             elif occultation_type == "egress":
+                if "trueLimb" in orbit["allowedObservationTypes"]:
+                    generic_orbit_type = 28
+                else:
+                    generic_orbit_type = 1
+
                 generic_orbit["irEgressHigh"] = "irEgress"
                 generic_orbit["irEgressLow"] = "irEgress"
                 generic_orbit["uvisEgress"] = "uvisEgress"
     
-                generic_orbit_type = 1
                 if "ingress" in orbit["allowedObservationTypes"]: #if 2 occultations in same orbit
                     generic_orbit["irDayside"] = "irShortDayside"
                 else:
@@ -187,6 +196,10 @@ def makeGenericOrbitPlan(orbit_list, mtp_constants, paths, silent=True):
                         else:
                             print("Warning: region of interest found but no dedicated observation type has been specified")
 
+            if "trueLimb" in orbit["allowedObservationTypes"]:
+                generic_orbit["irDayside"] = "irLimb"
+                generic_orbit["uvisDayside"] = "uvisLimb"
+
 
         if generic_orbit_type in [4, 14]: #if no occultations - nadir only
     
@@ -229,7 +242,7 @@ def makeGenericOrbitPlan(orbit_list, mtp_constants, paths, silent=True):
 
         else: #if not orbit types 4 or 14, still check for nadir regions
             
-            if generic_orbit_type not in [28]: #if dayside limb, don't check for regions of interest
+            if generic_orbit_type not in [18, 28]: #if dayside limb, don't check for regions of interest
 
                 #check nadir regions of interest
                 if "daysideRegions" in orbit.keys(): #if nadir obs matches region of interest, set LNO on
@@ -310,7 +323,7 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
     
     
     
-        if orbitType in [1]:
+        if orbitType in [1, 28]:
             if genericObsTypes["irIngressHigh"] == "": #no observation
                 irIngressHigh = ""
                 irIngressLow = ""
@@ -551,14 +564,15 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
     
     
     
-        if orbitType in [8, 28]: #LNO and/or UVIS dayside limb
+        if orbitType in [8, 18, 28]: #LNO and/or UVIS dayside limb with or without occultations
     
-            irIngressHigh=""
-            irIngressLow=""
-            uvisIngress = ""
-            irEgressHigh=""
-            irEgressLow=""
-            uvisEgress = ""
+            if orbitType in [8]:
+                irIngressHigh=""
+                irIngressLow=""
+                uvisIngress = ""
+                irEgressHigh=""
+                irEgressLow=""
+                uvisEgress = ""
 
             orbit["allowedObservationTypes"].append("dayside") #activaes dayside
     

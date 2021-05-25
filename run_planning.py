@@ -11,8 +11,11 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 41
+mtpNumber = 42
 """
+*Remember to update spice kernels first!
+*Get event file, MRO overlaps and SOLAR_LOS limb files from Ops zip
+
 *Remove lots of LNO nadirs, trying to keep as many of the following:
     
 Region                    Priority
@@ -28,15 +31,25 @@ Meridiani Sulfates	      High
 Mawrth Vallis	          High
 Other targets	          Medium
 
-*Add a few LNO nightsides (type 7), and a few LNO-only limbs (type 8) when FOV in range
+*check OCMs
+
+*check true limbs are correctly registered:
+    type 18 = solar occ and day limb
+    type 28 = day limb only
+    type 47 = night limb only
+
+*Add a few LNO nightsides (type 7)
+
+*Add a few LNO-only limbs (type 8) when FOV in range
+
 *If no occultations add some nadir surface ice obs e.g. Surface Ice 4SUBD 01
+
 *Use excel formula to check for incorrect orbit types 3 when no LNO obs:
     =IF(OR(AND(A2=3,H2=""),AND(A2=14,NOT(H2=""))), 1, 0)
-
+    
 *Ignore all UVIS inputs for now
 
-And remember to update spice kernels first..."""
-
+"""
 #add the correct MTP info in obs_inputs
 from nomad_obs.mtp_inputs import getMtpConstants
 

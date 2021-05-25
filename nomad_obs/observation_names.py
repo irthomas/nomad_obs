@@ -14,7 +14,7 @@ Created on Wed Oct 18 13:56:09 2017
         Giuliano: order 129 is best for HCl isotopic ratio
    
     Next patching: 
-        Swap order 149 with 148/147 -Miguel?
+        Swap order 149 with 148/147 -Miguel / Mike?
         Giancarlo: Some LNO with AOTF off
         Miguel: 121/148/149/155/164/165
 
@@ -274,8 +274,7 @@ nadirObservationDict = {
 "Nominal 4SUBD #2":[[168,134,121,189], 195, 15, 144, 1], #GOOD
 
 #OH Meinel Bands
-"Night Limb #1":[[158,153], 200, 15, 144, 1], #SUBOPTIMAL BUT ORDER 158 ONLY DOESN'T EXIST YET
-"Night Limb #2":[[158,158], 200, 15, 144, 1], #NEEDS PATCH
+"Night Limb #2":[[158,158], 200, 15, 144, 1], #PATCHED FOR MTP031+
 
 
 
@@ -310,6 +309,8 @@ nadirObservationDict = {
 "Limb 2SUBD 04":[[164,165], 200, 15, 144, 1],
 "Limb 2SUBD 05":[[165,166], 200, 15, 144, 1],
 "Limb 2SUBD 06":[[166,167], 200, 15, 144, 1],
+"Night Limb #1":[[158,153], 200, 15, 144, 1], #SUBOPTIMAL BUT ORDER 158 ONLY DOESN'T EXIST YET
+
 
 "Nominal Nightside 01":[[169,190], 200, 15, 144, 1],
 "Nominal Nightside 02":[[162,163], 200, 15, 144, 1],
