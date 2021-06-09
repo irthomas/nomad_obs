@@ -3,6 +3,12 @@
 Created on Mon Mar  4 08:22:23 2019
 
 @author: iant
+
+
+TODO:
+    REWORK GENERIC PLAN ORBIT TYPE SELECTOR FOR ORBITS WITH OCCULTATIONS + LIMB AND OCCULTATIONS + OCM
+    
+    
 """
 
 __project__   = "NOMAD Observation Planning"
@@ -11,7 +17,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 42
+mtpNumber = 43
 """
 *Remember to update spice kernels first!
 *Get event file, MRO overlaps and SOLAR_LOS limb files from Ops zip
@@ -31,10 +37,10 @@ Meridiani Sulfates	      High
 Mawrth Vallis	          High
 Other targets	          Medium
 
-*check OCMs
+*check OCMs, particularly those orbits with occultations
 
 *check true limbs are correctly registered:
-    type 18 = solar occ and day limb
+    type 28 = solar occ and day limb
     type 28 = day limb only
     type 47 = night limb only
 
