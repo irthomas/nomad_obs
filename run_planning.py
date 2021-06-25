@@ -17,7 +17,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 43
+mtpNumber = 44
 """
 *Remember to update spice kernels first!
 *Get event file, MRO overlaps and SOLAR_LOS limb files from Ops zip
@@ -54,6 +54,9 @@ Other targets	          Medium
     =IF(OR(AND(A2=3,H2=""),AND(A2=14,NOT(H2=""))), 1, 0)
     
 *Ignore all UVIS inputs for now
+
+*If there are occultation-free periods, change IR daysides to mainly Surface Ice observations
+
 
 """
 #add the correct MTP info in obs_inputs

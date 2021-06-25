@@ -21,40 +21,54 @@ def updateWrongOrbitTypes(orbit_list, mtpConstants):
     mtpNumber = mtpConstants["mtpNumber"]
 
 
-    """note that index here is one less than the orbit number => orbit 228 is at index 226
+    """note that index here is one less than the orbit number => orbit 227 is at index 226
     the index here is two less than the row number in the excel spreadsheet => row 188 is at index 186"""
     if mtpNumber == 10:
+        #switch a merged for a grazing
         orbit_list[227]["allowedObservationTypes"] = ["dayside", "grazing"]
         orbit_list[227]["grazing"] = orbit_list[227].pop("merged")
 
     elif mtpNumber == 20:
+        #add merged occultation
         orbit_list[150]["allowedObservationTypes"] = ["dayside", "merged"]
 
     elif mtpNumber == 21:
+        #switch a merged for a grazing
         orbit_list[4]["allowedObservationTypes"] = ["dayside", "grazing"]
         orbit_list[4]["grazing"] = orbit_list[4].pop("merged")
 
     elif mtpNumber == 25:
+        #switch a merged for a grazing
         orbit_list[6]["allowedObservationTypes"] = ["dayside", "grazing"]
         orbit_list[6]["grazing"] = orbit_list[6].pop("merged")
 
     elif mtpNumber == 26:
+        #switch a merged for a grazing
         orbit_list[167]["allowedObservationTypes"] = ["dayside", "grazing"]
         orbit_list[167]["grazing"] = orbit_list[167].pop("merged")
 
     elif mtpNumber == 34:
+        #switch a merged for a grazing
         orbit_list[29]["allowedObservationTypes"] = ["dayside", "grazing"]
         orbit_list[29]["grazing"] = orbit_list[29].pop("merged")
+        #switch a merged for a grazing
         orbit_list[232]["allowedObservationTypes"] = ["dayside", "grazing"]
         orbit_list[232]["grazing"] = orbit_list[232].pop("merged")
 
     elif mtpNumber == 36:
+        #switch a merged for a grazing
         orbit_list[186]["allowedObservationTypes"] = ["dayside", "grazing"]
         orbit_list[186]["grazing"] = orbit_list[186].pop("merged")
 
     elif mtpNumber == 40:
+        #switch a merged for a grazing
         orbit_list[33]["allowedObservationTypes"] = ["dayside", "grazing"]
         orbit_list[33]["grazing"] = orbit_list[33].pop("merged")
+
+    elif mtpNumber == 44:
+        #switch a merged for a grazing
+        orbit_list[50]["allowedObservationTypes"] = ["dayside", "grazing"]
+        orbit_list[50]["grazing"] = orbit_list[50].pop("merged")
            
     return orbit_list
 
