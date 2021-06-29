@@ -14,7 +14,7 @@ import os
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 
-mtpNumber = 43
+mtpNumber = 44
 
 #add the correct MTP info in obs_inputs
 from nomad_obs.mtp_inputs import getMtpConstants
@@ -115,8 +115,15 @@ for cop_row_name, dictionary_data in cop_summary_dict.items():
         for row_number in range(len(cop_row_data)):
         
             #get row colour
-            color_in_hex = Sheet1.cell(row_number+1, dictionary_data["empty_column"]-1).fill.start_color.index
-            
+            #note: if the colour is set with a theme this won't work
+            rgb_or_theme = ""
+            cell_colour_info = Sheet1.cell(row_number+1, dictionary_data["empty_column"]-1).fill.start_color
+            if cell_colour_info.type == "rgb":
+                rgb_or_theme = "rgb"
+                color_in_hex = Sheet1.cell(row_number+1, dictionary_data["empty_column"]-1).fill.start_color.index
+            else:
+                rgb_or_theme = "theme"
+                color_theme = Sheet1.cell(row_number+1, dictionary_data["empty_column"]-1).fill.start_color.theme
             
             #loop through COP row values
             for column_number in range(len(cop_row_data[0])):
@@ -126,21 +133,27 @@ for cop_row_name, dictionary_data in cop_summary_dict.items():
                 Sheet1.cell(row_number+1, column_index+1).value = cop_row_data[row_number][column_number]
         
                 #if row has a colour, copy to each cell
-                if color_in_hex != '00000000':
-                    fill_pattern = PatternFill(start_color=color_in_hex, end_color=color_in_hex, fill_type='solid')
-                    Sheet1.cell(row_number+1, column_index+1).fill = fill_pattern
+                if rgb_or_theme == "rgb":
+                    if color_in_hex != '00000000':
+                        fill_pattern = PatternFill(start_color=color_in_hex, end_color=color_in_hex, fill_type='solid')
+                        Sheet1.cell(row_number+1, column_index+1).fill = fill_pattern
+                if rgb_or_theme == "theme":
+                    Sheet1.cell(row_number+1, column_index+1).fill.start_color.theme = color_theme
                     
             
             #print comparison rows TC execution times
             if row_number in compare_indices:
                 print(cop_row_data[row_number][7], "---", Sheet1.cell(row_number+1, dictionary_data["column_to_compare"]).value)
     
-            #if row has a colour, copy to each cell
-            if color_in_hex != '00000000':
+            if rgb_or_theme == "rgb":
+                if color_in_hex != '00000000':
+                    if cop_row_data[row_number][0] > -1:
+                        print("Error: row %i contains observation data" %(row_number+1))
+                        print(cop_row_data[row_number])
+            if rgb_or_theme == "theme":
                 if cop_row_data[row_number][0] > -1:
                     print("Error: row %i contains observation data" %(row_number+1))
                     print(cop_row_data[row_number])
-        
         
         #save and close file
         wb.save(summary_row_path) 
