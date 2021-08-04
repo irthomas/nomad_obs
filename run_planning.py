@@ -17,10 +17,27 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 44
-"""
+mtpNumber = 45
+
+r"""
 *Remember to update spice kernels first!
 *Get event file, MRO overlaps and SOLAR_LOS limb files from Ops zip
+
+event_files\LEVF_M0xx_SOC_PLANNING.EVF
+
+summary_files\mtp0xx\2deg_latlon_15min_LST
+summary_files\mtp0xx\2deg_latlon_30min_LST
+summary_files\mtp0xx\5deg_latlon_15min_LST
+summary_files\mtp0xx\5deg_latlon_30min_LST
+
+summary_files\mtp0xx\kickoff\nadir_dayside_nightside_thermal_orbits_orbit_type_summary.txt
+summary_files\mtp0xx\kickoff\NOMAD_egress_solar_occulations_summary.txt
+summary_files\mtp0xx\kickoff\NOMAD_ingress_and_merged_solar_occulations_summary.txt
+
+summary_files\mtp0xx\MARS_IN_LNO_OCC_FOV.txt
+summary_files\mtp0xx\MARS_IN_UVIS_OCC_FOV.txt
+
+
 
 *Remove lots of LNO nadirs, trying to keep as many of the following:
     
@@ -37,7 +54,7 @@ Meridiani Sulfates	      High
 Mawrth Vallis	          High
 Other targets	          Medium
 
-*check OCMs, particularly those orbits with occultations
+*check OCM start/end times, particularly those orbits with occultations
 
 *check true limbs are correctly registered:
     type 28 = solar occ and day limb
