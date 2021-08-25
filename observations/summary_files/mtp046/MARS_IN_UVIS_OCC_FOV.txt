@@ -1,0 +1,2 @@
+MARS in NOMAD FOV start (UTC),MARS in NOMAD FOV end (UTC),Dayside nadir observation number,Thermal orbit number
+2021 OCT 30 09:13:27,2021 OCT 30 09:16:29,194,194
