@@ -17,11 +17,11 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 46
+mtpNumber = 47
 
 r"""
 *Remember to update spice kernels first!
-*Get event file, MRO overlaps and SOLAR_LOS limb files from Ops zip
+*Get event file, MRO overlaps and SOLAR_LOS limb files from Ops zip:
 
 event_files\LEVF_M0xx_SOC_PLANNING.EVF
 

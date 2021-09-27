@@ -1,0 +1,5 @@
+TGO overlap time with MRO (UTC),Dayside nadir observation number,Thermal orbit number
+2021 NOV 01 06:48:00,20,20
+2021 NOV 01 06:45:00,20,20
+2021 NOV 11 23:30:00,151,151
+2021 NOV 13 16:48:00,172,172
