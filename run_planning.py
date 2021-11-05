@@ -17,7 +17,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 47
+mtpNumber = 48
 
 r"""
 *Remember to update spice kernels first!
@@ -37,22 +37,23 @@ summary_files\mtp0xx\kickoff\NOMAD_ingress_and_merged_solar_occulations_summary.
 summary_files\mtp0xx\MARS_IN_LNO_OCC_FOV.txt
 summary_files\mtp0xx\MARS_IN_UVIS_OCC_FOV.txt
 
+*Add start/end times to mtp_inputs.py
+*Then run run_planning.py
 
-
-*Remove lots of LNO nadirs, trying to keep as many of the following:
+*Check draft orbit plan - remove lots of LNO nadirs, trying to keep as many of the following:
     
-Region                    Priority
+Region                    Priority  reduce box size; not run each time.
 ------                    --------
-Olympus Mons	          Highest
-Curiosity	              Highest
+Olympus Mons	           Highest
+Curiosity	                Highest
 Perseverance              Highest
 MRO overlaps              High
 Acidalia Planitia	      High
-Nili Fossae	              High
+Nili Fossae	           High
 Mawrth Vallis/Aram Chaos  High
 Meridiani Sulfates	      High
-Mawrth Vallis	          High
-Other targets	          Medium
+Mawrth Vallis	           High
+Other targets	           Medium
 
 *check OCM start/end times, particularly those orbits with occultations
 
@@ -61,13 +62,14 @@ Other targets	          Medium
     type 28 = day limb only
     type 47 = night limb only
 
-*Add a few LNO nightsides (type 7)
+*Add a few LNO nightsides (type 7) if space is available
 
-*Add a few LNO-only limbs (type 8) when FOV in range
+*Add a few LNO-only limbs (type 8) when FOV in range if space is available (we have lots of LNO+UVIS limbs now)
 
 *If no occultations add some nadir surface ice obs e.g. Surface Ice 4SUBD 01
 
 *Use excel formula to check for incorrect orbit types 3 when no LNO obs:
+    copy formula into draft orbit plan cell N2 and then drag down the column
     =IF(OR(AND(A2=3,H2=""),AND(A2=14,NOT(H2=""))), 1, 0)
     
 *Ignore all UVIS inputs for now

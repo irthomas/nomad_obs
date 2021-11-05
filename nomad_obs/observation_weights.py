@@ -42,35 +42,12 @@ OCCULTATION_WEIGHTS = [
     ["CO2 Fullscan Fast #4"] * 10, #orders 165-175 #reduce gradually
     ["CO Fullscan Fast #2"] * 3,
     ["LNO Occultation Fullscan Fast #2"] * 5,
-#    ["119 only #2"] * 1,
-#    ["120 only #2"] * 1,
-#    ["121 only #2"] * 1,
-
-#    ["BgSubTest 03"] * 2, #reduce by one in MTP033
-#    ["BgSubTest 04"] * 2,
-#    ["BgSubTest 05"] * 2,
-#    ["BgSubTest 06"] * 2,
-#    ["Nominal Science 1xCO2 LA05"] * 1, #remove in MTP033
-#    ["Nominal Science 1xCO2 LA06"] * 1,
-#    ["Nominal Science 1xCO2 LA01"] * 1,
-#    ["Nominal Science 1xCO2 HA01"] * 1,
-#    ["Nominal Science 1xCO2 LA02"] * 1,
-#    ["Nominal Science 1xCO2 HA02"] * 1,
-#    ["Nominal Science 1xCO2 LA03"] * 1,
-#    ["Nominal Science 1xCO2 HA03"] * 1,
-#    ["Nominal Science 1xCO2 LA04"] * 1,
-#    ["Nominal Science 1xCO2 HA04"] * 1,
-#    ["Water Ice 01"] * 1,
-#    ["CO 01"] * 1,
-#    ["AER 01"] * 1,
     
     #new MTP025+
     ["6SUBD CO2 #1"] * 5, #reduce from MTP029 onwards to 5
     ["6SUBD CO2 #10"] * 5, #reduce from MTP029 onwards to 5
 
     #MTP028+ CO2 M1/E2 and HCl. reduce when new patches become available.
-#    ["126 only #2"] * 5,
-#    ["127 only #2"] * 5,
     ["129 only #2"] * 5,
     ["HDO 01"] * 5,
     ["Dust H2O 01"] * 5,
@@ -101,21 +78,6 @@ OCCULTATION_WEIGHTS = [
 
         
 OCCULTATION_MERGED_WEIGHTS = [
-#    ["Nominal Science 1xCO2 LA05"] * 1,
-#    ["BgSubTest 05"] * 1,
-#    ["Nominal Science 1xCO2 LA05"] * 1,
-#    ["BgSubTest 06"] * 1,
-#    ["All Fullscan Fast"] * 1,
-#    ["CH4 01"] * 1,
-#    ["134 with 1xDark"] * 1, #special calibration
-
-#    ["6SUBD Nominal #1"] * 3, 
-#    ["6SUBD Nominal #2"] * 3, 
-#    ["6SUBD Nominal #3"] * 3, 
-#    ["6SUBD CH4 #1"] * 1,
-#    ["134 only #2"] * 1,
-#    ["136 only #2"] * 1,
-    
     ["All Fullscan Fast #2"] * 1,
     ["CO2 Fullscan Fast #4"] * 5, #orders 165-175 reduce gradually
 
@@ -130,14 +92,6 @@ OCCULTATION_MERGED_WEIGHTS = [
 
         
 OCCULTATION_GRAZING_WEIGHTS = [
-#    ["6SUBD Nominal #1"] * 2, 
-#    ["6SUBD Nominal #2"] * 2, 
-#    ["6SUBD Nominal #3"] * 2, 
-#    ["6SUBD CH4 #1"] * 1,
-#    ["All Fullscan Fast #2"] * 1,
-#    ["134 only #2"] * 1,
-#    ["136 only #2"] * 1,
-
     ["All Fullscan Fast #2"] * 1,
     ["6SUBD Nominal #42"] * 1, #nominal + 129
     ["6SUBD Nominal #45"] * 1, #nominal + 129
@@ -169,9 +123,6 @@ OCCULTATION_H2O_REGION_WEIGHTS = [
     ["6SUBD Nominal #51"] * 1, #nominal + 129
     ["6SUBD Nominal #11"] * 1, #nominal + 126/129
     ["6SUBD Nominal #12"] * 1, #nominal + 127/129
-    # ["6SUBD Nominal #1"] * 3, 
-    # ["6SUBD Nominal #2"] * 1, 
-    # ["6SUBD Nominal #3"] * 1, 
 ]
 
         
@@ -184,35 +135,29 @@ NADIR_WEIGHTS = [
     ["H2O CO 3SUBD #2"] * 10, #PATCHED FOR MTP031+
     ["CH4 CO 2SUBD #3"] * 5, #PATCHED FOR MTP031+
     ["CH4 CO 2SUBD #4"] * 5, #PATCHED FOR MTP031+
-    ["Ice CO 2SUBD #2"] * 10, #PATCHED FOR MTP031+
-
-    ["Nominal 6SUBD 01"] * 3, #REDUCE, REPLACE WITH ORDER 189
-    ["Nominal 4SUBD 01"] * 3,
-    ["Nominal 3SUBD 01"] * 3,
     ["H2O 2SUBD 01"] * 5,
-#    ["CO H2O 3SUBD 01"] * 6,
-
-#    ["HDO CO 3SUBD 02"] * 4,
     ["CH4 3SUBD 01"] * 4,
-#    ["CH4 H2O 2SUBD 02"] * 4,
-#    ["CH4 H2O 2SUBD 01"] * 4,
-#    ["CH4 2SUBD 03"] * 4,
-#    ["CH4 2SUBD 02"] * 4,
-#    ["CH4 CO 2SUBD 01"] * 1,
-#    ["CH4 CO 2SUBD 02"] * 1,
-    ["HDO H2O 2SUBD 02"] * 4,
-    ["HDO H2O 2SUBD 03"] * 4,
+    ["Surface 3SUBD #3"] * 5,
+
+    ["Nominal 6SUBD 01"] * 2, #REDUCE, REPLACE WITH ORDER 189
+    ["Nominal 4SUBD 01"] * 2,
+    ["Nominal 3SUBD 01"] * 2,
+
+
+    ["HDO H2O 2SUBD 02"] * 2,
+    ["HDO H2O 2SUBD 03"] * 2,
     ["CO Fullscan #2"] * 1,
     ["H2O Fullscan #2"] * 1,
 
-    ["Ice CH4 2SUBD #1"] * 5,
-    ["Ice H2O 2SUBD #1"] * 5,
-#    ["Ice CO 2SUBD #1"] * 2,
 
-    ["Surface Ice 4SUBD 01"] * 5, #increase when beta angle high
-    ["Surface Ice 6SUBD 01"] * 5,
-    ["Surface Ice 4SUBD 02"] * 5,
-    ["Surface Ice 3SUBD 01"] * 5,
+    ["Ice CH4 2SUBD #1"] * 4,
+    ["Ice H2O 2SUBD #1"] * 4,
+    ["Ice CO 2SUBD #2"] * 4, #PATCHED FOR MTP031+
+
+    ["Surface Ice 4SUBD 01"] * 4, #increase when beta angle high
+    ["Surface Ice 6SUBD 01"] * 4,
+    ["Surface Ice 4SUBD 02"] * 4,
+    ["Surface Ice 3SUBD 01"] * 4,
 
 
      
@@ -229,16 +174,11 @@ NADIR_LIMB_WEIGHTS = [
 ]
 
 NADIR_NIGHT_LIMB_WEIGHTS = [
-#    ["Limb 2SUBD 07"] * 3,
-#    ["Nominal Limb 01"] * 1,
-#    ["Night Limb #1"] * 1,
     ["Night Limb #2"] * 5, #PATCHED FOR MTP031+
 
 ]
         
 NADIR_NIGHTSIDE_WEIGHTS = [
-#    ["Limb 2SUBD 07"] * 1,
-#    ["Night Limb #1"] * 1,
     ["Night Limb #2"] * 5, #PATCHED FOR MTP031+
 
 ]
@@ -248,15 +188,11 @@ NADIR_NIGHTSIDE_WEIGHTS = [
         
         
 NADIR_CH4_REGION_WEIGHTS = [
-#    ["CH4 3SUBD 01"] * 1,
     ["CH4 H2O 2SUBD 02"] * 3, #WITH 136
     ["CH4 H2O 2SUBD 01"] * 1, #WITH 134
     ["CH4 2SUBD 03"] * 1, #136 ONLY
     ["CH4 CO 2SUBD #3"] * 4, #PATCHED FOR MTP031+
     
-#    ["H2O CO 2SUBD #1"] * 3,
-
-
 ]        
 
 NADIR_H2O_REGION_WEIGHTS = [
@@ -266,8 +202,8 @@ NADIR_H2O_REGION_WEIGHTS = [
 
 
 NADIR_SURFACE_REGION_WEIGHTS = [
-    ["H2O CO 2SUBD #1"] * 1,
-    ["Surface 3SUBD 02"] * 2,
+    ["H2O CO 2SUBD #1"] * 2,
+    ["Surface 3SUBD 02"] * 1,
     ["Surface 3SUBD #3"] * 3, #PATCHED FOR MTP031+
 ]
     

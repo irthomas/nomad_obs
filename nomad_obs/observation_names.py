@@ -31,7 +31,10 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 """make the observation dictionaries of all the desired measurement types
-DON'T MODIFY OR DELETE ANY OBSERVATIONS - JUST ADD NEW ONES"""
+
+***NEVER MODIFY OR DELETE ANY OBSERVATIONS - JUST ADD NEW ONES***
+
+"""
 #name:[[orders], int time, rhythm, lines, so=0/lno=1]
 occultationObservationDict = {
         
@@ -253,7 +256,7 @@ nadirObservationDict = {
 "Surface Ice 2SUBD 4S 03":[[193, 194], 205, 4, 144, 1],
 "Surface Ice 2SUBD 4S 04":[[199, 187], 205, 4, 144, 1],
 
-#F Schmidt order 193 + something else
+#F Schmidt order 193 + something else - these are run anyway
 "Ice CH4 2SUBD #1":[[193,136], 200, 15, 144, 1],
 "Ice H2O 2SUBD #1":[[193,168], 200, 15, 144, 1],
 "Ice CO 2SUBD #1":[[193,190], 200, 15, 144, 1],
