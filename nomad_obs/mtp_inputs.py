@@ -406,9 +406,9 @@ def getMtpConstants(mtpNumber):
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 49:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
-        copVersion = "" #desired cop table folder - remember to update if patched
+        mtpStart = "2021-12-25T15:00:16Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2022-01-22T13:10:17Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 50:

@@ -89,8 +89,8 @@ nadirRegionsOfInterest = [
 ]
 
 
-LATITUDE_RANGE = 3 #degrees
-LONGITUDE_RANGE = 3 #degress
+LATITUDE_RANGE = 1 #degrees
+LONGITUDE_RANGE = 1 #degress
 
 nadirRegionsOfInterest.extend([
 ["NILI FOSSAE", 17, "NadirCycleSurface", 23.0-LATITUDE_RANGE, 23.0+LATITUDE_RANGE, 73.0-LONGITUDE_RANGE, 73.0+LONGITUDE_RANGE],
@@ -101,8 +101,8 @@ nadirRegionsOfInterest.extend([
 ["OLYMPUS MONS", 12, "NadirCycleSurface", 18.3-LATITUDE_RANGE,18.3+LATITUDE_RANGE,-133.0-LONGITUDE_RANGE,-133.0+LONGITUDE_RANGE],
 ])
 
-LATITUDE_RANGE = 5 #degrees
-LONGITUDE_RANGE = 5 #degress
+LATITUDE_RANGE = 2 #degrees
+LONGITUDE_RANGE = 2 #degress
 
 nadirRegionsOfInterest.extend([
 ["TIANWEN1", 4, "NadirCycleH2O", 25.1-LATITUDE_RANGE,25.1+LATITUDE_RANGE,109.9-LONGITUDE_RANGE,109.9+LONGITUDE_RANGE],

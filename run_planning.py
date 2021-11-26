@@ -17,7 +17,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 48
+mtpNumber = 49
 
 r"""
 *Remember to update spice kernels first!
@@ -33,6 +33,7 @@ summary_files\mtp0xx\5deg_latlon_30min_LST
 summary_files\mtp0xx\kickoff\nadir_dayside_nightside_thermal_orbits_orbit_type_summary.txt
 summary_files\mtp0xx\kickoff\NOMAD_egress_solar_occulations_summary.txt
 summary_files\mtp0xx\kickoff\NOMAD_ingress_and_merged_solar_occulations_summary.txt
+summary_files\mtp0xx\kickoff\NOMAD_grazing_solar_occulations_summary.txt (if present)
 
 summary_files\mtp0xx\MARS_IN_LNO_OCC_FOV.txt
 summary_files\mtp0xx\MARS_IN_UVIS_OCC_FOV.txt
@@ -44,18 +45,19 @@ summary_files\mtp0xx\MARS_IN_UVIS_OCC_FOV.txt
     
 Region                    Priority  reduce box size; not run each time.
 ------                    --------
-Olympus Mons	           Highest
-Curiosity	                Highest
-Perseverance              Highest
-MRO overlaps              High
-Acidalia Planitia	      High
-Nili Fossae	           High
-Mawrth Vallis/Aram Chaos  High
-Meridiani Sulfates	      High
-Mawrth Vallis	           High
-Other targets	           Medium
+Olympus Mons	           Run preferentially but not always
+Curiosity	                Run preferentially but not always
+Perseverance              Run preferentially but not always
+MRO overlaps              Normal priority
+Acidalia Planitia	      Normal priority
+Nili Fossae	           Normal priority
+Mawrth Vallis/Aram Chaos  Normal priority
+Meridiani Sulfates	      Normal priority
+Mawrth Vallis	           Normal priority
+Other targets	           Normal priority
 
-*check OCM start/end times, particularly those orbits with occultations
+*check OCM start/end times, particularly those orbits with occultations near OCMs
+*compare column L (dayside start time) to start/end times in extracted_events/OCM_events.txt in the zip
 
 *check true limbs are correctly registered:
     type 28 = solar occ and day limb
@@ -66,15 +68,17 @@ Other targets	           Medium
 
 *Add a few LNO-only limbs (type 8) when FOV in range if space is available (we have lots of LNO+UVIS limbs now)
 
-*If no occultations add some nadir surface ice obs e.g. Surface Ice 4SUBD 01
+*If there are occultation-free periods, change IR daysides to mainly Surface Ice observations e.g. Surface Ice 4SUBD 01
 
 *Use excel formula to check for incorrect orbit types 3 when no LNO obs:
     copy formula into draft orbit plan cell N2 and then drag down the column
     =IF(OR(AND(A2=3,H2=""),AND(A2=14,NOT(H2=""))), 1, 0)
     
+*Then delete everything from column N onwards
+    
 *Ignore all UVIS inputs for now
 
-*If there are occultation-free periods, change IR daysides to mainly Surface Ice observations
+*Send nomad_mtp049_plan_generic.xlsx, nomad_mtp049_plan.csv and nomad_mtp049_lno_orbits.txt to nomad.iops
 
 
 """

@@ -69,6 +69,11 @@ def updateWrongOrbitTypes(orbit_list, mtpConstants):
         #switch a merged for a grazing
         orbit_list[50]["allowedObservationTypes"] = ["dayside", "grazing"]
         orbit_list[50]["grazing"] = orbit_list[50].pop("merged")
+    elif mtpNumber == 49:
+        #switch a merged for a grazing
+        index = 13
+        orbit_list[index]["allowedObservationTypes"] = ["dayside", "grazing"]
+        orbit_list[index]["grazing"] = orbit_list[index].pop("merged")
            
     return orbit_list
 

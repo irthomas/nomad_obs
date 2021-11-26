@@ -17,6 +17,8 @@ Created on Wed Oct 18 13:56:09 2017
         Swap order 149 with 148/147 -Miguel / Mike?
         Giancarlo: Some LNO with AOTF off
         Miguel: 121/148/149/155/164/165
+        Loic: add 132 to nominal for low altitude CO2 with 134 and 136
+        Loic: 149 can be swapped for 149 and/or 148
 
 """
 
