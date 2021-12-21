@@ -20,7 +20,10 @@ ACS_EGRESS_START_CODES, ACS_EGRESS_END_CODES, \
 ACS_MERGED_START_CODES, ACS_MERGED_END_CODES, \
 ACS_GRAZING_START_CODES, ACS_GRAZING_END_CODES, \
 NOMAD_SOLAR_CALIBRATION_START_CODES, NOMAD_SOLAR_CALIBRATION_END_CODES, \
-ACS_SOLAR_CALIBRATION_START_CODES, ACS_SOLAR_CALIBRATION_END_CODES
+ACS_SOLAR_CALIBRATION_START_CODES, ACS_SOLAR_CALIBRATION_END_CODES, \
+CASSIS_CALIBRATION_START_CODES, CASSIS_CALIBRATION_END_CODES, \
+NOMAD_PHOBOS_START_CODES, NOMAD_PHOBOS_END_CODES, \
+NOMAD_DEIMOS_START_CODES, NOMAD_DEIMOS_END_CODES
 from nomad_obs.config.constants import ACCEPTABLE_MTP_OCCULTATION_TIME_ERROR
 
 
@@ -194,19 +197,78 @@ def readMappsEventFile(instrument, mappsObservationType, mtpConstants, paths):
             EVENT_CODES = NOMAD_SOLAR_CALIBRATION_START_CODES + NOMAD_SOLAR_CALIBRATION_END_CODES
         elif instrument == "ACS":
             EVENT_CODES = ACS_SOLAR_CALIBRATION_START_CODES + ACS_SOLAR_CALIBRATION_END_CODES
-        
+        elif instrument == "CaSSIS":
+            EVENT_CODES = CASSIS_CALIBRATION_START_CODES + CASSIS_CALIBRATION_END_CODES
         
         for eventTime, eventName, eventCount in lines:
             if eventName in EVENT_CODES:
                 eventTime = eventTime[0:-1] #remove Z
-                if eventName in NOMAD_SOLAR_CALIBRATION_START_CODES:
+                if eventName in NOMAD_SOLAR_CALIBRATION_START_CODES + ACS_SOLAR_CALIBRATION_START_CODES + CASSIS_CALIBRATION_START_CODES:
                     mappsSolarCalibrationStart = sp.str2et(eventTime)
                     solarCalibrationStartFound = True
-                elif eventName in NOMAD_SOLAR_CALIBRATION_END_CODES:
+                elif eventName in NOMAD_SOLAR_CALIBRATION_END_CODES + ACS_SOLAR_CALIBRATION_END_CODES + CASSIS_CALIBRATION_END_CODES:
                     mappsSolarCalibrationEnd = sp.str2et(eventTime)
                     solarCalibrationEndFound = True
                 if solarCalibrationStartFound and solarCalibrationEndFound:
-                    mappsEvent.append([eventIndex, "SolarCalibration", mappsSolarCalibrationStart, mappsSolarCalibrationEnd, eventCount])
+                    if instrument == "NOMAD":
+                        mappsEvent.append([eventIndex, "SolarCalibration", mappsSolarCalibrationStart, mappsSolarCalibrationEnd, eventCount])
+                    elif instrument == "ACS":
+                        mappsEvent.append([eventIndex, "AcsSolarCalibration", mappsSolarCalibrationStart, mappsSolarCalibrationEnd, eventCount])
+                    elif instrument == "CaSSIS":
+                        mappsEvent.append([eventIndex, "CassisSolarCalibration", mappsSolarCalibrationStart, mappsSolarCalibrationEnd, eventCount])
+                    eventIndex += 1
+                    solarCalibrationStartFound = False
+                    solarCalibrationEndFound = False
+
+
+
+    elif mappsObservationType == "phobos":
+        mappsEvent = []
+                
+        solarCalibrationStartFound = False
+        solarCalibrationEndFound = False
+        eventIndex = 0
+
+        if instrument == "NOMAD":
+            EVENT_CODES = NOMAD_PHOBOS_START_CODES + NOMAD_PHOBOS_END_CODES
+        
+        for eventTime, eventName, eventCount in lines:
+            if eventName in EVENT_CODES:
+                eventTime = eventTime[0:-1] #remove Z
+                if eventName in NOMAD_PHOBOS_START_CODES:
+                    mappsSolarCalibrationStart = sp.str2et(eventTime)
+                    solarCalibrationStartFound = True
+                elif eventName in NOMAD_PHOBOS_END_CODES:
+                    mappsSolarCalibrationEnd = sp.str2et(eventTime)
+                    solarCalibrationEndFound = True
+                if solarCalibrationStartFound and solarCalibrationEndFound:
+                    mappsEvent.append([eventIndex, "Phobos", mappsSolarCalibrationStart, mappsSolarCalibrationEnd, eventCount])
+                    eventIndex += 1
+                    solarCalibrationStartFound = False
+                    solarCalibrationEndFound = False
+
+
+    elif mappsObservationType == "deimos":
+        mappsEvent = []
+                
+        solarCalibrationStartFound = False
+        solarCalibrationEndFound = False
+        eventIndex = 0
+
+        if instrument == "NOMAD":
+            EVENT_CODES = NOMAD_DEIMOS_START_CODES + NOMAD_DEIMOS_END_CODES
+        
+        for eventTime, eventName, eventCount in lines:
+            if eventName in EVENT_CODES:
+                eventTime = eventTime[0:-1] #remove Z
+                if eventName in NOMAD_DEIMOS_START_CODES:
+                    mappsSolarCalibrationStart = sp.str2et(eventTime)
+                    solarCalibrationStartFound = True
+                elif eventName in NOMAD_DEIMOS_END_CODES:
+                    mappsSolarCalibrationEnd = sp.str2et(eventTime)
+                    solarCalibrationEndFound = True
+                if solarCalibrationStartFound and solarCalibrationEndFound:
+                    mappsEvent.append([eventIndex, "Deimos", mappsSolarCalibrationStart, mappsSolarCalibrationEnd, eventCount])
                     eventIndex += 1
                     solarCalibrationStartFound = False
                     solarCalibrationEndFound = False
@@ -250,7 +312,19 @@ def addMappsEvents(orbit_list, mtpConstants, paths):
     mappsNomadSolarCalibrationEventStartTimes = [eventTime for _, eventName, eventTime, _, _ in mappsNomadSolarCalibrationEvents if eventName in ["SolarCalibration"]]
 
     mappsAcsSolarCalibrationEvents = readMappsEventFile("ACS", "solarCalibration", mtpConstants, paths)
-    mappsAcsSolarCalibrationEventStartTimes = [eventTime for _, eventName, eventTime, _, _ in mappsAcsSolarCalibrationEvents if eventName in ["SolarCalibration"]]
+    mappsAcsSolarCalibrationEventStartTimes = [eventTime for _, eventName, eventTime, _, _ in mappsAcsSolarCalibrationEvents if eventName in ["AcsSolarCalibration"]]
+
+    mappsCassisSolarCalibrationEvents = readMappsEventFile("CaSSIS", "solarCalibration", mtpConstants, paths)
+    mappsCassisSolarCalibrationEventStartTimes = [eventTime for _, eventName, eventTime, _, _ in mappsCassisSolarCalibrationEvents if eventName in ["CassisSolarCalibration"]]
+
+
+
+    mappsNomadPhobosEvents = readMappsEventFile("NOMAD", "phobos", mtpConstants, paths)
+    mappsNomadPhobosEventStartTimes = [eventTime for _, eventName, eventTime, _, _ in mappsNomadPhobosEvents if eventName in ["Phobos"]]
+
+    mappsNomadDeimosEvents = readMappsEventFile("NOMAD", "deimos", mtpConstants, paths)
+    mappsNomadDeimosEventStartTimes = [eventTime for _, eventName, eventTime, _, _ in mappsNomadDeimosEvents if eventName in ["Deimos"]]
+
 
     for orbit in orbit_list:
 #        orbit["obsTypes"] = []
@@ -308,6 +382,21 @@ def addMappsEvents(orbit_list, mtpConstants, paths):
             if orbit["nightside"]["etStart"] < acsSolarCalibrationStartTime < orbit["dayside"]["etEnd"]:
                 print("ACS solar calibration timing found")
                 orbit["allowedObservationTypes"].append("acsSolarCalibration")
+        for cassisSolarCalibrationStartTime in mappsCassisSolarCalibrationEventStartTimes:
+            if orbit["nightside"]["etStart"] < cassisSolarCalibrationStartTime < orbit["dayside"]["etEnd"]:
+                print("CaSSIS solar calibration timing found")
+                orbit["allowedObservationTypes"].append("cassisSolarCalibration")
+
+
+        #check if Phobos/Deimos lies within this orbit
+        for nomadPhobosStartTime in mappsNomadPhobosEventStartTimes:
+            if orbit["nightside"]["etStart"] < nomadPhobosStartTime < orbit["dayside"]["etEnd"]:
+                print("NOMAD Phobos timing found")
+                orbit["allowedObservationTypes"].append("nomadPhobos")
+        for nomadDeimosStartTime in mappsNomadDeimosEventStartTimes:
+            if orbit["nightside"]["etStart"] < nomadDeimosStartTime < orbit["dayside"]["etEnd"]:
+                print("NOMAD Deimos timing found")
+                orbit["allowedObservationTypes"].append("nomadDeimos")
 
             
     return orbit_list

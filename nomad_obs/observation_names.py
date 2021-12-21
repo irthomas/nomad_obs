@@ -18,7 +18,7 @@ Created on Wed Oct 18 13:56:09 2017
         Giancarlo: Some LNO with AOTF off
         Miguel: 121/148/149/155/164/165
         Loic: add 132 to nominal for low altitude CO2 with 134 and 136
-        Loic: 149 can be swapped for 149 and/or 148
+        Loic: 149 can be swapped for 147/148/149
 
 """
 
@@ -48,8 +48,8 @@ occultationObservationDict = {
 "HCL #10":[[121, 134, 126, 127, 129, 130], 4, 1, 16, 0],
 "HCL #11":[[121, 136, 126, 127, 129, 130], 4, 1, 16, 0],
 
-"6SUBD Nominal #42":[[121, 134, 169, 129, 149, 165], 4, 1, 16, 0], #swap 149 for 147/148
-"6SUBD Nominal #45":[[121, 136, 169, 129, 149, 165], 4, 1, 16, 0], #swap 149 for 147/148
+"6SUBD Nominal #42":[[121, 134, 169, 129, 149, 165], 4, 1, 16, 0], #swap 149 for 148
+"6SUBD Nominal #45":[[121, 136, 169, 129, 149, 165], 4, 1, 16, 0], #swap 149 for 148
 "6SUBD Nominal #48":[[121, 134, 129, 169, 186, 190], 4, 1, 16, 0],
 "6SUBD Nominal #51":[[121, 136, 129, 169, 186, 190], 4, 1, 16, 0],
 "6SUBD Nominal #11":[[121, 134, 126, 129, 169, 190], 4, 1, 16, 0],
@@ -61,8 +61,8 @@ occultationObservationDict = {
         
         
 #new MTP025+
-"6SUBD CO2 #1":[[156,116,118,140,154,158], 4, 1, 16, 0],
-"6SUBD CO2 #10":[[156,116,118,169,154,158], 4, 1, 16, 0],
+"6SUBD CO2 #1":[[156, 116, 118, 140, 154, 158], 4, 1, 16, 0],
+"6SUBD CO2 #10":[[156, 116, 118, 169, 154, 158], 4, 1, 16, 0],
 "6SUBD CO2 Dipole #1":[[132, 133, 134, 136, 137, 169], 4, 1, 16, 0],
 
         
@@ -325,9 +325,13 @@ nadirObservationDict = {
 
 }
 
-    
 
-    
+from nomad_obs.observation_weights import OCCULTATION_WEIGHTS    
+
+observations_run = [item for sublist in OCCULTATION_WEIGHTS for item in sublist]
+for name, values in occultationObservationDict.items():
+    if name in observations_run:
+        print("%s\t" %name + "\t".join([str(i) for i in values[0]]))
 
 
 

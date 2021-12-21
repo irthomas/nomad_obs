@@ -17,7 +17,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 49
+mtpNumber = 50
 
 r"""
 *Remember to update spice kernels first!
@@ -67,6 +67,7 @@ Other targets	           Normal priority
 *Add a few LNO nightsides (type 7) if space is available
 
 *Add a few LNO-only limbs (type 8) when FOV in range if space is available (we have lots of LNO+UVIS limbs now)
+* Run check_when_mars_in_occ_fovs.py with correct MTP and then copy output into orbit plan -> choose some with LNO and UVIS
 
 *If there are occultation-free periods, change IR daysides to mainly Surface Ice observations e.g. Surface Ice 4SUBD 01
 
