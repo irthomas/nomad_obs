@@ -9,6 +9,7 @@ SCRIPT TO READ IN THE EXISTING SCIENCE TABLES AND GENERATE A FEW SUBDOMAIN ROWS 
 """
 import os
 import re
+from datetime import datetime
 
 from cop_patching.generate_cop_tables_v05 import readScienceComments, writeTable
 from cop_patching.generate_cop_tables_v05 import read_in_cop_table, getWindowHeight, exec_time, checkExecTime
@@ -16,8 +17,12 @@ from cop_patching.generate_cop_tables_v05 import read_in_cop_table, getWindowHei
 from nomad_obs.config.paths import BASE_DIRECTORY
 
 
-PREVIOUS_COP_TABLE_DIRECTORY_NAME = "20210320_120000"
-COP_TABLE_PATH = os.path.join(BASE_DIRECTORY, "cop_tables", PREVIOUS_COP_TABLE_DIRECTORY_NAME)
+previous_patch_date = "20210320_120000"
+
+new_dir_name = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+
+
 
 
 channels = ["so", "lno"]
@@ -62,31 +67,216 @@ lno_fullscans = [
 ]
 
 
+#name:[[orders], int time, rhythm, lines, so=0/lno=1]
 
 new_so_obs_dict = {
-"CO2 #1":[[122, 132, 148, 156, 160, 165], 4, 1, 16, 0], #Loic
-"CO2 #2":[[156, 132, 118, 140, 154, 158], 4, 1, 16, 0], #Loic - run fewer, at higher latitudes
-"CO2 #3":[[156, 116, 118, 169, 154, 140], 4, 1, 16, 0], #Loic
-"CO2 #4":[[121, 134, 149, 132, 165, 169], 4, 1, 16, 0], #Loic
-"CO2 #5":[[121, 149, 132, 165, 186, 190], 4, 1, 16, 0], #Loic
-"CO2 #6":[[121, 148, 149, 155, 164, 165], 4, 1, 16, 0], #Miguel
 
+"6SUBD CO2 H2O #11":[[121, 132, 148, 156, 160, 165], 4, 1, 16, 0], #Proposed by Loic, priority High
+# "6SUBD CO2 #12":[[156, 132, 118, 140, 154, 158], 4, 1, 16, 0], #Proposed by Loic, priority Middle
+# "6SUBD CO2 #13":[[156, 132, 118, 169, 154, 140], 4, 1, 16, 0], #Proposed by Loic, priority Middle
+# "6SUBD CO2 H2O #14":[[121, 134, 148, 132, 165, 169], 4, 1, 16, 0], #Proposed by Loic, priority High
+# "6SUBD CO2 H2O CO #15":[[121, 132, 148, 165, 186, 190], 4, 1, 16, 0], #Proposed by Loic, priority High
+# "6SUBD CO2 #16":[[121, 148, 149, 155, 164, 165], 4, 1, 16, 0], #Proposed by Miguel, priority Middle
+# "6SUBD CO2 #17":[[123, 142, 148, 155, 156, 165], 4, 1, 16, 0], #CO2 full range, priority Middle
+# "6SUBD CO2 #18":[[154, 155, 156, 157, 158, 159], 4, 1, 16, 0], #Full homopause, priority Low: test
+# "6SUBD CO2 #19":[[123, 132, 142, 148, 156, 165], 4, 1, 16, 0], #Lower alt, priority Middle
+# "6SUBD CO2 #20":[[123, 148, 155, 156, 160, 165], 4, 1, 16, 0], #Full range, priority Middle
+# "6SUBD CO2 #21":[[171, 122, 142, 155, 156, 165], 4, 1, 16, 0], #Full range try 171, priority Low: test
+# "6SUBD CO2 #22":[[142, 148, 155, 156, 160, 165], 4, 1, 16, 0], #Mid-high, priority Middle
+# "6SUBD CO2 #23":[[186, 190, 132, 148, 156, 165], 4, 1, 16, 0], #CO2+CO, priority Middle
+# "6SUBD CO2 #24":[[186, 190, 132, 148, 155, 165], 4, 1, 16, 0], #CO2+CO, priority Middle
+# "6SUBD CO2 CO #25":[[156, 123, 118, 148, 186, 132], 4, 1, 16, 0], #iso higher alt, priority Middle
+# "6SUBD CO2 CO #26":[[197, 200, 177, 145, 186, 132], 4, 1, 16, 0], #iso lower alt, priority Low: test
+# "6SUBD CO2 CO #27":[[156, 123, 118, 148, 186, 132], 4, 1, 16, 0], #iso higher alt, priority Middle
+# "6SUBD CO2 H2O #12":[[121, 132, 148, 156, 189, 165], 4, 1, 16, 0], #Proposed by Loic, priority High
+# "6SUBD CO2 H2O #13":[[121, 132, 148, 156, 186, 165], 4, 1, 16, 0], #Proposed by Loic, priority High
 
 
 }
-#replace lots of nominal 149s with 148
+
+
+def try_int(l):
+    """try to strip spaces/line feeds and convert all values to ints"""
+    
+    l2 = []
+    for element in l:
+        
+        # print(element)
+        try: 
+            element.strip()
+        except AttributeError:
+            pass
+
+        try:
+            element = int(element)
+        except ValueError:
+            pass
+        
+        l2.append(element)
+    return l2
+                        
+
+
+def parse_comment(comment):
+    """parse COP row comments"""
+    
+    regex = re.compile(r"\S_(\d*)ROWS_(\d*)SECS_(\d*)SUBDS.*EXECTIME=(\d*)MS")
+    
+    match = regex.findall(comment)[0]
+    if len(match) == 4:
+        match = try_int(match)
+        parsed_dict = {"rows":match[0], "rhythm":match[1], "n_orders":match[2], "exec_time":match[3]}
+    
+    else:
+        print("Error parsing comments")
+        
+    return parsed_dict
 
 
 
-new_lno_obs_dict = {}
-for name, orders_list in lno_normal_orders.items():
-    loop = 0
-    for orders_dict in orders_list:
-        orders = orders_dict["orders"]
-        for rhythm in orders_dict["rhythms"]:
-            for binning in orders_dict["binning"]:
-                loop += 1
-                new_lno_obs_dict["%s #%i" %(name, loop)] = [orders, 200, rhythm, int((binning+1)*24./len(orders))]
+    
+def make_cop_path(cop_date, channel, cop_name):
+
+    return os.path.join(BASE_DIRECTORY, "cop_tables", cop_date, "%s_%s_table.csv" %(channel, cop_name))    
+    
+
+def read_cop_csv(csv_filepath):
+    """read in table into list of dictionaries"""
+
+
+    dict_list = []
+    with open(csv_filepath) as f:
+        lines = f.readlines()
+        
+        for i, line in enumerate(lines):
+            if i == 0:
+                header = ["index"]
+                header.extend([s.strip() for s in line.split(",")])
+                header.append("comment")
+                print(header)
+            else:
+                index = i - 1
+                split = line.split(",")
+                if "#" in split[-1]: #if comment
+                    row = [index]
+                    row.extend([s.strip() for s in split[:-1:]])
+                    row.append(split[-1].split("#")[0].strip())
+                    row.append(split[-1].split("#")[1].strip())
+                    
+                else:
+                    row = [index]
+                    row.extend([s.strip() for s in split])
+                    row.append("")
+
+                row = try_int(row)
+                    
+                line_dict = {h:e for h,e in zip(header, row)}
+                dict_list.append(line_dict)
+    return dict_list    
+
+
+
+def write_cop_csv(csv_filepath, lines):
+    """write COP csv file"""
+    
+    dir_out = os.path.dirname(csv_filepath)
+    os.makedirs(dir_out, exist_ok=True)
+
+    with open(csv_filepath, "w") as f:
+        for line in lines:
+            f.write(line+"\n")
+
+
+channel = "so"
+cop_name = "science"
+
+path = make_cop_path(previous_patch_date, channel, cop_name)
+dict_list = read_cop_csv(path)
+
+
+
+
+#for science table - split into cals and science
+
+dict_list_cal = []
+dict_list_sci = []
+for line_dict in dict_list:
+    if line_dict["steppingPointer"] == 0 and line_dict["accumulationCount"] > 0: #science
+        dict_list_sci.append(line_dict)
+    
+    elif line_dict["steppingPointer"] > 0 and line_dict["accumulationCount"] > 0: #cal
+        dict_list_cal.append(line_dict)
+        
+
+lines = []
+
+#match new observations to existing rows
+for name, params in new_so_obs_dict.items():
+    orders = params[0]
+    it = params[1] * 1000
+    rhythm = params[2]
+    d_rows = params[3]
+    n_orders = len(orders)
+    
+    binning = int(d_rows / (24 / n_orders) - 1)
+    
+    if orders[-1] == 0: #if last order is a dark
+        sbsf = 0
+    else:
+        sbsf = 1
+        
+        
+    science_rows = [0] * 6
+    
+    for i_ord, order in enumerate(orders):
+        match_dict = {
+            "sbsf":sbsf,
+            "aotfPointer":order,
+            "steppingPointer":0,
+            "binningFactor":binning,
+            "integrationTime":it,
+        }
+        
+        for dict_sci in dict_list_sci:
+            matches = 0
+            for k, v in match_dict.items():
+                if dict_sci[k] == v:
+                    # print("true", dict_sci[k], v)
+                    matches += 1
+            
+            if matches == len(match_dict.keys()): #if all match
+                
+                #finally check rhythm matches
+                comment = dict_sci["comment"]
+                d = parse_comment(comment)
+                if d["rhythm"] == rhythm:
+                    # print("match_found", match_dict, dict_sci)
+                    
+                    science_rows[i_ord] = dict_sci["index"]
+                    science_comment = comment
+
+
+
+    line = ",".join([str(i) for i in science_rows]) + " # ORDERS " + " ".join([str(i) for i in orders]) + " -- " + science_comment
+    
+    lines.append(line)
+
+#write new rows to file
+cop_name = "sub_domain"
+path = make_cop_path(new_dir_name, channel, cop_name)
+write_cop_csv(path, lines)
+
+    
+
+# new_lno_obs_dict = {}
+# for name, orders_list in lno_normal_orders.items():
+#     loop = 0
+#     for orders_dict in orders_list:
+#         orders = orders_dict["orders"]
+#         for rhythm in orders_dict["rhythms"]:
+#             for binning in orders_dict["binning"]:
+#                 loop += 1
+#                 new_lno_obs_dict["%s #%i" %(name, loop)] = [orders, 200, rhythm, int((binning+1)*24./len(orders))]
 
 
 
@@ -100,10 +290,12 @@ for name, orders_list in lno_normal_orders.items():
 #                 print("######SO Repeats#####")
 #                 print("Match found:", searchObsName, "matches", eachObsName, searchObsData, eachObsData)
 
-# for searchIndex, (searchObsName, searchObsData) in enumerate(newLnoObservationDict.items()):
-#     searchOrders, _, _, _, _ = searchObsData
-#     for eachIndex, (eachObsName, eachObsData) in enumerate(newLnoObservationDict.items()):
-#         eachOrders, _, _, _, _ = eachObsData
+
+# #check for repeats in proposed observations
+# for search_index, (search_obs_name, search_obs_data) in enumerate(new_lno_obs_dict.items()):
+#     search_orders, _, _, _ = search_obs_data
+#     for each_index, (each_obs_name, each_obs_data) in enumerate(new_lno_obs_dict.items()):
+#         eachOrders, _, _, _ = eachObsData
 #         if sorted(searchOrders) == sorted(eachOrders):
 #             if searchIndex != eachIndex:
 #                 print("######LNO Repeats#####")
