@@ -40,6 +40,37 @@ __contact__   = "ian . thomas AT aeronomie . be"
 #name:[[orders], int time, rhythm, lines, so=0/lno=1]
 occultationObservationDict = {
         
+    
+#new MTP051+
+"6SUBD CO2 H2O #11":[[121, 132, 148, 156, 160, 165], 4, 1, 16, 0], #Proposed by Loic, priority High
+"6SUBD CO2 #12":[[156, 132, 118, 140, 154, 158], 4, 1, 16, 0], #Proposed by Loic, priority Middle
+"6SUBD CO2 #13":[[156, 132, 118, 169, 154, 140], 4, 1, 16, 0], #Proposed by Loic, priority Middle
+"6SUBD CO2 H2O #14":[[121, 134, 148, 132, 165, 169], 4, 1, 16, 0], #Proposed by Loic, priority High
+"6SUBD CO2 H2O CO #15":[[121, 132, 148, 165, 186, 190], 4, 1, 16, 0], #Proposed by Loic, priority High
+"6SUBD CO2 #16":[[121, 148, 149, 155, 164, 165], 4, 1, 16, 0], #Proposed by Miguel, priority Middle
+"6SUBD CO2 #17":[[123, 142, 148, 155, 156, 165], 4, 1, 16, 0], #CO2 full range, priority Middle
+"6SUBD CO2 #18":[[154, 155, 156, 157, 158, 159], 4, 1, 16, 0], #Full homopause, priority Low: test
+"6SUBD CO2 #19":[[123, 132, 142, 148, 156, 165], 4, 1, 16, 0], #Lower alt, priority Middle
+"6SUBD CO2 #20":[[123, 148, 155, 156, 160, 165], 4, 1, 16, 0], #Full range, priority Middle
+"6SUBD CO2 #21":[[171, 122, 142, 155, 156, 165], 4, 1, 16, 0], #Full range try 171, priority Low: test
+"6SUBD CO2 #22":[[142, 148, 155, 156, 160, 165], 4, 1, 16, 0], #Mid-high, priority Middle
+"6SUBD CO2 #23":[[186, 190, 132, 148, 156, 165], 4, 1, 16, 0], #CO2+CO, priority Middle
+"6SUBD CO2 #24":[[186, 190, 132, 148, 155, 165], 4, 1, 16, 0], #CO2+CO, priority Middle
+"6SUBD CO2 CO #25":[[156, 123, 118, 148, 186, 132], 4, 1, 16, 0], #iso higher alt, priority Middle
+"6SUBD CO2 CO #26":[[197, 200, 177, 145, 186, 132], 4, 1, 16, 0], #iso lower alt, priority Low: test
+"6SUBD CO2 CO #27":[[156, 123, 118, 148, 186, 132], 4, 1, 16, 0], #iso higher alt, priority Middle
+"6SUBD CO2 H2O #12":[[121, 132, 148, 156, 189, 165], 4, 1, 16, 0], #Proposed by Loic, priority High
+"6SUBD CO2 H2O #13":[[121, 132, 148, 156, 186, 165], 4, 1, 16, 0], #Proposed by Loic, priority High
+
+"6SUBD CO #1":[[132, 183, 184, 185, 186, 187], 4, 1, 16, 0], #Proposed by Shohei, priority Middle
+"6SUBD CO #2":[[123, 132, 183, 184, 185, 186], 4, 1, 16, 0], #Proposed by Shohei, priority Middle
+"6SUBD CO #3":[[132, 132, 185, 185, 186, 186], 4, 1, 16, 0], #Proposed by Shohei, priority Middle
+"6SUBD CO #4":[[132, 185, 185, 185, 185, 185], 4, 1, 16, 0], #Proposed by Shohei, priority Middle
+"6SUBD CO #5":[[132, 186, 186, 186, 186, 186], 4, 1, 16, 0], #Proposed by Shohei, priority Middle
+
+
+
+
 #new MTP031+
 "HCL #4":[[121, 134, 129, 129, 129, 129], 4, 1, 16, 0],
 "HCL #5":[[121, 134, 130, 130, 130, 130], 4, 1, 16, 0],
@@ -326,12 +357,12 @@ nadirObservationDict = {
 }
 
 
-from nomad_obs.observation_weights import OCCULTATION_WEIGHTS    
+# from nomad_obs.observation_weights import OCCULTATION_WEIGHTS    
 
-observations_run = [item for sublist in OCCULTATION_WEIGHTS for item in sublist]
-for name, values in occultationObservationDict.items():
-    if name in observations_run:
-        print("%s\t" %name + "\t".join([str(i) for i in values[0]]))
+# observations_run = [item for sublist in OCCULTATION_WEIGHTS for item in sublist]
+# for name, values in occultationObservationDict.items():
+#     if name in observations_run:
+#         print("%s\t" %name + "\t".join([str(i) for i in values[0]]))
 
 
 

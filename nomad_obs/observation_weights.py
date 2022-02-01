@@ -11,13 +11,48 @@ ALLOCATE WEIGHTS TO EACH OBSERVATION NAME FOR EACH OBSERVATION TYPE
 #observation name and weighting
 OCCULTATION_WEIGHTS = [
 
-    ["6SUBD Nominal #1"] * 5, 
-    ["6SUBD Nominal #2"] * 5, 
-    ["6SUBD Nominal #3"] * 5, 
-    ["6SUBD Nom CO2 #1"] * 5,
-    ["6SUBD Nom CO2 #2"] * 5,
-    ["6SUBD Nom CH4 #1"] * 5,
-    ["6SUBD Nom CH4 #2"] * 5,
+    ["6SUBD CO2 H2O #11"] * 6,
+    ["6SUBD CO2 #12"] * 4,
+    ["6SUBD CO2 #13"] * 4,
+    ["6SUBD CO2 H2O #14"] * 6,
+    ["6SUBD CO2 H2O CO #15"] * 6,
+    ["6SUBD CO2 #16"] * 4, #Miguel
+    ["6SUBD CO2 #17"] * 4,
+    ["6SUBD CO2 #18"] * 2,
+    ["6SUBD CO2 #19"] * 4,
+    ["6SUBD CO2 #20"] * 4,
+    ["6SUBD CO2 #21"] * 2,
+    ["6SUBD CO2 #22"] * 4,
+    ["6SUBD CO2 #23"] * 4,
+    ["6SUBD CO2 #24"] * 4,
+    ["6SUBD CO2 CO #25"] * 4,
+    ["6SUBD CO2 CO #26"] * 2,
+    ["6SUBD CO2 CO #27"] * 4,
+    ["6SUBD CO2 H2O #12"] * 6,
+    ["6SUBD CO2 H2O #13"] * 6,
+    ["6SUBD CO #1"] * 4, #Shohei
+    ["6SUBD CO #2"] * 4 ,#Shohei
+    ["6SUBD CO #3"] * 4, #Shohei
+    ["6SUBD CO #4"] * 4, #Shohei
+    ["6SUBD CO #5"] * 4, #Shohei  
+
+
+
+    ["6SUBD Nominal #1"] * 4, 
+    ["6SUBD Nominal #2"] * 4, 
+    ["6SUBD Nominal #3"] * 4, 
+    ["6SUBD Nom CO2 #1"] * 4,
+    ["6SUBD Nom CO2 #2"] * 4,
+    ["6SUBD Nom CH4 #1"] * 4,
+    ["6SUBD Nom CH4 #2"] * 4,
+
+    ["6SUBD Nominal #42"] * 8, #nominal + 129
+    ["6SUBD Nominal #45"] * 8, #nominal + 129
+    ["6SUBD Nominal #48"] * 8, #nominal + 129
+    ["6SUBD Nominal #51"] * 8, #nominal + 129
+    ["6SUBD Nominal #11"] * 8, #nominal + 126/129
+    ["6SUBD Nominal #12"] * 8, #nominal + 127/129
+
 
     ["6SUBD Nom CO #1"] * 2,
     ["6SUBD Nom CO #2"] * 2,
@@ -25,61 +60,63 @@ OCCULTATION_WEIGHTS = [
     ["6SUBD Nom CO #4"] * 2,
     ["6SUBD Nom CO #5"] * 2,
 
-    ["6SUBD Nom CO #6"] * 15, #Mike Smith orders 148+186 together
-    ["6SUBD Nom CO #7"] * 15, #Mike Smith orders 148+186 together
+    ["6SUBD Nom CO #6"] * 10, #Mike Smith orders 148+186 together
+    ["6SUBD Nom CO #7"] * 10, #Mike Smith orders 148+186 together
 
      
-    ["CO2 100km #1"] * 10,
+    ["CO2 100km #1"] * 8,
      
     ["6SUBD CH4 #1"] * 3,
     ["6SUBD CO H2O #1"] * 3,
     ["6SUBD CO H2O #2"] * 3,
     ["6SUBD CO2 CO #1"] * 3,
     ["6SUBD CH4 H2O #1"] * 3,
+
+
     ["All Fullscan Fast #2"] * 10,
     ["All Fullscan Slow #2"] * 5,
     ["CO2 Fullscan Fast #2"] * 3,
-    ["CO2 Fullscan Fast #4"] * 10, #orders 165-175 #reduce gradually
+    ["CO2 Fullscan Fast #4"] * 8, #orders 165-175 #reduce gradually
     ["CO Fullscan Fast #2"] * 3,
     ["LNO Occultation Fullscan Fast #2"] * 5,
     
     #new MTP025+
-    ["6SUBD CO2 #1"] * 5, #reduce from MTP029 onwards to 5
-    ["6SUBD CO2 #10"] * 5, #reduce from MTP029 onwards to 5
+    ["6SUBD CO2 #1"] * 3, #reduce from MTP029 onwards to 3
+    ["6SUBD CO2 #10"] * 3, #reduce from MTP029 onwards to 3
 
-    #MTP028+ CO2 M1/E2 and HCl. reduce when new patches become available.
-    ["129 only #2"] * 5,
-    ["HDO 01"] * 5,
-    ["Dust H2O 01"] * 5,
+    #MTP028+ CO2 M1/E2 and HCl. reduce as new patches become available.
+    ["129 only #2"] * 3,
+    ["HDO 01"] * 3,
+    ["Dust H2O 01"] * 3,
 
 
     ["132 only #2"] * 3,
     ["133 only #2"] * 3,
-    ["134 only #2"] * 5,
-    ["6SUBD CO2 Dipole #1"] * 4,
-    ["CO2 Fullscan Fast #3"] * 4,
+    ["134 only #2"] * 3,
+    ["6SUBD CO2 Dipole #1"] * 3,
+    ["CO2 Fullscan Fast #3"] * 3,
 
-    ["HCL #4"] * 4, #129 + others
-    ["HCL #5"] * 4, #130 + others
-    ["HCL #8"] * 4, #129 + others
-    ["HCL #9"] * 4, #130 + others
-    ["HCL #10"] * 4, #all HCL
-    ["HCL #11"] * 4, #all HCL
+    ["HCL #4"] * 3, #129 + others
+    ["HCL #5"] * 3, #130 + others
+    ["HCL #8"] * 3, #129 + others
+    ["HCL #9"] * 3, #130 + others
+    ["HCL #10"] * 3, #all HCL
+    ["HCL #11"] * 3, #all HCL
 
-    ["6SUBD Nominal #42"] * 10, #nominal + 129
-    ["6SUBD Nominal #45"] * 10, #nominal + 129
-    ["6SUBD Nominal #48"] * 10, #nominal + 129
-    ["6SUBD Nominal #51"] * 10, #nominal + 129
-    ["6SUBD Nominal #11"] * 10, #nominal + 126/129
-    ["6SUBD Nominal #12"] * 10, #nominal + 127/129
 
 
 ]
 
         
 OCCULTATION_MERGED_WEIGHTS = [
-    ["All Fullscan Fast #2"] * 1,
-    ["CO2 Fullscan Fast #4"] * 5, #orders 165-175 reduce gradually
+    ["6SUBD CO2 H2O #11"] * 1,
+    ["6SUBD CO2 H2O #14"] * 1,
+    ["6SUBD CO2 H2O CO #15"] * 1,
+    ["6SUBD CO2 H2O #12"] * 1,
+    ["6SUBD CO2 H2O #13"] * 1,
+
+    ["All Fullscan Fast #2"] * 2,
+    ["CO2 Fullscan Fast #4"] * 2, #orders 165-175 reduce gradually
 
     ["6SUBD Nominal #42"] * 1, #nominal + 129
     ["6SUBD Nominal #45"] * 1, #nominal + 129
@@ -92,7 +129,15 @@ OCCULTATION_MERGED_WEIGHTS = [
 
         
 OCCULTATION_GRAZING_WEIGHTS = [
-    ["All Fullscan Fast #2"] * 1,
+    ["6SUBD CO2 H2O #11"] * 1,
+    ["6SUBD CO2 H2O #14"] * 1,
+    ["6SUBD CO2 H2O CO #15"] * 1,
+    ["6SUBD CO2 H2O #12"] * 1,
+    ["6SUBD CO2 H2O #13"] * 1,
+
+    ["All Fullscan Fast #2"] * 2,
+    ["CO2 Fullscan Fast #4"] * 2, #orders 165-175 reduce gradually
+
     ["6SUBD Nominal #42"] * 1, #nominal + 129
     ["6SUBD Nominal #45"] * 1, #nominal + 129
     ["6SUBD Nominal #48"] * 1, #nominal + 129
@@ -110,13 +155,25 @@ OCCULTATION_ACS_RIDEALONG_WEIGHTS = [
 
 
 OCCULTATION_CH4_REGION_WEIGHTS = [
-    ["134 only #2"] * 1, 
+    ["6SUBD CO2 H2O #11"] * 1,
+    ["6SUBD CO2 H2O #14"] * 1,
+    ["6SUBD CO2 H2O CO #15"] * 1,
+    ["6SUBD CO2 H2O #12"] * 1,
+    ["6SUBD CO2 H2O #13"] * 1,
+
+    ["134 only #2"] * 3, 
     ["136 only #2"] * 3, 
-    ["6SUBD CH4 #1"] * 1,
+    ["6SUBD CH4 #1"] * 3,
 ]
 
 
 OCCULTATION_H2O_REGION_WEIGHTS = [
+    ["6SUBD CO2 H2O #11"] * 1,
+    ["6SUBD CO2 H2O #14"] * 1,
+    ["6SUBD CO2 H2O CO #15"] * 1,
+    ["6SUBD CO2 H2O #12"] * 1,
+    ["6SUBD CO2 H2O #13"] * 1,
+
     ["6SUBD Nominal #42"] * 1, #nominal + 129
     ["6SUBD Nominal #45"] * 1, #nominal + 129
     ["6SUBD Nominal #48"] * 1, #nominal + 129

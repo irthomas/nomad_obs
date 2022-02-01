@@ -59,7 +59,7 @@ elif sys.platform == "linux":
     SQL_INI_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning")
 
 """sqlite .db path"""
-SQLITE_PATH = os.path.join(BASE_DIRECTORY, "obs.db")
+SQLITE_PATH = os.path.join(BASE_DIRECTORY, "planning.db")
 
 
 """where to find cop tables? Note that COP patches are done at the end of an MTP, and so planning the MTP after must be done with the new tables!"""

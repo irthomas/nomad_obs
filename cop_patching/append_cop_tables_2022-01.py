@@ -9,6 +9,7 @@ SCRIPT TO READ IN THE EXISTING SCIENCE TABLES AND GENERATE A FEW SUBDOMAIN ROWS 
 """
 import os
 import re
+import sys
 from datetime import datetime
 import numpy as np
 
@@ -34,6 +35,9 @@ new_dir_name = "mtp051_proposed"
 
 lno_centre_rows = [148, 149, 150, 151, 152, 153, 154, 155, 156]
 
+
+MAKE_TABLES = True
+# MAKE_TABLES = False
 
 """new observations"""
 
@@ -185,44 +189,44 @@ new_lno_obs_dict = {
 
 #fullscans
 lno_fullscans = [
-    {"name":"Water Band Fullscan #1", "start":160, "steps":11, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Water Band Fullscan #1A", "start":160, "steps":12, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Water Band Fullscan #2", "start":160, "steps":6, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Water Band Fullscan #2A", "start":160, "steps":7, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Water Band Fullscan #3", "start":156, "steps":11, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Water Band Fullscan #3A", "start":156, "steps":12, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    # {"name":"Water Band Fullscan #1", "start":160, "steps":11, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Water Band Fullscan #1A", "start":159, "steps":12, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    # {"name":"Water Band Fullscan #2", "start":160, "steps":6, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Water Band Fullscan #2A", "start":158, "steps":7, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    # {"name":"Water Band Fullscan #3", "start":156, "steps":11, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Water Band Fullscan #3A", "start":154, "steps":12, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
 
-    {"name":"Carbonates #1", "start":173, "steps":21, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Carbonates #1A", "start":173, "steps":22, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Carbonates #2", "start":173, "steps":11, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Carbonates #2A", "start":173, "steps":12, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    # {"name":"Carbonates #1", "start":173, "steps":21, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Carbonates #1A", "start":172, "steps":22, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    # {"name":"Carbonates #2", "start":173, "steps":11, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Carbonates #2A", "start":171, "steps":12, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
 
-    {"name":"Phyllosilicates #1", "start":188, "steps":15, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phyllosilicates #1A", "start":188, "steps":16, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phyllosilicates #2", "start":187, "steps":9, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phyllosilicates #2A", "start":187, "steps":10, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    # {"name":"Phyllosilicates #1", "start":188, "steps":15, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Phyllosilicates #1A", "start":187, "steps":16, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    # {"name":"Phyllosilicates #2", "start":187, "steps":9, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Phyllosilicates #2A", "start":185, "steps":10, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
 
-    {"name":"Carb Phyl #1", "start":174, "steps":29, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Carb Phyl #1A", "start":174, "steps":30, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Carb Phyl #2", "start":173, "steps":16, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Carb Phyl #2A", "start":173, "steps":17, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    # {"name":"Carb Phyl #1", "start":174, "steps":29, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Carb Phyl #1A", "start":173, "steps":30, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    # {"name":"Carb Phyl #2", "start":173, "steps":16, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Carb Phyl #2A", "start":171, "steps":17, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
 
-    {"name":"Hydrated minerals #1", "start":148, "steps":6, "step":6, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Hydrated minerals #1A", "start":148, "steps":7, "step":6, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    # {"name":"Hydrated minerals #1", "start":148, "steps":6, "step":6, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Hydrated minerals #1A", "start":142, "steps":7, "step":6, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
 
-    {"name":"Phobos All #1", "start":160, "steps":43, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phobos All #1A", "start":160, "steps":44, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phobos All #2", "start":159, "steps":23, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phobos All #2A", "start":159, "steps":24, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phobos All #3", "start":159, "steps":16, "step":3, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phobos All #3A", "start":159, "steps":17, "step":3, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    # {"name":"Phobos All #1", "start":160, "steps":43, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Phobos All #1A", "start":159, "steps":44, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    # {"name":"Phobos All #2", "start":159, "steps":23, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Phobos All #2A", "start":157, "steps":24, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    # {"name":"Phobos All #3", "start":159, "steps":16, "step":3, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Phobos All #3A", "start":156, "steps":17, "step":3, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
 
-    {"name":"Phobos All #4", "start":119, "steps":90, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phobos All #4A", "start":119, "steps":90, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phobos All #5", "start":119, "steps":45, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phobos All #5A", "start":119, "steps":45, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phobos All #6", "start":119, "steps":30, "step":3, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phobos All #6A", "start":119, "steps":30, "step":3, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    # {"name":"Phobos All #4", "start":119, "steps":90, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Phobos All #4A", "start":118, "steps":90, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    # {"name":"Phobos All #5", "start":119, "steps":45, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Phobos All #5A", "start":117, "steps":45, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    # {"name":"Phobos All #6", "start":119, "steps":30, "step":3, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Phobos All #6A", "start":116, "steps":30, "step":3, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
 
 
 ]
@@ -929,114 +933,117 @@ def new_subdomain_fullscan_rows(channel, stepping_dir_in, sci_dir_in, subd_dir_o
 
 
 
+if MAKE_TABLES:
 
-
-existing_dir = old_dir_name
-new_lines_dir = temp_dir_name
-merged_dir = new_dir_name
-
-
-# SO patch: subdomain only
-
-sci_dir_in = old_dir_name
-subd_dir_out = temp_dir_name
-
-new_subdomain_rows("so", new_so_obs_dict, sci_dir_in, subd_dir_out) #write new lines to temp dir
-# then read in old directory, merge new lines and output to new dir
-replace_lines("so", "sub_domain", 3204, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
-
-
-"""LNO patch"""
+    existing_dir = old_dir_name
+    new_lines_dir = temp_dir_name
+    merged_dir = new_dir_name
     
-"""normal obs"""
-
-# new fixed rows
-fixed_dir_out = temp_dir_name
-
-new_fixed_rows("lno", new_lno_obs_dict, lno_centre_rows, fixed_dir_out) #write new lines to temp dir
-# then read in old directory, merge new lines and output to new dir
-replace_lines("lno", "fixed", 140, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
-
-
-
-# new science rows
-sci_dir_out = temp_dir_name
-
-new_science_rows("lno", new_lno_obs_dict, sci_dir_out) #write new lines to temp dir
-# then read in old directory, merge new lines and output to new dir
-replace_lines("lno", "science", 3223, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
-
-
-
-# add new subdomains
-sci_dir_in = merged_dir #need to use updated science table
-subd_dir_out = temp_dir_name
-
-new_subdomain_rows("lno", new_lno_obs_dict, sci_dir_in, subd_dir_out) #write new lines to temp dir
-# then read in old directory, merge new lines and output to new dir
-replace_lines("lno", "sub_domain", 3796, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
-
-
-
-
-
-"""fullscans"""
     
-# new fixed rows - already covered by previous normal obs
-# new_fullscan_fixed_rows("lno", lno_fullscans, lno_centre_rows)
-# replace_lines("lno", "fixed", 231, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+    # SO patch: subdomain only
+    
+    sci_dir_in = old_dir_name
+    subd_dir_out = temp_dir_name
+    
+    new_subdomain_rows("so", new_so_obs_dict, sci_dir_in, subd_dir_out) #write new lines to temp dir
+    # then read in old directory, merge new lines and output to new dir
+    replace_lines("so", "sub_domain", 3204, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+    
+    
+    """LNO patch"""
+        
+    """normal obs"""
+    
+    # new fixed rows
+    fixed_dir_out = temp_dir_name
+    
+    new_fixed_rows("lno", new_lno_obs_dict, lno_centre_rows, fixed_dir_out) #write new lines to temp dir
+    # then read in old directory, merge new lines and output to new dir
+    replace_lines("lno", "fixed", 140, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+    
+    
+    
+    # new science rows
+    sci_dir_out = temp_dir_name
+    
+    new_science_rows("lno", new_lno_obs_dict, sci_dir_out) #write new lines to temp dir
+    # then read in old directory, merge new lines and output to new dir
+    replace_lines("lno", "science", 3223, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+    
+    #rename new file to avoid copying over
+    csv_filepath = make_cop_path(new_lines_dir, "lno", "science")
+    csv_filepath2 = make_cop_path(new_lines_dir, "lno", "science_new")
+    os.rename(csv_filepath, csv_filepath2)
+    
+    
+    # add new subdomains
+    sci_dir_in = merged_dir #need to use updated science table
+    subd_dir_out = temp_dir_name
+    
+    new_subdomain_rows("lno", new_lno_obs_dict, sci_dir_in, subd_dir_out) #write new lines to temp dir
+    # then read in old directory, merge new lines and output to new dir
+    replace_lines("lno", "sub_domain", 3796, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+    
+    #rename new file to avoid copying over
+    csv_filepath = make_cop_path(new_lines_dir, "lno", "sub_domain")
+    csv_filepath2 = make_cop_path(new_lines_dir, "lno", "sub_domain_new")
+    os.rename(csv_filepath, csv_filepath2)
+    
+    
+    
+    
+    """fullscans"""
+        
+    # new fixed rows - already covered by previous normal obs
+    # new_fullscan_fixed_rows("lno", lno_fullscans, lno_centre_rows)
+    # replace_lines("lno", "fixed", 231, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+    
+    # new stepping rows
+    stepping_dir_out = temp_dir_name
+    
+    new_fullscan_stepping_rows("lno", lno_fullscans, stepping_dir_out) #write new lines to temp dir
+    # then read in old directory, merge new lines and output to new dir
+    replace_lines("lno", "stepping", 28, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+    
+    
+    
+    
+    
+    # new science rows for fullscans (requires stepping to be already updated)
+    stepping_dir_in = merged_dir #need to use updated stepping table
+    sci_dir_out = temp_dir_name
+    
+    existing_dir = merged_dir #use updated lno science table
+    
+    new_fullscan_science_rows("lno", lno_fullscans, stepping_dir_in, sci_dir_out) #write new lines to temp dir
+    # then read in old directory, merge new lines and output to new dir
+    replace_lines("lno", "science", 3455, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+    
 
-# new stepping rows
-stepping_dir_out = temp_dir_name
 
-new_fullscan_stepping_rows("lno", lno_fullscans, stepping_dir_out) #write new lines to temp dir
-# then read in old directory, merge new lines and output to new dir
-replace_lines("lno", "stepping", 28, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
-
-
-
-
-
-# new science rows for fullscans (requires stepping to be already updated)
-stepping_dir_in = merged_dir #need to use updated stepping table
-sci_dir_out = temp_dir_name
-
-existing_dir = merged_dir #use updated lno science table
-
-new_fullscan_science_rows("lno", lno_fullscans, stepping_dir_in, sci_dir_out) #write new lines to temp dir
-# then read in old directory, merge new lines and output to new dir
-replace_lines("lno", "science", 3455, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+    
+    
+    # subdomains are just single pointers to these rows
+    # however they may not be to the same rows in the subdomain and science tables
+    stepping_dir_in = merged_dir #need to use updated stepping table
+    sci_dir_in = merged_dir #need to use updated science table
+    subd_dir_out = temp_dir_name
+    
+    existing_dir = merged_dir #use updated lno science table
+    
+    new_subdomain_fullscan_rows("lno", stepping_dir_in, sci_dir_in, subd_dir_out) #write new lines to temp dir
+    # then read in old directory, merge new lines and output to new dir
+    replace_lines("lno", "sub_domain", 286, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+    
 
 
 
 
 
 
+"""check all new LNO rows"""
 
 
-
-
-# fullscans
-
-# subdomains are just single pointers to these rows
-# however they may not be to the same rows in the subdomain and science tables
-stepping_dir_in = merged_dir #need to use updated stepping table
-sci_dir_in = merged_dir #need to use updated science table
-subd_dir_out = temp_dir_name
-
-existing_dir = merged_dir #use updated lno science table
-
-new_subdomain_fullscan_rows("lno", stepping_dir_in, sci_dir_in, subd_dir_out) #write new lines to temp dir
-# then read in old directory, merge new lines and output to new dir
-replace_lines("lno", "sub_domain", 286, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
-
-
-
-
-
-
-
-# check all new rows
 print("Checking for errors")
 
 cop_name = "stepping"
@@ -1053,9 +1060,10 @@ channel = "lno"
 path = make_cop_path(new_dir_name, "lno", cop_name)
 subd_dict_list_all = read_cop_csv(path)
 
-starting_row = 3793
+subd_rows_to_check = list(range(284, 508)) + list(range(3794, 4095))
+# subd_rows_to_check = list(range(284, 305))
 
-sub_dict_list = [d for d in subd_dict_list_all if d["index"] > starting_row]
+sub_dict_list = [d for d in subd_dict_list_all if d["index"] in subd_rows_to_check]
 
 for sub_dict in sub_dict_list:#[0:10]:
 # sub_dict = sub_dict_list[0]
@@ -1064,18 +1072,19 @@ for sub_dict in sub_dict_list:#[0:10]:
     if "orders" in subd_parsed_dict.keys(): #if normal obs
         orders = subd_parsed_dict["orders"]
         order_indices = [sub_dict["science_%i" %i] for i in range(1, 7) if sub_dict["science_%i" %i] > 0]
-
         # print(sub_dict["comment"])
         
         #check length
         if len(orders) != len(order_indices):
             print("Error: wrong length")
+            sys.exit()
             
         n_orders = subd_parsed_dict["n_orders"]
             
         if n_orders != len(orders):
             print("Error: wrong length")
             print(n_orders, orders)
+            sys.exit()
             
             
         for i, order_index in enumerate(order_indices):
@@ -1085,9 +1094,11 @@ for sub_dict in sub_dict_list:#[0:10]:
             
             if order != orders[i]:
                 print("Error: wrong order")
-    
+                sys.exit()
+   
             if sci_dict["steppingPointer"] != 0:
                 print("Error: stepping obs?")
+                sys.exit()
             
             binning = sci_dict["binningFactor"]
             
@@ -1095,9 +1106,11 @@ for sub_dict in sub_dict_list:#[0:10]:
             
             if not n_rows.is_integer():
                 print("Error: not an integer")
+                sys.exit()
                 
             if int(n_rows) != subd_parsed_dict["rows"]:
                 print("Error: number of rows")
+                sys.exit()
             
             et = exec_time(sci_dict["accumulationCount"], n_rows, n_orders, sci_dict["integrationTime"]/1000.)/1000.
             
@@ -1106,31 +1119,51 @@ for sub_dict in sub_dict_list:#[0:10]:
             if dt > 1.0 or dt < 0.0:
                 print("Error: timings wrong")
                 print(n_rows, dt)
+                sys.exit()
+                
+            if sci_dict["comment"] not in sub_dict["comment"]:
+                print("Error: comments don't match")
+                sys.exit()
             
-            
+            # print(sci_dict["comment"])
         
-            
+    elif "start" in subd_parsed_dict.keys(): #if fullscan
+    
+        indices = [sub_dict["science_%i" %i] for i in range(2, 7) if sub_dict["science_%i" %i] != 0]
         
+        if len(indices) > 0:
+            print("Error: non-zero indices found")
+    
+        fullscan_index = sub_dict["science_1"]
+    
+        sci_dict = [d for d in sci_dict_list if d["index"] == fullscan_index][0]
+        
+        stepping_dict = [d for d in stepping_dict_list if d["index"] == sci_dict["steppingPointer"]][0]
+        
+        # print(sub_dict["comment"])
+        
+        start = sci_dict["aotfPointer"]
+        step = stepping_dict["stepValue"]
+        steps = stepping_dict["stepCount"]
+        stop = start + steps * step
 
+        n_orders = stepping_dict["stepSpeed"] + 1
+        binning = sci_dict["binningFactor"] + 1
+        
+        d_rows = int((24 / n_orders) * binning)
+        
+        # print(start, step, stop, d_rows, n_orders)
+        
+        sci_parsed_dict = parse_fullscan_science_comment(sci_dict["comment"])
+        rhythm = sci_parsed_dict["rhythm"]
+        et = sci_parsed_dict["exec_time"]
+        
+        text = "TARGETED_NADIR_FULLSCAN_FAST_%i-%i-%iORDERS_%iROWS_%iSECS_%iSUBDS -- EXECTIME=%iMS" %(start, step, stop, d_rows, rhythm, n_orders, et)
+        
+        if text != sub_dict["comment"]:
+            print("Error: comments don't match")
+            sys.exit()
+        
+    # print("################")
 
-# """check for repeated orders in lines"""
-# for searchIndex, (searchObsName, searchObsData) in enumerate(new_so_obs_dict.items()):
-#     searchOrders, _, _, _, _ = searchObsData
-#     for eachIndex, (eachObsName, eachObsData) in enumerate(new_so_obs_dict.items()):
-#         eachOrders, _, _, _, _ = eachObsData
-#         if sorted(searchOrders) == sorted(eachOrders):
-#             if searchIndex != eachIndex:
-#                 print("######SO Repeats#####")
-#                 print("Match found:", searchObsName, "matches", eachObsName, searchObsData, eachObsData)
-
-
-# #check for repeats in proposed observations
-# for search_index, (search_obs_name, search_obs_data) in enumerate(new_lno_obs_dict.items()):
-#     search_orders, _, _, _ = search_obs_data
-#     for each_index, (each_obs_name, each_obs_data) in enumerate(new_lno_obs_dict.items()):
-#         eachOrders, _, _, _ = eachObsData
-#         if sorted(searchOrders) == sorted(eachOrders):
-#             if searchIndex != eachIndex:
-#                 print("######LNO Repeats#####")
-#                 print("Match found:", searchObsName, "matches", eachObsName, searchObsData, eachObsData)
 

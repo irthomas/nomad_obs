@@ -17,7 +17,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 50
+mtpNumber = 51
 
 r"""
 *Remember to update spice kernels first!
@@ -64,12 +64,15 @@ Other targets	           Normal priority
     type 28 = day limb only
     type 47 = night limb only
 
-*Add a few LNO nightsides (type 7) if space is available
+*Add a few LNO nightsides (type 7) if space is available -> less critical if nightside limbs already present
 
 *Add a few LNO-only limbs (type 8) when FOV in range if space is available (we have lots of LNO+UVIS limbs now)
 * Run check_when_mars_in_occ_fovs.py with correct MTP and then copy output into orbit plan -> choose some with LNO and UVIS
 
 *If there are occultation-free periods, change IR daysides to mainly Surface Ice observations e.g. Surface Ice 4SUBD 01
+
+*Check number of grazings matches the extracted event file nomad_grazing_events.txt:
+    if not, compare start/end times to determine which are incorrect, then modify update_orbit_list.py accordingly
 
 *Use excel formula to check for incorrect orbit types 3 when no LNO obs:
     copy formula into draft orbit plan cell N2 and then drag down the column
@@ -79,7 +82,7 @@ Other targets	           Normal priority
     
 *Ignore all UVIS inputs for now
 
-*Send nomad_mtp049_plan_generic.xlsx, nomad_mtp049_plan.csv and nomad_mtp049_lno_orbits.txt to nomad.iops
+*Send nomad_mtp0xx_plan_generic.xlsx, nomad_mtp0xx_plan.csv and nomad_mtp0xx_lno_orbits.txt to nomad.iops
 
 
 """
@@ -127,7 +130,7 @@ from nomad_obs.event_file.event_file_functions import addMappsEvents
 from nomad_obs.cop_rows.cop_table_functions import getCopTables
 from nomad_obs.cop_rows.add_cop_rows import addIrCopRows, addUvisCopRows
 
-from nomad_obs.html.make_calibration_webpage import writeCalibrationWebpage
+# from nomad_obs.html.make_calibration_webpage import writeCalibrationWebpage
 from nomad_obs.html.make_nadir_webpage import writeNadirWebpage
 from nomad_obs.html.make_occultation_webpage import writeOccultationWebpage
 from nomad_obs.html.make_overview_webpage import makeOverviewPage
@@ -234,8 +237,8 @@ if True:
         printStatement("Writing master page for this MTP and updating main index webpage")
         writeMtpMasterPage(mtpConstants, paths)
         writeIndexWebpage(mtpConstants, paths)
-        printStatement("Updating science calibrations webpage")
-        writeCalibrationWebpage(paths)
+        # printStatement("Updating science calibrations webpage")
+        # writeCalibrationWebpage(paths)
 
     #THE FOLLOWING FILES WILL BE GENERATED IN COP_ROWS/MTPXXX FOLDER:
     #CALIBRATION FILE MUST BE FILLED IN MANUALLY. USE VALUES FROM SOLAR_CALIBRATIONS.XLSX FILE FOR MINISCANS/FULLSCANS. SEE PREVIOUS MTPS FOR EXAMPLES.
