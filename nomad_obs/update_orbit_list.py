@@ -81,6 +81,12 @@ def updateWrongOrbitTypes(orbit_list, mtpConstants):
         xlsx_row = 44 #row number of the observation in the excel spreadsheet
         orbit_list[xlsx_row - 2]["allowedObservationTypes"] = ["dayside", "grazing"]
         orbit_list[xlsx_row - 2]["grazing"] = orbit_list[xlsx_row - 2].pop("merged")
+
+    elif mtpNumber == 52:
+        #switch a merged for a grazing
+        xlsx_row = 297 #row number of the observation in the excel spreadsheet
+        orbit_list[xlsx_row - 2]["allowedObservationTypes"] = ["dayside", "grazing"]
+        orbit_list[xlsx_row - 2]["grazing"] = orbit_list[xlsx_row - 2].pop("merged")
            
     return orbit_list
 

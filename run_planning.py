@@ -7,6 +7,7 @@ Created on Mon Mar  4 08:22:23 2019
 
 TODO:
     REWORK GENERIC PLAN ORBIT TYPE SELECTOR FOR ORBITS WITH OCCULTATIONS + LIMB AND OCCULTATIONS + OCM
+    ADD RANDOM GENERATOR FOR NADIR ROI FLYOVERS, REDUCE ORBIT TYPE 1 LNO NADIRS
     
     
 """
@@ -17,7 +18,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 51
+mtpNumber = 52
 
 r"""
 *Remember to update spice kernels first!

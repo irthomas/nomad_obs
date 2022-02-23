@@ -1,0 +1,5 @@
+MRO time overlap (UTC),MRO subSC lat (deg),MRO subSC lon (deg),MRO S/C altitude (km),MRO LST (h),MRO Incidence angle (deg),MRO Emission angle (deg),MRO Phase angle (deg),TGO time overlap (UTC),UVIS nadir LOS surface intercept lat (deg),UVIS nadir LOS surface intercept lon (deg),TGO S/C altitude (km),UVIS nadir LOS surface intercept LST (h),UVIS nadir LOS surface intercept Incidence angle (deg),UVIS nadir LOS surface intercept Emission angle (deg),UVIS nadir LOS surface intercept Phase angle (deg)
+2022 MAR 24 13:57:00,-74.9541,58.8883,252.3491,16.5011,77.7649,2.7035e-14,77.7649,2022 MAR 24 14:06:00,-75.8604,57.1545,379.8071,16.5314,78.1772,0.39633,78.2705
+2022 APR 01 18:18:00,-74.094,71.9266,250.9734,16.4544,75.3863,2.642e-14,75.3863,2022 APR 01 18:39:00,-74.4969,70.1095,380.4691,16.6739,76.3453,1.7744,75.5303
+2022 APR 04 11:45:00,-73.8325,-164.0579,252.2433,16.4156,74.5167,5.65e-14,74.5167,2022 APR 04 11:30:00,-74.2371,-163.3858,378.3993,16.2169,73.9182,0.404,73.9954
+2022 APR 14 03:39:00,-66.7335,47.6845,250.0643,16.2011,68.8742,2.1097e-14,68.8742,2022 APR 14 03:27:00,-66.1674,49.1569,379.17,16.1047,68.1387,0.46963,68.1935
