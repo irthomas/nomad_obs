@@ -76,7 +76,7 @@ OCCULTATION_WEIGHTS = [
     ["All Fullscan Fast #2"] * 10,
     ["All Fullscan Slow #2"] * 5,
     ["CO2 Fullscan Fast #2"] * 3,
-    ["CO2 Fullscan Fast #4"] * 8, #orders 165-175 #reduce gradually
+    ["CO2 Fullscan Fast #4"] * 7, #orders 165-175 #reduce gradually
     ["CO Fullscan Fast #2"] * 3,
     ["LNO Occultation Fullscan Fast #2"] * 5,
     

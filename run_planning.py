@@ -18,7 +18,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 52
+mtpNumber = 53
 
 r"""
 *Remember to update spice kernels first!
@@ -57,6 +57,9 @@ Meridiani Sulfates	      Normal priority
 Mawrth Vallis	           Normal priority
 Other targets	           Normal priority
 
+*note that many daysides directly before/after solar calibrations and Phobos/Deimos pointings are not allowed - can remove many of these
+
+
 *check OCM start/end times, particularly those orbits with occultations near OCMs
 *compare column L (dayside start time) to start/end times in extracted_events/OCM_events.txt in the zip
 
@@ -65,15 +68,17 @@ Other targets	           Normal priority
     type 28 = day limb only
     type 47 = night limb only
 
+*Check number of grazings matches the extracted event file nomad_grazing_events.txt:
+    if not, compare start/end times to determine which are incorrect, then modify update_orbit_list.py accordingly
+
+
 *Add a few LNO nightsides (type 7) if space is available -> less critical if nightside limbs already present
 
 *Add a few LNO-only limbs (type 8) when FOV in range if space is available (we have lots of LNO+UVIS limbs now)
-* Run check_when_mars_in_occ_fovs.py with correct MTP and then copy output into orbit plan -> choose some with LNO and UVIS
+    run check_when_mars_in_occ_fovs.py with correct MTP and then copy output into orbit plan -> choose some with LNO and UVIS
 
 *If there are occultation-free periods, change IR daysides to mainly Surface Ice observations e.g. Surface Ice 4SUBD 01
 
-*Check number of grazings matches the extracted event file nomad_grazing_events.txt:
-    if not, compare start/end times to determine which are incorrect, then modify update_orbit_list.py accordingly
 
 *Use excel formula to check for incorrect orbit types 3 when no LNO obs:
     copy formula into draft orbit plan cell N2 and then drag down the column
@@ -83,7 +88,14 @@ Other targets	           Normal priority
     
 *Ignore all UVIS inputs for now
 
+*Move nomad_mtp0xx_plan_generic.xlsx to orbit_plans\mtp0xx\
+
+*Then run run_planning.py again to finish planning
+    Possible errors: occultation just before OCM slot - check timings in nomad_ingress_events.txt, change orbit type 1 and add ingress 
+    
+    
 *Send nomad_mtp0xx_plan_generic.xlsx, nomad_mtp0xx_plan.csv and nomad_mtp0xx_lno_orbits.txt to nomad.iops
+
 
 
 """
