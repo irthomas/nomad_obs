@@ -5,9 +5,13 @@ Created on Mon Mar  4 08:22:23 2019
 @author: iant
 
 
+
 TODO:
     REWORK GENERIC PLAN ORBIT TYPE SELECTOR FOR ORBITS WITH OCCULTATIONS + LIMB AND OCCULTATIONS + OCM
-    ADD RANDOM GENERATOR FOR NADIR ROI FLYOVERS, REDUCE ORBIT TYPE 1 LNO NADIRS
+    ADD RANDOM NUMBER GENERATOR FOR NADIR ROI FLYOVERS, REDUCE ROIS AND NADIRS ON ORBITS OF TYPE 1
+    READ IN OCM EXTRACTED EVENTS FILE
+    READ IN MERGED/GRAZING OCCULTATION TYPES FROM KICKOFF SUMMARY FILES
+    
     
 """
 
@@ -17,7 +21,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 53
+mtpNumber = 54
 
 
 r"""
@@ -46,22 +50,23 @@ summary_files\mtp0xx\MARS_IN_UVIS_OCC_FOV.txt
     
 Region                    Priority  reduce box size; not run each time.
 ------                    --------
-Olympus Mons	           Run preferentially but not always
-Curiosity	                Run preferentially but not always
+Olympus Mons	          Run preferentially but not always
+Curiosity	              Run preferentially but not always
 Perseverance              Run preferentially but not always
 MRO overlaps              Normal priority
 Acidalia Planitia	      Normal priority
-Nili Fossae	           Normal priority
+Nili Fossae	              Normal priority
 Mawrth Vallis/Aram Chaos  Normal priority
 Meridiani Sulfates	      Normal priority
-Mawrth Vallis	           Normal priority
-Other targets	           Normal priority
+Mawrth Vallis	          Normal priority
+Other targets	          Normal priority
 
 *note that many daysides directly before/after solar calibrations and Phobos/Deimos pointings are not allowed - can remove many of these
 
 
 *check OCM start/end times, particularly those orbits with occultations near OCMs
 *compare column L (dayside start time) to start/end times in extracted_events/OCM_events.txt in the zip
+*if any clash with nadir observations, change to orbit type 14 and remove observations from irDayside column
 
 *check true limbs are correctly registered:
     type 28 = solar occ and day limb
@@ -91,7 +96,8 @@ Other targets	           Normal priority
 *Move nomad_mtp0xx_plan_generic.xlsx to orbit_plans\mtp0xx\
 
 *Then run run_planning.py again to finish planning
-    Possible errors: occultation just before OCM slot - check timings in nomad_ingress_events.txt, change orbit type 1 and add ingress 
+    Possible errors: occultation just before OCM slot - check timings in nomad_ingress_events.txt (or grazing)
+    Change orbit type 1 (or 5) and add ingress observation name manually
     
     
 *Send nomad_mtp0xx_plan_generic.xlsx, nomad_mtp0xx_plan.csv and nomad_mtp0xx_lno_orbits.txt to nomad.iops

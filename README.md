@@ -50,13 +50,11 @@ There is a final script named `update_orbit_list.py`, which allows the user to o
 When Bojan and Claudio distribute the MTP overview, the planning can begin. The general steps are outlined here:
 1. Insert timing information from Ops team into `mtp_inputs` and change MTP number in main script.
 2. Analyse geometry and inputs and create orbit plan, populating it with generic observation types e.g. _irIngress_, _irDayside_, etc.
-3. ~~Send to OU for iteration~~ No longer required (no UVIS nightsides to plan).
-4. Finalise generic orbit plan and rerun script. This checks the plan is good and makes a list of orbits on which LNO operates. Send these outputs to Bojan and Claudio.
-5. Populate the orbit plan with real observation names
-6. Generate COP rows, web pages, update SQL database, etc. Generate list of joint ACS-NIR/NOMAD-SO occultation numbers for ESAC.
-7. Following step (3), a few days later Bojan or Claudio will distribute the summary files. Check COP rows against these summary files.
-8. Manually define solar calibrations.
-9. When ready, send COP rows and joint NIR-SO file to Bojan and Claudio
+3. Finalise generic orbit plan and rerun script. This checks the plan is good and makes a list of orbits on which LNO operates. Send these outputs to Bojan and Claudio.
+4. On this second run, the orbit plan is populated with real observation names. The COP rows, web pages, and joint ACS-NIR/NOMAD-SO occultation numbers for ESAC are generated and the SQLite database `planning.db` is updated.
+5. Following step (3), a few days later Bojan or Claudio will distribute the summary files. Check COP rows against these summary files.
+6. Manually define solar and Phobos/Deimos calibrations.
+7. When ready, send COP rows and joint NIR-SO file to Bojan and Claudio.
 
 Detailed information about each step can be found below.
 
@@ -81,7 +79,7 @@ Variable name | Description
 
 The metakernel name, given by `METAKERNEL_NAME`, should be specified. This should always be `em16_plan.tm` for planning purposes.
 
-`OFFLINE` should be set to True only if you are operating on a local machine that doesn't have access to the BIRA servers. In this mode, the SQL database is not updated.
+`OFFLINE` should be set to True. Since early 2020 the SQL server database has not been maintained and the planning info is written to planning.db instead.
 
 ---
 
@@ -104,12 +102,26 @@ This must be done before each MTP.
 * Update the other files in the `nomad_obs` directory if desired e.g. observations, weights, ACS-SO joint occultation types, regions of interest, etc.
 * Copy the SOC event file `LEVF_Mxxx_SOC_PLANNING.EVF` for the MTP into the directory `observations/event_files`. This file can be found in the zip file from Bojan or Claudio.
 * Copy the MRO overlap directories into `observations/summary_files/mtpxxx`. There are four: `2deg_latlon_15min_LST`, `2deg_latlon_30min_LST`, `5deg_latlon_15min_LST`, and `5deg_latlon_30min_LST`. From MTP030 onwards, the latter must be present for the pipeline to run.
-* (Recommended) copy the solar limb events files `SOLAR_LOS/MARS_IN_UVIS_OCC_FOV.txt` and `SOLAR_LOS/MARS_IN_LNO_OCC_FOV.txt` from the zip file into `observations/summary_files/mtpxxx`. These will be needed later.
+* Copy the solar limb events files `SOLAR_LOS/MARS_IN_UVIS_OCC_FOV.txt` and `SOLAR_LOS/MARS_IN_LNO_OCC_FOV.txt` from the zip file into `observations/summary_files/mtpxxx`. These will be needed later.
+* (Optional) copy the kickoff summary files to `observations/summary_files/mtpxxx`. These are not required but are useful reference.
+
+When done, the following files/directories should be present in the local directory:
+* `event_files\LEVF_M0xx_SOC_PLANNING.EVF`
+* `summary_files\mtp0xx\2deg_latlon_15min_LST`
+* `summary_files\mtp0xx\2deg_latlon_30min_LST`
+* `summary_files\mtp0xx\5deg_latlon_15min_LST`
+* `summary_files\mtp0xx\5deg_latlon_30min_LST`
+* `summary_files\mtp0xx\kickoff\nadir_dayside_nightside_thermal_orbits_orbit_type_summary.txt`
+* `summary_files\mtp0xx\kickoff\NOMAD_egress_solar_occulations_summary.txt`
+* `summary_files\mtp0xx\kickoff\NOMAD_ingress_and_merged_solar_occulations_summary.txt`
+* `summary_files\mtp0xx\kickoff\NOMAD_grazing_solar_occulations_summary.txt` (if present)
+* `summary_files\mtp0xx\MARS_IN_LNO_OCC_FOV.txt`
+* `summary_files\mtp0xx\MARS_IN_UVIS_OCC_FOV.txt`
 
 
 ### Make generic orbit plan
 
-In run_planning.py, change mtpNumber to the desired value. 
+In `run_planning.py`, change mtpNumber to the desired value. 
 
 To start the planning script on crunch7 (from hera):
 
@@ -133,20 +145,21 @@ The generic script always includes too many LNO dayside nadirs. Remove some by d
 * The number of observations to be deleted depends on the TGO orbit characteristics. See Appendix A for approximate duty cycles.
 * Do not delete limbs e.g. dayside limb orbit type `28` or nightside limb type `47`.
 * Every Saturday afternoon there is an OCM (orbit correction manoeuvre) where observations are not allowed. This is added automatically by the script and the orbit type is set to `14`. The text `&possibleOCM;` will be added to the last column.
-* If a row has no occultations or LNO observations, the orbit type in the 1st column must be changed to type `14`:
+* If a row has no occultations or LNO observations, the orbit type in the 1st column must be changed to type `14`.
 
 
 Region | Priority
 --- | ---
-Olympus Mons             | Highest
-Curiosity                | Highest
-Acidalia Planitia        | High
-Nili Fossae              | High
-Mawrth Vallis/Aram Chaos | High
-Meridiani Sulfates       | High
-Mawrth Vallis            | High
-Other targets            | Medium
-
+Olympus Mons	         | Run preferentially but not always
+Curiosity	             | Run preferentially but not always
+Perseverance             | Run preferentially but not always
+MRO overlaps             | Normal priority
+Acidalia Planitia	     | Normal priority
+Nili Fossae	             | Normal priority
+Mawrth Vallis/Aram Chaos | Normal priority
+Meridiani Sulfates	     | Normal priority
+Mawrth Vallis	         | Normal priority
+Other targets	         | Normal priority
 
 
 orbitType | irIngressHigh | irIngressLow | uvisIngress | irEgressHigh | irEgressLow | uvisEgress | irDayside | uvisDayside
@@ -170,40 +183,31 @@ orbitType | irIngressHigh | irIngressLow | uvisIngress | irEgressHigh | irEgress
 1   | irIngressHigh | irIngressLow | uvisIngress | irEgressHigh | irEgressLow | uvisEgress |   | uvisDayside
 
 
+* It is highly recommended that the orbits with type `3` and `14` are checked thoroughly (3 = LNO irDayside, 14 = no LNO irDayside), as errors can affect the UVIS observations on those orbits and/or may lead to problems later. Once the summary files are made this cannot be changed. <br/> This can be checked in Excel as follows `=IF(AND(A2=3,H2=""),"Error",0)` and `=IF(AND(A2=14,NOT(H2="")),"Error",0)` however care must be taken to delete all traces of additional columns. Columns `N` and onwards **must** be completely empty.
+* Note that many daysides directly before/after solar calibrations and Phobos/Deimos pointings are not allowed - these should be removed
+
+
+OCM start/end times must be checked:
+* An OCM lasts for ~1.5 orbits (either night-day-night [1 orbit] or day-night-day [2 orbits])
+* An orbit is only considered an OCM when the dayside of that orbit is within the block, so an OCM lasts for 1 or 2 orbits only.
+* Compare column L (dayside start time) in the draft orbit plan to the start/end times in extracted_events/OCM_events.txt in the zip
+* If any clash with nadir observations, change to orbit type 14 and remove observations from irDayside column
+* Sometimes an occultation can be scheduled on the same orbit as an OCM, which will lead to an error when COP rows are assigned - see later
+
+
 * There is no distinction between `irShortDayside`, `irDayside`, or `irLongDayside` at present.
-* It is highly recommended that the orbits with type `3` and `14` are checked thoroughly (3 = irDayside, 14 = no irDayside), as errors can affect the UVIS observations on those orbits and/or may lead to problems later. Once the summary files are made this cannot be changed. <br/> This can be checked in Excel as follows `=IF(AND(A2=3,H2=""),"Error",0)` and `=IF(AND(A2=14,NOT(H2="")),"Error",0)` however care must be taken to delete all traces of additional columns. Columns `N` and onwards **must** be completely empty.
-
-
-In general:
-
 * Try to keep LNO on for the targeted observations
 * Try to keep LNO on for the MRO overlaps
-* LNO should always be switched on the orbit directly after an OCM
-* When the solar incidence angle > 60 degrees, swap some H2O / CO observations for Surface Ice observations e.g. `Ice H2O 2SUBD #1` or `Surface Ice 4SUBD 01`.
+* When the solar incidence angle > 60 degrees, swap some H2O / CO observations for Surface Ice observations e.g. `Surface Ice 4SUBD 01`.
 
 
-
-**When ready, send `nomad_mtpxxx_plan_generic.xlsx` to `nomad.iops@aeronomie.be` for the OU to add UVIS observations.**
-
-
-### Finalise generic orbit plan
-
-When the modified version is received from the OU, check for errors - e.g. remove observations that are not allowed, for example UVIS observations scheduled during OCMs (orbital correction manoeuvres) which occur on Saturday afternoons. 
-
-
-
-#### Check nightsides
-
-Typically the only modification is to add UVIS nightside nadir observations. To keep the instrument as cool as possible, it is better that LNO dayside nadir observations are removed from the orbit before each UVIS nightside. This is not essential: regions of interest, MRO overlaps, etc. should not be cancelled. Since the LNO duty cycle is now <50%, NOMAD remains cold at all times and so this is less critical. LNO can run with UVIS on the occasional nightside - if so, change the orbit type to `7` and add `irNightside` to the `irNightside` column. Note that all observations on the dayside in the chosen orbit are unaffected, as the dayside observation always comes after the nightside observation. Note that LNO must not measure continuously - if there are LNO dayside measurements on the previous or same orbits, these must be removed (the `irDayside` column must be blank).
-
-Optionally, add `uvisNightside` in the `uvisNightside` column if not present for all UVIS nightsides. 
 
 
 #### Add LNO limb measurements
 
 Orbits with types `4`, `14` and `3` can be changed to LNO limb orbit type `8`. These should correspond with CaSSIS off-nadir observations where possible, using the list `SOLAR_LOS/MARS_IN_LNO_OCC_FOV.txt` or `SOLAR_LOS/MARS_IN_UVIS_OCC_FOV.txt` provided by Bojan or Claudio. This txt file contains the times when the boresight is pointing closer to the ground than when flying in pure nadir-pointing mode. Each row in the orbit plan contains the night-to-day terminator crossing time - dayside limbs for that orbit will therefore take place within the 1 hour after the crossing time.
 
-There are typically around 5 limb observations per MTP, however during periods without occultations it is possible to run many more (see Appendix A). 
+There are typically around 5 limb observations per MTP, however during periods without occultations it is possible to run more (see Appendix A). 
 
 At present, limb observations are added manually: To do this, change the orbit type to `8` and add `irLimb` to the `irDayside` column. 
 
@@ -212,27 +216,30 @@ At present, limb observations are added manually: To do this, change the orbit t
 
 ### Make LNO orbit list file and final orbit plan
 
-When the orbit plan is ready, move it to the directory `orbit_plans/mtpxxx` folder and run entire script again. The file containing the list of orbits where LNO is operating `nomad_mtpxxx_lno_orbits.txt` will be created in the orbit plan directory. **Send this and the generic orbit plan to `nomad.iops@aeronomie.be`.**
+When the orbit plan is ready, move it to the directory `orbit_plans/mtpxxx` folder and run entire script again. The file containing the list of orbits where LNO is operating `nomad_mtpxxx_lno_orbits.txt` will be created in the orbit plan directory. 
 
 
-When the script is run above to make the joint observation list, the final orbit plan will also be created in the `BASE_DIRECTORY`. Here the table has been filled in with observation names taken from the lists in `observation_names.py` and `observation_weights.py`.
+When the script is run above to make the joint observation list, the final orbit plan will also be created in the `orbit_plans/mtpxxx`. Here the table has been filled in with observation names taken from the lists in `observation_names.py` and `observation_weights.py`. The output COP row files will be generated in `cop_rows/mtpxxx folder`. The joint occultation file `joint_occ_mtpxxx.csv` will also be created for the ACS team. 
 
 
-If there are no errors, place the final orbit plan in the `orbit_plans/mtpxxx` folder and run the entire script again. The output COP row files will be generated in `cop_rows/mtpxxx folder`. The joint occultation file `joint_occ_mtpxxx.csv` will also be created for the ACS team. When this is sent to Bojan or Claudio they will 
+**If no errors, send `observations/orbit_plans/mtpxxx/nomad_mtpxxx_plan_generic.xlsx`, `observations/orbit_plans/mtpxxx/nomad_mtpxxx_plan.csv` and 'observations/orbit_plans/mtpxxx/nomad_mtpxxx_lno_orbits.txt` to `nomad.iops@aeronomie.be` for Bojan and Claudio to process and generate the summary files.**
 
 
 
 #### Compare to summary files
 
-Once the final orbit plan is sent to Bojan and Claudio, they will generate the summary files, typically within a few days. Place a copy of all the .xlsx or .ods files in the directory `observations\summary_files\mtpxxx`.
+Once the final orbit plan is sent to Bojan and Claudio, they will generate the summary files, typically within a few days. Place a copy of all the .xlsx files in the directory `observations\summary_files\mtpxxx`.
 
-The SO/LNO cop rows generated by the script should be compared to the summary files: particularly the number of rows in the file, and the *approximate* start and end times to check that the rows in the file line up correctly. Any rows in orange or red in the summary files should be set to `-1` in the corresponding COP row.
+The SO/LNO cop rows generated by the script should be compared to the summary files: particularly the number of rows in the file, and the *approximate* start and end times to check that the rows in the file line up correctly. Any coloured rows in the summary files should be set to `-1` in the corresponding COP row.
 
 * `NOMAD_dayside_nadir_summary` should be compared to `mtpxxx_ir_dayside_nadir.txt`
 * `NOMAD_egress_solar_occulations_summary` should be compared to `mtpxxx_ir_egress_occultations.txt`
 * `NOMAD_grazing_solar_occulations_summary` should be compared to `mtpxxx_ir_grazing_occultations.txt`
 * `NOMAD_ingress_and_merged_solar_occulations_summary` should be compared to `mtpxxx_ir_ingress_occultations.txt`
 * `NOMAD_nightside_nadir_summary` should be compared to `mtpxxx_ir_nightside_nadir.txt`
+
+There is a script `check_cop_rows_in_summary_files.py` to automatically compare the generated COP rows to the xlsx summary files 
+
 
 See Appendix B if the number of COP rows does not match the number in the summary file.
 
