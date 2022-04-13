@@ -64,7 +64,7 @@ Other targets	          Normal priority
 *note that many daysides directly before/after solar calibrations and Phobos/Deimos pointings are not allowed - can remove many of these
 
 
-*check OCM start/end times, particularly those orbits with occultations near OCMs
+*check OCM start/end times
 *compare column L (dayside start time) to start/end times in extracted_events/OCM_events.txt in the zip
 *if any clash with nadir observations, change to orbit type 14 and remove observations from irDayside column
 
