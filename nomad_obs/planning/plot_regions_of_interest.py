@@ -36,13 +36,13 @@ def plotRegionsOfInterest(paths, occultationRegionsOfInterest, nadirRegionsOfInt
     horizontal_offset = 0.05
     for regionOfInterest in occultationRegionsOfInterest:
         
-        plotRectangle(ax, regionOfInterest[5]/sp.dpr(), regionOfInterest[6]/sp.dpr(), regionOfInterest[3]/sp.dpr(), regionOfInterest[4]/sp.dpr(), "b")
-        ax.annotate(regionOfInterest[0], [np.mean((regionOfInterest[5], regionOfInterest[6]))/sp.dpr()+horizontal_offset, np.mean((regionOfInterest[3], regionOfInterest[3], regionOfInterest[4]))/sp.dpr()], color="b")
+        plotRectangle(ax, regionOfInterest[6]/sp.dpr(), regionOfInterest[7]/sp.dpr(), regionOfInterest[4]/sp.dpr(), regionOfInterest[5]/sp.dpr(), "b")
+        ax.annotate(regionOfInterest[0], [np.mean((regionOfInterest[6], regionOfInterest[7]))/sp.dpr()+horizontal_offset, np.mean((regionOfInterest[4], regionOfInterest[4], regionOfInterest[5]))/sp.dpr()], color="b")
     
     for regionOfInterest in nadirRegionsOfInterest:
         verticalOffset = 0.05
-        plotRectangle(ax, regionOfInterest[5]/sp.dpr(), regionOfInterest[6]/sp.dpr(), regionOfInterest[3]/sp.dpr(), regionOfInterest[4]/sp.dpr(), "r")
-        ax.annotate(regionOfInterest[0], [np.mean((regionOfInterest[5], regionOfInterest[6]))/sp.dpr()+horizontal_offset, np.mean((regionOfInterest[3], regionOfInterest[3], regionOfInterest[4]))/sp.dpr()+verticalOffset], color="r")
+        plotRectangle(ax, regionOfInterest[6]/sp.dpr(), regionOfInterest[7]/sp.dpr(), regionOfInterest[4]/sp.dpr(), regionOfInterest[5]/sp.dpr(), "r")
+        ax.annotate(regionOfInterest[0], [np.mean((regionOfInterest[6], regionOfInterest[7]))/sp.dpr()+horizontal_offset, np.mean((regionOfInterest[4], regionOfInterest[4], regionOfInterest[5]))/sp.dpr()+verticalOffset], color="r")
     
     plt.savefig(os.path.join(paths["OBS_DIRECTORY"], "regions_of_interest.png"))
     plt.close()

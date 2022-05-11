@@ -36,19 +36,20 @@ def regionsOfInterestNadir(orbit_list, regions_of_interest, observationCycles, s
             #write all found regions of interest to orbit
             for regionOfInterest in regions_of_interest:
                 matches = np.logical_and(
-                        np.logical_and((regionOfInterest[3] < lats), (regionOfInterest[4] > lats)),
-                        np.logical_and((regionOfInterest[5] < lons), (regionOfInterest[6] > lons))
+                        np.logical_and((regionOfInterest[4] < lats), (regionOfInterest[5] > lats)),
+                        np.logical_and((regionOfInterest[6] < lons), (regionOfInterest[7] > lons))
                         )
                 if np.any(matches):
                     i = int(np.mean(np.where(matches)[0])) #find centre index
                     if incidence_angles[i] < MAXIMUM_SEARCH_INCIDENCE_ANGLE: #check if solar angle too low
 
                         #get random observation name from cycleName:
-                        cycleName = regionOfInterest[2]
+                        cycleName = regionOfInterest[3]
                         observationName = random.choice(observationCycles[cycleName][1])
 
                         regionDict = {"name":regionOfInterest[0], \
                              "priority":regionOfInterest[1], \
+                             "ratio":regionOfInterest[2], \
                              "cycleName":cycleName, \
                              "observationName":observationName, \
                              "et":ets[i], "utc":et2utc(ets[i]), \
@@ -90,8 +91,8 @@ def regionsOfInterestOccultation(orbit_list, regions_of_interest, observationCyc
                 warning_2_given = False
                 for regionOfInterest in regions_of_interest:
                     matches = np.logical_and(
-                            np.logical_and((regionOfInterest[3] < lats), (regionOfInterest[4] > lats)),
-                            np.logical_and((regionOfInterest[5] < lons), (regionOfInterest[6] > lons))
+                            np.logical_and((regionOfInterest[4] < lats), (regionOfInterest[5] > lats)),
+                            np.logical_and((regionOfInterest[6] < lons), (regionOfInterest[7] > lons))
                             )
                     if np.any(matches): #if match found
                         #for merged occultation, check altitude to determine if real or viewing planet
@@ -114,13 +115,14 @@ def regionsOfInterestOccultation(orbit_list, regions_of_interest, observationCyc
                             #i = int(np.mean(np.where(matches)[0])) #find centre index
                             
                             #get random observation name from cycleName:
-                            cycleName = regionOfInterest[2]
+                            cycleName = regionOfInterest[3]
                             observationName = random.choice(observationCycles[cycleName][1])
                             
                             #get data for minimum altitude point
                             regionDict = {"occultationType":occultation_type,
                                      "name":regionOfInterest[0], \
                                      "priority":regionOfInterest[1], \
+                                     "ratio":regionOfInterest[2], \
                                      "cycleName":cycleName, \
                                      "observationName":observationName, \
                                      "et":ets[i], "utc":et2utc(ets[i]), \

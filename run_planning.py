@@ -21,7 +21,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 54
+mtpNumber = 55
 
 
 r"""
@@ -43,7 +43,10 @@ summary_files\mtp0xx\kickoff\NOMAD_grazing_solar_occulations_summary.txt (if pre
 summary_files\mtp0xx\MARS_IN_LNO_OCC_FOV.txt
 summary_files\mtp0xx\MARS_IN_UVIS_OCC_FOV.txt
 
-*Add start/end times to mtp_inputs.py
+summary_files\mtp0xx\OCM_events.txt
+
+
+*Add start/end times to nomad_obs/mtp_inputs.py
 *Then run run_planning.py
 
 *Check draft orbit plan - remove lots of LNO nadirs, trying to keep as many of the following:
