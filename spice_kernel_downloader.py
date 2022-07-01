@@ -24,8 +24,8 @@ else:
 
 
 
-# ops = True #for operations
-ops = False #for planning
+ops = True #for operations
+# ops = False #for planning
 
 
 class MetakernelParser():
@@ -218,8 +218,7 @@ class MetakernelParser():
 
     def update_kernels(self, local_tree, metakernel):
         # Download the missing kernel files to the local tree.
-        # files_to_download = metakernel.difference([s.replace("\\","/") for s in local_tree])
-        files_to_download = metakernel.difference([posixpath.normcase(s) for s in local_tree])
+        files_to_download = metakernel.difference([s.replace("\\", "/") for s in local_tree])
         print("There are %i files to download" %len(files_to_download))
         for filename in files_to_download:
             if os.path.exists(os.path.normcase(os.path.join(self.local_path,filename))):

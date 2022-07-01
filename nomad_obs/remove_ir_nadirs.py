@@ -20,7 +20,7 @@ from nomad_obs.regions_of_interest import nadirRegionsOfInterest
 from nomad_obs.io.orbit_plan_xlsx import getMtpPlanXlsx
 
 
-mtpNumber = 56
+mtpNumber = 57
 mtpConstants = getMtpConstants(mtpNumber)
 paths = setupPaths(mtpConstants)
 
