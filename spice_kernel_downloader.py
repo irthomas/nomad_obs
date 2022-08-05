@@ -175,6 +175,10 @@ class MetakernelParser():
         try:
             with open(os.path.join(self.local_path,"mk",self.mk_name)) as f:
                 data = f.read()
+                
+            #remove old bak file
+            if os.path.exists(os.path.join(self.local_path,"mk","%s.bak" %self.mk_name)):
+                os.remove(os.path.join(self.local_path,"mk","%s.bak" %self.mk_name))
             os.rename(os.path.join(self.local_path,"mk",self.mk_name), os.path.join(self.local_path,"mk","%s.bak" %self.mk_name))
             with open(os.path.join(self.local_path,"mk",self.mk_name), 'w') as f:
                 print("Adding local path to metakernel")

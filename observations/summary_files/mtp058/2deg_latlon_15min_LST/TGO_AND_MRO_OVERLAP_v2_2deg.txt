@@ -1,0 +1,7 @@
+S/C,UTC,UVIS nadir LOS surface intercept lat (deg),UVIS nadir LOS surface intercept lon (deg),S/C altitude (km),UVIS nadir LOS surface intercept LST (h),UVIS nadir LOS surface intercept Incidence angle (deg),UVIS nadir LOS surface intercept Emission angle (deg),UVIS nadir LOS surface intercept Phase angle (deg)
+MRO,2022 SEP 03 09:33:00,61.7945,-121.8677,307.7389,14.1911,88.2989,3.4403e-14,88.2989
+TGO,2022 SEP 03 09:36:00,60.555,-122.0848,428.5274,14.2253,87.3604,10.5688,97.9264
+
+MRO,2022 SEP 24 05:54:00,-76.341,-52.1439,252.1397,1.6767,83.1562,5.0289e-15,83.1562
+TGO,2022 SEP 24 05:51:00,-75.7705,-52.6765,378.3942,1.5925,83.7932,0.34251,84.0886
+

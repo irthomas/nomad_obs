@@ -1,0 +1,7 @@
+TGO overlap time with MRO (UTC),Dayside nadir observation number,Thermal orbit number
+2022 SEP 08 04:36:00,56,56
+2022 SEP 16 13:06:00,158,158
+2022 SEP 17 20:33:00,174,174
+2022 SEP 24 05:51:00,252,252
+2022 SEP 24 11:45:00,255,255
+2022 SEP 28 17:57:00,307,307

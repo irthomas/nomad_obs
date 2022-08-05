@@ -21,7 +21,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 57
+mtpNumber = 58
 
 
 r"""
@@ -100,7 +100,7 @@ Other targets	          Normal priority
 
 *Then run run_planning.py again to finish planning
     Possible errors: occultation just before OCM slot - check timings in nomad_ingress_events.txt (or grazing)
-    Change orbit type 1 (or 5) and add ingress observation name manually
+    Change to orbit type 1 (or 5) and add ingress observation name manually
     
     
 *Send nomad_mtp0xx_plan_generic.xlsx, nomad_mtp0xx_plan.csv and nomad_mtp0xx_lno_orbits.txt to nomad.iops
