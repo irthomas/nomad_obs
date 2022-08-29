@@ -21,7 +21,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 58
+mtpNumber = 59
 
 
 r"""
@@ -49,7 +49,8 @@ summary_files\mtp0xx\OCM_events.txt
 *Add start/end times to nomad_obs/mtp_inputs.py
 *Then run run_planning.py
 
-*Check draft orbit plan - remove lots of LNO nadirs, trying to keep as many of the following:
+*Then run remove_ir_nadirs.py
+*This will automatically remove lots of LNO nadirs, whilst trying to keep as many of the following:
     
 Region                    Priority  reduce box size; not run each time.
 ------                    --------
@@ -64,7 +65,7 @@ Meridiani Sulfates	      Normal priority
 Mawrth Vallis	          Normal priority
 Other targets	          Normal priority
 
-*note that many daysides directly before/after solar calibrations and Phobos/Deimos pointings are not allowed - can remove many of these
+*note that many daysides directly before/after solar calibrations and Phobos/Deimos pointings are not allowed - these should be removed
 
 
 *check OCM start/end times
@@ -99,7 +100,7 @@ Other targets	          Normal priority
 *Move nomad_mtp0xx_plan_generic.xlsx to orbit_plans\mtp0xx\
 
 *Then run run_planning.py again to finish planning
-    Possible errors: occultation just before OCM slot - check timings in nomad_ingress_events.txt (or grazing)
+    Possible errors: occultation just before (in same orbit as) OCM slot - check timings in nomad_ingress_events.txt (or grazing)
     Change to orbit type 1 (or 5) and add ingress observation name manually
     
     
