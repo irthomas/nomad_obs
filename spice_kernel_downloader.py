@@ -24,8 +24,8 @@ else:
 
 
 
-ops = True #for operations
-# ops = False #for planning
+# ops = True #for operations
+ops = False #for planning
 
 
 class MetakernelParser():
