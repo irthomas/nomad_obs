@@ -21,7 +21,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 60
+mtpNumber = 61
 
 
 r"""
@@ -70,7 +70,16 @@ Other targets	          Normal priority
 
 *check OCM start/end times
 *compare column L (dayside start time) to start/end times in extracted_events/OCM_events.txt in the zip
-*if any clash with nadir observations, change to orbit type 14 and remove observations from irDayside column
+*if any clash with daysidenadir observations, change to orbit type 14 and remove observations from irDayside column
+
+*if an OCM covers two daysides, check for ingress occultations on the nightside of the first OCM orbit
+*compare timings with nomad_ingress_events.txt
+*if found, add 1 irIngress irIngress uvisIngress to the orbit
+
+*check NOMAD Phobos linescans are correctly registered. Change comment column to &nomadPhobos;
+
+*check for CaSSIS limbs -> change orbit to type 28 (dayside) or 47 (nightside as appropriate) for UVIS ridealong
+
 
 *check true limbs are correctly registered:
     type 28 = solar occ and day limb
@@ -79,6 +88,9 @@ Other targets	          Normal priority
 
 *Check number of grazings matches the extracted event file nomad_grazing_events.txt:
     if not, compare start/end times to determine which are incorrect, then modify update_orbit_list.py accordingly
+    Typically one merged event should be changed to a grazing occultation
+
+
 
 
 *Add a few LNO nightsides (type 7) if space is available -> less critical if nightside limbs already present
