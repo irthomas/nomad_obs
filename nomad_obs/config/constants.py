@@ -52,7 +52,7 @@ TIME_TO_START_DAYSIDE_BEFORE_TERMINATOR = 120 #s
 TIME_TO_END_DAYSIDE_AFTER_TERMINATOR = 120 #s
 ACCEPTABLE_MTP_NADIR_TIME_ERROR = 20.0 #s
 
-MAXIMUM_SEARCH_INCIDENCE_ANGLE = 60.0 #max solar incidence angle when searching for nadir regions of interest. Higher value = lower quality data but more matches.
+MAXIMUM_SEARCH_INCIDENCE_ANGLE = 85.0 #max solar incidence angle when searching for nadir regions of interest. Higher value = lower quality data but more matches.
 
 
 #MRO overlap constraints

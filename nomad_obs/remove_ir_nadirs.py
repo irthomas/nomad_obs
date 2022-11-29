@@ -20,10 +20,14 @@ from nomad_obs.regions_of_interest import nadirRegionsOfInterest
 from nomad_obs.io.orbit_plan_xlsx import getMtpPlanXlsx
 
 
-mtpNumber = 61
+mtpNumber = 62
 mtpConstants = getMtpConstants(mtpNumber)
 paths = setupPaths(mtpConstants)
 
+
+
+# ADJACENT_ORBITS_TO_CHECK_FOR_NADIRS = 3
+ADJACENT_ORBITS_TO_CHECK_FOR_NADIRS = 4
 
 
 def get_adjacent_indices(indices, n_orbits):
@@ -127,7 +131,7 @@ orbit_mask[indices_day_limbs, 0] = 3
 orbit_mask[0, 1] = 1
 for i in range(3, n_orbits-2):
     #if all surrounding orbits are not allowed or unknown
-    if np.all(orbit_mask[i-3:i+3, 0] < 1.0):
+    if np.all(orbit_mask[i-ADJACENT_ORBITS_TO_CHECK_FOR_NADIRS:i+ADJACENT_ORBITS_TO_CHECK_FOR_NADIRS, 0] < 1.0):
         if orbit_mask[i, 0] == 0:
             orbit_mask[i, 0] = 1
             orbit_mask[i, 1] = 1
