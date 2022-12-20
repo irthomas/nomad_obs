@@ -43,32 +43,6 @@ MAKE_TABLES = True
 
 #name:[[orders], int time, rhythm, lines, so=0/lno=1]
 new_so_obs_dict = {
-
-"6SUBD CO2 H2O #11":[[121, 132, 148, 156, 160, 165], 4, 1, 16, 0], #Proposed by Loic, priority High
-"6SUBD CO2 #12":[[156, 132, 118, 140, 154, 158], 4, 1, 16, 0], #Proposed by Loic, priority Middle
-"6SUBD CO2 #13":[[156, 132, 118, 169, 154, 140], 4, 1, 16, 0], #Proposed by Loic, priority Middle
-"6SUBD CO2 H2O #14":[[121, 134, 148, 132, 165, 169], 4, 1, 16, 0], #Proposed by Loic, priority High
-"6SUBD CO2 H2O CO #15":[[121, 132, 148, 165, 186, 190], 4, 1, 16, 0], #Proposed by Loic, priority High
-"6SUBD CO2 #16":[[121, 148, 149, 155, 164, 165], 4, 1, 16, 0], #Proposed by Miguel, priority Middle
-"6SUBD CO2 #17":[[123, 142, 148, 155, 156, 165], 4, 1, 16, 0], #CO2 full range, priority Middle
-"6SUBD CO2 #18":[[154, 155, 156, 157, 158, 159], 4, 1, 16, 0], #Full homopause, priority Low: test
-"6SUBD CO2 #19":[[123, 132, 142, 148, 156, 165], 4, 1, 16, 0], #Lower alt, priority Middle
-"6SUBD CO2 #20":[[123, 148, 155, 156, 160, 165], 4, 1, 16, 0], #Full range, priority Middle
-"6SUBD CO2 #21":[[171, 122, 142, 155, 156, 165], 4, 1, 16, 0], #Full range try 171, priority Low: test
-"6SUBD CO2 #22":[[142, 148, 155, 156, 160, 165], 4, 1, 16, 0], #Mid-high, priority Middle
-"6SUBD CO2 #23":[[186, 190, 132, 148, 156, 165], 4, 1, 16, 0], #CO2+CO, priority Middle
-"6SUBD CO2 #24":[[186, 190, 132, 148, 155, 165], 4, 1, 16, 0], #CO2+CO, priority Middle
-"6SUBD CO2 CO #25":[[156, 123, 118, 148, 186, 132], 4, 1, 16, 0], #iso higher alt, priority Middle
-"6SUBD CO2 CO #26":[[197, 200, 177, 145, 186, 132], 4, 1, 16, 0], #iso lower alt, priority Low: test
-"6SUBD CO2 CO #27":[[156, 123, 118, 148, 186, 132], 4, 1, 16, 0], #iso higher alt, priority Middle
-"6SUBD CO2 H2O #12":[[121, 132, 148, 156, 189, 165], 4, 1, 16, 0], #Proposed by Loic, priority High
-"6SUBD CO2 H2O #13":[[121, 132, 148, 156, 186, 165], 4, 1, 16, 0], #Proposed by Loic, priority High
-
-"6SUBD CO #1":[[132, 183, 184, 185, 186, 187], 4, 1, 16, 0], #Proposed by Shohei, priority Middle
-"6SUBD CO #2":[[123, 132, 183, 184, 185, 186], 4, 1, 16, 0], #Proposed by Shohei, priority Middle
-"6SUBD CO #3":[[132, 132, 185, 185, 186, 186], 4, 1, 16, 0], #Proposed by Shohei, priority Middle
-"6SUBD CO #4":[[132, 185, 185, 185, 185, 185], 4, 1, 16, 0], #Proposed by Shohei, priority Middle
-"6SUBD CO #5":[[132, 186, 186, 186, 186, 186], 4, 1, 16, 0], #Proposed by Shohei, priority Middle
 }
 
 
@@ -79,109 +53,123 @@ new_so_obs_dict = {
 
 new_lno_obs_dict = {
 
-"Carbonates #1":[[174, 175, 176, 189, 190, 191], 240, 8, 4, 1],
-"Carbonates #2":[[174, 175, 176, 189, 190, 191], 240, 8, 8, 1],
-"Carbonates #3":[[174, 175, 176, 189, 190, 191], 240, 8, 12, 1],
-"Carbonates #4":[[174, 175, 176, 189, 190, 191], 215, 15, 4, 1],
-"Carbonates #5":[[174, 175, 176, 189, 190, 191], 215, 15, 8, 1],
-"Carbonates #6":[[174, 175, 176, 189, 190, 191], 215, 15, 12, 1],
-"Carbonates #7":[[174, 175, 176], 225, 8, 8, 1],
-"Carbonates #8":[[174, 175, 176], 220, 8, 16, 1],
-"Carbonates #9":[[174, 175, 176], 190, 15, 8, 1],
-"Carbonates #10":[[174, 175, 176], 185, 15, 16, 1],
-"Carbonates #11":[[189, 190, 191], 225, 8, 8, 1],
-"Carbonates #12":[[189, 190, 191], 220, 8, 16, 1],
-"Carbonates #13":[[189, 190, 191], 190, 15, 8, 1],
-"Carbonates #14":[[189, 190, 191], 185, 15, 16, 1],
-"Phyllosilicates #1":[[189, 190, 191, 192, 193, 201], 240, 8, 4, 1],
-"Phyllosilicates #2":[[189, 190, 191, 192, 193, 201], 240, 8, 8, 1],
-"Phyllosilicates #3":[[189, 190, 191, 192, 193, 201], 240, 8, 12, 1],
-"Phyllosilicates #4":[[189, 190, 191, 192, 193, 201], 215, 15, 4, 1],
-"Phyllosilicates #5":[[189, 190, 191, 192, 193, 201], 215, 15, 8, 1],
-"Phyllosilicates #6":[[189, 190, 191, 192, 193, 201], 215, 15, 12, 1],
-"Phyllosilicates #7":[[190, 191, 192], 225, 8, 8, 1],
-"Phyllosilicates #8":[[190, 191, 192], 220, 8, 16, 1],
-"Phyllosilicates #9":[[190, 191, 192], 190, 15, 8, 1],
-"Phyllosilicates #10":[[190, 191, 192], 185, 15, 16, 1],
-"Carb Phyl #1":[[174, 175, 176, 190, 191, 192], 240, 8, 4, 1],
-"Carb Phyl #2":[[174, 175, 176, 190, 191, 192], 240, 8, 8, 1],
-"Carb Phyl #3":[[174, 175, 176, 190, 191, 192], 240, 8, 12, 1],
-"Carb Phyl #4":[[174, 175, 176, 190, 191, 192], 215, 15, 4, 1],
-"Carb Phyl #5":[[174, 175, 176, 190, 191, 192], 215, 15, 8, 1],
-"Carb Phyl #6":[[174, 175, 176, 190, 191, 192], 215, 15, 12, 1],
-"Water Band #1":[[160, 162, 164, 166, 168, 170], 240, 8, 4, 1],
-"Water Band #2":[[160, 162, 164, 166, 168, 170], 240, 8, 8, 1],
-"Water Band #3":[[160, 162, 164, 166, 168, 170], 240, 8, 12, 1],
-"Water Band #4":[[160, 162, 164, 166, 168, 170], 215, 15, 4, 1],
-"Water Band #5":[[160, 162, 164, 166, 168, 170], 215, 15, 8, 1],
-"Water Band #6":[[160, 162, 164, 166, 168, 170], 215, 15, 12, 1],
-"Water Band #7":[[160, 163, 166, 169, 172, 175], 240, 8, 4, 1],
-"Water Band #8":[[160, 163, 166, 169, 172, 175], 240, 8, 8, 1],
-"Water Band #9":[[160, 163, 166, 169, 172, 175], 240, 8, 12, 1],
-"Water Band #10":[[160, 163, 166, 169, 172, 175], 215, 15, 4, 1],
-"Water Band #11":[[160, 163, 166, 169, 172, 175], 215, 15, 8, 1],
-"Water Band #12":[[160, 163, 166, 169, 172, 175], 215, 15, 12, 1],
-"Water Band #13":[[157, 160, 163, 166, 169, 172], 240, 8, 4, 1],
-"Water Band #14":[[157, 160, 163, 166, 169, 172], 240, 8, 8, 1],
-"Water Band #15":[[157, 160, 163, 166, 169, 172], 240, 8, 12, 1],
-"Water Band #16":[[157, 160, 163, 166, 169, 172], 215, 15, 4, 1],
-"Water Band #17":[[157, 160, 163, 166, 169, 172], 215, 15, 8, 1],
-"Water Band #18":[[157, 160, 163, 166, 169, 172], 215, 15, 12, 1],
-"Water Band #19":[[163, 165, 167, 169], 205, 8, 6, 1],
-"Water Band #20":[[163, 165, 167, 169], 200, 8, 12, 1],
-"Water Band #21":[[163, 165, 167, 169], 210, 15, 6, 1],
-"Water Band #22":[[163, 165, 167, 169], 185, 15, 12, 1],
-"Water Band #23":[[160, 165, 170], 225, 8, 8, 1],
-"Water Band #24":[[160, 165, 170], 220, 8, 16, 1],
-"Water Band #25":[[160, 165, 170], 190, 15, 8, 1],
-"Water Band #26":[[160, 165, 170], 185, 15, 16, 1],
-"Water Band #27":[[163, 168, 173], 225, 8, 8, 1],
-"Water Band #28":[[163, 168, 173], 220, 8, 16, 1],
-"Water Band #29":[[163, 168, 173], 190, 15, 8, 1],
-"Water Band #30":[[163, 168, 173], 185, 15, 16, 1],
-"Water Band #31":[[154, 157, 160, 163, 166, 169], 240, 8, 4, 1],
-"Water Band #32":[[154, 157, 160, 163, 166, 169], 240, 8, 8, 1],
-"Water Band #33":[[154, 157, 160, 163, 166, 169], 240, 8, 12, 1],
-"Water Band #34":[[154, 157, 160, 163, 166, 169], 215, 15, 4, 1],
-"Water Band #35":[[154, 157, 160, 163, 166, 169], 215, 15, 8, 1],
-"Water Band #36":[[154, 157, 160, 163, 166, 169], 215, 15, 12, 1],
-"Water pyroxene #1":[[160, 163, 164, 172, 185, 191], 240, 8, 4, 1],
-"Water pyroxene #2":[[160, 163, 164, 172, 185, 191], 240, 8, 8, 1],
-"Water pyroxene #3":[[160, 163, 164, 172, 185, 191], 240, 8, 12, 1],
-"Water pyroxene #4":[[160, 163, 164, 172, 185, 191], 215, 15, 4, 1],
-"Water pyroxene #5":[[160, 163, 164, 172, 185, 191], 215, 15, 8, 1],
-"Water pyroxene #6":[[160, 163, 164, 172, 185, 191], 215, 15, 12, 1],
-"Water pyroxene #7":[[160, 163, 164, 172, 191, 192], 240, 8, 4, 1],
-"Water pyroxene #8":[[160, 163, 164, 172, 191, 192], 240, 8, 8, 1],
-"Water pyroxene #9":[[160, 163, 164, 172, 191, 192], 240, 8, 12, 1],
-"Water pyroxene #10":[[160, 163, 164, 172, 191, 192], 215, 15, 4, 1],
-"Water pyroxene #11":[[160, 163, 164, 172, 191, 192], 215, 15, 8, 1],
-"Water pyroxene #12":[[160, 163, 164, 172, 191, 192], 215, 15, 12, 1],
-"Hydration band #1":[[130, 147, 160], 225, 8, 8, 1],
-"Hydration band #2":[[130, 147, 160], 220, 8, 16, 1],
-"Hydration band #3":[[130, 147, 160], 190, 15, 8, 1],
-"Hydration band #4":[[130, 147, 160], 185, 15, 16, 1],
-"Hydration band #5":[[130, 147, 165], 225, 8, 8, 1],
-"Hydration band #6":[[130, 147, 165], 220, 8, 16, 1],
-"Hydration band #7":[[130, 147, 165], 190, 15, 8, 1],
-"Hydration band #8":[[130, 147, 165], 185, 15, 16, 1],
-"Hydration band #9":[[130, 148, 160], 225, 8, 8, 1],
-"Hydration band #10":[[130, 148, 160], 220, 8, 16, 1],
-"Hydration band #11":[[130, 148, 160], 190, 15, 8, 1],
-"Hydration band #12":[[130, 148, 160], 185, 15, 16, 1],
-"Hydration band #13":[[130, 148, 165], 225, 8, 8, 1],
-"Hydration band #14":[[130, 148, 165], 220, 8, 16, 1],
-"Hydration band #15":[[130, 148, 165], 190, 15, 8, 1],
-"Hydration band #16":[[130, 148, 165], 185, 15, 16, 1],
-"Hydrated minerals #1":[[148, 153, 158, 164, 170, 177], 240, 8, 4, 1],
-"Hydrated minerals #2":[[148, 153, 158, 164, 170, 177], 240, 8, 8, 1],
-"Hydrated minerals #3":[[148, 153, 158, 164, 170, 177], 240, 8, 12, 1],
-"Hydrated minerals #4":[[148, 153, 158, 164, 170, 177], 215, 15, 4, 1],
-"Hydrated minerals #5":[[148, 153, 158, 164, 170, 177], 215, 15, 8, 1],
-"Hydrated minerals #6":[[148, 153, 158, 164, 170, 177], 215, 15, 12, 1],
-
-"169 #1":[[169, 169, 169], 190, 15, 8, 1],
-"169 #2":[[169, 169, 169], 185, 15, 16, 1],
+"Carbonates #15":[[174, 175, 176, 189, 190, 191], 210, 30, 8],
+"Carbonates #17":[[174, 175, 176, 189, 190, 191], 540, 30, 8],
+"Carbonates #18":[[174, 175, 176, 189, 190, 191], 190, 30, 12],
+"Carbonates #19":[[174, 175, 176, 189, 190, 191], 540, 30, 12],
+"Carbonates #20":[[174, 175, 176, 189, 190, 191], 190, 60, 8],
+"Carbonates #21":[[174, 175, 176, 189, 190, 191], 580, 60, 8],
+"Carbonates #22":[[174, 175, 176, 189, 190, 191], 215, 60, 12],
+"Carbonates #23":[[174, 175, 176, 189, 190, 191], 515, 60, 12],
+"Carbonates #24":[[174, 175, 176], 185, 30, 16],
+"Carbonates #25":[[174, 175, 176], 190, 60, 16],
+"Carbonates #26":[[189, 190, 191], 185, 30, 16],
+"Carbonates #27":[[189, 190, 191], 190, 60, 16],
+"Phyllosilicates #11":[[189, 190, 191, 192, 193, 201], 210, 30, 8],
+"Phyllosilicates #13":[[189, 190, 191, 192, 193, 201], 540, 30, 8],
+"Phyllosilicates #14":[[189, 190, 191, 192, 193, 201], 190, 30, 12],
+"Phyllosilicates #15":[[189, 190, 191, 192, 193, 201], 540, 30, 12],
+"Phyllosilicates #16":[[189, 190, 191, 192, 193, 201], 190, 60, 8],
+"Phyllosilicates #17":[[189, 190, 191, 192, 193, 201], 580, 60, 8],
+"Phyllosilicates #18":[[189, 190, 191, 192, 193, 201], 215, 60, 12],
+"Phyllosilicates #19":[[189, 190, 191, 192, 193, 201], 515, 60, 12],
+"Phyllosilicates #20":[[190, 191, 192], 185, 30, 16],
+"Phyllosilicates #21":[[190, 191, 192], 190, 60, 16],
+"Carb Phyl #7":[[174, 175, 176, 190, 191, 192], 210, 30, 8],
+"Carb Phyl #9":[[174, 175, 176, 190, 191, 192], 540, 30, 8],
+"Carb Phyl #10":[[174, 175, 176, 190, 191, 192], 190, 30, 12],
+"Carb Phyl #11":[[174, 175, 176, 190, 191, 192], 540, 30, 12],
+"Carb Phyl #12":[[174, 175, 176, 190, 191, 192], 190, 60, 8],
+"Carb Phyl #13":[[174, 175, 176, 190, 191, 192], 580, 60, 8],
+"Carb Phyl #14":[[174, 175, 176, 190, 191, 192], 215, 60, 12],
+"Carb Phyl #15":[[174, 175, 176, 190, 191, 192], 515, 60, 12],
+"Water Band #37":[[160, 162, 164, 166, 168, 170], 210, 30, 8],
+"Water Band #39":[[160, 162, 164, 166, 168, 170], 540, 30, 8],
+"Water Band #40":[[160, 162, 164, 166, 168, 170], 190, 30, 12],
+"Water Band #41":[[160, 162, 164, 166, 168, 170], 540, 30, 12],
+"Water Band #42":[[160, 162, 164, 166, 168, 170], 190, 60, 8],
+"Water Band #43":[[160, 162, 164, 166, 168, 170], 580, 60, 8],
+"Water Band #44":[[160, 162, 164, 166, 168, 170], 215, 60, 12],
+"Water Band #45":[[160, 162, 164, 166, 168, 170], 515, 60, 12],
+"Water Band #46":[[160, 163, 166, 169, 172, 175], 210, 30, 8],
+"Water Band #47":[[160, 163, 166, 169, 172, 175], 540, 30, 8],
+"Water Band #48":[[160, 163, 166, 169, 172, 175], 190, 30, 12],
+"Water Band #49":[[160, 163, 166, 169, 172, 175], 540, 30, 12],
+"Water Band #50":[[160, 163, 166, 169, 172, 175], 190, 60, 8],
+"Water Band #51":[[160, 163, 166, 169, 172, 175], 580, 60, 8],
+"Water Band #52":[[160, 163, 166, 169, 172, 175], 215, 60, 12],
+"Water Band #53":[[160, 163, 166, 169, 172, 175], 515, 60, 12],
+"Water Band #54":[[157, 160, 163, 166, 169, 172], 210, 30, 8],
+"Water Band #55":[[157, 160, 163, 166, 169, 172], 540, 30, 8],
+"Water Band #56":[[157, 160, 163, 166, 169, 172], 190, 30, 12],
+"Water Band #57":[[157, 160, 163, 166, 169, 172], 540, 30, 12],
+"Water Band #58":[[157, 160, 163, 166, 169, 172], 190, 60, 8],
+"Water Band #59":[[157, 160, 163, 166, 169, 172], 580, 60, 8],
+"Water Band #60":[[157, 160, 163, 166, 169, 172], 215, 60, 12],
+"Water Band #61":[[157, 160, 163, 166, 169, 172], 515, 60, 12],
+"Water Band #62":[[163, 165, 167, 169], 205, 30, 12],
+"Water Band #63":[[163, 165, 167, 169], 485, 30, 12],
+"Water Band #64":[[163, 165, 167, 169], 210, 60, 12],
+"Water Band #65":[[163, 165, 167, 169], 590, 60, 12],
+"Water Band #66":[[160, 165, 170], 185, 30, 16],
+"Water Band #67":[[160, 165, 170], 190, 60, 16],
+"Water Band #68":[[163, 168, 173], 185, 30, 16],
+"Water Band #69":[[163, 168, 173], 190, 60, 16],
+"Water Band #70":[[154, 157, 160, 163, 166, 169], 210, 30, 8],
+"Water Band #71":[[154, 157, 160, 163, 166, 169], 540, 30, 8],
+"Water Band #72":[[154, 157, 160, 163, 166, 169], 190, 30, 12],
+"Water Band #73":[[154, 157, 160, 163, 166, 169], 540, 30, 12],
+"Water Band #74":[[154, 157, 160, 163, 166, 169], 190, 60, 8],
+"Water Band #75":[[154, 157, 160, 163, 166, 169], 580, 60, 8],
+"Water Band #76":[[154, 157, 160, 163, 166, 169], 215, 60, 12],
+"Water Band #77":[[154, 157, 160, 163, 166, 169], 515, 60, 12],
+"Water pyroxene #13":[[160, 163, 164, 172, 185, 191], 210, 30, 8],
+"Water pyroxene #15":[[160, 163, 164, 172, 185, 191], 540, 30, 8],
+"Water pyroxene #16":[[160, 163, 164, 172, 185, 191], 190, 30, 12],
+"Water pyroxene #17":[[160, 163, 164, 172, 185, 191], 540, 30, 12],
+"Water pyroxene #18":[[160, 163, 164, 172, 185, 191], 190, 60, 8],
+"Water pyroxene #19":[[160, 163, 164, 172, 185, 191], 580, 60, 8],
+"Water pyroxene #20":[[160, 163, 164, 172, 185, 191], 215, 60, 12],
+"Water pyroxene #21":[[160, 163, 164, 172, 185, 191], 515, 60, 12],
+"Water pyroxene #22":[[160, 163, 164, 172, 191, 192], 210, 30, 8],
+"Water pyroxene #23":[[160, 163, 164, 172, 191, 192], 540, 30, 8],
+"Water pyroxene #24":[[160, 163, 164, 172, 191, 192], 190, 30, 12],
+"Water pyroxene #25":[[160, 163, 164, 172, 191, 192], 540, 30, 12],
+"Water pyroxene #26":[[160, 163, 164, 172, 191, 192], 190, 60, 8],
+"Water pyroxene #27":[[160, 163, 164, 172, 191, 192], 580, 60, 8],
+"Water pyroxene #28":[[160, 163, 164, 172, 191, 192], 215, 60, 12],
+"Water pyroxene #29":[[160, 163, 164, 172, 191, 192], 515, 60, 12],
+"Hydration band #17":[[130, 147, 160], 185, 30, 16],
+"Hydration band #19":[[130, 147, 160], 190, 60, 16],
+"Hydration band #20":[[130, 147, 165], 185, 30, 16],
+"Hydration band #21":[[130, 147, 165], 190, 60, 16],
+"Hydration band #22":[[130, 148, 160], 185, 30, 16],
+"Hydration band #23":[[130, 148, 160], 190, 60, 16],
+"Hydration band #24":[[130, 148, 165], 185, 30, 16],
+"Hydration band #25":[[130, 148, 165], 190, 60, 16],
+"Hydrated minerals #7":[[148, 153, 158, 164, 170, 177], 210, 30, 8],
+"Hydrated minerals #9":[[148, 153, 158, 164, 170, 177], 540, 30, 8],
+"Hydrated minerals #10":[[148, 153, 158, 164, 170, 177], 190, 30, 12],
+"Hydrated minerals #11":[[148, 153, 158, 164, 170, 177], 540, 30, 12],
+"Hydrated minerals #12":[[148, 153, 158, 164, 170, 177], 190, 60, 8],
+"Hydrated minerals #13":[[148, 153, 158, 164, 170, 177], 580, 60, 8],
+"Hydrated minerals #14":[[148, 153, 158, 164, 170, 177], 215, 60, 12],
+"Hydrated minerals #15":[[148, 153, 158, 164, 170, 177], 515, 60, 12],
+"Hydrated single orders #1":[[148, 153, 164], 185, 30, 16],
+"Hydrated single orders #2":[[148, 153, 164], 510, 30, 16],
+"Hydrated single orders #3":[[148, 153, 164], 190, 60, 16],
+"Hydrated single orders #4":[[148, 153, 164], 595, 60, 16],
+"Hydrated single orders #5":[[158, 170, 164], 185, 30, 16],
+"Hydrated single orders #6":[[158, 170, 164], 510, 30, 16],
+"Hydrated single orders #7":[[158, 170, 164], 190, 60, 16],
+"Hydrated single orders #8":[[158, 170, 164], 595, 60, 16],
+"Hydrated single orders #9":[[148, 164, 177], 185, 30, 16],
+"Hydrated single orders #10":[[148, 164, 177], 510, 30, 16],
+"Hydrated single orders #11":[[148, 164, 177], 190, 60, 16],
+"Hydrated single orders #12":[[148, 164, 177], 595, 60, 16],
+"Hydrated single orders #13":[[148, 153, 164], 530, 15, 16],
+"Hydrated single orders #14":[[158, 170, 164], 530, 15, 16],
+"Hydrated single orders #15":[[148, 164, 177], 530, 15, 16],
 
 }
 
@@ -189,44 +177,28 @@ new_lno_obs_dict = {
 
 #fullscans
 lno_fullscans = [
-    # {"name":"Water Band Fullscan #1", "start":160, "steps":11, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Water Band Fullscan #1A", "start":159, "steps":12, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    # {"name":"Water Band Fullscan #2", "start":160, "steps":6, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Water Band Fullscan #2A", "start":158, "steps":7, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    # {"name":"Water Band Fullscan #3", "start":156, "steps":11, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Water Band Fullscan #3A", "start":154, "steps":12, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Water Band Fullscan #1A", "start":159, "steps":12, "step":1, "rhythms":[30, 60], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Water Band Fullscan #2A", "start":158, "steps":7, "step":2, "rhythms":[30, 60], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Water Band Fullscan #3A", "start":154, "steps":12, "step":2, "rhythms":[30, 60], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
 
-    # {"name":"Carbonates #1", "start":173, "steps":21, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Carbonates #1A", "start":172, "steps":22, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    # {"name":"Carbonates #2", "start":173, "steps":11, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Carbonates #2A", "start":171, "steps":12, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Carbonates #1A", "start":172, "steps":22, "step":1, "rhythms":[30, 60], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Carbonates #2A", "start":171, "steps":12, "step":2, "rhythms":[30, 60], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
 
-    # {"name":"Phyllosilicates #1", "start":188, "steps":15, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phyllosilicates #1A", "start":187, "steps":16, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    # {"name":"Phyllosilicates #2", "start":187, "steps":9, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phyllosilicates #2A", "start":185, "steps":10, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Phyllosilicates #1A", "start":187, "steps":16, "step":1, "rhythms":[30, 60], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Phyllosilicates #2A", "start":185, "steps":10, "step":2, "rhythms":[30, 60], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
 
-    # {"name":"Carb Phyl #1", "start":174, "steps":29, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Carb Phyl #1A", "start":173, "steps":30, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    # {"name":"Carb Phyl #2", "start":173, "steps":16, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Carb Phyl #2A", "start":171, "steps":17, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Carb Phyl #1A", "start":173, "steps":30, "step":1, "rhythms":[30, 60], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Carb Phyl #2A", "start":171, "steps":17, "step":2, "rhythms":[30, 60], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
 
-    # {"name":"Hydrated minerals #1", "start":148, "steps":6, "step":6, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Hydrated minerals #1A", "start":142, "steps":7, "step":6, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Hydrated minerals #1A", "start":142, "steps":7, "step":6, "rhythms":[30, 60], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
 
-    # {"name":"Phobos All #1", "start":160, "steps":43, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phobos All #1A", "start":159, "steps":44, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    # {"name":"Phobos All #2", "start":159, "steps":23, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phobos All #2A", "start":157, "steps":24, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    # {"name":"Phobos All #3", "start":159, "steps":16, "step":3, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phobos All #3A", "start":156, "steps":17, "step":3, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Phobos All #1A", "start":159, "steps":44, "step":1, "rhythms":[30, 60], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Phobos All #2A", "start":157, "steps":24, "step":2, "rhythms":[30, 60], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Phobos All #3A", "start":156, "steps":17, "step":3, "rhythms":[30, 60], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
 
-    # {"name":"Phobos All #4", "start":119, "steps":90, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phobos All #4A", "start":118, "steps":90, "step":1, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    # {"name":"Phobos All #5", "start":119, "steps":45, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phobos All #5A", "start":117, "steps":45, "step":2, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    # {"name":"Phobos All #6", "start":119, "steps":30, "step":3, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
-    {"name":"Phobos All #6A", "start":116, "steps":30, "step":3, "rhythms":[8, 15], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Phobos All #4A", "start":118, "steps":90, "step":1, "rhythms":[30, 60], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Phobos All #5A", "start":117, "steps":45, "step":2, "rhythms":[30, 60], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
+    {"name":"Phobos All #6A", "start":116, "steps":30, "step":3, "rhythms":[30, 60], "steps_binning":{6:[0, 1, 2], 4:[0, 1], 3:[0, 1]}},
 
 
 ]
@@ -245,6 +217,14 @@ def int_time(rhythm, n_orders, binning):
         elif n_orders == 6:
             it = {0:240, 1:240, 2:240}[binning]
     elif rhythm == 15:
+        if n_orders == 3:
+            it = {0:190, 1:185}[binning]
+        elif n_orders == 4:
+            it = {0:210, 1:185}[binning]
+        elif n_orders == 6:
+            it = {0:215, 1:215, 2:215}[binning]
+    elif rhythm == 30:
+        # correct these
         if n_orders == 3:
             it = {0:190, 1:185}[binning]
         elif n_orders == 4:
@@ -703,7 +683,6 @@ def new_fullscan_science_rows(channel, fullscan_dict_list, stepping_dir_in, sci_
                     
                     it = int_time(rhythm, stepSpeed, binning)
     
-    
                     d_rows = int((24 / stepSpeed) * (binning+1))
         
                     max_t = rhythm * 1000. - 450. #milliseconds in total for all orders
@@ -932,238 +911,238 @@ def new_subdomain_fullscan_rows(channel, stepping_dir_in, sci_dir_in, subd_dir_o
 
 
 
+if __name__ == "__main__":
 
-if MAKE_TABLES:
-
-    existing_dir = old_dir_name
-    new_lines_dir = temp_dir_name
-    merged_dir = new_dir_name
+    if MAKE_TABLES:
     
-    
-    # SO patch: subdomain only
-    
-    sci_dir_in = old_dir_name
-    subd_dir_out = temp_dir_name
-    
-    new_subdomain_rows("so", new_so_obs_dict, sci_dir_in, subd_dir_out) #write new lines to temp dir
-    # then read in old directory, merge new lines and output to new dir
-    replace_lines("so", "sub_domain", 3204, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
-    
-    
-    """LNO patch"""
+        existing_dir = old_dir_name
+        new_lines_dir = temp_dir_name
+        merged_dir = new_dir_name
         
-    """normal obs"""
-    
-    # new fixed rows
-    fixed_dir_out = temp_dir_name
-    
-    new_fixed_rows("lno", new_lno_obs_dict, lno_centre_rows, fixed_dir_out) #write new lines to temp dir
-    # then read in old directory, merge new lines and output to new dir
-    replace_lines("lno", "fixed", 140, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
-    
-    
-    
-    # new science rows
-    sci_dir_out = temp_dir_name
-    
-    new_science_rows("lno", new_lno_obs_dict, sci_dir_out) #write new lines to temp dir
-    # then read in old directory, merge new lines and output to new dir
-    replace_lines("lno", "science", 3223, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
-    
-    #rename new file to avoid copying over
-    csv_filepath = make_cop_path(new_lines_dir, "lno", "science")
-    csv_filepath2 = make_cop_path(new_lines_dir, "lno", "science_new")
-    os.rename(csv_filepath, csv_filepath2)
-    
-    
-    # add new subdomains
-    sci_dir_in = merged_dir #need to use updated science table
-    subd_dir_out = temp_dir_name
-    
-    new_subdomain_rows("lno", new_lno_obs_dict, sci_dir_in, subd_dir_out) #write new lines to temp dir
-    # then read in old directory, merge new lines and output to new dir
-    replace_lines("lno", "sub_domain", 3796, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
-    
-    #rename new file to avoid copying over
-    csv_filepath = make_cop_path(new_lines_dir, "lno", "sub_domain")
-    csv_filepath2 = make_cop_path(new_lines_dir, "lno", "sub_domain_new")
-    os.rename(csv_filepath, csv_filepath2)
-    
-    
-    
-    
-    """fullscans"""
         
-    # new fixed rows - already covered by previous normal obs
-    # new_fullscan_fixed_rows("lno", lno_fullscans, lno_centre_rows)
-    # replace_lines("lno", "fixed", 231, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
-    
-    # new stepping rows
-    stepping_dir_out = temp_dir_name
-    
-    new_fullscan_stepping_rows("lno", lno_fullscans, stepping_dir_out) #write new lines to temp dir
-    # then read in old directory, merge new lines and output to new dir
-    replace_lines("lno", "stepping", 28, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
-    
-    
-    
-    
-    
-    # new science rows for fullscans (requires stepping to be already updated)
-    stepping_dir_in = merged_dir #need to use updated stepping table
-    sci_dir_out = temp_dir_name
-    
-    existing_dir = merged_dir #use updated lno science table
-    
-    new_fullscan_science_rows("lno", lno_fullscans, stepping_dir_in, sci_dir_out) #write new lines to temp dir
-    # then read in old directory, merge new lines and output to new dir
-    replace_lines("lno", "science", 3455, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
-    
-
-
-    
-    
-    # subdomains are just single pointers to these rows
-    # however they may not be to the same rows in the subdomain and science tables
-    stepping_dir_in = merged_dir #need to use updated stepping table
-    sci_dir_in = merged_dir #need to use updated science table
-    subd_dir_out = temp_dir_name
-    
-    existing_dir = merged_dir #use updated lno science table
-    
-    new_subdomain_fullscan_rows("lno", stepping_dir_in, sci_dir_in, subd_dir_out) #write new lines to temp dir
-    # then read in old directory, merge new lines and output to new dir
-    replace_lines("lno", "sub_domain", 286, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
-    
-
-
-
-
-
-
-"""check all new LNO rows"""
-
-
-print("Checking for errors")
-
-cop_name = "stepping"
-path = make_cop_path(new_dir_name, "lno", cop_name)
-stepping_dict_list = read_cop_csv(path)
-
-cop_name = "science"
-channel = "lno"
-path = make_cop_path(new_dir_name, "lno", cop_name)
-sci_dict_list = read_cop_csv(path)
-
-cop_name = "sub_domain"
-channel = "lno"
-path = make_cop_path(new_dir_name, "lno", cop_name)
-subd_dict_list_all = read_cop_csv(path)
-
-subd_rows_to_check = list(range(284, 508)) + list(range(3794, 4095))
-# subd_rows_to_check = list(range(284, 305))
-
-sub_dict_list = [d for d in subd_dict_list_all if d["index"] in subd_rows_to_check]
-
-for sub_dict in sub_dict_list:#[0:10]:
-# sub_dict = sub_dict_list[0]
-    subd_parsed_dict = parse_subd_comment(sub_dict["comment"])
-    
-    if "orders" in subd_parsed_dict.keys(): #if normal obs
-        orders = subd_parsed_dict["orders"]
-        order_indices = [sub_dict["science_%i" %i] for i in range(1, 7) if sub_dict["science_%i" %i] > 0]
-        # print(sub_dict["comment"])
+        # SO patch: subdomain only
         
-        #check length
-        if len(orders) != len(order_indices):
-            print("Error: wrong length")
-            sys.exit()
+        sci_dir_in = old_dir_name
+        subd_dir_out = temp_dir_name
+        
+        new_subdomain_rows("so", new_so_obs_dict, sci_dir_in, subd_dir_out) #write new lines to temp dir
+        # then read in old directory, merge new lines and output to new dir
+        replace_lines("so", "sub_domain", 3204, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+        
+        
+        """LNO patch"""
             
-        n_orders = subd_parsed_dict["n_orders"]
+        """normal obs"""
+        
+        # new fixed rows
+        fixed_dir_out = temp_dir_name
+        
+        new_fixed_rows("lno", new_lno_obs_dict, lno_centre_rows, fixed_dir_out) #write new lines to temp dir
+        # then read in old directory, merge new lines and output to new dir
+        replace_lines("lno", "fixed", 140, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+        
+        
+        
+        # new science rows
+        sci_dir_out = temp_dir_name
+        
+        new_science_rows("lno", new_lno_obs_dict, sci_dir_out) #write new lines to temp dir
+        # then read in old directory, merge new lines and output to new dir
+        replace_lines("lno", "science", 3223, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+        
+        #rename new file to avoid copying over
+        csv_filepath = make_cop_path(new_lines_dir, "lno", "science")
+        csv_filepath2 = make_cop_path(new_lines_dir, "lno", "science_new")
+        os.rename(csv_filepath, csv_filepath2)
+        
+        
+        # add new subdomains
+        sci_dir_in = merged_dir #need to use updated science table
+        subd_dir_out = temp_dir_name
+        
+        new_subdomain_rows("lno", new_lno_obs_dict, sci_dir_in, subd_dir_out) #write new lines to temp dir
+        # then read in old directory, merge new lines and output to new dir
+        replace_lines("lno", "sub_domain", 3796, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+        
+        #rename new file to avoid copying over
+        csv_filepath = make_cop_path(new_lines_dir, "lno", "sub_domain")
+        csv_filepath2 = make_cop_path(new_lines_dir, "lno", "sub_domain_new")
+        os.rename(csv_filepath, csv_filepath2)
+        
+        
+        
+        
+        """fullscans"""
             
-        if n_orders != len(orders):
-            print("Error: wrong length")
-            print(n_orders, orders)
-            sys.exit()
+        # new fixed rows - already covered by previous normal obs
+        # new_fullscan_fixed_rows("lno", lno_fullscans, lno_centre_rows)
+        # replace_lines("lno", "fixed", 231, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+        
+        # new stepping rows
+        stepping_dir_out = temp_dir_name
+        
+        new_fullscan_stepping_rows("lno", lno_fullscans, stepping_dir_out) #write new lines to temp dir
+        # then read in old directory, merge new lines and output to new dir
+        replace_lines("lno", "stepping", 28, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+        
+        
+        
+        
+        
+        # new science rows for fullscans (requires stepping to be already updated)
+        stepping_dir_in = merged_dir #need to use updated stepping table
+        sci_dir_out = temp_dir_name
+        
+        existing_dir = merged_dir #use updated lno science table
+        
+        new_fullscan_science_rows("lno", lno_fullscans, stepping_dir_in, sci_dir_out) #write new lines to temp dir
+        # then read in old directory, merge new lines and output to new dir
+        replace_lines("lno", "science", 3455, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+        
+    
+    
+        
+        
+        # subdomains are just single pointers to these rows
+        # however they may not be to the same rows in the subdomain and science tables
+        stepping_dir_in = merged_dir #need to use updated stepping table
+        sci_dir_in = merged_dir #need to use updated science table
+        subd_dir_out = temp_dir_name
+        
+        existing_dir = merged_dir #use updated lno science table
+        
+        new_subdomain_fullscan_rows("lno", stepping_dir_in, sci_dir_in, subd_dir_out) #write new lines to temp dir
+        # then read in old directory, merge new lines and output to new dir
+        replace_lines("lno", "sub_domain", 286, existing_dir, new_lines_dir, merged_dir) #first line to start replacing rows (as given in notepad++)
+        
+    
+    
+    
+
+
+
+    """check all new LNO rows"""
+
+    print("Checking for errors")
+    
+    cop_name = "stepping"
+    path = make_cop_path(new_dir_name, "lno", cop_name)
+    stepping_dict_list = read_cop_csv(path)
+    
+    cop_name = "science"
+    channel = "lno"
+    path = make_cop_path(new_dir_name, "lno", cop_name)
+    sci_dict_list = read_cop_csv(path)
+    
+    cop_name = "sub_domain"
+    channel = "lno"
+    path = make_cop_path(new_dir_name, "lno", cop_name)
+    subd_dict_list_all = read_cop_csv(path)
+    
+    subd_rows_to_check = list(range(284, 508)) + list(range(3794, 4095))
+    # subd_rows_to_check = list(range(284, 305))
+    
+    sub_dict_list = [d for d in subd_dict_list_all if d["index"] in subd_rows_to_check]
+    
+    for sub_dict in sub_dict_list:#[0:10]:
+    # sub_dict = sub_dict_list[0]
+        subd_parsed_dict = parse_subd_comment(sub_dict["comment"])
+        
+        if "orders" in subd_parsed_dict.keys(): #if normal obs
+            orders = subd_parsed_dict["orders"]
+            order_indices = [sub_dict["science_%i" %i] for i in range(1, 7) if sub_dict["science_%i" %i] > 0]
+            # print(sub_dict["comment"])
             
-            
-        for i, order_index in enumerate(order_indices):
-            sci_dict = [d for d in sci_dict_list if d["index"] == order_index][0]
-            
-            order = sci_dict["aotfPointer"]
-            
-            if order != orders[i]:
-                print("Error: wrong order")
-                sys.exit()
-   
-            if sci_dict["steppingPointer"] != 0:
-                print("Error: stepping obs?")
-                sys.exit()
-            
-            binning = sci_dict["binningFactor"]
-            
-            n_rows = (24 / n_orders) * (binning + 1)
-            
-            if not n_rows.is_integer():
-                print("Error: not an integer")
+            #check length
+            if len(orders) != len(order_indices):
+                print("Error: wrong length")
                 sys.exit()
                 
-            if int(n_rows) != subd_parsed_dict["rows"]:
-                print("Error: number of rows")
-                sys.exit()
-            
-            et = exec_time(sci_dict["accumulationCount"], n_rows, n_orders, sci_dict["integrationTime"]/1000.)/1000.
-            
-            dt = subd_parsed_dict["rhythm"] - et
-            
-            if dt > 1.0 or dt < 0.0:
-                print("Error: timings wrong")
-                print(n_rows, dt)
+            n_orders = subd_parsed_dict["n_orders"]
+                
+            if n_orders != len(orders):
+                print("Error: wrong length")
+                print(n_orders, orders)
                 sys.exit()
                 
-            if sci_dict["comment"] not in sub_dict["comment"]:
+                
+            for i, order_index in enumerate(order_indices):
+                sci_dict = [d for d in sci_dict_list if d["index"] == order_index][0]
+                
+                order = sci_dict["aotfPointer"]
+                
+                if order != orders[i]:
+                    print("Error: wrong order")
+                    sys.exit()
+       
+                if sci_dict["steppingPointer"] != 0:
+                    print("Error: stepping obs?")
+                    sys.exit()
+                
+                binning = sci_dict["binningFactor"]
+                
+                n_rows = (24 / n_orders) * (binning + 1)
+                
+                if not n_rows.is_integer():
+                    print("Error: not an integer")
+                    sys.exit()
+                    
+                if int(n_rows) != subd_parsed_dict["rows"]:
+                    print("Error: number of rows")
+                    sys.exit()
+                
+                et = exec_time(sci_dict["accumulationCount"], n_rows, n_orders, sci_dict["integrationTime"]/1000.)/1000.
+                
+                dt = subd_parsed_dict["rhythm"] - et
+                
+                if dt > 1.0 or dt < 0.0:
+                    print("Error: timings wrong")
+                    print(n_rows, dt)
+                    sys.exit()
+                    
+                if sci_dict["comment"] not in sub_dict["comment"]:
+                    print("Error: comments don't match")
+                    sys.exit()
+                
+                # print(sci_dict["comment"])
+            
+        elif "start" in subd_parsed_dict.keys(): #if fullscan
+        
+            indices = [sub_dict["science_%i" %i] for i in range(2, 7) if sub_dict["science_%i" %i] != 0]
+            
+            if len(indices) > 0:
+                print("Error: non-zero indices found")
+        
+            fullscan_index = sub_dict["science_1"]
+        
+            sci_dict = [d for d in sci_dict_list if d["index"] == fullscan_index][0]
+            
+            stepping_dict = [d for d in stepping_dict_list if d["index"] == sci_dict["steppingPointer"]][0]
+            
+            # print(sub_dict["comment"])
+            
+            start = sci_dict["aotfPointer"]
+            step = stepping_dict["stepValue"]
+            steps = stepping_dict["stepCount"]
+            stop = start + steps * step
+    
+            n_orders = stepping_dict["stepSpeed"] + 1
+            binning = sci_dict["binningFactor"] + 1
+            
+            d_rows = int((24 / n_orders) * binning)
+            
+            # print(start, step, stop, d_rows, n_orders)
+            
+            sci_parsed_dict = parse_fullscan_science_comment(sci_dict["comment"])
+            rhythm = sci_parsed_dict["rhythm"]
+            et = sci_parsed_dict["exec_time"]
+            
+            text = "TARGETED_NADIR_FULLSCAN_FAST_%i-%i-%iORDERS_%iROWS_%iSECS_%iSUBDS -- EXECTIME=%iMS" %(start, step, stop, d_rows, rhythm, n_orders, et)
+            
+            if text != sub_dict["comment"]:
                 print("Error: comments don't match")
                 sys.exit()
             
-            # print(sci_dict["comment"])
-        
-    elif "start" in subd_parsed_dict.keys(): #if fullscan
+        # print("################")
     
-        indices = [sub_dict["science_%i" %i] for i in range(2, 7) if sub_dict["science_%i" %i] != 0]
-        
-        if len(indices) > 0:
-            print("Error: non-zero indices found")
     
-        fullscan_index = sub_dict["science_1"]
-    
-        sci_dict = [d for d in sci_dict_list if d["index"] == fullscan_index][0]
-        
-        stepping_dict = [d for d in stepping_dict_list if d["index"] == sci_dict["steppingPointer"]][0]
-        
-        # print(sub_dict["comment"])
-        
-        start = sci_dict["aotfPointer"]
-        step = stepping_dict["stepValue"]
-        steps = stepping_dict["stepCount"]
-        stop = start + steps * step
-
-        n_orders = stepping_dict["stepSpeed"] + 1
-        binning = sci_dict["binningFactor"] + 1
-        
-        d_rows = int((24 / n_orders) * binning)
-        
-        # print(start, step, stop, d_rows, n_orders)
-        
-        sci_parsed_dict = parse_fullscan_science_comment(sci_dict["comment"])
-        rhythm = sci_parsed_dict["rhythm"]
-        et = sci_parsed_dict["exec_time"]
-        
-        text = "TARGETED_NADIR_FULLSCAN_FAST_%i-%i-%iORDERS_%iROWS_%iSECS_%iSUBDS -- EXECTIME=%iMS" %(start, step, stop, d_rows, rhythm, n_orders, et)
-        
-        if text != sub_dict["comment"]:
-            print("Error: comments don't match")
-            sys.exit()
-        
-    # print("################")
-
-

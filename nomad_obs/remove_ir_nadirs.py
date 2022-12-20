@@ -20,14 +20,14 @@ from nomad_obs.regions_of_interest import nadirRegionsOfInterest
 from nomad_obs.io.orbit_plan_xlsx import getMtpPlanXlsx
 
 
-mtpNumber = 62
+mtpNumber = 63
 mtpConstants = getMtpConstants(mtpNumber)
 paths = setupPaths(mtpConstants)
 
 
 
 # ADJACENT_ORBITS_TO_CHECK_FOR_NADIRS = 3
-ADJACENT_ORBITS_TO_CHECK_FOR_NADIRS = 4
+ADJACENT_ORBITS_TO_CHECK_FOR_NADIRS = 5
 
 
 def get_adjacent_indices(indices, n_orbits):

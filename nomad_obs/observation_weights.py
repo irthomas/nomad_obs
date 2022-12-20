@@ -259,11 +259,16 @@ NADIR_H2O_REGION_WEIGHTS = [
 
 
 NADIR_SURFACE_REGION_WEIGHTS = [
-    ["H2O CO 2SUBD #1"] * 2,
-    ["Surface 3SUBD 02"] * 1,
-    ["Surface 3SUBD #3"] * 3, #PATCHED FOR MTP031+
+    ["H2O CO 2SUBD #1"] * 2, #168,189
+    ["Surface 3SUBD 02"] * 1, #191,194,196
+    ["Surface 3SUBD #3"] * 3, #189,194,196 PATCHED FOR MTP031+
 ]
-    
+
+NADIR_ICE_REGION_WEIGHTS = [
+    ["H2O CO 3SUBD #2"] * 1, #168,189,190
+]
+
+
 observationCycles = {
         "OccultationCycleNominal":["Occultation", [item for sublist in OCCULTATION_WEIGHTS for item in sublist]],
         "OccultationCycleMerged":["Occultation", [item for sublist in OCCULTATION_MERGED_WEIGHTS for item in sublist]],
@@ -279,6 +284,7 @@ observationCycles = {
         "NadirCycleCH4":["Nadir", [item for sublist in NADIR_CH4_REGION_WEIGHTS for item in sublist]],
         "NadirCycleH2O":["Nadir", [item for sublist in NADIR_H2O_REGION_WEIGHTS for item in sublist]],
         "NadirCycleSurface":["Nadir", [item for sublist in NADIR_SURFACE_REGION_WEIGHTS for item in sublist]],
+        "NadirCycleIce":["Nadir", [item for sublist in NADIR_ICE_REGION_WEIGHTS for item in sublist]],
 }
 
 
