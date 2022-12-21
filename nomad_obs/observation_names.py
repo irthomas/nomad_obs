@@ -58,6 +58,7 @@ occultationObservationDict = {
 "6SUBD CO2 #24":[[186, 190, 132, 148, 155, 165], 4, 1, 16, 0], #CO2+CO, priority Middle
 "6SUBD CO2 CO #25":[[156, 123, 118, 148, 186, 132], 4, 1, 16, 0], #iso higher alt, priority Middle
 "6SUBD CO2 CO #26":[[197, 200, 177, 145, 186, 132], 4, 1, 16, 0], #iso lower alt, priority Low: test
+"6SUBD CO2 CO #27":[[156, 123, 118, 148, 186, 132], 4, 1, 16, 0], #mistake - same as #25 above
 "6SUBD CO2 H2O #12":[[121, 132, 148, 156, 189, 165], 4, 1, 16, 0], #Proposed by Loic, priority High
 "6SUBD CO2 H2O #13":[[121, 132, 148, 156, 186, 165], 4, 1, 16, 0], #Proposed by Loic, priority High
 
