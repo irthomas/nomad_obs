@@ -4,7 +4,7 @@ Created on Wed Dec 22 17:07:07 2021
 
 @author: iant
 
-MAKE NEW LNO OBS DICT
+MAKE NEW LNO OBS DICT AND PRINT TO CONSOLE. FULLSCANS ARE NOT ADDED HERE
 
 
 
@@ -20,46 +20,59 @@ IT_RANGES = {200:np.arange(180., 241., 5.), 500:np.arange(480., 620., 5.)}
 #normal
 lno_normal_orders = {
     "Carbonates":[
-        {"orders":[174, 175, 176, 189, 190, 191], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[200, 500]},
-        {"orders":[174, 175, 176], "rhythms":[30, 60], "binning":[1], "it_ranges":[200]},
-        {"orders":[189, 190, 191], "rhythms":[30, 60], "binning":[1], "it_ranges":[200]},
+        {"orders":[174, 175, 176, 189, 190, 191], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[500]},
+        {"orders":[174, 175, 176, 189, 190, 191], "rhythms":[30, 60], "binning":[2], "it_ranges":[200]},
+        {"orders":[174, 175, 176], "rhythms":[30, 60], "binning":[0, 1], "it_ranges":[200]},
+        {"orders":[189, 190, 191], "rhythms":[30, 60], "binning":[0, 1], "it_ranges":[200]},
     ],
     "Phyllosilicates":[
-        {"orders":[189, 190, 191, 192, 193, 201], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[200, 500]},
+        {"orders":[189, 190, 191, 192, 193, 201], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[500]},
+        {"orders":[189, 190, 191, 192, 193, 201], "rhythms":[30, 60], "binning":[2], "it_ranges":[200]},
         {"orders":[190, 191, 192], "rhythms":[30, 60], "binning":[1], "it_ranges":[200]},
     ],
     "Carb Phyl":[
-        {"orders":[174, 175, 176, 190, 191, 192], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[200, 500]},
+        {"orders":[174, 175, 176, 190, 191, 192], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[500]},
+        {"orders":[174, 175, 176, 190, 191, 192], "rhythms":[30, 60], "binning":[2], "it_ranges":[200]},
     ],
     "Water Band":[
-        {"orders":[160, 162, 164, 166, 168, 170], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[200, 500]},
-        { "orders":[160, 163, 166, 169, 172, 175], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[200, 500]},
-        {"orders":[157, 160, 163, 166, 169, 172], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[200, 500]},
+        {"orders":[160, 162, 164, 166, 168, 170], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[500]},
+        {"orders":[160, 163, 166, 169, 172, 175], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[500]},
+        {"orders":[157, 160, 163, 166, 169, 172], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[500]},
+        {"orders":[154, 157, 160, 163, 166, 169], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[500]},
+
+        {"orders":[160, 162, 164, 166, 168, 170], "rhythms":[30, 60], "binning":[2], "it_ranges":[200]},
+        {"orders":[160, 163, 166, 169, 172, 175], "rhythms":[30, 60], "binning":[2], "it_ranges":[200]},
+        {"orders":[157, 160, 163, 166, 169, 172], "rhythms":[30, 60], "binning":[2], "it_ranges":[200]},
+        {"orders":[154, 157, 160, 163, 166, 169], "rhythms":[30, 60], "binning":[2], "it_ranges":[200]},
+
         {"orders":[163, 165, 167, 169], "rhythms":[30, 60], "binning":[1], "it_ranges":[200, 500]},
-        {"orders":[160, 165, 170], "rhythms":[30, 60], "binning":[1], "it_ranges":[200]},
-        {"orders":[163, 168, 173], "rhythms":[30, 60], "binning":[1], "it_ranges":[200]},
-        {"orders":[154, 157, 160, 163, 166, 169], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[200, 500]},
+        {"orders":[160, 165, 170], "rhythms":[30, 60], "binning":[0, 1], "it_ranges":[200]},
+        {"orders":[163, 168, 173], "rhythms":[30, 60], "binning":[0, 1], "it_ranges":[200]},
     ],
     "Water pyroxene":[
-        {"orders":[160, 163, 164, 172, 185, 191], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[200, 500]},
-        {"orders":[160, 163, 164, 172, 191, 192], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[200, 500]},
+        {"orders":[160, 163, 164, 172, 185, 191], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[500]},
+        {"orders":[160, 163, 164, 172, 191, 192], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[500]},
+
+        {"orders":[160, 163, 164, 172, 185, 191], "rhythms":[30, 60], "binning":[2], "it_ranges":[200]},
+        {"orders":[160, 163, 164, 172, 191, 192], "rhythms":[30, 60], "binning":[2], "it_ranges":[200]},
     ],
     "Hydration band":[
-        {"orders":[130, 147, 160],"rhythms":[30, 60], "binning":[1], "it_ranges":[200]},
-        {"orders":[130, 147, 165],"rhythms":[30, 60], "binning":[1], "it_ranges":[200]},
-        {"orders":[130, 148, 160],"rhythms":[30, 60], "binning":[1], "it_ranges":[200]},
-        {"orders":[130, 148, 165],"rhythms":[30, 60], "binning":[1], "it_ranges":[200]},
+        {"orders":[130, 147, 160],"rhythms":[30, 60], "binning":[0, 1], "it_ranges":[200]},
+        {"orders":[130, 147, 165],"rhythms":[30, 60], "binning":[0, 1], "it_ranges":[200]},
+        {"orders":[130, 148, 160],"rhythms":[30, 60], "binning":[0, 1], "it_ranges":[200]},
+        {"orders":[130, 148, 165],"rhythms":[30, 60], "binning":[0, 1], "it_ranges":[200]},
     ],
     "Hydrated minerals":[
-        {"orders":[148, 153, 158, 164, 170, 177], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[200, 500]},
+        {"orders":[148, 153, 158, 164, 170, 177], "rhythms":[30, 60], "binning":[1, 2], "it_ranges":[500]},
+        {"orders":[148, 153, 158, 164, 170, 177], "rhythms":[30, 60], "binning":[2], "it_ranges":[200]},
     ],
     "Hydrated single orders":[
-        {"orders":[148, 153, 164], "rhythms":[30, 60], "binning":[1], "it_ranges":[200, 500]},
-        {"orders":[158, 170, 164], "rhythms":[30, 60], "binning":[1], "it_ranges":[200, 500]},
-        {"orders":[148, 164, 177], "rhythms":[30, 60], "binning":[1], "it_ranges":[200, 500]},
-        {"orders":[148, 153, 164], "rhythms":[15], "binning":[1], "it_ranges":[500]},
-        {"orders":[158, 170, 164], "rhythms":[15], "binning":[1], "it_ranges":[500]},
-        {"orders":[148, 164, 177], "rhythms":[15], "binning":[1], "it_ranges":[500]},
+        {"orders":[148, 153, 164], "rhythms":[30, 60], "binning":[0, 1], "it_ranges":[200, 500]},
+        {"orders":[158, 170, 164], "rhythms":[30, 60], "binning":[0, 1], "it_ranges":[200, 500]},
+        {"orders":[148, 164, 177], "rhythms":[30, 60], "binning":[0, 1], "it_ranges":[200, 500]},
+        {"orders":[148, 153, 164], "rhythms":[15], "binning":[0, 1], "it_ranges":[500]},
+        {"orders":[158, 170, 164], "rhythms":[15], "binning":[0, 1], "it_ranges":[500]},
+        {"orders":[148, 164, 177], "rhythms":[15], "binning":[0, 1], "it_ranges":[500]},
     ],
 }
 

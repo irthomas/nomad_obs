@@ -26,7 +26,7 @@ OCCULTATION_WEIGHTS = [
     ["6SUBD CO2 #23"] * 4,
     ["6SUBD CO2 #24"] * 4,
     ["6SUBD CO2 CO #25"] * 4,
-    ["6SUBD CO2 CO #26"] * 2,
+    ["6SUBD CO2 CO #26"] * 1,
     ["6SUBD CO2 CO #27"] * 4,
     ["6SUBD CO2 H2O #12"] * 6,
     ["6SUBD CO2 H2O #13"] * 6,
