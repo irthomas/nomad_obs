@@ -21,7 +21,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 63
+mtpNumber = 65
 
 
 r"""
@@ -73,7 +73,7 @@ Other targets	          Normal priority
 
 *check OCM start/end times
 *compare column L (dayside start time) to start/end times in extracted_events/OCM_events.txt in the zip
-*if any clash with daysidenadir observations, change to orbit type 14 and remove observations from irDayside column
+*if any clash with dayside nadir observations, change to orbit type 14 and remove observations from irDayside column
 
 *if an OCM covers two daysides, check for ingress occultations on the nightside of the first OCM orbit
 *compare timings with nomad_ingress_events.txt
@@ -101,7 +101,7 @@ Other targets	          Normal priority
 *Add a few LNO-only limbs (type 8) when FOV in range if space is available (we have lots of LNO+UVIS limbs now)
     run check_when_mars_in_occ_fovs.py with correct MTP and then copy output into orbit plan -> choose some with LNO and UVIS
 
-*If there are occultation-free periods, change IR daysides to mainly Surface Ice observations e.g. Surface Ice 4SUBD 01
+*If there are occultation-free periods with low LSTs, change IR daysides to mainly Surface Ice observations e.g. Surface Ice 4SUBD 01
 
 
 *Use excel formula to check for incorrect orbit types 3 when no LNO obs:

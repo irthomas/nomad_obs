@@ -6,6 +6,9 @@ Created on Tue Dec  1 12:26:54 2020
 
 COPY COP ROWS TO SUMMARY FILES AND COMPARE NUMBER OF ENTRIES AND DATETIMES
 
+NOTE THAT THE FORMATTING IS NOT RETAINED BY OPENPXYL ANY MORE
+
+
 """
 
 import os
@@ -14,7 +17,7 @@ import os
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 
-mtpNumber = 63
+mtpNumber = 64
 
 #add the correct MTP info in obs_inputs
 from nomad_obs.mtp_inputs import getMtpConstants
@@ -58,7 +61,7 @@ cop_summary_dict = {
 }
 
 
-#loop through summary files
+# #loop through summary files
 for cop_row_name, dictionary_data in cop_summary_dict.items():
     
     print("Adding %s COP rows to xlsx" %dictionary_data["sheet_name"])
@@ -163,4 +166,40 @@ for cop_row_name, dictionary_data in cop_summary_dict.items():
 
 
 
+### testing colour detection ###
+# cop_row_name = "mtp%03i_ir_dayside_nadir.txt" %mtpNumber
+# dictionary_data = cop_summary_dict[cop_row_name]
+# summary_row_path = os.path.join(paths["SUMMARY_FILE_PATH"], dictionary_data["xlsx_filename"])
 
+
+
+# wb = load_workbook(summary_row_path, data_only=True)
+# sheets = wb.sheetnames
+# Sheet1 = wb[dictionary_data["sheet_name"]]
+
+
+# column_index = 0
+
+#add COP row data to summary file, one row at a time
+# for row_number in range(300):
+
+#     #get row colour
+#     rgb_or_theme = ""
+#     cell_colour_info = Sheet1.cell(row_number+1, dictionary_data["empty_column"]-1).fill.start_color
+#     if cell_colour_info.type == "rgb":
+#         rgb_or_theme = "rgb"
+#         color_in_hex = Sheet1.cell(row_number+1, dictionary_data["empty_column"]-1).fill.start_color.index
+#         if color_in_hex != "00000000":
+#             print(row_number, color_in_hex)
+
+#             # color_in_hex = "00000000"
+#             # fill_pattern = PatternFill(start_color=color_in_hex, end_color=color_in_hex, fill_type='solid')
+#             # Sheet1.cell(row_number+1, column_index+1).fill = fill_pattern
+
+
+#     else:
+#         rgb_or_theme = "theme"
+#         color_theme = Sheet1.cell(row_number+1, dictionary_data["empty_column"]-1).fill.start_color.theme
+#         print(color_theme)
+
+# wb.save(summary_row_path) 

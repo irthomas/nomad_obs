@@ -1,0 +1,7 @@
+TGO overlap time with MRO (UTC),Dayside nadir observation number,Thermal orbit number
+2023 MAR 19 19:39:00,15,15
+2023 MAR 24 19:33:00,76,76
+2023 MAR 29 13:33:00,134,134
+2023 APR 01 18:12:00,173,173
+2023 APR 06 10:15:00,230,230
+2023 APR 11 11:12:00,292,292

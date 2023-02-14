@@ -20,7 +20,7 @@ from nomad_obs.regions_of_interest import nadirRegionsOfInterest
 from nomad_obs.io.orbit_plan_xlsx import getMtpPlanXlsx
 
 
-mtpNumber = 63
+mtpNumber = 65
 mtpConstants = getMtpConstants(mtpNumber)
 paths = setupPaths(mtpConstants)
 
@@ -28,6 +28,17 @@ paths = setupPaths(mtpConstants)
 
 # ADJACENT_ORBITS_TO_CHECK_FOR_NADIRS = 3
 ADJACENT_ORBITS_TO_CHECK_FOR_NADIRS = 5
+
+REGIONS_TO_ALWAYS_RUN = [
+    "&daysideMatch:CERAUNIUS THOLUS", 
+    "&daysideMatch:ULYSSES THOLUS", 
+    "&daysideMatch:ELYSIUM MONS", 
+    "&daysideMatch:ARSIA MONS", 
+    "&daysideMatch:PAVONIS MONS", 
+    "&daysideMatch:ASCRAEUS MONS", 
+    "&daysideMatch:OLYMPUS MONS", 
+    
+]
 
 
 def get_adjacent_indices(indices, n_orbits):
@@ -71,9 +82,15 @@ region_comments = ["&daysideMatch:%s" %s[0] for s in nadirRegionsOfInterest]
 region_ratios = [s[2] for s in nadirRegionsOfInterest]
 
 for i, comment in enumerate(comments):
+    #loop through regions of interest, checking comment for matching names
     for region_comment, region_ratio in zip(region_comments, region_ratios):
+        #if found
         if region_comment in comment:
-            orbit_mask[i, 0] = region_ratio
+            #override to always run certain regions
+            if region_comment in REGIONS_TO_ALWAYS_RUN:
+                orbit_mask[i, 0] = 4
+            else:
+                orbit_mask[i, 0] = region_ratio
 
 
 
@@ -164,7 +181,7 @@ for i in range(0, n_orbits):
                 if orbit_mask[i+1, 1] == 1:
                     orbit_mask[i+1, 1] = 0
 
-#finally add all irLimbs, Phobos, Deimos as switched on
+#add all irLimbs, Phobos, Deimos as switched on
 for i in range(0, n_orbits):
     if orbit_mask[i, 0] == 3:
         orbit_mask[i, 1] = 1
@@ -175,6 +192,13 @@ for i in range(0, n_orbits):
                 orbit_mask[i-1, 1] = 0
             if orbit_mask[i+1, 1] == 1:
                 orbit_mask[i+1, 1] = 0
+
+
+#add all regions in REGIONS_TO_ALWAYS_RUN
+for i in range(0, n_orbits):
+    if orbit_mask[i, 0] == 4:
+        orbit_mask[i, 1] = 1
+
         
 
 #now overwrite irDaysides with new list

@@ -10,24 +10,31 @@ ALLOCATE WEIGHTS TO EACH OBSERVATION NAME FOR EACH OBSERVATION TYPE
 
 #observation name and weighting
 OCCULTATION_WEIGHTS = [
+    ["6SUBD CO2 CO #28"] * 10, #co isotopes and temperature
+    ["6SUBD CO2 CO #29"] * 10, #co isotopes and temperature
+
+    ["6SUBD Nominal #52"] * 8, #148 instead of 149
+    ["6SUBD Nominal #53"] * 8, #148 instead of 149
+
+    
 
     ["6SUBD CO2 H2O #11"] * 6,
-    ["6SUBD CO2 #12"] * 4,
-    ["6SUBD CO2 #13"] * 4,
+    ["6SUBD CO2 #12"] * 3,
+    ["6SUBD CO2 #13"] * 3,
     ["6SUBD CO2 H2O #14"] * 6,
     ["6SUBD CO2 H2O CO #15"] * 6,
-    ["6SUBD CO2 #16"] * 4, #Miguel
-    ["6SUBD CO2 #17"] * 4,
-    ["6SUBD CO2 #18"] * 2,
-    ["6SUBD CO2 #19"] * 4,
-    ["6SUBD CO2 #20"] * 4,
-    ["6SUBD CO2 #21"] * 2,
-    ["6SUBD CO2 #22"] * 4,
-    ["6SUBD CO2 #23"] * 4,
-    ["6SUBD CO2 #24"] * 4,
-    ["6SUBD CO2 CO #25"] * 4,
+    ["6SUBD CO2 #16"] * 3, #Miguel
+    ["6SUBD CO2 #17"] * 3,
+    ["6SUBD CO2 #18"] * 1,
+    ["6SUBD CO2 #19"] * 3,
+    ["6SUBD CO2 #20"] * 3,
+    ["6SUBD CO2 #21"] * 1,
+    ["6SUBD CO2 #22"] * 3,
+    ["6SUBD CO2 #23"] * 3,
+    ["6SUBD CO2 #24"] * 3,
+    ["6SUBD CO2 CO #25"] * 3,
     ["6SUBD CO2 CO #26"] * 1,
-    ["6SUBD CO2 CO #27"] * 4,
+    ["6SUBD CO2 CO #27"] * 3,
     ["6SUBD CO2 H2O #12"] * 6,
     ["6SUBD CO2 H2O #13"] * 6,
     ["6SUBD CO #1"] * 4, #Shohei
@@ -46,8 +53,8 @@ OCCULTATION_WEIGHTS = [
     ["6SUBD Nom CH4 #1"] * 4,
     ["6SUBD Nom CH4 #2"] * 4,
 
-    ["6SUBD Nominal #42"] * 8, #nominal + 129
-    ["6SUBD Nominal #45"] * 8, #nominal + 129
+    ["6SUBD Nominal #42"] * 4, #nominal + 129
+    ["6SUBD Nominal #45"] * 4, #nominal + 129
     ["6SUBD Nominal #48"] * 8, #nominal + 129
     ["6SUBD Nominal #51"] * 8, #nominal + 129
     ["6SUBD Nominal #11"] * 8, #nominal + 126/129
@@ -186,19 +193,19 @@ OCCULTATION_H2O_REGION_WEIGHTS = [
 #IN GENERAL, USE LESS CH4 ORDERS AS THESE ARE NORMALLY ADDED WHEN CROSSING OVER INTERESTING REGIONS
 NADIR_WEIGHTS = [
 
-    ["Nominal 6SUBD #2"] * 8, #WITH ORDER 189
-    ["Nominal 4SUBD #2"] * 8, #WITH ORDER 189
+    ["Nominal 6SUBD #2"] * 4, #WITH ORDER 189
+    ["Nominal 4SUBD #2"] * 4, #WITH ORDER 189
     ["H2O CO 2SUBD #1"] * 15, #WITH ORDER 189. BEST OBSERVATION
-    ["H2O CO 3SUBD #2"] * 15, #PATCHED FOR MTP031+
+    ["H2O CO 3SUBD #2"] * 15, #BEST OBSERVATION FOR WATER, CO AND ICE
     ["CH4 CO 2SUBD #3"] * 4, #PATCHED FOR MTP031+
     ["CH4 CO 2SUBD #4"] * 4, #PATCHED FOR MTP031+
     ["H2O 2SUBD 01"] * 5,
-    ["CH4 3SUBD 01"] * 4,
+    ["CH4 3SUBD 01"] * 2,
     ["Surface 3SUBD #3"] * 5,
 
-    ["Nominal 6SUBD 01"] * 2, #REDUCE, REPLACE WITH ORDER 189
-    ["Nominal 4SUBD 01"] * 2,
-    ["Nominal 3SUBD 01"] * 2,
+    ["Nominal 6SUBD 01"] * 1, #REDUCE, REPLACE WITH ORDER 189
+    ["Nominal 4SUBD 01"] * 1,
+    ["Nominal 3SUBD 01"] * 1,
 
 
     ["HDO H2O 2SUBD 02"] * 2,
@@ -211,10 +218,14 @@ NADIR_WEIGHTS = [
     ["Ice H2O 2SUBD #1"] * 4,
     ["Ice CO 2SUBD #2"] * 4, #PATCHED FOR MTP031+
 
-    ["Surface Ice 4SUBD 01"] * 4, #increase when beta angle high
-    ["Surface Ice 6SUBD 01"] * 4,
-    ["Surface Ice 4SUBD 02"] * 4,
-    ["Surface Ice 3SUBD 01"] * 4,
+    ["Surface Ice 4SUBD 01"] * 3, #increase in morning
+    ["Surface Ice 6SUBD 01"] * 3,
+    ["Surface Ice 4SUBD 02"] * 3,
+    ["Surface Ice 3SUBD 01"] * 3,
+
+    ["Surface Ice 3SUBD #2"] * 3, #Frederic, increase in morning
+    ["Surface Ice 3SUBD #3"] * 3, #Frederic, increase in morning
+    ["Surface Ice 2SUBD #1"] * 3, #Frederic, test, increase in morning
 
 
      
@@ -265,7 +276,8 @@ NADIR_SURFACE_REGION_WEIGHTS = [
 ]
 
 NADIR_ICE_REGION_WEIGHTS = [
-    ["H2O CO 3SUBD #2"] * 1, #168,189,190
+    # ["H2O CO 3SUBD #2"] * 1, #168,189,190
+    ["Surface Ice 2SUBD #1"] * 1, #132, 133 FOR MTP065 ONLY #TODO: CHANGE THIS BACK
 ]
 
 

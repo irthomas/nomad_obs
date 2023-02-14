@@ -37,7 +37,8 @@ def regionsOfInterestNadir(orbit_list, regions_of_interest, observationCycles, s
             for regionOfInterest in regions_of_interest:
                 matches = np.logical_and(
                         np.logical_and((regionOfInterest[4] < lats), (regionOfInterest[5] > lats)),
-                        np.logical_and((regionOfInterest[6] < lons), (regionOfInterest[7] > lons))
+                        np.logical_and((regionOfInterest[6] < lons), (regionOfInterest[7] > lons)),
+                        np.logical_and((regionOfInterest[8] < lst), (regionOfInterest[9] > lst))
                         )
                 if np.any(matches):
                     i = int(np.mean(np.where(matches)[0])) #find centre index

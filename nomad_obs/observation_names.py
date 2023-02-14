@@ -41,6 +41,22 @@ __contact__   = "ian . thomas AT aeronomie . be"
 occultationObservationDict = {
         
     
+#new MTP064+
+"6SUBD CO2 CO #28":[[186, 185, 148, 132, 190, 155], 4, 1, 16, 0], #co isotopes and temperature, priority high
+"6SUBD CO2 CO #29":[[186, 185, 148, 132, 140, 142], 4, 1, 16, 0], #co isotopes and temperature, priority high
+# "6SUBD CO2 CO #30":[[186, 185, 148, 132, 140, 165], 4, 1, 16, 0], #co isotopes and temperature, priority low (backup)
+# "6SUBD CO2 CO #31":[[186, 185, 148, 132, 142, 165], 4, 1, 16, 0], #co isotopes and temperature, priority low (backup)
+# "6SUBD CO2 CO #32":[[186, 185, 148, 132, 140, 155], 4, 1, 16, 0], #co isotopes and temperature, priority low (backup)
+# "6SUBD CO2 CO #33":[[186, 185, 148, 132, 142, 155], 4, 1, 16, 0], #co isotopes and temperature, priority low (backup)
+"6SUBD Nominal #52":[[121, 134, 169, 129, 148, 165], 4, 1, 16, 0], #148 instead of 149, priority high
+"6SUBD Nominal #53":[[121, 136, 169, 129, 148, 165], 4, 1, 16, 0], #148 instead of 149, priority high
+
+"6SUBD Nom 4 line #1":[[121, 134, 169, 129, 148, 165], 4, 1, 4, 0], #148 instead of 149, test with 4 lines
+"6SUBD Nom 4 line #2":[[121, 136, 169, 129, 148, 165], 4, 1, 4, 0], #148 instead of 149, test with 4 lines
+
+
+
+    
 #new MTP051+
 "6SUBD CO2 H2O #11":[[121, 132, 148, 156, 160, 165], 4, 1, 16, 0], #Proposed by Loic, priority High
 "6SUBD CO2 #12":[[156, 132, 118, 140, 154, 158], 4, 1, 16, 0], #Proposed by Loic, priority Middle
@@ -240,7 +256,13 @@ occultationObservationDict = {
 
 #name:[[orders], int time, rhythm, lines, channel (not used)]
 nadirObservationDict = {
-        
+
+#new MTP064+
+"Surface Ice 3SUBD #2":[[189, 132, 133], 205, 15, 144, 1],
+"Surface Ice 3SUBD #3":[[193, 132, 133], 205, 15, 144, 1],
+"Surface Ice 2SUBD #1":[[132, 133], 200, 15, 144, 1],
+
+
 "Nominal 6SUBD 01":[[149,134,168,119,190,196], 220, 15, 144, 1],
 "Nominal 4SUBD 01":[[168,134,121,190], 195, 15, 144, 1],
 "Nominal 3SUBD 01":[[167,169,190], 205, 15, 144, 1],
