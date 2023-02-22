@@ -17,7 +17,7 @@ import os
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 
-mtpNumber = 64
+mtpNumber = 65
 
 #add the correct MTP info in obs_inputs
 from nomad_obs.mtp_inputs import getMtpConstants
