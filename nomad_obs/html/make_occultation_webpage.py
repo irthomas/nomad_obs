@@ -11,15 +11,14 @@ import matplotlib.pyplot as plt
 
 from nomad_obs.config.constants import SO_TRANSITION_ALTITUDE, ACCEPTABLE_MTP_OCCULTATION_TIME_ERROR
 from nomad_obs.config.constants import FIG_X, FIG_Y
-from nomad_obs.config.paths import SQLITE_PATH, OFFLINE
+from nomad_obs.config.paths import SQLITE_PATH
 
 from nomad_obs.html.make_webpage_table import writeHtmlTable
 from nomad_obs.io.write_outputs import writeOutputTxt
 from nomad_obs.planning.spice_functions import et2utc
 
-from nomad_obs.sql.obs_database import obsDB
 from nomad_obs.sql.obs_database_sqlite import connect_db, convert_table_datetimes, insert_rows, close_db
-from nomad_obs.sql.db_fields import occultation_table_fields, occultation_table_fields_sqlite
+from nomad_obs.sql.db_fields import occultation_table_fields_sqlite
 
 from nomad_obs.sql.new_sqlite_db import new_sqlite_db
 
@@ -171,28 +170,17 @@ def writeOccultationWebpage(orbit_list, mtpConstants, paths, make_figures=True):
 
 
 
-    if OFFLINE:
-        #save to local sqlite db
+    #save to local sqlite db
 
-        if not os.path.exists(SQLITE_PATH):
-            print("Sqlite database doesn't exist: creating new file")
-            
-            new_sqlite_db()
+    if not os.path.exists(SQLITE_PATH):
+        print("Sqlite database doesn't exist: creating new file")
         
-        con = connect_db(SQLITE_PATH)
-        
-        
-        table_rows_datetime = convert_table_datetimes(occultation_table_fields_sqlite, sql_table_rows)
-        insert_rows(con, "occultations", occultation_table_fields_sqlite, table_rows_datetime, check_duplicates=True, duplicate_columns=[4, 6])
-        close_db(con)
-        
-    else:
-        db_obj = obsDB(paths)
-#       db_obj.drop_table("nomad_occultations")
-#       db_obj.new_table("nomad_occultations", table_fields)
-        table_rows_datetime = db_obj.convert_table_datetimes(occultation_table_fields, sql_table_rows)
-#        db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime)
-#        db_obj.insert_rows("nomad_occultations", table_fields, table_rows_datetime)
-        db_obj.insert_rows("nomad_occultations", occultation_table_fields, table_rows_datetime, check_duplicates=True, duplicate_columns=[3, 5])
-        db_obj.close()
+        new_sqlite_db()
     
+    con = connect_db(SQLITE_PATH)
+    
+    
+    table_rows_datetime = convert_table_datetimes(occultation_table_fields_sqlite, sql_table_rows)
+    insert_rows(con, "occultations", occultation_table_fields_sqlite, table_rows_datetime, check_duplicates=True, duplicate_columns=[4, 6])
+    close_db(con)
+        

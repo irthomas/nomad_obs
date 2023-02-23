@@ -20,10 +20,12 @@ from nomad_obs.regions_of_interest import nadirRegionsOfInterest
 from nomad_obs.io.orbit_plan_xlsx import getMtpPlanXlsx
 
 
-mtpNumber = 65
+mtpNumber = 66
 mtpConstants = getMtpConstants(mtpNumber)
 paths = setupPaths(mtpConstants)
 
+
+forbidden_dayside_orbits = mtpConstants["forbidden_dayside_orbits"]
 
 
 # ADJACENT_ORBITS_TO_CHECK_FOR_NADIRS = 3
@@ -113,6 +115,7 @@ indices_deimos = [i for i,s in enumerate(comments) if "&nomadDeimos" in s]
 #also add nomad cals - don't want to run nadirs on adjacent orbits
 indices_nomad_cals = [i for i,s in enumerate(comments) if "&nomadSolarCalibration" in s]
 
+indices_forbidden = [i-1 for i in forbidden_dayside_orbits]
 
 indices_dict = {
     "ocm":[i for i,s in enumerate(comments) if "&possibleOCM" in s],
@@ -134,6 +137,8 @@ indices_off = sorted(indices_off)
 
 #set orbit masks to -1 (not allowed)
 orbit_mask[indices_off, 0] = -1
+
+orbit_mask[indices_forbidden, 0] = -1
 
 
 
@@ -226,7 +231,7 @@ Sheet1 = wb["Sheet1"]
 
 row_number = 0
 
-for nadir in nadirs:
+for i, nadir in enumerate(nadirs):
     #copy to cell
     Sheet1.cell(row_number+2, 7+1).value = nadir #add 2, one for header, one for 1-indexing
     
@@ -241,6 +246,16 @@ for nadir in nadirs:
             Sheet1.cell(row_number+2, 0+1).value = 3
     row_number += 1
 
+    #if dayside nadir not allowed
+    if i in indices_forbidden:
+        
+        #if orbit type 3, then set to 14
+        if Sheet1.cell(row_number+1, 0+1).value in [3]:
+            Sheet1.cell(row_number+1, 0+1).value = 14
+        #if dayside, remove
+        if Sheet1.cell(row_number+1, 8+1).value == "uvisDayside":
+            Sheet1.cell(row_number+1, 8+1).value = ""
+        
 
 #save and close file
 wb.save(dest) 

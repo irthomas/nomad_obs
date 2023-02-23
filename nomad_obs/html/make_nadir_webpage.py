@@ -12,14 +12,12 @@ import matplotlib.pyplot as plt
 
 from nomad_obs.config.constants import ACCEPTABLE_MTP_NADIR_TIME_ERROR
 from nomad_obs.config.constants import FIG_X, FIG_Y
-from nomad_obs.config.paths import SQLITE_PATH, OFFLINE
+from nomad_obs.config.paths import SQLITE_PATH
 
 from nomad_obs.html.make_webpage_table import writeHtmlTable
 from nomad_obs.io.write_outputs import writeOutputTxt
 from nomad_obs.planning.spice_functions import et2utc
-from nomad_obs.sql.obs_database import obsDB
 from nomad_obs.sql.obs_database_sqlite import connect_db, convert_table_datetimes, insert_rows, close_db
-from nomad_obs.sql.db_fields import nadir_table_fields
 
 
 
@@ -161,23 +159,11 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths, make_figures=True):
 
 
     """write nadir data to sql database"""
-    if OFFLINE:
-        from nomad_obs.sql.db_fields import nadir_table_fields_sqlite
-        #save to local sqlite db
-        con = connect_db(SQLITE_PATH)
-        
-        sql_table_rows_datetime = convert_table_datetimes(nadir_table_fields_sqlite, sql_table_rows)
-        insert_rows(con, "nadirs", nadir_table_fields_sqlite, sql_table_rows_datetime, check_duplicates=True, duplicate_columns=[3, 4, 5])
-        close_db(con)
+    from nomad_obs.sql.db_fields import nadir_table_fields_sqlite
+    #save to local sqlite db
+    con = connect_db(SQLITE_PATH)
+    
+    sql_table_rows_datetime = convert_table_datetimes(nadir_table_fields_sqlite, sql_table_rows)
+    insert_rows(con, "nadirs", nadir_table_fields_sqlite, sql_table_rows_datetime, check_duplicates=True, duplicate_columns=[3, 4, 5])
+    close_db(con)
      
-    else:
-        db_obj = obsDB(paths)
-#       db_obj.drop_table("nomad_nadirs")
-#       db_obj.new_table("nomad_nadirs", table_fields)
-        sql_table_rows_datetime = db_obj.convert_table_datetimes(nadir_table_fields, sql_table_rows)
-        db_obj.insert_rows("nomad_nadirs", nadir_table_fields, sql_table_rows_datetime, check_duplicates=True, duplicate_columns=[2, 3, 4])
-#       table = db_obj.read_table("nomad_nadirs")
-        db_obj.close()
-
-
-

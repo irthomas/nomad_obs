@@ -8,8 +8,8 @@ Created on Mon Apr 27 12:23:44 2020
 import os
 import sys
 import xlsxwriter
-import xlrd
-
+# import xlrd
+from openpyxl import load_workbook
 
 from nomad_obs.other.generic_functions import stop
 from nomad_obs.config.paths import BASE_DIRECTORY
@@ -90,25 +90,29 @@ def getMtpPlanXlsx(mtpConstants, paths, version):
         sys.exit()
     
     #if plan found, open it and list contents
-    with xlrd.open_workbook(workbookPath) as workbook:
-        worksheet = workbook.sheet_by_index(0)
+    workbook = load_workbook(workbookPath, data_only=True)
+    worksheet = workbook["Sheet1"]
         
-        mtp_plan_list = []
-        mtpPlanColumns = ["orbitType", "irIngressHigh", "irIngressLow", "uvisIngress", "irEgressHigh", "irEgressLow", "uvisEgress", "irDayside", \
-                          "uvisDayside", "irNightside", "uvisNightside", "night2dayTerminator","comment"]
-        for row_index in range(worksheet.nrows):
-            if row_index > 0:
-                row = worksheet.row(row_index)
-                cells = {}
-                for column_index in range(len(mtpPlanColumns)):
-                    cell_obj = row[column_index]
-                    if column_index == 0:
-                        cell = int(cell_obj.value)
-                    else:
-                        cell = str(cell_obj.value)
+    mtp_plan_list = []
+    mtpPlanColumns = ["orbitType", "irIngressHigh", "irIngressLow", "uvisIngress", "irEgressHigh", "irEgressLow", "uvisEgress", "irDayside", \
+                      "uvisDayside", "irNightside", "uvisNightside", "night2dayTerminator","comment"]
+    for row_index in range(1000):
+        if row_index > 0:
+            
+            if not worksheet.cell(row_index+1, 0+1).value:
+                break
+            
+            cells = {}
+            for column_index in range(len(mtpPlanColumns)):
+                cell = worksheet.cell(row_index+1, column_index+1).value
+                
+                if cell:
                     cells[mtpPlanColumns[column_index]] = cell
-                mtp_plan_list.append(cells)
-        
+                else:
+                    cells[mtpPlanColumns[column_index]] = ""
+                
+            mtp_plan_list.append(cells)
+    
     return mtp_plan_list
 
 

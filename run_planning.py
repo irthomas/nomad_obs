@@ -65,15 +65,12 @@ Meridiani Sulfates	      Normal priority
 Mawrth Vallis	          Normal priority
 Other targets	          Normal priority
 
-*note that many daysides directly before/after solar calibrations and Phobos/Deimos pointings are not allowed - these should be removed
+*forbidden daysides will also be removed, but this should be checked
+*some OCMs will be incorrect - either add incorrectly removed or remove those that should not be there
 
 *The new generic orbit plan nomad_mtp0xx_plan_generic.xlsx will be automatically copied to orbit_plans\mtp0xx\
 *The orbit plan in the root directory can be deleted
 
-
-*check OCM start/end times
-*compare column L (dayside start time) to start/end times in extracted_events/OCM_events.txt in the zip
-*if any clash with dayside nadir observations, change to orbit type 14 and remove observations from irDayside column
 
 *if an OCM covers two daysides, check for ingress occultations on the nightside of the first OCM orbit
 *compare timings with nomad_ingress_events.txt
@@ -114,21 +111,22 @@ Other targets	          Normal priority
 
 
 *Then run run_planning.py again to finish planning
-    Possible errors: occultation just before (in same orbit as) OCM slot - check timings in nomad_ingress_events.txt (or grazing)
-    Change to orbit type 1 (or 5) and add ingress observation name manually
+    Possible errors: occultation just before (in same orbit as) OCM slot or special pointing - check timings in nomad_ingress_events.txt (or grazing)
+    Change to orbit type 1 (or 5) and add ingress observation name manually e.g. irIngress, irIngress, uvisIngress
     
     
 *Send nomad_mtp0xx_plan_generic.xlsx, nomad_mtp0xx_plan.csv and nomad_mtp0xx_lno_orbits.txt to nomad.iops
 
-
+###
+Wait until Ops team sends summary files
 
 ###
-*Run summary files are available
+*When summary files are available:
 
 *Add Phobos Deimos COP rows manually (copy file from a previous MTP and update from spreadsheet)
 *Add calibration COP rows manually (copy file from a previous MTP and update from spreadsheet)
 
-*Place summary files xlsx files in summar files directory and run check_cop_rows_in_summary_files.py
+*Place summary files xlsx files in summary files directory and run check_cop_rows_in_summary_files.py
 *Open NOMAD_dayside_nadir_summary.xlsx and check coloured rows are filled with -1s
 
 
