@@ -9,7 +9,7 @@ SOC_JOINT_OBSERVATION_NAMES = {
     "NOM_02":["6SUBD Nominal #1", "6SUBD Nominal #2"],
     "NOM_03":["6SUBD Nominal #3", "6SUBD Nominal #42", "6SUBD Nominal #45", "6SUBD Nominal #48", "6SUBD Nominal #51", "6SUBD Nominal #11", \
               "6SUBD Nominal #12", "6SUBD CO2 H2O #11", "6SUBD CO2 H2O #14", "6SUBD CO2 H2O CO #15", "6SUBD CO2 CO #25", "6SUBD CO2 CO #26", \
-              "6SUBD CO2 CO #27", "6SUBD CO2 H2O #12", "6SUBD CO2 H2O #13"],
+              "6SUBD CO2 CO #27", "6SUBD CO2 H2O #12", "6SUBD CO2 H2O #13", "6SUBD Nominal #53", "6SUBD Nominal #52"],
 
 
     "CO_001":["6SUBD Nom CO #1", "6SUBD Nom CO #2", "6SUBD Nom CO #3", "6SUBD Nom CO #4", "6SUBD Nom CO #5"],

@@ -517,27 +517,31 @@ def getMtpConstants(mtpNumber):
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 67:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2023-05-13T14:27:55Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2023-06-10T13:02:30Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [37, 45, 63, 64, 68, 69, 85, 86, 88, 89, 171, 254, 256, 257, 262, 268] #input these from the email
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 68:
         mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 69:
         mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 70:
         mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 

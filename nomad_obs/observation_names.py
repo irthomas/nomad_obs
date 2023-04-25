@@ -19,6 +19,9 @@ Created on Wed Oct 18 13:56:09 2017
         Miguel: 121/148/149/155/164/165
         Loic: add 132 to nominal for low altitude CO2 with 134 and 136
         Loic: 149 can be swapped for 147/148/149
+        
+        luca: 3 order LNO ice 193+168+189/190
+        Check online spreadsheet
 
 """
 
@@ -301,7 +304,8 @@ nadirObservationDict = {
 "Surface Ice 4SUBD 8S 02":[[199, 189, 188, 187], 220, 8, 144, 1],
 "Surface Ice 3SUBD 8S 01":[[199, 194, 188], 180, 8, 144, 1],
 
-"Surface Ice 4SUBD 01":[[199, 194, 193, 187], 195, 15, 144, 1],
+"Surface Ice 4SUBD 01":[[199, 194, 193, 187], 195, 15, 144, 1], #MTP010+ test when lst is low
+
 "Surface Ice 6SUBD 01":[[199, 198, 194, 193, 187, 186], 220, 15, 144, 1], #ERROR IN COP TABLES BEFORE MTP021
 "Surface Ice 4SUBD 02":[[199, 189, 188, 187], 195, 15, 144, 1],
 "Surface Ice 3SUBD 01":[[199, 194, 188], 205, 15, 144, 1],
@@ -311,18 +315,19 @@ nadirObservationDict = {
 "Surface Ice 2SUBD 4S 03":[[193, 194], 205, 4, 144, 1],
 "Surface Ice 2SUBD 4S 04":[[199, 187], 205, 4, 144, 1],
 
-#F Schmidt order 193 + something else - these are run anyway
+#F Schmidt order 193 + something else - these are run as part of normal obs
 "Ice CH4 2SUBD #1":[[193,136], 200, 15, 144, 1],
 "Ice H2O 2SUBD #1":[[193,168], 200, 15, 144, 1],
 "Ice CO 2SUBD #1":[[193,190], 200, 15, 144, 1],
+
 
 "Surface 3SUBD 02":[[191,194,196], 205, 15, 144, 1], #USE FOR F.ALTIERI NADIR TARGETS MTP010-030
 
 
 
 #More 189 orders for CO
-"H2O CO 3SUBD #2":[[168,189,190], 205, 15, 144, 1], #MTP031+
-"H2O CO 2SUBD #1":[[168,189], 200, 15, 144, 1], #GOOD
+"H2O CO 3SUBD #2":[[168,189,190], 205, 15, 144, 1], #MTP031+ BEST OBS ATMOS AND SURFACE
+"H2O CO 2SUBD #1":[[168,189], 200, 15, 144, 1], #BEST OBSERVATION ATMOS
 "CH4 CO 2SUBD #3":[[189,136], 200, 15, 144, 1], #MTP031+
 "CH4 CO 2SUBD #4":[[189,134], 200, 15, 144, 1], #MTP031+
 "Surface 3SUBD #3":[[189,194,196], 205, 15, 144, 1], #MTP031+. USE FOR F.ALTIERI NADIR TARGETS MTP010+ (NOW WITH 189)

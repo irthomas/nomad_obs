@@ -21,7 +21,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 66
+mtpNumber = 67
 
 
 r"""
@@ -43,10 +43,9 @@ summary_files\mtp0xx\kickoff\NOMAD_grazing_solar_occulations_summary.txt (if pre
 summary_files\mtp0xx\MARS_IN_LNO_OCC_FOV.txt
 summary_files\mtp0xx\MARS_IN_UVIS_OCC_FOV.txt
 
-summary_files\mtp0xx\OCM_events.txt
 
 
-*Add start/end times to nomad_obs/mtp_inputs.py
+*Add start/end times, COP table version, and list of forbidden dayside nadir orbits, to nomad_obs/mtp_inputs.py
 *Then run run_planning.py
 
 *Then run remove_ir_nadirs.py
@@ -66,7 +65,6 @@ Mawrth Vallis	          Normal priority
 Other targets	          Normal priority
 
 *forbidden daysides will also be removed, but this should be checked
-*some OCMs will be incorrect - either add incorrectly removed or remove those that should not be there
 
 *The new generic orbit plan nomad_mtp0xx_plan_generic.xlsx will be automatically copied to orbit_plans\mtp0xx\
 *The orbit plan in the root directory can be deleted

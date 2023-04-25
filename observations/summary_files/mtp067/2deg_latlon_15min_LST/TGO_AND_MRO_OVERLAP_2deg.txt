@@ -1,0 +1,5 @@
+MRO time overlap (UTC),MRO subSC lat (deg),MRO subSC lon (deg),MRO S/C altitude (km),MRO LST (h),MRO Incidence angle (deg),MRO Emission angle (deg),MRO Phase angle (deg),TGO time overlap (UTC),UVIS nadir LOS surface intercept lat (deg),UVIS nadir LOS surface intercept lon (deg),TGO S/C altitude (km),UVIS nadir LOS surface intercept LST (h),UVIS nadir LOS surface intercept Incidence angle (deg),UVIS nadir LOS surface intercept Emission angle (deg),UVIS nadir LOS surface intercept Phase angle (deg)
+2023 MAY 13 12:27:00,73.7379,99.6055,314.0379,14.6647,55.7742,1.7243e-14,55.7742,2023 MAY 13 12:18:00,74.3339,100.5149,434.0949,14.5792,55.9449,0.13151,55.9421
+2023 MAY 24 21:30:00,75.8117,71.8877,313.725,14.6053,56.1472,9.5747e-15,56.1472,2023 MAY 24 21:30:00,75.7119,70.7293,433.6119,14.5281,55.8814,0.13266,55.9135
+2023 MAY 29 09:57:00,72.9714,-69.2941,313.9255,14.7581,54.3263,1.4246e-14,54.3263,2023 MAY 29 09:36:00,74.8789,-67.3306,434.4693,14.5483,55.0199,0.20186,55.1709
+2023 JUN 09 22:39:00,59.9782,-144.5716,307.6944,15.075,47.8507,2.5642e-14,47.8507,2023 JUN 09 22:48:00,60.0804,-145.9075,427.5301,15.1319,48.273,1.9362,50.188
