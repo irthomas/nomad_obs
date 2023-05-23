@@ -21,7 +21,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 67
+mtpNumber = 68
 
 
 r"""
@@ -43,6 +43,7 @@ summary_files\mtp0xx\kickoff\NOMAD_grazing_solar_occulations_summary.txt (if pre
 summary_files\mtp0xx\MARS_IN_LNO_OCC_FOV.txt
 summary_files\mtp0xx\MARS_IN_UVIS_OCC_FOV.txt
 
+summary_files\mtp0xx\roi_flyovers_nightside-filtered.txt
 
 
 *Add start/end times, COP table version, and list of forbidden dayside nadir orbits, to nomad_obs/mtp_inputs.py
@@ -90,10 +91,15 @@ Other targets	          Normal priority
 
 
 
+*If requested by Liege team: add 2 UVIS nightsides from list of orbits in roi_flyovers_nightside-filtered.txt 
+    These must not clash with other observations e.g. solar occultations or high priority LNO nadirs 
+    (UVIS can run night and day on same orbit).
+    
 
-*Add a few LNO nightsides (type 7) if space is available -> less critical if nightside limbs already present
+*\\superseded by request above: Add a few LNO nightsides (type 7) if space is available -> less critical if nightside limbs already present\\
 
-*Add a few LNO-only limbs (type 8) when FOV in range if space is available (we have lots of LNO+UVIS limbs now)
+    
+*Optional: Add a few LNO-only limbs (type 8) when FOV in range if space is available (we have lots of LNO+UVIS limbs now)
     run check_when_mars_in_occ_fovs.py with correct MTP and then copy output into orbit plan -> choose some with LNO and UVIS
 
 *If there are occultation-free periods with low LSTs, change IR daysides to mainly Surface Ice observations e.g. Surface Ice 4SUBD 01
@@ -102,6 +108,7 @@ Other targets	          Normal priority
 *Use excel formula to check for incorrect orbit types 3 when no LNO obs:
     copy formula into draft orbit plan cell N2 and then drag down the column
     =IF(OR(AND(A2=3,H2=""),AND(A2=14,NOT(H2=""))), 1, 0)
+    Highlight the column and turn on conditional formatting to help find incorrect orbit types (all values=0 when correct)
     
 *Then delete everything from column N onwards
     
@@ -110,7 +117,7 @@ Other targets	          Normal priority
 
 *Then run run_planning.py again to finish planning
     Possible errors: occultation just before (in same orbit as) OCM slot or special pointing - check timings in nomad_ingress_events.txt (or grazing)
-    Change to orbit type 1 (or 5) and add ingress observation name manually e.g. irIngress, irIngress, uvisIngress
+    Change to orbit type 1 (or 5 if merged/grazing) and add ingress observation name manually e.g. irIngress, irIngress, uvisIngress
     
     
 *Send nomad_mtp0xx_plan_generic.xlsx, nomad_mtp0xx_plan.csv and nomad_mtp0xx_lno_orbits.txt to nomad.iops
@@ -122,7 +129,7 @@ Wait until Ops team sends summary files
 *When summary files are available:
 
 *Add Phobos Deimos COP rows manually (copy file from a previous MTP and update from spreadsheet)
-*Add calibration COP rows manually (copy file from a previous MTP and update from spreadsheet)
+*Add calibration COP rows manually (copy file from a previous MTP and update from sheet)
 
 *Place summary files xlsx files in summary files directory and run check_cop_rows_in_summary_files.py
 *Open NOMAD_dayside_nadir_summary.xlsx and check coloured rows are filled with -1s
@@ -294,15 +301,15 @@ if True:
     
     #NEW WEBPAGES ARE UPDATED AUTOMATICALLY IN THE LOCAL OBS_DIRECTORY
     
-    """only run step5 when final COP rows are delivered. Must be at BIRA or on linux system.
-    Note that chuck/crunch don't have access to website directory so output is written
-    to a temporary directory. Transfer must be done manually periodically"""
-    if not OFFLINE:
-        printStatement("Copying web pages to aeronomie dev website")
-        copyWebpagesToDevSite(paths, devPaths)
-        printStatement("Done!")
-    else:
-        printStatement("Warning: working offline, dev website will not be updated")
+    # """only run step5 when final COP rows are delivered. Must be at BIRA or on linux system.
+    # Note that chuck/crunch don't have access to website directory so output is written
+    # to a temporary directory. Transfer must be done manually periodically"""
+    # if not OFFLINE:
+    #     printStatement("Copying web pages to aeronomie dev website")
+    #     copyWebpagesToDevSite(paths, devPaths)
+    #     printStatement("Done!")
+    # else:
+    #     printStatement("Warning: working offline, dev website will not be updated")
     
     #COPY FILES TO THE OLD DEV OBS PLANNING WEBSITE
     #RUN THE SCRIPT IN THE DEV WEBSITE FOLDER TO COPY THEM TO THE EXTERNAL WEBSITE

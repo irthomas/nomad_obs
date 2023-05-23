@@ -98,22 +98,28 @@ class MetakernelParser():
     def set_dsk_regex(self, regex_string):
         self.dsk_regex = re.compile(regex_string)
 
-    def files_to_dict(self, filenames, regex):
-        # Store a list of files in a dictionary, mapped by a key
-        # derived from their filename using a regex.
-        files_dict = {}
+    def files_to_list(self, filenames, regex):
+        # Return a list of files
+        files_list = []
         for filename in filenames:
             res = regex.search(filename)
             if res:
-                files_dict[res.group()] = filename
-        return files_dict
+                files_list.append(filename)
+        return files_list
 
-    def latest_from_dict(self, files_dict):
-        if files_dict:
-            sorted_keys = sorted(files_dict.keys())
-            return sorted_keys[-1]
+    def get_most_recent(self, files_list):
+        
+        if len(files_list) > 0:
+            return sorted(files_list)[-1]
         else:
             return None
+
+    # def latest_from_dict(self, files_dict):
+    #     if files_dict:
+    #         sorted_keys = sorted(files_dict.keys())
+    #         return sorted_keys[-1]
+    #     else:
+    #         return None
 
     def get_latest_metakernel(self):
         # Compare the local metakernel version with the remote.
@@ -129,23 +135,36 @@ class MetakernelParser():
                 self.ftp_connection.cwd("/")
                 self.ftp_connection.cwd(posixpath.join(self.remote_path,"mk"))
                 remote_list = self.ftp_connection.nlst()
-                rem_filt_dict = self.files_to_dict(remote_list, self.version_regex)
-                self.remote_version = self.latest_from_dict(rem_filt_dict)
-                print("Remote version is: {0}".format(self.remote_version))
+                print("All metakernels on server:", ", ".join(remote_list))
+                print("Searching for metakernels that match the regex: ", self.version_regex)
+                rem_filt_list = self.files_to_list(remote_list, self.version_regex)
+                print("Matching metakernels found:", ", ".join(rem_filt_list))
+                self.remote_version = self.get_most_recent(rem_filt_list)
+                print("Remote version is: %s" %self.remote_version)
+                
+                
                 local_list = os.listdir(os.path.join(self.local_path,"mk"))
-                loc_filt_dict = self.files_to_dict(local_list, self.version_regex)
-                self.local_version = self.latest_from_dict(loc_filt_dict)
-                print("Local version is: {0}".format(self.local_version))
+                print("All metakernels locally:", ", ".join(local_list))
+                loc_filt_list = self.files_to_list(local_list, self.version_regex)
+                print("Matching metakernels locally:", ", ".join(loc_filt_list))
+                self.local_version = self.get_most_recent(loc_filt_list)
+                print("Local version is: %s" %self.local_version)
 
-                if (not self.local_version) or (self.remote_version > self.local_version):
+                #if local mk not found, or if not matching remote version
+                if (not self.local_version) or (self.remote_version != self.local_version):
 
-                    self.retrieve_FTP_file(posixpath.join(self.remote_path,"mk",rem_filt_dict[self.remote_version]), os.path.join(self.local_path,"mk",rem_filt_dict[self.remote_version]))
-                    self.retrieve_FTP_file(posixpath.join(self.remote_path,"mk",self.mk_name), os.path.join(self.local_path,"mk",self.mk_name))
+                    #get latest mk from server, both full name and short name versions
+                    self.retrieve_FTP_file(posixpath.join(self.remote_path, "mk", self.remote_version), os.path.join(self.local_path, "mk" , self.remote_version))
+                    self.retrieve_FTP_file(posixpath.join(self.remote_path, "mk", self.mk_name), os.path.join(self.local_path, "mk", self.mk_name))
 
                     if self.local_version:
-                        os.rename(os.path.join(self.local_path,"mk",loc_filt_dict[self.local_version]), os.path.join(self.local_path,"mk","previous_versions",loc_filt_dict[self.local_version]))
+                        print("Old local metakernel found: %s -> archiving" %self.local_version)
+                        os.rename(os.path.join(self.local_path, "mk", self.local_version), os.path.join(self.local_path, "mk", "previous_versions", self.local_version))
+                    else:
+                        print("Local metakernel not found")
 
-                    print("Local version updated to {0}".format(self.remote_version))
+
+                    print("Local version updated to %s" %self.remote_version)
                     self.replace_path()
                     self.insert_dsk()
                     print("Inserted DSK kernels into metakernel.")
@@ -249,9 +268,9 @@ class MetakernelParser():
 META_PARSER_REGEX = "(?<=\'\$KERNELS/).*(?=\'$)"
 
 if ops:
-    META_VERSION_REGEX = "(?<=em16_ops_)*\d{4}(?:\.|-|_)?\d{2}(?:\.|-|_)?\d{2}(?=_\d{3}.tm$)"
+    META_VERSION_REGEX = "em16_ops_v\d{3,5}_(\d{8})_\d{3}\.tm"
 else:
-    META_VERSION_REGEX = "(?<=em16_plan_)*\d{4}(?:\.|-|_)?\d{2}(?:\.|-|_)?\d{2}(?=_\d{3}.tm$)"
+    META_VERSION_REGEX = "em16_plan_v\d{3,5}_(\d{8})_\d{3}\.tm"
     
 parser = MetakernelParser(ops=ops)
 print("Kernel update started.")
