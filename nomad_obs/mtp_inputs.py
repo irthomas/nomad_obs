@@ -531,9 +531,9 @@ def getMtpConstants(mtpNumber):
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 69:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
-        copVersion = "" #desired cop table folder - remember to update if patched
+        mtpStart = "2023-07-08T15:18:23Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2023-08-05T12:54:02Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
@@ -541,7 +541,7 @@ def getMtpConstants(mtpNumber):
         mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "" #desired cop table folder - remember to update if patched
-        forbidden_dayside_orbits = [] #input these from the email
+        forbidden_dayside_orbits = [15, 30, 42, 59, 94, 85, 86, 120, 129, 171,  237, 243, 249, 252, 256, 257, 265, 270, 271, 305, 306, 312] #input these from the email
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 

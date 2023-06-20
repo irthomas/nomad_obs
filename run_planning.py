@@ -21,7 +21,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 68
+mtpNumber = 69
 
 
 r"""
@@ -73,7 +73,7 @@ Other targets	          Normal priority
 
 *if an OCM covers two daysides, check for ingress occultations on the nightside of the first OCM orbit
 *compare timings with nomad_ingress_events.txt
-*if found, add 1 irIngress irIngress uvisIngress to the orbit
+*if found, add "1 irIngress irIngress uvisIngress" to the orbit
 
 *check NOMAD Phobos linescans are correctly registered. Change comment column to &nomadPhobos;
 
@@ -91,7 +91,7 @@ Other targets	          Normal priority
 
 
 
-*If requested by Liege team: add 2 UVIS nightsides from list of orbits in roi_flyovers_nightside-filtered.txt 
+*If requested by Liege team: add 2 UVIS nightsides (type 7) from list of orbits in roi_flyovers_nightside-filtered.txt 
     These must not clash with other observations e.g. solar occultations or high priority LNO nadirs 
     (UVIS can run night and day on same orbit).
     
@@ -150,7 +150,7 @@ from nomad_obs.regions_of_interest import nadirRegionsOfInterest, occultationReg
 
 #change directory paths and SPICE kernels here
 #always select OFFLINE=True if running on home computer
-from nomad_obs.config.paths import setupPaths, devWebsitePaths, OFFLINE
+from nomad_obs.config.paths import setupPaths, devWebsitePaths
 #now run the script
 
 #if the number of COP rows is incorrect in the occultation files, add an override here
@@ -185,7 +185,7 @@ from nomad_obs.html.make_nadir_webpage import writeNadirWebpage
 from nomad_obs.html.make_occultation_webpage import writeOccultationWebpage
 from nomad_obs.html.make_overview_webpage import makeOverviewPage
 from nomad_obs.html.make_website import writeIndexWebpage, writeMtpMasterPage
-from nomad_obs.html.copy_webpages_to_dev_site import copyWebpagesToDevSite
+# from nomad_obs.html.copy_webpages_to_dev_site import copyWebpagesToDevSite
 
 
 
