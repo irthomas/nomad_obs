@@ -534,14 +534,95 @@ def getMtpConstants(mtpNumber):
         mtpStart = "2023-07-08T15:18:23Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2023-08-05T12:54:02Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
-        forbidden_dayside_orbits = [] #input these from the email
+        forbidden_dayside_orbits = [15, 30, 42, 59, 94, 85, 86, 120, 129, 171,  237, 243, 249, 252, 256, 257, 265, 270, 271, 305, 306, 312] #input these from the email
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 70:
+        mtpStart = "2023-08-05T14:51:48Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2023-09-02T12:44:37Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [6, 18, 31, 43, 85, 86, 122, 140, 171, 178, 190, 226, 243, 244, 256, 257, 274, 275, 301, 302, 313, 314, 336, 337] #input these from the email
+        required_dayside_orbits = []
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 71:
+        mtpStart = "2023-09-02T14:42:32Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2023-09-30T13:07:32Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [6, 25, 41, 76, 85, 86, 89, 116, 157, 166, 171, 178, 181, 193, 256, 257] #input these from the email
+        required_dayside_orbits = [204, 241, 254, 266, 267, 278, 279, 303, 306, 307, 316, 332]
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 72:
         mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "" #desired cop table folder - remember to update if patched
-        forbidden_dayside_orbits = [15, 30, 42, 59, 94, 85, 86, 120, 129, 171,  237, 243, 249, 252, 256, 257, 265, 270, 271, 305, 306, 312] #input these from the email
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = []
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 73:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = []
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 74:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = []
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 75:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = []
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 76:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = []
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 77:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = []
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 78:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = []
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 79:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = []
+#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+
+    elif mtpNumber == 80:
+        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = []
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -577,7 +658,8 @@ def getMtpConstants(mtpNumber):
                         "mappsEventFilename":mappsEventFilename, \
                         "soCentreDetectorLine":soCentreDetectorLine, \
                         "acsStartAltitude":acsStartAltitude, \
-                        "forbidden_dayside_orbits":forbidden_dayside_orbits}
+                        "forbidden_dayside_orbits":forbidden_dayside_orbits, \
+                        "required_dayside_orbits":required_dayside_orbits}
     
     return mtpConstantsDict
             

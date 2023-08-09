@@ -199,19 +199,16 @@ NADIR_WEIGHTS = [
 #limb 3 and 4 are more important than the others
 #ORDER 164 FOR LIMBS > 50KM, CONTINUE 163-165 COMBINATIONS FOR CASSIS LIMBS
 NADIR_LIMB_WEIGHTS = [
-    ["Limb 2SUBD 07"] * 3,
-    ["Nominal Limb 01"] * 1,
-    
+    ["Limb 2SUBD 07"] * 3, #164 x2
+    ["Nominal Limb 01"] * 1, #164, 169
 ]
 
 NADIR_NIGHT_LIMB_WEIGHTS = [
-    ["Night Limb #2"] * 5, #PATCHED FOR MTP031+
-
+    ["Night Limb #2"] * 1, #PATCHED FOR MTP031+
 ]
         
 NADIR_NIGHTSIDE_WEIGHTS = [
-    ["Night Limb #2"] * 5, #PATCHED FOR MTP031+
-
+    ["Night Limb #2"] * 1, #PATCHED FOR MTP031+
 ]
 
         
@@ -235,12 +232,13 @@ NADIR_SURFACE_REGION_WEIGHTS = [
     ["Surface 3SUBD #3"] * 1, #L #189, 194, 196
     ["Ice CO 2SUBD #2"] * 1, #H #193, 189
     ["Ice H2O 2SUBD #1"] * 1, #H #193, 168
-
 ]
 
 NADIR_ICE_REGION_WEIGHTS = [
     # ["H2O CO 3SUBD #2"] * 1, #168,189,190
-    ["Surface Ice 2SUBD #1"] * 1, #132, 133 FOR MTP065 ONLY #TODO: CHANGE THIS BACK
+    ["Surface Ice 2SUBD #1"] * 1, #132, 133
+    ["Ice CO 2SUBD #2"] * 1, #189, 193
+    ["Ice CO 2SUBD #3"] * 1, #193, 193
 ]
 
 

@@ -20,25 +20,28 @@ from nomad_obs.regions_of_interest import nadirRegionsOfInterest
 from nomad_obs.io.orbit_plan_xlsx import getMtpPlanXlsx
 
 
-mtpNumber = 69
+mtpNumber = 71
 mtpConstants = getMtpConstants(mtpNumber)
 paths = setupPaths(mtpConstants)
 
 
 forbidden_dayside_orbits = mtpConstants["forbidden_dayside_orbits"]
+required_dayside_orbits = mtpConstants["required_dayside_orbits"]
 
 
 # ADJACENT_ORBITS_TO_CHECK_FOR_NADIRS = 3
 ADJACENT_ORBITS_TO_CHECK_FOR_NADIRS = 5
 
+
+#superceded by required_dayside_orbits from mtp_inputs.py
 REGIONS_TO_ALWAYS_RUN = [
-    "&daysideMatch:CERAUNIUS THOLUS", 
-    "&daysideMatch:ULYSSES THOLUS", 
-    "&daysideMatch:ELYSIUM MONS", 
-    "&daysideMatch:ARSIA MONS", 
-    "&daysideMatch:PAVONIS MONS", 
-    "&daysideMatch:ASCRAEUS MONS", 
-    "&daysideMatch:OLYMPUS MONS", 
+    # "&daysideMatch:CERAUNIUS THOLUS", 
+    # "&daysideMatch:ULYSSES THOLUS", 
+    # "&daysideMatch:ELYSIUM MONS", 
+    # "&daysideMatch:ARSIA MONS", 
+    # "&daysideMatch:PAVONIS MONS", 
+    # "&daysideMatch:ASCRAEUS MONS", 
+    # "&daysideMatch:OLYMPUS MONS", 
     
 ]
 
@@ -79,7 +82,7 @@ indices_mro = [i for i,s in enumerate(comments) if "&mroOverlap" in s]
 orbit_mask[indices_mro, 0] = 2
 
 
-#add nadir regions
+#add nadir regions - superceded by required_dayside_orbits from mtp_inputs.py
 region_comments = ["&daysideMatch:%s" %s[0] for s in nadirRegionsOfInterest]
 region_ratios = [s[2] for s in nadirRegionsOfInterest]
 
@@ -93,6 +96,13 @@ for i, comment in enumerate(comments):
                 orbit_mask[i, 0] = 4
             else:
                 orbit_mask[i, 0] = region_ratio
+
+
+#TODO: check this works in MTP071
+#get indices of required_dayside_orbits from mtp_inputs.py
+indices_required = [i-1 for i in required_dayside_orbits]
+orbit_mask[indices_required, 0] = 4
+
 
 
 

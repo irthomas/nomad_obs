@@ -21,7 +21,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 69
+mtpNumber = 71
 
 
 r"""
@@ -35,10 +35,10 @@ summary_files\mtp0xx\2deg_latlon_30min_LST
 summary_files\mtp0xx\5deg_latlon_15min_LST
 summary_files\mtp0xx\5deg_latlon_30min_LST
 
-summary_files\mtp0xx\kickoff\nadir_dayside_nightside_thermal_orbits_orbit_type_summary.txt
-summary_files\mtp0xx\kickoff\NOMAD_egress_solar_occulations_summary.txt
-summary_files\mtp0xx\kickoff\NOMAD_ingress_and_merged_solar_occulations_summary.txt
-summary_files\mtp0xx\kickoff\NOMAD_grazing_solar_occulations_summary.txt (if present)
+summary_files\mtp0xx\kickoff\nadir_dayside_nightside_thermal_orbits_orbit_type_summary.txt (optional)
+summary_files\mtp0xx\kickoff\NOMAD_egress_solar_occulations_summary.txt (optional)
+summary_files\mtp0xx\kickoff\NOMAD_ingress_and_merged_solar_occulations_summary.txt (optional)
+summary_files\mtp0xx\kickoff\NOMAD_grazing_solar_occulations_summary.txt (optional, if present)
 
 summary_files\mtp0xx\MARS_IN_LNO_OCC_FOV.txt
 summary_files\mtp0xx\MARS_IN_UVIS_OCC_FOV.txt
@@ -46,11 +46,17 @@ summary_files\mtp0xx\MARS_IN_UVIS_OCC_FOV.txt
 summary_files\mtp0xx\roi_flyovers_nightside-filtered.txt
 
 
-*Add start/end times, COP table version, and list of forbidden dayside nadir orbits, to nomad_obs/mtp_inputs.py
-*Then run run_planning.py
+If CaSSIS joint obs, check the google doc table
+* Find NOMAD thermal orbit numbers (compare CaSSIS UTCs to rows in nadir_dayside_nightside_thermal_orbits_orbit_type_summary.txt)
+* Sort orbit numbers in ascending order, add to required_dayside_orbits in nomad_obs/mtp_inputs.py
+    
 
-*Then run remove_ir_nadirs.py
-*This will automatically remove lots of LNO nadirs, whilst trying to keep as many of the following:
+* Add start/end times, COP table version, and list of forbidden dayside nadir orbits, to nomad_obs/mtp_inputs.py
+* Then run run_planning.py
+
+* Then update the mtpNumber in remove_ir_nadirs.py and run it
+* This will automatically remove lots of LNO nadirs, whilst keeping all the CaSSIS nadirs and trying to keep as many of the following:
+
     
 Region                    Priority  reduce box size; not run each time.
 ------                    --------
@@ -65,7 +71,8 @@ Meridiani Sulfates	      Normal priority
 Mawrth Vallis	          Normal priority
 Other targets	          Normal priority
 
-*forbidden daysides will also be removed, but this should be checked
+* Check that all CaSSIS nadirs have been kept and orbit type accepts a dayside nadir i.e. 1, 3, 5 etc.
+* Forbidden daysides will be removed, but this should also be checked
 
 *The new generic orbit plan nomad_mtp0xx_plan_generic.xlsx will be automatically copied to orbit_plans\mtp0xx\
 *The orbit plan in the root directory can be deleted
@@ -105,6 +112,9 @@ Other targets	          Normal priority
 *If there are occultation-free periods with low LSTs, change IR daysides to mainly Surface Ice observations e.g. Surface Ice 4SUBD 01
 
 
+*CaSSIS joint obs: set the dayside observation type irDayside manually to the correct one as decided by the LNO science team
+
+
 *Use excel formula to check for incorrect orbit types 3 when no LNO obs:
     copy formula into draft orbit plan cell N2 and then drag down the column
     =IF(OR(AND(A2=3,H2=""),AND(A2=14,NOT(H2=""))), 1, 0)
@@ -131,7 +141,11 @@ Wait until Ops team sends summary files
 *Add Phobos Deimos COP rows manually (copy file from a previous MTP and update from spreadsheet)
 *Add calibration COP rows manually (copy file from a previous MTP and update from sheet)
 
-*Place summary files xlsx files in summary files directory and run check_cop_rows_in_summary_files.py
+*Place summary files xlsx files in summary files directory and run check_cop_rows_in_summary_files.py once selecting the correct MTP number
+*Check the output in the console:
+    * For every file, the number of rows must match
+    * The times in the two columns must be approximately correct i.e. nadirs within 15 minutes and occultations within 1 minute
+    * If there are no grazing occultations you can ignore the error that the file does not exist
 *Open NOMAD_dayside_nadir_summary.xlsx and check coloured rows are filled with -1s
 
 
