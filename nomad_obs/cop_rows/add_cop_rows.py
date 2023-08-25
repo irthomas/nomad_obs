@@ -41,7 +41,7 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants, occultationObservationD
                 
                 outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
                 if len(outputDict) == 0: #if error
-                    print("Error in orbit %i" %orbit["orbitNumber"])
+                    print("Error in orbit %i obs type %s" %(orbit["orbitNumber"], obsType))
                     stop()
                     
                 finalOrbitPlan[obsType+"ObservationName"] = observationName
@@ -61,7 +61,7 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants, occultationObservationD
                 
                 outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
                 if len(outputDict) == 0: #if error
-                    print("Error in orbit %i" %orbit["orbitNumber"])
+                    print("Error in orbit %i obs type %s" %(orbit["orbitNumber"], obsType))
                     stop()
                     
                 finalOrbitPlan[obsType+"ObservationName"] = observationName
@@ -80,7 +80,7 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants, occultationObservationD
             
             outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
             if len(outputDict) == 0: #if error
-                print("Error in orbit %i" %orbit["orbitNumber"])
+                print("Error in orbit %i obs type %s" %(orbit["orbitNumber"], obsType))
                 stop()
                 
             finalOrbitPlan[obsType+"ObservationName"] = observationName
@@ -118,7 +118,7 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants, occultationObservationD
             
             outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
             if len(outputDict) == 0: #if error
-                print("Error in orbit %i" %orbit["orbitNumber"])
+                print("Error in orbit %i obs type %s" %(orbit["orbitNumber"], obsType))
                 stop()
             
             finalOrbitPlan[obsType+"ObservationName"] = observationName
@@ -225,7 +225,7 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, paths):
             if "ingress" in orbit["allowedObservationTypes"]:
                 ingressCounter += 1
                 if ingressCounter == len(uvisInputDict["uvis_ingress_occultations"]):
-                    print("Error: insufficient COP rows, index %i" %ingressCounter)
+                    print("Error: insufficient ingress COP rows, index %i" %ingressCounter)
                 copRow = uvisInputDict["uvis_ingress_occultations"][ingressCounter]
                 finalOrbitPlan["uvisIngressCopRows"]["scienceCopRow"] = copRow
                 finalOrbitPlan["uvisIngressCopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
@@ -233,7 +233,7 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, paths):
             if "merged" in orbit["allowedObservationTypes"]: #merged is same as ingress
                 ingressCounter += 1
                 if ingressCounter == len(uvisInputDict["uvis_ingress_occultations"]):
-                    print("Error: insufficient COP rows, index %i" %ingressCounter)
+                    print("Error: insufficient merged COP rows, index %i" %ingressCounter)
                 copRow = uvisInputDict["uvis_ingress_occultations"][ingressCounter]
                 finalOrbitPlan["uvisIngressCopRows"]["scienceCopRow"] = copRow
                 finalOrbitPlan["uvisIngressCopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
@@ -241,7 +241,7 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, paths):
             if "grazing" in orbit["allowedObservationTypes"]: #grazing is taken from a different file but added to ingress orbit plan
                 grazingCounter += 1
                 if grazingCounter == len(uvisInputDict["uvis_grazing_occultations"]):
-                    print("Error: insufficient COP rows, index %i" %grazingCounter)
+                    print("Error: insufficient grazing COP rows, index %i" %grazingCounter)
                 copRow = uvisInputDict["uvis_grazing_occultations"][grazingCounter]
                 finalOrbitPlan["uvisIngressCopRows"]["scienceCopRow"] = copRow
                 finalOrbitPlan["uvisIngressCopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
@@ -249,7 +249,7 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, paths):
             if "egress" in orbit["allowedObservationTypes"]:
                 egressCounter += 1
                 if egressCounter == len(uvisInputDict["uvis_egress_occultations"]):
-                    print("Error: insufficient COP rows, index %i" %egressCounter)
+                    print("Error: insufficient egress COP rows, index %i" %egressCounter)
                 copRow = uvisInputDict["uvis_egress_occultations"][egressCounter]
                 finalOrbitPlan["uvisEgressCopRows"]["scienceCopRow"] = copRow
                 finalOrbitPlan["uvisEgressCopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)

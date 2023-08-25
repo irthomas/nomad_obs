@@ -554,19 +554,19 @@ def getMtpConstants(mtpNumber):
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 72:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
-        copVersion = "" #desired cop table folder - remember to update if patched
-        forbidden_dayside_orbits = [] #input these from the email
-        required_dayside_orbits = []
+        mtpStart = "2023-09-30T15:05:34Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2023-10-28T13:38:35Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [6, 41, 53, 85, 86, 171, 207, 225, 236, 237, 248, 256, 257, 260, 261, 291, 292, 327] #input these from the email
+        required_dayside_orbits = [37] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 73:
         mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
-        copVersion = "" #desired cop table folder - remember to update if patched
+        copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
-        required_dayside_orbits = []
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 74:
@@ -574,7 +574,7 @@ def getMtpConstants(mtpNumber):
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
-        required_dayside_orbits = []
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 75:
@@ -582,7 +582,7 @@ def getMtpConstants(mtpNumber):
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
-        required_dayside_orbits = []
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 76:
@@ -590,7 +590,7 @@ def getMtpConstants(mtpNumber):
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
-        required_dayside_orbits = []
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 77:
@@ -598,7 +598,7 @@ def getMtpConstants(mtpNumber):
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
-        required_dayside_orbits = []
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 78:
@@ -606,7 +606,7 @@ def getMtpConstants(mtpNumber):
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
-        required_dayside_orbits = []
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 79:
@@ -614,7 +614,7 @@ def getMtpConstants(mtpNumber):
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
-        required_dayside_orbits = []
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 80:
@@ -622,7 +622,7 @@ def getMtpConstants(mtpNumber):
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
-        required_dayside_orbits = []
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 

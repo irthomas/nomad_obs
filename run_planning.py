@@ -21,7 +21,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 71
+mtpNumber = 72
 
 
 r"""
@@ -139,7 +139,7 @@ Wait until Ops team sends summary files
 *When summary files are available:
 
 *Add Phobos Deimos COP rows manually (copy file from a previous MTP and update from spreadsheet)
-*Add calibration COP rows manually (copy file from a previous MTP and update from sheet)
+*Add solar calibration COP rows manually (copy file from a previous MTP and update from sheet)
 
 *Place summary files xlsx files in summary files directory and run check_cop_rows_in_summary_files.py once selecting the correct MTP number
 *Check the output in the console:
