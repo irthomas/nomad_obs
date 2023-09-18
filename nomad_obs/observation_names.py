@@ -13,13 +13,13 @@ Created on Wed Oct 18 13:56:09 2017
         M.Smith - replace LNO nadir 191 and most 190 obs by 189!
         Giuliano: order 129 is best for HCl isotopic ratio
    
-    Next patching: 
         Swap order 149 with 148/147 -Miguel / Mike?
         Giancarlo: Some LNO with AOTF off
         Miguel: 121/148/149/155/164/165
         Loic: add 132 to nominal for low altitude CO2 with 134 and 136
         Loic: 149 can be swapped for 147/148/149
         
+    Next patching: 
         luca: 3 order LNO ice 193+168+189/190
         Check online spreadsheet
 
