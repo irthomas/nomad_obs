@@ -239,6 +239,10 @@ def makeCopTableDict(channelCode, copTableDict, silent=True):
                 rhythm = 8
             elif 14000.0 < executionTimeTotal < 15000.0:
                 rhythm = 15
+            elif 28000.0 < executionTimeTotal < 30000.0:
+                rhythm = 30
+            elif 58000.0 < executionTimeTotal < 60000.0:
+                rhythm = 60
             else:
                 if not silent: print("Exec time error row %i" %rowIndex)
                 errorFound = True
@@ -259,9 +263,9 @@ def makeCopTableDict(channelCode, copTableDict, silent=True):
 
 
 
-mtpNumber = 31
+mtpNumber = 73
 
-for channelCode in [0,1]:
+for channelCode in [0, 1]:
     mtpConstants = getMtpConstants(mtpNumber)
     copTableDict = getCopTables(mtpConstants)
     
@@ -404,16 +408,25 @@ for channelCode in [0,1]:
             h += r"<td>%s</td>" %comment +"\n" #add comment with different obs parameter combinations
             h += r"</tr>" +"\n"
             
-            for numberOfOrders in [0,1,2,3,4,5,6]: #add table row to correct table, based on number of orders
+            for numberOfOrders in tables.keys(): #add table row to correct table, based on number of orders
                 if nOrders == numberOfOrders:
                     tables[numberOfOrders] += h
             
     h = r"</table>" +"\n"
     h += r"</div>" +"\n"
     
-    for numberOfOrders in [0,1,2,3,4,5,6]:
+    for numberOfOrders in tables.keys():
         tables[numberOfOrders] += h
     
+    
+    #delete table for numbers of diffraction orders where none found
+    del_orders = []
+    for numberOfOrders in tables.keys():
+        if len(tables[numberOfOrders]) < 300:
+            del_orders.append(numberOfOrders)
+            
+    for del_order in del_orders:
+        del tables[del_order]
     
     
     h = r""
@@ -432,15 +445,18 @@ for channelCode in [0,1]:
     h += r"</div>" +"\n"
         
     
-    for numberOfOrders in [1,2,3,4,5,6]:
+    for numberOfOrders in tables.keys():
         h += r"<h2>%s diffraction orders</h2>" %numberOfOrders +"\n"
         h += tables[numberOfOrders]
         h += "<br><br>" +"\n"
 
+    page_path = os.path.join(BASE_DIRECTORY, html_page_name+".html")
     
-    f = open(os.path.join(BASE_DIRECTORY, html_page_name+".html"), 'w')
+    f = open(page_path, 'w')
     f.write(h)
     f.close()
+    
+    print("Written to %s" %page_path)
     
 
 
