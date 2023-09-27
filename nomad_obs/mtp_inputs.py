@@ -560,7 +560,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = [6, 41, 53, 85, 86, 171, 207, 225, 236, 237, 248, 256, 257, 260, 261, 291, 292, 327] #input these from the email
         required_dayside_orbits = [37] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
-
+ 
     elif mtpNumber == 73:
         mtpStart = "2023-10-28T15:36:31Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2023-11-08T11:03:13Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
