@@ -43,6 +43,17 @@ __contact__   = "ian . thomas AT aeronomie . be"
 #name:[[orders], int time, rhythm, lines, so=0/lno=1]
 occultationObservationDict = {
         
+#new MTP073+
+    
+"6SUBD Nominal #54":[[121, 134, 148, 169, 186, 190], 4, 1, 16, 0], #Nominal with 148, priority high
+"6SUBD CO2 CO #34":[[121, 140, 146, 148, 169, 186], 4, 1, 16, 0], #T, CO2 iso low, CO low, priority high
+"6SUBD CO #6":[[148, 132, 183, 184, 185, 186], 4, 1, 16, 0], #CO iso + Temp, priority high
+
+"Fullscan fast step4 all #1":[["COP#3241"], 4, 1, 16, 0], #124(128)-168, priority low to test
+"Fullscan fast step5 all #1":[["COP#3244"], 4, 1, 16, 0], #114(119)-189, priority low to test
+
+"CO2 Fullscan Fast #5":[["COP#37"], 4, 1, 16, 0], #140(141)-150 #TODO: only southern hemisphere 5 per MTP until ls=0-100 #add manually!
+
     
 #new MTP064+
 "6SUBD CO2 CO #28":[[186, 185, 148, 132, 190, 155], 4, 1, 16, 0], #co isotopes and temperature, priority high
@@ -54,8 +65,8 @@ occultationObservationDict = {
 "6SUBD Nominal #52":[[121, 134, 169, 129, 148, 165], 4, 1, 16, 0], #148 instead of 149, priority high
 "6SUBD Nominal #53":[[121, 136, 169, 129, 148, 165], 4, 1, 16, 0], #148 instead of 149, priority high
 
-"6SUBD Nom 4 line #1":[[121, 134, 169, 129, 148, 165], 4, 1, 4, 0], #148 instead of 149, test with 4 lines
-"6SUBD Nom 4 line #2":[[121, 136, 169, 129, 148, 165], 4, 1, 4, 0], #148 instead of 149, test with 4 lines
+"6SUBD Nom 4 line #1":[[121, 134, 169, 129, 148, 165], 4, 1, 4, 0], #148 instead of 149, test with 4 lines, run once
+"6SUBD Nom 4 line #2":[[121, 136, 169, 129, 148, 165], 4, 1, 4, 0], #148 instead of 149, test with 4 lines, run once
 
 
 

@@ -15,6 +15,13 @@ ALLOCATE WEIGHTS TO EACH OBSERVATION NAME FOR EACH OBSERVATION TYPE
 
 
 OCCULTATION_WEIGHTS = [
+    #new MTP073+
+    ["6SUBD Nominal #54"] * 8, #Nominal with 148, priority high
+    ["6SUBD CO2 CO #34"] * 8, #T, CO2 iso low, CO low, priority high
+    ["6SUBD CO #6"] * 8, #CO iso + Temp, priority high
+
+    
+    # after prioritisation exercise
     ["6SUBD Nominal #53"] * 8, #H #148 instead of 149 #121, 136, 169, 129, 148, 165
     ["6SUBD Nominal #52"] * 8, #H #148 instead of 149 #121, 134, 169, 129, 148, 165
     ["6SUBD Nominal #51"] * 8, #H #nominal + 129 #121, 136, 129, 169, 186, 190
@@ -45,7 +52,7 @@ OCCULTATION_WEIGHTS = [
     
     
     
-    
+    # after prioritisation exercise
     ["6SUBD Nom CO #1"] * 4, #M
     
     ["6SUBD CO2 CO #29"] * 4, #M #co isotopes and temperature
@@ -58,10 +65,17 @@ OCCULTATION_WEIGHTS = [
     ["CO Fullscan Fast #2"] * 4, #M 185-195
     
     
+
+
+
+
+    #new MTP073+
+    ["Fullscan fast step4 all #1"] * 2, #124(128)-168, priority low to test
+    ["Fullscan fast step5 all #1"] * 2, #114(119)-189, priority low to test
     
 
 
-    
+    # after prioritisation exercise
     ["6SUBD Nominal #11"] * 2, #L #nominal + 126/129 #121, 134, 126, 129, 169, 190
     ["6SUBD Nom CO2 #1"] * 2, #L #121, 134, 149, 164, 165, 169
     ["6SUBD Nom CH4 #2"] * 2, #L #134, 136, 164, 169, 186, 190
