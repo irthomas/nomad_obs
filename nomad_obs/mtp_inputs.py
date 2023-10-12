@@ -33,6 +33,8 @@ def getMtpConstants(mtpNumber):
         mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20180313_091700" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -47,9 +49,11 @@ def getMtpConstants(mtpNumber):
 #        SO_CENTRE_DETECTOR_LINE = 128
     
     if mtpNumber == 1:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2018-04-21T17:44:23Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2018-05-19T10:22:40Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20180313_091700" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -63,9 +67,11 @@ def getMtpConstants(mtpNumber):
 #        SO_CENTRE_DETECTOR_LINE = 128
     
     elif mtpNumber == 2:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2018-05-19T16:16:34Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2018-06-16T12:18:07Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20180313_091700" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -79,9 +85,11 @@ def getMtpConstants(mtpNumber):
 #        SO_CENTRE_DETECTOR_LINE = 130 #boresight misaligned - sun centred on line 130 now
 
     elif mtpNumber == 3:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2018-06-16T14:16:00Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2018-07-14T12:59:21Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20180616_110400" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -95,9 +103,11 @@ def getMtpConstants(mtpNumber):
 #        SO_CENTRE_DETECTOR_LINE = 131 #boresight misaligned - sun centred on line 131 now
     
     elif mtpNumber == 4:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2018-07-14T14:57:14Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2018-08-11T12:54:29Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20180714_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -111,9 +121,11 @@ def getMtpConstants(mtpNumber):
 #        SO_CENTRE_DETECTOR_LINE = 131 #boresight misaligned - sun centred on line 131 now
     
     elif mtpNumber == 5:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2018-08-11T14:52:26Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2018-09-08T13:13:43Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20180714_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -127,9 +139,11 @@ def getMtpConstants(mtpNumber):
 #        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
     
     elif mtpNumber == 6:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2018-09-08T15:11:38Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2018-10-06T13:02:47Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20180714_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -143,9 +157,11 @@ def getMtpConstants(mtpNumber):
 #        SO_CENTRE_DETECTOR_LINE = 128 #boresight corrected from MTP005 onwards
     
     elif mtpNumber == 7:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2018-10-06T15:00:39Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2018-11-03T12:01:05Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20181006_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -164,349 +180,464 @@ def getMtpConstants(mtpNumber):
         mtpStart = "2018-11-03T14:58:06Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2018-12-01T12:02:30Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20181006_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
     
     elif mtpNumber == 9: #2018-12-01T14:00:32Z EXMGEO_TD2N - 2018-12-29T12:14:53Z EXMGEO_TD2N 
         mtpStart = "2018-12-01T14:00:32Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2018-12-29T12:14:53Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20181006_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
     
     elif mtpNumber == 10:
         mtpStart = "2018-12-29T14:12:47Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2019-01-26T12:49:26Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20181229_113000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 11:
         mtpStart = "2019-01-26T14:47:51Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2019-02-23T12:49:34Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20181229_113000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
     
     elif mtpNumber == 12: # > EXMGEO_TD2N -  > EXMGEO_TD2N
         mtpStart = "2019-02-23T14:47:29Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2019-03-23T13:13:40Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20181229_113000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
     
     elif mtpNumber == 13:
         mtpStart = "2019-03-23T15:11:46Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2019-04-20T13:16:29Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
     
     elif mtpNumber == 14:
         mtpStart = "2019-04-20T15:14:22Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2019-05-18T13:39:12Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 15:
         mtpStart = "2019-05-18T15:37:10Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2019-06-15T11:37:56Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 16:
         mtpStart = "2019-06-15T15:33:38Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2019-07-13T12:48:23Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 17:
         mtpStart = "2019-07-13T14:46:20Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2019-08-10T12:57:59Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 18:
         mtpStart = "2019-08-10T14:55:55Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2019-08-22T12:00:55Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 19:
         mtpStart = "2019-09-14T16:36:17Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2019-10-05T13:48:59Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 20:
         mtpStart = "2019-10-05T15:46:51Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2019-11-02T13:09:33Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 21:
         mtpStart = "2019-11-02T15:07:25Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2019-11-30T13:15:03Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20191102_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 22:
         mtpStart = "2019-11-30T15:12:58Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2019-12-28T13:50:48Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20191102_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 23:
         mtpStart = "2019-12-28T15:48:47Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2020-01-25T12:11:37Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20191102_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 24:
         mtpStart = "2020-01-25T14:09:32Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2020-02-22T13:15:02Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20191102_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 25:
         mtpStart = "2020-02-22T15:12:59Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2020-03-21T13:26:01Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20200222_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 26:
         mtpStart = "2020-03-21T15:23:55Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2020-04-18T12:19:28Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20200222_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 27:
         mtpStart = "2020-04-18T14:17:29Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2020-05-16T12:37:22Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20200222_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 28:
         mtpStart = "2020-05-16T14:35:18Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2020-06-13T13:19:57Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20200222_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 29:
         mtpStart = "2020-06-13T15:17:54Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2020-07-11T13:34:20Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20200222_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 30:
         mtpStart = "2020-07-11T15:32:12Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2020-08-08T12:50:58Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20200222_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 31:
         mtpStart = "2020-08-08T14:48:51Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2020-09-05T13:02:23Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
-#        copVersion = "mtp031_proposed" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 32:
         mtpStart = "2020-09-05T15:00:18Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2020-10-03T13:39:32Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 33:
         mtpStart = "2020-10-03T15:37:27Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2020-10-31T13:51:51Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 34:
         mtpStart = "2020-10-31T15:49:43Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2020-11-28T13:04:03Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 35:
         mtpStart = "2020-11-28T15:01:57Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2020-12-26T13:17:21Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 36:
         mtpStart = "2020-12-26T15:15:16Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2021-01-23T12:06:45Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 37:
         mtpStart = "2021-01-23T14:04:40Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2021-02-20T12:23:57Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 38:
         mtpStart = "2021-02-20T14:21:53Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2021-03-20T13:12:16Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 39:
         mtpStart = "2021-03-20T15:10:09Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2021-04-17T13:22:21Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 40:
         mtpStart = "2021-04-17T15:20:13Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2021-05-15T12:31:34Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 41:
         mtpStart = "2021-05-15T14:29:28Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2021-06-12T12:46:38Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 42:
         mtpStart = "2021-06-12T14:44:33Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2021-07-10T13:23:35Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 43:
         mtpStart = "2021-07-10T15:21:28Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2021-08-07T13:32:59Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 44:
         mtpStart = "2021-08-07T15:30:50Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2021-09-04T12:45:06Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 45:
         mtpStart = "2021-09-04T14:50:07Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2021-10-01T11:28:57Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 46:
         mtpStart = "2021-10-14T12:07:49Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2021-10-30T13:38:12Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 47:
         mtpStart = "2021-10-30T15:36:08Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2021-11-27T13:52:44Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 48:
         mtpStart = "2021-11-27T15:50:36Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2021-12-25T13:02:21Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 49:
         mtpStart = "2021-12-25T15:00:16Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2022-01-22T13:10:17Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 50:
         mtpStart = "2022-01-22T15:08:11Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2022-02-19T13:52:23Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 51:
         mtpStart = "2022-02-19T15:50:30Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2022-03-19T12:18:00Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 52:
         mtpStart = "2022-03-19T14:15:58Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2022-04-16T12:50:10Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 53:
         mtpStart = "2022-04-16T14:48:16Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2022-05-14T13:17:13Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 54:
         mtpStart = "2022-05-14T15:15:09Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2022-06-11T13:04:43Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 55:
         mtpStart = "2022-06-11T15:02:07Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2022-07-09T12:40:18Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 56:
         mtpStart = "2022-07-09T14:38:17Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2022-08-06T13:03:52Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 57:
         mtpStart = "2022-08-06T15:01:55Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2022-09-03T13:32:29Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 58:
         mtpStart = "2022-09-03T15:30:27Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2022-10-01T13:36:31Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 59:
         mtpStart = "2022-10-01T15:34:13Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2022-10-29T12:52:33Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 60:
         mtpStart = "2022-10-29T14:50:31Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2022-11-26T13:08:23Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 61:
         mtpStart = "2022-11-26T15:06:26Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2022-12-24T13:54:34Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 62:
         mtpStart = "2022-12-24T15:52:32Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2023-01-21T12:12:26Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 63:
         mtpStart = "2023-01-21T14:10:28Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2023-02-18T12:58:24Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 64:
         mtpStart = "2023-02-18T14:56:24Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2023-03-18T13:08:07Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 65:
         mtpStart = "2023-03-18T15:06:04Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2023-04-15T12:20:44Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 66:
@@ -514,6 +645,7 @@ def getMtpConstants(mtpNumber):
         mtpEnd = "2023-05-13T12:29:57Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [6, 18, 24, 37, 85, 86, 133, 134, 145, 146, 171, 173, 174, 180, 215, 243, 244,  256, 257, 282, 286, 287, 317, 318, 332, 333]
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 67:
@@ -521,6 +653,7 @@ def getMtpConstants(mtpNumber):
         mtpEnd = "2023-06-10T13:02:30Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [37, 45, 63, 64, 68, 69, 85, 86, 88, 89, 171, 254, 256, 257, 262, 268] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 68:
@@ -528,6 +661,7 @@ def getMtpConstants(mtpNumber):
         mtpEnd = "2023-07-08T13:20:26Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [85, 86, 134, 158, 171, 183, 210, 222, 234, 256, 257, 261, 284, 292, 331] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 69:
@@ -535,6 +669,7 @@ def getMtpConstants(mtpNumber):
         mtpEnd = "2023-08-05T12:54:02Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [15, 30, 42, 59, 94, 85, 86, 120, 129, 171,  237, 243, 249, 252, 256, 257, 265, 270, 271, 305, 306, 312] #input these from the email
+        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 70:
@@ -570,10 +705,10 @@ def getMtpConstants(mtpNumber):
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 74:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2023-11-29T00:28:35Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2023-12-23T12:53:36Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20231028_120000" #desired cop table folder - remember to update if patched
-        forbidden_dayside_orbits = [] #input these from the email
+        forbidden_dayside_orbits = [43, 44, 129, 183, 189, 190, 195, 211, 214, 215, 225, 263, 264, 273, 274, 289] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 

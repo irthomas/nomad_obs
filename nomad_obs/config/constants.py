@@ -6,6 +6,11 @@ Created on Mon Apr 27 12:12:25 2020
 """
 import spiceypy as sp
 
+#ignore missing files? E.g. when running very old MTPs
+# IGNORE_MISSING = True
+IGNORE_MISSING = False
+
+
 #spice constants
 SPICE_ABCORR = "None"
 SPICE_TARGET = "MARS"
@@ -71,3 +76,6 @@ UVIS_DEFAULT_ORBIT_TYPE = 14 #14 = UVIS 1xTC per dayside. 4 = 3xTCs per dayside
 FIG_X = 10
 FIG_Y = 6
 
+
+if IGNORE_MISSING:
+    print("Warning: IGNORE_MISSING = True. Don't run like this for planning new MTPs!")

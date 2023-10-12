@@ -1,0 +1,9 @@
+Target Name,Flyover #,Orbit type,Thermal orbit number,Start crossing time (UTC),End crossing time (UTC),Start crossing latitude (deg),Start crossing longitude (deg),End crossing latitude (deg),End crossing longitude (deg),Start crossing phase angle (deg),End crossing phase angle (deg),Start crossing solar incidence angle (deg),End crossing solar incidence angle (deg),Start crossing emission angle (deg),End crossing emission angle (deg),Start crossing LST (h),End crossing LST (h)
+Region of residual magnetic field,1,1,164,2023 DEC 12 10:11:53,2023 DEC 12 10:16:41,-10.0982,-143.2187,-24.2695,-140,112.944,112.944,119.7872,115.4035,6.8433,2.4656,4.0614,4.3536
+Region of residual magnetic field,2,3,265,2023 DEC 20 16:40:34,2023 DEC 20 16:55:15,-10.0989,174.9817,-52.9976,-171.9527,143.3055,112.8254,143.1488,115.3422,0.19681,2.5178,2.4594,3.5689
+Region of residual magnetic field,3,1,266,2023 DEC 20 18:45:00,2023 DEC 20 18:53:12,-29.3688,150.0124,-53.1685,159.5221,133.6362,115.4514,133.3762,115.1547,0.26181,0.30121,2.8136,3.5806
+Region of residual magnetic field,4,3,276,2023 DEC 21 14:17:30,2023 DEC 21 14:23:01,-10.099,-143.2859,-26.4987,-140,145.9005,137.3851,145.7415,137.1312,0.19879,0.25418,2.2806,2.5894
+Region of residual magnetic field,5,1,277,2023 DEC 21 16:15:25,2023 DEC 21 16:30:17,-10.0989,-172.2316,-53.4563,-158.9647,146.144,112.944,145.9848,116.3271,0.19903,3.3891,2.2639,3.3894
+Region of residual magnetic field,6,1,278,2023 DEC 21 18:13:21,2023 DEC 21 18:28:14,-10.0989,158.807,-53.4735,172.0719,146.3971,112.944,146.2377,116.4358,0.19922,3.4976,2.2464,3.3719
+Region of residual magnetic field,7,1,290,2023 DEC 22 17:48:14,2023 DEC 22 18:03:16,-10.0989,171.5905,-53.8668,-174.9471,149.2114,112.944,149.0615,117.3751,0.19659,4.4353,2.0506,3.1922
+Region of residual magnetic field,8,3,291,2023 DEC 22 19:56:31,2023 DEC 22 20:01:13,-40.6461,150.0177,-54.1514,156.7929,129.1216,117.2119,128.9224,116.9879,0.19918,0.22404,2.6936,3.2214

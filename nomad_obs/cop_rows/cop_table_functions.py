@@ -497,16 +497,22 @@ def getCopRows(observationName, observationDict, copTableDict, copTableCombinati
             stop()
     else:
         #look in cop tables for correct subdomain rows
+        found = [0]
         for indexCop, diffractionOrdersCop, integrationTimeCop, rhythmCop, windowHeightCop in zip(copTableCombinations["index"], copTableCombinations["orders"], copTableCombinations["integrationTime"], copTableCombinations["rhythm"], copTableCombinations["windowHeight"]):
             if diffractionOrders == diffractionOrdersCop:
+                found.append(1)
                 if integrationTime == integrationTimeCop:
+                    found.append(2)
                     if rhythm == rhythmCop:
+                        found.append(3)
                         if windowHeight == windowHeightCop:
                             scienceCopRow = indexCop
+                            found.append(4)
+
                 
     
     if scienceCopRow < 0:
-        print("Error: COP row 1 not found")
+        print("Error: COP row 1 not found. ", {0:"Orders not found", 1:"Int time not found", 2:"Rhythm not found", 3:"Window height not found"}[max(found)])
         print(diffractionOrders)
         stop()
     

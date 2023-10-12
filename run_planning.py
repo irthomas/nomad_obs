@@ -21,7 +21,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 73
+mtpNumber = 74
 
 
 r"""
@@ -40,8 +40,8 @@ summary_files\mtp0xx\kickoff\NOMAD_egress_solar_occulations_summary.txt (optiona
 summary_files\mtp0xx\kickoff\NOMAD_ingress_and_merged_solar_occulations_summary.txt (optional)
 summary_files\mtp0xx\kickoff\NOMAD_grazing_solar_occulations_summary.txt (optional, if present)
 
-summary_files\mtp0xx\MARS_IN_LNO_OCC_FOV.txt
-summary_files\mtp0xx\MARS_IN_UVIS_OCC_FOV.txt
+summary_files\mtp0xx\MARS_IN_LNO_OCC_FOV.txt (optional)
+summary_files\mtp0xx\MARS_IN_UVIS_OCC_FOV.txt (optional)
 
 summary_files\mtp0xx\roi_flyovers_nightside-filtered.txt
 
@@ -119,6 +119,10 @@ Other targets	          Normal priority
     copy formula into draft orbit plan cell N2 and then drag down the column
     =IF(OR(AND(A2=3,H2=""),AND(A2=14,NOT(H2=""))), 1, 0)
     Highlight the column and turn on conditional formatting to help find incorrect orbit types (all values=0 when correct)
+
+*Add 141-150 fullscans (CO2 Fullscan Fast #5), a few at the highest latitudes north or south. 
+*May need to run planning first to see latitudes in db
+
     
 *Then delete everything from column N onwards
     

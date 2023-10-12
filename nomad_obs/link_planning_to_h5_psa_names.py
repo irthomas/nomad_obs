@@ -1,0 +1,13 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Oct 11 09:14:50 2023
+
+@author: iant
+
+LINK PLANNING DB TO H5 FILENAME AND PSA LID
+
+GET PLANNING INFO FROM SQLITE DB
+GET H5 INFO FROM LEVEL 1.0A CACHE.DB
+MAKE PSA LID
+
+"""
