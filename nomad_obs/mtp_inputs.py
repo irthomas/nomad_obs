@@ -54,6 +54,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20180313_091700" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -72,6 +73,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20180313_091700" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -90,6 +92,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20180616_110400" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -108,6 +111,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20180714_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -126,6 +130,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20180714_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -144,6 +149,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20180714_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -162,6 +168,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20181006_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
 
@@ -182,6 +189,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20181006_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
     
     elif mtpNumber == 9: #2018-12-01T14:00:32Z EXMGEO_TD2N - 2018-12-29T12:14:53Z EXMGEO_TD2N 
@@ -190,6 +198,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20181006_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
     
     elif mtpNumber == 10:
@@ -198,6 +207,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20181229_113000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 11:
@@ -206,6 +216,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20181229_113000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
     
     elif mtpNumber == 12: # > EXMGEO_TD2N -  > EXMGEO_TD2N
@@ -214,6 +225,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20181229_113000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
     
     elif mtpNumber == 13:
@@ -222,6 +234,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
     
     elif mtpNumber == 14:
@@ -230,6 +243,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 15:
@@ -238,6 +252,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 16:
@@ -246,6 +261,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 17:
@@ -254,6 +270,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 18:
@@ -262,6 +279,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 19:
@@ -270,6 +288,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 20:
@@ -278,6 +297,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20190323_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 21:
@@ -286,6 +306,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20191102_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 22:
@@ -294,6 +315,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20191102_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 23:
@@ -302,6 +324,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20191102_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 24:
@@ -310,6 +333,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20191102_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 25:
@@ -318,6 +342,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20200222_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 26:
@@ -326,6 +351,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20200222_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 27:
@@ -334,6 +360,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20200222_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 28:
@@ -342,6 +369,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20200222_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 29:
@@ -350,6 +378,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20200222_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 30:
@@ -358,6 +387,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20200222_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 31:
@@ -366,6 +396,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 32:
@@ -374,6 +405,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 33:
@@ -382,6 +414,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 34:
@@ -390,6 +423,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 35:
@@ -398,6 +432,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 36:
@@ -406,6 +441,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 37:
@@ -414,6 +450,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 38:
@@ -422,6 +459,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20200808_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 39:
@@ -430,6 +468,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 40:
@@ -438,6 +477,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 41:
@@ -446,6 +486,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 42:
@@ -454,6 +495,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 43:
@@ -462,6 +504,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 44:
@@ -470,6 +513,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 45:
@@ -478,6 +522,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 46:
@@ -486,6 +531,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 47:
@@ -494,6 +540,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 48:
@@ -502,6 +549,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 49:
@@ -510,6 +558,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 50:
@@ -518,6 +567,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20210320_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 51:
@@ -526,6 +576,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 52:
@@ -534,6 +585,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 53:
@@ -542,6 +594,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 54:
@@ -550,6 +603,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 55:
@@ -558,6 +612,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 56:
@@ -566,6 +621,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 57:
@@ -574,6 +630,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 58:
@@ -582,6 +639,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 59:
@@ -590,6 +648,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 60:
@@ -598,6 +657,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 61:
@@ -606,6 +666,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 62:
@@ -614,6 +675,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 63:
@@ -622,6 +684,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20220219_061000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 64:
@@ -630,6 +693,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 65:
@@ -638,6 +702,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 66:
@@ -646,6 +711,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [6, 18, 24, 37, 85, 86, 133, 134, 145, 146, 171, 173, 174, 180, 215, 243, 244,  256, 257, 282, 286, 287, 317, 318, 332, 333]
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 67:
@@ -654,6 +720,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [37, 45, 63, 64, 68, 69, 85, 86, 88, 89, 171, 254, 256, 257, 262, 268] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 68:
@@ -662,6 +729,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [85, 86, 134, 158, 171, 183, 210, 222, 234, 256, 257, 261, 284, 292, 331] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 69:
@@ -670,6 +738,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [15, 30, 42, 59, 94, 85, 86, 120, 129, 171,  237, 243, 249, 252, 256, 257, 265, 270, 271, 305, 306, 312] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 70:
@@ -678,6 +747,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [6, 18, 31, 43, 85, 86, 122, 140, 171, 178, 190, 226, 243, 244, 256, 257, 274, 275, 301, 302, 313, 314, 336, 337] #input these from the email
         required_dayside_orbits = []
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 71:
@@ -686,6 +756,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [6, 25, 41, 76, 85, 86, 89, 116, 157, 166, 171, 178, 181, 193, 256, 257] #input these from the email
         required_dayside_orbits = [204, 241, 254, 266, 267, 278, 279, 303, 306, 307, 316, 332]
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 72:
@@ -694,6 +765,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20230218_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [6, 41, 53, 85, 86, 171, 207, 225, 236, 237, 248, 256, 257, 260, 261, 291, 292, 327] #input these from the email
         required_dayside_orbits = [37] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
  
     elif mtpNumber == 73:
@@ -702,6 +774,7 @@ def getMtpConstants(mtpNumber):
         copVersion = "20231028_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [5, 54, 55, 69, 70, 85, 86, 96, 101, 109] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 74:
@@ -710,22 +783,25 @@ def getMtpConstants(mtpNumber):
         copVersion = "20231028_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [43, 44, 129, 183, 189, 190, 195, 211, 214, 215, 225, 263, 264, 273, 274, 289] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 600 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 75:
-        mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2023-12-23T14:51:28Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2024-01-20T13:04:32Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20231028_120000" #desired cop table folder - remember to update if patched
-        forbidden_dayside_orbits = [] #input these from the email
-        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        forbidden_dayside_orbits = [50, 51, 62, 85, 86, 90, 128, 151, 171, 209, 256, 257, 270, 274, 293, 309, 310] #input these from the email
+        required_dayside_orbits = [294, 316, 319, 320] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 440 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 76:
         mtpStart = "" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "" #EXMGEO_TD2N end time as specified by Bojan or Claudio
-        copVersion = "" #desired cop table folder - remember to update if patched
+        copVersion = "20231028_120000" #desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = [] #input these from the email
         required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 440 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
     elif mtpNumber == 77:
@@ -794,7 +870,9 @@ def getMtpConstants(mtpNumber):
                         "soCentreDetectorLine":soCentreDetectorLine, \
                         "acsStartAltitude":acsStartAltitude, \
                         "forbidden_dayside_orbits":forbidden_dayside_orbits, \
-                        "required_dayside_orbits":required_dayside_orbits}
+                        "required_dayside_orbits":required_dayside_orbits, \
+                        "occultation_precooling":occultation_precooling, \
+                        }
     
     return mtpConstantsDict
             

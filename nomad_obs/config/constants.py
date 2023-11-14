@@ -35,7 +35,7 @@ OFF_COP_ROW = -1
 #universal constants
 INITIALISATION_TIME = 10 #s
 MINIMUM_TELECOMMAND_INTERVAL = 5 #s
-PRECOOLING_TIME = 600 #s
+# PRECOOLING_TIME = 600 #s #see mtp inputs
 THERMAL_RULE_ON_TIME = 80 * 60 #s
 
 #detector constants
@@ -46,7 +46,7 @@ OCCULTATION_SEARCH_STEP_SIZE = 2.0 #s
 MAXIMUM_SO_ALTITUDE = 250.0 #km
 SO_TRANSITION_ALTITUDE = 50.0 #km
 MAXIMUM_GRAZING_ALTITUDE = 100.0 #km also for searching for region of interest matches
-MINIMUM_TIME_BETWEEN_OCCULTATIONS = 675 #s define as merged occ if less than this
+MINIMUM_TIME_BETWEEN_OCCULTATIONS = {440:519, 600:675} #s define as merged occ if less than this. Dict key is the precooling time
 SO_REFERENCE_DURATION = 30 #s
 ACCEPTABLE_MTP_OCCULTATION_TIME_ERROR = 20.0 #s
 

@@ -89,7 +89,7 @@ if "orbitList" not in globals():
     printStatement("Getting occultation data")
     orbitList = getOccultationData(orbitList, mtpConstants)
     printStatement("Finding grazing occultations")
-    orbitList = findGrazingOccultations(orbitList)
+    orbitList = findGrazingOccultations(orbitList, mtpConstants)
     orbitList = updateWrongOrbitTypes(orbitList, mtpConstants)
     printStatement("Checking for corresponding MAPPS events")
     orbitList = addMappsEvents(orbitList, mtpConstants, paths)

@@ -14,7 +14,7 @@ from nomad_obs.planning.spice_functions import et2utc, getLonLatLst
 from nomad_obs.config.constants import SPICE_OBSERVER, SPICE_ABCORR
 from nomad_obs.planning.spice_functions import findTangentAltitudeTime, getTangentAltitude
 
-from nomad_obs.config.constants import INITIALISATION_TIME, PRECOOLING_TIME
+from nomad_obs.config.constants import INITIALISATION_TIME
 from nomad_obs.config.constants import OCCULTATION_SEARCH_STEP_SIZE, MAXIMUM_SO_ALTITUDE, SO_TRANSITION_ALTITUDE, MAXIMUM_GRAZING_ALTITUDE, MINIMUM_TIME_BETWEEN_OCCULTATIONS, SO_REFERENCE_DURATION
 
 
@@ -24,6 +24,9 @@ def getOccultationData(orbit_list, mtpConstants):
     utc_string_start = mtpConstants["utcStringStart"]
     utc_string_end = mtpConstants["utcStringEnd"]
     acs_start_altitude = mtpConstants["acsStartAltitude"]
+    precooling_time = mtpConstants["occultation_precooling"]
+    
+    minimum_time_between_occultations = MINIMUM_TIME_BETWEEN_OCCULTATIONS[precooling_time]
 
     orbit_starts = np.asfarray([orbit["etOrbitStart"] for orbit in orbit_list])
     
@@ -92,14 +95,14 @@ def getOccultationData(orbit_list, mtpConstants):
         egress_transition_lon, egress_transition_lat, egress_transition_lst = getLonLatLst(egress_transition)
         egress_midpoint_altitude = getTangentAltitude(egress_midpoint)
 
-        obs_ingress_start = ingress_start - INITIALISATION_TIME - PRECOOLING_TIME - SO_REFERENCE_DURATION
+        obs_ingress_start = ingress_start - INITIALISATION_TIME - precooling_time - SO_REFERENCE_DURATION
         obs_ingress_end = ingress_end + SO_REFERENCE_DURATION
         obs_ingress_duration = obs_ingress_end - obs_ingress_start
-        obs_egress_start = egress_start - INITIALISATION_TIME - PRECOOLING_TIME - SO_REFERENCE_DURATION
+        obs_egress_start = egress_start - INITIALISATION_TIME - precooling_time - SO_REFERENCE_DURATION
         obs_egress_end = egress_end + SO_REFERENCE_DURATION
         obs_egress_duration = obs_egress_end - obs_egress_start
 
-        if egress_start - ingress_end < MINIMUM_TIME_BETWEEN_OCCULTATIONS:
+        if egress_start - ingress_end < minimum_time_between_occultations:
             
             merged_start = ingress_start
             merged_start_str = ingress_start_str
@@ -159,7 +162,7 @@ def getOccultationData(orbit_list, mtpConstants):
         orbit_list[orbit_index].update(occultation_dict)
 
         #finally, print note if occultations are merged, or almost merged
-        if (egress_start - ingress_end) < (MINIMUM_TIME_BETWEEN_OCCULTATIONS + 30.0):
+        if (egress_start - ingress_end) < (minimum_time_between_occultations + 30.0):
             print("Time between occultations is %0.1f seconds for orbit list index %i" %((egress_start - ingress_end), orbit_index))
         
 
@@ -169,8 +172,11 @@ def getOccultationData(orbit_list, mtpConstants):
 
 
 
-def findGrazingOccultations(orbit_list):
+def findGrazingOccultations(orbit_list, mtpConstants):
     """find all grazing occultations in MTP, add to orbit list"""
+    precooling_time = mtpConstants["occultation_precooling"]
+    
+    
     grazing_index = 0
     for orbit in orbit_list:
         if orbit["dayside"]["incidenceMidpoint"] > 60.0: #if high beta angle
@@ -207,7 +213,7 @@ def findGrazingOccultations(orbit_list):
                     grazing_midpoint_str = et2utc(grazing_midpoint)
                     grazing_midpoint_lon, grazing_midpoint_lat, grazing_midpoint_lst =  getLonLatLst(grazing_midpoint)
     
-                    obs_grazing_start = grazing_start - INITIALISATION_TIME - PRECOOLING_TIME - SO_REFERENCE_DURATION
+                    obs_grazing_start = grazing_start - INITIALISATION_TIME - precooling_time - SO_REFERENCE_DURATION
                     obs_grazing_end = grazing_end + SO_REFERENCE_DURATION
                     obs_duration = obs_grazing_end - obs_grazing_start
                     

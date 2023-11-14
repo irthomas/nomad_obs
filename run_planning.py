@@ -21,7 +21,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 74
+mtpNumber = 75
 
 
 r"""
@@ -101,7 +101,6 @@ Other targets	          Normal priority
 *If requested by Liege team: add 2 UVIS nightsides (type 7) from list of orbits in roi_flyovers_nightside-filtered.txt 
     These must not clash with other observations e.g. solar occultations or high priority LNO nadirs 
     (UVIS can run night and day on same orbit).
-    
 
 *\\superseded by request above: Add a few LNO nightsides (type 7) if space is available -> less critical if nightside limbs already present\\
 
@@ -230,7 +229,7 @@ if True:
     printStatement("Getting occultation data")
     orbitList = getOccultationData(orbitList, mtpConstants)
     printStatement("Finding grazing occultations")
-    orbitList = findGrazingOccultations(orbitList)
+    orbitList = findGrazingOccultations(orbitList, mtpConstants)
     orbitList = updateWrongOrbitTypes(orbitList, mtpConstants)
     printStatement("Checking for corresponding MAPPS events")
     orbitList = addMappsEvents(orbitList, mtpConstants, paths)
@@ -277,7 +276,7 @@ if True:
     orbitList = mergeMtpPlan(orbitList, finalMtpPlan, "finalOrbitPlan", "completeOrbitPlan") 
     orbitList = addCorrectNadirObservations(orbitList)
     printStatement("Reducing LNO dayside nadir observations to fit thermal rule")
-    orbitList = fitNadirToThermalRule(orbitList)
+    orbitList = fitNadirToThermalRule(orbitList, mtpConstants)
     printStatement("Finding and adding COP rows to orbit list")
     copTableDict = getCopTables(mtpConstants)
     orbitList = addIrCopRows(orbitList, copTableDict, mtpConstants, occultationObservationDict, nadirObservationDict)

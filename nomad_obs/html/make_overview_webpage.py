@@ -13,7 +13,7 @@ from datetime import datetime
 
 from nomad_obs.config.constants import FIG_X, FIG_Y
 from nomad_obs.config.constants import NADIR_SEARCH_STEP_SIZE, OCCULTATION_SEARCH_STEP_SIZE
-from nomad_obs.config.constants import INITIALISATION_TIME, PRECOOLING_TIME
+from nomad_obs.config.constants import INITIALISATION_TIME
 from nomad_obs.planning.spice_functions import getLonLatLst, getLonLatIncidenceLst, getTangentAltitude
 from nomad_obs.cop_rows.cop_table_functions import getObsParameters
 
@@ -23,6 +23,7 @@ def makeOverviewPage(orbit_list, mtpConstants, paths, occultationObservationDict
     """plot occultation orders for mtp overview page"""
     mtpNumber = mtpConstants["mtpNumber"]
     obsTypeNames = {"ingress":"irIngressLow", "egress":"irEgressLow"}
+    precooling_time = mtpConstants["occultation_precooling"]
 
     
     #loop through once to find list of all orders measured
@@ -125,7 +126,7 @@ def makeOverviewPage(orbit_list, mtpConstants, paths, occultationObservationDict
                     if "incidences" not in nadir.keys():
 #                        print(orbit["orbitNumber"])
                         #nadir start/end times have been modified to fit thermal room
-                        realStartTime = nadir["obsStart"] + PRECOOLING_TIME + INITIALISATION_TIME
+                        realStartTime = nadir["obsStart"] + precooling_time + INITIALISATION_TIME
                         realEndTime = nadir["obsEnd"]
                         ets = np.arange(realStartTime, realEndTime, NADIR_SEARCH_STEP_SIZE)
                         lonsLatsIncidencesLsts = np.asfarray([getLonLatIncidenceLst(et) for et in ets])
