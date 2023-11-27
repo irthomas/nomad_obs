@@ -167,7 +167,7 @@ from nomad_obs.regions_of_interest import nadirRegionsOfInterest, occultationReg
 
 #change directory paths and SPICE kernels here
 #always select OFFLINE=True if running on home computer
-from nomad_obs.config.paths import setupPaths, devWebsitePaths
+from nomad_obs.config.paths import setupPaths#, devWebsitePaths
 #now run the script
 
 #if the number of COP rows is incorrect in the occultation files, add an override here
@@ -213,14 +213,14 @@ MAKE_FIGURES = True
 # MAKE_FIGURES = False
 
 
-# def run_planning(mtpNumber):
-if True:
+def run_planning(mtpNumber):
+# if True:
     #START PROGRAM HERE
     print("### Planning observations for MTP %i ###" %mtpNumber)
     orbitList = []
     mtpConstants = getMtpConstants(mtpNumber)
     paths = setupPaths(mtpConstants)
-    devPaths = devWebsitePaths(mtpConstants)
+    # devPaths = devWebsitePaths(mtpConstants)
     
     printStatement("Starting program")
     printStatement("Reading in initialisation data and inputs from mapps event file")    
@@ -344,10 +344,11 @@ if True:
 # except:
 #     dump_json(orbitList)
 
-    
 
-# for mtpNumber in range(14,41):
-#     run_planning(mtpNumber)
+#TODO: check MTP069 error with dayside nadir plotting makeOverviewPage()
+#for adding UVIS COP rows to planning (change to function)
+for mtpNumber in range(70,75):
+    run_planning(mtpNumber)
         
 
 #windows only
