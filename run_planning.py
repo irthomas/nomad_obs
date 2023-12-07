@@ -8,8 +8,6 @@ Created on Mon Mar  4 08:22:23 2019
 
 TODO:
     REWORK GENERIC PLAN ORBIT TYPE SELECTOR FOR ORBITS WITH OCCULTATIONS + LIMB AND OCCULTATIONS + OCM
-    ADD RANDOM NUMBER GENERATOR FOR NADIR ROI FLYOVERS, REDUCE ROIS AND NADIRS ON ORBITS OF TYPE 1
-    READ IN OCM EXTRACTED EVENTS FILE
     READ IN MERGED/GRAZING OCCULTATION TYPES FROM KICKOFF SUMMARY FILES
     
     
@@ -21,7 +19,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 75
+mtpNumber = 76
 
 
 r"""
@@ -34,6 +32,8 @@ summary_files\mtp0xx\2deg_latlon_15min_LST
 summary_files\mtp0xx\2deg_latlon_30min_LST
 summary_files\mtp0xx\5deg_latlon_15min_LST
 summary_files\mtp0xx\5deg_latlon_30min_LST
+
+
 
 summary_files\mtp0xx\kickoff\nadir_dayside_nightside_thermal_orbits_orbit_type_summary.txt (optional)
 summary_files\mtp0xx\kickoff\NOMAD_egress_solar_occulations_summary.txt (optional)
@@ -49,12 +49,17 @@ summary_files\mtp0xx\roi_flyovers_nightside-filtered.txt
 If CaSSIS joint obs, check the google doc table
 * Find NOMAD thermal orbit numbers (compare CaSSIS UTCs to rows in nadir_dayside_nightside_thermal_orbits_orbit_type_summary.txt)
 * Sort orbit numbers in ascending order, add to required_dayside_orbits in nomad_obs/mtp_inputs.py
-    
 
-* Add start/end times, COP table version, and list of forbidden dayside nadir orbits, to nomad_obs/mtp_inputs.py
+If CaSSIS joint limbs:
+* copy .txt file from CaSSIS_limb_UVIS_ride_along to summary_files\mtp0xx (if exists)
+Manually set the corresponding orbit to type 28 after initial run.
+
+* Add start/end times, COP table version, and list of forbidden dayside nadir orbits (from ops email), to nomad_obs/mtp_inputs.py
 * Then run run_planning.py
 
-* Then update the mtpNumber in remove_ir_nadirs.py and run it
+
+
+* When finished, update the mtpNumber in remove_ir_nadirs.py and run it
 * This will automatically remove lots of LNO nadirs, whilst keeping all the CaSSIS nadirs and trying to keep as many of the following:
 
     
@@ -120,7 +125,8 @@ Other targets	          Normal priority
     Highlight the column and turn on conditional formatting to help find incorrect orbit types (all values=0 when correct)
 
 *Add 141-150 fullscans (CO2 Fullscan Fast #5), a few at the highest latitudes north or south. 
-*May need to run planning first to see latitudes in db
+*Code to print ingress/egress latitudes: 
+* [(d["orbitNumber"], d["ingress"]["latMidpoint"],d["egress"]["latMidpoint"]) for d in orbitList if "ingress" in d.keys() and "egress" in d.keys()]
 
     
 *Then delete everything from column N onwards
@@ -213,8 +219,8 @@ MAKE_FIGURES = True
 # MAKE_FIGURES = False
 
 
-def run_planning(mtpNumber):
-# if True:
+# def run_planning(mtpNumber):
+if True:
     #START PROGRAM HERE
     print("### Planning observations for MTP %i ###" %mtpNumber)
     orbitList = []
@@ -347,8 +353,8 @@ def run_planning(mtpNumber):
 
 #TODO: check MTP069 error with dayside nadir plotting makeOverviewPage()
 #for adding UVIS COP rows to planning (change to function)
-for mtpNumber in range(70,75):
-    run_planning(mtpNumber)
+# for mtpNumber in range(70,75):
+#     run_planning(mtpNumber)
         
 
 #windows only

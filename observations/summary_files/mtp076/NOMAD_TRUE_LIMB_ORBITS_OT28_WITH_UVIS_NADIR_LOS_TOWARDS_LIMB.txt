@@ -1,0 +1,2 @@
+Limb pointing start time (UTC),Limb pointing end time (UTC),Thermal orbit number
+2024 JAN 21 07:13:20,2024 JAN 21 07:18:20,9
