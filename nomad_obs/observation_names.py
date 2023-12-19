@@ -175,6 +175,7 @@ occultationObservationDict = {
 "CO2 Fullscan Fast #4":[["COP#42"], 4, 1, 16, 0], #165-175
 "CO2 Fullscan Fast #3":[["COP#34"], 4, 1, 16, 0], #125-135
 "CO Fullscan Fast #2":[["COP#46"], 4, 1, 16, 0], #185-195
+"LNO CO Fullscan Fast #1":[["COP#49"], 2, 1, 16, 1], #185-195
 "LNO Occultation Fullscan Fast #2":[["COP#56"], 2, 1, 16, 1],
 
 
