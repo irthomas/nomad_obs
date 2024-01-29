@@ -230,10 +230,11 @@ NADIR_NIGHTSIDE_WEIGHTS = [
         
         
 NADIR_CH4_REGION_WEIGHTS = [
-    ["CH4 3SUBD 01"] * 4, #M #168, 134, 136
-    ["CH4 H2O 2SUBD 02"] * 4, #M #168, 136
-    ["CH4 CO 2SUBD #3"] * 2, #L #189, 136
-    ["CH4 H2O 2SUBD 01"] * 2, #L #168, 134
+    ["H2O CO 3SUBD #2"] * 8,
+    # ["CH4 3SUBD 01"] * 2, #M #168, 134, 136
+    # ["CH4 H2O 2SUBD 02"] * 2, #M #168, 136
+    ["CH4 CO 2SUBD #3"] * 1, #L #189, 136
+    ["CH4 H2O 2SUBD 01"] * 1, #L #168, 134
     
 ]        
 
