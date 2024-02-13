@@ -397,12 +397,26 @@ nadirObservationDict = {
 }
 
 
+"""print out the observations run, and their diffraction orders, listed by priority"""
 # from nomad_obs.observation_weights import OCCULTATION_WEIGHTS    
 
 # observations_run = [item for sublist in OCCULTATION_WEIGHTS for item in sublist]
-# for name, values in occultationObservationDict.items():
-#     if name in observations_run:
-#         print("%s\t" %name + "\t".join([str(i) for i in values[0]]))
+# unique_obs_run = list(set(observations_run))
+
+# for p in ["high", "medium", "low"]:
+#     for name, values in occultationObservationDict.items():
+#         if name in observations_run:
+#             weight = observations_run.count(name)
+#             if weight > 7:
+#                 priority = "high"
+#             elif weight > 3:
+#                 priority = "medium"
+#             else:
+#                 priority = "low"
+#             text = "%s\t%s\t" %(name, priority) + "\t".join([str(i) for i in values[0]])
+#             if p == priority:
+#                 print(text)
+        
 
 
 
