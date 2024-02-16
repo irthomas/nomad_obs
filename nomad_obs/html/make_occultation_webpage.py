@@ -140,7 +140,7 @@ def writeOccultationWebpage(orbit_list, mtpConstants, paths, make_figures=True):
         plt.figure(figsize=(FIG_X, FIG_Y-2))
         plt.scatter(plotDataIngress["et"], plotDataIngress["duration"], c="r", label="Ingress")
         plt.scatter(plotDataEgress["et"], plotDataEgress["duration"], c="b", label="Egress")
-        xTickIndices = list(range(0, len(plotDataIngress["et"]), (np.int(len(plotDataIngress["et"])/4) -1)))
+        xTickIndices = list(range(0, len(plotDataIngress["et"]), (int(len(plotDataIngress["et"])/4) -1)))
         xTickLabels = [et2utc(plotDataIngress["et"][x])[0:11] for x in xTickIndices]
         xTicks = [plotDataIngress["et"][x] for x in xTickIndices]
         plt.xticks(xTicks, xTickLabels)
@@ -155,7 +155,7 @@ def writeOccultationWebpage(orbit_list, mtpConstants, paths, make_figures=True):
         plt.figure(figsize=(FIG_X, FIG_Y-2))
         plt.scatter(plotDataIngress["et"], plotDataIngress["lat"], c="r", label="Ingress")
         plt.scatter(plotDataEgress["et"], plotDataEgress["lat"], c="b", label="Egress")
-        xTickIndices = list(range(0, len(plotDataIngress["et"]), (np.int(len(plotDataIngress["et"])/4) -1)))
+        xTickIndices = list(range(0, len(plotDataIngress["et"]), (int(len(plotDataIngress["et"])/4) -1)))
         xTickLabels = [et2utc(plotDataIngress["et"][x])[0:11] for x in xTickIndices]
         xTicks = [plotDataIngress["et"][x] for x in xTickIndices]
         plt.xticks(xTicks, xTickLabels)

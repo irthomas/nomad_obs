@@ -146,7 +146,7 @@ def writeNadirWebpage(orbit_list, mtpConstants, paths, make_figures=True):
         
         plt.figure(figsize=(FIG_X, FIG_Y-2))
         plt.plot(plotData["et"], plotData["incidence"])
-        xTickIndices = list(range(0, len(plotData["et"]), (np.int(len(plotData["et"])/4) -1)))
+        xTickIndices = list(range(0, len(plotData["et"]), (int(len(plotData["et"])/4) -1)))
         xTickLabels = [et2utc(plotData["et"][x])[0:11] for x in xTickIndices]
         xTicks = [plotData["et"][x] for x in xTickIndices]
         plt.xticks(xTicks, xTickLabels)

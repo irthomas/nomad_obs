@@ -31,7 +31,7 @@ def getLonLatIncidenceLst(et):
     lon, lat = sp.reclat(coords)[1:3] * np.asfarray([sp.dpr(),sp.dpr()])
     lst = sp.et2lst(et, 499, (lon / sp.dpr()), "PLANETOCENTRIC")[3]
     incidence = sp.ilumin(SPICE_SHAPE, SPICE_TARGET, et, SPICE_REF, SPICE_ABCORR, SPICE_OBSERVER, coords)[3] * sp.dpr()
-    lst_hours = np.float(lst[0:2]) + np.float(lst[3:5])/60.0 + np.float(lst[6:8])/3600.0
+    lst_hours = float(lst[0:2]) + float(lst[3:5])/60.0 + float(lst[6:8])/3600.0
     return lon, lat, incidence, lst_hours
 
 
@@ -68,6 +68,6 @@ def getLonLatLst(et):
     coords = sp.npedln(SPICE_MARS_AXES[0], SPICE_MARS_AXES[1], SPICE_MARS_AXES[2], mars2tgoPos, tgo2sunPos)[0]
     lon, lat = sp.reclat(coords)[1:3] * np.asfarray([sp.dpr(),sp.dpr()])
     lst = sp.et2lst(et, 499, (lon / sp.dpr()), "PLANETOCENTRIC")[3]
-    lst_hours = np.float(lst[0:2]) + np.float(lst[3:5])/60.0 + np.float(lst[6:8])/3600.0
+    lst_hours = float(lst[0:2]) + float(lst[3:5])/60.0 + float(lst[6:8])/3600.0
     return lon, lat, lst_hours
 

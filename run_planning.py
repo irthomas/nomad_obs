@@ -45,14 +45,14 @@ summary_files\mtp0xx\MARS_IN_UVIS_OCC_FOV.txt (optional)
 
 summary_files\mtp0xx\roi_flyovers_nightside-filtered.txt
 
+If CaSSIS joint limbs:
+summary_files\mtp0xx\NOMAD_TRUE_LIMB_ORBITS_OT28_WITH_UVIS_NADIR_LOS_TOWARDS_LIMB.txt (if exists)
+
 
 If CaSSIS joint obs, check the google doc table
 * Find NOMAD thermal orbit numbers (compare CaSSIS UTCs to rows in nadir_dayside_nightside_thermal_orbits_orbit_type_summary.txt)
 * Sort orbit numbers in ascending order, add to required_dayside_orbits in nomad_obs/mtp_inputs.py
 
-If CaSSIS joint limbs:
-* copy .txt file from CaSSIS_limb_UVIS_ride_along to summary_files\mtp0xx (if exists)
-Manually set the corresponding orbit to type 28 after initial run.
 
 * Add start/end times, COP table version, and list of forbidden dayside nadir orbits (from ops email), to nomad_obs/mtp_inputs.py
 * Then run run_planning.py
@@ -82,14 +82,15 @@ Other targets	          Normal priority
 *The new generic orbit plan nomad_mtp0xx_plan_generic.xlsx will be automatically copied to orbit_plans\mtp0xx\
 *The orbit plan in the root directory can be deleted
 
-
 *if an OCM covers two daysides, check for ingress occultations on the nightside of the first OCM orbit
 *compare timings with nomad_ingress_events.txt
 *if found, add "1 irIngress irIngress uvisIngress" to the orbit
 
 *check NOMAD Phobos linescans are correctly registered. Change comment column to &nomadPhobos;
 
-*check for CaSSIS limbs -> change orbit to type 28 (dayside) or 47 (nightside as appropriate) for UVIS ridealong
+*if CaSSIS joint limbs:
+*change orbit to type 28 (dayside) or 47 (nightside as appropriate) for UVIS ridealong
+
 
 
 *check true limbs are correctly registered:
@@ -106,8 +107,6 @@ Other targets	          Normal priority
 *If requested by Liege team: add 2 UVIS nightsides (type 7) from list of orbits in roi_flyovers_nightside-filtered.txt 
     These must not clash with other observations e.g. solar occultations or high priority LNO nadirs 
     (UVIS can run night and day on same orbit).
-
-*\\superseded by request above: Add a few LNO nightsides (type 7) if space is available -> less critical if nightside limbs already present\\
 
     
 *Optional: Add a few LNO-only limbs (type 8) when FOV in range if space is available (we have lots of LNO+UVIS limbs now)

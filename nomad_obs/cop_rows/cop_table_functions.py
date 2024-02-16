@@ -402,7 +402,7 @@ def getObservationDescription(channel, copTableDict, fixedRow, copRow, silent=Fa
                 steppingType,steppingSpeed,steppingCount,steppingValue = findCopRowData(channel,copTableDict, ["steppingParameter","stepSpeed","stepCount","stepValue"],steppingPointer)
                 aotfOrder = findCopRowData(channel,copTableDict, ["aotfPointer"],sciencePointer)
                 aotfFrequency = findCopRowData(channel,copTableDict, ["frequency"],aotfOrder)
-                integrationTime = np.int(findCopRowData(channel,copTableDict, ["integrationTime"],sciencePointer)) / 1000
+                integrationTime = int(findCopRowData(channel,copTableDict, ["integrationTime"],sciencePointer)) / 1000
                 if steppingType=="AOTF_IX":
                     observationText = "Diffraction order stepping (fullscan): %i orders from %i to %i in steps of %s (%s order(s) per %s second(s))" %(int(steppingCount),int(aotfOrder),int(aotfOrder)+int(steppingCount),int(steppingValue),int(steppingSpeed)+1,int(fixedRhythm))
                 elif steppingType=="WINDOW_TOP":

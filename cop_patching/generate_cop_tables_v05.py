@@ -67,8 +67,8 @@ def exec_time(n_acc, window_height, int_time):
 
 def executionTime(accumulation_count, n_rows, n_subd, integration_time):
     """use real number of rows"""
-    window_height = np.float32(n_rows - 1.0)
-    return int(np.ceil(exec_time(accumulation_count, window_height, integration_time) * np.float32(n_subd)))
+    window_height = float(n_rows - 1.0)
+    return int(np.ceil(exec_time(accumulation_count, window_height, integration_time) * float(n_subd)))
 
 
 
@@ -79,14 +79,14 @@ def n_acc(max_exec_time, window_height, int_time):
 
 def getAccumulationCount(max_exec_time, n_rows, int_time):
     """use real number of rows"""
-    window_height = np.float32(n_rows - 1.0)
+    window_height = float(n_rows - 1.0)
     return n_acc(max_exec_time, window_height, int_time)
 
 
 
 def getBinningFactor(n_rows, n_subdomains, rows=24):
     """use real number of rows, return COP table style binning factor (-1)"""
-    n_bins = np.float(n_rows) / (np.float(rows)/np.float(n_subdomains))
+    n_bins = float(n_rows) / (float(rows)/float(n_subdomains))
     if np.round(n_bins) == n_bins:
         return int(n_bins)-1
     else:
@@ -315,7 +315,7 @@ def makeScienceTable(channel):
         nsubd = stepSpeed + 1
         
         maxExecTimeRhythm = MAX_EXECUTION_TIME[rythm]
-        maxExecTime = np.float32(maxExecTimeRhythm) / np.float32(nsubd)
+        maxExecTime = float(maxExecTimeRhythm) / float(nsubd)
         accumulationCount = getAccumulationCount(maxExecTime, nrows, integrationTime)
         binningFactor = getBinningFactor(nrows, nsubd)
         execTime = executionTime(accumulationCount, nrows, nsubd, integrationTime)
@@ -337,7 +337,7 @@ def makeScienceTable(channel):
         nsubd = stepSpeed + 1
     
         maxExecTimeRhythm = MAX_EXECUTION_TIME[rythm]
-        maxExecTime = np.float32(maxExecTimeRhythm) / np.float32(nsubd)
+        maxExecTime = float(maxExecTimeRhythm) / float(nsubd)
         binningFactor = getBinningFactor(nrows, nsubd)
         maxIntegrationTime = integrationTime + integrationTimeStep * integrationTimeSteps
         execTime = executionTime(accumulationCount, nrows, nsubd, maxIntegrationTime)
@@ -361,7 +361,7 @@ def makeScienceTable(channel):
                 steppingPointer = STEPPING_ROWS[channel][steppingCode][0]
     
                 maxExecTimeRhythm = MAX_EXECUTION_TIME[rythm]
-                maxExecTime = np.float32(maxExecTimeRhythm) / np.float32(nsubd)
+                maxExecTime = float(maxExecTimeRhythm) / float(nsubd)
                 accumulationCount = getAccumulationCount(maxExecTime, nrows, integrationTime)
                 binningFactor = getBinningFactor(nrows, nsubd)
                 execTime = executionTime(accumulationCount, nrows, nsubd, integrationTime)
@@ -393,7 +393,7 @@ def makeScienceTable(channel):
                         aotfPointers = MINISCAN_STARTING_ORDERS[channel][stepSizeKhz]
                     
                         maxExecTimeRhythm = MAX_EXECUTION_TIME[rythm]
-                        maxExecTime = np.float32(maxExecTimeRhythm) / np.float32(nsubd)
+                        maxExecTime = float(maxExecTimeRhythm) / float(nsubd)
                         accumulationCount = getAccumulationCount(maxExecTime, nrows, integrationTime)
                         
                         #code to fudge accumulation count reduction:
@@ -444,7 +444,7 @@ def makeScienceTable(channel):
                         for integrationTime in integrationTimes:
     
                             maxExecTimeRhythm = MAX_EXECUTION_TIME[rythm]
-                            maxExecTime = np.float32(maxExecTimeRhythm) / np.float32(nsubd)
+                            maxExecTime = float(maxExecTimeRhythm) / float(nsubd)
                             accumulationCount = getAccumulationCount(maxExecTime, nrows, integrationTime)
                             binningFactor = getBinningFactor(nrows, nsubd)
                             execTime = executionTime(accumulationCount, nrows, nsubd, integrationTime)
@@ -756,7 +756,7 @@ def generate_cop_tables(channels):
 #            smallest_lost_time = lost_time
 #            best_inttime = inttime
 #            best_accumulations = accumulations
-#            best_execution_time = np.int(execution_time / 1000.0)
+#            best_execution_time = int(execution_time / 1000.0)
 #        if not fix_inttime:
 #            print("int time %i us = lost time %0.1f" %(inttime, lost_time))
 #    print("Printing for NSUBD=%i, RHYTHM=%i" %(nsubdomains, rhythm/1000000))

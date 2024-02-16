@@ -13,8 +13,8 @@ def exec_time1(n_acc, window_height, int_time):
 
 def exec_time(accumulation_count, n_rows, n_subd, integration_time):
     """use real number of rows, time in milliseconds"""
-    window_height = np.float32(n_rows - 1.0)
-    return (exec_time1(accumulation_count, window_height, integration_time*1000.0) * np.float32(n_subd)) / 1000.0
+    window_height = float(n_rows - 1.0)
+    return (exec_time1(accumulation_count, window_height, integration_time*1000.0) * float(n_subd)) / 1000.0
 
 
 def n_acc1(max_exec_time, window_height, int_time):
@@ -25,8 +25,8 @@ def n_acc1(max_exec_time, window_height, int_time):
 
 def n_acc(max_exec_time, n_rows, n_orders, int_time):
     """use real number of rows, times in milliseconds"""
-    window_height = np.float32(n_rows - 1.0)
-    exec_time_per_order = (max_exec_time * 1000.0) / np.float32(n_orders)
+    window_height = float(n_rows - 1.0)
+    exec_time_per_order = (max_exec_time * 1000.0) / float(n_orders)
     n_accs = n_acc1(exec_time_per_order, window_height, int_time*1000.0)
     
     return n_accs
@@ -34,7 +34,7 @@ def n_acc(max_exec_time, n_rows, n_orders, int_time):
 
 def getBinningFactor(n_rows, n_subdomains, rows=24):
     """use real number of rows, return COP table style binning factor (-1)"""
-    n_bins = np.float(n_rows) / (np.float(rows)/np.float(n_subdomains))
+    n_bins = float(n_rows) / (float(rows)/float(n_subdomains))
     if np.round(n_bins) == n_bins:
         return int(n_bins)-1
     else:

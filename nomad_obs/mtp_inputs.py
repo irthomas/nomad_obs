@@ -817,8 +817,8 @@ def getMtpConstants(mtpNumber):
         mtpStart = "2024-03-16T14:17:01Z" #EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = "2024-04-13T12:59:13Z" #EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20231028_120000" #desired cop table folder - remember to update if patched
-        forbidden_dayside_orbits = [] #input these from the email
-        required_dayside_orbits = [] #add if LNO needs to operate on certain orbits e.g. joint observations
+        forbidden_dayside_orbits = [85, 86, 121, 139, 150, 151, 162, 166, 171, 175, 176, 179, 180, 184, 185, 189, 194, 195, 256, 257, 325, 326, 330, 332, 333, 338, 339] #input these from the email
+        required_dayside_orbits = [6, 7, 43, 47, 81] #add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 440 #seconds required for precooling
 #        ALLOCATED_DATA_VOLUME = #MBits # add if required
 
