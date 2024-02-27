@@ -1,0 +1,7 @@
+S/C,UTC,UVIS nadir LOS surface intercept lat (deg),UVIS nadir LOS surface intercept lon (deg),S/C altitude (km),UVIS nadir LOS surface intercept LST (h),UVIS nadir LOS surface intercept Incidence angle (deg),UVIS nadir LOS surface intercept Emission angle (deg),UVIS nadir LOS surface intercept Phase angle (deg)
+MRO,2024 APR 14 00:51:00,28.1949,-77.4946,284.8441,15.4714,70.2357,9.7928e-14,70.2357
+TGO,2024 APR 14 00:39:00,29.9721,-76.8863,409.1379,15.3172,69.8122,0.043676,69.7706
+
+MRO,2024 MAY 08 05:33:00,-75.1256,-103.8512,249.9982,2.6422,77.8561,1.4312e-14,77.8561
+TGO,2024 MAY 08 05:39:00,-75.4712,-103.4579,381.5814,2.7656,77.3012,0.30628,77.5768
+

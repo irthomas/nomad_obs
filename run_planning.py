@@ -19,7 +19,7 @@ __contact__   = "ian . thomas AT aeronomie . be"
 
 
 #select the MTP number to be run
-mtpNumber = 78
+mtpNumber = 79
 
 
 r"""
@@ -49,7 +49,7 @@ If CaSSIS joint limbs:
 summary_files\mtp0xx\NOMAD_TRUE_LIMB_ORBITS_OT28_WITH_UVIS_NADIR_LOS_TOWARDS_LIMB.txt (if exists)
 
 
-If CaSSIS joint obs, check the google doc table
+If CaSSIS joint nadir obs, check the google doc table
 * Find NOMAD thermal orbit numbers (compare CaSSIS UTCs to rows in nadir_dayside_nightside_thermal_orbits_orbit_type_summary.txt)
 * Sort orbit numbers in ascending order, add to required_dayside_orbits in nomad_obs/mtp_inputs.py
 
