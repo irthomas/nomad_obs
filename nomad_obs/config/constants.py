@@ -77,5 +77,15 @@ FIG_X = 10
 FIG_Y = 6
 
 
+#diffraction orders for specific observations, for writing orbits where they are measured
+#channel / observation type / objective
+OBJECTIVE_ORDERS = {
+    "SO":{},
+    "LNO":{"irDayside":
+       {"H2O":[167, 168, 169], "CO":[189, 190, 191]},
+   }
+}
+
+
 if IGNORE_MISSING:
     print("Warning: IGNORE_MISSING = True. Don't run like this for planning new MTPs!")

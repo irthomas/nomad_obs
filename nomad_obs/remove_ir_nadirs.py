@@ -20,7 +20,7 @@ from nomad_obs.regions_of_interest import nadirRegionsOfInterest
 from nomad_obs.io.orbit_plan_xlsx import getMtpPlanXlsx
 
 
-mtpNumber = 78
+mtpNumber = 79
 mtpConstants = getMtpConstants(mtpNumber)
 paths = setupPaths(mtpConstants)
 
@@ -30,7 +30,8 @@ required_dayside_orbits = mtpConstants["required_dayside_orbits"]
 
 
 # ADJACENT_ORBITS_TO_CHECK_FOR_NADIRS = 3
-ADJACENT_ORBITS_TO_CHECK_FOR_NADIRS = 5
+# ADJACENT_ORBITS_TO_CHECK_FOR_NADIRS = 5
+ADJACENT_ORBITS_TO_CHECK_FOR_NADIRS = 7
 
 
 #superceded by required_dayside_orbits from mtp_inputs.py

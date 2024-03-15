@@ -10,9 +10,10 @@ import json
 import sys
 
 from nomad_obs.config.constants import SO_CHANNEL_CODE, LNO_CHANNEL_CODE, PRECOOLING_COP_ROW, OFF_COP_ROW
-from nomad_obs.config.constants import LIMB_ORBIT_TYPES
+from nomad_obs.config.constants import LIMB_ORBIT_TYPES, OBJECTIVE_ORDERS
 from nomad_obs.acs_so_joint_occultations import SOC_JOINT_OBSERVATION_NAMES, SOC_JOINT_OBSERVATION_TYPES
 
+from nomad_obs.observation_names import nadirObservationDict
 
 def writeOutputTxt(filepath, lines_to_write):
     """function to write output to a log file"""
@@ -263,3 +264,34 @@ def writeOrbitPlanCsv(orbit_List, mtpConstants, paths):
     writeOutputCsv(os.path.join(paths["ORBIT_PLAN_PATH"], "nomad_mtp%03d_plan" %mtpNumber), orbitTypeNumbers)
 
 
+
+
+def writeObjectiveOrbitNumbers(orbit_list, obsType, channel, objective):
+    
+    if channel in OBJECTIVE_ORDERS.keys():
+        if obsType in OBJECTIVE_ORDERS[channel].keys():
+            if objective in OBJECTIVE_ORDERS[channel][obsType].keys():
+                orders_to_find = OBJECTIVE_ORDERS[channel][obsType][objective]
+            
+            else:
+                print("Error: Objective not found in objective order dictionary")
+        else:
+            print("Error: Obs type not found in objective order dictionary")
+    else:
+        print("Error: Channel not found in objective order dictionary")
+    
+    for orbit in orbit_list:
+        finalOrbitPlanTypes = orbit["finalOrbitPlan"]["orbitTypes"] #final version with cop rows and measurements specified
+        
+        if obsType in finalOrbitPlanTypes:
+            
+            obs_name = finalOrbitPlanTypes[obsType]
+            
+            if channel == "LNO" and obsType == "irDayside":
+                obsDict = nadirObservationDict
+                
+            if obs_name in obsDict.keys():
+                
+                orders = obsDict[obs_name]
+                
+            
