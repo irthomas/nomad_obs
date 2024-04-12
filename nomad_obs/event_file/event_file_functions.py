@@ -24,7 +24,7 @@ ACS_SOLAR_CALIBRATION_START_CODES, ACS_SOLAR_CALIBRATION_END_CODES, \
 CASSIS_CALIBRATION_START_CODES, CASSIS_CALIBRATION_END_CODES, \
 NOMAD_PHOBOS_START_CODES, NOMAD_PHOBOS_END_CODES, \
 NOMAD_DEIMOS_START_CODES, NOMAD_DEIMOS_END_CODES
-from nomad_obs.config.constants import ACCEPTABLE_MTP_OCCULTATION_TIME_ERROR
+from nomad_obs.config.constants import ACCEPTABLE_MTP_OCCULTATION_TIME_ERROR, EVENT_TIMING_MARGIN
 
 
 
@@ -364,38 +364,38 @@ def addMappsEvents(orbit_list, mtpConstants, paths):
                 
         #check if limb measurement lies within the dayside nadir of this orbit
         for limbStartTime in mappsLimbEventStartTimes:
-            if orbit["dayside"]["etStart"] < limbStartTime < orbit["dayside"]["etEnd"]:
+            if orbit["dayside"]["etStart"] - EVENT_TIMING_MARGIN< limbStartTime < orbit["dayside"]["etEnd"] + EVENT_TIMING_MARGIN:
                 orbit["allowedObservationTypes"].append("trueLimb")
 
         #check if night limb measurement lies within the nightside nadir of this orbit
         for nightLimbStartTime in mappsNightLimbEventStartTimes:
-            if orbit["nightside"]["etStart"] < nightLimbStartTime < orbit["nightside"]["etEnd"]:
-                print("Night limb timing found")
+            if orbit["nightside"]["etStart"] - EVENT_TIMING_MARGIN < nightLimbStartTime < orbit["nightside"]["etEnd"] + EVENT_TIMING_MARGIN:
+                print("Night limb timing found orbit", orbit["orbitNumber"])
                 orbit["allowedObservationTypes"].append("trueNightLimb")
 
         #check if solar calibration lies within this orbit
         for nomadSolarCalibrationStartTime in mappsNomadSolarCalibrationEventStartTimes:
             if orbit["nightside"]["etStart"] < nomadSolarCalibrationStartTime < orbit["dayside"]["etEnd"]:
-                print("NOMAD solar calibration timing found")
+                print("NOMAD solar calibration timing found orbit", orbit["orbitNumber"])
                 orbit["allowedObservationTypes"].append("nomadSolarCalibration")
         for acsSolarCalibrationStartTime in mappsAcsSolarCalibrationEventStartTimes:
             if orbit["nightside"]["etStart"] < acsSolarCalibrationStartTime < orbit["dayside"]["etEnd"]:
-                print("ACS solar calibration timing found")
+                print("ACS solar calibration timing found orbit", orbit["orbitNumber"])
                 orbit["allowedObservationTypes"].append("acsSolarCalibration")
         for cassisSolarCalibrationStartTime in mappsCassisSolarCalibrationEventStartTimes:
             if orbit["nightside"]["etStart"] < cassisSolarCalibrationStartTime < orbit["dayside"]["etEnd"]:
-                print("CaSSIS solar calibration timing found")
+                print("CaSSIS solar calibration timing found orbit", orbit["orbitNumber"])
                 orbit["allowedObservationTypes"].append("cassisSolarCalibration")
 
 
         #check if Phobos/Deimos lies within this orbit
         for nomadPhobosStartTime in mappsNomadPhobosEventStartTimes:
             if orbit["nightside"]["etStart"] < nomadPhobosStartTime < orbit["dayside"]["etEnd"]:
-                print("NOMAD Phobos timing found")
+                print("NOMAD Phobos timing found orbit", orbit["orbitNumber"])
                 orbit["allowedObservationTypes"].append("nomadPhobos")
         for nomadDeimosStartTime in mappsNomadDeimosEventStartTimes:
             if orbit["nightside"]["etStart"] < nomadDeimosStartTime < orbit["dayside"]["etEnd"]:
-                print("NOMAD Deimos timing found")
+                print("NOMAD Deimos timing found orbit", orbit["orbitNumber"])
                 orbit["allowedObservationTypes"].append("nomadDeimos")
 
             

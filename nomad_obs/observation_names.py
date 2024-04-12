@@ -42,6 +42,11 @@ __contact__   = "ian . thomas AT aeronomie . be"
 """
 #name:[[orders], int time, rhythm, lines, so=0/lno=1]
 occultationObservationDict = {
+    
+#MTP079 SPICAM joint obs - all already in dict
+# "6SUBD CO2 H2O #12":[[121, 132, 148, 156, 165, 189], 4, 1, 16, 0], #CO2 and aerosols
+# "6SUBD Nominal #54":[[121, 134, 148, 169, 186, 190], 4, 1, 16, 0], #H2O and aerosols
+# "6SUBD CO2 H2O #14":[[121, 132, 134, 148, 165, 169], 4, 1, 16, 0], #CO2 and H2O
         
 #new MTP073+
     
@@ -195,6 +200,8 @@ occultationObservationDict = {
 "135 only #2":[[135, 135, 135, 135, 135, 135], 4, 1, 16, 0],
 "136 only #2":[[136, 136, 136, 136, 136, 136], 4, 1, 16, 0],
 
+"179 only #2":[[179, 179, 179, 179, 179, 179], 4, 1, 16, 0],
+
 
 #old to be phased out
 "BgSubTest 03":[[121,134,149,165,168,190], 4, 1, 16, 0],
@@ -271,6 +278,12 @@ occultationObservationDict = {
 
 #name:[[orders], int time, rhythm, lines, channel (not used)]
 nadirObservationDict = {
+    
+#MTP079 SPICAM joint obs - all already in dict
+#"H2O CO 3SUBD #2":[[168,189,190], 205, 15, 144, 1], #H2O and CO
+#"H2O CO 2SUBD #1":[[168,189], 200, 15, 144, 1], #H2O and CO
+
+
 
 #new MTP064+
 "Surface Ice 3SUBD #2":[[189, 132, 133], 205, 15, 144, 1],
