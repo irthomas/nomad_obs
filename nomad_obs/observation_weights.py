@@ -25,6 +25,8 @@ OCCULTATION_WEIGHTS = [
     ["6SUBD CO2 CO #34"] * 8,  # T, CO2 iso low, CO low, priority high
     ["6SUBD CO #6"] * 8,  # CO iso + Temp, priority high
 
+    ["CO2 Fullscan Fast #5"] * 8,  # CO2 orders 141-150, priority high for GL
+
 
     # after prioritisation exercise
     ["6SUBD Nominal #53"] * 8,  # H #148 instead of 149 #121, 136, 169, 129, 148, 165

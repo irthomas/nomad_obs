@@ -22,10 +22,8 @@ else:
     PATH_LOCAL_SPICE_KERNELS = r"/bira-iasb/data/SATELLITE/TRACE-GAS-ORBITER/NOMAD/kernels"
 
 
-
-
 # ops = True #for operations
-ops = False #for planning
+ops = False  # for planning
 
 
 class MetakernelParser():
@@ -39,13 +37,13 @@ class MetakernelParser():
         self.path_regex = None
         self.dsk_regex = None
         self.remote_version = None
-        
+
         self.ops = ops
-        
+
         if ops:
             self.mk_name = "em16_ops.tm"
         else:
-            #for planning
+            # for planning
             self.mk_name = "em16_plan.tm"
 
     def openFTP(self, ftp_server):
@@ -53,7 +51,7 @@ class MetakernelParser():
         # Returns False if the connection failed.
         self.ftp_connection = ftplib.FTP(ftp_server)
         try:
-            self.ftp_connection.login() # Anonymous
+            self.ftp_connection.login()  # Anonymous
             return True
         except ftplib.all_errors as e:
             print("FTP error ({0})".format(e.message))
@@ -62,9 +60,9 @@ class MetakernelParser():
     def retrieve_FTP_file(self, src, dest):
         try:
             with open(dest, 'wb') as f:
-                #folder, base = os.path.split(src)
-                #self.ftp_connection.cwd(folder)
-                #self.ftp_connection.retrbinary('RETR ' + base, f.write)
+                # folder, base = os.path.split(src)
+                # self.ftp_connection.cwd(folder)
+                # self.ftp_connection.retrbinary('RETR ' + base, f.write)
                 self.ftp_connection.retrbinary('RETR ' + src, f.write)
             return True
         except ftplib.all_errors as e:
@@ -108,7 +106,7 @@ class MetakernelParser():
         return files_list
 
     def get_most_recent(self, files_list):
-        
+
         if len(files_list) > 0:
             return sorted(files_list)[-1]
         else:
@@ -133,38 +131,38 @@ class MetakernelParser():
             print("Connection to {0} established.".format(self.ftp_connection.host))
             try:
                 self.ftp_connection.cwd("/")
-                self.ftp_connection.cwd(posixpath.join(self.remote_path,"mk"))
+                self.ftp_connection.cwd(posixpath.join(self.remote_path, "mk"))
                 remote_list = self.ftp_connection.nlst()
                 print("All metakernels on server:", ", ".join(remote_list))
                 print("Searching for metakernels that match the regex: ", self.version_regex)
                 rem_filt_list = self.files_to_list(remote_list, self.version_regex)
                 print("Matching metakernels found:", ", ".join(rem_filt_list))
                 self.remote_version = self.get_most_recent(rem_filt_list)
-                print("Remote version is: %s" %self.remote_version)
-                
-                
-                local_list = os.listdir(os.path.join(self.local_path,"mk"))
+                print("Remote version is: %s" % self.remote_version)
+
+                local_list = os.listdir(os.path.join(self.local_path, "mk"))
                 print("All metakernels locally:", ", ".join(local_list))
                 loc_filt_list = self.files_to_list(local_list, self.version_regex)
                 print("Matching metakernels locally:", ", ".join(loc_filt_list))
                 self.local_version = self.get_most_recent(loc_filt_list)
-                print("Local version is: %s" %self.local_version)
+                print("Local version is: %s" % self.local_version)
 
-                #if local mk not found, or if not matching remote version
+                # if local mk not found, or if not matching remote version
                 if (not self.local_version) or (self.remote_version != self.local_version):
 
-                    #get latest mk from server, both full name and short name versions
-                    self.retrieve_FTP_file(posixpath.join(self.remote_path, "mk", self.remote_version), os.path.join(self.local_path, "mk" , self.remote_version))
+                    # get latest mk from server, both full name and short name versions
+                    self.retrieve_FTP_file(posixpath.join(self.remote_path, "mk", self.remote_version),
+                                           os.path.join(self.local_path, "mk", self.remote_version))
                     self.retrieve_FTP_file(posixpath.join(self.remote_path, "mk", self.mk_name), os.path.join(self.local_path, "mk", self.mk_name))
 
                     if self.local_version:
-                        print("Old local metakernel found: %s -> archiving" %self.local_version)
-                        os.rename(os.path.join(self.local_path, "mk", self.local_version), os.path.join(self.local_path, "mk", "previous_versions", self.local_version))
+                        print("Old local metakernel found: %s -> archiving" % self.local_version)
+                        os.rename(os.path.join(self.local_path, "mk", self.local_version), os.path.join(
+                            self.local_path, "mk", "previous_versions", self.local_version))
                     else:
                         print("Local metakernel not found")
 
-
-                    print("Local version updated to %s" %self.remote_version)
+                    print("Local version updated to %s" % self.remote_version)
                     self.replace_path()
                     self.insert_dsk()
                     print("Inserted DSK kernels into metakernel.")
@@ -182,7 +180,7 @@ class MetakernelParser():
         # in use for this version.
         latest_kernels = set()
         try:
-            for line in open(os.path.join(self.local_path,"mk",self.mk_name)):
+            for line in open(os.path.join(self.local_path, "mk", self.mk_name)):
                 res = self.meta_regex.search(line.rstrip('\n'))
                 if res:
                     latest_kernels.add(posixpath.normcase(res.group()))
@@ -192,17 +190,17 @@ class MetakernelParser():
 
     def replace_path(self):
         try:
-            with open(os.path.join(self.local_path,"mk",self.mk_name)) as f:
+            with open(os.path.join(self.local_path, "mk", self.mk_name)) as f:
                 data = f.read()
-                
-            #remove old bak file
-            if os.path.exists(os.path.join(self.local_path,"mk","%s.bak" %self.mk_name)):
-                os.remove(os.path.join(self.local_path,"mk","%s.bak" %self.mk_name))
-            os.rename(os.path.join(self.local_path,"mk",self.mk_name), os.path.join(self.local_path,"mk","%s.bak" %self.mk_name))
-            with open(os.path.join(self.local_path,"mk",self.mk_name), 'w') as f:
+
+            # remove old bak file
+            if os.path.exists(os.path.join(self.local_path, "mk", "%s.bak" % self.mk_name)):
+                os.remove(os.path.join(self.local_path, "mk", "%s.bak" % self.mk_name))
+            os.rename(os.path.join(self.local_path, "mk", self.mk_name), os.path.join(self.local_path, "mk", "%s.bak" % self.mk_name))
+            with open(os.path.join(self.local_path, "mk", self.mk_name), 'w') as f:
                 print("Adding local path to metakernel")
-                print 
-                f.write(data.replace("( '..' )", "('"+self.local_path+"')")) #re sub doesn't work with windows paths
+                print
+                f.write(data.replace("( '..' )", "('"+self.local_path+"')"))  # re sub doesn't work with windows paths
         except IOError as e:
             print("IO error ({0})".format(e.message))
 
@@ -215,12 +213,12 @@ class MetakernelParser():
         dsk_str = '\n'.join(dsk_s) + '\n'
         try:
             # Maybe change to regex/string slicing approach
-            f = open(os.path.join(self.local_path,"mk", self.mk_name))
+            f = open(os.path.join(self.local_path, "mk", self.mk_name))
             data_l = list(f)
             f.close()
-            insert_pos = [i for i,x in enumerate(data_l) if "KERNELS_TO_LOAD" in x][0] + 1
+            insert_pos = [i for i, x in enumerate(data_l) if "KERNELS_TO_LOAD" in x][0] + 1
             data_l.insert(insert_pos, dsk_str)
-            f = open(os.path.join(self.local_path,"mk", self.mk_name), 'w')
+            f = open(os.path.join(self.local_path, "mk", self.mk_name), 'w')
             f.write("".join(data_l))
             f.close()
         except IOError as e:
@@ -233,8 +231,8 @@ class MetakernelParser():
         try:
             for path, _, files in os.walk(self.local_path):
                 for filename in files:
-                    rel_path = os.path.relpath(path,self.local_path)
-                    local_files.add(os.path.join(rel_path,filename))
+                    rel_path = os.path.relpath(path, self.local_path)
+                    local_files.add(os.path.join(rel_path, filename))
         except IOError as e:
             print("IO error ({0})".format(e.message))
         return set(sorted(local_files))
@@ -242,43 +240,38 @@ class MetakernelParser():
     def update_kernels(self, local_tree, metakernel):
         # Download the missing kernel files to the local tree.
         files_to_download = metakernel.difference([s.replace("\\", "/") for s in local_tree])
-        print("There are %i files to download" %len(files_to_download))
+        print("There are %i files to download" % len(files_to_download))
         for filename in files_to_download:
-            if os.path.exists(os.path.normcase(os.path.join(self.local_path,filename))):
-                print("Error: file already exists %s" %os.path.normcase(os.path.join(self.local_path,filename)))
+            if os.path.exists(os.path.normcase(os.path.join(self.local_path, filename))):
+                print("Error: file already exists %s" % os.path.normcase(os.path.join(self.local_path, filename)))
             else:
-                print(posixpath.join(self.remote_path,filename)+' --> '+os.path.normcase(os.path.join(self.local_path,filename)))
-                self.retrieve_FTP_file(posixpath.join(self.remote_path,filename),os.path.normcase(os.path.join(self.local_path,filename)))
+                print(posixpath.join(self.remote_path, filename)+' --> '+os.path.normcase(os.path.join(self.local_path, filename)))
+                self.retrieve_FTP_file(posixpath.join(self.remote_path, filename), os.path.normcase(os.path.join(self.local_path, filename)))
 
     def check_tree(self, dest):
         # Setup the kernel tree.
-        tree = ['ck','ek','fk','ik','lsk','pck','sclk','spk','mk/previous_versions', 'dsk']
+        tree = ['ck', 'ek', 'fk', 'ik', 'lsk', 'pck', 'sclk', 'spk', 'mk/previous_versions', 'dsk']
         for folder in tree:
-            path = os.path.join(dest,folder)
+            path = os.path.join(dest, folder)
             if not os.path.exists(path):
                 print("Missing {0} folder in tree. Creating...".format(folder))
                 os.makedirs(path)
 
 
-
-
-
-
-
-META_PARSER_REGEX = "(?<=\'\$KERNELS/).*(?=\'$)"
+META_PARSER_REGEX = r"(?<=\'\$KERNELS/).*(?=\'$)"
 
 if ops:
-    META_VERSION_REGEX = "em16_ops_v\d{3,5}_(\d{8})_\d{3}\.tm"
+    META_VERSION_REGEX = r"em16_ops_v\d{3,5}_(\d{8})_\d{3}\.tm"
 else:
-    META_VERSION_REGEX = "em16_plan_v\d{3,5}_(\d{8})_\d{3}\.tm"
-    
+    META_VERSION_REGEX = r"em16_plan_v\d{3,5}_(\d{8})_\d{3}\.tm"
+
 parser = MetakernelParser(ops=ops)
 print("Kernel update started.")
 parser.check_tree(PATH_LOCAL_SPICE_KERNELS)
 parser.set_kernel_local_path(PATH_LOCAL_SPICE_KERNELS)
-print("Local path set to %s" %PATH_LOCAL_SPICE_KERNELS)
+print("Local path set to %s" % PATH_LOCAL_SPICE_KERNELS)
 parser.set_kernel_remote(KERNEL_FTP_PATH)
-print("Remote path set to %s on %s" %(KERNEL_FTP_PATH,KERNEL_FTP))
+print("Remote path set to %s on %s" % (KERNEL_FTP_PATH, KERNEL_FTP))
 
 parser.set_version_regex(META_VERSION_REGEX)
 parser.set_metakernel_regex(META_PARSER_REGEX)
@@ -287,7 +280,7 @@ if not parser.openFTP(KERNEL_FTP):
     print("FTP connection failed, aborting.")
 else:
     parser.get_latest_metakernel()
-    
+
     local_tree = parser.get_local_tree()
     print("\n\n")
     metakernel = parser.parse_metakernel()
@@ -296,8 +289,8 @@ else:
     # print([posixpath.normcase(s) for s in local_tree])
     # print("##### Metakernel files ####")
     # print(metakernel)
-    
-    files_to_download = metakernel.difference([s.replace("\\","/") for s in local_tree])
-    
+
+    files_to_download = metakernel.difference([s.replace("\\", "/") for s in local_tree])
+
     parser.update_kernels(parser.get_local_tree(), parser.parse_metakernel())
     parser.closeFTP()
