@@ -250,11 +250,12 @@ if True:
     printStatement("Finding and adding COP rows to orbit list")
     copTableDict = getCopTables(mtpConstants)
     orbitList = addIrCopRows(orbitList, copTableDict, mtpConstants, occultationObservationDict, nadirObservationDict)
-    orbitList = addUvisCopRows(orbitList, copTableDict, mtpConstants, paths)
+    orbitList = addUvisCopRows(orbitList, copTableDict, mtpConstants, occultationObservationDict, nadirObservationDict, paths, from_file=True)
 
     if MAKE_COP_ROWS:
         printStatement("Writing COP rows to text files")
         writeIrCopRowsTxt(orbitList, mtpConstants, paths)
+        # writeUvisCopRowsTxt(orbitList, mtpConstants, paths)
 
         printStatement("Writing LNO and Curosity + InSight joint observation files")
         writeLnoGroundAssetJointObsInfo(orbitList, mtpConstants, paths, "Curiosity")

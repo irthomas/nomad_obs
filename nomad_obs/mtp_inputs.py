@@ -775,7 +775,7 @@ def getMtpConstants(mtpNumber):
                                     171, 176, 195, 201, 226, 256, 257, 263, 269, 286, 288, 338]  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 440  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = [43000, 43000, 43000, 43000]  # MBit # add if required
 
     elif mtpNumber == 82:
         mtpStart = ""  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -893,6 +893,7 @@ def getMtpConstants(mtpNumber):
                         "forbidden_dayside_orbits": forbidden_dayside_orbits,
                         "required_dayside_orbits": required_dayside_orbits,
                         "occultation_precooling": occultation_precooling,
+                        "stp_data_volumes": stp_data_volumes,
                         }
 
     return mtpConstantsDict

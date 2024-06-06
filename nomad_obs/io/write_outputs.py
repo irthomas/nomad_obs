@@ -13,7 +13,7 @@ from nomad_obs.config.constants import SO_CHANNEL_CODE, LNO_CHANNEL_CODE, PRECOO
 from nomad_obs.config.constants import LIMB_ORBIT_TYPES, OBJECTIVE_ORDERS
 from nomad_obs.acs_so_joint_occultations import SOC_JOINT_OBSERVATION_NAMES, SOC_JOINT_OBSERVATION_TYPES
 
-from nomad_obs.observation_names import nadirObservationDict
+# from nomad_obs.observation_names import nadirObservationDict
 
 
 def writeOutputTxt(filepath, lines_to_write):
@@ -100,7 +100,10 @@ def writeIrCopRowsTxt(orbit_list, mtpConstants, paths):
                 fixedRow = OFF_COP_ROW
                 channelCode = OFF_COP_ROW
                 obsComment = "LNO OFF"
-                obsTypeOut = measuredObsType
+                if "limb" in finalOrbitPlan["irDayside"].lower():
+                    obsTypeOut = "limb"
+                else:
+                    obsTypeOut = measuredObsType
 
                 if measuredObsType in ["dayside2", "dayside3"]:  # UVIS 3x TC20s not implemented. Using timings from dayside instead
                     measuredObsTypeOut = "dayside"
@@ -120,7 +123,10 @@ def writeIrCopRowsTxt(orbit_list, mtpConstants, paths):
             fixedRow = OFF_COP_ROW
             channelCode = OFF_COP_ROW
             obsComment = "ALL OFF"
-            obsTypeOut = measuredObsType
+            if "limb" in finalOrbitPlan["irDayside"].lower():
+                obsTypeOut = "Dayside Limb"
+            else:
+                obsTypeOut = measuredObsType
 
             outputLineToWrite = "%i,%i,%i,%i,%i,%i,%s,%s,%s" % (fixedRow, precoolingRow, copRow1, copRow2,
                                                                 channelCode, orbit["orbitNumber"], obsTypeOut, orbit[measuredObsType]["utcStart"], obsComment)
@@ -152,7 +158,94 @@ def writeIrCopRowsTxt(orbit_list, mtpConstants, paths):
     for opsOutputName in opsOutputDict.keys():
         writeOutputTxt(os.path.join(paths["COP_ROW_PATH"], "mtp%03d_%s" % (mtpNumber, opsOutputName)), opsOutputDict[opsOutputName])
 
-#    return opsOutputDict
+
+def writeUvisCopRowsTxt(orbit_list, mtpConstants, paths):
+    """write cop rows to output files. remember: only the allowed ingresses and egresses allocated to NOMAD are written to file.
+                  for nadir, every orbit must be written to file, with -1s written in orbits without observations"""
+    mtpNumber = mtpConstants["mtpNumber"]
+
+    outputHeader = "TC20 UVIS COP ROW,CHANNEL,OBSERVATION NUMBER,OBSERVATION TYPE,APPROX TC START TIME,COMMENTS"
+    opsOutputDict = {"uvis_dayside_nadir": [outputHeader],
+                     "uvis_egress_occultations": [outputHeader], "uvis_grazing_occultations": [outputHeader],
+                     "uvis_ingress_occultations": [outputHeader], "uvis_nightside_nadir": [outputHeader]}
+    # which file to write cop rows to
+    opsOutputNames = {"dayside": "uvis_dayside_nadir",
+                      "dayside2": "uvis_dayside_nadir2", "dayside3": "uvis_dayside_nadir3",
+                      "egress": "uvis_egress_occultations", "grazing": "uvis_grazing_occultations",
+                      "ingress": "uvis_ingress_occultations", "merged": "uvis_ingress_occultations",
+                      "nightside": "uvis_nightside_nadir"}
+
+    for orbit in orbit_list:
+        finalOrbitPlan = orbit["finalOrbitPlan"]  # final version with cop rows and measurements specified
+        # irMeasuredObsTypes = orbit["irMeasuredObsTypes"][:]
+        uvisMeasuredObsTypes = orbit["uvisMeasuredObsTypes"][:]
+
+        # UVIS nadir
+        # at least one line per dayside/day limb orbit, 3 lines if 3x TC20s on the same dayside
+        # ingress/egress and nightsides - one line per planned observation
+
+        uvisObsTypeNames = {"dayside": "uvisDayside", "dayside2": "uvisDayside2", "dayside3": "uvisDayside3",
+                            "nightside": "uvisNightside"}  # matching ir daysides have been made for when UVIS has 3 x TCs per orbit
+        for measuredObsType in uvisObsTypeNames.keys():  # loop through potential UVIS nadir types
+            obsType = uvisObsTypeNames[measuredObsType]
+            # if dayside, dayside2 or dayside3, or nightside is found in uvis list, write a line to UVIS COP row file
+            if measuredObsType in uvisMeasuredObsTypes:
+                copRow = finalOrbitPlan[obsType+"CopRows"]["scienceCopRow"]
+                channelCode = "UVIS Nadir"
+                obsComment = "UVIS ON"
+                obsTypeOut = measuredObsType
+
+                if measuredObsType in ["dayside2", "dayside3"]:  # UVIS 3x TC20s not implemented. Using timings from dayside instead
+                    measuredObsTypeOut = "dayside"
+                else:
+                    measuredObsTypeOut = measuredObsType  # otherwise just use the normal dayside/nightside
+
+                outputLineToWrite = "%i,%s,%i,%s,%s,%s" % (
+                    copRow, channelCode, orbit["orbitNumber"], obsTypeOut, orbit[measuredObsTypeOut]["utcStart"], obsComment)
+                opsOutputDict[opsOutputNames[measuredObsType]].append(outputLineToWrite)
+
+        # if both UVIS off, write a single line anyway (only for dayside)
+        measuredObsType = "dayside"
+        if measuredObsType not in uvisMeasuredObsTypes:
+            copRow = OFF_COP_ROW
+            channelCode = OFF_COP_ROW
+            obsComment = "UVIS OFF"
+            obsTypeOut = measuredObsType
+
+            measuredObsTypeOut = measuredObsType
+
+            outputLineToWrite = "%i,%s,%i,%s,%s,%s" % (
+                copRow, channelCode, orbit["orbitNumber"], obsTypeOut, orbit[measuredObsTypeOut]["utcStart"], obsComment)
+            opsOutputDict[opsOutputNames[measuredObsType]].append(outputLineToWrite)
+
+        # find which variable name contains cop row info
+        obsTypeNames = {"ingress": "uvisIngress", "merged": "uvisIngress",
+                        "grazing": "uvisIngress", "egress": "uvisEgress"}
+        for measuredObsType in obsTypeNames.keys():
+            obsType = obsTypeNames[measuredObsType]
+            if measuredObsType in uvisMeasuredObsTypes:
+                copRow = finalOrbitPlan[obsType+"CopRows"]["scienceCopRow"]
+                channelCode = finalOrbitPlan[obsType+"ChannelCode"]
+                obsComment = "UVIS ON"
+                obsTypeOut = measuredObsType
+
+                outputLineToWrite = "%i,%s,%i,%s,%s,%s" % (
+                    copRow, channelCode, orbit["orbitNumber"], obsTypeOut, orbit[measuredObsTypeOut]["utcStart"], obsComment)
+                opsOutputDict[opsOutputNames[measuredObsType]].append(outputLineToWrite)
+
+            # if occultation not measured but assigned to NOMAD
+            elif measuredObsType in orbit["allowedObservationTypes"]:
+                copRow = OFF_COP_ROW
+                channelCode = OFF_COP_ROW
+                obsComment = "UVIS OFF"
+                obsTypeOut = measuredObsType
+
+                outputLineToWrite = "%i,%s,%i,%s,%s,%s" % (
+                    copRow, channelCode, orbit["orbitNumber"], obsTypeOut, orbit[measuredObsTypeOut]["utcStart"], obsComment)
+                opsOutputDict[opsOutputNames[measuredObsType]].append(outputLineToWrite)
+
+    for opsOutputName in opsOutputDict.keys():
+        writeOutputTxt(os.path.join(paths["COP_ROW_PATH"], "mtp%03d_%s" % (mtpNumber, opsOutputName)), opsOutputDict[opsOutputName])
 
 
 def writeLnoUvisJointObsNumbers(orbit_list, mtpConstants, paths):
