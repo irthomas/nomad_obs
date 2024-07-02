@@ -44,7 +44,7 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 81
+mtpNumber = 83
 
 
 r"""
@@ -105,7 +105,7 @@ Other targets	          Normal priority
 * Forbidden daysides will be removed, but this should also be checked
 
 *The new generic orbit plan nomad_mtp0xx_plan_generic.xlsx will be automatically copied to orbit_plans\mtp0xx\
-*The orbit plan in the root directory can be deleted
+*The generic orbit plan in the root directory can be deleted
 
 *if an OCM covers two daysides, check for ingress occultations on the nightside of the first OCM orbit
 *compare timings with nomad_ingress_events.txt
@@ -116,6 +116,8 @@ Other targets	          Normal priority
 *if CaSSIS joint limbs:
 *change orbit to type 28 (dayside) or 47 (nightside as appropriate) for UVIS ridealong
 
+
+*NEW: if grazing occultations, check latitude/min tangent altitude SO constraints
 
 
 *check true limbs are correctly registered:
@@ -163,7 +165,8 @@ Other targets	          Normal priority
     Change to orbit type 1 (or 5 if merged/grazing) and add ingress observation name manually e.g. irIngress, irIngress, uvisIngress
 
 
-*Send nomad_mtp0xx_plan_generic.xlsx, nomad_mtp0xx_plan.csv and nomad_mtp0xx_lno_orbits.txt to nomad.iops
+*Place nomad_mtp0xx_plan_generic.xlsx, nomad_mtp0xx_plan.csv, nomad_mtp0xx_lno_orbits.txt, nomad_mtp0xx_lno_irdayside_h2o_orbits.txt on the ftp in
+/Operations/nomad_ops/orbit_plans/mtpxxx
 
 ###
 Wait until Ops team sends summary files
@@ -172,7 +175,7 @@ Wait until Ops team sends summary files
 *When summary files are available:
 
 *Add Phobos Deimos COP rows manually (copy file from a previous MTP and update from spreadsheet)
-*Add solar calibration COP rows manually (copy file from a previous MTP and update from sheet)
+*Add solar calibration COP rows manually (copy file from a previous MTP and update from spreadsheet)
 
 *Place summary files xlsx files in summary files directory and run check_cop_rows_in_summary_files.py once selecting the correct MTP number
 *Check the output in the console:

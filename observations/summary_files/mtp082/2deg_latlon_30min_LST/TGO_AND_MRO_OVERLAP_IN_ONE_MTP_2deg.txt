@@ -1,0 +1,4 @@
+TGO overlap time with MRO (UTC),Dayside nadir observation number,Thermal orbit number
+2024 JUL 08 19:27:00,27,27
+2024 JUL 17 00:00:00,127,127
+2024 JUL 18 13:21:00,146,146
