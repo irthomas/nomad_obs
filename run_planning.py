@@ -44,7 +44,7 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 83
+mtpNumber = 84
 
 
 r"""
@@ -216,9 +216,9 @@ if True:
     printStatement("Checking for corresponding MAPPS events")
     orbitList = addMappsEvents(orbitList, mtpConstants, paths)
     printStatement("Finding dayside nadir observations in regions of interest")
-    orbitList = regionsOfInterestNadir(orbitList, nadirRegionsOfInterest, observationCycles)
+    orbitList = regionsOfInterestNadir(orbitList, mtpConstants, nadirRegionsOfInterest, observationCycles)
     printStatement("Finding occultation observations in regions of interest")
-    orbitList = regionsOfInterestOccultation(orbitList, occultationRegionsOfInterest, observationCycles)
+    orbitList = regionsOfInterestOccultation(orbitList, mtpConstants, occultationRegionsOfInterest, observationCycles)
     printStatement("Adding flags to file where obsevations match a region of interest")
     orbitList = findMatchingRegions(orbitList)
     printStatement("Plotting occultation and nadir regions of interest")

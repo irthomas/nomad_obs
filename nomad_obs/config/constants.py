@@ -27,6 +27,7 @@ SPICE_DATETIME_FORMAT = "%Y %b %d %H:%M:%S"
 # output file channel codes
 SO_CHANNEL_CODE = 0
 LNO_CHANNEL_CODE = 1
+OFF_CHANNEL_CODE = -1
 
 # tc20 parameters
 PRECOOLING_COP_ROW = 1
@@ -45,7 +46,8 @@ LNO_CENTRE_DETECTOR_LINE = 152
 OCCULTATION_SEARCH_STEP_SIZE = 2.0  # s
 MAXIMUM_SO_ALTITUDE = 250.0  # km
 SO_TRANSITION_ALTITUDE = 50.0  # km
-MAXIMUM_GRAZING_ALTITUDE = 100.0  # km also for searching for region of interest matches
+
+
 MINIMUM_TIME_BETWEEN_OCCULTATIONS = {440: 519, 600: 675}  # s define as merged occ if less than this. Dict key is the precooling time
 SO_REFERENCE_DURATION = 30  # s
 ACCEPTABLE_MTP_OCCULTATION_TIME_ERROR = 20.0  # s
@@ -74,6 +76,9 @@ UVIS_MULTIPLE_TC_NADIR_ORBIT_TYPES = [2, 4, 6]
 LIMB_ORBIT_TYPES = [8, 28]
 UVIS_DEFAULT_ORBIT_TYPE = 14  # 14 = UVIS 1xTC per dayside. 4 = 3xTCs per dayside
 
+# for no ir or uvis occultation, e.g. for grazings under the max altitude requirement but not matching the geometry requirements
+IR_OFF_CODE = "irOFF"
+UVIS_OFF_CODE = "uvisOFF"
 
 # plot constants
 FIG_X = 10
@@ -87,6 +92,19 @@ OBJECTIVE_ORDERS = {
     "LNO": {"irDayside":
             {"H2O": [167, 168, 169], "CO": [189, 190, 191]},
             }
+}
+
+# MAXIMUM_GRAZING_ALTITUDE = 100.0  # km also for searching for region of interest matches #replaced by function
+# (MTP start, MTP end) : "ir" or "uvis": minimum and maximum tangent point latitude and maximum altitude
+GRAZING_GEOMETRY = {
+    "ir": {
+        (1, 83): {"lat_min": -90.0, "lat_max": 90.0, "max_altitude": 100.0},
+        (84, 999): {"lat_min": -15.0, "lat_max": 15.0, "max_altitude": 50.0},
+    },
+    "uvis": {
+        (1, 83): {"lat_min": -90.0, "lat_max": 90.0, "max_altitude": 100.0},
+        (84, 999): {"lat_min": -45.0, "lat_max": 45.0, "max_altitude": 70.0},
+    }
 }
 
 

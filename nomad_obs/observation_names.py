@@ -8,6 +8,7 @@ Created on Wed Oct 18 13:56:09 2017
 
     Regular:
         Add Surface Ice obs to final orbit plan when beta angle is high
+        Add 141-150 fullscans (CO2 Fullscan Fast #5), a few at the highest latitudes north or south
 
     Done:
         M.Smith - replace LNO nadir 191 and most 190 obs by 189!

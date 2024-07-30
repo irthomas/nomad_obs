@@ -9,7 +9,7 @@ import os
 import json
 import sys
 
-from nomad_obs.config.constants import SO_CHANNEL_CODE, LNO_CHANNEL_CODE, PRECOOLING_COP_ROW, OFF_COP_ROW
+from nomad_obs.config.constants import SO_CHANNEL_CODE, LNO_CHANNEL_CODE, OFF_CHANNEL_CODE, PRECOOLING_COP_ROW, OFF_COP_ROW
 from nomad_obs.config.constants import LIMB_ORBIT_TYPES, OBJECTIVE_ORDERS
 from nomad_obs.acs_so_joint_occultations import SOC_JOINT_OBSERVATION_NAMES, SOC_JOINT_OBSERVATION_TYPES
 
@@ -148,6 +148,8 @@ def writeIrCopRowsTxt(orbit_list, mtpConstants, paths):
                     obsComment = "SO ON"
                 elif channelCode == LNO_CHANNEL_CODE:
                     obsComment = "LNO ON"
+                elif channelCode == OFF_CHANNEL_CODE:
+                    obsComment = "IR OFF"
                 obsTypeOut = measuredObsType
 
                 outputLineToWrite = "%i,%i,%i,%i,%i,%i,%s,%s,%s" % (fixedRow, precoolingRow, copRow1, copRow2,

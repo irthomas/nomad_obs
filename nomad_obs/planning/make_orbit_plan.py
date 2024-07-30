@@ -8,13 +8,14 @@ Created on Mon Apr 27 12:22:31 2020
 
 from datetime import datetime
 import random
-
+import numpy as np
 
 from nomad_obs.io.read_mro_overlap_file import getMroOverlaps
 from nomad_obs.config.constants import SPICE_DATETIME_FORMAT
 from nomad_obs.options import USE_TWO_SCIENCES
-from nomad_obs.config.constants import UVIS_MULTIPLE_TC_NADIR_ORBIT_TYPES, UVIS_DEFAULT_ORBIT_TYPE
+from nomad_obs.config.constants import UVIS_MULTIPLE_TC_NADIR_ORBIT_TYPES, UVIS_DEFAULT_ORBIT_TYPE, IR_OFF_CODE, UVIS_OFF_CODE
 from nomad_obs.other.generic_functions import stop
+from nomad_obs.planning.grazing_requirements import check_grazing_geometry
 
 
 def makeGenericOrbitPlan(orbit_list, mtp_constants, paths, silent=True):
@@ -112,6 +113,9 @@ def makeGenericOrbitPlan(orbit_list, mtp_constants, paths, silent=True):
 
         for occultation_type in orbit["allowedObservationTypes"]:
 
+            ir_operating = True
+            uvis_operating = True
+
             if occultation_type == "ingress":
                 if "trueLimb" in orbit["allowedObservationTypes"]:
                     generic_orbit_type = 28
@@ -166,9 +170,32 @@ def makeGenericOrbitPlan(orbit_list, mtp_constants, paths, silent=True):
                 generic_orbit["uvisDayside"] = "uvisDayside"
 
             elif occultation_type == "grazing":
-                generic_orbit["irIngressHigh"] = "irGrazing"
-                generic_orbit["irIngressLow"] = "irGrazing"
-                generic_orbit["uvisIngress"] = "uvisGrazing"
+
+                # check if the grazing is within the required geometry conditions for both ir and uvis
+                lat = orbit["grazing"]["latMidpoint"]
+
+                # unreliable workaround if latitude is not available when tangent point is below surface
+                if lat == "-":
+                    lat = np.mean([orbit["grazing"]["latStart"], orbit["grazing"]["latEnd"]])
+                max_alt = orbit["grazing"]["altitudeMidpoint"]
+                if max_alt == "-":
+                    max_alt = 0.0
+
+                # check if ir channel is measuring
+                ir_operating = check_grazing_geometry(mtp_constants, "ir", lat, max_alt)
+                if ir_operating:
+                    generic_orbit["irIngressHigh"] = "irGrazing"
+                    generic_orbit["irIngressLow"] = "irGrazing"
+                else:
+                    generic_orbit["irIngressHigh"] = IR_OFF_CODE
+                    generic_orbit["irIngressLow"] = IR_OFF_CODE
+
+                # check if uvis channel is measuring
+                uvis_operating = check_grazing_geometry(mtp_constants, "uvis", lat, max_alt)
+                if uvis_operating:
+                    generic_orbit["uvisIngress"] = "uvisGrazing"
+                else:
+                    generic_orbit["uvisIngress"] = UVIS_OFF_CODE
 
                 generic_orbit["irEgressHigh"] = ""
                 generic_orbit["irEgressLow"] = ""
@@ -197,8 +224,9 @@ def makeGenericOrbitPlan(orbit_list, mtp_constants, paths, silent=True):
                                 generic_orbit["irIngressHigh"] = orbit[matchingOccultationType]["observationName"]
                                 generic_orbit["irIngressLow"] = orbit[matchingOccultationType]["observationName"]
                             if matchingOccultationType == "grazing":
-                                generic_orbit["irIngressHigh"] = orbit[matchingOccultationType]["observationName"]
-                                generic_orbit["irIngressLow"] = orbit[matchingOccultationType]["observationName"]
+                                if ir_operating:
+                                    generic_orbit["irIngressHigh"] = orbit[matchingOccultationType]["observationName"]
+                                    generic_orbit["irIngressLow"] = orbit[matchingOccultationType]["observationName"]
 
                         else:
                             print("Warning: region of interest found but no dedicated observation type has been specified")
@@ -321,6 +349,9 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
             if genericObsTypes["irIngressHigh"] == "":  # no observation
                 irIngressHigh = ""
                 irIngressLow = ""
+            elif genericObsTypes["irIngressHigh"] == IR_OFF_CODE:  # geometry requirements not met e.g. for grazing occultation
+                irIngressHigh = IR_OFF_CODE
+                irIngressLow = IR_OFF_CODE
             elif genericObsTypes["irIngressHigh"] == "irIngress":  # generic observation
 
                 irIngressHigh = random.choice(observationCycles["OccultationCycleNominal"][1])
@@ -349,12 +380,12 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
             # UVIS
             if genericObsTypes["uvisIngress"] == "":  # no observation
                 uvisIngress = ""
-
+            elif genericObsTypes["uvisIngress"] == UVIS_OFF_CODE:  # geometry requirements not met e.g. for grazing occultation
+                uvisIngress = UVIS_OFF_CODE
             elif genericObsTypes["uvisIngress"] == "uvisIngress":  # generic observation
                 uvisIngress = "uvisIngress"
-
             else:
-                uvisIngress = genericObsTypes["uvisIngress"]  # use preselected targeted obs
+                uvisIngress = genericObsTypes["uvisIngress"]  # use preselected targeted obs e.g. for regions of interest
 
             # SO/LNO
             if genericObsTypes["irEgressHigh"] == "":  # no observation
@@ -426,6 +457,9 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
             elif genericObsTypes["irIngressHigh"] == "irGrazing":  # generic observation
                 irIngressHigh = random.choice(observationCycles["OccultationCycleGrazing"][1])
                 irIngressLow = irIngressHigh
+            elif genericObsTypes["irIngressHigh"] == IR_OFF_CODE:  # geometry requirements not met e.g. for grazing occultation
+                irIngressHigh = IR_OFF_CODE
+                irIngressLow = IR_OFF_CODE
             else:
                 irIngressHigh = genericObsTypes["irIngressHigh"]  # use preselected targeted obs
                 irIngressLow = genericObsTypes["irIngressLow"]  # use preselected targeted obs
@@ -435,6 +469,8 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
                 uvisIngress = "uvisMerged"
             elif genericObsTypes["uvisIngress"] == "uvisGrazing":  # generic observation
                 uvisIngress = "uvisGrazing"
+            elif genericObsTypes["uvisIngress"] == UVIS_OFF_CODE:  # geometry requirements not met e.g. for grazing occultation
+                uvisIngress = UVIS_OFF_CODE
             else:
                 uvisIngress = genericObsTypes["uvisIngress"]  # use preselected targeted obs
 

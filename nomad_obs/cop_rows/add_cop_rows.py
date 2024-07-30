@@ -6,7 +6,7 @@ Created on Mon Apr 27 12:36:04 2020
 """
 import os
 
-from nomad_obs.config.constants import LNO_CENTRE_DETECTOR_LINE
+from nomad_obs.config.constants import LNO_CENTRE_DETECTOR_LINE, IR_OFF_CODE, UVIS_OFF_CODE, OFF_CHANNEL_CODE
 from nomad_obs.cop_rows.cop_table_functions import makeCopTableDict, getObservationDescription, getCopRows
 
 from nomad_obs.other.generic_functions import stop
@@ -37,19 +37,25 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants, occultationObservationD
                 observationName = finalOrbitPlan[obsType]
                 observationDict = occultationObservationDict
 
-                outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(
-                    observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
-                if len(outputDict) == 0:  # if error
-                    print("Error in orbit %i obs type %s" % (orbit["orbitNumber"], obsType))
-                    stop()
+                if observationName == IR_OFF_CODE:
+                    finalOrbitPlan[obsType+"ObservationName"] = "-"
+                    finalOrbitPlan[obsType+"ChannelCode"] = OFF_CHANNEL_CODE
+                    finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow": -1, "fixedCopRow": -1, "copRowDescription": ""}
 
-                finalOrbitPlan[obsType+"ObservationName"] = observationName
-                finalOrbitPlan[obsType+"Orders"] = diffractionOrders
-                finalOrbitPlan[obsType+"IntegrationTime"] = integrationTime
-                finalOrbitPlan[obsType+"Rhythm"] = rhythm
-                finalOrbitPlan[obsType+"DetectorRows"] = windowHeight
-                finalOrbitPlan[obsType+"ChannelCode"] = channelCode
-                finalOrbitPlan[obsType+"CopRows"] = outputDict
+                else:
+                    outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(
+                        observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
+                    if len(outputDict) == 0:  # if error
+                        print("Error in orbit %i obs type %s" % (orbit["orbitNumber"], obsType))
+                        stop()
+
+                    finalOrbitPlan[obsType+"ObservationName"] = observationName
+                    finalOrbitPlan[obsType+"Orders"] = diffractionOrders
+                    finalOrbitPlan[obsType+"IntegrationTime"] = integrationTime
+                    finalOrbitPlan[obsType+"Rhythm"] = rhythm
+                    finalOrbitPlan[obsType+"DetectorRows"] = windowHeight
+                    finalOrbitPlan[obsType+"ChannelCode"] = channelCode
+                    finalOrbitPlan[obsType+"CopRows"] = outputDict
 
         if "egress" in irMeasuredObsTypes:
             for obsType in ["irEgressHigh", "irEgressLow"]:
@@ -57,19 +63,25 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants, occultationObservationD
                 observationName = finalOrbitPlan[obsType]
                 observationDict = occultationObservationDict
 
-                outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(
-                    observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
-                if len(outputDict) == 0:  # if error
-                    print("Error in orbit %i obs type %s" % (orbit["orbitNumber"], obsType))
-                    stop()
+                if observationName == IR_OFF_CODE:
+                    finalOrbitPlan[obsType+"ObservationName"] = "-"
+                    finalOrbitPlan[obsType+"ChannelCode"] = OFF_CHANNEL_CODE
+                    finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow": -1, "fixedCopRow": -1, "copRowDescription": ""}
 
-                finalOrbitPlan[obsType+"ObservationName"] = observationName
-                finalOrbitPlan[obsType+"Orders"] = diffractionOrders
-                finalOrbitPlan[obsType+"IntegrationTime"] = integrationTime
-                finalOrbitPlan[obsType+"Rhythm"] = rhythm
-                finalOrbitPlan[obsType+"DetectorRows"] = windowHeight
-                finalOrbitPlan[obsType+"ChannelCode"] = channelCode
-                finalOrbitPlan[obsType+"CopRows"] = outputDict
+                else:
+                    outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(
+                        observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
+                    if len(outputDict) == 0:  # if error
+                        print("Error in orbit %i obs type %s" % (orbit["orbitNumber"], obsType))
+                        stop()
+
+                    finalOrbitPlan[obsType+"ObservationName"] = observationName
+                    finalOrbitPlan[obsType+"Orders"] = diffractionOrders
+                    finalOrbitPlan[obsType+"IntegrationTime"] = integrationTime
+                    finalOrbitPlan[obsType+"Rhythm"] = rhythm
+                    finalOrbitPlan[obsType+"DetectorRows"] = windowHeight
+                    finalOrbitPlan[obsType+"ChannelCode"] = channelCode
+                    finalOrbitPlan[obsType+"CopRows"] = outputDict
 
         if "dayside" in irMeasuredObsTypes:
             obsType = "irDayside"
@@ -199,19 +211,25 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, occultationObservatio
                 observationName = finalOrbitPlan[obsType]
                 observationDict = occultationObservationDict
 
-                outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(
-                    observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
-                if len(outputDict) == 0:  # if error
-                    print("Error in orbit %i obs type %s" % (orbit["orbitNumber"], obsType))
-                    stop()
+                if observationName == UVIS_OFF_CODE:
+                    finalOrbitPlan[obsType+"ObservationName"] = "-"
+                    finalOrbitPlan[obsType+"ChannelCode"] = OFF_CHANNEL_CODE
+                    finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow": -1, "copRowDescription": ""}
 
-                finalOrbitPlan[obsType+"ObservationName"] = observationName
-                finalOrbitPlan[obsType+"Orders"] = diffractionOrders
-                finalOrbitPlan[obsType+"IntegrationTime"] = integrationTime
-                finalOrbitPlan[obsType+"Rhythm"] = rhythm
-                finalOrbitPlan[obsType+"DetectorRows"] = windowHeight
-                finalOrbitPlan[obsType+"ChannelCode"] = channelCode
-                finalOrbitPlan[obsType+"CopRows"] = outputDict
+                else:
+                    outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(
+                        observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
+                    if len(outputDict) == 0:  # if error
+                        print("Error in orbit %i obs type %s" % (orbit["orbitNumber"], obsType))
+                        stop()
+
+                    finalOrbitPlan[obsType+"ObservationName"] = observationName
+                    finalOrbitPlan[obsType+"Orders"] = diffractionOrders
+                    finalOrbitPlan[obsType+"IntegrationTime"] = integrationTime
+                    finalOrbitPlan[obsType+"Rhythm"] = rhythm
+                    finalOrbitPlan[obsType+"DetectorRows"] = windowHeight
+                    finalOrbitPlan[obsType+"ChannelCode"] = channelCode
+                    finalOrbitPlan[obsType+"CopRows"] = outputDict
 
             if "egress" in uvisMeasuredObsTypes:
                 obsType = "uvisEgress"
@@ -219,19 +237,25 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, occultationObservatio
                 observationName = finalOrbitPlan[obsType]
                 observationDict = occultationObservationDict
 
-                outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(
-                    observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
-                if len(outputDict) == 0:  # if error
-                    print("Error in orbit %i obs type %s" % (orbit["orbitNumber"], obsType))
-                    stop()
+                if observationName == UVIS_OFF_CODE:
+                    finalOrbitPlan[obsType+"ObservationName"] = "-"
+                    finalOrbitPlan[obsType+"ChannelCode"] = OFF_CHANNEL_CODE
+                    finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow": -1, "copRowDescription": ""}
 
-                finalOrbitPlan[obsType+"ObservationName"] = observationName
-                finalOrbitPlan[obsType+"Orders"] = diffractionOrders
-                finalOrbitPlan[obsType+"IntegrationTime"] = integrationTime
-                finalOrbitPlan[obsType+"Rhythm"] = rhythm
-                finalOrbitPlan[obsType+"DetectorRows"] = windowHeight
-                finalOrbitPlan[obsType+"ChannelCode"] = channelCode
-                finalOrbitPlan[obsType+"CopRows"] = outputDict
+                else:
+                    outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getCopRows(
+                        observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=True)
+                    if len(outputDict) == 0:  # if error
+                        print("Error in orbit %i obs type %s" % (orbit["orbitNumber"], obsType))
+                        stop()
+
+                    finalOrbitPlan[obsType+"ObservationName"] = observationName
+                    finalOrbitPlan[obsType+"Orders"] = diffractionOrders
+                    finalOrbitPlan[obsType+"IntegrationTime"] = integrationTime
+                    finalOrbitPlan[obsType+"Rhythm"] = rhythm
+                    finalOrbitPlan[obsType+"DetectorRows"] = windowHeight
+                    finalOrbitPlan[obsType+"ChannelCode"] = channelCode
+                    finalOrbitPlan[obsType+"CopRows"] = outputDict
 
             if "dayside" in uvisMeasuredObsTypes:
                 obsType = "uvisDayside"

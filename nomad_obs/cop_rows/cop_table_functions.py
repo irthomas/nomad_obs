@@ -427,7 +427,8 @@ def getObservationDescription(channel, copTableDict, fixedRow, copRow, silent=Fa
                 integrationTime = int(findCopRowData(channel, copTableDict, ["integrationTime"], sciencePointer)) / 1000
                 if steppingType == "AOTF_IX":
                     observationText = "Diffraction order stepping (fullscan): %i orders from %i to %i in steps of %s (%s order(s) per %s second(s))" % (
-                        int(steppingCount), int(aotfOrder), int(aotfOrder)+int(steppingCount), int(steppingValue), int(steppingSpeed)+1, int(fixedRhythm))
+                        int(steppingCount), int(aotfOrder), int(aotfOrder)+int(steppingCount)*int(steppingValue), int(steppingValue), int(steppingSpeed)+1,
+                        int(fixedRhythm))
                 elif steppingType == "WINDOW_TOP":
                     observationText = "Detector window stepping: %i step(s) covering detector lines %i to %i (%s step(s) per %s second(s))" % (
                         int(steppingCount), int(fixedTop), int(fixedTop)+int(steppingCount)*int(steppingValue), int(steppingSpeed)+1, int(fixedRhythm))
@@ -491,10 +492,8 @@ def uniqueDiffractionOrders(aotf_order_list):
     return unique_orders
 
 
-"""return dictionary containing COP rows and description of measurement given input dictionary containing observation parameters"""
-
-
 def getCopRows(observationName, observationDict, copTableDict, copTableCombinationDict, centreDetectorLines, silent=False):
+    """return dictionary containing COP rows and description of measurement given input dictionary containing observation parameters"""
 
     diffractionOrders, integrationTime, rhythm, windowHeight, channelCode = getObsParameters(observationName, observationDict)
     if diffractionOrders[0] == -999:
