@@ -221,7 +221,7 @@ def findGrazingOccultations(orbit_list, mtp_constants):
 
                     grazing_end = ets[alt_egress_index]
                     grazing_end_str = et2utc(grazing_end)
-                    grazing_end_lon, grazing_end_lat, grazing_end_lst = getLonLatLst(grazing_start)
+                    grazing_end_lon, grazing_end_lat, grazing_end_lst = getLonLatLst(grazing_end)
 
                     grazing_midpoint_altitude = minimum_altitude
                     grazing_midpoint_index = np.where(alts == grazing_midpoint_altitude)[0][0]
@@ -234,6 +234,8 @@ def findGrazingOccultations(orbit_list, mtp_constants):
                     obs_duration = obs_grazing_end - obs_grazing_start
 
                     grazing_duration = grazing_end - grazing_start
+
+                    print("Grazing occultation in orbit %i: to %0.2f km at %0.2f latitude" % (orbit["orbitNumber"], minimum_altitude, grazing_midpoint_lat))
 
                     occultation_dict = {"occultationNumber": grazing_index,
                                         "grazing": {"utcStart": grazing_start_str, "utcEnd": grazing_end_str,

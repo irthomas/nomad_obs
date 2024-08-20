@@ -236,7 +236,7 @@ if True:
     printStatement("Writing final orbit plan to csv file")
     writeOrbitPlanCsv(orbitList, mtpConstants, paths)
 
-    printStatement("Checking that all observation keys are in dictionary")
+    printStatement("Checking that all observation keys are in the dictionary")
     checkKeys(occultationObservationDict, nadirObservationDict, observationCycles)
     printStatement("Generating complete orbit plan (with real observation names) and adding to orbit list")
     orbitList = makeCompleteOrbitPlan(orbitList, observationCycles)

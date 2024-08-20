@@ -189,27 +189,27 @@ NOMAD	94	84	Merged	2024 SEP 08 06:27:56	-	2024 SEP 08 07:02:06	2049.43	-143.13	-
 NOMAD	95	84	Merged	2024 SEP 08 08:25:58	-	2024 SEP 08 08:59:55	2036.62	-171.57	-	-140.52	46.55	-	-58.40	-	5	6SUBD Nominal #52	Science: orders #121, #134, #169, #129, #148, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
 NOMAD	96	84	Merged	2024 SEP 08 10:24:05	-	2024 SEP 08 10:57:42	2016.61	160.04	-	-169.65	45.96	-	-57.95	-	5	6SUBD Nominal #2	Science: orders #119, #136, #149, #169, #186, #189, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
 NOMAD	97	84	Grazing	2024 SEP 08 12:22:11	-	2024 SEP 08 12:55:31	2000.37	131.55	-	161.26	45.53	-	-57.54	-	5	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
-N/A	98	84	Grazing	2024 SEP 08 14:20:18	-	2024 SEP 08 14:53:24	1986.00	103.06	-	103.06	45.08	-	45.08	-	14	-	-	-		
-NOMAD	99	84	Grazing	2024 SEP 08 16:18:23	-	2024 SEP 08 16:51:17	1974.00	74.56	-	74.56	44.67	-	44.67	-	5	6SUBD Nominal #53	Science: orders #121, #136, #169, #129, #148, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&grazingMatch:PERSEVERANCE; &daysideMatch:SOUTH THAUMASIA; 	
-N/A	100	84	Grazing	2024 SEP 08 18:16:21	-	2024 SEP 08 18:49:03	1962.00	45.99	-	45.99	44.44	-	44.44	-	3	-	-	-		
-N/A	101	84	Grazing	2024 SEP 08 20:14:18	-	2024 SEP 08 20:46:46	1948.00	17.46	-	17.46	44.15	-	44.15	-	14	-	-	-		
-NOMAD	102	84	Grazing	2024 SEP 08 22:12:25	-	2024 SEP 08 22:44:33	1928.00	-10.95	-	-10.95	43.50	-	43.50	-	5	6SUBD Nominal #52	Science: orders #121, #134, #169, #129, #148, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
-NOMAD	103	84	Grazing	2024 SEP 09 00:10:40	-	2024 SEP 09 00:42:26	1906.00	-39.29	-	-39.29	42.65	-	42.65	-	5	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:ELYSIUM CERBERUS PHLEGRA; 	
-N/A	104	84	Grazing	2024 SEP 09 02:08:48	-	2024 SEP 09 02:40:14	1886.00	-67.77	-	-67.77	42.13	-	42.13	-	14	-	-	-		
-N/A	105	84	Grazing	2024 SEP 09 04:06:53	-	2024 SEP 09 04:38:01	1868.00	-96.30	-	-96.30	41.72	-	41.72	-	3	-	-	-	&daysideMatch:TIANWEN1; 	
-NOMAD	106	84	Grazing	2024 SEP 09 06:04:53	-	2024 SEP 09 06:35:47	1854.00	-124.87	-	-124.87	41.45	-	41.45	-	5	-		COP row -1: 	&grazingMatch:ARSIA MONS VOLCANIC CONES NE; &daysideMatch:PERSEVERANCE; 	
-N/A	107	84	Grazing	2024 SEP 09 08:02:55	-	2024 SEP 09 08:33:35	1840.00	-153.37	-	-153.37	40.99	-	40.99	-	14	-	-	-		
-N/A	303	84	Grazing	2024 SEP 25 10:08:14	-	2024 SEP 25 10:38:38	1824.00	142.85	-	142.85	-61.30	-	-61.30	-	14	-	-	-	&daysideMatch:EASTERN COPRATES; 	
-NOMAD	304	84	Grazing	2024 SEP 25 12:06:03	-	2024 SEP 25 12:36:49	1846.00	113.89	-	113.89	-61.67	-	-61.67	-	5	-		COP row -1: 		
-N/A	305	84	Grazing	2024 SEP 25 14:03:47	-	2024 SEP 25 14:34:53	1866.00	84.86	-	84.86	-62.15	-	-62.15	-	14	-	-	-		
-N/A	306	84	Grazing	2024 SEP 25 16:01:29	-	2024 SEP 25 16:32:51	1882.00	55.76	-	55.76	-62.69	-	-62.69	-	14	-	-	-		
-NOMAD	307	84	Grazing	2024 SEP 25 17:59:20	-	2024 SEP 25 18:30:54	1894.00	26.87	-	26.87	-62.96	-	-62.96	-	5	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
-N/A	308	84	Grazing	2024 SEP 25 19:57:13	-	2024 SEP 25 20:29:01	1908.00	-2.05	-	-2.05	-63.25	-	-63.25	-	14	-	-	-		
-NOMAD	309	84	Grazing	2024 SEP 25 21:55:03	-	2024 SEP 25 22:27:09	1926.00	-31.06	-	-31.06	-63.63	-	-63.63	-	5	6SUBD Nominal #2	Science: orders #119, #136, #149, #169, #186, #189, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
-N/A	310	84	Grazing	2024 SEP 25 23:52:47	-	2024 SEP 26 00:25:15	1948.00	-60.26	-	-60.26	-64.21	-	-64.21	-	3	-	-	-	&mroOverlap; 	
-NOMAD	311	84	Grazing	2024 SEP 26 01:50:34	-	2024 SEP 26 02:23:18	1964.00	-89.28	-	-89.28	-64.60	-	-64.60	-	5	6SUBD Nominal #2	Science: orders #119, #136, #149, #169, #186, #189, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
-N/A	312	84	Grazing	2024 SEP 26 03:48:23	-	2024 SEP 26 04:21:17	1974.00	-118.12	-	-118.12	-64.79	-	-64.79	-	14	-	-	-		
-NOMAD	313	84	Grazing	2024 SEP 26 05:46:11	-	2024 SEP 26 06:19:17	1986.00	-147.11	-	-147.11	-65.13	-	-65.13	-	5	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
+N/A	98	84	Grazing	2024 SEP 08 14:20:18	-	2024 SEP 08 14:53:24	1986.00	103.06	-	132.30	45.08	-	-57.27	-	14	-	-	-		
+NOMAD	99	84	Grazing	2024 SEP 08 16:18:23	-	2024 SEP 08 16:51:17	1974.00	74.56	-	103.43	44.67	-	-57.09	-	5	6SUBD Nominal #53	Science: orders #121, #136, #169, #129, #148, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&grazingMatch:PERSEVERANCE; &daysideMatch:SOUTH THAUMASIA; 	
+N/A	100	84	Grazing	2024 SEP 08 18:16:21	-	2024 SEP 08 18:49:03	1962.00	45.99	-	74.41	44.44	-	-56.73	-	3	-	-	-		
+N/A	101	84	Grazing	2024 SEP 08 20:14:18	-	2024 SEP 08 20:46:46	1948.00	17.46	-	45.36	44.15	-	-56.29	-	14	-	-	-		
+NOMAD	102	84	Grazing	2024 SEP 08 22:12:25	-	2024 SEP 08 22:44:33	1928.00	-10.95	-	16.33	43.50	-	-55.89	-	5	6SUBD Nominal #52	Science: orders #121, #134, #169, #129, #148, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+NOMAD	103	84	Grazing	2024 SEP 09 00:10:40	-	2024 SEP 09 00:42:26	1906.00	-39.29	-	-12.65	42.65	-	-55.57	-	5	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:ELYSIUM CERBERUS PHLEGRA; 	
+N/A	104	84	Grazing	2024 SEP 09 02:08:48	-	2024 SEP 09 02:40:14	1886.00	-67.77	-	-41.78	42.13	-	-55.03	-	14	-	-	-		
+N/A	105	84	Grazing	2024 SEP 09 04:06:53	-	2024 SEP 09 04:38:01	1868.00	-96.30	-	-70.87	41.72	-	-54.51	-	3	-	-	-	&daysideMatch:TIANWEN1; 	
+NOMAD	106	84	Grazing	2024 SEP 09 06:04:53	-	2024 SEP 09 06:35:47	1854.00	-124.87	-	-99.88	41.45	-	-54.09	-	5	-		COP row -1: 	&grazingMatch:ARSIA MONS VOLCANIC CONES NE; &daysideMatch:PERSEVERANCE; 	
+N/A	107	84	Grazing	2024 SEP 09 08:02:55	-	2024 SEP 09 08:33:35	1840.00	-153.37	-	-128.75	40.99	-	-53.84	-	14	-	-	-		
+N/A	303	84	Grazing	2024 SEP 25 10:08:14	-	2024 SEP 25 10:38:38	1824.00	142.85	-	162.36	-61.30	-	34.19	-	14	-	-	-	&daysideMatch:EASTERN COPRATES; 	
+NOMAD	304	84	Grazing	2024 SEP 25 12:06:03	-	2024 SEP 25 12:36:49	1846.00	113.89	-	133.82	-61.67	-	35.02	-	5	-		COP row -1: 		
+N/A	305	84	Grazing	2024 SEP 25 14:03:47	-	2024 SEP 25 14:34:53	1866.00	84.86	-	105.24	-62.15	-	35.61	-	14	-	-	-		
+N/A	306	84	Grazing	2024 SEP 25 16:01:29	-	2024 SEP 25 16:32:51	1882.00	55.76	-	76.61	-62.69	-	35.91	-	14	-	-	-		
+NOMAD	307	84	Grazing	2024 SEP 25 17:59:20	-	2024 SEP 25 18:30:54	1894.00	26.87	-	47.98	-62.96	-	36.27	-	5	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	308	84	Grazing	2024 SEP 25 19:57:13	-	2024 SEP 25 20:29:01	1908.00	-2.05	-	19.36	-63.25	-	36.74	-	14	-	-	-		
+NOMAD	309	84	Grazing	2024 SEP 25 21:55:03	-	2024 SEP 25 22:27:09	1926.00	-31.06	-	-9.23	-63.63	-	37.34	-	5	6SUBD Nominal #2	Science: orders #119, #136, #149, #169, #186, #189, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	310	84	Grazing	2024 SEP 25 23:52:47	-	2024 SEP 26 00:25:15	1948.00	-60.26	-	-37.81	-64.21	-	37.93	-	3	-	-	-	&mroOverlap; 	
+NOMAD	311	84	Grazing	2024 SEP 26 01:50:34	-	2024 SEP 26 02:23:18	1964.00	-89.28	-	-66.39	-64.60	-	38.43	-	5	6SUBD Nominal #2	Science: orders #119, #136, #149, #169, #186, #189, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 		
+N/A	312	84	Grazing	2024 SEP 26 03:48:23	-	2024 SEP 26 04:21:17	1974.00	-118.12	-	-95.01	-64.79	-	38.77	-	14	-	-	-		
+NOMAD	313	84	Grazing	2024 SEP 26 05:46:11	-	2024 SEP 26 06:19:17	1986.00	-147.11	-	-123.65	-65.13	-	39.06	-	5	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&mroOverlap; 	
 NOMAD	314	84	Grazing	2024 SEP 26 07:43:56	-	2024 SEP 26 08:17:20	2004.12	-176.40	-	-152.28	-65.72	-	39.45	-	5	Fullscan fast step4 all #1	Diffraction order stepping (fullscan): 11 orders from 124 to 168 in steps of 4 (6 order(s) per 1 second(s))	COP row -1: 		
 N/A	315	84	Merged	2024 SEP 26 09:41:46	-	2024 SEP 26 10:15:29	2022.85	154.41	-	179.14	-66.20	-	40.01	-	14	-	-	-	&daysideMatch:ARGYRE; 	
 NOMAD	316	84	Merged	2024 SEP 26 11:39:38	-	2024 SEP 26 12:13:39	2040.65	125.43	-	150.59	-66.47	-	40.73	-	5	6SUBD Nominal #52	Science: orders #121, #134, #169, #129, #148, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	&daysideMatch:EAST THAUMASIA; 	

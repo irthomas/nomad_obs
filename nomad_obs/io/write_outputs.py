@@ -150,6 +150,7 @@ def writeIrCopRowsTxt(orbit_list, mtpConstants, paths):
                     obsComment = "LNO ON"
                 elif channelCode == OFF_CHANNEL_CODE:
                     obsComment = "IR OFF"
+                    precoolingRow = OFF_COP_ROW  # set precooling to -1
                 obsTypeOut = measuredObsType
 
                 outputLineToWrite = "%i,%i,%i,%i,%i,%i,%s,%s,%s" % (fixedRow, precoolingRow, copRow1, copRow2,

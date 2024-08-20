@@ -463,7 +463,7 @@ def getObservationDescription(channel, copTableDict, fixedRow, copRow, silent=Fa
 
     elif channel == "uvis":
         # uvis cop rows start from 1
-        copRow -= 1
+        # copRow -= 1
 
         num_acqs, flag_register, binning_size, comments = findCopRowData(
             channel, copTableDict, ["num_acqs", "flag_register", "binning_size", "comments"], copRow)
