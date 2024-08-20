@@ -33,8 +33,15 @@ SC_FTP_PWD = passwords["nomad_ftp"]
 
 FTP_PATH = r"/Operations/nomad_ops"
 
-EMAIL_RECIPIENTS = ["ian.thomas@aeronomie.be"]
-EMAIL_SUBJECT = "[NOMAD OPS]: new files on the FTP"
+EMAIL_RECIPIENTS = [
+    # "ian.thomas@aeronomie.be",
+    # "bojan.ristic@aeronomie.be",
+    # "claudio.queirolo@aeronomie.be",
+    # "nomad@aeronomie.be",
+    # "nomad.iops@aeronomie.be",
+    "nomad-ops@lists.aeronomie.be"
+]
+EMAIL_SUBJECT = "[NOMAD OPS]: new files are available on the FTP"
 
 
 def open_ftp(server_address, username, password):
@@ -76,7 +83,7 @@ def ftp_walk(ftp_conn, path):
 def get_remote_list(ftp_conn, path):
     # Return a flat list containing all paths present on the FTP
     file_list = []
-    print("Getting list of files on ftp")
+    # print("Getting list of files on ftp")
     for i in ftp_walk(ftp_conn, path):
         if not i[1]:  # if not a directory
             file_list += [posixpath.join(i[0], j) for j in i[2]]
@@ -140,34 +147,33 @@ def send_bira_email(subject, body, to=EMAIL_RECIPIENTS, print_output=False):
     # message += "%s\n\n" % subject
     # message += "%s" % body
 
-    for recipient in to:
-        if print_output:
-            print("From:", _from)
-            print("To:", recipient)
-            print(subject)
+    if print_output:
+        print("From:", _from)
+        print("To:", ",".join(EMAIL_RECIPIENTS))
+        print(subject)
 
-        # set up email server
-        message = EmailMessage()
-        message["From"] = _from
-        message["To"] = to
-        message["Subject"] = subject
+    # set up email server
+    message = EmailMessage()
+    message["From"] = _from
+    message["To"] = to
+    message["Subject"] = subject
 
-        message.set_content(body, 'html')
+    message.set_content(body, 'html')
 
-        try:
+    try:
 
-            with smtplib.SMTP_SSL("smtp-proxy.oma.be", port=smtplib.SMTP_SSL_PORT) as server:
-                if print_output:
-                    server.set_debuglevel(1)
-                server.login("iant", passwords["hera"])
+        with smtplib.SMTP_SSL("smtp-proxy.oma.be", port=smtplib.SMTP_SSL_PORT) as server:
+            if print_output:
+                server.set_debuglevel(1)
+            server.login("iant", passwords["hera"])
 
-                # send mail
-                # server.sendmail(_from, recipient, message)
-                server.send_message(message)
-                server.quit()
-                print("Email sent")
-        except Exception as e:
-            print("Error sending email", e)
+            # send mail
+            # server.sendmail(_from, recipient, message)
+            server.send_message(message)
+            server.quit()
+            print("Email sent")
+    except Exception as e:
+        print("Error sending email", e)
 
 
 def email_summary(h, to=EMAIL_RECIPIENTS, subject=EMAIL_SUBJECT, print_output=False):

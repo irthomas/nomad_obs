@@ -26,6 +26,10 @@ from nomad_obs.cop_rows.cop_table_functions import getObservationDescription
 FORMAT_STR_DAYS = "%Y-%m-%d"
 FORMAT_STR_SECONDS = "%Y-%m-%d %H:%M:%S"
 
+# get all files from ftp even if they exist?
+# FORCE_REDOWNLOAD = True
+FORCE_REDOWNLOAD = False
+
 ORBIT_TYPES = {
     -1: {"description": "Off"},
     1: {"description": "SO and UVIS occultations; LNO and UVIS dayside nadir"},
@@ -69,7 +73,7 @@ def get_new_updated_ftp_file_dict():
     new_files = {}
 
     # for each file on ftp, check if it also exists locally
-    print("Checking if file exists locally")
+    # print("Checking if file exists locally")
     for ftp_filepath in ftp_file_dict.keys():
         if ftp_file_dict[ftp_filepath]["type"] in ["cop_rows", "orbit_plans"]:
             local_filepath = ftp_file_dict[ftp_filepath]["local_path"]
@@ -85,13 +89,13 @@ def get_new_updated_ftp_file_dict():
                 ftp_file_dict[ftp_filepath]["exists"] = False
 
     # loop through each new or updated file
-    print("Copying missing or outdated incoming files to local directory")
+    # print("Copying missing or outdated incoming files to local directory")
     for ftp_filepath in ftp_file_dict.keys():
 
         if ftp_file_dict[ftp_filepath]["type"] in ["cop_rows", "orbit_plans"]:
 
             # if file doesn't exist locally, download to local directory
-            if not ftp_file_dict[ftp_filepath]["exists"]:
+            if not ftp_file_dict[ftp_filepath]["exists"] or FORCE_REDOWNLOAD:
                 local_filepath = ftp_file_dict[ftp_filepath]["local_path"]
                 local_filename = os.path.basename(local_filepath)
                 print("File %s doesn't exist locally - downloading from ftp" % local_filepath)
@@ -141,100 +145,110 @@ def analyse_cop_rows(new_files):
 
         # if any of the new files are cop rows, analyse them
         if new_files[filename]["type"] == "cop_rows":
+            
+            if ".txt" in filename:
 
-            mtp, channel_str, obs_type = filename.replace(".txt", "").split("_", 2)
-
-            if obs_type in ["calibration", "calibrations"]:
-                obs_type = "calibration"
-
-            # if nadir cop rows delivered, need to get orbit plan to figure out observation types
-            if obs_type in ["dayside_nadir", "nightside_nadir"]:
-                orbit_plan_path = get_orbit_plan_path(mtp)
-
-                # if orbit plan is not available, stop with error and send error email
-                if not os.path.exists(orbit_plan_path):
-                    print("Error: %s doesn't exist" % orbit_plan_path)
-                    error = True
-                    return error, "%s doesn't exist" % orbit_plan_path
-
-                else:
-                    # read orbit plan data
-                    with open(orbit_plan_path, "rb") as f:
-                        orbit_lines = [s.decode().strip() for i, s in enumerate(f.readlines()) if i > 0]
-
-                    # get indices of potential dayside (all) or potential nightside orbit numbers
-                    all_orbits_types = [int(i) for i in orbit_lines]
-                    nightside_orbits_types = [int(i) for i in orbit_lines if int(i) in NIGHTSIDE_ORBIT_TYPES]
-
-                    # add info to dictionary
-                    if obs_type == "dayside_nadir":
-                        obs_info_dict[filename] = {"mtp": mtp, "channel_str": channel_str, "obs_type": obs_type, "cop_rows": [],
-                                                   "channels": [], "orbit_types": all_orbits_types}
-                    elif obs_type == "nightside_nadir":
-                        obs_info_dict[filename] = {"mtp": mtp, "channel_str": channel_str, "obs_type": obs_type, "cop_rows": [],
-                                                   "channels": [], "orbit_types": nightside_orbits_types}
-            else:
-                # if not nadir, leave orbit types empty
-                obs_info_dict[filename] = {"mtp": mtp, "channel_str": channel_str, "obs_type": obs_type, "cop_rows": [], "channels": [], "orbit_types": []}
-
-            # parse cop row file
-            local_filepath = new_files[filename]["path"]
-            with open(local_filepath, "rb") as f:
-                lines = [s.decode().strip() for i, s in enumerate(f.readlines()) if i > 0]
-
-            for i, line in enumerate(lines):
-                # csv file, so split by comma
-                split = line.split(",")
-
-                # try to convert cop rows to integers
-                if channel_str == "ir":
-                    try:
-                        sci_cop_row = (int(split[2]), int(split[3]))
-                        channel = {0: "so", 1: "lno", -1: "off"}[int(split[4])]
-                    except ValueError as e:
+                mtp, channel_str, obs_type = filename.replace(".txt", "").split("_", 2)
+    
+                if obs_type in ["calibration", "calibrations"]:
+                    obs_type = "calibration"
+    
+                # if nadir cop rows delivered, need to get orbit plan to figure out observation types
+                if obs_type in ["dayside_nadir", "nightside_nadir"]:
+                    orbit_plan_path = get_orbit_plan_path(mtp)
+    
+                    # if orbit plan is not available, stop with error and send error email
+                    if not os.path.exists(orbit_plan_path):
+                        print("Error: %s doesn't exist" % orbit_plan_path)
                         error = True
-                        return error, e
-                elif channel_str == "uvis":
-                    try:
-                        sci_cop_row = int(split[0])
-                        channel = "uvis"
-                    except ValueError as e:
-                        error = True
-                        return error, e
-
-                obs_info_dict[filename]["cop_rows"].append(sci_cop_row)
-                obs_info_dict[filename]["channels"].append(channel)
-
-                # no orbit type info is available for non-nadir/limbs
-                if obs_type not in ["dayside_nadir", "nightside_nadir"]:
-                    obs_info_dict[filename]["orbit_types"].append(-1)
-
-            # check that each dayside and nightside has a COP row
-            if len(obs_info_dict[filename]["orbit_types"]) != len(obs_info_dict[filename]["cop_rows"]):
-                print("Error: %s lengths of orbits and COP rows do not match (%i vs %i)" % (filename, len(obs_info_dict[filename]["orbit_types"]),
-                                                                                            len(obs_info_dict[filename]["cop_rows"])))
-                error = True
-                return error, "Error: %s lengths of orbits and COP rows do not match (%i vs %i)" % (filename, len(obs_info_dict[filename]["orbit_types"]),
-                                                                                                    len(obs_info_dict[filename]["cop_rows"]))
-
-            else:
-                # merge list of orbit types with COP rows
-                channel_str = obs_info_dict[filename]["channel_str"]
-                if channel_str == "ir":
-                    # off is required to deal with -1s in the cop row files
-                    obs_info_dict[filename]["info"] = {"so": {}, "lno": {}, "off": {}}
-                else:
-                    obs_info_dict[filename]["info"] = {"uvis": {}}
-
-                for orbit_type, cop_row, channel in zip(obs_info_dict[filename]["orbit_types"], obs_info_dict[filename]["cop_rows"],
-                                                        obs_info_dict[filename]["channels"]):
-
-                    # add cop rows to dictionary, one item per row in the cop row file for this orbit type and channel
-                    # cop row is either X for uvis or (X, X) for so/lno
-                    if orbit_type not in obs_info_dict[filename]["info"][channel].keys():
-                        obs_info_dict[filename]["info"][channel][orbit_type] = [cop_row]
+                        return error, "%s doesn't exist" % orbit_plan_path, {}
+    
                     else:
-                        obs_info_dict[filename]["info"][channel][orbit_type].append(cop_row)
+                        # read orbit plan data
+                        with open(orbit_plan_path, "rb") as f:
+                            orbit_lines = [s.decode().strip() for i, s in enumerate(f.readlines()) if i > 0]
+    
+                        # get indices of potential dayside (all) or potential nightside orbit numbers
+                        all_orbits_types = [int(i) for i in orbit_lines]
+                        nightside_orbits_types = [int(i) for i in orbit_lines if int(i) in NIGHTSIDE_ORBIT_TYPES]
+    
+                        # add info to dictionary
+                        if obs_type == "dayside_nadir":
+                            obs_info_dict[filename] = {"mtp": mtp, "channel_str": channel_str, "obs_type": obs_type, "cop_rows": [],
+                                                       "channels": [], "orbit_types": all_orbits_types}
+                        elif obs_type == "nightside_nadir":
+                            obs_info_dict[filename] = {"mtp": mtp, "channel_str": channel_str, "obs_type": obs_type, "cop_rows": [],
+                                                       "channels": [], "orbit_types": nightside_orbits_types}
+                else:
+                    # if not nadir, leave orbit types empty
+                    obs_info_dict[filename] = {"mtp": mtp, "channel_str": channel_str, "obs_type": obs_type, "cop_rows": [], "channels": [], "orbit_types": []}
+    
+                # parse cop row file
+                local_filepath = new_files[filename]["path"]
+                with open(local_filepath, "rb") as f:
+                    try:
+                        lines = [s.decode(errors = "ignore").strip() for i, s in enumerate(f.readlines()) if i > 0]
+                    except Exception as e:
+                        print("Error reading file %s" % (local_filepath))
+                        print(e)
+                        print(f.readlines())
+                        error = True
+                        return error, "Error reading file %s: %s" % (local_filepath, e), {}
+    
+                for i, line in enumerate(lines):
+                    # csv file, so split by comma if line contains data
+                    if len(line.strip()) > 0:
+                        split = line.split(",")
+    
+                        # try to convert cop rows to integers
+                        if channel_str == "ir":
+                            try:
+                                sci_cop_row = (int(split[2]), int(split[3]))
+                                channel = {0: "so", 1: "lno", -1: "off"}[int(split[4])]
+                            except ValueError as e:
+                                error = True
+                                return error, "Error line %i: %s %s" % (i, line, str(e)), {}
+                        elif channel_str == "uvis":
+                            try:
+                                sci_cop_row = int(split[0])
+                                channel = "uvis"
+                            except ValueError as e:
+                                error = True
+                                return error, "Error line %i: %s %s" % (i, line, str(e)), {}
+        
+                        obs_info_dict[filename]["cop_rows"].append(sci_cop_row)
+                        obs_info_dict[filename]["channels"].append(channel)
+        
+                        # no orbit type info is available for non-nadir/limbs
+                        if obs_type not in ["dayside_nadir", "nightside_nadir"]:
+                            obs_info_dict[filename]["orbit_types"].append(-1)
+    
+                # check that each dayside and nightside has a COP row
+                if len(obs_info_dict[filename]["orbit_types"]) != len(obs_info_dict[filename]["cop_rows"]):
+                    print("Error: %s lengths of orbits and COP rows do not match (%i vs %i)" % (filename, len(obs_info_dict[filename]["orbit_types"]),
+                                                                                                len(obs_info_dict[filename]["cop_rows"])))
+                    error = True
+                    return error, "Error: %s lengths of orbits and COP rows do not match (%i vs %i)" % (filename, len(obs_info_dict[filename]["orbit_types"]),
+                                                                                                        len(obs_info_dict[filename]["cop_rows"])), {}
+    
+                else:
+                    # merge list of orbit types with COP rows
+                    channel_str = obs_info_dict[filename]["channel_str"]
+                    if channel_str == "ir":
+                        # off is required to deal with -1s in the cop row files
+                        obs_info_dict[filename]["info"] = {"so": {}, "lno": {}, "off": {}}
+                    else:
+                        obs_info_dict[filename]["info"] = {"uvis": {}}
+    
+                    for orbit_type, cop_row, channel in zip(obs_info_dict[filename]["orbit_types"], obs_info_dict[filename]["cop_rows"],
+                                                            obs_info_dict[filename]["channels"]):
+    
+                        # add cop rows to dictionary, one item per row in the cop row file for this orbit type and channel
+                        # cop row is either X for uvis or (X, X) for so/lno
+                        if orbit_type not in obs_info_dict[filename]["info"][channel].keys():
+                            obs_info_dict[filename]["info"][channel][orbit_type] = [cop_row]
+                        else:
+                            obs_info_dict[filename]["info"][channel][orbit_type].append(cop_row)
 
     # load cop tables from nomad_obs
     copTableDict = getCopTables({"copVersion": COP_TABLE_VERSION})
@@ -343,9 +357,8 @@ def check_ftp():
         # if new cop row files, make summary
         error, h2, obs_info_dict = analyse_cop_rows(new_files)
 
-        if not error:
-            # add cop row summary to email message
-            h += h2
+        # add cop row summary or error to email message
+        h += str(h2)
 
     h += "</body></html>"
 
@@ -357,14 +370,17 @@ def check_ftp():
 
         if not error:
             email_summary(h, print_output=False)
-        else:
-            # send error email just to Ian
-            email_summary(h, to=["ian.thomas@aeronomie.be"], print_output=True)
+    else:
+        print("No new files found")
+
+    if error:
+        # send error email just to Ian
+        email_summary(h, to=["ian.thomas@aeronomie.be"], print_output=True)
 
 
 # loop forever
 while True:
-    print(datetime.now())
+    print(str(datetime.now())[:19], end=" ")
 
     # run main program
     check_ftp()
