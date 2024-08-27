@@ -381,19 +381,19 @@ N/A	191	1	Merged	2018 MAY 07 07:15:32	-	2018 MAY 07 07:49:54	2062.83	-151.31	-	-
 NOMAD	192	1	Merged	2018 MAY 07 09:13:38	-	2018 MAY 07 09:47:43	2045.28	-179.97	-	-163.45	-28.54	-	80.72	-	5	CO2 01	Science: orders #167, #146, #147, #148, #154, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
 ACS	193	1	Merged	2018 MAY 07 11:11:43	-	2018 MAY 07 11:45:33	2030.06	151.36	-	167.24	-27.89	-	80.52	-	4	-	-	-	COMMENT	
 N/A	194	1	Merged	2018 MAY 07 13:09:48	-	2018 MAY 07 13:43:26	2018.02	122.69	-	138.22	-27.32	-	80.43	-	3	-	-	-	COMMENT	
-N/A	195	1	Grazing	2018 MAY 07 15:07:53	-	2018 MAY 07 15:41:19	2006.00	94.01	-	94.01	-26.72	-	-26.72	-	4	-	-	-	COMMENT	
-NOMAD	196	1	Grazing	2018 MAY 07 17:05:52	-	2018 MAY 07 17:39:06	1994.00	65.34	-	65.34	-26.28	-	-26.28	-	5	All Fullscan Fast	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 	COMMENT	
-N/A	197	1	Grazing	2018 MAY 07 19:03:53	-	2018 MAY 07 19:36:49	1976.00	36.69	-	36.69	-25.55	-	-25.55	-	4	-	-	-	COMMENT	
-ACS	198	1	Grazing	2018 MAY 07 21:02:01	-	2018 MAY 07 21:34:39	1958.00	8.03	-	8.03	-24.62	-	-24.62	-	3	-	-	-	COMMENT	
-N/A	199	1	Grazing	2018 MAY 07 23:00:12	-	2018 MAY 07 23:32:34	1942.00	-20.66	-	-20.66	-23.72	-	-23.72	-	4	-	-	-	COMMENT	
-N/A	200	1	Grazing	2018 MAY 08 00:58:23	-	2018 MAY 08 01:30:25	1922.00	-49.34	-	-49.34	-22.84	-	-22.84	-	3	-	-	-	COMMENT	
-NOMAD	201	1	Grazing	2018 MAY 08 02:56:28	-	2018 MAY 08 03:28:12	1904.00	-78.02	-	-78.02	-22.18	-	-22.18	-	5	All Fullscan Slow	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (1 order(s) per 1 second(s))	COP row -1: 	COMMENT	
-ACS	202	1	Grazing	2018 MAY 08 04:54:32	-	2018 MAY 08 05:25:56	1884.00	-106.69	-	-106.69	-21.46	-	-21.46	-	4	-	-	-	COMMENT	
-N/A	203	1	Grazing	2018 MAY 08 06:52:35	-	2018 MAY 08 07:23:47	1872.00	-135.36	-	-135.36	-20.75	-	-20.75	-	4	-	-	-	COMMENT	
-NOMAD	204	1	Grazing	2018 MAY 08 08:50:41	-	2018 MAY 08 09:21:35	1854.00	-164.03	-	-164.03	-19.86	-	-19.86	-	5	HDO 01	Science: orders #168, #134, #124, #129, #190, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
-NOMAD	205	1	Grazing	2018 MAY 08 10:48:53	-	2018 MAY 08 11:19:23	1830.00	167.29	-	167.29	-18.82	-	-18.82	-	5	CO 01	Science: orders #167, #188, #189, #190, #191, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
-N/A	206	1	Grazing	2018 MAY 08 12:47:03	-	2018 MAY 08 13:17:15	1812.00	138.59	-	138.59	-18.02	-	-18.02	-	4	-	-	-	COMMENT	
-N/A	207	1	Grazing	2018 MAY 08 14:45:08	-	2018 MAY 08 15:15:06	1798.00	109.90	-	109.90	-17.43	-	-17.43	-	3	-	-	-	COMMENT	
-ACS	208	1	Grazing	2018 MAY 08 16:43:14	-	2018 MAY 08 17:12:56	1782.00	81.22	-	81.22	-16.70	-	-16.70	-	4	-	-	-	COMMENT	
-N/A	209	1	Grazing	2018 MAY 08 18:41:17	-	2018 MAY 08 19:10:37	1760.00	52.55	-	52.55	-15.95	-	-15.95	-	3	-	-	-	COMMENT	
-NOMAD	210	1	Grazing	2018 MAY 08 20:39:25	-	2018 MAY 08 21:08:23	1738.00	23.87	-	23.87	-14.97	-	-14.97	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
+N/A	195	1	Grazing	2018 MAY 07 15:07:53	-	2018 MAY 07 15:41:19	2006.00	94.01	-	109.35	-26.72	-	80.41	-	4	-	-	-	COMMENT	
+NOMAD	196	1	Grazing	2018 MAY 07 17:05:52	-	2018 MAY 07 17:39:06	1994.00	65.34	-	80.06	-26.28	-	80.19	-	5	All Fullscan Fast	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 	COMMENT	
+N/A	197	1	Grazing	2018 MAY 07 19:03:53	-	2018 MAY 07 19:36:49	1976.00	36.69	-	50.67	-25.55	-	79.91	-	4	-	-	-	COMMENT	
+ACS	198	1	Grazing	2018 MAY 07 21:02:01	-	2018 MAY 07 21:34:39	1958.00	8.03	-	21.70	-24.62	-	79.82	-	3	-	-	-	COMMENT	
+N/A	199	1	Grazing	2018 MAY 07 23:00:12	-	2018 MAY 07 23:32:34	1942.00	-20.66	-	-7.11	-23.72	-	79.82	-	4	-	-	-	COMMENT	
+N/A	200	1	Grazing	2018 MAY 08 00:58:23	-	2018 MAY 08 01:30:25	1922.00	-49.34	-	-36.37	-22.84	-	79.58	-	3	-	-	-	COMMENT	
+NOMAD	201	1	Grazing	2018 MAY 08 02:56:28	-	2018 MAY 08 03:28:12	1904.00	-78.02	-	-65.80	-22.18	-	79.24	-	5	All Fullscan Slow	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (1 order(s) per 1 second(s))	COP row -1: 	COMMENT	
+ACS	202	1	Grazing	2018 MAY 08 04:54:32	-	2018 MAY 08 05:25:56	1884.00	-106.69	-	-95.17	-21.46	-	78.89	-	4	-	-	-	COMMENT	
+N/A	203	1	Grazing	2018 MAY 08 06:52:35	-	2018 MAY 08 07:23:47	1872.00	-135.36	-	-123.88	-20.75	-	78.93	-	4	-	-	-	COMMENT	
+NOMAD	204	1	Grazing	2018 MAY 08 08:50:41	-	2018 MAY 08 09:21:35	1854.00	-164.03	-	-152.85	-19.86	-	78.81	-	5	HDO 01	Science: orders #168, #134, #124, #129, #190, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
+NOMAD	205	1	Grazing	2018 MAY 08 10:48:53	-	2018 MAY 08 11:19:23	1830.00	167.29	-	177.93	-18.82	-	78.52	-	5	CO 01	Science: orders #167, #188, #189, #190, #191, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
+N/A	206	1	Grazing	2018 MAY 08 12:47:03	-	2018 MAY 08 13:17:15	1812.00	138.59	-	148.88	-18.02	-	78.34	-	4	-	-	-	COMMENT	
+N/A	207	1	Grazing	2018 MAY 08 14:45:08	-	2018 MAY 08 15:15:06	1798.00	109.90	-	119.90	-17.43	-	78.20	-	3	-	-	-	COMMENT	
+ACS	208	1	Grazing	2018 MAY 08 16:43:14	-	2018 MAY 08 17:12:56	1782.00	81.22	-	90.94	-16.70	-	78.07	-	4	-	-	-	COMMENT	
+N/A	209	1	Grazing	2018 MAY 08 18:41:17	-	2018 MAY 08 19:10:37	1760.00	52.55	-	61.60	-15.95	-	77.62	-	3	-	-	-	COMMENT	
+NOMAD	210	1	Grazing	2018 MAY 08 20:39:25	-	2018 MAY 08 21:08:23	1738.00	23.87	-	32.54	-14.97	-	77.38	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	

@@ -44,7 +44,8 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 84
+mtpNumber = 85
+# mtpNumber = 84
 
 
 r"""
@@ -319,9 +320,10 @@ if True:
 #     dump_json(orbitList)
 
 
-# TODO: check MTP069 error with dayside nadir plotting makeOverviewPage()
+# all MTPs should run successfully (testing up to MTP084)
 # for adding UVIS COP rows to planning (change to function)
-# for mtpNumber in range(70,75):
+# for very old MTPs (e.g. those without MRO overlap files, may need to set IGNORE_MISSING=True)
+# for mtpNumber in range(83, 85):
 #     run_planning(mtpNumber)
 
 

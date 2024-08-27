@@ -19,33 +19,33 @@ NOMAD	10	7	Merged	2018 OCT 07 08:54:15	-	2018 OCT 07 09:28:36	2061.06	-171.98	-	
 ACS	11	7	Merged	2018 OCT 07 10:52:11	-	2018 OCT 07 11:26:16	2044.68	159.81	-	-142.47	55.35	-	-39.29	-	4	-	-	-	COMMENT	
 NOMAD	12	7	Merged	2018 OCT 07 12:50:12	-	2018 OCT 07 13:23:55	2022.96	131.75	-	-171.62	55.03	-	-38.66	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
 N/A	13	7	Merged	2018 OCT 07 14:48:12	-	2018 OCT 07 15:21:37	2004.79	103.43	-	159.26	54.83	-	-38.05	-	4	-	-	-	COMMENT	
-N/A	14	7	Grazing	2018 OCT 07 16:46:12	-	2018 OCT 07 17:19:22	1990.00	75.04	-	75.04	54.67	-	54.67	-	3	-	-	-	COMMENT	
-NOMAD	15	7	Grazing	2018 OCT 07 18:44:08	-	2018 OCT 07 19:17:06	1978.00	46.58	-	46.58	54.55	-	54.55	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
-N/A	16	7	Grazing	2018 OCT 07 20:42:01	-	2018 OCT 07 21:14:45	1964.00	18.04	-	18.04	54.48	-	54.48	-	4	-	-	-	COMMENT	
-NOMAD	17	7	Grazing	2018 OCT 07 22:39:53	-	2018 OCT 07 23:12:21	1948.00	-10.43	-	-10.43	54.37	-	54.37	-	5	All Fullscan Fast	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 	COMMENT	
-NOMAD	18	7	Grazing	2018 OCT 08 00:37:53	-	2018 OCT 08 01:09:57	1924.00	-38.51	-	-38.51	54.03	-	54.03	-	5	CH4 01	Science: orders #168, #133, #134, #135, #136, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
-N/A	19	7	Grazing	2018 OCT 08 02:35:59	-	2018 OCT 08 03:07:37	1898.00	-66.47	-	-66.47	53.60	-	53.60	-	4	-	-	-	COMMENT	
-N/A	20	7	Grazing	2018 OCT 08 04:34:00	-	2018 OCT 08 05:05:16	1876.00	-94.74	-	-94.74	53.35	-	53.35	-	3	-	-	-	COMMENT	
-NOMAD	21	7	Grazing	2018 OCT 08 06:31:56	-	2018 OCT 08 07:02:52	1856.00	-123.25	-	-123.25	53.25	-	53.25	-	5	CH4 01	Science: orders #168, #133, #134, #135, #136, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
-N/A	22	7	Grazing	2018 OCT 08 08:29:50	-	2018 OCT 08 09:00:32	1842.00	-151.81	-	-151.81	53.19	-	53.19	-	4	-	-	-	COMMENT	
-NOMAD	23	7	Grazing	2018 OCT 08 10:27:45	-	2018 OCT 08 10:58:09	1824.00	179.86	-	179.86	52.97	-	52.97	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
-NOMAD	24	7	Grazing	2018 OCT 08 12:25:48	-	2018 OCT 08 12:55:44	1796.00	151.90	-	151.90	52.52	-	52.52	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
-N/A	25	7	Grazing	2018 OCT 08 14:23:51	-	2018 OCT 08 14:53:19	1768.00	123.77	-	123.77	52.16	-	52.16	-	4	-	-	-	COMMENT	
-N/A	26	7	Grazing	2018 OCT 08 16:21:52	-	2018 OCT 08 16:50:58	1746.00	95.48	-	95.48	51.89	-	51.89	-	3	-	-	-	COMMENT	
-NOMAD	27	7	Grazing	2018 OCT 08 18:19:53	-	2018 OCT 08 18:48:41	1728.00	67.15	-	67.15	51.65	-	51.65	-	5	All Fullscan Fast	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 	COMMENT	
-N/A	183	7	Grazing	2018 OCT 21 11:59:05	-	2018 OCT 21 12:28:21	1756.00	128.58	-	128.58	-29.26	-	-29.26	-	4	-	-	-	COMMENT	
-NOMAD	184	7	Grazing	2018 OCT 21 13:56:40	-	2018 OCT 21 14:26:26	1786.00	99.46	-	99.46	-30.07	-	-30.07	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
-N/A	185	7	Grazing	2018 OCT 21 15:54:14	-	2018 OCT 21 16:24:16	1802.00	70.39	-	70.39	-30.78	-	-30.78	-	4	-	-	-	COMMENT	
-NOMAD	186	7	Grazing	2018 OCT 21 17:51:52	-	2018 OCT 21 18:22:08	1816.00	41.38	-	41.38	-31.37	-	-31.37	-	5	Nominal Science with CO 01	Science: orders #147, #134, #169, #121, #186, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
-N/A	187	7	Grazing	2018 OCT 21 19:49:36	-	2018 OCT 21 20:20:08	1832.00	12.36	-	12.36	-31.95	-	-31.95	-	4	-	-	-	COMMENT	
-NOMAD	188	7	Grazing	2018 OCT 21 21:47:17	-	2018 OCT 21 22:18:11	1854.00	-16.73	-	-16.73	-32.62	-	-32.62	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
-N/A	189	7	Grazing	2018 OCT 21 23:44:54	-	2018 OCT 22 00:16:12	1878.00	-45.88	-	-45.88	-33.40	-	-33.40	-	4	-	-	-	COMMENT	
-NOMAD	190	7	Grazing	2018 OCT 22 01:42:30	-	2018 OCT 22 02:14:12	1902.00	-75.00	-	-75.00	-34.12	-	-34.12	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
-N/A	191	7	Grazing	2018 OCT 22 03:40:09	-	2018 OCT 22 04:12:09	1920.00	-104.02	-	-104.02	-34.68	-	-34.68	-	4	-	-	-	COMMENT	
-NOMAD	192	7	Grazing	2018 OCT 22 05:37:49	-	2018 OCT 22 06:10:01	1932.00	-133.01	-	-133.01	-35.18	-	-35.18	-	5	CH4 01	Science: orders #168, #133, #134, #135, #136, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
-N/A	193	7	Grazing	2018 OCT 22 07:35:28	-	2018 OCT 22 08:07:54	1946.00	-162.13	-	-162.13	-35.84	-	-35.84	-	4	-	-	-	COMMENT	
-NOMAD	194	7	Grazing	2018 OCT 22 09:33:06	-	2018 OCT 22 10:05:54	1968.00	168.63	-	168.63	-36.66	-	-36.66	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
-N/A	195	7	Grazing	2018 OCT 22 11:30:48	-	2018 OCT 22 12:03:58	1990.00	139.49	-	139.49	-37.31	-	-37.31	-	4	-	-	-	COMMENT	
+N/A	14	7	Grazing	2018 OCT 07 16:46:12	-	2018 OCT 07 17:19:22	1990.00	75.04	-	130.23	54.67	-	-37.56	-	3	-	-	-	COMMENT	
+NOMAD	15	7	Grazing	2018 OCT 07 18:44:08	-	2018 OCT 07 19:17:06	1978.00	46.58	-	101.25	54.55	-	-37.14	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
+N/A	16	7	Grazing	2018 OCT 07 20:42:01	-	2018 OCT 07 21:14:45	1964.00	18.04	-	72.20	54.48	-	-36.57	-	4	-	-	-	COMMENT	
+NOMAD	17	7	Grazing	2018 OCT 07 22:39:53	-	2018 OCT 07 23:12:21	1948.00	-10.43	-	43.11	54.37	-	-35.94	-	5	All Fullscan Fast	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 	COMMENT	
+NOMAD	18	7	Grazing	2018 OCT 08 00:37:53	-	2018 OCT 08 01:09:57	1924.00	-38.51	-	13.95	54.03	-	-35.20	-	5	CH4 01	Science: orders #168, #133, #134, #135, #136, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
+N/A	19	7	Grazing	2018 OCT 08 02:35:59	-	2018 OCT 08 03:07:37	1898.00	-66.47	-	-15.22	53.60	-	-34.44	-	4	-	-	-	COMMENT	
+N/A	20	7	Grazing	2018 OCT 08 04:34:00	-	2018 OCT 08 05:05:16	1876.00	-94.74	-	-44.40	53.35	-	-33.67	-	3	-	-	-	COMMENT	
+NOMAD	21	7	Grazing	2018 OCT 08 06:31:56	-	2018 OCT 08 07:02:52	1856.00	-123.25	-	-73.58	53.25	-	-32.84	-	5	CH4 01	Science: orders #168, #133, #134, #135, #136, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
+N/A	22	7	Grazing	2018 OCT 08 08:29:50	-	2018 OCT 08 09:00:32	1842.00	-151.81	-	-102.60	53.19	-	-32.27	-	4	-	-	-	COMMENT	
+NOMAD	23	7	Grazing	2018 OCT 08 10:27:45	-	2018 OCT 08 10:58:09	1824.00	179.86	-	-131.62	52.97	-	-31.66	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
+NOMAD	24	7	Grazing	2018 OCT 08 12:25:48	-	2018 OCT 08 12:55:44	1796.00	151.90	-	-160.76	52.52	-	-30.84	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
+N/A	25	7	Grazing	2018 OCT 08 14:23:51	-	2018 OCT 08 14:53:19	1768.00	123.77	-	170.05	52.16	-	-29.95	-	4	-	-	-	COMMENT	
+N/A	26	7	Grazing	2018 OCT 08 16:21:52	-	2018 OCT 08 16:50:58	1746.00	95.48	-	140.96	51.89	-	-29.22	-	3	-	-	-	COMMENT	
+NOMAD	27	7	Grazing	2018 OCT 08 18:19:53	-	2018 OCT 08 18:48:41	1728.00	67.15	-	111.97	51.65	-	-28.64	-	5	All Fullscan Fast	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (6 order(s) per 1 second(s))	COP row -1: 	COMMENT	
+N/A	183	7	Grazing	2018 OCT 21 11:59:05	-	2018 OCT 21 12:28:21	1756.00	128.58	-	174.71	-29.26	-	52.23	-	4	-	-	-	COMMENT	
+NOMAD	184	7	Grazing	2018 OCT 21 13:56:40	-	2018 OCT 21 14:26:26	1786.00	99.46	-	146.84	-30.07	-	52.75	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
+N/A	185	7	Grazing	2018 OCT 21 15:54:14	-	2018 OCT 21 16:24:16	1802.00	70.39	-	118.25	-30.78	-	52.79	-	4	-	-	-	COMMENT	
+NOMAD	186	7	Grazing	2018 OCT 21 17:51:52	-	2018 OCT 21 18:22:08	1816.00	41.38	-	89.66	-31.37	-	52.84	-	5	Nominal Science with CO 01	Science: orders #147, #134, #169, #121, #186, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
+N/A	187	7	Grazing	2018 OCT 21 19:49:36	-	2018 OCT 21 20:20:08	1832.00	12.36	-	61.25	-31.95	-	53.01	-	4	-	-	-	COMMENT	
+NOMAD	188	7	Grazing	2018 OCT 21 21:47:17	-	2018 OCT 21 22:18:11	1854.00	-16.73	-	33.05	-32.62	-	53.31	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
+N/A	189	7	Grazing	2018 OCT 21 23:44:54	-	2018 OCT 22 00:16:12	1878.00	-45.88	-	4.86	-33.40	-	53.60	-	4	-	-	-	COMMENT	
+NOMAD	190	7	Grazing	2018 OCT 22 01:42:30	-	2018 OCT 22 02:14:12	1902.00	-75.00	-	-23.22	-34.12	-	53.95	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
+N/A	191	7	Grazing	2018 OCT 22 03:40:09	-	2018 OCT 22 04:12:09	1920.00	-104.02	-	-51.43	-34.68	-	54.21	-	4	-	-	-	COMMENT	
+NOMAD	192	7	Grazing	2018 OCT 22 05:37:49	-	2018 OCT 22 06:10:01	1932.00	-133.01	-	-80.01	-35.18	-	54.26	-	5	CH4 01	Science: orders #168, #133, #134, #135, #136, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
+N/A	193	7	Grazing	2018 OCT 22 07:35:28	-	2018 OCT 22 08:07:54	1946.00	-162.13	-	-108.66	-35.84	-	54.27	-	4	-	-	-	COMMENT	
+NOMAD	194	7	Grazing	2018 OCT 22 09:33:06	-	2018 OCT 22 10:05:54	1968.00	168.63	-	-137.01	-36.66	-	54.46	-	5	Nominal Science 1xCO2 LA01	Science: orders #168, #134, #190, #121, #149, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
+N/A	195	7	Grazing	2018 OCT 22 11:30:48	-	2018 OCT 22 12:03:58	1990.00	139.49	-	-165.05	-37.31	-	54.81	-	4	-	-	-	COMMENT	
 NOMAD	196	7	Grazing	2018 OCT 22 13:28:26	-	2018 OCT 22 14:01:59	2012.98	110.31	-	166.88	-38.01	-	55.14	-	5	BgSubTest 03	Science: orders #168, #134, #190, #121, #165, #149, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	
 ACS	197	7	Merged	2018 OCT 22 15:26:05	-	2018 OCT 22 15:59:53	2028.44	81.26	-	138.52	-38.54	-	55.30	-	4	-	-	-	COMMENT	
 NOMAD	198	7	Merged	2018 OCT 22 17:23:43	-	2018 OCT 22 17:57:42	2039.83	52.19	-	109.83	-39.09	-	55.28	-	5	CH4 01	Science: orders #168, #133, #134, #135, #136, #dark, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row -1: 	COMMENT	

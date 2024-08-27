@@ -318,7 +318,12 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, occultationObservatio
                 with open(os.path.join(paths["COP_ROW_PATH"], "mtp%03d_%s.txt" % (mtpNumber, uvisInputName))) as f:
                     for index, line in enumerate(f):
                         content = line.strip('\n')
-                        if index > 0:  # if first line
+                        if index > 0:  # if first line, skip
+
+                            # if more info in file, just take first number
+                            if "," in content:
+                                content = content.split(",")[0]
+
                             uvisInputDict[uvisInputName].append(int(content))
 
             if not uvisGrazingAvailable:  # create empty grazing dictionary
@@ -338,6 +343,11 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, occultationObservatio
                     if ingressCounter == len(uvisInputDict["uvis_ingress_occultations"]):
                         print("Error: insufficient ingress COP rows, index %i" % ingressCounter)
                     copRow = uvisInputDict["uvis_ingress_occultations"][ingressCounter]
+
+                    # if uvis ingresses removed from orbit plans, make an entry for them
+                    if "uvisIngressCopRows" not in finalOrbitPlan.keys():
+                        finalOrbitPlan["uvisIngressCopRows"] = {"scienceCopRow": -1, "copRowDescription": ""}
+
                     finalOrbitPlan["uvisIngressCopRows"]["scienceCopRow"] = copRow
                     finalOrbitPlan["uvisIngressCopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
 
@@ -346,6 +356,11 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, occultationObservatio
                     if ingressCounter == len(uvisInputDict["uvis_ingress_occultations"]):
                         print("Error: insufficient merged COP rows, index %i" % ingressCounter)
                     copRow = uvisInputDict["uvis_ingress_occultations"][ingressCounter]
+
+                    # if uvis ingresses removed from orbit plans, make an entry for them
+                    if "uvisIngressCopRows" not in finalOrbitPlan.keys():
+                        finalOrbitPlan["uvisIngressCopRows"] = {"scienceCopRow": -1, "copRowDescription": ""}
+
                     finalOrbitPlan["uvisIngressCopRows"]["scienceCopRow"] = copRow
                     finalOrbitPlan["uvisIngressCopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
 
@@ -354,6 +369,11 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, occultationObservatio
                     if grazingCounter == len(uvisInputDict["uvis_grazing_occultations"]):
                         print("Error: insufficient grazing COP rows, index %i" % grazingCounter)
                     copRow = uvisInputDict["uvis_grazing_occultations"][grazingCounter]
+
+                    # if uvis ingresses removed from orbit plans, make an entry for them
+                    if "uvisIngressCopRows" not in finalOrbitPlan.keys():
+                        finalOrbitPlan["uvisIngressCopRows"] = {"scienceCopRow": -1, "copRowDescription": ""}
+
                     finalOrbitPlan["uvisIngressCopRows"]["scienceCopRow"] = copRow
                     finalOrbitPlan["uvisIngressCopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
 
@@ -362,6 +382,11 @@ def addUvisCopRows(orbit_list, copTableDict, mtpConstants, occultationObservatio
                     if egressCounter == len(uvisInputDict["uvis_egress_occultations"]):
                         print("Error: insufficient egress COP rows, index %i" % egressCounter)
                     copRow = uvisInputDict["uvis_egress_occultations"][egressCounter]
+
+                    # if uvis ingresses removed from orbit plans, make an entry for them
+                    if "uvisEgressCopRows" not in finalOrbitPlan.keys():
+                        finalOrbitPlan["uvisEgressCopRows"] = {"scienceCopRow": -1, "copRowDescription": ""}
+
                     finalOrbitPlan["uvisEgressCopRows"]["scienceCopRow"] = copRow
                     finalOrbitPlan["uvisEgressCopRows"]["copRowDescription"] = getObservationDescription("uvis", copTableDict, 0, copRow, silent=True)
 

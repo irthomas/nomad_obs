@@ -576,48 +576,48 @@ N/A	293	52	Merged	2022 APR 12 12:35:56	-	2022 APR 12 13:10:08	2052.25	-77.22	-	1
 N/A	294	52	Merged	2022 APR 12 14:34:01	-	2022 APR 12 15:08:07	2046.76	-106.08	-	86.82	9.97	-	58.25	-	14	-	-	-		
 ACS	295	52	Merged	2022 APR 12 16:32:06	-	2022 APR 12 17:06:10	2044.28	-134.95	-	57.75	10.62	-	57.73	-	14	-	-	-		
 NOMAD	296	52	Grazing	2022 APR 12 18:30:13	-	2022 APR 12 19:04:11	2038.47	-163.84	-	28.82	11.31	-	57.40	-	5	6SUBD Nominal #11	Science: orders #121, #134, #126, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7	&mroOverlap; 	
-N/A	297	52	Grazing	2022 APR 12 20:28:25	-	2022 APR 12 21:02:15	2030.00	167.23	-	167.23	12.11	-	12.11	-	14	-	-	-		
-N/A	298	52	Grazing	2022 APR 12 22:26:33	-	2022 APR 12 23:00:19	2026.00	138.37	-	138.37	12.67	-	12.67	-	14	-	-	-	&mroOverlap; 	
-N/A	299	52	Grazing	2022 APR 13 00:24:39	-	2022 APR 13 00:58:23	2024.00	109.52	-	109.52	13.18	-	13.18	-	14	-	-	-	&nomadSolarCalibration; 	
-N/A	300	52	Grazing	2022 APR 13 02:22:45	-	2022 APR 13 02:56:25	2020.00	80.67	-	80.67	13.75	-	13.75	-	14	-	-	-		
-N/A	301	52	Grazing	2022 APR 13 04:20:49	-	2022 APR 13 04:54:23	2014.00	51.79	-	51.79	14.42	-	14.42	-	14	-	-	-		
-NOMAD	302	52	Grazing	2022 APR 13 06:18:57	-	2022 APR 13 06:52:25	2008.00	22.87	-	22.87	15.21	-	15.21	-	5	All Fullscan Fast #2	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (6 order(s) per 1 second(s))	COP row 364: SO: Full Frame (135:205;0:1047),Tint = 75 ms,16 bit,Rhythm = 3574 ms, Binning=0		
-NOMAD	303	52	Grazing	2022 APR 13 08:17:08	-	2022 APR 13 08:50:34	2006.00	-6.04	-	-6.04	15.92	-	15.92	-	5	CO2 Fullscan Fast #4	Diffraction order stepping (fullscan): 10 orders from 165 to 175 in steps of 1 (6 order(s) per 1 second(s))	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
-N/A	304	52	Grazing	2022 APR 13 10:15:18	-	2022 APR 13 10:48:42	2004.00	-34.94	-	-34.94	16.56	-	16.56	-	14	-	-	-		
-N/A	305	52	Grazing	2022 APR 13 12:13:30	-	2022 APR 13 12:46:44	1994.00	-63.89	-	-63.89	17.39	-	17.39	-	14	-	-	-		
-N/A	306	52	Grazing	2022 APR 13 14:11:38	-	2022 APR 13 14:44:46	1988.00	-92.80	-	-92.80	18.10	-	18.10	-	3	-	-	-		
-NOMAD	307	52	Grazing	2022 APR 13 16:09:41	-	2022 APR 13 16:42:49	1988.00	-121.66	-	-121.66	18.68	-	18.68	-	5	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
-N/A	308	52	Grazing	2022 APR 13 18:07:48	-	2022 APR 13 18:40:54	1986.00	-150.56	-	-150.56	19.35	-	19.35	-	14	-	-	-		
-NOMAD	309	52	Grazing	2022 APR 13 20:05:57	-	2022 APR 13 20:38:55	1978.00	-179.48	-	-179.48	20.10	-	20.10	-	5	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 364: SO: Full Frame (135:205;0:1047),Tint = 75 ms,16 bit,Rhythm = 3574 ms, Binning=0		
-NOMAD	310	52	Grazing	2022 APR 13 22:04:05	-	2022 APR 13 22:36:59	1974.00	151.63	-	151.63	20.68	-	20.68	-	5	6SUBD Nominal #48	Science: orders #121, #134, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
-N/A	311	52	Grazing	2022 APR 14 00:02:13	-	2022 APR 14 00:35:07	1974.00	122.75	-	122.75	21.24	-	21.24	-	14	-	-	-	&nomadSolarCalibration; 	
-N/A	312	52	Grazing	2022 APR 14 02:00:19	-	2022 APR 14 02:33:11	1972.00	93.89	-	93.89	21.76	-	21.76	-	14	-	-	-	&mroOverlap; 	
-N/A	313	52	Grazing	2022 APR 14 03:58:23	-	2022 APR 14 04:31:13	1970.00	65.01	-	65.01	22.35	-	22.35	-	14	-	-	-		
-N/A	314	52	Grazing	2022 APR 14 05:56:30	-	2022 APR 14 06:29:14	1964.00	36.07	-	36.07	23.14	-	23.14	-	14	-	-	-		
-NOMAD	315	52	Grazing	2022 APR 14 07:54:39	-	2022 APR 14 08:27:25	1966.00	7.17	-	7.17	23.75	-	23.75	-	5	6SUBD CO2 H2O #12	Science: orders #121, #132, #148, #156, #189, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7	&grazingMatch:PHOENIX; 	
-N/A	316	52	Grazing	2022 APR 14 09:52:49	-	2022 APR 14 10:25:33	1964.00	-21.75	-	-21.75	24.39	-	24.39	-	14	-	-	-		
-N/A	317	52	Grazing	2022 APR 14 11:51:01	-	2022 APR 14 12:23:41	1960.00	-50.71	-	-50.71	25.15	-	25.15	-	3	-	-	-	&mroOverlap; 	
-N/A	318	52	Grazing	2022 APR 14 13:49:10	-	2022 APR 14 14:21:44	1954.00	-79.66	-	-79.66	25.89	-	25.89	-	14	-	-	-		
-N/A	319	52	Grazing	2022 APR 14 15:47:15	-	2022 APR 14 16:19:47	1952.00	-108.56	-	-108.56	26.50	-	26.50	-	14	-	-	-		
-NOMAD	320	52	Grazing	2022 APR 14 17:45:19	-	2022 APR 14 18:17:53	1954.00	-137.44	-	-137.44	27.08	-	27.08	-	5	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
-NOMAD	321	52	Grazing	2022 APR 14 19:43:27	-	2022 APR 14 20:15:57	1950.00	-166.39	-	-166.39	27.79	-	27.79	-	5	6SUBD CO2 H2O #11	Science: orders #121, #132, #148, #156, #160, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
-N/A	322	52	Grazing	2022 APR 14 21:41:35	-	2022 APR 14 22:14:01	1946.00	164.71	-	164.71	28.36	-	28.36	-	14	-	-	-		
-N/A	323	52	Grazing	2022 APR 14 23:39:43	-	2022 APR 15 00:12:09	1946.00	135.79	-	135.79	28.94	-	28.94	-	8	-	-	-		
-N/A	324	52	Grazing	2022 APR 15 01:37:49	-	2022 APR 15 02:10:17	1948.00	106.92	-	106.92	29.40	-	29.40	-	14	-	-	-		
-NOMAD	325	52	Grazing	2022 APR 15 03:35:53	-	2022 APR 15 04:08:21	1948.00	78.04	-	78.04	29.92	-	29.92	-	5	CO2 Fullscan Fast #4	Diffraction order stepping (fullscan): 10 orders from 165 to 175 in steps of 1 (6 order(s) per 1 second(s))	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
-N/A	326	52	Grazing	2022 APR 15 05:33:59	-	2022 APR 15 06:06:21	1942.00	49.07	-	49.07	30.70	-	30.70	-	14	-	-	-		
-N/A	327	52	Grazing	2022 APR 15 07:32:07	-	2022 APR 15 08:04:29	1942.00	20.12	-	20.12	31.38	-	31.38	-	14	-	-	-		
-NOMAD	328	52	Grazing	2022 APR 15 09:30:13	-	2022 APR 15 10:02:41	1948.00	-8.75	-	-8.75	31.80	-	31.80	-	5	6SUBD CO2 H2O #12	Science: orders #121, #132, #148, #156, #189, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
-N/A	329	52	Grazing	2022 APR 15 11:28:24	-	2022 APR 15 12:00:52	1948.00	-37.71	-	-37.71	32.46	-	32.46	-	14	-	-	-		
-N/A	330	52	Grazing	2022 APR 15 13:26:34	-	2022 APR 15 13:58:58	1944.00	-66.71	-	-66.71	33.22	-	33.22	-	14	-	-	-		
-N/A	331	52	Grazing	2022 APR 15 15:24:41	-	2022 APR 15 15:57:03	1942.00	-95.65	-	-95.65	33.85	-	33.85	-	14	-	-	-		
-N/A	332	52	Grazing	2022 APR 15 17:22:43	-	2022 APR 15 17:55:09	1946.00	-124.54	-	-124.54	34.35	-	34.35	-	14	-	-	-		
-NOMAD	333	52	Grazing	2022 APR 15 19:20:48	-	2022 APR 15 19:53:16	1948.00	-153.46	-	-153.46	34.92	-	34.92	-	5	6SUBD Nominal #11	Science: orders #121, #134, #126, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7	&mroOverlap; 	
-NOMAD	334	52	Grazing	2022 APR 15 21:18:56	-	2022 APR 15 21:51:20	1944.00	177.57	-	177.57	35.55	-	35.55	-	5	6SUBD CO2 H2O CO #15	Science: orders #121, #132, #148, #165, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
-N/A	335	52	Grazing	2022 APR 15 23:17:03	-	2022 APR 15 23:49:29	1946.00	148.67	-	148.67	36.02	-	36.02	-	3	-	-	-	&mroOverlap; 	
-N/A	336	52	Grazing	2022 APR 16 01:15:09	-	2022 APR 16 01:47:37	1948.00	119.76	-	119.76	36.49	-	36.49	-	14	-	-	-		
-NOMAD	337	52	Grazing	2022 APR 16 03:13:13	-	2022 APR 16 03:45:45	1952.00	90.87	-	90.87	36.93	-	36.93	-	5	CO2 Fullscan Fast #4	Diffraction order stepping (fullscan): 10 orders from 165 to 175 in steps of 1 (6 order(s) per 1 second(s))	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
-N/A	338	52	Grazing	2022 APR 16 05:11:17	-	2022 APR 16 05:43:49	1952.00	61.93	-	61.93	37.53	-	37.53	-	14	-	-	-		
-N/A	339	52	Grazing	2022 APR 16 07:09:21	-	2022 APR 16 07:41:53	1952.00	32.99	-	32.99	38.09	-	38.09	-	14	-	-	-		
-NOMAD	340	52	Grazing	2022 APR 16 09:07:27	-	2022 APR 16 09:40:05	1958.00	4.07	-	4.07	38.57	-	38.57	-	5	6SUBD CO2 H2O #11	Science: orders #121, #132, #148, #156, #160, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7	&grazingMatch:PHOENIX; 	
-N/A	341	52	Grazing	2022 APR 16 11:05:34	-	2022 APR 16 11:38:16	1962.00	-24.84	-	-24.84	39.00	-	39.00	-	14	-	-	-		
+N/A	297	52	Grazing	2022 APR 12 20:28:25	-	2022 APR 12 21:02:15	2030.00	167.23	-	-0.10	12.11	-	57.10	-	14	-	-	-		
+N/A	298	52	Grazing	2022 APR 12 22:26:33	-	2022 APR 12 23:00:19	2026.00	138.37	-	-29.02	12.67	-	56.77	-	14	-	-	-	&mroOverlap; 	
+N/A	299	52	Grazing	2022 APR 13 00:24:39	-	2022 APR 13 00:58:23	2024.00	109.52	-	-58.02	13.18	-	56.34	-	14	-	-	-	&nomadSolarCalibration; 	
+N/A	300	52	Grazing	2022 APR 13 02:22:45	-	2022 APR 13 02:56:25	2020.00	80.67	-	-86.95	13.75	-	55.98	-	14	-	-	-		
+N/A	301	52	Grazing	2022 APR 13 04:20:49	-	2022 APR 13 04:54:23	2014.00	51.79	-	-115.81	14.42	-	55.70	-	14	-	-	-		
+NOMAD	302	52	Grazing	2022 APR 13 06:18:57	-	2022 APR 13 06:52:25	2008.00	22.87	-	-144.79	15.21	-	55.27	-	5	All Fullscan Fast #2	Diffraction order stepping (fullscan): 115 orders from 110 to 225 in steps of 1 (6 order(s) per 1 second(s))	COP row 364: SO: Full Frame (135:205;0:1047),Tint = 75 ms,16 bit,Rhythm = 3574 ms, Binning=0		
+NOMAD	303	52	Grazing	2022 APR 13 08:17:08	-	2022 APR 13 08:50:34	2006.00	-6.04	-	-173.90	15.92	-	54.66	-	5	CO2 Fullscan Fast #4	Diffraction order stepping (fullscan): 10 orders from 165 to 175 in steps of 1 (6 order(s) per 1 second(s))	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
+N/A	304	52	Grazing	2022 APR 13 10:15:18	-	2022 APR 13 10:48:42	2004.00	-34.94	-	157.08	16.56	-	54.16	-	14	-	-	-		
+N/A	305	52	Grazing	2022 APR 13 12:13:30	-	2022 APR 13 12:46:44	1994.00	-63.89	-	128.22	17.39	-	53.89	-	14	-	-	-		
+N/A	306	52	Grazing	2022 APR 13 14:11:38	-	2022 APR 13 14:44:46	1988.00	-92.80	-	99.31	18.10	-	53.53	-	3	-	-	-		
+NOMAD	307	52	Grazing	2022 APR 13 16:09:41	-	2022 APR 13 16:42:49	1988.00	-121.66	-	70.27	18.68	-	52.94	-	5	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
+N/A	308	52	Grazing	2022 APR 13 18:07:48	-	2022 APR 13 18:40:54	1986.00	-150.56	-	41.25	19.35	-	52.39	-	14	-	-	-		
+NOMAD	309	52	Grazing	2022 APR 13 20:05:57	-	2022 APR 13 20:38:55	1978.00	-179.48	-	12.39	20.10	-	52.11	-	5	6SUBD Nominal #51	Science: orders #121, #136, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 364: SO: Full Frame (135:205;0:1047),Tint = 75 ms,16 bit,Rhythm = 3574 ms, Binning=0		
+NOMAD	310	52	Grazing	2022 APR 13 22:04:05	-	2022 APR 13 22:36:59	1974.00	151.63	-	-16.50	20.68	-	51.77	-	5	6SUBD Nominal #48	Science: orders #121, #134, #129, #169, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
+N/A	311	52	Grazing	2022 APR 14 00:02:13	-	2022 APR 14 00:35:07	1974.00	122.75	-	-45.53	21.24	-	51.20	-	14	-	-	-	&nomadSolarCalibration; 	
+N/A	312	52	Grazing	2022 APR 14 02:00:19	-	2022 APR 14 02:33:11	1972.00	93.89	-	-74.46	21.76	-	50.76	-	14	-	-	-	&mroOverlap; 	
+N/A	313	52	Grazing	2022 APR 14 03:58:23	-	2022 APR 14 04:31:13	1970.00	65.01	-	-103.39	22.35	-	50.31	-	14	-	-	-		
+N/A	314	52	Grazing	2022 APR 14 05:56:30	-	2022 APR 14 06:29:14	1964.00	36.07	-	-132.31	23.14	-	49.87	-	14	-	-	-		
+NOMAD	315	52	Grazing	2022 APR 14 07:54:39	-	2022 APR 14 08:27:25	1966.00	7.17	-	-161.41	23.75	-	49.15	-	5	6SUBD CO2 H2O #12	Science: orders #121, #132, #148, #156, #189, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7	&grazingMatch:PHOENIX; 	
+N/A	316	52	Grazing	2022 APR 14 09:52:49	-	2022 APR 14 10:25:33	1964.00	-21.75	-	169.60	24.39	-	48.60	-	14	-	-	-		
+N/A	317	52	Grazing	2022 APR 14 11:51:01	-	2022 APR 14 12:23:41	1960.00	-50.71	-	140.64	25.15	-	48.10	-	3	-	-	-	&mroOverlap; 	
+N/A	318	52	Grazing	2022 APR 14 13:49:10	-	2022 APR 14 14:21:44	1954.00	-79.66	-	111.75	25.89	-	47.70	-	14	-	-	-		
+N/A	319	52	Grazing	2022 APR 14 15:47:15	-	2022 APR 14 16:19:47	1952.00	-108.56	-	82.81	26.50	-	47.18	-	14	-	-	-		
+NOMAD	320	52	Grazing	2022 APR 14 17:45:19	-	2022 APR 14 18:17:53	1954.00	-137.44	-	53.78	27.08	-	46.50	-	5	6SUBD Nominal #45	Science: orders #121, #136, #169, #129, #149, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
+NOMAD	321	52	Grazing	2022 APR 14 19:43:27	-	2022 APR 14 20:15:57	1950.00	-166.39	-	24.87	27.79	-	46.04	-	5	6SUBD CO2 H2O #11	Science: orders #121, #132, #148, #156, #160, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
+N/A	322	52	Grazing	2022 APR 14 21:41:35	-	2022 APR 14 22:14:01	1946.00	164.71	-	-3.99	28.36	-	45.70	-	14	-	-	-		
+N/A	323	52	Grazing	2022 APR 14 23:39:43	-	2022 APR 15 00:12:09	1946.00	135.79	-	-32.96	28.94	-	45.12	-	8	-	-	-		
+N/A	324	52	Grazing	2022 APR 15 01:37:49	-	2022 APR 15 02:10:17	1948.00	106.92	-	-61.94	29.40	-	44.52	-	14	-	-	-		
+NOMAD	325	52	Grazing	2022 APR 15 03:35:53	-	2022 APR 15 04:08:21	1948.00	78.04	-	-90.87	29.92	-	43.99	-	5	CO2 Fullscan Fast #4	Diffraction order stepping (fullscan): 10 orders from 165 to 175 in steps of 1 (6 order(s) per 1 second(s))	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
+N/A	326	52	Grazing	2022 APR 15 05:33:59	-	2022 APR 15 06:06:21	1942.00	49.07	-	-119.74	30.70	-	43.56	-	14	-	-	-		
+N/A	327	52	Grazing	2022 APR 15 07:32:07	-	2022 APR 15 08:04:29	1942.00	20.12	-	-148.73	31.38	-	42.89	-	14	-	-	-		
+NOMAD	328	52	Grazing	2022 APR 15 09:30:13	-	2022 APR 15 10:02:41	1948.00	-8.75	-	-177.77	31.80	-	42.13	-	5	6SUBD CO2 H2O #12	Science: orders #121, #132, #148, #156, #189, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
+N/A	329	52	Grazing	2022 APR 15 11:28:24	-	2022 APR 15 12:00:52	1948.00	-37.71	-	153.24	32.46	-	41.48	-	14	-	-	-		
+N/A	330	52	Grazing	2022 APR 15 13:26:34	-	2022 APR 15 13:58:58	1944.00	-66.71	-	124.32	33.22	-	40.96	-	14	-	-	-		
+N/A	331	52	Grazing	2022 APR 15 15:24:41	-	2022 APR 15 15:57:03	1942.00	-95.65	-	95.41	33.85	-	40.43	-	14	-	-	-		
+N/A	332	52	Grazing	2022 APR 15 17:22:43	-	2022 APR 15 17:55:09	1946.00	-124.54	-	66.42	34.35	-	39.68	-	14	-	-	-		
+NOMAD	333	52	Grazing	2022 APR 15 19:20:48	-	2022 APR 15 19:53:16	1948.00	-153.46	-	37.45	34.92	-	39.00	-	5	6SUBD Nominal #11	Science: orders #121, #134, #126, #129, #169, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7	&mroOverlap; 	
+NOMAD	334	52	Grazing	2022 APR 15 21:18:56	-	2022 APR 15 21:51:20	1944.00	177.57	-	8.59	35.55	-	38.60	-	5	6SUBD CO2 H2O CO #15	Science: orders #121, #132, #148, #165, #186, #190, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
+N/A	335	52	Grazing	2022 APR 15 23:17:03	-	2022 APR 15 23:49:29	1946.00	148.67	-	-20.33	36.02	-	38.05	-	3	-	-	-	&mroOverlap; 	
+N/A	336	52	Grazing	2022 APR 16 01:15:09	-	2022 APR 16 01:47:37	1948.00	119.76	-	-49.27	36.49	-	37.43	-	14	-	-	-		
+NOMAD	337	52	Grazing	2022 APR 16 03:13:13	-	2022 APR 16 03:45:45	1952.00	90.87	-	-78.23	36.93	-	36.75	-	5	CO2 Fullscan Fast #4	Diffraction order stepping (fullscan): 10 orders from 165 to 175 in steps of 1 (6 order(s) per 1 second(s))	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7		
+N/A	338	52	Grazing	2022 APR 16 05:11:17	-	2022 APR 16 05:43:49	1952.00	61.93	-	-107.14	37.53	-	36.16	-	14	-	-	-		
+N/A	339	52	Grazing	2022 APR 16 07:09:21	-	2022 APR 16 07:41:53	1952.00	32.99	-	-136.03	38.09	-	35.61	-	14	-	-	-		
+NOMAD	340	52	Grazing	2022 APR 16 09:07:27	-	2022 APR 16 09:40:05	1958.00	4.07	-	-165.06	38.57	-	34.77	-	5	6SUBD CO2 H2O #11	Science: orders #121, #132, #148, #156, #160, #165, with 4000us integration time (6 orders per 1 second(s) for detector lines 120 to 136)	COP row 391: SO: Horizontal Bin (135:205;0:1047), Tint = 75 ms,20 bit,Rhythm = 1134 ms, Binning=7	&grazingMatch:PHOENIX; 	
+N/A	341	52	Grazing	2022 APR 16 11:05:34	-	2022 APR 16 11:38:16	1962.00	-24.84	-	165.99	39.00	-	34.10	-	14	-	-	-		

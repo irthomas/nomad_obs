@@ -1,0 +1,4 @@
+COP row,Obsevation Number,Pointing Type,Comments
+391,1,Line Scan (Pointing),# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,2,Line Scan (Pointing),# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+145,3,Mini-Scan,# NADIR: Full Frame (57:245;0:1047) - Tint = 15000 ms -16 bit - Rhythm = 31041 ms

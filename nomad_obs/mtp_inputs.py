@@ -36,7 +36,8 @@ def getMtpConstants(mtpNumber):
         copVersion = "20180313_091700"  # desired cop table folder - remember to update if patched
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        occultation_precooling = 600  # seconds required for precooling
+        stp_data_volumes = []  # GBit # add if required
 
     if mtpNumber == 1:
         mtpStart = "2018-04-21T17:44:23Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -45,7 +46,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 2:
         mtpStart = "2018-05-19T16:16:34Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -54,7 +55,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 3:
         mtpStart = "2018-06-16T14:16:00Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -63,7 +64,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 4:
         mtpStart = "2018-07-14T14:57:14Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -72,7 +73,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 5:
         mtpStart = "2018-08-11T14:52:26Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -81,7 +82,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 6:
         mtpStart = "2018-09-08T15:11:38Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -90,7 +91,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 7:
         mtpStart = "2018-10-06T15:00:39Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -99,7 +100,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
         """begin new obs planning software"""
     elif mtpNumber == 8:  # 2018-11-03T13:00:13Z (actually started orbit after:2018-11-03T14:58:06Z)     EXMGEO_TN2D - 2018-12-01T12:02:30Z     EXMGEO_TD2N
@@ -109,7 +110,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 9:  # 2018-12-01T14:00:32Z EXMGEO_TD2N - 2018-12-29T12:14:53Z EXMGEO_TD2N
         mtpStart = "2018-12-01T14:00:32Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -118,7 +119,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 10:
         mtpStart = "2018-12-29T14:12:47Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -127,7 +128,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 11:
         mtpStart = "2019-01-26T14:47:51Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -136,7 +137,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 12:  # > EXMGEO_TD2N -  > EXMGEO_TD2N
         mtpStart = "2019-02-23T14:47:29Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -145,7 +146,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 13:
         mtpStart = "2019-03-23T15:11:46Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -154,7 +155,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 14:
         mtpStart = "2019-04-20T15:14:22Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -163,7 +164,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 15:
         mtpStart = "2019-05-18T15:37:10Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -172,7 +173,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 16:
         mtpStart = "2019-06-15T15:33:38Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -181,7 +182,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 17:
         mtpStart = "2019-07-13T14:46:20Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -190,7 +191,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 18:
         mtpStart = "2019-08-10T14:55:55Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -199,7 +200,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 19:
         mtpStart = "2019-09-14T16:36:17Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -208,7 +209,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 20:
         mtpStart = "2019-10-05T15:46:51Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -217,7 +218,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 21:
         mtpStart = "2019-11-02T15:07:25Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -226,7 +227,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 22:
         mtpStart = "2019-11-30T15:12:58Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -235,7 +236,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 23:
         mtpStart = "2019-12-28T15:48:47Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -244,7 +245,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 24:
         mtpStart = "2020-01-25T14:09:32Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -253,7 +254,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 25:
         mtpStart = "2020-02-22T15:12:59Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -262,7 +263,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 26:
         mtpStart = "2020-03-21T15:23:55Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -271,7 +272,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 27:
         mtpStart = "2020-04-18T14:17:29Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -280,7 +281,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 28:
         mtpStart = "2020-05-16T14:35:18Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -289,7 +290,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 29:
         mtpStart = "2020-06-13T15:17:54Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -298,7 +299,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 30:
         mtpStart = "2020-07-11T15:32:12Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -307,7 +308,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 31:
         mtpStart = "2020-08-08T14:48:51Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -316,7 +317,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 32:
         mtpStart = "2020-09-05T15:00:18Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -325,7 +326,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 33:
         mtpStart = "2020-10-03T15:37:27Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -334,7 +335,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 34:
         mtpStart = "2020-10-31T15:49:43Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -343,7 +344,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 35:
         mtpStart = "2020-11-28T15:01:57Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -352,7 +353,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 36:
         mtpStart = "2020-12-26T15:15:16Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -361,7 +362,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 37:
         mtpStart = "2021-01-23T14:04:40Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -370,7 +371,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 38:
         mtpStart = "2021-02-20T14:21:53Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -379,7 +380,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 39:
         mtpStart = "2021-03-20T15:10:09Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -388,7 +389,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 40:
         mtpStart = "2021-04-17T15:20:13Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -397,7 +398,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 41:
         mtpStart = "2021-05-15T14:29:28Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -406,7 +407,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 42:
         mtpStart = "2021-06-12T14:44:33Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -415,7 +416,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 43:
         mtpStart = "2021-07-10T15:21:28Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -424,7 +425,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 44:
         mtpStart = "2021-08-07T15:30:50Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -433,7 +434,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 45:
         mtpStart = "2021-09-04T14:50:07Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -442,7 +443,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 46:
         mtpStart = "2021-10-14T12:07:49Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -451,7 +452,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 47:
         mtpStart = "2021-10-30T15:36:08Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -460,7 +461,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 48:
         mtpStart = "2021-11-27T15:50:36Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -469,7 +470,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 49:
         mtpStart = "2021-12-25T15:00:16Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -478,7 +479,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 50:
         mtpStart = "2022-01-22T15:08:11Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -487,7 +488,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 51:
         mtpStart = "2022-02-19T15:50:30Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -496,7 +497,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 52:
         mtpStart = "2022-03-19T14:15:58Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -505,7 +506,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 53:
         mtpStart = "2022-04-16T14:48:16Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -514,7 +515,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 54:
         mtpStart = "2022-05-14T15:15:09Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -523,7 +524,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 55:
         mtpStart = "2022-06-11T15:02:07Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -532,7 +533,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 56:
         mtpStart = "2022-07-09T14:38:17Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -541,7 +542,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 57:
         mtpStart = "2022-08-06T15:01:55Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -550,7 +551,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 58:
         mtpStart = "2022-09-03T15:30:27Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -559,7 +560,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 59:
         mtpStart = "2022-10-01T15:34:13Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -568,7 +569,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 60:
         mtpStart = "2022-10-29T14:50:31Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -577,7 +578,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 61:
         mtpStart = "2022-11-26T15:06:26Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -586,7 +587,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 62:
         mtpStart = "2022-12-24T15:52:32Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -595,7 +596,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 63:
         mtpStart = "2023-01-21T14:10:28Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -604,7 +605,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 64:
         mtpStart = "2023-02-18T14:56:24Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -613,7 +614,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 65:
         mtpStart = "2023-03-18T15:06:04Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -622,7 +623,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = []  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 66:
         mtpStart = "2023-04-15T14:18:38Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -631,7 +632,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = [6, 18, 24, 37, 85, 86, 133, 134, 145, 146, 171, 173, 174, 180, 215, 243, 244,  256, 257, 282, 286, 287, 317, 318, 332, 333]
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 67:
         mtpStart = "2023-05-13T14:27:55Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -640,7 +641,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = [37, 45, 63, 64, 68, 69, 85, 86, 88, 89, 171, 254, 256, 257, 262, 268]  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 68:
         mtpStart = "2023-06-10T15:00:32Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -649,7 +650,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = [85, 86, 134, 158, 171, 183, 210, 222, 234, 256, 257, 261, 284, 292, 331]  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 69:
         mtpStart = "2023-07-08T15:18:23Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -659,7 +660,7 @@ def getMtpConstants(mtpNumber):
                                     249, 252, 256, 257, 265, 270, 271, 305, 306, 312]  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 70:
         mtpStart = "2023-08-05T14:51:48Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -669,7 +670,7 @@ def getMtpConstants(mtpNumber):
                                     244, 256, 257, 274, 275, 301, 302, 313, 314, 336, 337]  # input these from the email
         required_dayside_orbits = []
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 71:
         mtpStart = "2023-09-02T14:42:32Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -678,7 +679,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = [6, 25, 41, 76, 85, 86, 89, 116, 157, 166, 171, 178, 181, 193, 256, 257]  # input these from the email
         required_dayside_orbits = [204, 241, 254, 266, 267, 278, 279, 303, 306, 307, 316, 332]
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 72:
         mtpStart = "2023-09-30T15:05:34Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -687,7 +688,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = [6, 41, 53, 85, 86, 171, 207, 225, 236, 237, 248, 256, 257, 260, 261, 291, 292, 327]  # input these from the email
         required_dayside_orbits = [37]  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 73:
         mtpStart = "2023-10-28T15:36:31Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -696,7 +697,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = [5, 54, 55, 69, 70, 85, 86, 96, 101, 109]  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 74:
         mtpStart = "2023-11-29T00:28:35Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -705,7 +706,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = [43, 44, 129, 183, 189, 190, 195, 211, 214, 215, 225, 263, 264, 273, 274, 289]  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 600  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 75:
         mtpStart = "2023-12-23T14:51:28Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -714,7 +715,7 @@ def getMtpConstants(mtpNumber):
         forbidden_dayside_orbits = [50, 51, 62, 85, 86, 90, 128, 151, 171, 209, 256, 257, 270, 274, 293, 309, 310]  # input these from the email
         required_dayside_orbits = [294, 316, 319, 320]  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 440  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 76:
         mtpStart = "2024-01-20T15:02:28Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -724,7 +725,7 @@ def getMtpConstants(mtpNumber):
                                     178, 179, 188, 206, 256, 257, 279, 280, 287, 288, 318, 319, 337]  # input these from the email
         required_dayside_orbits = [12, 62, 74]  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 440  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 77:
         mtpStart = "2024-02-17T14:01:42Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -735,7 +736,7 @@ def getMtpConstants(mtpNumber):
         # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 440  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 78:
         mtpStart = "2024-03-16T14:17:01Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -745,7 +746,7 @@ def getMtpConstants(mtpNumber):
                                     185, 189, 194, 195, 256, 257, 325, 326, 330, 332, 333, 338, 339]  # input these from the email
         required_dayside_orbits = [6, 7, 43, 47, 81]  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 440  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 79:
         mtpStart = "2024-04-13T14:57:06Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -755,7 +756,7 @@ def getMtpConstants(mtpNumber):
                                     225, 231, 232, 243, 244, 249, 256, 257, 262, 301, 302, 305, 306, 336, 337]  # input these from the email
         required_dayside_orbits = [203, 239, 300, 325]  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 440  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 80:
         mtpStart = "2024-05-11T15:06:27Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -765,7 +766,7 @@ def getMtpConstants(mtpNumber):
                                     195, 201, 226, 241, 242, 256, 257, 307, 308, 311, 312, 329, 334, 335, 338]  # input these from the email
         required_dayside_orbits = [16, 25, 50, 63, 75, 99, 124]  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 440  # seconds required for precooling
-#        ALLOCATED_DATA_VOLUME = #MBits # add if required
+        stp_data_volumes = []  # GBit # add if required
 
     elif mtpNumber == 81:
         mtpStart = "2024-06-08T14:25:37Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
@@ -808,13 +809,14 @@ def getMtpConstants(mtpNumber):
         stp_data_volumes = [70, 70, 70, 70]  # GBit # add if required
 
     elif mtpNumber == 85:
-        mtpStart = ""  # EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = ""  # EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2024-09-28T14:34:15Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2024-10-26T12:45:21Z"  # EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20231028_120000"  # desired cop table folder - remember to update if patched
-        forbidden_dayside_orbits = []  # input these from the email
+        forbidden_dayside_orbits = [39, 40, 62, 71, 76, 77, 78, 79, 85, 86, 91, 97, 108, 109, 132,
+                                    133, 152, 153, 171, 182, 184, 185, 195, 215, 256, 257, 331]  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 440  # seconds required for precooling
-        stp_data_volumes = []  # GBit # add if required
+        stp_data_volumes = [70, 70, 70, 70]  # GBit # add if required
 
     elif mtpNumber == 86:
         mtpStart = ""  # EXMGEO_TD2N start time as specified by Bojan or Claudio
