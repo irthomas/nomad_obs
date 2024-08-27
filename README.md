@@ -1,6 +1,9 @@
 # NOMAD Observation Planning Instructions
 ## Introduction
-### Requirements
+### Output
+Summary pages for all MTPs can be found here: https://rawcdn.githack.com/irthomas/nomad_obs/c2a186da949cd61e046d875df0e216391d72c0a9/observations/index.html
+
+### Requirements to run the code
 * SpiceyPy
 * Python 3
 * Various standard packages (numpy, os, sys, datetime, matplotlib)
