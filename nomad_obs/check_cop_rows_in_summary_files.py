@@ -19,7 +19,7 @@ import os
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 
-mtpNumber = 84
+mtpNumber = 85
 
 # add the correct MTP info in obs_inputs
 
@@ -101,7 +101,7 @@ for cop_row_name, dictionary_data in cop_summary_dict.items():
         contains_data = []
         for row_number in range(1000):
             # check if summary file row contains data
-            contains_data.append(Sheet1.cell(row_number+1, dictionary_data["empty_column"]-1).value != None)
+            contains_data.append(Sheet1.cell(row_number+1, dictionary_data["empty_column"]-1).value is not None)
         n_rows_summary_file = sum(contains_data)
 
         # compare
@@ -157,7 +157,7 @@ for cop_row_name, dictionary_data in cop_summary_dict.items():
         wb.save(summary_row_path)
 
 
-### testing colour detection ###
+# testing colour detection
 # cop_row_name = "mtp%03i_ir_dayside_nadir.txt" %mtpNumber
 # dictionary_data = cop_summary_dict[cop_row_name]
 # summary_row_path = os.path.join(paths["SUMMARY_FILE_PATH"], dictionary_data["xlsx_filename"])
