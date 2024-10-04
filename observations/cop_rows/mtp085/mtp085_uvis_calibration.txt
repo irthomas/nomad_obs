@@ -1,0 +1,2 @@
+COP row,Obsevation Number,,Comments
+145,1,Mini-Scan,# NADIR: Full Frame (57:245;0:1047) - Tint = 15000 ms -16 bit - Rhythm = 31041 ms

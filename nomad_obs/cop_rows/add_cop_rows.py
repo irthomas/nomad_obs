@@ -39,6 +39,10 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants, occultationObservationD
 
                 if observationName == IR_OFF_CODE:
                     finalOrbitPlan[obsType+"ObservationName"] = "-"
+                    finalOrbitPlan[obsType+"Orders"] = []
+                    finalOrbitPlan[obsType+"IntegrationTime"] = 0
+                    finalOrbitPlan[obsType+"Rhythm"] = 0
+                    finalOrbitPlan[obsType+"DetectorRows"] = 0
                     finalOrbitPlan[obsType+"ChannelCode"] = OFF_CHANNEL_CODE
                     finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow": -1, "fixedCopRow": -1, "copRowDescription": ""}
 
@@ -65,6 +69,10 @@ def addIrCopRows(orbit_list, copTableDict, mtpConstants, occultationObservationD
 
                 if observationName == IR_OFF_CODE:
                     finalOrbitPlan[obsType+"ObservationName"] = "-"
+                    finalOrbitPlan[obsType+"Orders"] = []
+                    finalOrbitPlan[obsType+"IntegrationTime"] = 0
+                    finalOrbitPlan[obsType+"Rhythm"] = 0
+                    finalOrbitPlan[obsType+"DetectorRows"] = 0
                     finalOrbitPlan[obsType+"ChannelCode"] = OFF_CHANNEL_CODE
                     finalOrbitPlan[obsType+"CopRows"] = {"scienceCopRow": -1, "fixedCopRow": -1, "copRowDescription": ""}
 

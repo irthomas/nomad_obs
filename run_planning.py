@@ -9,6 +9,10 @@ Created on Mon Mar  4 08:22:23 2019
 TODO:
     REWORK GENERIC PLAN ORBIT TYPE SELECTOR FOR ORBITS WITH OCCULTATIONS + LIMB AND OCCULTATIONS + OCM
     READ IN MERGED/GRAZING OCCULTATION TYPES FROM KICKOFF SUMMARY FILES
+    RUN CO2 ORDERS WHEN JOINT OCCULTATION WITH MAVEN
+    
+    NEED TO REDO MTP085 WITH THE 24H OF OBS REMOVED
+    
 """
 
 from nomad_obs.config.paths import setupPaths  # , devWebsitePaths
@@ -44,13 +48,12 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 85
-# mtpNumber = 84
+mtpNumber = 86
 
 
 r"""
 *Remember to update spice kernels first!
-*Get event file, MRO overlaps and SOLAR_LOS limb files from Ops zip:
+*Get event file, MRO overlaps and SOLAR_LOS limb files from Ops FTP:
 
 event_files\LEVF_M0xx_SOC_PLANNING.EVF
 
@@ -65,9 +68,6 @@ summary_files\mtp0xx\kickoff\nadir_dayside_nightside_thermal_orbits_orbit_type_s
 summary_files\mtp0xx\kickoff\NOMAD_egress_solar_occulations_summary.txt (optional)
 summary_files\mtp0xx\kickoff\NOMAD_ingress_and_merged_solar_occulations_summary.txt (optional)
 summary_files\mtp0xx\kickoff\NOMAD_grazing_solar_occulations_summary.txt (optional, if present)
-
-summary_files\mtp0xx\MARS_IN_LNO_OCC_FOV.txt (optional)
-summary_files\mtp0xx\MARS_IN_UVIS_OCC_FOV.txt (optional)
 
 summary_files\mtp0xx\roi_flyovers_nightside-filtered.txt
 
@@ -285,42 +285,14 @@ if True:
         # printStatement("Updating science calibrations webpage")
         # writeCalibrationWebpage(paths)
 
-    # THE FOLLOWING FILES WILL BE GENERATED IN COP_ROWS/MTPXXX FOLDER:
-    # CALIBRATION FILE MUST BE FILLED IN MANUALLY. USE VALUES FROM SOLAR_CALIBRATIONS.XLSX FILE FOR MINISCANS/FULLSCANS. SEE PREVIOUS MTPS FOR EXAMPLES.
-    # THIS AND THE OTHER IR COP ROWS SHOULD BE CHECKED (COMPARE TO SUMMARY FILES FROM BOJAN/CLAUDIO), PARTICULARLY TIMINGS AND NUMBER OF ROWS IN FILES
-    # LNO ORBIT NUMBER FILE, FOR UVIS OPS TEAM
-    # JOINT OCCULTATION FILE, FOR ACS TEAM. THIS WILL BE SENT BY BOJAN/CLAUDIO TO THE SOC.
-    # SEND ALL FILES IN THE COP_ROW/MTPXXX FOLDER TO NOMAD.IOPS@AERONOMIE.BE
-    # WHEN THE OU SENDS THE COP ROWS TO THE OPS TEAM, PLACE A COPY IN THE COP_ROW/MTPXXX FOLDER AND RERUN THE PLANNING
-    # THE SQL DATABASE WILL BE UPDATED WITH THE UVIS COP ROWS
-
-    # NEW WEBPAGES ARE UPDATED AUTOMATICALLY IN THE LOCAL OBS_DIRECTORY
-
-    # """only run step5 when final COP rows are delivered. Must be at BIRA or on linux system.
-    # Note that chuck/crunch don't have access to website directory so output is written
-    # to a temporary directory. Transfer must be done manually periodically"""
-    # if not OFFLINE:
-    #     printStatement("Copying web pages to aeronomie dev website")
-    #     copyWebpagesToDevSite(paths, devPaths)
-    #     printStatement("Done!")
-    # else:
-    #     printStatement("Warning: working offline, dev website will not be updated")
-
-    # COPY FILES TO THE OLD DEV OBS PLANNING WEBSITE
-    # RUN THE SCRIPT IN THE DEV WEBSITE FOLDER TO COPY THEM TO THE EXTERNAL WEBSITE
-    # cd /bira-iasb/websites/dev/mars>
-    # ./sync_to_prod.sh
-    # CREATE A NEW PAGE ON THE NEW WEBSITE AT NOMAD.AERONOMIE.BE AND COPY THE MTP OVERVIEW PAGE INFO ONTO IT. SET CATEGORY TO MTPS
-    # THE PAGE WILL BE ADDED TO THE CORRECT PAGE AND THE PLOTS AND DETAILED PLANNING WILL BE UPDATED AUTOMATICALLY FROM THE SQL DATABASE
-
-    # PROGRAM FINISHED
+# CALIBRATION FILE MUST BE FILLED IN MANUALLY. USE VALUES FROM SOLAR_CALIBRATIONS.XLSX FILE FOR MINISCANS/FULLSCANS. SEE PREVIOUS MTPS FOR EXAMPLES.
+# THIS AND THE OTHER IR COP ROWS SHOULD BE CHECKED (COMPARE TO SUMMARY FILES FROM BOJAN/CLAUDIO), PARTICULARLY TIMINGS AND NUMBER OF ROWS IN FILES
+# LNO ORBIT NUMBER FILE, FOR UVIS OPS TEAM
+# WHEN THE OU SENDS THE COP ROWS TO THE OPS TEAM, PLACE A COPY IN THE COP_ROW/MTPXXX FOLDER AND RERUN THE PLANNING
+# THE SQL DATABASE WILL BE UPDATED WITH THE UVIS COP ROWS
 
 
-# except:
-#     dump_json(orbitList)
-
-
-# all MTPs should run successfully (testing up to MTP084)
+# all MTPs should run successfully (tested up to MTP084)
 # for adding UVIS COP rows to planning (change to function)
 # for very old MTPs (e.g. those without MRO overlap files, may need to set IGNORE_MISSING=True)
 # for mtpNumber in range(83, 85):

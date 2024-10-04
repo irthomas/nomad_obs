@@ -31,12 +31,12 @@ def makeOverviewPage(orbit_list, mtpConstants, paths, occultationObservationDict
         for occultationObsType in occultationObsTypes:
             if occultationObsType in orbit.keys():
                 obsTypeName = obsTypeNames[occultationObsType]
-
                 orders = orbit["finalOrbitPlan"][obsTypeName+"Orders"]
                 if 0 in orders:  # remove darks
                     orders.remove(0)
-                if "COP#" in "%s" % orders[0]:  # remove manual COP selection
-                    orders = []
+                if len(orders) > 0:
+                    if "COP#" in "%s" % orders[0]:  # remove manual COP selection
+                        orders = []
                 ordersAll.extend(orders)
     uniqueOccultationOrders = sorted(list(set(ordersAll)))
 

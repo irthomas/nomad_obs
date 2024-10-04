@@ -7,8 +7,8 @@ Created on Mon Apr 27 12:12:25 2020
 import spiceypy as sp
 
 # ignore missing files? E.g. when running very old MTPs without MRO overlap files
-IGNORE_MISSING = True
-# IGNORE_MISSING = False
+# IGNORE_MISSING = True
+IGNORE_MISSING = False
 
 
 # spice constants
