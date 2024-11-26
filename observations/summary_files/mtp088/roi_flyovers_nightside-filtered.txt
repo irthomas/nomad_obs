@@ -1,0 +1,12 @@
+Target Name,Flyover #,Orbit type,Thermal orbit number,Start crossing time (UTC),End crossing time (UTC),Start crossing latitude (deg),Start crossing longitude (deg),End crossing latitude (deg),End crossing longitude (deg),Start crossing phase angle (deg),End crossing phase angle (deg),Start crossing solar incidence angle (deg),End crossing solar incidence angle (deg),Start crossing emission angle (deg),End crossing emission angle (deg),Start crossing LST (h),End crossing LST (h)
+Region of residual magnetic field,1,1,146,2025 JAN 02 13:16:45,2025 JAN 02 13:29:53,-10.0989,-150.8991,-48.7344,-140,136.3299,134.0018,136.1914,133.6124,0.37899,0.60805,21.03,21.9697
+Region of residual magnetic field,2,1,183,2025 JAN 05 13:59:16,2025 JAN 05 14:02:01,-10.099,-141.5146,-18.2406,-140,127.6513,130.1126,127.516,129.9612,0.37751,0.46286,20.4372,20.5828
+Region of residual magnetic field,3,3,196,2025 JAN 06 15:32:04,2025 JAN 06 15:48:39,-10.0987,-157.665,-58.3369,-140,124.4716,124.9442,124.4894,125.5633,0.35201,0.76197,20.23,21.6767
+Region of residual magnetic field,4,3,208,2025 JAN 07 15:06:56,2025 JAN 07 15:14:38,-10.098,-144.66,-32.882,-140,119.5907,127.3377,121.9099,127.1276,2.3443,0.57749,20.0531,20.4886
+Region of residual magnetic field,5,1,221,2025 JAN 08 16:39:44,2025 JAN 08 16:57:29,-10.0982,-160.5672,-61.3719,-140,114.2772,121.1815,119.1284,122.9348,4.8558,1.7968,19.8619,21.5211
+Region of residual magnetic field,6,1,233,2025 JAN 09 16:14:38,2025 JAN 09 16:25:50,-10.0992,-147.9662,-43.0895,-140,112.944,123.6805,116.1721,123.434,3.2342,0.60991,19.6586,20.3714
+Region of residual magnetic field,7,1,273,2025 JAN 12 23:06:52,2025 JAN 12 23:12:19,-56.4475,150.037,-69.8995,171.7548,118.9012,114.2529,118.6307,118.5268,0.58671,4.2807,20.3056,21.8417
+Region of residual magnetic field,8,1,286,2025 JAN 14 00:44:06,2025 JAN 14 00:45:07,-67.6505,150.0852,-69.895,155.8551,112.944,112.944,118.2458,118.1107,5.308,5.1715,21.25,21.6511
+Region of residual magnetic field,9,1,298,2025 JAN 15 00:15:54,2025 JAN 15 00:19:52,-60.1907,150.0467,-69.8976,167.3534,116.6449,115.395,116.385,117.3208,0.56659,1.9509,20.1536,21.3719
+Region of residual magnetic field,10,1,311,2025 JAN 16 01:52:25,2025 JAN 16 01:52:43,-69.2535,150.0993,-69.8954,151.9497,112.944,112.944,116.8611,116.9286,3.9252,3.9918,21.0869,21.215
+Region of residual magnetic field,11,1,337,2025 JAN 18 05:07:22,2025 JAN 18 05:09:55,-69.8954,-152.691,-63.904,-140,112.944,112.944,117.2573,116.3921,4.3141,3.4517,2.7914,3.6792

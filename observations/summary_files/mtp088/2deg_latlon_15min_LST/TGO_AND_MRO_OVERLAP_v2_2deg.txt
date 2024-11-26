@@ -1,0 +1,7 @@
+S/C,UTC,UVIS nadir LOS surface intercept lat (deg),UVIS nadir LOS surface intercept lon (deg),S/C altitude (km),UVIS nadir LOS surface intercept LST (h),UVIS nadir LOS surface intercept Incidence angle (deg),UVIS nadir LOS surface intercept Emission angle (deg),UVIS nadir LOS surface intercept Phase angle (deg)
+MRO,2025 JAN 05 15:21:00,75.3382,103.6753,314.6269,14.1092,67.025,1.5667e-14,67.025
+TGO,2025 JAN 05 15:24:00,75.8247,104.6624,433.911,14.2236,67.6613,0.14661,67.6813
+
+MRO,2025 JAN 15 09:06:00,71.9963,-66.7456,315.1491,14.3017,63.1355,7.2876e-15,63.1355
+TGO,2025 JAN 15 09:18:00,72.6187,-67.376,434.448,14.4544,64.0476,6.4861,70.4025
+

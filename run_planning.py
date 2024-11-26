@@ -48,7 +48,7 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 87
+mtpNumber = 88
 
 
 r"""
@@ -117,6 +117,7 @@ Other targets	          Normal priority
 *if CaSSIS joint limbs:
 *change orbit to type 28 (dayside) or 47 (nightside as appropriate) for UVIS ridealong
 
+*highlight rows in xlsx based on type: yellow = CaSSIS surface ice; blue = CaSSIS limbs; green = UVIS nightside nadir
 
 *NEW: if grazing occultations, check latitude/min tangent altitude SO constraints
 
@@ -143,7 +144,7 @@ Other targets	          Normal priority
 *If there are occultation-free periods with low LSTs, change IR daysides to mainly Surface Ice observations e.g. Surface Ice 4SUBD 01
 
 
-*CaSSIS joint obs: set the dayside observation type irDayside manually to the correct one as decided by the LNO science team
+*CaSSIS joint obs: set the dayside observation type, replacing irDayside manually, to the correct one as decided by the LNO science team
 
 
 *Use excel formula to check for incorrect orbit types 3 when no LNO obs:
@@ -154,6 +155,7 @@ Other targets	          Normal priority
 *Add 141-150 fullscans (CO2 Fullscan Fast #5), a few at the highest latitudes north or south.
 *Code to print ingress/egress latitudes:
 * [(d["orbitNumber"], d["ingress"]["latMidpoint"],d["egress"]["latMidpoint"]) for d in orbitList if "ingress" in d.keys() and "egress" in d.keys()]
+* Best region: south <-60 degrees Ls 40 to 120 (MTPs 89-96)
 
 
 *Then delete everything from column N onwards

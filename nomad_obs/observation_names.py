@@ -23,6 +23,7 @@ Created on Wed Oct 18 13:56:09 2017
     Next patching: 
         luca: 3 order LNO ice 193+168+189/190
         Check online spreadsheet
+        Francois: LNO 167,168,169
 
 """
 
