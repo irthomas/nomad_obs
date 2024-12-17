@@ -48,7 +48,7 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 88
+mtpNumber = 89
 
 
 r"""
@@ -112,14 +112,16 @@ Other targets	          Normal priority
 *compare timings with nomad_ingress_events.txt
 *if found, add "1 irIngress irIngress uvisIngress" to the orbit
 
-*check NOMAD Phobos linescans are correctly registered. Change comment column to &nomadPhobos;
+*check NOMAD Phobos linescans are correctly registered. Change comment column to &nomadPhobos if not already there;
 
 *if CaSSIS joint limbs:
 *change orbit to type 28 (dayside) or 47 (nightside as appropriate) for UVIS ridealong
 
 *highlight rows in xlsx based on type: yellow = CaSSIS surface ice; blue = CaSSIS limbs; green = UVIS nightside nadir
 
-*NEW: if grazing occultations, check latitude/min tangent altitude SO constraints
+*NEW: if grazing occultations, check latitude/min tangent altitude SO constraints are correct
+
+*NEW: check occultations matching EUVM joint list (4-7 March, 6-9 May, 5-30 June, 22 Sep - 4 October 2025). Run high altitude CO2
 
 
 *check true limbs are correctly registered:
@@ -187,6 +189,7 @@ Wait until Ops team sends summary files
     * If there are no grazing occultations you can ignore the error that the file does not exist
 *Open NOMAD_dayside_nadir_summary.xlsx and check coloured rows are filled with -1s
 
+*Copy the updated planning.db to the website directory \components\com_nomad\data
 
 """
 
