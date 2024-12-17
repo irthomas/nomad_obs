@@ -121,7 +121,7 @@ Other targets	          Normal priority
 
 *NEW: if grazing occultations, check latitude/min tangent altitude SO constraints are correct
 
-*NEW: check occultations matching EUVM joint list (4-7 March, 6-9 May, 5-30 June, 22 Sep - 4 October 2025). Run high altitude CO2
+*NEW: check occultations matching EUVM joint list (4-7 March, 6-9 May, 5-30 June, 22 Sep - 4 October 2025). Run high altitude CO2 e.g. 6SUBD CO2 H2O #14
 
 
 *check true limbs are correctly registered:
