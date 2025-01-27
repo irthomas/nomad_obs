@@ -10,9 +10,9 @@ TODO:
     REWORK GENERIC PLAN ORBIT TYPE SELECTOR FOR ORBITS WITH OCCULTATIONS + LIMB AND OCCULTATIONS + OCM
     READ IN MERGED/GRAZING OCCULTATION TYPES FROM KICKOFF SUMMARY FILES
     RUN CO2 ORDERS WHEN JOINT OCCULTATION WITH MAVEN
-    
+
     NEED TO REDO MTP085 WITH THE 24H OF OBS REMOVED
-    
+
 """
 
 from nomad_obs.config.paths import setupPaths  # , devWebsitePaths
@@ -48,7 +48,7 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 89
+mtpNumber = 90
 
 
 r"""

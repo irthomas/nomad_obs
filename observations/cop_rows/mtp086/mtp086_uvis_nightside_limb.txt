@@ -1,0 +1,8 @@
+TC20 UVIS_COP_ROW,Nightside nadir observation number,Orbit type,Observation Mode,Comments
+79,3,47,Nightside LIMB,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+79,4,47,Nightside LIMB,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+79,5,47,Nightside LIMB,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+79,6,47,Nightside LIMB,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+79,7,47,Nightside LIMB,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+79,8,47,Nightside LIMB,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+79,9,47,Nightside LIMB,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
