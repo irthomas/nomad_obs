@@ -46,11 +46,19 @@ EMAIL_SUBJECT = "[NOMAD OPS]: new files are available on the FTP"
 
 def open_ftp(server_address, username, password):
     # Open an FTP connection with specified credentials
-    ftp_conn = ftplib.FTP(server_address)
-    try:
-        ftp_conn.login(user=username, passwd=password)
-    except ftplib.all_errors as e:
-        print("FTP error ({0})".format(e.message))
+    success = False
+    # keep trying until ftp is opened successfully
+    while success is False:
+        ftp_conn = ftplib.FTP(server_address, timeout=90)
+        try:
+            ftp_conn.login(user=username, passwd=password)
+        except ftplib.all_errors as e:
+            print("FTP error:", str(e))
+        else:
+            # break the while loop
+            success = True
+
+            
     return ftp_conn
 
 
