@@ -22,7 +22,7 @@ if platform.system() == "Windows":
     # LOCAL_PATH = r"X:\projects\NOMAD\Science\Planning\operations_ftp"
     LOCAL_PATH = r"C:\Users\iant\Documents\DATA\temp\operations_ftp"
 elif platform.system() == "Linux":
-    sys.path.append(r"/bira-iasb/projects/NOMAD/Instrument/SOFTWARE-FIRMWARE/nomad_ops/")
+    sys.path.append(r"/bira-iasb/projects/NOMAD/Science/nomad-level1-pipeline/")
     LOCAL_PATH = r"/bira-iasb/projects/NOMAD/Science/Planning/operations_ftp/"
 
 from nomad_ops.core.tools.passwords import passwords

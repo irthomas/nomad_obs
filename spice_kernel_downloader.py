@@ -15,15 +15,18 @@ KERNEL_FTP = "spiftp.esac.esa.int"
 KERNEL_FTP_PATH = "/data/SPICE/ExoMars2016/kernels"
 
 
+ops = True  # for operations
+# ops = False  # for planning
+
+
 if platform.system() == "Windows":
-    PATH_LOCAL_SPICE_KERNELS = r"C:\Users\iant\Documents\DATA\local_spice_kernels\kernels"
+    if ops:
+        PATH_LOCAL_SPICE_KERNELS = r"C:\Users\iant\Documents\DATA\local_spice_kernels_ops\kernels"
+    else:
+        PATH_LOCAL_SPICE_KERNELS = r"C:\Users\iant\Documents\DATA\local_spice_kernels\kernels"
 
 else:
-    PATH_LOCAL_SPICE_KERNELS = r"/bira-iasb/data/SATELLITE/TRACE-GAS-ORBITER/NOMAD/kernels"
-
-
-# ops = True #for operations
-ops = False  # for planning
+    PATH_LOCAL_SPICE_KERNELS_OPS = r"/bira-iasb/data/SATELLITE/TRACE-GAS-ORBITER/NOMAD/kernels"
 
 
 class MetakernelParser():

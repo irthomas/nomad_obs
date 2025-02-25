@@ -48,7 +48,7 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 90
+mtpNumber = 91
 
 
 r"""
@@ -61,7 +61,6 @@ summary_files\mtp0xx\2deg_latlon_15min_LST
 summary_files\mtp0xx\2deg_latlon_30min_LST
 summary_files\mtp0xx\5deg_latlon_15min_LST
 summary_files\mtp0xx\5deg_latlon_30min_LST
-
 
 
 summary_files\mtp0xx\kickoff\nadir_dayside_nightside_thermal_orbits_orbit_type_summary.txt (optional)
@@ -117,6 +116,11 @@ Other targets	          Normal priority
 *if CaSSIS joint limbs:
 *change orbit to type 28 (dayside) or 47 (nightside as appropriate) for UVIS ridealong
 
+*If requested by Liege team: add 2 UVIS nightsides (type 7) from list of orbits in roi_flyovers_nightside-filtered.txt
+    These must not clash with other observations e.g. solar occultations or high priority LNO nadirs
+    (UVIS can run night and day on same orbit).
+
+
 *highlight rows in xlsx based on type: yellow = CaSSIS surface ice; blue = CaSSIS limbs; green = UVIS nightside nadir
 
 *NEW: if grazing occultations, check latitude/min tangent altitude SO constraints are correct
@@ -135,9 +139,6 @@ Other targets	          Normal priority
 
 
 
-*If requested by Liege team: add 2 UVIS nightsides (type 7) from list of orbits in roi_flyovers_nightside-filtered.txt
-    These must not clash with other observations e.g. solar occultations or high priority LNO nadirs
-    (UVIS can run night and day on same orbit).
 
 
 *Optional: Add a few LNO-only limbs (type 8) when FOV in range if space is available (we have lots of LNO+UVIS limbs now)
