@@ -48,7 +48,7 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 91
+mtpNumber = 92
 
 
 r"""
@@ -116,7 +116,7 @@ Other targets	          Normal priority
 *if CaSSIS joint limbs:
 *change orbit to type 28 (dayside) or 47 (nightside as appropriate) for UVIS ridealong
 
-*If requested by Liege team: add 2 UVIS nightsides (type 7) from list of orbits in roi_flyovers_nightside-filtered.txt
+*If requested by Liege team: add 2 UVIS nightsides (type 7 "uvisNightside") from list of orbits in roi_flyovers_nightside-filtered.txt
     These must not clash with other observations e.g. solar occultations or high priority LNO nadirs
     (UVIS can run night and day on same orbit).
 
