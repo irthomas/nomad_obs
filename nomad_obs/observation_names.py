@@ -9,6 +9,9 @@ Created on Wed Oct 18 13:56:09 2017
     Regular:
         Add Surface Ice obs to final orbit plan when beta angle is high
         Add 141-150 fullscans (CO2 Fullscan Fast #5), a few at the highest latitudes north or south
+                               
+                               
+        For detection limits: 145 C2H2, 185 DCl, 196 HI
 
     Done:
         M.Smith - replace LNO nadir 191 and most 190 obs by 189!
@@ -19,11 +22,12 @@ Created on Wed Oct 18 13:56:09 2017
         Miguel: 121/148/149/155/164/165
         Loic: add 132 to nominal for low altitude CO2 with 134 and 136
         Loic: 149 can be swapped for 147/148/149
+
+        Luca: 3 order LNO ice 193+168+189/190
+        Francois: LNO 167,168,169
         
     Next patching: 
-        luca: 3 order LNO ice 193+168+189/190
         Check online spreadsheet
-        Francois: LNO 167,168,169
 
 """
 
