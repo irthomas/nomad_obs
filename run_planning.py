@@ -48,13 +48,14 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 92
+mtpNumber = 93
 
 
 r"""
 *Remember to update spice kernels first!
-*Get event file, MRO overlaps and SOLAR_LOS limb files from Ops FTP:
+run spice_kernel_downloader.py ensuring that it is in planning mode
 
+*Get event file, MRO overlaps and SOLAR_LOS limb files from Ops FTP:
 event_files\LEVF_M0xx_SOC_PLANNING.EVF
 
 summary_files\mtp0xx\2deg_latlon_15min_LST
@@ -121,7 +122,7 @@ Other targets	          Normal priority
     (UVIS can run night and day on same orbit).
 
 
-*highlight rows in xlsx based on type: yellow = CaSSIS surface ice; blue = CaSSIS limbs; green = UVIS nightside nadir
+*highlight rows in xlsx based on type: yellow = CaSSIS surface ice; blue = CaSSIS limbs; green = UVIS nightside nadir; 
 
 *NEW: if grazing occultations, check latitude/min tangent altitude SO constraints are correct
 

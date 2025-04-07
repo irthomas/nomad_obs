@@ -13,8 +13,11 @@ ALLOCATE WEIGHTS TO EACH OBSERVATION NAME FOR EACH OBSERVATION TYPE
 
 OCCULTATION_WEIGHTS = [
 
+    # new MTP093+
+    ["6SUBD DetLim #1"] * 8,  # orders 116, 129, 132, 170, 185, 196 for LT, priority high
+
     # only for southern summer
-    ["179 only #2"] * 8,  # order 179 only, priority v high only during southern summer MTPs 80-82 (HF search)
+    ["179 only #2"] * 1,  # order 179 only, priority v high only during southern summer MTPs 80-82 (HF search)
 
     # new MTP073+
     ["Fullscan fast step4 all #1"] * 16,  # 124(128)-168, priority v high
@@ -173,6 +176,10 @@ OCCULTATION_H2O_REGION_WEIGHTS = [
 # IN GENERAL, USE LESS CH4 ORDERS AS THESE ARE NORMALLY ADDED WHEN CROSSING OVER INTERESTING REGIONS
 NADIR_WEIGHTS = [
 
+    # new MTP093+
+    ["H2O 3SUBD #1"] * 16,  # HIGH #167, 168, 169 FOR FH
+    ["CO 2SUBD #1"] * 16,  # HIGH #189, 190 FOR FH
+
     ["H2O CO 2SUBD #1"] * 32,  # VERY HIGH #168, 189
 
     ["H2O CO 3SUBD #2"] * 8,  # H #168, 189, 190
@@ -222,6 +229,10 @@ NADIR_NIGHTSIDE_WEIGHTS = [
 ]
 
 NADIR_CH4_REGION_WEIGHTS = [
+    # new MTP093+
+    ["H2O 3SUBD #1"] * 16,  # HIGH #167, 168, 169 FOR FH
+    ["CO 2SUBD #1"] * 16,  # HIGH #189, 190 FOR FH
+
     ["H2O CO 2SUBD #1"] * 32,  # VERY HIGH #168, 189
     ["H2O CO 3SUBD #2"] * 8,
     ["CH4 CO 2SUBD #3"] * 1,  # L #189, 136
@@ -233,6 +244,10 @@ NADIR_H2O_REGION_WEIGHTS = [
 ]
 
 NADIR_SURFACE_REGION_WEIGHTS = [
+    # new MTP093+
+    ["H2O 3SUBD #1"] * 2,  # HIGH #167, 168, 169 FOR FH
+    ["CO 2SUBD #1"] * 2,  # HIGH #189, 190 FOR FH
+
     ["H2O CO 2SUBD #1"] * 2,  # VERY HIGH #168, 189
     # ["Surface 3SUBD #3"] * 1,  # L #189, 194, 196
     ["Ice CO 2SUBD #2"] * 1,  # H #193, 189

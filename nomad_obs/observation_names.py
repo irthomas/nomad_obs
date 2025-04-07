@@ -25,6 +25,7 @@ Created on Wed Oct 18 13:56:09 2017
 
         Luca: 3 order LNO ice 193+168+189/190
         Francois: LNO 167,168,169
+        Loic: detection limits
         
     Next patching: 
         Check online spreadsheet
@@ -44,6 +45,12 @@ __contact__ = "ian . thomas AT aeronomie . be"
 """
 # name:[[orders], int time, rhythm, lines, so=0/lno=1]
 occultationObservationDict = {
+
+    # new MTP093+
+    "6SUBD DetLim #1": [[116, 129, 132, 170, 185, 196], 4, 1, 16, 0],  # Loïc detection limits
+    "6SUBD CO2 HCl #1": [[129, 129, 132, 129, 148, 165], 4, 1, 16, 0],  # CO2 altitudes with HCL for HCL / EUVM campaign
+    "6SUBD CO2 HCl #2": [[128, 128, 132, 128, 148, 165], 4, 1, 16, 0],  # CO2 altitudes with HCL for HCL / EUVM campaign
+    "6SUBD CO2 HCl #3": [[128, 129, 129, 132, 148, 165], 4, 1, 16, 0],  # CO2 altitudes with HCL for HCL / EUVM campaign
 
     # MTP079 SPICAM joint obs - all already in dict
     # "6SUBD CO2 H2O #12":[[121, 132, 148, 156, 165, 189], 4, 1, 16, 0], #CO2 and aerosols
@@ -281,6 +288,10 @@ occultationObservationDict = {
 
 # name:[[orders], int time, rhythm, lines, channel (not used)]
 nadirObservationDict = {
+
+    # new MTP093+
+    "H2O 3SUBD #1": [[167, 168, 169], 205, 15, 144, 1],  # François all water orders
+    "CO 2SUBD #1": [[189, 190], 200, 15, 144, 1],  # François both CO orders
 
     # MTP079 SPICAM joint obs - all already in dict
     # "H2O CO 3SUBD #2":[[168,189,190], 205, 15, 144, 1], #H2O and CO
