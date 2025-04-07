@@ -1,7 +1,7 @@
 # NOMAD Observation Planning Instructions
 ## Introduction
 ### Output
-Summary pages for all MTPs can be found here: https://rawcdn.githack.com/irthomas/nomad_obs/c2a186da949cd61e046d875df0e216391d72c0a9/observations/index.html
+Summary pages for all MTPs can be found here: https://rawcdn.githack.com/irthomas/nomad_obs/master/observations/index.html
 
 ### Requirements to run the code
 * SpiceyPy
