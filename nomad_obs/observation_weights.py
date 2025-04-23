@@ -14,14 +14,14 @@ ALLOCATE WEIGHTS TO EACH OBSERVATION NAME FOR EACH OBSERVATION TYPE
 OCCULTATION_WEIGHTS = [
 
     # new MTP093+
-    ["6SUBD DetLim #1"] * 8,  # orders 116, 129, 132, 170, 185, 196 for LT, priority high
+    ["6SUBD DetLim #1"] * 16,  # orders 116, 129, 132, 170, 185, 196 for LT, priority high
 
     # only for southern summer
-    ["179 only #2"] * 1,  # order 179 only, priority v high only during southern summer MTPs 80-82 (HF search)
+    # ["179 only #2"] * 1,  # order 179 only, priority v high only during southern summer MTPs 80-82 (HF search)
 
     # new MTP073+
-    ["Fullscan fast step4 all #1"] * 16,  # 124(128)-168, priority v high
-    ["Fullscan fast step5 all #1"] * 16,  # 114(119)-189, priority v high
+    ["Fullscan fast step4 all #1"] * 8,  # 124(128)-168, priority v high
+    ["Fullscan fast step5 all #1"] * 8,  # 114(119)-189, priority v high
 
     # new MTP073+
     ["6SUBD Nominal #54"] * 8,  # Nominal with 148, priority high
@@ -180,7 +180,7 @@ NADIR_WEIGHTS = [
     ["H2O 3SUBD #1"] * 16,  # HIGH #167, 168, 169 FOR FH
     ["CO 2SUBD #1"] * 16,  # HIGH #189, 190 FOR FH
 
-    ["H2O CO 2SUBD #1"] * 32,  # VERY HIGH #168, 189
+    ["H2O CO 2SUBD #1"] * 8,  # VERY HIGH #168, 189
 
     ["H2O CO 3SUBD #2"] * 8,  # H #168, 189, 190
     ["Ice CO 2SUBD #2"] * 8,  # H #193, 189
@@ -192,13 +192,8 @@ NADIR_WEIGHTS = [
 
 
 
-    ["Surface Ice 3SUBD #2"] * 4,  # H #189, 132, 133
-    ["Surface Ice 3SUBD #3"] * 4,  # H #193, 132, 133
     ["Nominal 4SUBD #2"] * 4,  # M #168, 134, 121, 189
     ["Nominal 4SUBD 01"] * 4,  # M #168, 134, 121, 190
-    ["CH4 H2O 2SUBD 02"] * 4,  # M #168, 136
-    ["CH4 3SUBD 01"] * 4,  # M #168, 134, 136
-    ["Ice CH4 2SUBD #1"] * 4,  # M #193, 136
     ["Surface Ice 4SUBD 01"] * 4,  # M #199, 194, 193, 187
     ["Surface Ice 6SUBD 01"] * 4,  # M #199, 198, 194, 193, 187, 186
 
@@ -206,9 +201,15 @@ NADIR_WEIGHTS = [
 
 
     ["H2O 2SUBD 01"] * 2,  # L #167, 169
-    ["CH4 CO 2SUBD #3"] * 2,  # L #189, 136
-    ["CH4 H2O 2SUBD 01"] * 2,  # L #168, 134
+    # ["CH4 CO 2SUBD #3"] * 2,  # L #189, 136
+    # ["CH4 H2O 2SUBD 01"] * 2,  # L #168, 134
     ["Surface 3SUBD #3"] * 2,  # L #189, 194, 196
+
+    # ["Surface Ice 3SUBD #2"] * 4,  # H #189, 132, 133
+    # ["Surface Ice 3SUBD #3"] * 4,  # H #193, 132, 133
+    # ["CH4 H2O 2SUBD 02"] * 4,  # M #168, 136
+    # ["CH4 3SUBD 01"] * 4,  # M #168, 134, 136
+    # ["Ice CH4 2SUBD #1"] * 4,  # M #193, 136
 
 ]
 
@@ -230,33 +231,34 @@ NADIR_NIGHTSIDE_WEIGHTS = [
 
 NADIR_CH4_REGION_WEIGHTS = [
     # new MTP093+
-    ["H2O 3SUBD #1"] * 16,  # HIGH #167, 168, 169 FOR FH
-    ["CO 2SUBD #1"] * 16,  # HIGH #189, 190 FOR FH
+    ["H2O 3SUBD #1"] * 8,  # HIGH #167, 168, 169 FOR FH
+    ["CO 2SUBD #1"] * 8,  # HIGH #189, 190 FOR FH
 
-    ["H2O CO 2SUBD #1"] * 32,  # VERY HIGH #168, 189
-    ["H2O CO 3SUBD #2"] * 8,
-    ["CH4 CO 2SUBD #3"] * 1,  # L #189, 136
-    ["CH4 H2O 2SUBD 01"] * 1,  # L #168, 134
+    # ["H2O CO 2SUBD #1"] * 32,  # VERY HIGH #168, 189
+    # ["H2O CO 3SUBD #2"] * 8,
+    # ["CH4 CO 2SUBD #3"] * 1,  # L #189, 136
+    # ["CH4 H2O 2SUBD 01"] * 1,  # L #168, 134
 ]
 
 NADIR_H2O_REGION_WEIGHTS = [
-    ["H2O CO 2SUBD #1"] * 8,  # H #168, 189
+    ["H2O 3SUBD #1"] * 8,  # HIGH #167, 168, 169 FOR FH
+    # ["H2O CO 2SUBD #1"] * 8,  # H #168, 189
 ]
 
 NADIR_SURFACE_REGION_WEIGHTS = [
     # new MTP093+
-    ["H2O 3SUBD #1"] * 2,  # HIGH #167, 168, 169 FOR FH
-    ["CO 2SUBD #1"] * 2,  # HIGH #189, 190 FOR FH
+    ["H2O 3SUBD #1"] * 8,  # HIGH #167, 168, 169 FOR FH
+    ["CO 2SUBD #1"] * 8,  # HIGH #189, 190 FOR FH
 
-    ["H2O CO 2SUBD #1"] * 2,  # VERY HIGH #168, 189
+    # ["H2O CO 2SUBD #1"] * 2,  # VERY HIGH #168, 189
     # ["Surface 3SUBD #3"] * 1,  # L #189, 194, 196
-    ["Ice CO 2SUBD #2"] * 1,  # H #193, 189
-    ["Ice H2O 2SUBD #1"] * 1,  # H #193, 168
+    # ["Ice CO 2SUBD #2"] * 1,  # H #193, 189
+    # ["Ice H2O 2SUBD #1"] * 1,  # H #193, 168
 ]
 
 NADIR_ICE_REGION_WEIGHTS = [
     # ["H2O CO 3SUBD #2"] * 1, #168,189,190
-    ["Surface Ice 2SUBD #1"] * 1,  # 132, 133
+    # ["Surface Ice 2SUBD #1"] * 1,  # 132, 133
     ["Ice CO 2SUBD #2"] * 1,  # 189, 193
     ["Ice CO 2SUBD #3"] * 1,  # 193, 193
 ]

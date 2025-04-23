@@ -29,9 +29,9 @@ Created on Wed Oct 18 13:56:09 2017
         
     Next patching: 
         Check online spreadsheet
+        
 
 """
-
 
 __project__ = "NOMAD Observation Planning"
 __author__ = "Ian Thomas"
@@ -49,8 +49,11 @@ occultationObservationDict = {
     # new MTP093+
     "6SUBD DetLim #1": [[116, 129, 132, 170, 185, 196], 4, 1, 16, 0],  # Loïc detection limits
     "6SUBD CO2 HCl #1": [[129, 129, 132, 129, 148, 165], 4, 1, 16, 0],  # CO2 altitudes with HCL for HCL / EUVM campaign
-    "6SUBD CO2 HCl #2": [[128, 128, 132, 128, 148, 165], 4, 1, 16, 0],  # CO2 altitudes with HCL for HCL / EUVM campaign
-    "6SUBD CO2 HCl #3": [[128, 129, 129, 132, 148, 165], 4, 1, 16, 0],  # CO2 altitudes with HCL for HCL / EUVM campaign
+    # "6SUBD CO2 HCl #3": [[128, 129, 129, 132, 148, 165], 4, 1, 16, 0],  # CO2 altitudes with HCL for HCL / EUVM campaign
+
+    # IRTF / HCl observations
+    "6SUBD HCL H20 #2": [[121, 134, 129, 129, 129, 129], 4, 1, 16, 0],
+    # "6SUBD HCL H20 #1": [[134, 129, 129, 129, 129, 129], 4, 1, 16, 0],
 
     # MTP079 SPICAM joint obs - all already in dict
     # "6SUBD CO2 H2O #12":[[121, 132, 148, 156, 165, 189], 4, 1, 16, 0], #CO2 and aerosols

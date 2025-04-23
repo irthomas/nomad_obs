@@ -18,8 +18,7 @@ from email.message import EmailMessage
 
 
 if platform.system() == "Windows":
-    sys.path.append(r"X:\projects\NOMAD\Instrument\SOFTWARE-FIRMWARE\nomad_ops")
-    # LOCAL_PATH = r"X:\projects\NOMAD\Science\Planning\operations_ftp"
+    sys.path.append(r"X:\projects\NOMAD\Science\nomad-level1-pipeline")
     LOCAL_PATH = r"C:\Users\iant\Documents\DATA\temp\operations_ftp"
 elif platform.system() == "Linux":
     sys.path.append(r"/bira-iasb/projects/NOMAD/Science/nomad-level1-pipeline/")
@@ -58,7 +57,6 @@ def open_ftp(server_address, username, password):
             # break the while loop
             success = True
 
-            
     return ftp_conn
 
 
