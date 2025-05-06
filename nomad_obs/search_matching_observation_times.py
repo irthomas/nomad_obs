@@ -14,17 +14,57 @@ from datetime import datetime, timedelta
 
 search_for = "occultation"
 
+list_types = ["NOMAD"]
+# list_types = ["NOMAD", "ACS", "N/A"]
+
 search_times = [
-    "2025 JUN 05 14:42:42",
-    "2025 JUN 06 06:26:23",
-    "2025 JUN 06 08:24:17",
-    "2025 JUN 06 12:20:16",
-    "2025 JUN 06 16:16:13",
-    "2025 JUN 06 18:14:08",
-    "2025 JUN 07 00:07:59",
-    "2025 JUN 07 04:03:59",
-    "2025 JUN 07 09:57:44",
+    "2025 JUN 12 00:02:45",
+    "2025 JUN 12 21:40:06",
+    "2025 JUN 12 23:38:00",
+    "2025 JUN 13 23:13:14",
+    "2025 JUN 14 01:11:09",
+    "2025 JUN 14 22:48:25",
+    "2025 JUN 15 00:46:19",
+    "2025 JUN 16 00:21:29",
+    "2025 JUN 16 23:56:35",
+    "2025 JUN 17 01:54:29",
+    "2025 JUN 17 23:31:40",
+    "2025 JUN 18 01:29:33",
+    "2025 JUN 19 01:04:34",
+    "2025 JUN 19 03:02:59",
+    "2025 JUN 20 00:39:33",
+    "2025 JUN 20 02:37:26",
+    "2025 JUN 21 00:14:31",
+    "2025 JUN 21 02:12:23",
+    "2025 JUN 22 01:47:18",
+    "2025 JUN 22 03:45:23",
+    "2025 JUN 23 01:22:12",
+    "2025 JUN 23 03:20:04",
+    "2025 JUN 24 00:57:02",
+    "2025 JUN 24 02:54:54",
+    "2025 JUN 25 02:29:42",
+    "2025 JUN 25 04:27:52",
+    "2025 JUN 26 02:04:25",
+    "2025 JUN 26 04:02:17",
+    "2025 JUN 27 01:39:06",
+    "2025 JUN 27 03:36:57",
+    "2025 JUN 28 03:11:33",
+    "2025 JUN 28 05:09:23",
+    "2025 JUN 29 02:46:04",
+    "2025 JUN 29 04:43:54",
+    "2025 JUN 30 02:20:31",
+    "2025 JUN 30 04:18:21",
+    "2025 JUL 01 03:52:42",
+    "2025 JUL 01 05:50:31",
+    "2025 JUL 02 03:26:57",
+    "2025 JUL 02 05:24:46",
+    "2025 JUL 03 04:58:51",
+    "2025 JUL 03 06:57:23",
+    "2025 JUL 04 04:32:46",
+    "2025 JUL 04 06:30:33",
 ]
+
+
 SEARCH_DT_FORMAT = "%Y %b %d %H:%M:%S"
 
 
@@ -49,7 +89,8 @@ for search_time in search_times:
             if etStart < etTime and etTime < etEnd:
                 orbitNumber = orbit["orbitNumber"]
                 prime = orbit["ingress"]["primeInstrument"]
-                print("Match found: %s ingress orbit %i (%s)" % (prime, orbitNumber, search_time))
+                if prime in list_types:
+                    print("Match found: %s ingress orbit %i (%s)" % (prime, orbitNumber, search_time))
 
         if "egress" in orbit.keys():
             utcStart = orbit["egress"]["utcStart"]
@@ -62,7 +103,8 @@ for search_time in search_times:
             if etStart < etTime and etTime < etEnd:
                 orbitNumber = orbit["orbitNumber"]
                 prime = orbit["egress"]["primeInstrument"]
-                print("Match found: %s egress orbit %i (%s)" % (prime, orbitNumber, search_time))
+                if prime in list_types:
+                    print("Match found: %s egress orbit %i (%s)" % (prime, orbitNumber, search_time))
 
     if not found:
         print("Not found: %s" % search_time)

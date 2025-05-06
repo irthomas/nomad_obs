@@ -14,7 +14,7 @@ ALLOCATE WEIGHTS TO EACH OBSERVATION NAME FOR EACH OBSERVATION TYPE
 OCCULTATION_WEIGHTS = [
 
     # new MTP093+
-    ["6SUBD DetLim #1"] * 16,  # orders 116, 129, 132, 170, 185, 196 for LT, priority high
+    ["6SUBD DetLim #1"] * 16,  # orders 116, 129, 132, 170, 185, 196 for LT, priority high for MTPs 93-96
 
     # only for southern summer
     # ["179 only #2"] * 1,  # order 179 only, priority v high only during southern summer MTPs 80-82 (HF search)
