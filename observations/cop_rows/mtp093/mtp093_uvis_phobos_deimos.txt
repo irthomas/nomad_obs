@@ -1,0 +1,2 @@
+COP row,Obsevation Number,Pointing Type,Comments,
+72,1,Phobos (UVIS: Phase angle < 15°),# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms,

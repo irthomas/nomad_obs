@@ -1,0 +1,120 @@
+TC20 UVIS_COP_ROW,Ingress solar occultation observation number,Orbit type,Observation Mode,Comments
+-1,1,1,Ingress Occultation,UVIS Switch OFF
+-1,2,1,Ingress Occultation,UVIS Switch OFF
+391,3,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,4,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,5,1,Ingress Occultation,UVIS Switch OFF
+-1,6,1,Ingress Occultation,UVIS Switch OFF
+391,7,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,8,1,Ingress Occultation,UVIS Switch OFF
+391,9,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,10,1,Ingress Occultation,UVIS Switch OFF
+364,11,1,Ingress Occultation,# SO: Full Frame (135:205;0:1047) - Tint = 75 ms -16 bit - Rhythm = 3574 ms
+-1,12,1,Ingress Occultation,UVIS Switch OFF
+-1,13,1,Ingress Occultation,UVIS Switch OFF
+391,14,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,15,1,Ingress Occultation,UVIS Switch OFF
+391,16,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,17,1,Ingress Occultation,UVIS Switch OFF
+-1,18,1,Ingress Occultation,UVIS Switch OFF
+391,19,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,20,1,Ingress Occultation,UVIS Switch OFF
+-1,21,1,Ingress Occultation,UVIS Switch OFF
+364,22,1,Ingress Occultation,# SO: Full Frame (135:205;0:1047) - Tint = 75 ms -16 bit - Rhythm = 3574 ms
+-1,23,1,Ingress Occultation,UVIS Switch OFF
+-1,24,1,Ingress Occultation,UVIS Switch OFF
+391,25,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,26,1,Ingress Occultation,UVIS Switch OFF
+-1,27,1,Ingress Occultation,UVIS Switch OFF
+391,28,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,29,1,Ingress Occultation,UVIS Switch OFF
+-1,30,1,Ingress Occultation,UVIS Switch OFF
+391,31,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,32,1,Ingress Occultation,UVIS Switch OFF
+-1,33,1,Ingress Occultation,UVIS Switch OFF
+391,34,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,35,1,Ingress Occultation,UVIS Switch OFF
+-1,36,1,Ingress Occultation,UVIS Switch OFF
+391,37,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,38,1,Ingress Occultation,UVIS Switch OFF
+-1,39,1,Ingress Occultation,UVIS Switch OFF
+391,40,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,41,1,Ingress Occultation,UVIS Switch OFF
+-1,42,1,Ingress Occultation,UVIS Switch OFF
+391,43,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,44,1,Ingress Occultation,UVIS Switch OFF
+-1,45,28,Ingress Occultation,UVIS Switch OFF
+391,46,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,47,1,Ingress Occultation,UVIS Switch OFF
+-1,48,1,Ingress Occultation,UVIS Switch OFF
+391,49,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,50,1,Ingress Occultation,UVIS Switch OFF
+-1,51,1,Ingress Occultation,UVIS Switch OFF
+391,52,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,53,1,Ingress Occultation,UVIS Switch OFF
+391,54,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,55,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,56,1,Ingress Occultation,UVIS Switch OFF
+-1,57,1,Ingress Occultation,UVIS Switch OFF
+-1,58,1,Ingress Occultation,UVIS Switch OFF
+-1,59,1,Ingress Occultation,UVIS Switch OFF
+-1,60,1,Ingress Occultation,UVIS Switch OFF
+391,61,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,62,1,Ingress Occultation,UVIS Switch OFF
+-1,63,1,Ingress Occultation,UVIS Switch OFF
+-1,64,1,Ingress Occultation,UVIS Switch OFF
+391,65,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,66,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,67,1,Ingress Occultation,UVIS Switch OFF
+391,68,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,69,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,70,1,Ingress Occultation,UVIS Switch OFF
+391,71,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,72,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,73,1,Ingress Occultation,UVIS Switch OFF
+-1,74,1,Ingress Occultation,UVIS Switch OFF
+-1,75,1,Ingress Occultation,UVIS Switch OFF
+-1,76,1,Ingress Occultation,UVIS Switch OFF
+391,77,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,78,1,Ingress Occultation,UVIS Switch OFF
+-1,79,1,Ingress Occultation,UVIS Switch OFF
+391,80,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,81,1,Ingress Occultation,UVIS Switch OFF
+-1,82,1,Ingress Occultation,UVIS Switch OFF
+391,83,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,84,1,Ingress Occultation,UVIS Switch OFF
+364,85,1,Ingress Occultation,# SO: Full Frame (135:205;0:1047) - Tint = 75 ms -16 bit - Rhythm = 3574 ms
+391,86,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,87,1,Ingress Occultation,UVIS Switch OFF
+391,88,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,89,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,90,1,Ingress Occultation,UVIS Switch OFF
+-1,91,1,Ingress Occultation,UVIS Switch OFF
+-1,92,1,Ingress Occultation,UVIS Switch OFF
+391,93,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,94,1,Ingress Occultation,UVIS Switch OFF
+-1,95,1,Ingress Occultation,UVIS Switch OFF
+364,96,1,Ingress Occultation,# SO: Full Frame (135:205;0:1047) - Tint = 75 ms -16 bit - Rhythm = 3574 ms
+-1,97,1,Ingress Occultation,UVIS Switch OFF
+-1,98,1,Ingress Occultation,UVIS Switch OFF
+391,99,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,100,1,Ingress Occultation,UVIS Switch OFF
+-1,101,1,Ingress Occultation,UVIS Switch OFF
+391,102,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,103,1,Ingress Occultation,UVIS Switch OFF
+391,104,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,105,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,106,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+-1,107,1,Ingress Occultation,UVIS Switch OFF
+391,108,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,109,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,110,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,111,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,112,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,113,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,114,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,115,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,116,1,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,117,5,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,118,5,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms
+391,119,5,Ingress Occultation,# SO: Horizontal Bin (135:205;0:1047)-Tint = 75 ms -20 bit - Rhythm = 1134 ms

@@ -1,0 +1,5 @@
+COP row,Obsevation Number,Pointing Type,Comments,
+79,1,Deimos (UVIS),# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms,
+72,2,Phobos (UVIS: Phase angle < 15°),# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms,
+72,3,Phobos (UVIS: Phase angle < 15°),# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms,
+72,4,Phobos (UVIS: Phase angle < 15°),# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms,

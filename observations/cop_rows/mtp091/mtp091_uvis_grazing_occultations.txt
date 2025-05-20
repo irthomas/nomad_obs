@@ -1,0 +1,11 @@
+TC20 UVIS_COP_ROW,Grazing solar occultation observation number,Orbit type,Observation Mode,Comments
+364,1,5,Grazing Occultation,# SO: Full Frame (135:205;0:1047) - Tint = 75 ms -16 bit - Rhythm = 3574 ms
+364,2,5,Grazing Occultation,# SO: Full Frame (135:205;0:1047) - Tint = 75 ms -16 bit - Rhythm = 3574 ms
+364,3,5,Grazing Occultation,# SO: Full Frame (135:205;0:1047) - Tint = 75 ms -16 bit - Rhythm = 3574 ms
+364,4,5,Grazing Occultation,# SO: Full Frame (135:205;0:1047) - Tint = 75 ms -16 bit - Rhythm = 3574 ms
+364,5,5,Grazing Occultation,# SO: Full Frame (135:205;0:1047) - Tint = 75 ms -16 bit - Rhythm = 3574 ms
+364,6,5,Grazing Occultation,# SO: Full Frame (135:205;0:1047) - Tint = 75 ms -16 bit - Rhythm = 3574 ms
+364,7,5,Grazing Occultation,# SO: Full Frame (135:205;0:1047) - Tint = 75 ms -16 bit - Rhythm = 3574 ms
+364,8,5,Grazing Occultation,# SO: Full Frame (135:205;0:1047) - Tint = 75 ms -16 bit - Rhythm = 3574 ms
+364,9,5,Grazing Occultation,# SO: Full Frame (135:205;0:1047) - Tint = 75 ms -16 bit - Rhythm = 3574 ms
+364,10,5,Grazing Occultation,# SO: Full Frame (135:205;0:1047) - Tint = 75 ms -16 bit - Rhythm = 3574 ms
