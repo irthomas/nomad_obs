@@ -1,0 +1,7 @@
+Target Name,Flyover #,Orbit type,Thermal orbit number,Start crossing time (UTC),End crossing time (UTC),Start crossing latitude (deg),Start crossing longitude (deg),End crossing latitude (deg),End crossing longitude (deg),Start crossing phase angle (deg),End crossing phase angle (deg),Start crossing solar incidence angle (deg),End crossing solar incidence angle (deg),Start crossing emission angle (deg),End crossing emission angle (deg),Start crossing LST (h),End crossing LST (h)
+Region of residual magnetic field,1,1,12,2025 JUL 06 13:04:35,2025 JUL 06 13:20:32,-56.633,150.0407,-10.098,165.3613,112.944,122.9254,116.716,123.0086,3.7926,0.34965,18.8347,20.1147
+Region of residual magnetic field,2,1,266,2025 JUL 27 07:37:13,2025 JUL 27 07:47:11,-10.0989,-146.9579,-39.414,-140,112.944,112.944,117.5548,116.3619,4.6109,3.4271,4.285,4.9103
+Region of residual magnetic field,3,1,291,2025 JUL 29 08:44:59,2025 JUL 29 08:58:01,-10.0989,-149.8719,-48.4375,-140,122.8641,112.944,122.7569,118.4422,0.16497,5.5045,3.91,4.7794
+Region of residual magnetic field,4,3,316,2025 JUL 31 09:52:40,2025 JUL 31 10:07:15,-10.0989,-153.268,-52.8135,-140,128.5381,119.9189,128.4313,119.7585,0.16486,0.18354,3.5019,4.6228
+Region of residual magnetic field,5,1,328,2025 AUG 01 09:27:32,2025 AUG 01 09:28:27,-10.0989,-140.4896,-12.8216,-140,131.2601,131.4964,131.1537,131.3947,0.16471,0.13975,3.3061,3.3536
+Region of residual magnetic field,6,1,341,2025 AUG 02 11:00:19,2025 AUG 02 11:17:07,-10.0989,-156.6556,-58.9133,-140,134.2083,112.944,134.1024,120.2579,0.16452,7.3173,3.0939,4.4767
