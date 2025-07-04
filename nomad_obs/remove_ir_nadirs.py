@@ -20,7 +20,7 @@ from nomad_obs.regions_of_interest import nadirRegionsOfInterest
 from nomad_obs.io.orbit_plan_xlsx import getMtpPlanXlsx
 
 
-mtpNumber = 96
+mtpNumber = 97
 mtpConstants = getMtpConstants(mtpNumber)
 paths = setupPaths(mtpConstants)
 
@@ -78,7 +78,9 @@ n_orbits = len(comments)
 orbit_mask = np.zeros((n_orbits, 2))
 
 # add MRO overlaps
-indices_mro = [i for i, s in enumerate(comments) if "&mroOverlap" in s]
+occ_indices = [i for i, orbit in enumerate(mtpPlan) if orbit["orbitType"] in [1, 5]]
+
+indices_mro = [i for i, s in enumerate(comments) if "&mroOverlap" in s and i not in occ_indices]
 orbit_mask[indices_mro, 0] = 2
 
 
