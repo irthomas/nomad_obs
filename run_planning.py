@@ -51,7 +51,7 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 95
+mtpNumber = 96
 
 
 r"""
@@ -105,11 +105,12 @@ Meridiani Sulfates	      Normal priority
 Mawrth Vallis	          Normal priority
 Other targets	          Normal priority
 
+* The new generic orbit plan nomad_mtp0xx_plan_generic.xlsx will be automatically copied to orbit_plans\mtp0xx\
+* The generic orbit plan in the root directory can be deleted
+
 * Check that all CaSSIS nadirs have been kept and orbit type accepts a dayside nadir i.e. 1, 3, 5 etc.
 * Forbidden daysides will be removed, but this should also be checked
 
-*The new generic orbit plan nomad_mtp0xx_plan_generic.xlsx will be automatically copied to orbit_plans\mtp0xx\
-*The generic orbit plan in the root directory can be deleted
 
 *if an OCM covers two daysides, check for ingress occultations on the nightside of the first OCM orbit
 *compare timings with nomad_ingress_events.txt
@@ -125,7 +126,7 @@ Other targets	          Normal priority
     (UVIS can run night and day on same orbit).
 
 
-*highlight rows in xlsx based on type: yellow = CaSSIS surface ice; blue = CaSSIS limbs; green = UVIS nightside nadir; 
+*highlight rows in xlsx based on type: yellow = CaSSIS surface ice; blue = CaSSIS limbs; green = UVIS nightside nadir;
 
 *NEW: if grazing occultations, check latitude/min tangent altitude SO constraints are correct
 
@@ -250,6 +251,7 @@ if True:
     printStatement("Checking that all observation keys are in the dictionary")
     checkKeys(occultationObservationDict, nadirObservationDict, observationCycles)
     printStatement("Generating complete orbit plan (with real observation names) and adding to orbit list")
+    orbitList2 = orbitList.copy()
     orbitList = makeCompleteOrbitPlan(orbitList, observationCycles)
     printStatement("Writing complete observation plan to file")
     writeOrbitPlanXlsx(orbitList, mtpConstants, paths, "plan", place_in_base_dir=False)

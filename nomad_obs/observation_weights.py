@@ -11,6 +11,7 @@ ALLOCATE WEIGHTS TO EACH OBSERVATION NAME FOR EACH OBSERVATION TYPE
 # observation name and weighting
 
 
+import numpy as np
 OCCULTATION_WEIGHTS = [
 
     # new MTP093+
@@ -281,6 +282,27 @@ observationCycles = {
     "NadirCycleSurface": ["Nadir", [item for sublist in NADIR_SURFACE_REGION_WEIGHTS for item in sublist]],
     "NadirCycleIce": ["Nadir", [item for sublist in NADIR_ICE_REGION_WEIGHTS for item in sublist]],
 }
+
+
+def make_shuffled_obs_list(cycle, n_obs):
+    """input a cycle from above and interpolate onto the number of observations available in the MTP, then shuffle the result"""
+
+    # obs_list_full = [item for sublist in cycle for item in sublist]
+    obs_list_full = cycle
+
+    # interpolate full obs list onto n_obs
+    ixs = np.floor(np.arange(n_obs) * (len(obs_list_full)/n_obs))
+    # shuffle
+    np.random.shuffle(ixs)
+    # convert indices to integers
+    ixs = np.array(ixs, dtype=int)
+
+    # make obs_list of length n_obs
+    # print(ixs)
+    # print(obs_list_full)
+    obs_list = [obs_list_full[i] for i in ixs]
+
+    return obs_list
 
 
 """list NOMAD ACS joint occultations"""

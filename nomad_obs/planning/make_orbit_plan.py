@@ -16,6 +16,7 @@ from nomad_obs.options import USE_TWO_SCIENCES
 from nomad_obs.config.constants import UVIS_MULTIPLE_TC_NADIR_ORBIT_TYPES, UVIS_DEFAULT_ORBIT_TYPE, IR_OFF_CODE, UVIS_OFF_CODE
 from nomad_obs.other.generic_functions import stop
 from nomad_obs.planning.grazing_requirements import check_grazing_geometry
+from nomad_obs.observation_weights import make_shuffled_obs_list
 
 
 def makeGenericOrbitPlan(orbit_list, mtp_constants, paths, silent=True):
@@ -328,6 +329,11 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
 #    nadirLimbCounter = -1
 #    nadirNightsideCounter = -1
 
+    # preload the shuffled observation cycles
+    # count number of observations
+    global cycle_indices
+    cycle_indices = {k: 0 for k in observationCycles}
+
     for orbit in orbit_list:
 
         genericObsTypes = orbit["genericOrbitPlanIn"]
@@ -354,7 +360,10 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
                 irIngressLow = IR_OFF_CODE
             elif genericObsTypes["irIngressHigh"] == "irIngress":  # generic observation
 
-                irIngressHigh = random.choice(observationCycles["OccultationCycleNominal"][1])
+                # irIngressHigh = random.choice(observationCycles["OccultationCycleNominal"][1])
+                irIngressHigh = ["OccultationCycleNominal", cycle_indices["OccultationCycleNominal"]]
+                cycle_indices["OccultationCycleNominal"] += 1
+
                 # special obs where high and low altitude obs are different
                 if USE_TWO_SCIENCES:
                     if irIngressHigh == "Nominal Science 1xCO2 LA01" or irIngressHigh == "Nominal Science 1xCO2 HA01":
@@ -393,7 +402,10 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
                 irEgressLow = ""
             elif genericObsTypes["irEgressHigh"] == "irEgress":  # generic observation
 
-                irEgressHigh = random.choice(observationCycles["OccultationCycleNominal"][1])
+                # irEgressHigh = random.choice(observationCycles["OccultationCycleNominal"][1])
+                irEgressHigh = ["OccultationCycleNominal", cycle_indices["OccultationCycleNominal"]]
+                cycle_indices["OccultationCycleNominal"] += 1
+
                 # special obs where high and low altitude obs are different
                 if USE_TWO_SCIENCES:
                     if irEgressHigh == "Nominal Science 1xCO2 LA01" or irEgressHigh == "Nominal Science 1xCO2 HA01":
@@ -429,7 +441,11 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
             if genericObsTypes["irDayside"] == "":  # if LNO off
                 irDayside = ""
             elif genericObsTypes["irDayside"] in ["irDayside", "irShortDayside", "irLongDayside"]:  # generic observation
-                irDayside = random.choice(observationCycles["NadirCycleNominal"][1])
+
+                # irDayside = random.choice(observationCycles["NadirCycleNominal"][1])
+                irDayside = ["NadirCycleNominal", cycle_indices["NadirCycleNominal"]]
+                cycle_indices["NadirCycleNominal"] += 1
+
             else:  # use preselected targeted obs
                 irDayside = genericObsTypes["irDayside"]
 
@@ -452,11 +468,17 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
 
             # SO/LNO
             if genericObsTypes["irIngressHigh"] == "irMerged":  # generic observation
-                irIngressHigh = random.choice(observationCycles["OccultationCycleMerged"][1])
+                # irIngressHigh = random.choice(observationCycles["OccultationCycleMerged"][1])
+                irIngressHigh = ["OccultationCycleMerged", cycle_indices["OccultationCycleMerged"]]
+                cycle_indices["OccultationCycleMerged"] += 1
                 irIngressLow = irIngressHigh
+
             elif genericObsTypes["irIngressHigh"] == "irGrazing":  # generic observation
-                irIngressHigh = random.choice(observationCycles["OccultationCycleGrazing"][1])
+                # irIngressHigh = random.choice(observationCycles["OccultationCycleGrazing"][1])
+                irIngressHigh = ["OccultationCycleGrazing", cycle_indices["OccultationCycleGrazing"]]
+                cycle_indices["OccultationCycleGrazing"] += 1
                 irIngressLow = irIngressHigh
+
             elif genericObsTypes["irIngressHigh"] == IR_OFF_CODE:  # geometry requirements not met e.g. for grazing occultation
                 irIngressHigh = IR_OFF_CODE
                 irIngressLow = IR_OFF_CODE
@@ -483,7 +505,10 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
             if genericObsTypes["irDayside"] == "":  # if LNO off
                 irDayside = ""
             elif genericObsTypes["irDayside"] in ["irDayside", "irShortDayside", "irLongDayside"]:  # generic observation
-                irDayside = random.choice(observationCycles["NadirCycleNominal"][1])
+                # irDayside = random.choice(observationCycles["NadirCycleNominal"][1])
+                irDayside = ["NadirCycleNominal", cycle_indices["NadirCycleNominal"]]
+                cycle_indices["NadirCycleNominal"] += 1
+
             else:  # use preselected targeted obs
                 irDayside = genericObsTypes["irDayside"]
 
@@ -528,7 +553,10 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
 
             if genericObsTypes["irDayside"] in ["irDayside", "irShortDayside", "irLongDayside"]:  # LNO generic dayside nadir
                 if orbitType == 3:
-                    irDayside = random.choice(observationCycles["NadirCycleNominal"][1])
+                    # irDayside = random.choice(observationCycles["NadirCycleNominal"][1])
+                    irDayside = ["NadirCycleNominal", cycle_indices["NadirCycleNominal"]]
+                    cycle_indices["NadirCycleNominal"] += 1
+
                 elif orbitType == 4:
                     print("Error: orbit type 4 cannot have LNO dayside")
                     irDayside = ""
@@ -567,7 +595,10 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
             orbit["allowedObservationTypes"].append("nightside")
 
             if genericObsTypes["irDayside"] in ["irDayside", "irShortDayside", "irLongDayside"]:  # dayside nadir
-                irDayside = random.choice(observationCycles["NadirCycleNominal"][1])
+                # irDayside = random.choice(observationCycles["NadirCycleNominal"][1])
+                irDayside = ["NadirCycleNominal", cycle_indices["NadirCycleNominal"]]
+                cycle_indices["NadirCycleNominal"] += 1
+
             elif genericObsTypes["irDayside"] == "":  # LNO off
                 irDayside = ""
             else:
@@ -585,13 +616,16 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
                 irNightside = ""
                 uvisNightside = "uvisOnlyNightside"
                 if orbitType == 7:
-                    print("Warning: orbit type 7 found with blank nightside nadir")
+                    print(f"Warning orbit {orbit['orbitNumber']}: orbit type 7 found with blank nightside nadir")
 
             else:  # if LNO nightside or preselected targeted obs
                 # UVIS always on for nightsides/nightlimbs
                 if orbitType == 7:
                     if genericObsTypes["irNightside"] == "irNightside":  # if generic obs
-                        irNightside = random.choice(observationCycles["NadirCycleNightside"][1])
+                        # irNightside = random.choice(observationCycles["NadirCycleNightside"][1])
+                        irNightside = ["NadirCycleNightside", cycle_indices["NadirCycleNightside"]]
+                        cycle_indices["NadirCycleNightside"] += 1
+
                         uvisNightside = "uvisNightside"
                     else:
                         irNightside = genericObsTypes["irNightside"]  # use preselected targeted obs
@@ -617,7 +651,7 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
 
             if genericObsTypes["irDayside"] == "":  # LNO off
                 irDayside = ""
-                print("Warning: orbit type 8 found with blank limb observation")
+                print(f"Warning orbit {orbit['orbitNumber']}: orbit type 8 found with blank limb observation")
 
                 if orbitType == 8:
                     uvisDayside = "uvisDayside"
@@ -626,7 +660,9 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
 
             elif genericObsTypes["irDayside"] == "irLimb":  # LNO on
                 #                nadirLimbCounter += 1
-                irDayside = random.choice(observationCycles["NadirCycleLimb"][1])
+                # irDayside = random.choice(observationCycles["NadirCycleLimb"][1])
+                irDayside = ["NadirCycleLimb", cycle_indices["NadirCycleLimb"]]
+                cycle_indices["NadirCycleLimb"] += 1
 
                 if orbitType == 8:
                     uvisDayside = "uvisDayside"
@@ -635,7 +671,7 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
 
             else:  # use LNO limb preselected targeted obs
                 irDayside = genericObsTypes["irDayside"]
-                print("Warning: check that observation %s is suitable for an LNO limb measurement" % irDayside)
+                print(f"Warning orbit {orbit['orbitNumber']}: check that observation %s is suitable for an LNO limb measurement" % irDayside)
 
                 if orbitType == 8:
                     uvisDayside = "uvisDayside"
@@ -660,21 +696,23 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
 
             if genericObsTypes["irNightside"] == "":  # LNO off
                 irNightside = ""
-                print("Warning: orbit type 47 found with blank night limb observation")
+                print(f"Warning orbit {orbit['orbitNumber']}: orbit type 47 found with blank night limb observation")
 
             elif genericObsTypes["irNightside"] == "irNightLimb":  # LNO on
-                irNightside = random.choice(observationCycles["NadirCycleNightLimb"][1])
+                # irNightside = random.choice(observationCycles["NadirCycleNightLimb"][1])
+                irNightside = ["NadirCycleNightLimb", cycle_indices["NadirCycleNightLimb"]]
+                cycle_indices["NadirCycleNightLimb"] += 1
 
             else:  # use LNO night limb preselected targeted obs
                 irNightside = genericObsTypes["irNightside"]
-                print("Warning: check that observation %s is suitable for an LNO night limb measurement" % irNightside)
+                print(f"Warning orbit {orbit['orbitNumber']}: check that observation %s is suitable for an LNO night limb measurement" % irNightside)
 
             # set LNO dayside to ON only for targeted observations
             if genericObsTypes["irDayside"] == "":  # LNO off
                 irDayside = ""
 
             elif irDayside in ["irDayside", "irShortDayside", "irLongDayside"]:  # this should not happen - no generic daysides on night limbs
-                print("Error: LNO generic dayside observation %s on same orbit at nightside limb" % irDayside)
+                print(f"Error orbit {orbit['orbitNumber']}: LNO generic dayside observation %s on same orbit at nightside limb" % irDayside)
                 stop()
 
             else:  # use LNO dayside preselected targeted obs
@@ -706,6 +744,22 @@ def makeCompleteOrbitPlan(orbit_list, observationCycles):
 
             "comment": genericObsTypes["comment"],
         }
+
+    # make make_shuffled_obs_list corresponding to the number of observations in each cycle
+    obs_cycles = {}
+    for key, value in cycle_indices.items():
+        if value > 0:  # if there are observations in this MTP using this cycle
+            shuffled_obs = make_shuffled_obs_list(observationCycles[key][1], value)
+            obs_cycles[key] = shuffled_obs
+
+    # loop through all orbits and add the observation names in place of the integer indices
+    for orbit in orbit_list:
+        for key, value in orbit["completeOrbitPlan"].items():
+            # if ir observation type has length two (1 = cycle name, 2 = index within that cycle)
+            if key[0:2] == "ir" and len(value) == 2:
+                obs_name = obs_cycles[value[0]][value[1]]
+                orbit["completeOrbitPlan"][key] = obs_name  # can't change value, instead just assign back to the dict item
+
     return orbit_list
 
 
