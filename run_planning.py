@@ -52,7 +52,7 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 97
+mtpNumber = 98
 
 
 r"""
@@ -109,7 +109,7 @@ Other targets	          Normal priority
 * The new generic orbit plan nomad_mtp0xx_plan_generic.xlsx will be automatically copied to orbit_plans\mtp0xx\
 * The generic orbit plan in the root directory can be deleted
 
-* Check that all CaSSIS nadirs have been kept and orbit type accepts a dayside nadir i.e. 1, 3, 5 etc.
+* Check that any joint CaSSIS nadirs have been kept and orbit type accepts a dayside nadir i.e. 1, 3, 5 etc.
 * Forbidden daysides will be removed, but this should also be checked
 
 

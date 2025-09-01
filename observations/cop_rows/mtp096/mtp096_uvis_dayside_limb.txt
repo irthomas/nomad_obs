@@ -1,0 +1,3 @@
+TC20 UVIS_COP_ROW,Dayside nadir observation number,Orbit type,Observation Mode,Comments
+79,268,28,Dayside LIMB,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+79,334,28,Dayside LIMB,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
