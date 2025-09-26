@@ -19,7 +19,7 @@ import os
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 
-mtpNumber = 97
+mtpNumber = 98
 
 # add the correct MTP info in obs_inputs
 
