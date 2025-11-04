@@ -14,15 +14,13 @@ ALLOCATE WEIGHTS TO EACH OBSERVATION NAME FOR EACH OBSERVATION TYPE
 import numpy as np
 OCCULTATION_WEIGHTS = [
 
-    # new MTP093+
-    ["6SUBD DetLim #1"] * 16,  # orders 116, 129, 132, 170, 185, 196 for LT, priority high for MTPs 93-96
 
     # only for southern summer
     # ["179 only #2"] * 1,  # order 179 only, priority v high only during southern summer MTPs 80-82 (HF search)
 
     # new MTP073+
-    ["Fullscan fast step4 all #1"] * 8,  # 124(128)-168, priority v high
-    ["Fullscan fast step5 all #1"] * 8,  # 114(119)-189, priority v high
+    ["Fullscan fast step4 all #1"] * 8,  # 124(128)-168, priority high
+    ["Fullscan fast step5 all #1"] * 8,  # 114(119)-189, priority high
 
     # new MTP073+
     ["6SUBD Nominal #54"] * 8,  # Nominal with 148, priority high
@@ -76,11 +74,8 @@ OCCULTATION_WEIGHTS = [
     ["CO Fullscan Fast #2"] * 4,  # M 185-195
 
 
-
-
-
-
-
+    # new MTP093+
+    ["6SUBD DetLim #1"] * 2,  # orders 116, 129, 132, 170, 185, 196 for LT, priority high for MTPs 93-99, then low
 
 
     # after prioritisation exercise
@@ -121,8 +116,8 @@ OCCULTATION_MERGED_WEIGHTS = [
     ["6SUBD Nominal #1"] * 8,  # H
 
     ["All Fullscan Fast #2"] * 2,  # L all
-    ["Fullscan fast step4 all #1"] * 4,  # 124(128)-168, priority v high
-    ["Fullscan fast step5 all #1"] * 4,  # 114(119)-189, priority v high
+    ["Fullscan fast step4 all #1"] * 4,  # 124(128)-168
+    ["Fullscan fast step5 all #1"] * 4,  # 114(119)-189
 
 ]
 
@@ -142,8 +137,8 @@ OCCULTATION_GRAZING_WEIGHTS = [
     ["6SUBD Nominal #1"] * 8,  # H
 
     # ["All Fullscan Fast #2"] * 2,  # L all
-    ["Fullscan fast step4 all #1"] * 4,  # 124(128)-168, priority v high
-    ["Fullscan fast step5 all #1"] * 4,  # 114(119)-189, priority v high
+    ["Fullscan fast step4 all #1"] * 4,  # 124(128)-168, priority
+    ["Fullscan fast step5 all #1"] * 4,  # 114(119)-189, priority
 
 ]
 

@@ -1,0 +1,341 @@
+TC20 UVIS_COP_ROW,Dayside nadir observation number,Orbit type,Observation Mode,Comments
+-1,1,14,Dayside Nadir,UVIS Switch OFF
+-1,2,1,Dayside Nadir,UVIS Switch OFF
+64,3,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 5000 ms -16 bit - Rhythm = 8642 ms
+68,4,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,5,14,Dayside Nadir,UVIS Switch OFF
+79,6,28,Dayside LIMB,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+-1,7,14,Dayside Nadir,UVIS Switch OFF
+145,8,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 15000 ms -16 bit - Rhythm = 31041 ms
+-1,9,1,Dayside Nadir,UVIS Switch OFF
+64,10,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 5000 ms -16 bit - Rhythm = 8642 ms
+72,11,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+79,12,28,Dayside LIMB,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+-1,13,14,Dayside Nadir,UVIS Switch OFF
+-1,14,1,Dayside Nadir,UVIS Switch OFF
+64,15,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 5000 ms -16 bit - Rhythm = 8642 ms
+79,16,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+-1,17,1,Dayside Nadir,UVIS Switch OFF
+-1,18,14,Dayside Nadir,UVIS Switch OFF
+-1,19,47,Dayside Nadir,UVIS Switch OFF
+-1,20,1,Dayside Nadir,UVIS Switch OFF
+-1,21,14,Dayside Nadir,UVIS Switch OFF
+-1,22,1,Dayside Nadir,UVIS Switch OFF
+-1,23,7,Dayside Nadir,UVIS Switch OFF
+-1,24,1,Dayside Nadir,UVIS Switch OFF
+-1,25,1,Dayside Nadir,UVIS Switch OFF
+64,26,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 5000 ms -16 bit - Rhythm = 8642 ms
+72,27,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,28,14,Dayside Nadir,UVIS Switch OFF
+-1,29,14,Dayside Nadir,UVIS Switch OFF
+72,30,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,31,1,Dayside Nadir,UVIS Switch OFF
+64,32,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 5000 ms -16 bit - Rhythm = 8642 ms
+72,33,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+79,34,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+72,35,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,36,1,Dayside Nadir,UVIS Switch OFF
+-1,37,1,Dayside Nadir,UVIS Switch OFF
+-1,38,14,Dayside Nadir,UVIS Switch OFF
+-1,39,1,Dayside Nadir,UVIS Switch OFF
+64,40,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 5000 ms -16 bit - Rhythm = 8642 ms
+72,41,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,42,14,Dayside Nadir,UVIS Switch OFF
+-1,43,14,Dayside Nadir,UVIS Switch OFF
+-1,44,1,Dayside Nadir,UVIS Switch OFF
+72,45,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,46,14,Dayside Nadir,UVIS Switch OFF
+-1,47,1,Dayside Nadir,UVIS Switch OFF
+-1,48,14,Dayside Nadir,UVIS Switch OFF
+-1,49,1,Dayside Nadir,UVIS Switch OFF
+-1,50,7,Dayside Nadir,UVIS Switch OFF
+-1,51,1,Dayside Nadir,UVIS Switch OFF
+-1,52,1,Dayside Nadir,UVIS Switch OFF
+-1,53,14,Dayside Nadir,UVIS Switch OFF
+72,54,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,55,1,Dayside Nadir,UVIS Switch OFF
+-1,56,3,Dayside Nadir,UVIS Switch OFF
+72,57,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,58,1,Dayside Nadir,UVIS Switch OFF
+-1,59,14,Dayside Nadir,UVIS Switch OFF
+-1,60,14,Dayside Nadir,UVIS Switch OFF
+-1,61,1,Dayside Nadir,UVIS Switch OFF
+-1,62,14,Dayside Nadir,UVIS Switch OFF
+-1,63,14,Dayside Nadir,UVIS Switch OFF
+-1,64,1,Dayside Nadir,UVIS Switch OFF
+-1,65,14,Dayside Nadir,UVIS Switch OFF
+72,66,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+68,67,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,68,1,Dayside Nadir,UVIS Switch OFF
+-1,69,14,Dayside Nadir,UVIS Switch OFF
+-1,70,1,Dayside Nadir,UVIS Switch OFF
+72,71,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,72,14,Dayside Nadir,UVIS Switch OFF
+-1,73,1,Dayside Nadir,UVIS Switch OFF
+-1,74,1,Dayside Nadir,UVIS Switch OFF
+-1,75,14,Dayside Nadir,UVIS Switch OFF
+-1,76,1,Dayside Nadir,UVIS Switch OFF
+72,77,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,78,14,Dayside Nadir,UVIS Switch OFF
+-1,79,14,Dayside Nadir,UVIS Switch OFF
+-1,80,1,Dayside Nadir,UVIS Switch OFF
+68,81,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,82,1,Dayside Nadir,UVIS Switch OFF
+-1,83,1,Dayside Nadir,UVIS Switch OFF
+68,84,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,85,14,Dayside Nadir,UVIS Switch OFF
+-1,86,14,Dayside Nadir,UVIS Switch OFF
+-1,87,1,Dayside Nadir,UVIS Switch OFF
+79,88,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+-1,89,1,Dayside Nadir,UVIS Switch OFF
+-1,90,1,Dayside Nadir,UVIS Switch OFF
+-1,91,14,Dayside Nadir,UVIS Switch OFF
+-1,92,14,Dayside Nadir,UVIS Switch OFF
+-1,93,1,Dayside Nadir,UVIS Switch OFF
+68,94,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,95,1,Dayside Nadir,UVIS Switch OFF
+-1,96,1,Dayside Nadir,UVIS Switch OFF
+-1,97,14,Dayside Nadir,UVIS Switch OFF
+-1,98,47,Dayside Nadir,UVIS Switch OFF
+-1,99,1,Dayside Nadir,UVIS Switch OFF
+-1,100,14,Dayside Nadir,UVIS Switch OFF
+145,101,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 15000 ms -16 bit - Rhythm = 31041 ms
+-1,102,1,Dayside Nadir,UVIS Switch OFF
+-1,103,14,Dayside Nadir,UVIS Switch OFF
+-1,104,14,Dayside Nadir,UVIS Switch OFF
+72,105,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+68,106,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,107,14,Dayside Nadir,UVIS Switch OFF
+72,108,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+79,109,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+-1,110,14,Dayside Nadir,UVIS Switch OFF
+-1,111,47,Dayside Nadir,UVIS Switch OFF
+79,112,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+-1,113,3,Dayside Nadir,UVIS Switch OFF
+-1,114,14,Dayside Nadir,UVIS Switch OFF
+79,115,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+-1,116,1,Dayside Nadir,UVIS Switch OFF
+-1,117,1,Dayside Nadir,UVIS Switch OFF
+-1,118,14,Dayside Nadir,UVIS Switch OFF
+-1,119,1,Dayside Nadir,UVIS Switch OFF
+-1,120,14,Dayside Nadir,UVIS Switch OFF
+-1,121,1,Dayside Nadir,UVIS Switch OFF
+-1,122,1,Dayside Nadir,UVIS Switch OFF
+-1,123,14,Dayside Nadir,UVIS Switch OFF
+-1,124,47,Dayside Nadir,UVIS Switch OFF
+-1,125,47,Dayside Nadir,UVIS Switch OFF
+72,126,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,127,14,Dayside Nadir,UVIS Switch OFF
+68,128,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,129,1,Dayside Nadir,UVIS Switch OFF
+-1,130,1,Dayside Nadir,UVIS Switch OFF
+-1,131,14,Dayside Nadir,UVIS Switch OFF
+-1,132,1,Dayside Nadir,UVIS Switch OFF
+-1,133,14,Dayside Nadir,UVIS Switch OFF
+72,134,1,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,135,14,Dayside Nadir,UVIS Switch OFF
+-1,136,1,Dayside Nadir,UVIS Switch OFF
+-1,137,1,Dayside Nadir,UVIS Switch OFF
+-1,138,14,Dayside Nadir,UVIS Switch OFF
+-1,139,14,Dayside Nadir,UVIS Switch OFF
+-1,140,14,Dayside Nadir,UVIS Switch OFF
+-1,141,1,Dayside Nadir,UVIS Switch OFF
+-1,142,1,Dayside Nadir,UVIS Switch OFF
+-1,143,1,Dayside Nadir,UVIS Switch OFF
+-1,144,1,Dayside Nadir,UVIS Switch OFF
+-1,145,1,Dayside Nadir,UVIS Switch OFF
+-1,146,1,Dayside Nadir,UVIS Switch OFF
+-1,147,1,Dayside Nadir,UVIS Switch OFF
+-1,148,5,Dayside Nadir,UVIS Switch OFF
+68,149,5,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+72,150,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,151,5,Dayside Nadir,UVIS Switch OFF
+-1,152,5,Dayside Nadir,UVIS Switch OFF
+-1,153,14,Dayside Nadir,UVIS Switch OFF
+-1,154,5,Dayside Nadir,UVIS Switch OFF
+72,155,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,156,5,Dayside Nadir,UVIS Switch OFF
+-1,157,5,Dayside Nadir,UVIS Switch OFF
+-1,158,5,Dayside Nadir,UVIS Switch OFF
+-1,159,5,Dayside Nadir,UVIS Switch OFF
+68,160,5,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+72,161,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,162,5,Dayside Nadir,UVIS Switch OFF
+68,163,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,164,14,Dayside Nadir,UVIS Switch OFF
+72,165,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,166,14,Dayside Nadir,UVIS Switch OFF
+-1,167,14,Dayside Nadir,UVIS Switch OFF
+-1,168,14,Dayside Nadir,UVIS Switch OFF
+-1,169,14,Dayside Nadir,UVIS Switch OFF
+-1,170,14,Dayside Nadir,UVIS Switch OFF
+-1,171,14,Dayside Nadir,UVIS Switch OFF
+-1,172,14,Dayside Nadir,UVIS Switch OFF
+-1,173,14,Dayside Nadir,UVIS Switch OFF
+-1,174,14,Dayside Nadir,UVIS Switch OFF
+-1,175,14,Dayside Nadir,UVIS Switch OFF
+-1,176,14,Dayside Nadir,UVIS Switch OFF
+-1,177,14,Dayside Nadir,UVIS Switch OFF
+-1,178,3,Dayside Nadir,UVIS Switch OFF
+68,179,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,180,14,Dayside Nadir,UVIS Switch OFF
+79,181,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+68,182,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+72,183,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,184,14,Dayside Nadir,UVIS Switch OFF
+-1,185,14,Dayside Nadir,UVIS Switch OFF
+-1,186,47,Dayside Nadir,UVIS Switch OFF
+68,187,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,188,14,Dayside Nadir,UVIS Switch OFF
+-1,189,14,Dayside Nadir,UVIS Switch OFF
+-1,190,14,Dayside Nadir,UVIS Switch OFF
+145,191,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 15000 ms -16 bit - Rhythm = 31041 ms
+-1,192,14,Dayside Nadir,UVIS Switch OFF
+-1,193,14,Dayside Nadir,UVIS Switch OFF
+72,194,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,195,14,Dayside Nadir,UVIS Switch OFF
+-1,196,14,Dayside Nadir,UVIS Switch OFF
+72,197,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+68,198,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,199,14,Dayside Nadir,UVIS Switch OFF
+-1,200,14,Dayside Nadir,UVIS Switch OFF
+68,201,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,202,14,Dayside Nadir,UVIS Switch OFF
+-1,203,14,Dayside Nadir,UVIS Switch OFF
+-1,204,14,Dayside Nadir,UVIS Switch OFF
+-1,205,14,Dayside Nadir,UVIS Switch OFF
+-1,206,14,Dayside Nadir,UVIS Switch OFF
+-1,207,14,Dayside Nadir,UVIS Switch OFF
+-1,208,14,Dayside Nadir,UVIS Switch OFF
+72,209,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,210,14,Dayside Nadir,UVIS Switch OFF
+-1,211,14,Dayside Nadir,UVIS Switch OFF
+-1,212,47,Dayside Nadir,UVIS Switch OFF
+-1,213,14,Dayside Nadir,UVIS Switch OFF
+-1,214,14,Dayside Nadir,UVIS Switch OFF
+-1,215,14,Dayside Nadir,UVIS Switch OFF
+72,216,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+68,217,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,218,14,Dayside Nadir,UVIS Switch OFF
+-1,219,14,Dayside Nadir,UVIS Switch OFF
+-1,220,14,Dayside Nadir,UVIS Switch OFF
+-1,221,14,Dayside Nadir,UVIS Switch OFF
+-1,222,14,Dayside Nadir,UVIS Switch OFF
+-1,223,14,Dayside Nadir,UVIS Switch OFF
+-1,224,14,Dayside Nadir,UVIS Switch OFF
+-1,225,14,Dayside Nadir,UVIS Switch OFF
+-1,226,14,Dayside Nadir,UVIS Switch OFF
+-1,227,14,Dayside Nadir,UVIS Switch OFF
+-1,228,14,Dayside Nadir,UVIS Switch OFF
+-1,229,14,Dayside Nadir,UVIS Switch OFF
+-1,230,14,Dayside Nadir,UVIS Switch OFF
+-1,231,14,Dayside Nadir,UVIS Switch OFF
+-1,232,14,Dayside Nadir,UVIS Switch OFF
+-1,233,14,Dayside Nadir,UVIS Switch OFF
+-1,234,14,Dayside Nadir,UVIS Switch OFF
+-1,235,14,Dayside Nadir,UVIS Switch OFF
+-1,236,14,Dayside Nadir,UVIS Switch OFF
+-1,237,14,Dayside Nadir,UVIS Switch OFF
+-1,238,14,Dayside Nadir,UVIS Switch OFF
+72,239,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+72,240,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,241,14,Dayside Nadir,UVIS Switch OFF
+-1,242,14,Dayside Nadir,UVIS Switch OFF
+-1,243,14,Dayside Nadir,UVIS Switch OFF
+-1,244,3,Dayside Nadir,UVIS Switch OFF
+-1,245,14,Dayside Nadir,UVIS Switch OFF
+-1,246,14,Dayside Nadir,UVIS Switch OFF
+-1,247,14,Dayside Nadir,UVIS Switch OFF
+-1,248,14,Dayside Nadir,UVIS Switch OFF
+-1,249,14,Dayside Nadir,UVIS Switch OFF
+-1,250,14,Dayside Nadir,UVIS Switch OFF
+-1,251,14,Dayside Nadir,UVIS Switch OFF
+-1,252,14,Dayside Nadir,UVIS Switch OFF
+-1,253,14,Dayside Nadir,UVIS Switch OFF
+-1,254,14,Dayside Nadir,UVIS Switch OFF
+-1,255,14,Dayside Nadir,UVIS Switch OFF
+-1,256,14,Dayside Nadir,UVIS Switch OFF
+-1,257,14,Dayside Nadir,UVIS Switch OFF
+-1,258,14,Dayside Nadir,UVIS Switch OFF
+68,259,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,260,14,Dayside Nadir,UVIS Switch OFF
+-1,261,14,Dayside Nadir,UVIS Switch OFF
+-1,262,14,Dayside Nadir,UVIS Switch OFF
+72,263,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+72,264,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,265,14,Dayside Nadir,UVIS Switch OFF
+-1,266,14,Dayside Nadir,UVIS Switch OFF
+-1,267,14,Dayside Nadir,UVIS Switch OFF
+-1,268,14,Dayside Nadir,UVIS Switch OFF
+-1,269,14,Dayside Nadir,UVIS Switch OFF
+-1,270,14,Dayside Nadir,UVIS Switch OFF
+-1,271,14,Dayside Nadir,UVIS Switch OFF
+-1,272,14,Dayside Nadir,UVIS Switch OFF
+72,273,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,274,14,Dayside Nadir,UVIS Switch OFF
+-1,275,14,Dayside Nadir,UVIS Switch OFF
+72,276,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,277,14,Dayside Nadir,UVIS Switch OFF
+-1,278,14,Dayside Nadir,UVIS Switch OFF
+68,279,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,280,14,Dayside Nadir,UVIS Switch OFF
+-1,281,14,Dayside Nadir,UVIS Switch OFF
+68,282,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,283,14,Dayside Nadir,UVIS Switch OFF
+68,284,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,285,14,Dayside Nadir,UVIS Switch OFF
+-1,286,14,Dayside Nadir,UVIS Switch OFF
+-1,287,14,Dayside Nadir,UVIS Switch OFF
+-1,288,14,Dayside Nadir,UVIS Switch OFF
+-1,289,14,Dayside Nadir,UVIS Switch OFF
+72,290,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+72,291,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+79,292,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+-1,293,14,Dayside Nadir,UVIS Switch OFF
+72,294,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,295,14,Dayside Nadir,UVIS Switch OFF
+68,296,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,297,14,Dayside Nadir,UVIS Switch OFF
+-1,298,14,Dayside Nadir,UVIS Switch OFF
+-1,299,14,Dayside Nadir,UVIS Switch OFF
+68,300,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,301,14,Dayside Nadir,UVIS Switch OFF
+68,302,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+72,303,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,304,14,Dayside Nadir,UVIS Switch OFF
+72,305,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+72,306,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,307,14,Dayside Nadir,UVIS Switch OFF
+-1,308,14,Dayside Nadir,UVIS Switch OFF
+-1,309,14,Dayside Nadir,UVIS Switch OFF
+79,310,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+-1,311,14,Dayside Nadir,UVIS Switch OFF
+-1,312,14,Dayside Nadir,UVIS Switch OFF
+79,313,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+-1,314,14,Dayside Nadir,UVIS Switch OFF
+-1,315,14,Dayside Nadir,UVIS Switch OFF
+-1,316,14,Dayside Nadir,UVIS Switch OFF
+-1,317,14,Dayside Nadir,UVIS Switch OFF
+68,318,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,319,14,Dayside Nadir,UVIS Switch OFF
+68,320,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,321,14,Dayside Nadir,UVIS Switch OFF
+68,322,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+72,323,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+68,324,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,325,14,Dayside Nadir,UVIS Switch OFF
+72,326,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+-1,327,14,Dayside Nadir,UVIS Switch OFF
+-1,328,14,Dayside Nadir,UVIS Switch OFF
+-1,329,47,Dayside Nadir,UVIS Switch OFF
+-1,330,14,Dayside Nadir,UVIS Switch OFF
+145,331,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 15000 ms -16 bit - Rhythm = 31041 ms
+-1,332,14,Dayside Nadir,UVIS Switch OFF
+72,333,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+79,334,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms
+-1,335,14,Dayside Nadir,UVIS Switch OFF
+72,336,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 10000 ms -16 bit - Rhythm = 12017 ms
+68,337,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+-1,338,14,Dayside Nadir,UVIS Switch OFF
+68,339,3,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 7000 ms -16 bit - Rhythm = 9017 ms
+79,340,14,Dayside Nadir,# NADIR: Full Frame (57:245;0:1047) - Tint = 20000 ms -16 bit - Rhythm = 22017 ms

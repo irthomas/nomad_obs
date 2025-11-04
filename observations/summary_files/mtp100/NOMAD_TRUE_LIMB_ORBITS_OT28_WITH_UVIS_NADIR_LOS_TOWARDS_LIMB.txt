@@ -1,0 +1,3 @@
+Limb pointing start time (UTC),Limb pointing end time (UTC),Thermal orbit number
+2025 NOV 24 23:58:41,2025 NOV 25 00:04:41,30
+2025 NOV 25 01:56:38,2025 NOV 25 02:02:38,31

@@ -19,7 +19,7 @@ TODO:
 
 """
 
-from nomad_obs.config.paths import setupPaths  # , devWebsitePaths
+from nomad_obs.config.paths import setupPaths, load_spice_kernels
 from nomad_obs.html.make_website import writeIndexWebpage, writeMtpMasterPage
 from nomad_obs.html.make_overview_webpage import makeOverviewPage
 from nomad_obs.html.make_occultation_webpage import writeOccultationWebpage
@@ -52,7 +52,9 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 95
+mtpNumber = 100
+
+global orbitList
 
 
 r"""
@@ -127,7 +129,7 @@ Other targets	          Normal priority
     (UVIS can run night and day on same orbit).
 
 *For other joint observations, plan manually in the orbit_plans\mtp0xx\nomad_mtp0xx_plan_generic.xlsx
-    e.g. check occultations matching EUVM joint list (4-7 March, 6-9 May, 5-30 June, 22 Sep - 4 October 2025). Run high altitude CO2 e.g. 6SUBD CO2 H2O #14
+    e.g. check occultations matching EUVM joint list (4-7 March, 6-9 May, 5-30 June, 22 Sep - 4 October 2025, Feb 2026+). Run high altitude CO2 e.g. 6SUBD CO2 H2O #14
     Replace irIngress/Egress etc by the desired observation name
     For finding orbit numbers from a list of times, use the code nomad_obs\search_matching_observation_times.py
 
@@ -213,13 +215,14 @@ MAKE_FIGURES = True
 # MAKE_FIGURES = False
 
 
-# def run_planning(mtpNumber):
-if True:
+def run_planning(mtpNumber):
+    # if True:
     # START PROGRAM HERE
     print("### Planning observations for MTP %i ###" % mtpNumber)
     orbitList = []
     mtpConstants = getMtpConstants(mtpNumber)
     paths = setupPaths(mtpConstants)
+    load_spice_kernels()
     # devPaths = devWebsitePaths(mtpConstants)
 
     printStatement("Starting program")
@@ -257,7 +260,6 @@ if True:
     printStatement("Checking that all observation keys are in the dictionary")
     checkKeys(occultationObservationDict, nadirObservationDict, observationCycles)
     printStatement("Generating complete orbit plan (with real observation names) and adding to orbit list")
-    orbitList2 = orbitList.copy()
     orbitList = makeCompleteOrbitPlan(orbitList, observationCycles)
     printStatement("Writing complete observation plan to file")
     writeOrbitPlanXlsx(orbitList, mtpConstants, paths, "plan", place_in_base_dir=False)
@@ -302,6 +304,10 @@ if True:
         writeIndexWebpage(mtpConstants, paths)
         # printStatement("Updating science calibrations webpage")
         # writeCalibrationWebpage(paths)
+
+
+if __name__ == "__main__":
+    run_planning(mtpNumber)
 
 # CALIBRATION FILE MUST BE FILLED IN MANUALLY. USE VALUES FROM SOLAR_CALIBRATIONS.XLSX FILE FOR MINISCANS/FULLSCANS. SEE PREVIOUS MTPS FOR EXAMPLES.
 # THIS AND THE OTHER IR COP ROWS SHOULD BE CHECKED (COMPARE TO SUMMARY FILES FROM BOJAN/CLAUDIO), PARTICULARLY TIMINGS AND NUMBER OF ROWS IN FILES

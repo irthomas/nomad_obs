@@ -1,0 +1,10 @@
+Target Name,Flyover #,Orbit type,Thermal orbit number,Start crossing time (UTC),End crossing time (UTC),Start crossing latitude (deg),Start crossing longitude (deg),End crossing latitude (deg),End crossing longitude (deg),Start crossing phase angle (deg),End crossing phase angle (deg),Start crossing solar incidence angle (deg),End crossing solar incidence angle (deg),Start crossing emission angle (deg),End crossing emission angle (deg),Start crossing LST (h),End crossing LST (h)
+Region of residual magnetic field,1,3,111,2025 DEC 01 15:22:49,2025 DEC 01 15:25:55,-10.0989,-141.591,-19.2716,-140,135.1717,129.294,135.002,130.4331,0.20833,1.1395,2.9289,3.0856
+Region of residual magnetic field,2,1,137,2025 DEC 03 18:28:25,2025 DEC 03 18:40:39,-10.0989,-173.9302,-45.9736,-164.6791,141.1974,112.944,141.0208,115.6811,0.21487,2.745,2.5008,3.3161
+Region of residual magnetic field,3,3,138,2025 DEC 03 20:26:21,2025 DEC 03 20:38:37,-10.0989,157.1081,-46.0108,166.3595,141.4426,112.7146,141.2658,115.7958,0.21515,3.0816,2.4833,3.2989
+Region of residual magnetic field,4,1,149,2025 DEC 04 18:03:17,2025 DEC 04 18:15:46,-10.0989,-161.1489,-46.6072,-151.6897,143.9164,112.944,143.7464,116.6735,0.21378,3.7349,2.3039,3.1369
+Region of residual magnetic field,5,1,150,2025 DEC 04 20:01:14,2025 DEC 04 20:13:44,-10.0989,169.8925,-46.6769,179.3879,144.1573,112.944,143.9873,116.7392,0.21399,3.8004,2.2864,3.1222
+Region of residual magnetic field,6,3,151,2025 DEC 04 22:10:59,2025 DEC 04 22:11:41,-44.9207,150.021,-46.9332,150.9375,118.4516,116.6821,118.2107,116.4368,0.241,0.24533,3.0664,3.1389
+Region of residual magnetic field,7,1,161,2025 DEC 05 17:38:11,2025 DEC 05 17:50:07,-10.0989,-148.383,-44.7882,-140,146.6162,112.944,146.4461,119.8865,0.21612,6.9452,2.1064,2.8586
+Region of residual magnetic field,8,3,162,2025 DEC 05 19:36:07,2025 DEC 05 19:48:52,-10.0989,-177.3337,-47.2783,-167.5998,146.8486,112.8254,146.6785,117.6269,0.21637,4.8018,2.0892,2.945
+Region of residual magnetic field,9,1,163,2025 DEC 05 21:34:04,2025 DEC 05 21:46:49,-10.0989,153.7047,-47.3131,163.436,147.0866,112.944,146.9165,117.7286,0.21657,4.7883,2.0717,2.9272

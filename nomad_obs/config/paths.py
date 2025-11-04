@@ -7,26 +7,24 @@ Created on Wed Nov 14 09:58:57 2018
 
 import os
 import sys
-import spiceypy as sp
 
 
-__project__   = "NOMAD Observation Planning"
-__author__    = "Ian Thomas"
-__contact__   = "ian . thomas AT aeronomie . be"
+__project__ = "NOMAD Observation Planning"
+__author__ = "Ian Thomas"
+__contact__ = "ian . thomas AT aeronomie . be"
 
 
-OFFLINE = True #if working remotely, don't write obs to sql db
-# OFFLINE = False #write obs to sql db and copy to dev website
+OFFLINE = True  # not used any more
+# OFFLINE = False #not used
 
 ###############################set up directory paths##############################################################
 
 """where to find scripts?"""
 if sys.platform == "win32":
-#    BASE_DIRECTORY = os.path.normcase(os.getcwd())
+    #    BASE_DIRECTORY = os.path.normcase(os.getcwd())
     BASE_DIRECTORY = os.path.join("C:", os.sep, "Users", "iant", "Documents", "PROGRAMS", "nomad_obs")
 elif sys.platform == "linux":
     BASE_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "nomad_obs")
-
 
 
 """where to put input and output files and build master copy of website?"""
@@ -43,7 +41,7 @@ if sys.platform == "win32":
     else:
         DEV_DIRECTORY = os.path.join("W:", os.sep, "websites", "dev", "mars", "en", "exomars", "observations")
 elif sys.platform == "linux":
-    #crunch can't access websites. Must set as local dir and update old website manually
+    # crunch can't access websites. Must set as local dir and update old website manually
     #DEV_DIRECTORY = os.path.join(os.sep, "bira-iasb", "websites", "dev", "mars", "en", "exomars", "observations")
     DEV_DIRECTORY = os.path.join(os.sep, "bira-iasb", "projects", "NOMAD", "Science", "Planning", "website")
 
@@ -81,79 +79,70 @@ elif sys.platform == "linux":
 ####INSERT PERSONAL CONFIG LOCATIONS HERE####
 
 
-
-
 ####END####
-    
+
 """which SPICE metakernel to use?"""
 METAKERNEL_NAME = "em16_plan.tm"
-#METAKERNEL_NAME = "em16_ops.tm" #don't use for planning!!
-
-
+# METAKERNEL_NAME = "em16_ops.tm" #don't use for planning!!
 
 
 def setupPaths(mtpConstants):
     """set up paths to output files"""
     mtpNumber = mtpConstants["mtpNumber"]
-    
+
     paths = {
-            "OBS_DIRECTORY":os.path.join(OBS_DIRECTORY), \
-            "COP_ROW_BASE_PATH":os.path.join(OBS_DIRECTORY, "cop_rows"), \
-            "ORBIT_PLAN_BASE_PATH":os.path.join(OBS_DIRECTORY, "orbit_plans"), \
-            "SUMMARY_FILE_BASE_PATH":os.path.join(OBS_DIRECTORY, "summary_files"), \
-            "MTP_BASE_PATH":os.path.join(OBS_DIRECTORY, "mtp_pages"), \
-            "HTML_BASE_PATH":os.path.join(OBS_DIRECTORY, "pages"), \
+        "OBS_DIRECTORY": os.path.join(OBS_DIRECTORY),
+        "COP_ROW_BASE_PATH": os.path.join(OBS_DIRECTORY, "cop_rows"),
+        "ORBIT_PLAN_BASE_PATH": os.path.join(OBS_DIRECTORY, "orbit_plans"),
+        "SUMMARY_FILE_BASE_PATH": os.path.join(OBS_DIRECTORY, "summary_files"),
+        "MTP_BASE_PATH": os.path.join(OBS_DIRECTORY, "mtp_pages"),
+        "HTML_BASE_PATH": os.path.join(OBS_DIRECTORY, "pages"),
 
-            "EVENT_FILE_PATH":os.path.join(OBS_DIRECTORY, "event_files"), \
-            "ITL_FILE_PATH":os.path.join(OBS_DIRECTORY, "itls"), \
-            "CALIBRATION_PATH":os.path.join(OBS_DIRECTORY, "calibrations"), \
-            
-            "COP_ROW_PATH":os.path.join(OBS_DIRECTORY, "cop_rows", "mtp%03d" %mtpNumber), \
-            "ORBIT_PLAN_PATH":os.path.join(OBS_DIRECTORY, "orbit_plans", "mtp%03d" %mtpNumber), \
-            "SUMMARY_FILE_PATH":os.path.join(OBS_DIRECTORY, "summary_files", "mtp%03d" %mtpNumber), \
-            "HTML_MTP_PATH":os.path.join(OBS_DIRECTORY, "mtp_pages", "mtp%03d" %mtpNumber), \
-            "IMG_MTP_PATH":os.path.join(OBS_DIRECTORY, "mtp_pages", "mtp%03d" %mtpNumber, "img"), \
+        "EVENT_FILE_PATH": os.path.join(OBS_DIRECTORY, "event_files"),
+        "ITL_FILE_PATH": os.path.join(OBS_DIRECTORY, "itls"),
+        "CALIBRATION_PATH": os.path.join(OBS_DIRECTORY, "calibrations"),
 
-            "SQL_INI_PATH":SQL_INI_DIRECTORY, \
-            }    
-    
-    #make directories if not already existing
+        "COP_ROW_PATH": os.path.join(OBS_DIRECTORY, "cop_rows", "mtp%03d" % mtpNumber),
+        "ORBIT_PLAN_PATH": os.path.join(OBS_DIRECTORY, "orbit_plans", "mtp%03d" % mtpNumber),
+        "SUMMARY_FILE_PATH": os.path.join(OBS_DIRECTORY, "summary_files", "mtp%03d" % mtpNumber),
+        "HTML_MTP_PATH": os.path.join(OBS_DIRECTORY, "mtp_pages", "mtp%03d" % mtpNumber),
+        "IMG_MTP_PATH": os.path.join(OBS_DIRECTORY, "mtp_pages", "mtp%03d" % mtpNumber, "img"),
+
+        "SQL_INI_PATH": SQL_INI_DIRECTORY,
+    }
+
+    # make directories if not already existing
     for pathName, path in paths.items():
         if not os.path.exists(path):
-            print("Making %s path" %pathName)
+            print("Making %s path" % pathName)
             os.mkdir(path)
 
     return paths
 
 
-
-
-
 def devWebsitePaths(mtpConstants):
     """set up paths to output files"""
     mtpNumber = mtpConstants["mtpNumber"]
-    
+
     paths = {
-            "OBS_DIRECTORY":os.path.join(DEV_DIRECTORY), \
-            "CALIBRATION_PATH":os.path.join(DEV_DIRECTORY, "calibrations"), \
-            "COP_ROW_PATH":os.path.join(DEV_DIRECTORY, "cop_rows", "mtp%03d" %mtpNumber), \
-            "EVENT_FILE_PATH":os.path.join(DEV_DIRECTORY, "event_files"), \
-            "ITL_FILE_PATH":os.path.join(DEV_DIRECTORY, "itls"), \
-            "HTML_MTP_PATH":os.path.join(DEV_DIRECTORY, "mtp_pages", "mtp%03d" %mtpNumber), \
-            "ORBIT_PLAN_PATH":os.path.join(DEV_DIRECTORY, "orbit_plans", "mtp%03d" %mtpNumber), \
-            "SUMMARY_FILE_PATH":os.path.join(DEV_DIRECTORY, "summary_files", "mtp%03d" %mtpNumber), \
-            }    
+        "OBS_DIRECTORY": os.path.join(DEV_DIRECTORY),
+        "CALIBRATION_PATH": os.path.join(DEV_DIRECTORY, "calibrations"),
+        "COP_ROW_PATH": os.path.join(DEV_DIRECTORY, "cop_rows", "mtp%03d" % mtpNumber),
+        "EVENT_FILE_PATH": os.path.join(DEV_DIRECTORY, "event_files"),
+        "ITL_FILE_PATH": os.path.join(DEV_DIRECTORY, "itls"),
+        "HTML_MTP_PATH": os.path.join(DEV_DIRECTORY, "mtp_pages", "mtp%03d" % mtpNumber),
+        "ORBIT_PLAN_PATH": os.path.join(DEV_DIRECTORY, "orbit_plans", "mtp%03d" % mtpNumber),
+        "SUMMARY_FILE_PATH": os.path.join(DEV_DIRECTORY, "summary_files", "mtp%03d" % mtpNumber),
+    }
     return paths
 
 
+def load_spice_kernels():
 
-
-#load spiceypy kernels
-print("KERNEL_DIRECTORY=%s, METAKERNEL_NAME=%s" %(KERNEL_DIRECTORY, METAKERNEL_NAME))
-os.chdir(KERNEL_DIRECTORY)
-sp.furnsh(METAKERNEL_NAME)
-print(sp.tkvrsn("toolkit"))
-os.chdir(BASE_DIRECTORY)
-
-
-
+    import spiceypy as sp
+    # load spiceypy kernels
+    print("KERNEL_DIRECTORY=%s, METAKERNEL_NAME=%s" % (KERNEL_DIRECTORY, METAKERNEL_NAME))
+    os.chdir(KERNEL_DIRECTORY)
+    sp.furnsh(METAKERNEL_NAME)
+    print(sp.tkvrsn("toolkit"))
+    os.chdir(BASE_DIRECTORY)
