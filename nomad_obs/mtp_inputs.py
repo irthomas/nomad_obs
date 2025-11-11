@@ -967,6 +967,15 @@ def getMtpConstants(mtpNumber):
         occultation_precooling = 440  # seconds required for precooling
         stp_data_volumes = [25, 25, 25, 25]  # GBit # add if required
 
+    elif mtpNumber == 101:
+        mtpStart = "2025-12-20T14:43:45Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2025-12-27T11:49:05Z"  # EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20250510_113000"  # desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [7, 19, 55, 56, 73]  # input these from the email
+        required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 440  # seconds required for precooling
+        stp_data_volumes = [1.5, 0, 0, 0]  # GBit # add if required
+
     # add corrections for certain changes in planning since beginning of mission
     mappsEventFilename = "LEVF_M%03d_SOC_PLANNING.EVF" % mtpNumber
     if mtpNumber < 13:

@@ -22,9 +22,8 @@ import numpy as np
 from datetime import datetime
 
 from openpyxl import load_workbook
-from openpyxl.styles import PatternFill
 
-mtpNumber = 100
+mtpNumber = 101
 
 # add the correct MTP info in obs_inputs
 mtpConstants = getMtpConstants(mtpNumber)
@@ -150,17 +149,20 @@ for obs_type, dictionary_data in cop_summary_dict.items():
         summary_file_data[obs_type]["precooling_duration"] = [
             summary_file_data[obs_type]["TC20 %s_START_SCIENCE_1" % ir_channel][i] -
             summary_file_data[obs_type]["TC20 %s_DURATION_REFERENCE_1" % ir_channel][i] -
-            summary_file_data[obs_type]["TC20 %s_START_TIME" % ir_channel][i] for i in range(len(summary_file_data[obs_type]["TC20 %s_START_SCIENCE_1" % ir_channel]))]
+            summary_file_data[obs_type]["TC20 %s_START_TIME" % ir_channel][i]
+            for i in range(len(summary_file_data[obs_type]["TC20 %s_START_SCIENCE_1" % ir_channel]))]
 
         # summary_file_data[obs_type]["ir_science_duration"] = [
         #     summary_file_data[obs_type]["TC20 %s_DURATION_TIME" % ir_channel][i] -
         #     summary_file_data[obs_type]["precooling_duration"][i] for i in range(len(summary_file_data[obs_type]["TC20 %s_START_SCIENCE_1" % ir_channel]))]
 
         summary_file_data[obs_type]["ir_science_duration"] = [
-            summary_file_data[obs_type]["TC20 %s_DURATION_TIME" % ir_channel][i] for i in range(len(summary_file_data[obs_type]["TC20 %s_START_SCIENCE_1" % ir_channel]))]
+            summary_file_data[obs_type]["TC20 %s_DURATION_TIME" % ir_channel][i]
+            for i in range(len(summary_file_data[obs_type]["TC20 %s_START_SCIENCE_1" % ir_channel]))]
 
         summary_file_data[obs_type]["uvis_science_duration"] = [
-            summary_file_data[obs_type]["TC20 UVIS_DURATION_TIME"][i] for i in range(len(summary_file_data[obs_type]["TC20 UVIS_DURATION_TIME"]))]
+            summary_file_data[obs_type]["TC20 UVIS_DURATION_TIME"][i]
+            for i in range(len(summary_file_data[obs_type]["TC20 UVIS_DURATION_TIME"]))]
 
     else:
         summary_file_data[obs_type] = {}

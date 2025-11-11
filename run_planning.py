@@ -52,48 +52,30 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 100
+mtpNumber = 101
 
 global orbitList
 
 
 r"""
-*Remember to update spice kernels first!
+* Remember to update spice kernels first!
 run spice_kernel_downloader.py ensuring that it is in planning mode
 
-*Get event file, MRO overlaps and SOLAR_LOS limb files from Ops FTP:
-event_files\LEVF_M0xx_SOC_PLANNING.EVF
-
-summary_files\mtp0xx\2deg_latlon_15min_LST
-summary_files\mtp0xx\2deg_latlon_30min_LST
-summary_files\mtp0xx\5deg_latlon_15min_LST
-summary_files\mtp0xx\5deg_latlon_30min_LST
-
-
-summary_files\mtp0xx\kickoff\nadir_dayside_nightside_thermal_orbits_orbit_type_summary.txt (optional)
-summary_files\mtp0xx\kickoff\NOMAD_egress_solar_occulations_summary.txt (optional)
-summary_files\mtp0xx\kickoff\NOMAD_ingress_and_merged_solar_occulations_summary.txt (optional)
-summary_files\mtp0xx\kickoff\NOMAD_grazing_solar_occulations_summary.txt (optional, if present)
-
-summary_files\mtp0xx\roi_flyovers_nightside-filtered.txt
+* Extract the zip files to the folder tmp e.g. tmp/MTP101_overview_20251021
+* Run nomad_obs.organise_extracted_inputs.py to put the inputs in the correct folders
 
 If CaSSIS joint limbs:
 summary_files\mtp0xx\NOMAD_TRUE_LIMB_ORBITS_OT28_WITH_UVIS_NADIR_LOS_TOWARDS_LIMB.txt (if exists)
 
+If CaSSIS joint nadir obs, check the google doc table:
+Find NOMAD thermal orbit numbers (compare CaSSIS UTCs to rows in nadir_dayside_nightside_thermal_orbits_orbit_type_summary.txt)
+Sort orbit numbers in ascending order, add to required_dayside_orbits in nomad_obs/mtp_inputs.py
 
-If CaSSIS joint nadir obs, check the google doc table
-* Find NOMAD thermal orbit numbers (compare CaSSIS UTCs to rows in nadir_dayside_nightside_thermal_orbits_orbit_type_summary.txt)
-* Sort orbit numbers in ascending order, add to required_dayside_orbits in nomad_obs/mtp_inputs.py
-
-
-* Add start/end times, COP table version, and list of forbidden dayside nadir orbits (from ops email), to nomad_obs/mtp_inputs.py
+* Add start/end times, COP table version, and list of required/forbidden dayside nadir orbits (from ops email), to nomad_obs/mtp_inputs.py
 * Then run run_planning.py
 
-
-
 * When finished, update the mtpNumber in remove_ir_nadirs.py and run it
-* This will automatically remove lots of LNO nadirs, whilst keeping all the CaSSIS nadirs and trying to keep as many of the following:
-
+* This will automatically remove lots of LNO nadirs, whilst keeping all the CaSSIS nadirs and trying to keep some of the following:
 
 Region                    Priority  reduce box size; not run each time.
 ------                    --------
@@ -124,43 +106,38 @@ Other targets	          Normal priority
 *if CaSSIS joint limbs:
 *change orbit to type 28 (dayside) or 47 (nightside as appropriate) for UVIS ridealong
 
-*If requested by Liege team: add 2 UVIS nightsides (type 7 "uvisNightside") from list of orbits in roi_flyovers_nightside-filtered.txt
+* If requested by Liege team: add 2 UVIS nightsides (type 7 "uvisNightside") from list of orbits in roi_flyovers_nightside-filtered.txt
     These must not clash with other observations e.g. solar occultations or high priority LNO nadirs
     (UVIS can run night and day on same orbit).
 
-*For other joint observations, plan manually in the orbit_plans\mtp0xx\nomad_mtp0xx_plan_generic.xlsx
-    e.g. check occultations matching EUVM joint list (4-7 March, 6-9 May, 5-30 June, 22 Sep - 4 October 2025, Feb 2026+). Run high altitude CO2 e.g. 6SUBD CO2 H2O #14
+* For other joint observations, plan manually in the orbit_plans\mtp0xx\nomad_mtp0xx_plan_generic.xlsx
+    e.g. check occultations matching EUVM joint list (Feb 2026+). Run high altitude CO2 e.g. 6SUBD CO2 H2O #14
     Replace irIngress/Egress etc by the desired observation name
     For finding orbit numbers from a list of times, use the code nomad_obs\search_matching_observation_times.py
 
 
+* Highlight rows in xlsx based on type:
+    yellow = CaSSIS surface ice
+    blue = CaSSIS limbs
+    green = UVIS nightside nadir
+    light blue = EUVM joint occs
+    light red = IRTF joint obs
 
-*highlight rows in xlsx based on type: yellow = CaSSIS surface ice; blue = CaSSIS limbs; green = UVIS nightside nadir; light blue = EUVM joint occs; light red = IRTF joint obs
-
-*NEW: if grazing occultations, check latitude/min tangent altitude SO constraints are correct
+* If grazing occultations, check latitude/min tangent altitude SO constraints are correct
 
 
-
-*check true limbs are correctly registered:
+* Check true limbs are correctly registered:
     type 28 = solar occ and day limb
     type 28 = day limb only
     type 47 = night limb only
 
-*Check number of grazings matches the extracted event file nomad_grazing_events.txt:
+* Check number of grazings matches the extracted event file nomad_grazing_events.txt:
     if not, compare start/end times to determine which are incorrect, then modify update_orbit_list.py accordingly
     Typically one merged event should be changed to a grazing occultation
 
+* If there are occultation-free periods with low LSTs, change IR daysides to more Surface Ice observations e.g. Surface Ice 4SUBD 01
 
-
-
-
-*Optional: Add a few LNO-only limbs (type 8) when FOV in range if space is available (we have lots of LNO+UVIS limbs now)
-    run check_when_mars_in_occ_fovs.py with correct MTP and then copy output into orbit plan -> choose some with LNO and UVIS
-
-*If there are occultation-free periods with low LSTs, change IR daysides to mainly Surface Ice observations e.g. Surface Ice 4SUBD 01
-
-
-*CaSSIS joint obs: set the dayside observation type, replacing irDayside manually, to the correct one as decided by the LNO science team
+* CaSSIS joint obs: set the dayside observation type, replacing irDayside manually, to the correct one as decided by the LNO science team
 
 
 *Use excel formula to check for incorrect orbit types 3 when no LNO obs:
@@ -168,16 +145,12 @@ Other targets	          Normal priority
     =IF(OR(AND(A2=3,H2=""),AND(A2=14,NOT(H2=""))), 1, 0)
     Highlight the column and turn on conditional formatting to help find incorrect orbit types (all values=0 when correct)
 
-*Add 141-150 fullscans (CO2 Fullscan Fast #5), a few at the highest latitudes north or south.
 *Code to print ingress/egress latitudes:
-* [(d["orbitNumber"], d["ingress"]["latMidpoint"],d["egress"]["latMidpoint"]) for d in orbitList if "ingress" in d.keys() and "egress" in d.keys()]
-* Best region: south <-60 degrees Ls 40 to 120 (MTPs 89-96)
-
+    [(d["orbitNumber"], d["ingress"]["latMidpoint"],d["egress"]["latMidpoint"]) for d in orbitList if "ingress" in d.keys() and "egress" in d.keys()]
 
 *Then delete everything from column N onwards
 
 *Ignore all UVIS inputs for now
-
 
 *Then run run_planning.py again to finish planning
     Possible errors: occultation just before (in same orbit as) OCM slot or special pointing - check timings in nomad_ingress_events.txt (or grazing)

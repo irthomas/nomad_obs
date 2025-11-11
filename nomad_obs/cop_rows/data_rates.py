@@ -13,35 +13,35 @@ import numpy as np
 # uvis from TN, assume includes TM27, 28, 29
 
 # extracted from ITLs, bits/s vs SO_DURATION_TIME
-import matplotlib.pyplot as plt
-ir_occ_precooling_sci = np.array([
-    [36296.2341, 695],
-    [38086.4848, 717],
-    [40285.0288, 746],
-    [42453.7163, 777],
-    [43890.6940, 799],
-    [44206.3124, 804],
-    [44455.9947, 808],
-    [44641.6401, 811],
-    [45549.6394, 826],
-    [45786.2297, 830],
-    [45962.1814, 833],
-    [46991.8396, 851],
-    # [9974.3801, 859],  # MTP097 Error in ITL, wrong number of subdomains
-    # [9937.5719, 855],  # MTP097 Error in ITL, wrong number of subdomains
-    [48298.8190, 875],
-    [49182.0436, 892],
-    [50227.6755, 913],
-    [52225.3969, 956],
-    [53051.9795, 975],
-    [53887.9625, 995],
-    [84604.9056, 4040],  # ?
-    # [81476.419, 4200],  # due to precooling length change 600->440
-])
-plt.xlabel("[bits/sec] from the ITL")
-plt.ylabel("SO_DURATION_TIME")
-plt.grid()
-plt.scatter(ir_occ_precooling_sci[:, 0], ir_occ_precooling_sci[:, 1])
+# import matplotlib.pyplot as plt
+# ir_occ_precooling_sci = np.array([
+#     [36296.2341, 695],
+#     [38086.4848, 717],
+#     [40285.0288, 746],
+#     [42453.7163, 777],
+#     [43890.6940, 799],
+#     [44206.3124, 804],
+#     [44455.9947, 808],
+#     [44641.6401, 811],
+#     [45549.6394, 826],
+#     [45786.2297, 830],
+#     [45962.1814, 833],
+#     [46991.8396, 851],
+#     # [9974.3801, 859],  # MTP097 Error in ITL, wrong number of subdomains
+#     # [9937.5719, 855],  # MTP097 Error in ITL, wrong number of subdomains
+#     [48298.8190, 875],
+#     [49182.0436, 892],
+#     [50227.6755, 913],
+#     [52225.3969, 956],
+#     [53051.9795, 975],
+#     [53887.9625, 995],
+#     [84604.9056, 4040],  # ?
+#     # [81476.419, 4200],  # due to precooling length change 600->440
+# ])
+# plt.xlabel("[bits/sec] from the ITL")
+# plt.ylabel("SO_DURATION_TIME")
+# plt.grid()
+# plt.scatter(ir_occ_precooling_sci[:, 0], ir_occ_precooling_sci[:, 1])
 
 
 def ir_data_rate(obs_type, duration):
