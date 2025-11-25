@@ -52,9 +52,9 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 101
+mtpNumber = 102
 
-global orbitList
+# global orbitList
 
 
 r"""
@@ -189,7 +189,9 @@ MAKE_FIGURES = True
 
 
 def run_planning(mtpNumber):
-    # if True:
+
+    global orbitList
+
     # START PROGRAM HERE
     print("### Planning observations for MTP %i ###" % mtpNumber)
     orbitList = []

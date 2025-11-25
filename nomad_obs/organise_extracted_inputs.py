@@ -24,15 +24,35 @@ EXTRACTED_DIRS_PATH = os.path.join(BASE_DIRECTORY, "tmp")
 overview_dirs_path = sorted(glob.glob(EXTRACTED_DIRS_PATH + os.sep + "*overview*"))
 summary_dirs_path = sorted(glob.glob(EXTRACTED_DIRS_PATH + os.sep + "*summary_files*"))
 
+overview_dirs_mtime = [os.path.getmtime(path) for path in overview_dirs_path]
+summary_dirs_mtime = [os.path.getmtime(path) for path in summary_dirs_path]
+
+
 type = ""
-if len(overview_dirs_path) > 0:
+if len(overview_dirs_path) > 0 and len(summary_dirs_path) > 0:
+    if overview_dirs_mtime[-1] > summary_dirs_mtime[-1]:
+        # if highest numbered mtp was modified last
+        latest_dir_path = overview_dirs_path[-1]
+        latest_dir = os.path.basename(latest_dir_path)
+        type_ = "overview"
+    if summary_dirs_mtime[-1] > overview_dirs_mtime[-1]:
+        # if highest numbered mtp was modified last
+        latest_dir_path = summary_dirs_path[-1]
+        latest_dir = os.path.basename(latest_dir_path)
+        type_ = "summary"
+
+elif len(overview_dirs_path) > 0:
+    # if no summary files
     latest_dir_path = overview_dirs_path[-1]
     latest_dir = os.path.basename(latest_dir_path)
     type_ = "overview"
-if len(summary_dirs_path) > 0:
+elif len(summary_dirs_path) > 0:
+    # if no overview files
     latest_dir_path = summary_dirs_path[-1]
     latest_dir = os.path.basename(latest_dir_path)
     type_ = "summary"
+else:
+    print("Error: no directories")
 
 # get paths, make summary file dir
 # get MTP number from latest filename
