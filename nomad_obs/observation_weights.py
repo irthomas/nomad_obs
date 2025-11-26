@@ -42,9 +42,9 @@ OCCULTATION_WEIGHTS = [
     ["6SUBD Nominal #1"] * 8,  # H #121, 134, 149, 169, 186, 190
 
     ["6SUBD CO2 H2O #14"] * 8,  # H #121, 134, 148, 132, 165, 169
-    ["6SUBD CO2 H2O #13"] * 8,  # H
-    ["6SUBD CO2 H2O #12"] * 8,  # H
-    ["6SUBD CO2 H2O #11"] * 8,  # H
+    ["6SUBD CO2 H2O #13"] * 8,  # H. With CO not H2O
+    ["6SUBD CO2 H2O #12"] * 8,  # H. With CO not H2O
+    ["6SUBD CO2 H2O #11"] * 8,  # H. CO2 only
     ["6SUBD CO2 H2O CO #15"] * 8,  # H
     ["6SUBD CO2 CO #28"] * 8,  # H #co isotopes and temperature
     ["6SUBD CO2 #24"] * 8,  # H

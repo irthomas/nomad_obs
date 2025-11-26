@@ -88,7 +88,7 @@ occultationObservationDict = {
 
 
     # new MTP051+
-    "6SUBD CO2 H2O #11": [[121, 132, 148, 156, 160, 165], 4, 1, 16, 0],  # Proposed by Loic, priority High
+    "6SUBD CO2 H2O #11": [[121, 132, 148, 156, 160, 165], 4, 1, 16, 0],  # Proposed by Loic, priority High. No H2O?
     "6SUBD CO2 #12": [[156, 132, 118, 140, 154, 158], 4, 1, 16, 0],  # Proposed by Loic, priority Middle
     "6SUBD CO2 #13": [[156, 132, 118, 169, 154, 140], 4, 1, 16, 0],  # Proposed by Loic, priority Middle
     "6SUBD CO2 H2O #14": [[121, 134, 148, 132, 165, 169], 4, 1, 16, 0],  # Proposed by Loic, priority High
@@ -105,8 +105,8 @@ occultationObservationDict = {
     "6SUBD CO2 CO #25": [[156, 123, 118, 148, 186, 132], 4, 1, 16, 0],  # iso higher alt, priority Middle
     "6SUBD CO2 CO #26": [[197, 200, 177, 145, 186, 132], 4, 1, 16, 0],  # iso lower alt, priority Low: test
     "6SUBD CO2 CO #27": [[156, 123, 118, 148, 186, 132], 4, 1, 16, 0],  # mistake - same as #25 above
-    "6SUBD CO2 H2O #12": [[121, 132, 148, 156, 189, 165], 4, 1, 16, 0],  # Proposed by Loic, priority High
-    "6SUBD CO2 H2O #13": [[121, 132, 148, 156, 186, 165], 4, 1, 16, 0],  # Proposed by Loic, priority High
+    "6SUBD CO2 H2O #12": [[121, 132, 148, 156, 189, 165], 4, 1, 16, 0],  # Proposed by Loic, priority High. CO not H2O
+    "6SUBD CO2 H2O #13": [[121, 132, 148, 156, 186, 165], 4, 1, 16, 0],  # Proposed by Loic, priority High. CO not H2O
 
     "6SUBD CO #1": [[132, 183, 184, 185, 186, 187], 4, 1, 16, 0],  # Proposed by Shohei, priority Middle
     "6SUBD CO #2": [[123, 132, 183, 184, 185, 186], 4, 1, 16, 0],  # Proposed by Shohei, priority Middle
