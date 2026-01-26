@@ -23,7 +23,7 @@ from datetime import datetime
 
 from openpyxl import load_workbook
 
-mtpNumber = 101
+mtpNumber = 103
 
 # add the correct MTP info in obs_inputs
 mtpConstants = getMtpConstants(mtpNumber)
@@ -111,6 +111,7 @@ for obs_type, dictionary_data in cop_summary_dict.items():
     if not os.path.exists(summary_row_path):
         if dictionary_data["xlsx_filename"] != "none.xlsx":
             print("########WARNING: %s does not exist#############" % summary_row_path)
+            continue
 
     else:
         wb = load_workbook(summary_row_path, data_only=True)
@@ -283,10 +284,11 @@ for obs_type, dictionary_data in cop_summary_dict.items():
         data_rates_dict[obs_type]["uvis_cumul_data_rates"] = np.asarray(uvis_cumul_data_rates)
 
     if len(data_rates_dict[obs_type]["ir_cumul_data_rates"]) > 0:
-        print(obs_type, ":", data_rates_dict[obs_type]["ir_cumul_data_rates"][-1] / 1.0e6)
+        print(obs_type, ":", data_rates_dict[obs_type]["ir_cumul_data_rates"][-1] / 1.0e6, "Gbits")
         dv_total += data_rates_dict[obs_type]["ir_cumul_data_rates"][-1] / 1.0e6
 
-print("Total MTP data volume:", dv_total)
+print("Total MTP data volume:", dv_total, "Gbits")
+print("Note that SINBAD (0.3 Gbit/STP) is not included here")
 # stop()
 
 

@@ -15,8 +15,8 @@ KERNEL_FTP = "spiftp.esac.esa.int"
 KERNEL_FTP_PATH = "/data/SPICE/ExoMars2016/kernels"
 
 
-ops = True  # for operations
-# ops = False  # for planning
+# ops = True  # for operations
+ops = False  # for planning
 
 
 if platform.system() == "Windows":

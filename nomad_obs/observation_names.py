@@ -29,6 +29,8 @@ Created on Wed Oct 18 13:56:09 2017
         
     Next patching: 
         Check online spreadsheet
+        Test LNO with 132 rows for main obs types, avoiding detector line 220
+        
         
 
 """

@@ -52,7 +52,7 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 102
+mtpNumber = 103
 
 # global orbitList
 
@@ -188,10 +188,10 @@ MAKE_FIGURES = True
 # MAKE_FIGURES = False
 
 
-def run_planning(mtpNumber):
+# def run_planning(mtpNumber):
 
-    global orbitList
-
+#     global orbitList
+if True:
     # START PROGRAM HERE
     print("### Planning observations for MTP %i ###" % mtpNumber)
     orbitList = []
@@ -281,8 +281,8 @@ def run_planning(mtpNumber):
         # writeCalibrationWebpage(paths)
 
 
-if __name__ == "__main__":
-    run_planning(mtpNumber)
+# if __name__ == "__main__":
+#     run_planning(mtpNumber)
 
 # CALIBRATION FILE MUST BE FILLED IN MANUALLY. USE VALUES FROM SOLAR_CALIBRATIONS.XLSX FILE FOR MINISCANS/FULLSCANS. SEE PREVIOUS MTPS FOR EXAMPLES.
 # THIS AND THE OTHER IR COP ROWS SHOULD BE CHECKED (COMPARE TO SUMMARY FILES FROM BOJAN/CLAUDIO), PARTICULARLY TIMINGS AND NUMBER OF ROWS IN FILES
