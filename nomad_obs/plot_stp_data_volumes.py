@@ -23,7 +23,7 @@ from datetime import datetime
 
 from openpyxl import load_workbook
 
-mtpNumber = 103
+mtpNumber = 104
 
 # add the correct MTP info in obs_inputs
 mtpConstants = getMtpConstants(mtpNumber)

@@ -185,14 +185,29 @@ def writeOccultationWebpage(orbit_list, mtpConstants, paths, make_figures=True):
         plt.close()
 
     # save to local hdf5
-    # TODO: do this better to check for duplicates etc.
+    # TODO: do this better to check for duplicates etc. Allow appending to file
     with h5py.File("planning.h5", "a") as h5:
-        occ_group = h5.create_group("occultations")
+        if "occultations" not in h5.keys():
+            occ_group = h5.create_group("occultations")
+            exists = False
+        else:
+            occ_group = h5["occultations"]
+            exists = True
+
         for key in values_dict.keys():
             if isinstance(values_dict[key][0], str):
-                array = np.asarray(values_dict[key], dtype=h5py.string_dtype())
+                if exists:
+                    array = np.asarray(np.concatenate((h5["occultations"][key][...], np.asarray(
+                        values_dict[key], dtype=h5py.string_dtype()))), dtype=h5py.string_dtype())
+                else:
+                    array = np.asarray(values_dict[key], dtype=h5py.string_dtype())
             else:
-                array = np.asarray(values_dict[key])
+                if exists:
+                    array = np.asarray(np.concatenate((h5["occultations"][key][...], np.asarray(values_dict[key]))), dtype=h5py.string_dtype())
+                else:
+                    array = np.asarray(values_dict[key])
+            if exists:
+                del occ_group[key]
             occ_group[key] = array
 
     # save to local sqlite db

@@ -48,6 +48,9 @@ __contact__ = "ian . thomas AT aeronomie . be"
 # name:[[orders], int time, rhythm, lines, so=0/lno=1]
 occultationObservationDict = {
 
+    # new MTP104+
+    "168 only #1": [[168, 168, 168, 168, 168, 168], 4, 1, 16, 0],  # 168 only for Shohei
+
     # new MTP093+
     "6SUBD DetLim #1": [[116, 129, 132, 170, 185, 196], 4, 1, 16, 0],  # Loïc detection limits
     "6SUBD CO2 HCl #1": [[129, 129, 132, 129, 148, 165], 4, 1, 16, 0],  # CO2 altitudes with HCL for HCL / EUVM campaign
@@ -293,6 +296,14 @@ occultationObservationDict = {
 # name:[[orders], int time, rhythm, lines, channel (not used)]
 nadirObservationDict = {
 
+    # new MTP104+
+    "H2O CO 3SUBD #3": [[167, 190, 191], 205, 15, 144, 1],  # François water and CO
+    "H2O CO 2SUBD #2": [[169, 191], 200, 15, 144, 1],  # François water and CO
+    "H2O CO 2SUBD #3": [[169, 189], 200, 15, 144, 1],  # François water and CO
+    # old but reintroduced
+    "CO 2SUBD 02": [[167, 189], 200, 15, 144, 1],
+
+
     # new MTP093+
     "H2O 3SUBD #1": [[167, 168, 169], 205, 15, 144, 1],  # François all water orders
     "CO 2SUBD #1": [[189, 190], 200, 15, 144, 1],  # François both CO orders
@@ -389,7 +400,6 @@ nadirObservationDict = {
     # old
     "HDO CO 3SUBD 01": [[167, 121, 190], 205, 15, 144, 1],
     "H2O CO 2SUBD 01": [[168, 189], 200, 15, 144, 1],
-    "CO 2SUBD 02": [[167, 189], 200, 15, 144, 1],
 
     "CO2 Fullscan": [["COP#144"], 0, 15, 144, 1],
     "CO Fullscan": [["COP#124"], 0, 15, 144, 1],
