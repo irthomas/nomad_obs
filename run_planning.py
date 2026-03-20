@@ -52,7 +52,7 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 104
+mtpNumber = 105
 
 # global orbitList
 
@@ -64,10 +64,10 @@ run spice_kernel_downloader.py ensuring that it is in planning mode
 * Extract the zip files to the folder tmp e.g. tmp/MTP101_overview_20251021
 * Run nomad_obs.organise_extracted_inputs.py to put the inputs in the correct folders
 
-If CaSSIS joint limbs:
+If CaSSIS joint limbs, copy file and place here:
 summary_files\mtp0xx\NOMAD_TRUE_LIMB_ORBITS_OT28_WITH_UVIS_NADIR_LOS_TOWARDS_LIMB.txt (if exists)
 
-If CaSSIS joint nadir obs, check the google doc table:
+If CaSSIS joint nadir obs, check the google doc table (not done now):
 Find NOMAD thermal orbit numbers (compare CaSSIS UTCs to rows in nadir_dayside_nightside_thermal_orbits_orbit_type_summary.txt)
 Sort orbit numbers in ascending order, add to required_dayside_orbits in nomad_obs/mtp_inputs.py
 
@@ -266,10 +266,10 @@ if True:
         printStatement("Writing joint observation number files for specific objectives")
         writeObjectiveOrbitNumbers(orbitList, mtpConstants, paths, "LNO", "irDayside", "H2O")
 
-    printStatement("Writing mtp occultation webpage")
+    printStatement("Writing mtp occultation webpage and updating SQL database")
     writeOccultationWebpage(orbitList, mtpConstants, paths, make_figures=MAKE_FIGURES)  # also updates sql
-    printStatement("Writing mtp nadir webpage")
-    writeNadirWebpage(orbitList, mtpConstants, paths, make_figures=MAKE_FIGURES)  # also updates sql
+    printStatement("Writing mtp nadir webpage and updating SQL/H5 databases")
+    writeNadirWebpage(orbitList, mtpConstants, paths, make_figures=MAKE_FIGURES)  # also updates sql, plus h5 planning dbs for both occ and nadir
 
     if MAKE_FIGURES:
         printStatement("Making order plots and writing mtp overview page")

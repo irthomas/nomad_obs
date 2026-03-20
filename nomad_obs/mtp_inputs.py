@@ -1006,13 +1006,14 @@ def getMtpConstants(mtpNumber):
         stp_data_volumes = [25, 25, 25, 25]  # GBit # add if required
 
     elif mtpNumber == 105:
-        mtpStart = ""  # EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = ""  # EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2026-04-11T14:53:20Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2026-05-09T12:30:23Z"  # EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20250510_113000"  # desired cop table folder - remember to update if patched
-        forbidden_dayside_orbits = []  # input these from the email
+        forbidden_dayside_orbits = [5, 6, 18, 19, 30, 31, 78, 79, 85, 86, 92, 93, 96, 97, 110, 131, 132, 149,
+                                    171, 177, 183, 200, 201, 202, 203, 250, 256, 257, 317, 319, 327]  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 440  # seconds required for precooling
-        stp_data_volumes = []  # GBit # add if required
+        stp_data_volumes = [43, 43, 43, 43]  # GBit # add if required
 
     elif mtpNumber == 106:
         mtpStart = ""  # EXMGEO_TD2N start time as specified by Bojan or Claudio

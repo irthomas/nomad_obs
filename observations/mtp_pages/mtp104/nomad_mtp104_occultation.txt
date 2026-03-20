@@ -1,4 +1,4 @@
-Instrument	Orbit Number	MTP Number	Occultation Type	UTC Start Time	UTC Transition Time	UTC End Time	Duration (s)	Start Longitude	50km Longitude	End Longitude	Start Latitude	50km Latitude	End Latitude	50km Local Time (hrs)	Orbit Type	IR Observation Name	IR Description	UVIS Description	Orbit Comment	
+Instrument	MTP Orbit Number	MTP Number	Occultation Type	UTC Start Time	UTC Transition Time	UTC End Time	Duration	Start Longitude	50km Longitude	End Longitude	Start Latitude	50km Latitude	End Latitude	50km Local Time	Orbit Type	IR Observation Name	IR Description	UVIS Description	Orbit Comment	
 N/A	1	104	Ingress	2026 MAR 14 14:39:44	2026 MAR 14 14:45:21	2026 MAR 14 14:46:38	414.00	-1.10	-12.23	-15.63	30.85	44.47	47.67	16.39	14	-	-	-		
 N/A	1	104	Egress	2026 MAR 14 15:13:54	2026 MAR 14 15:15:11	2026 MAR 14 15:20:52	418.00	-161.64	-163.82	-171.99	28.89	25.43	11.02	6.76	14	-	-	-		
 NOMAD	2	104	Ingress	2026 MAR 14 16:37:48	2026 MAR 14 16:43:24	2026 MAR 14 16:44:41	413.00	-30.02	-41.19	-44.62	31.18	44.73	47.93	16.37	1	Fullscan fast step4 all #1	Diffraction order stepping (fullscan): 11 orders from 124 to 168 in steps of 4 (6 order(s) per 1 second(s))	COP row -1: 		

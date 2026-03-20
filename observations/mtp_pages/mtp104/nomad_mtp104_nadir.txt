@@ -1,4 +1,4 @@
-Orbit Index	MTP Number	Nadir Type	UTC Start Time	UTC Centre Time	UTC End Time	Duration (s)	Start Longitude	Centre Longitude	End Longitude	Start Latitude	Centre Latitude	End Latitude	Centre Incidence Angle	Centre Local Time (hrs)	Orbit Type	IR Observation Name	IR Description	UVIS Description	Orbit Comment	
+MTP Orbit Number	MTP Number	Nadir Type	UTC Start Time	UTC Centre Time	UTC End Time	Duration	Start Longitude	Centre Longitude	End Longitude	Start Latitude	Centre Latitude	End Latitude	Centre Incidence Angle	Centre Local Time	Orbit Type	IR Observation Name	IR Description	UVIS Description	Orbit Comment	
 1	104	Nightside	2026 MAR 14 14:30:19	2026 MAR 14 15:00:06	2026 MAR 14 15:29:53	3573.47	11.67	127.18	177.09	9.52	72.83	-9.74	126.98	1.92	14	-	-	-		
 1	104	Dayside	2026 MAR 14 15:29:53	2026 MAR 14 15:59:09	2026 MAR 14 16:28:24	3511.68	177.09	-66.05	-17.22	-9.74	-72.58	9.92	53.00	13.99	14	-		COP row -1: 		
 2	104	Nightside	2026 MAR 14 16:28:24	2026 MAR 14 16:58:11	2026 MAR 14 17:27:57	3573.00	-17.22	99.27	148.20	9.92	72.61	-10.14	127.04	1.97	1	-	-	-		
