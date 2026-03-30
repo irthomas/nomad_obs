@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Created on Mon Jun  3 09:56:19 2024
@@ -8,9 +9,9 @@ Created on Mon Jun  3 09:56:19 2024
 import os
 import sys
 import platform
+import posixpath
 import ftplib
 import hashlib
-import posixpath
 
 import smtplib
 from email.message import EmailMessage
@@ -19,28 +20,27 @@ from email.message import EmailMessage
 
 if platform.system() == "Windows":
     sys.path.append(r"X:\projects\NOMAD\Science\nomad-level1-pipeline")
-    LOCAL_PATH = r"C:\Users\iant\Documents\DATA\temp\operations_ftp"
+    LOCAL_PATH = r"C:\Users\iant\Documents\DATA\temp\operations_webdav"
 elif platform.system() == "Linux":
     sys.path.append(r"/bira-iasb/projects/NOMAD/Science/nomad-level1-pipeline/")
-    LOCAL_PATH = r"/bira-iasb/projects/NOMAD/Science/Planning/operations_ftp/"
+    LOCAL_PATH = r"/bira-iasb/projects/NOMAD/Science/Planning/operations_webdav/"
 
 from nomad_ops.core.tools.passwords import passwords
 
 SC_FTP_ADR = "ftp-ae.oma.be"
 SC_FTP_USR = "nomad"
 SC_FTP_PWD = passwords["nomad_ftp"]
-
 FTP_PATH = r"/Operations/nomad_ops"
 
 EMAIL_RECIPIENTS = [
-    # "ian.thomas@aeronomie.be",
+    "ian.thomas@aeronomie.be",
     # "bojan.ristic@aeronomie.be",
     # "claudio.queirolo@aeronomie.be",
     # "nomad@aeronomie.be",
     # "nomad.iops@aeronomie.be",
-    "nomad-ops@lists.aeronomie.be"
+    # "nomad-ops@lists.aeronomie.be"
 ]
-EMAIL_SUBJECT = "[NOMAD OPS]: new files are available on the FTP"
+EMAIL_SUBJECT = "[NOMAD OPS]: new files are available on WebDAV"
 
 
 def open_ftp(server_address, username, password):
@@ -76,6 +76,7 @@ def dir_list(ftp_conn, path):
     return (dirs, files)
 
 
+
 def ftp_walk(ftp_conn, path):
     # Recursively scan FTP starting from path
     (dirs, files) = dir_list(ftp_conn, path)
@@ -84,7 +85,6 @@ def ftp_walk(ftp_conn, path):
         path = posixpath.join(path, i)
         yield from ftp_walk(ftp_conn, path)
         path = posixpath.dirname(path)
-
 
 def get_remote_list(ftp_conn, path):
     # Return a flat list containing all paths present on the FTP
@@ -96,12 +96,10 @@ def get_remote_list(ftp_conn, path):
 
     return file_list
 
-
 def get_ftp_md5(ftp, remote_path):
     m = hashlib.md5()
     ftp.retrbinary('RETR %s' % remote_path, m.update)
     return m.hexdigest()
-
 
 def make_local_path(remote_path):
 
@@ -131,13 +129,12 @@ def get_ftp_file_dict():
     return ftp_file_dict
 
 
-def copy_file_from_ftp(remote_path, local_path):
+def download_file(remote_path, local_path):
     ftp_conn = open_ftp(SC_FTP_ADR, SC_FTP_USR, SC_FTP_PWD)
 
     print("Copying file from %s to %s" % (remote_path, local_path))
     with open(local_path, 'wb') as f:
         ftp_conn.retrbinary('RETR %s' % remote_path, f.write)
-
 
 def get_orbit_plan_path(mtp):
 
