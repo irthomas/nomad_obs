@@ -4,10 +4,10 @@ Created on Mon Apr 27 12:31:24 2020
 
 @author: iant
 """
-import numpy as np
+# import numpy as np
 import os
 import matplotlib.pyplot as plt
-
+# import h5py
 
 from nomad_obs.config.constants import SO_TRANSITION_ALTITUDE, ACCEPTABLE_MTP_OCCULTATION_TIME_ERROR
 from nomad_obs.config.constants import FIG_X, FIG_Y
@@ -35,12 +35,13 @@ def writeOccultationWebpage(orbit_list, mtpConstants, paths, make_figures=True):
             return "-"
 
     alt = "%0.0fkm" % SO_TRANSITION_ALTITUDE
-    htmlHeader = ["Instrument", "Orbit Number", "Occultation Type", "UTC Start Time", "UTC Transition Time", "UTC End Time", "Duration (s)",
+    htmlHeader = ["Instrument", "MTP Orbit Number", "MTP Number", "Occultation Type", "UTC Start Time", "UTC Transition Time", "UTC End Time", "Duration",
                   "Start Longitude", alt+" Longitude", "End Longitude",
-                  "Start Latitude", alt+" Latitude", "End Latitude", alt+" Local Time (hrs)",
+                  "Start Latitude", alt+" Latitude", "End Latitude", alt+" Local Time",
                   "Orbit Type", "IR Observation Name", "IR Description", "UVIS Description", "Orbit Comment"]
     linesToWrite = ["".join(column+"\t" for column in htmlHeader)]
     sql_table_rows = []
+    values_dict = {s: [] for s in htmlHeader}
 
     occultationNames = ["ingress", "egress", "merged", "grazing"]
     irObsTypeNames = {"ingress": ["irIngressHigh", "irIngressLow"], "merged": ["irIngressHigh", "irIngressLow"],
@@ -98,6 +99,27 @@ def writeOccultationWebpage(orbit_list, mtpConstants, paths, make_figures=True):
 
                                orbitType, irObservationName, irDescription, uvisDescription, comment
                                ]
+                values_dict["Instrument"].append(occultation["primeInstrument"])
+                values_dict["MTP Orbit Number"].append(orbit["orbitNumber"])
+                values_dict["MTP Number"].append(mtpNumber)
+                values_dict["Occultation Type"].append(occultationName.capitalize())
+                values_dict["UTC Start Time"].append(occultation["utcStart"])
+                values_dict["UTC Transition Time"].append(occultation["utcTransition"])
+                values_dict["UTC End Time"].append(occultation["utcEnd"])
+                values_dict["Duration"].append(occultation["duration"])
+                values_dict["Start Longitude"].append(occultation["lonStart"])
+                values_dict["50km Longitude"].append(getValue("lonTransition"))
+                values_dict["End Longitude"].append(occultation["lonEnd"])
+                values_dict["Start Latitude"].append(occultation["latStart"])
+                values_dict["50km Latitude"].append(getValue("latTransition"))
+                values_dict["End Latitude"].append(occultation["latEnd"])
+                values_dict["50km Local Time"].append(getValue("lstTransition"))
+                values_dict["Orbit Type"].append(orbitType)
+                values_dict["IR Observation Name"].append(irObservationName)
+                values_dict["IR Description"].append(irDescription)
+                values_dict["UVIS Description"].append(uvisDescription)
+                values_dict["Orbit Comment"].append(comment)
+
                 linesToWrite.append("".join(str(element)+"\t" for element in lineToWrite))
                 sql_table_rows.append(lineToWrite)
 
@@ -161,8 +183,40 @@ def writeOccultationWebpage(orbit_list, mtpConstants, paths, make_figures=True):
         plt.savefig(os.path.join(paths["HTML_MTP_PATH"], "mtp%03d_occultation_lat.png" % mtpNumber))
         plt.close()
 
-    # save to local sqlite db
+    # save to local hdf5
+    # TODO: do this better to check for duplicates etc. Allow appending to file
+    # with h5py.File("planning.h5", "a") as h5:
+    #     if "occultations" not in h5.keys():
+    #         occ_group = h5.create_group("occultations")
+    #     #     exists = False
+    #     # else:
+    #     #     occ_group = h5["occultations"]
+    #     #     exists = True
 
+    #     for key in values_dict.keys():
+    #         if isinstance(values_dict[key][0], str):
+    #             # if exists:
+    #             #     array = np.asarray(np.concatenate((h5["occultations"][key][...], np.asarray(
+    #             #         values_dict[key], dtype=h5py.string_dtype()))), dtype=h5py.string_dtype())
+    #             # else:
+    #             array = list(values_dict[key])
+    #             key_str = key.replace(" ", "_")
+    #             if "description" in key.lower() or "name" in key.lower() or "comment" in key.lower():
+    #                 occ_group.create_dataset(key_str, (len(array), 1), "S500", data=array)
+    #             else:
+    #                 occ_group.create_dataset(key_str, (len(array), 1), "S50", data=array)
+
+    #         else:
+    #             # if exists:
+    #             #     array = np.asarray(np.concatenate((h5["occultations"][key][...], np.asarray(values_dict[key]))))
+    #             # else:
+    #             array = np.asarray(values_dict[key])
+    #         # if exists:
+    #         #     del occ_group[key]
+    #             key_str = key.replace(" ", "_")
+    #             occ_group[key_str] = array
+
+    # save to local sqlite db
     if not os.path.exists(SQLITE_PATH):
         print("Sqlite database doesn't exist: creating new file")
 

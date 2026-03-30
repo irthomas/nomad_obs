@@ -4,7 +4,8 @@ Created on Mon Apr 27 12:12:25 2020
 
 @author: iant
 """
-import spiceypy as sp
+import numpy as np
+# import spiceypy as sp
 
 # ignore missing files? E.g. when running very old MTPs without MRO overlap files
 # IGNORE_MISSING = True
@@ -20,7 +21,8 @@ SPICE_PRECISION = 0
 SPICE_SHAPE = "Ellipsoid"
 SPICE_OBSERVER = "-143"
 SPICE_REF = "IAU_MARS"
-SPICE_MARS_AXES = sp.bodvrd("MARS", "RADII", 3)[1]  # get mars axis values
+# SPICE_MARS_AXES = sp.bodvrd("MARS", "RADII", 3)[1]  # get mars axis values
+SPICE_MARS_AXES = np.array([3396.19, 3396.19, 3376.2])  # get mars axis values
 SPICE_DATETIME_FORMAT = "%Y %b %d %H:%M:%S"
 
 

@@ -1,0 +1,4 @@
+COP row,Obsevation Number,Pointing Type,Comments
+364,1,Line Scan (Spectral),# SO: Full Frame (135:205;0:1047) - Tint = 75 ms -16 bit - Rhythm = 3574 ms
+364,2,Line Scan (Spectral),# SO: Full Frame (135:205;0:1047) - Tint = 75 ms -16 bit - Rhythm = 3574 ms
+145,3,Mini-Scan,# NADIR: Full Frame (57:245;0:1047) - Tint = 15000 ms -16 bit - Rhythm = 31041 ms

@@ -928,24 +928,94 @@ def getMtpConstants(mtpNumber):
         stp_data_volumes = [31, 31, 31, 31]  # GBit # add if required
 
     elif mtpNumber == 97:
-        mtpStart = ""  # EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = ""  # EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2025-08-30T14:37:55Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2025-09-27T13:20:11Z"  # EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20250510_113000"  # desired cop table folder - remember to update if patched
-        forbidden_dayside_orbits = []  # input these from the email
+        forbidden_dayside_orbits = [2, 3, 5, 6, 17, 18, 26, 27, 85, 86, 154, 155, 162, 163, 168, 169,
+                                    171, 177, 178, 201, 207, 208, 219, 220, 234, 249, 256, 257]  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 440  # seconds required for precooling
-        stp_data_volumes = []  # GBit # add if required
+        stp_data_volumes = [30, 30, 30, 30]  # GBit # add if required
 
     elif mtpNumber == 98:
-        mtpStart = ""  # EXMGEO_TD2N start time as specified by Bojan or Claudio
-        mtpEnd = ""  # EXMGEO_TD2N end time as specified by Bojan or Claudio
+        mtpStart = "2025-09-27T15:18:12Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2025-10-25T13:36:16Z"  # EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20250510_113000"  # desired cop table folder - remember to update if patched
-        forbidden_dayside_orbits = []  # input these from the email
+        forbidden_dayside_orbits = [48, 54, 68, 69, 70, 71, 77, 85, 86, 91, 97, 103, 109, 110, 139, 140, 171, 201, 202,
+                                    216, 217, 222, 223, 234, 235, 246, 247, 256, 257, 286, 287, 303, 304, 316, 335]  # input these from the email
         required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
         occultation_precooling = 440  # seconds required for precooling
-        stp_data_volumes = []  # GBit # add if required
+        stp_data_volumes = [25, 25, 25, 25]  # GBit # add if required
 
     elif mtpNumber == 99:
+        mtpStart = "2025-10-25T15:34:16Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2025-11-22T12:32:25Z"  # EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20250510_113000"  # desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [18, 28, 29, 78, 79, 85, 86, 97, 110, 123, 124, 124, 125, 166, 171,
+                                    185, 211, 222, 252, 253, 255, 256, 261, 280, 298, 316, 317, 328]  # input these from the email
+        required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 440  # seconds required for precooling
+        stp_data_volumes = [25, 25, 25, 25]  # GBit # add if required
+
+    elif mtpNumber == 100:
+        mtpStart = "2025-11-22T14:30:26Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2025-12-20T12:45:48Z"  # EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20250510_113000"  # desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [29, 30, 30, 31, 67, 74, 85, 86, 123, 124, 136, 151, 152, 171, 186,
+                                    197, 198, 213, 214, 247, 250, 256, 257, 268, 287, 305, 317, 329]  # input these from the email
+        required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 440  # seconds required for precooling
+        stp_data_volumes = [25, 25, 25, 25]  # GBit # add if required
+
+    elif mtpNumber == 101:
+        mtpStart = "2025-12-20T14:43:45Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2025-12-27T11:49:05Z"  # EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20250510_113000"  # desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [7, 19, 55, 56, 73]  # input these from the email
+        required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 440  # seconds required for precooling
+        stp_data_volumes = [25, 0, 0, 0]  # GBit # add if required
+
+    elif mtpNumber == 102:
+        mtpStart = "2026-01-21T18:02:36Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2026-02-14T12:01:56Z"  # EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20250510_113000"  # desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [35, 36, 121, 128, 135, 141, 153, 206, 207, 212, 224, 249, 261, 266]  # input these from the email
+        required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 440  # seconds required for precooling
+        stp_data_volumes = [0, 25, 25, 25]  # GBit # add if required
+
+    elif mtpNumber == 103:
+        mtpStart = "2026-02-14T13:59:53Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2026-03-14T12:32:16Z"  # EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20250510_113000"  # desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [6, 7, 12, 25, 36, 37, 67, 68, 85, 86, 98, 125, 144, 149,
+                                    150, 171, 256, 257, 298, 299, 304, 305, 317, 323, 330]  # input these from the email
+        required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 440  # seconds required for precooling
+        stp_data_volumes = [20, 25, 25, 25]  # GBit # add if required
+
+    elif mtpNumber == 104:
+        mtpStart = "2026-03-14T14:30:20Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2026-04-11T12:55:24Z"  # EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20250510_113000"  # desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [85, 86, 139, 140, 158, 159, 164, 165, 171, 181, 182, 187, 188,
+                                    216, 217, 251, 252, 256, 257, 269, 281, 311, 312, 329, 330]  # input these from the email
+        required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 440  # seconds required for precooling
+        stp_data_volumes = [25, 25, 25, 25]  # GBit # add if required
+
+    elif mtpNumber == 105:
+        mtpStart = "2026-04-11T14:53:20Z"  # EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = "2026-05-09T12:30:23Z"  # EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20250510_113000"  # desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = [5, 6, 18, 19, 30, 31, 78, 79, 85, 86, 92, 93, 96, 97, 110, 131, 132, 149,
+                                    171, 177, 183, 200, 201, 202, 203, 250, 256, 257, 317, 319, 327]  # input these from the email
+        required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 440  # seconds required for precooling
+        stp_data_volumes = [43, 43, 43, 43]  # GBit # add if required
+
+    elif mtpNumber == 106:
         mtpStart = ""  # EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = ""  # EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20250510_113000"  # desired cop table folder - remember to update if patched
@@ -954,7 +1024,34 @@ def getMtpConstants(mtpNumber):
         occultation_precooling = 440  # seconds required for precooling
         stp_data_volumes = []  # GBit # add if required
 
-    elif mtpNumber == 100:
+    elif mtpNumber == 107:
+        mtpStart = ""  # EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = ""  # EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20250510_113000"  # desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = []  # input these from the email
+        required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 440  # seconds required for precooling
+        stp_data_volumes = []  # GBit # add if required
+
+    elif mtpNumber == 108:
+        mtpStart = ""  # EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = ""  # EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20250510_113000"  # desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = []  # input these from the email
+        required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 440  # seconds required for precooling
+        stp_data_volumes = []  # GBit # add if required
+
+    elif mtpNumber == 109:
+        mtpStart = ""  # EXMGEO_TD2N start time as specified by Bojan or Claudio
+        mtpEnd = ""  # EXMGEO_TD2N end time as specified by Bojan or Claudio
+        copVersion = "20250510_113000"  # desired cop table folder - remember to update if patched
+        forbidden_dayside_orbits = []  # input these from the email
+        required_dayside_orbits = []  # add if LNO needs to operate on certain orbits e.g. joint observations
+        occultation_precooling = 440  # seconds required for precooling
+        stp_data_volumes = []  # GBit # add if required
+
+    elif mtpNumber == 110:
         mtpStart = ""  # EXMGEO_TD2N start time as specified by Bojan or Claudio
         mtpEnd = ""  # EXMGEO_TD2N end time as specified by Bojan or Claudio
         copVersion = "20250510_113000"  # desired cop table folder - remember to update if patched

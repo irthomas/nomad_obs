@@ -29,6 +29,8 @@ Created on Wed Oct 18 13:56:09 2017
         
     Next patching: 
         Check online spreadsheet
+        Test LNO with 132 rows for main obs types, avoiding detector line 220
+        
         
 
 """
@@ -45,6 +47,9 @@ __contact__ = "ian . thomas AT aeronomie . be"
 """
 # name:[[orders], int time, rhythm, lines, so=0/lno=1]
 occultationObservationDict = {
+
+    # new MTP104+
+    "168 only #1": [[168, 168, 168, 168, 168, 168], 4, 1, 16, 0],  # 168 only for Shohei
 
     # new MTP093+
     "6SUBD DetLim #1": [[116, 129, 132, 170, 185, 196], 4, 1, 16, 0],  # Loïc detection limits
@@ -88,7 +93,7 @@ occultationObservationDict = {
 
 
     # new MTP051+
-    "6SUBD CO2 H2O #11": [[121, 132, 148, 156, 160, 165], 4, 1, 16, 0],  # Proposed by Loic, priority High
+    "6SUBD CO2 H2O #11": [[121, 132, 148, 156, 160, 165], 4, 1, 16, 0],  # Proposed by Loic, priority High. No H2O?
     "6SUBD CO2 #12": [[156, 132, 118, 140, 154, 158], 4, 1, 16, 0],  # Proposed by Loic, priority Middle
     "6SUBD CO2 #13": [[156, 132, 118, 169, 154, 140], 4, 1, 16, 0],  # Proposed by Loic, priority Middle
     "6SUBD CO2 H2O #14": [[121, 134, 148, 132, 165, 169], 4, 1, 16, 0],  # Proposed by Loic, priority High
@@ -105,8 +110,8 @@ occultationObservationDict = {
     "6SUBD CO2 CO #25": [[156, 123, 118, 148, 186, 132], 4, 1, 16, 0],  # iso higher alt, priority Middle
     "6SUBD CO2 CO #26": [[197, 200, 177, 145, 186, 132], 4, 1, 16, 0],  # iso lower alt, priority Low: test
     "6SUBD CO2 CO #27": [[156, 123, 118, 148, 186, 132], 4, 1, 16, 0],  # mistake - same as #25 above
-    "6SUBD CO2 H2O #12": [[121, 132, 148, 156, 189, 165], 4, 1, 16, 0],  # Proposed by Loic, priority High
-    "6SUBD CO2 H2O #13": [[121, 132, 148, 156, 186, 165], 4, 1, 16, 0],  # Proposed by Loic, priority High
+    "6SUBD CO2 H2O #12": [[121, 132, 148, 156, 189, 165], 4, 1, 16, 0],  # Proposed by Loic, priority High. CO not H2O
+    "6SUBD CO2 H2O #13": [[121, 132, 148, 156, 186, 165], 4, 1, 16, 0],  # Proposed by Loic, priority High. CO not H2O
 
     "6SUBD CO #1": [[132, 183, 184, 185, 186, 187], 4, 1, 16, 0],  # Proposed by Shohei, priority Middle
     "6SUBD CO #2": [[123, 132, 183, 184, 185, 186], 4, 1, 16, 0],  # Proposed by Shohei, priority Middle
@@ -291,6 +296,14 @@ occultationObservationDict = {
 # name:[[orders], int time, rhythm, lines, channel (not used)]
 nadirObservationDict = {
 
+    # new MTP104+
+    "H2O CO 3SUBD #3": [[167, 190, 191], 205, 15, 144, 1],  # François water and CO
+    "H2O CO 2SUBD #2": [[169, 191], 200, 15, 144, 1],  # François water and CO
+    "H2O CO 2SUBD #3": [[169, 189], 200, 15, 144, 1],  # François water and CO
+    # old but reintroduced
+    "CO 2SUBD 02": [[167, 189], 200, 15, 144, 1],
+
+
     # new MTP093+
     "H2O 3SUBD #1": [[167, 168, 169], 205, 15, 144, 1],  # François all water orders
     "CO 2SUBD #1": [[189, 190], 200, 15, 144, 1],  # François both CO orders
@@ -387,7 +400,6 @@ nadirObservationDict = {
     # old
     "HDO CO 3SUBD 01": [[167, 121, 190], 205, 15, 144, 1],
     "H2O CO 2SUBD 01": [[168, 189], 200, 15, 144, 1],
-    "CO 2SUBD 02": [[167, 189], 200, 15, 144, 1],
 
     "CO2 Fullscan": [["COP#144"], 0, 15, 144, 1],
     "CO Fullscan": [["COP#124"], 0, 15, 144, 1],

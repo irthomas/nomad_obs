@@ -14,136 +14,220 @@ ALLOCATE WEIGHTS TO EACH OBSERVATION NAME FOR EACH OBSERVATION TYPE
 import numpy as np
 OCCULTATION_WEIGHTS = [
 
-    # new MTP093+
-    ["6SUBD DetLim #1"] * 16,  # orders 116, 129, 132, 170, 185, 196 for LT, priority high for MTPs 93-96
+    # new MTP104+
+    ["168 only #1"] * 16,  # 168 only SA
+
+    # new ordering MTP103+
+    ["6SUBD CO2 H2O #14"] * 8,  # 121, 134, 148, 132, 165, 169
+
+    ["6SUBD Nominal #42"] * 6,  # 121, 134, 169, 129, 149, 165
+    ["6SUBD Nominal #45"] * 6,  # 121, 136, 169, 129, 149, 165
+    ["6SUBD Nominal #48"] * 6,  # 121, 134, 129, 169, 186, 190
+    ["6SUBD Nominal #51"] * 6,  # 121, 136, 129, 169, 186, 190
+    ["6SUBD Nominal #52"] * 6,  # 121, 134, 169, 129, 148, 165
+    ["6SUBD Nominal #53"] * 6,  # 121, 136, 169, 129, 148, 165
+
+    ["6SUBD CO2 #23"] * 5,  # 186, 190, 132, 148, 156, 165
+    ["6SUBD CO2 #24"] * 5,  # 186, 190, 132, 148, 155, 165
+    ["6SUBD Nominal #1"] * 5,  # 121, 134, 126, 129, 169, 190
+    ["6SUBD Nominal #54"] * 5,  # 121, 134, 148, 169, 186, 190
+    ["Fullscan fast step4 all #1"] * 5,  # 124(128)-168
+
+    ["6SUBD CO #1"] * 4,  # 132, 183, 184, 185, 186, 187
+    ["6SUBD DetLim #1"] * 4,  # 116, 129, 132, 170, 185, 196
+    ["All Fullscan Fast #2"] * 4,
+    ["6SUBD Nominal #2"] * 4,  # 119, 136, 149, 169, 186, 189
+    ["CO2 Fullscan Fast #5"] * 4,  # 140(141)-150
+
+    ["6SUBD CO2 #19"] * 3,  # 123, 132, 142, 148, 156, 165
+    ["6SUBD CO2 H2O #11"] * 3,  # 121, 132, 148, 156, 160, 165
+    ["6SUBD CO2 H2O #12"] * 3,  # 121, 132, 148, 156, 189, 165
+    ["6SUBD CO2 H2O #13"] * 3,  # 121, 132, 148, 156, 186, 165
+    ["6SUBD Nominal #11"] * 3,
+    ["6SUBD Nominal #12"] * 3,
+    ["6SUBD CH4 H2O #1"] * 3,
+    ["6SUBD CH4 H2O #1"] * 3,
+    ["6SUBD CO #6"] * 3,
+    ["6SUBD CO2 Dipole #1"] * 3,
+    ["6SUBD HCL H20 #1"] * 3,
+    ["CO2 Fullscan Fast #2"] * 3,
+    ["CO2 Fullscan Fast #3"] * 3,
+    ["Fullscan fast step5 all #1"] * 3,
+    ["HCL #10"] * 3,
+    ["LNO Occultation Fullscan Fast #2"] * 3,
+
+    ["Dust H2O 01"] * 2,
+    ["179 only #2"] * 2,
+    ["6SUBD CO2 CO #25"] * 2,
+    ["6SUBD CO2 CO #27"] * 2,
+    ["6SUBD CO2 CO #28"] * 2,
+    ["6SUBD CO2 CO #29"] * 2,
+    ["6SUBD Nom CH4 #2"] * 2,
+    ["6SUBD Nom CO #7"] * 2,
+    ["6SUBD Nom CO2 #1"] * 2,
+    ["CO Fullscan Fast #2"] * 2,
+    ["CO2 Fullscan Fast #4"] * 2,
+
+    ["6SUBD CO #2"] * 0,
+    ["6SUBD CO #3"] * 0,
+    ["6SUBD CO2 #13"] * 0,
+    ["6SUBD CO2 #18"] * 0,
+    ["6SUBD CO2 #21"] * 0,
+    ["6SUBD CO2 CO #34"] * 0,
+    ["6SUBD CO2 H2O CO #15"] * 0,
+    ["6SUBD Nom CO #1"] * 0,
+    ["6SUBD Nom CO #6"] * 0,
+
+    # to be patched
+    # 147, 148, 149, 147, 148, 149	Temperature mesosphere
+    # 132, 185, 186, 132, 185, 186
+    # 168, 168, 168, 168, 168, 168	High altitude water (proposed by Shohei)
+    # 124, 137, 196, 146, 170, 196	CO2 low altitudes
+
+
 
     # only for southern summer
     # ["179 only #2"] * 1,  # order 179 only, priority v high only during southern summer MTPs 80-82 (HF search)
 
     # new MTP073+
-    ["Fullscan fast step4 all #1"] * 8,  # 124(128)-168, priority v high
-    ["Fullscan fast step5 all #1"] * 8,  # 114(119)-189, priority v high
+    # ["Fullscan fast step4 all #1"] * 8,  # 124(128)-168, priority high
+    # ["Fullscan fast step5 all #1"] * 8,  # 114(119)-189, priority high
 
-    # new MTP073+
-    ["6SUBD Nominal #54"] * 8,  # Nominal with 148, priority high
-    ["6SUBD CO2 CO #34"] * 8,  # T, CO2 iso low, CO low, priority high
-    ["6SUBD CO #6"] * 8,  # CO iso + Temp, priority high
+    # # new MTP073+
+    # ["6SUBD Nominal #54"] * 8,  # Nominal with 148, priority high
+    # ["6SUBD CO2 CO #34"] * 8,  # T, CO2 iso low, CO low, priority high
+    # ["6SUBD CO #6"] * 8,  # CO iso + Temp, priority high
 
-    ["CO2 Fullscan Fast #5"] * 8,  # CO2 orders 141-150, priority high for GL
+    # ["CO2 Fullscan Fast #5"] * 8,  # CO2 orders 141-150, priority high for GL
 
 
-    # after prioritisation exercise
-    ["6SUBD Nominal #53"] * 8,  # H #148 instead of 149 #121, 136, 169, 129, 148, 165
-    ["6SUBD Nominal #52"] * 8,  # H #148 instead of 149 #121, 134, 169, 129, 148, 165
-    ["6SUBD Nominal #51"] * 8,  # H #nominal + 129 #121, 136, 129, 169, 186, 190
-    ["6SUBD Nominal #48"] * 8,  # H #nominal + 129 #121, 134, 129, 169, 186, 190
-    ["6SUBD Nominal #45"] * 8,  # H #nominal + 129 #121, 136, 169, 129, 149, 165
-    ["6SUBD Nominal #42"] * 8,  # H #nominal + 129 #121, 134, 169, 129, 149, 165
-    ["6SUBD Nominal #12"] * 8,  # H #nominal + 126/129 #121, 134, 127, 129, 169, 190
-    ["6SUBD Nominal #2"] * 8,  # H #119, 136, 149, 169, 186, 189
-    ["6SUBD Nominal #1"] * 8,  # H #121, 134, 149, 169, 186, 190
+    # # after prioritisation exercise
+    # ["6SUBD Nominal #53"] * 8,  # H #148 instead of 149 #121, 136, 169, 129, 148, 165
+    # ["6SUBD Nominal #52"] * 8,  # H #148 instead of 149 #121, 134, 169, 129, 148, 165
+    # ["6SUBD Nominal #51"] * 8,  # H #nominal + 129 #121, 136, 129, 169, 186, 190
+    # ["6SUBD Nominal #48"] * 8,  # H #nominal + 129 #121, 134, 129, 169, 186, 190
+    # ["6SUBD Nominal #12"] * 8,  # H #nominal + 126/129 #121, 134, 127, 129, 169, 190
+    # ["6SUBD Nominal #2"] * 8,  # H #119, 136, 149, 169, 186, 189
+    # ["6SUBD Nominal #1"] * 8,  # H #121, 134, 149, 169, 186, 190
 
-    ["6SUBD CO2 H2O #14"] * 8,  # H #121, 134, 148, 132, 165, 169
-    ["6SUBD CO2 H2O #13"] * 8,  # H
-    ["6SUBD CO2 H2O #12"] * 8,  # H
-    ["6SUBD CO2 H2O #11"] * 8,  # H
-    ["6SUBD CO2 H2O CO #15"] * 8,  # H
-    ["6SUBD CO2 CO #28"] * 8,  # H #co isotopes and temperature
-    ["6SUBD CO2 #24"] * 8,  # H
-    ["6SUBD CO2 #23"] * 8,  # H
-    ["6SUBD CO2 #19"] * 8,  # H
+    # ["6SUBD CO2 H2O #13"] * 8,  # H. With CO not H2O
+    # ["6SUBD CO2 H2O #12"] * 8,  # H. With CO not H2O
+    # ["6SUBD CO2 H2O #11"] * 8,  # H. CO2 only
+    # ["6SUBD CO2 H2O CO #15"] * 8,  # H
+    # ["6SUBD CO2 CO #28"] * 8,  # H #co isotopes and temperature
+    # ["6SUBD CO2 #24"] * 8,  # H
+    # ["6SUBD CO2 #23"] * 8,  # H
+    # ["6SUBD CO2 #19"] * 8,  # H
 
-    ["6SUBD Nom CO #7"] * 8,  # H #Mike Smith orders 148+186 together
-    ["6SUBD Nom CO #6"] * 8,  # H #Mike Smith orders 148+186 together
-    ["6SUBD CO #1"] * 8,  # H #Shohei
+    # ["6SUBD Nom CO #7"] * 8,  # H #Mike Smith orders 148+186 together
+    # ["6SUBD Nom CO #6"] * 8,  # H #Mike Smith orders 148+186 together
+    # ["6SUBD CO #1"] * 8,  # H #Shohei
 
-    ["Dust H2O 01"] * 8,  # H
+    # ["Dust H2O 01"] * 8,  # H
 
 
 
 
 
-    # after prioritisation exercise
-    ["6SUBD Nom CO #1"] * 4,  # M
+    # # after prioritisation exercise
+    # ["6SUBD Nom CO #1"] * 4,  # M
 
-    ["6SUBD CO2 CO #29"] * 4,  # M #co isotopes and temperature
-    ["6SUBD CO2 CO #27"] * 4,  # M
-    ["6SUBD CO2 CO #25"] * 4,  # M
-    ["6SUBD CO #2"] * 4,  # M
+    # ["6SUBD CO2 CO #29"] * 4,  # M #co isotopes and temperature
+    # ["6SUBD CO2 CO #27"] * 4,  # M
+    # ["6SUBD CO2 CO #25"] * 4,  # M
+    # ["6SUBD CO #2"] * 4,  # M
 
-    ["HCL #10"] * 4,  # M #all HCL
+    # ["HCL #10"] * 4,  # M #all HCL
 
-    ["CO Fullscan Fast #2"] * 4,  # M 185-195
-
-
+    # ["CO Fullscan Fast #2"] * 4,  # M 185-195
 
 
+    # # new MTP093+
+    # ["6SUBD DetLim #1"] * 2,  # orders 116, 129, 132, 170, 185, 196 for LT, priority high for MTPs 93-99, then low
 
 
+    # # after prioritisation exercise
+    # ["6SUBD Nominal #11"] * 2,  # L #nominal + 126/129 #121, 134, 126, 129, 169, 190
+    # ["6SUBD Nom CO2 #1"] * 2,  # L #121, 134, 149, 164, 165, 169
+    # ["6SUBD Nom CH4 #2"] * 2,  # L #134, 136, 164, 169, 186, 190
 
+    # ["6SUBD CO2 #18"] * 2,  # L
+    # ["6SUBD CO2 #13"] * 2,  # L
+    # ["6SUBD CO2 #21"] * 2,  # L
+    # ["6SUBD CO2 Dipole #1"] * 2,  # L
 
+    # ["6SUBD CO #3"] * 2,  # L
+    # ["6SUBD CH4 H2O #1"] * 2,  # L #169, 132, 133, 134, 136, 137
 
-    # after prioritisation exercise
-    ["6SUBD Nominal #11"] * 2,  # L #nominal + 126/129 #121, 134, 126, 129, 169, 190
-    ["6SUBD Nom CO2 #1"] * 2,  # L #121, 134, 149, 164, 165, 169
-    ["6SUBD Nom CH4 #2"] * 2,  # L #134, 136, 164, 169, 186, 190
+    # ["All Fullscan Fast #2"] * 2,  # L all
+    # ["All Fullscan Slow #2"] * 2,  # L all
+    # ["LNO Occultation Fullscan Fast #2"] * 2,  # L all
 
-    ["6SUBD CO2 #18"] * 2,  # L
-    ["6SUBD CO2 #13"] * 2,  # L
-    ["6SUBD CO2 #21"] * 2,  # L
-    ["6SUBD CO2 Dipole #1"] * 2,  # L
-
-    ["6SUBD CO #3"] * 2,  # L
-    ["6SUBD CH4 H2O #1"] * 2,  # L #169, 132, 133, 134, 136, 137
-
-    ["All Fullscan Fast #2"] * 2,  # L all
-    ["All Fullscan Slow #2"] * 2,  # L all
-    ["LNO Occultation Fullscan Fast #2"] * 2,  # L all
-
-    ["CO2 Fullscan Fast #2"] * 2,  # L 160-170
-    ["CO2 Fullscan Fast #3"] * 2,  # L 125-135
-    ["CO2 Fullscan Fast #4"] * 2,  # L 165-175
+    # ["CO2 Fullscan Fast #2"] * 2,  # L 160-170
+    # ["CO2 Fullscan Fast #3"] * 2,  # L 125-135
+    # ["CO2 Fullscan Fast #4"] * 2,  # L 165-175
 ]
 
 
 OCCULTATION_MERGED_WEIGHTS = [
+
+    ["6SUBD CO2 H2O #14"] * 8,
+
+    ["6SUBD Nominal #42"] * 6,
+    ["6SUBD Nominal #45"] * 6,
+    ["6SUBD Nominal #48"] * 6,
+    ["6SUBD Nominal #51"] * 6,
+    ["6SUBD Nominal #52"] * 6,
+    ["6SUBD Nominal #53"] * 6,
+
     # new MTP073+
-    ["6SUBD Nominal #54"] * 8,  # Nominal with 148, priority high
+    # ["6SUBD Nominal #54"] * 8,  # Nominal with 148, priority high
 
-    ["6SUBD Nominal #53"] * 8,  # H #148 instead of 149
-    ["6SUBD Nominal #52"] * 8,  # H #148 instead of 149
-    ["6SUBD Nominal #51"] * 8,  # H #nominal + 129
-    ["6SUBD Nominal #48"] * 8,  # H #nominal + 129
-    ["6SUBD Nominal #45"] * 8,  # H #nominal + 129
-    ["6SUBD Nominal #42"] * 8,  # H #nominal + 129
-    ["6SUBD Nominal #12"] * 8,  # H #nominal + 126/129
-    ["6SUBD Nominal #2"] * 8,  # H
-    ["6SUBD Nominal #1"] * 8,  # H
+    # ["6SUBD Nominal #53"] * 8,  # H #148 instead of 149
+    # ["6SUBD Nominal #52"] * 8,  # H #148 instead of 149
+    # ["6SUBD Nominal #51"] * 8,  # H #nominal + 129
+    # ["6SUBD Nominal #48"] * 8,  # H #nominal + 129
+    # ["6SUBD Nominal #45"] * 8,  # H #nominal + 129
+    # ["6SUBD Nominal #42"] * 8,  # H #nominal + 129
+    # ["6SUBD Nominal #12"] * 8,  # H #nominal + 126/129
+    # ["6SUBD Nominal #2"] * 8,  # H
+    # ["6SUBD Nominal #1"] * 8,  # H
 
-    ["All Fullscan Fast #2"] * 2,  # L all
-    ["Fullscan fast step4 all #1"] * 4,  # 124(128)-168, priority v high
-    ["Fullscan fast step5 all #1"] * 4,  # 114(119)-189, priority v high
+    # ["All Fullscan Fast #2"] * 2,  # L all
+    # ["Fullscan fast step4 all #1"] * 4,  # 124(128)-168
+    # ["Fullscan fast step5 all #1"] * 4,  # 114(119)-189
 
 ]
 
 
 OCCULTATION_GRAZING_WEIGHTS = [
+
+    # new ordering MTP103+
+    ["6SUBD CO2 H2O #14"] * 8,
+
+    ["6SUBD Nominal #42"] * 6,
+    ["6SUBD Nominal #45"] * 6,
+    ["6SUBD Nominal #48"] * 6,
+    ["6SUBD Nominal #51"] * 6,
+    ["6SUBD Nominal #52"] * 6,
+    ["6SUBD Nominal #53"] * 6,
+
     # new MTP073+
-    ["6SUBD Nominal #54"] * 8,  # Nominal with 148, priority high
+    # ["6SUBD Nominal #54"] * 8,  # Nominal with 148, priority high
 
-    ["6SUBD Nominal #53"] * 8,  # H #148 instead of 149
-    ["6SUBD Nominal #52"] * 8,  # H #148 instead of 149
-    ["6SUBD Nominal #51"] * 8,  # H #nominal + 129
-    ["6SUBD Nominal #48"] * 8,  # H #nominal + 129
-    ["6SUBD Nominal #45"] * 8,  # H #nominal + 129
-    ["6SUBD Nominal #42"] * 8,  # H #nominal + 129
-    ["6SUBD Nominal #12"] * 8,  # H #nominal + 126/129
-    ["6SUBD Nominal #2"] * 8,  # H
-    ["6SUBD Nominal #1"] * 8,  # H
+    # ["6SUBD Nominal #53"] * 8,  # H #148 instead of 149
+    # ["6SUBD Nominal #52"] * 8,  # H #148 instead of 149
+    # ["6SUBD Nominal #51"] * 8,  # H #nominal + 129
+    # ["6SUBD Nominal #48"] * 8,  # H #nominal + 129
+    # ["6SUBD Nominal #45"] * 8,  # H #nominal + 129
+    # ["6SUBD Nominal #42"] * 8,  # H #nominal + 129
+    # ["6SUBD Nominal #12"] * 8,  # H #nominal + 126/129
+    # ["6SUBD Nominal #2"] * 8,  # H
+    # ["6SUBD Nominal #1"] * 8,  # H
 
-    # ["All Fullscan Fast #2"] * 2,  # L all
-    ["Fullscan fast step4 all #1"] * 4,  # 124(128)-168, priority v high
-    ["Fullscan fast step5 all #1"] * 4,  # 114(119)-189, priority v high
+    # # ["All Fullscan Fast #2"] * 2,  # L all
+    # ["Fullscan fast step4 all #1"] * 4,  # 124(128)-168, priority
+    # ["Fullscan fast step5 all #1"] * 4,  # 114(119)-189, priority
 
 ]
 
@@ -154,63 +238,118 @@ OCCULTATION_GRAZING_WEIGHTS = [
 
 
 OCCULTATION_CH4_REGION_WEIGHTS = [
+
+    # new ordering MTP103+
+    ["6SUBD CO2 H2O #14"] * 8,
+
+    ["6SUBD Nominal #42"] * 6,
+    ["6SUBD Nominal #45"] * 6,
+    ["6SUBD Nominal #48"] * 6,
+    ["6SUBD Nominal #51"] * 6,
+    ["6SUBD Nominal #52"] * 6,
+    ["6SUBD Nominal #53"] * 6,
+
     # ["6SUBD Nom CH4 #2"] * 1,  # L #134, 136, 164, 169, 186, 190
     # ["6SUBD CH4 H2O #1"] * 1,  # L #169, 132, 133, 134, 136, 137
-    ["6SUBD Nominal #54"] * 2,  # Nominal with 148, priority high
-    ["6SUBD Nominal #53"] * 2,  # H #148 instead of 149 #121, 136, 169, 129, 148, 165
-    ["6SUBD Nominal #45"] * 2,  # H #nominal + 129 #121, 136, 169, 129, 149, 165
+    # ["6SUBD Nominal #54"] * 2,  # Nominal with 148, priority high
+    # ["6SUBD Nominal #53"] * 2,  # H #148 instead of 149 #121, 136, 169, 129, 148, 165
+    # ["6SUBD Nominal #45"] * 2,  # H #nominal + 129 #121, 136, 169, 129, 149, 165
 ]
 
 
 OCCULTATION_H2O_REGION_WEIGHTS = [
-    ["6SUBD Nominal #54"] * 1,  # Nominal with 148, priority high
-    ["6SUBD Nominal #53"] * 1,  # H #148 instead of 149 #121, 136, 169, 129, 148, 165
-    ["6SUBD Nominal #52"] * 1,  # H #148 instead of 149 #121, 134, 169, 129, 148, 165
-    ["6SUBD Nominal #51"] * 1,  # H #nominal + 129 #121, 136, 129, 169, 186, 190
-    ["6SUBD Nominal #48"] * 1,  # H #nominal + 129 #121, 134, 129, 169, 186, 190
-    ["6SUBD Nominal #45"] * 1,  # H #nominal + 129 #121, 136, 169, 129, 149, 165
-    ["6SUBD Nominal #42"] * 1,  # H #nominal + 129 #121, 134, 169, 129, 149, 165
-    ["6SUBD Nominal #12"] * 1,  # H #nominal + 126/129 #121, 134, 127, 129, 169, 190
+
+    # new ordering MTP103+
+    ["6SUBD CO2 H2O #14"] * 8,
+
+    ["6SUBD Nominal #42"] * 6,
+    ["6SUBD Nominal #45"] * 6,
+    ["6SUBD Nominal #48"] * 6,
+    ["6SUBD Nominal #51"] * 6,
+    ["6SUBD Nominal #52"] * 6,
+    ["6SUBD Nominal #53"] * 6,
+
+    # ["6SUBD Nominal #54"] * 1,  # Nominal with 148, priority high
+    # ["6SUBD Nominal #53"] * 1,  # H #148 instead of 149 #121, 136, 169, 129, 148, 165
+    # ["6SUBD Nominal #52"] * 1,  # H #148 instead of 149 #121, 134, 169, 129, 148, 165
+    # ["6SUBD Nominal #51"] * 1,  # H #nominal + 129 #121, 136, 129, 169, 186, 190
+    # ["6SUBD Nominal #48"] * 1,  # H #nominal + 129 #121, 134, 129, 169, 186, 190
+    # ["6SUBD Nominal #45"] * 1,  # H #nominal + 129 #121, 136, 169, 129, 149, 165
+    # ["6SUBD Nominal #42"] * 1,  # H #nominal + 129 #121, 134, 169, 129, 149, 165
+    # ["6SUBD Nominal #12"] * 1,  # H #nominal + 126/129 #121, 134, 127, 129, 169, 190
 ]
 
 
 # IN GENERAL, USE LESS CH4 ORDERS AS THESE ARE NORMALLY ADDED WHEN CROSSING OVER INTERESTING REGIONS
 NADIR_WEIGHTS = [
 
+    # new MTP104+
+    ["H2O CO 3SUBD #3"] * 8,  # 167, 190, 191
+    ["H2O CO 2SUBD #2"] * 8,  # 169, 191
+    ["CO 2SUBD 02"] * 8,  # 167, 189
+    ["H2O CO 2SUBD #3"] * 8,  # 169, 189
+
+    # new ordering MTP103+
+    ["CO 2SUBD #1"] * 6,
+    ["H2O 3SUBD #1"] * 6,
+
+    ["H2O CO 2SUBD #1"] * 5,
+    ["H2O CO 3SUBD #2"] * 5,
+
+    ["Surface Ice 6SUBD 01"] * 3,
+
+    ["H2O 2SUBD 01"] * 2,
+    ["Nominal 3SUBD 01"] * 2,
+    ["Surface 3SUBD #3"] * 2,
+    ["Surface Ice 4SUBD 01"] * 2,
+
+    ["CH4 3SUBD 01"] * 0,
+    ["CH4 CO 2SUBD #3"] * 0,
+    ["CH4 H2O 2SUBD 01"] * 0,
+    ["CH4 H2O 2SUBD 02"] * 0,
+    ["Ice CH4 2SUBD #1"] * 0,
+    ["Ice CO 2SUBD #2"] * 0,
+    ["Ice H2O 2SUBD #1"] * 0,
+    ["Nominal 4SUBD #2"] * 0,
+    ["Nominal 4SUBD 01"] * 0,
+    ["Nominal 6SUBD #2"] * 0,
+    ["Surface Ice 3SUBD #2"] * 0,
+    ["Surface Ice 3SUBD #3"] * 0,
+
     # new MTP093+
-    ["H2O 3SUBD #1"] * 16,  # HIGH #167, 168, 169 FOR FH
-    ["CO 2SUBD #1"] * 16,  # HIGH #189, 190 FOR FH
+    # ["H2O 3SUBD #1"] * 16,  # HIGH #167, 168, 169 FOR FH
+    # ["CO 2SUBD #1"] * 16,  # HIGH #189, 190 FOR FH
 
-    ["H2O CO 2SUBD #1"] * 8,  # VERY HIGH #168, 189
+    # ["H2O CO 2SUBD #1"] * 8,  # VERY HIGH #168, 189
 
-    ["H2O CO 3SUBD #2"] * 8,  # H #168, 189, 190
-    ["Ice CO 2SUBD #2"] * 8,  # H #193, 189
-    # ["Surface Ice 2SUBD #1"] * 32,  # H #132, 133
+    # ["H2O CO 3SUBD #2"] * 8,  # H #168, 189, 190
+    # ["Ice CO 2SUBD #2"] * 8,  # H #193, 189
+    # # ["Surface Ice 2SUBD #1"] * 32,  # H #132, 133
 
-    ["Nominal 6SUBD #2"] * 8,  # H #196, 189, 168, 149, 134, 121
-    ["Nominal 3SUBD 01"] * 8,  # H #167, 169, 190
-    ["Ice H2O 2SUBD #1"] * 8,  # H #193, 168
-
-
-
-    ["Nominal 4SUBD #2"] * 4,  # M #168, 134, 121, 189
-    ["Nominal 4SUBD 01"] * 4,  # M #168, 134, 121, 190
-    ["Surface Ice 4SUBD 01"] * 4,  # M #199, 194, 193, 187
-    ["Surface Ice 6SUBD 01"] * 4,  # M #199, 198, 194, 193, 187, 186
+    # ["Nominal 6SUBD #2"] * 8,  # H #196, 189, 168, 149, 134, 121
+    # ["Nominal 3SUBD 01"] * 8,  # H #167, 169, 190
+    # ["Ice H2O 2SUBD #1"] * 8,  # H #193, 168
 
 
 
+    # ["Nominal 4SUBD #2"] * 4,  # M #168, 134, 121, 189
+    # ["Nominal 4SUBD 01"] * 4,  # M #168, 134, 121, 190
+    # ["Surface Ice 4SUBD 01"] * 4,  # M #199, 194, 193, 187
+    # ["Surface Ice 6SUBD 01"] * 4,  # M #199, 198, 194, 193, 187, 186
 
-    ["H2O 2SUBD 01"] * 2,  # L #167, 169
-    # ["CH4 CO 2SUBD #3"] * 2,  # L #189, 136
-    # ["CH4 H2O 2SUBD 01"] * 2,  # L #168, 134
-    ["Surface 3SUBD #3"] * 2,  # L #189, 194, 196
 
-    # ["Surface Ice 3SUBD #2"] * 4,  # H #189, 132, 133
-    # ["Surface Ice 3SUBD #3"] * 4,  # H #193, 132, 133
-    # ["CH4 H2O 2SUBD 02"] * 4,  # M #168, 136
-    # ["CH4 3SUBD 01"] * 4,  # M #168, 134, 136
-    # ["Ice CH4 2SUBD #1"] * 4,  # M #193, 136
+
+
+    # ["H2O 2SUBD 01"] * 2,  # L #167, 169
+    # # ["CH4 CO 2SUBD #3"] * 2,  # L #189, 136
+    # # ["CH4 H2O 2SUBD 01"] * 2,  # L #168, 134
+    # ["Surface 3SUBD #3"] * 2,  # L #189, 194, 196
+
+    # # ["Surface Ice 3SUBD #2"] * 4,  # H #189, 132, 133
+    # # ["Surface Ice 3SUBD #3"] * 4,  # H #193, 132, 133
+    # # ["CH4 H2O 2SUBD 02"] * 4,  # M #168, 136
+    # # ["CH4 3SUBD 01"] * 4,  # M #168, 134, 136
+    # # ["Ice CH4 2SUBD #1"] * 4,  # M #193, 136
 
 ]
 
@@ -218,22 +357,32 @@ NADIR_WEIGHTS = [
 # limb 3 and 4 are more important than the others
 # ORDER 164 FOR LIMBS > 50KM, CONTINUE 163-165 COMBINATIONS FOR CASSIS LIMBS
 NADIR_LIMB_WEIGHTS = [
-    ["Limb 2SUBD 07"] * 3,  # 164 x2
-    ["Nominal Limb 01"] * 1,  # 164, 169
+    # ["Limb 2SUBD 07"] * 3,  # 164 x2
+    # ["Nominal Limb 01"] * 1,  # 164, 169
 ]
 
 NADIR_NIGHT_LIMB_WEIGHTS = [
-    ["Night Limb #2"] * 1,  # PATCHED FOR MTP031+
+    # ["Night Limb #2"] * 1,  # PATCHED FOR MTP031+
 ]
 
 NADIR_NIGHTSIDE_WEIGHTS = [
-    ["Night Limb #2"] * 1,  # PATCHED FOR MTP031+
+    # ["Night Limb #2"] * 1,  # PATCHED FOR MTP031+
 ]
 
 NADIR_CH4_REGION_WEIGHTS = [
+
+    # new ordering MTP103+
+    ["CO 2SUBD #1"] * 6,
+    ["H2O 3SUBD #1"] * 6,
+
+    ["H2O CO 2SUBD #1"] * 5,
+    ["H2O CO 3SUBD #2"] * 5,
+
+    ["Surface Ice 6SUBD 01"] * 3,
+
     # new MTP093+
-    ["H2O 3SUBD #1"] * 8,  # HIGH #167, 168, 169 FOR FH
-    ["CO 2SUBD #1"] * 8,  # HIGH #189, 190 FOR FH
+    # ["H2O 3SUBD #1"] * 8,  # HIGH #167, 168, 169 FOR FH
+    # ["CO 2SUBD #1"] * 8,  # HIGH #189, 190 FOR FH
 
     # ["H2O CO 2SUBD #1"] * 32,  # VERY HIGH #168, 189
     # ["H2O CO 3SUBD #2"] * 8,
@@ -242,14 +391,34 @@ NADIR_CH4_REGION_WEIGHTS = [
 ]
 
 NADIR_H2O_REGION_WEIGHTS = [
-    ["H2O 3SUBD #1"] * 8,  # HIGH #167, 168, 169 FOR FH
+
+    # new ordering MTP103+
+    ["CO 2SUBD #1"] * 6,
+    ["H2O 3SUBD #1"] * 6,
+
+    ["H2O CO 2SUBD #1"] * 5,
+    ["H2O CO 3SUBD #2"] * 5,
+
+    ["Surface Ice 6SUBD 01"] * 3,
+
+    # ["H2O 3SUBD #1"] * 8,  # HIGH #167, 168, 169 FOR FH
     # ["H2O CO 2SUBD #1"] * 8,  # H #168, 189
 ]
 
 NADIR_SURFACE_REGION_WEIGHTS = [
+
+    # new ordering MTP103+
+    ["CO 2SUBD #1"] * 6,
+    ["H2O 3SUBD #1"] * 6,
+
+    ["H2O CO 2SUBD #1"] * 5,
+    ["H2O CO 3SUBD #2"] * 5,
+
+    ["Surface Ice 6SUBD 01"] * 3,
+
     # new MTP093+
-    ["H2O 3SUBD #1"] * 8,  # HIGH #167, 168, 169 FOR FH
-    ["CO 2SUBD #1"] * 8,  # HIGH #189, 190 FOR FH
+    # ["H2O 3SUBD #1"] * 8,  # HIGH #167, 168, 169 FOR FH
+    # ["CO 2SUBD #1"] * 8,  # HIGH #189, 190 FOR FH
 
     # ["H2O CO 2SUBD #1"] * 2,  # VERY HIGH #168, 189
     # ["Surface 3SUBD #3"] * 1,  # L #189, 194, 196
@@ -258,10 +427,20 @@ NADIR_SURFACE_REGION_WEIGHTS = [
 ]
 
 NADIR_ICE_REGION_WEIGHTS = [
+
+    # new ordering MTP103+
+    ["CO 2SUBD #1"] * 6,
+    ["H2O 3SUBD #1"] * 6,
+
+    ["H2O CO 2SUBD #1"] * 5,
+    ["H2O CO 3SUBD #2"] * 5,
+
+    ["Surface Ice 6SUBD 01"] * 3,
+
     # ["H2O CO 3SUBD #2"] * 1, #168,189,190
     # ["Surface Ice 2SUBD #1"] * 1,  # 132, 133
-    ["Ice CO 2SUBD #2"] * 1,  # 189, 193
-    ["Ice CO 2SUBD #3"] * 1,  # 193, 193
+    # ["Ice CO 2SUBD #2"] * 1,  # 189, 193
+    # ["Ice CO 2SUBD #3"] * 1,  # 193, 193
 ]
 
 

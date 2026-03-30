@@ -104,11 +104,11 @@ def makeGenericOrbitPlan(orbit_list, mtp_constants, paths, silent=True):
             generic_orbit_comment += "&cassisSolarCalibration; "
 
         if "nomadPhobos" in orbit["allowedObservationTypes"]:
-            print("Adding Phobos Solar Calibration")
+            print("Adding Phobos Observation")
             all_off = True
             generic_orbit_comment += "&nomadPhobos; "
         if "nomadDeimos" in orbit["allowedObservationTypes"]:
-            print("Adding Deimos Solar Calibration")
+            print("Adding Deimos Observation")
             all_off = True
             generic_orbit_comment += "&nomadDeimos; "
 

@@ -1,0 +1,5 @@
+COP row,Obsevation Number,Pointing Type,Comments,
+11,1,Deimos (UVIS - long exposure),# NADIR: Full Frame (47:245;0:1047) - Tint = 65000 ms -16 bit - Rhythm = 67122 ms,
+11,2,Phobos (UVIS - long exposure),# NADIR: Full Frame (47:245;0:1047) - Tint = 65000 ms -16 bit - Rhythm = 67122 ms,
+11,3,Phobos (UVIS - long exposure),# NADIR: Full Frame (47:245;0:1047) - Tint = 65000 ms -16 bit - Rhythm = 67122 ms,
+11,4,Phobos (UVIS - long exposure),# NADIR: Full Frame (47:245;0:1047) - Tint = 65000 ms -16 bit - Rhythm = 67122 ms,
