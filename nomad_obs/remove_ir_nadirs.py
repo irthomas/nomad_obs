@@ -25,7 +25,7 @@ from nomad_obs.regions_of_interest import nadirRegionsOfInterest
 from nomad_obs.io.orbit_plan_xlsx import getMtpPlanXlsx
 
 
-mtpNumber = 105
+mtpNumber = 106
 mtpConstants = getMtpConstants(mtpNumber)
 paths = setupPaths(mtpConstants)
 
@@ -123,7 +123,7 @@ orbit_mask = np.zeros((n_orbits, 5))
 
 """add required daysides and limbs, 1st column"""
 # get indices of required_dayside_orbits from mtp_inputs.py
-indices_required = [i-1 for i in required_dayside_orbits]
+indices_required = [i - 1 for i in required_dayside_orbits]
 orbit_mask[indices_required, 0] = VAL_REQ
 
 indices_day_limbs = [i for i, s in enumerate(irDaysides) if "irLimb" in s]
@@ -195,7 +195,7 @@ indices_off = sorted(indices_off)
 # set orbit masks to -1 (not allowed)
 orbit_mask[indices_off, 0] = VAL_OFF
 
-indices_forbidden = [i-1 for i in forbidden_dayside_orbits]
+indices_forbidden = [i - 1 for i in forbidden_dayside_orbits]
 orbit_mask[indices_forbidden, 0] = VAL_OFF
 
 
@@ -267,7 +267,7 @@ for i in range(n_orbits):
         nadirs.append("")
 
 
-print("Ratio of dayside limbs/nadirs in MTP: %0.1f%%" % (100.*count/n_orbits))
+print("Ratio of dayside limbs/nadirs in MTP: %0.1f%%" % (100. * count / n_orbits))
 
 
 # update irDaysides in spreadsheet
@@ -279,31 +279,31 @@ row_number = 0
 
 for i, nadir in enumerate(nadirs):
     # copy to cell
-    Sheet1.cell(row_number+2, 7+1).value = nadir  # add 2, one for header, one for 1-indexing
+    Sheet1.cell(row_number + 2, 7 + 1).value = nadir  # add 2, one for header, one for 1-indexing
 
     # change orbit type 3 to 14 if no nadir in 1st column
     if nadir == "":
-        if Sheet1.cell(row_number+2, 0+1).value == 3:
-            Sheet1.cell(row_number+2, 0+1).value = 14
+        if Sheet1.cell(row_number + 2, 0 + 1).value == 3:
+            Sheet1.cell(row_number + 2, 0 + 1).value = 14
 
     # change orbit type 14 to 3 if nadir in 1st column
     if nadir != "":
-        if Sheet1.cell(row_number+2, 0+1).value == 14:
-            Sheet1.cell(row_number+2, 0+1).value = 3
+        if Sheet1.cell(row_number + 2, 0 + 1).value == 14:
+            Sheet1.cell(row_number + 2, 0 + 1).value = 3
 
     # if dayside nadir not allowed
     if i in indices_forbidden:
 
         # if orbit type 3, then set to 14
-        if Sheet1.cell(row_number+2, 0+1).value in [3]:
-            Sheet1.cell(row_number+2, 0+1).value = 14
+        if Sheet1.cell(row_number + 2, 0 + 1).value in [3]:
+            Sheet1.cell(row_number + 2, 0 + 1).value = 14
         # if dayside, remove
-        if Sheet1.cell(row_number+2, 8+1).value == "uvisDayside":
-            Sheet1.cell(row_number+2, 8+1).value = ""
+        if Sheet1.cell(row_number + 2, 8 + 1).value == "uvisDayside":
+            Sheet1.cell(row_number + 2, 8 + 1).value = ""
 
     # remove everything in the irNightside column
     if not MEASURE_IR_NIGHT_NADIR_OR_LIMBS and row_number > 0:
-        Sheet1.cell(row_number+2, 9+1).value = ""
+        Sheet1.cell(row_number + 2, 9 + 1).value = ""
 
     row_number += 1
 

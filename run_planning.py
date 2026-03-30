@@ -52,7 +52,7 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 105
+mtpNumber = 106
 
 # global orbitList
 
