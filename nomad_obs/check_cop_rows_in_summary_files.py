@@ -14,15 +14,16 @@ NOTE THAT THE FORMATTING IS NOT RETAINED BY OPENPXYL ANY MORE
 from nomad_obs.config.paths import setupPaths
 from nomad_obs.mtp_inputs import getMtpConstants
 import os
-
+import numpy as np
+from datetime import datetime, timedelta
 
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 
-mtpNumber = 105
-
+mtpNumber = 106
 # add the correct MTP info in obs_inputs
 
+DT_STR = "%Y %b %d %H:%M:%S"
 
 mtpConstants = getMtpConstants(mtpNumber)
 paths = setupPaths(mtpConstants)
@@ -141,7 +142,13 @@ for cop_row_name, dictionary_data in cop_summary_dict.items():
 
             # print comparison rows TC execution times
             if row_number in compare_indices:
-                print(cop_row_data[row_number][7], "---", Sheet1.cell(row_number + 1, dictionary_data["column_to_compare"]).value)
+                cop_dt_str = cop_row_data[row_number][7]
+                sum_dt_str = Sheet1.cell(row_number + 1, dictionary_data["column_to_compare"]).value
+                cop_dt = datetime.strptime(cop_dt_str, DT_STR)
+                sum_dt = datetime.strptime(sum_dt_str, DT_STR)
+                diff = np.abs((cop_dt - sum_dt).total_seconds())
+
+                print(cop_dt_str, "---", sum_dt_str, ":", "%0.0fs" % diff)
 
             if rgb_or_theme == "rgb":
                 if color_in_hex != '00000000':
