@@ -15,9 +15,9 @@ def outputCopTable(copVersion, channel, cop):
     """function to read in cop tables, given channel and name"""
 
     if channel == "so" or channel == "lno":
-        csvFilename = COP_TABLE_DIRECTORY+os.sep+"%s" % copVersion+os.sep+"%s_%s_table.csv" % (channel, cop)
+        csvFilename = COP_TABLE_DIRECTORY + os.sep + "%s" % copVersion + os.sep + "%s_%s_table.csv" % (channel, cop)
     elif channel == "uvis":
-        csvFilename = COP_TABLE_DIRECTORY+os.sep+"%s" % copVersion+os.sep+"uvis_table.csv"
+        csvFilename = COP_TABLE_DIRECTORY + os.sep + "%s" % copVersion + os.sep + "uvis_table.csv"
     with open(csvFilename) as f:
         copList = []
         for index, line in enumerate(f):
@@ -26,9 +26,9 @@ def outputCopTable(copVersion, channel, cop):
                 copHeaders = content  # record header data
                 copHeaders.append("comments")
             else:
-                if content[len(content)-1].find('#') != -1:  # if comment line
-                    temp = content[len(content)-1].split('#')  # split last field into value and comment
-                    content[len(content)-1] = temp[0].strip()  # replace last column with value only
+                if content[len(content) - 1].find('#') != -1:  # if comment line
+                    temp = content[len(content) - 1].split('#')  # split last field into value and comment
+                    content[len(content) - 1] = temp[0].strip()  # replace last column with value only
                     content.append(temp[1].strip())  # add new column on end for the comment
                 else:
                     content.append("NONE")
@@ -360,7 +360,7 @@ def findFixedCopRow(channel, copTableDict, centreRow, nRows, rhythm, silent=Fals
         fixedTop = int(fixedRow[1])
         fixedRhythm = int(fixedRow[6])
 
-        if fixedHeight == nRows and fixedTop == centreRow - nRows/2 and fixedRhythm == rhythm:
+        if fixedHeight == nRows and fixedTop == centreRow - nRows / 2 and fixedRhythm == rhythm:
             if not silent:
                 print("Matching fixed row found: %i" % rowIndex)
             if not silent:
@@ -427,21 +427,22 @@ def getObservationDescription(channel, copTableDict, fixedRow, copRow, silent=Fa
                 integrationTime = int(findCopRowData(channel, copTableDict, ["integrationTime"], sciencePointer)) / 1000
                 if steppingType == "AOTF_IX":
                     observationText = "Diffraction order stepping (fullscan): %i orders from %i to %i in steps of %s (%s order(s) per %s second(s))" % (
-                        int(steppingCount), int(aotfOrder), int(aotfOrder)+int(steppingCount)*int(steppingValue), int(steppingValue), int(steppingSpeed)+1,
+                        int(steppingCount), int(aotfOrder), int(aotfOrder) + int(steppingCount) *
+                        int(steppingValue), int(steppingValue), int(steppingSpeed) + 1,
                         int(fixedRhythm))
                 elif steppingType == "WINDOW_TOP":
                     observationText = "Detector window stepping: %i step(s) covering detector lines %i to %i (%s step(s) per %s second(s))" % (
-                        int(steppingCount), int(fixedTop), int(fixedTop)+int(steppingCount)*int(steppingValue), int(steppingSpeed)+1, int(fixedRhythm))
+                        int(steppingCount), int(fixedTop), int(fixedTop) + int(steppingCount) * int(steppingValue), int(steppingSpeed) + 1, int(fixedRhythm))
                 elif steppingType == "INTEGRATION_TIME":
                     observationText = "Detector integration time stepping: %i integration times from %i to %ims \
                         in steps of %ims for detector lines %i to %i (%s step(s) per %s second(s))" % (int(steppingCount), int(
-                        integrationTime), int(integrationTime)*int(steppingCount)*int(steppingValue),
-                        int(steppingValue), int(fixedTop), int(fixedTop)+int(fixedHeight)+1, int(steppingSpeed)+1, int(fixedRhythm))
+                        integrationTime), int(integrationTime) * int(steppingCount) * int(steppingValue),
+                        int(steppingValue), int(fixedTop), int(fixedTop) + int(fixedHeight) + 1, int(steppingSpeed) + 1, int(fixedRhythm))
                 elif steppingType == "AOTF_FREQ":
                     observationText = "AOTF frequency stepping (miniscan): %i frequencies from %i to %ikHz \
                         in steps of %ikHz (%s step(s) per %s second(s))" % (int(steppingCount), int(
-                        aotfFrequency)/1000, int(aotfFrequency)/1000+int(steppingCount)*np.round(int(steppingValue)*8e4/2**32),
-                        np.round(int(steppingValue)*8e4/2**32), int(steppingSpeed)+1, int(fixedRhythm))
+                        aotfFrequency) / 1000, int(aotfFrequency) / 1000 + int(steppingCount) * np.round(int(steppingValue) * 8e4 / 2**32),
+                        np.round(int(steppingValue) * 8e4 / 2**32), int(steppingSpeed) + 1, int(fixedRhythm))
         elif nSubdomains == 0:
             print("Error: no subdomains")
             stop()
@@ -457,7 +458,7 @@ def getObservationDescription(channel, copTableDict, fixedRow, copRow, silent=Fa
             else:
                 observationText += "with variable integration times "
             observationText += "(%i orders per %i second(s) for detector lines %i to %i)" % (nSubdomains,
-                                                                                             int(fixedRhythm), int(fixedTop), int(fixedTop)+int(fixedHeight)+1)
+                                                                                             int(fixedRhythm), int(fixedTop), int(fixedTop) + int(fixedHeight) + 1)
         if not silent:
             print(observationText)
 
@@ -482,7 +483,7 @@ def getObsParameters(observation_name, dictionary):
 
 
 def calcExecutionTime(number_accumulations, window_height, integration_time):  # real number of rows (16, 20, 24), int time in milliseconds
-    return ((number_accumulations+1.0) * ((integration_time * 1000.0) + 71.0 + 320.0 * window_height + 1000.0) + 337.0) / 1000.0
+    return ((number_accumulations + 1.0) * ((integration_time * 1000.0) + 71.0 + 320.0 * window_height + 1000.0) + 337.0) / 1000.0
 
 
 def uniqueDiffractionOrders(aotf_order_list):
@@ -510,6 +511,11 @@ def getCopRows(observationName, observationDict, copTableDict, copTableCombinati
     if channel in ["so", "lno"]:
 
         detectorCentreLine = centreDetectorLines[channelCode]
+
+        # FIXME: fudge for 136 row LNO tests
+        if channel == "lno" and windowHeight == 136:
+            print("Manually setting LNO centre line to 148")
+            detectorCentreLine = 148
 
         """do fixed table first"""
         fixedCopRow = findFixedCopRow(channel, copTableDict, detectorCentreLine, windowHeight, rhythm, silent=silent)

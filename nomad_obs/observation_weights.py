@@ -14,8 +14,13 @@ ALLOCATE WEIGHTS TO EACH OBSERVATION NAME FOR EACH OBSERVATION TYPE
 import numpy as np
 OCCULTATION_WEIGHTS = [
 
+    # new MTP107+
+    ["6SUBD Nominal #55"] * 8,  # Loic mesosphere temperature - reduce to low priority in mtp111
+    ["6SUBD Nominal #56"] * 8,
+    ["6SUBD Nominal #57"] * 8,  # Loic low altitude CO2 - reduce to medium priority in mtp111
+
     # new MTP104+
-    ["168 only #1"] * 16,  # 168 only SA
+    ["168 only #1"] * 2,  # 168 only SA
 
     # new ordering MTP103+
     ["6SUBD CO2 H2O #14"] * 8,  # 121, 134, 148, 132, 165, 169
@@ -69,7 +74,7 @@ OCCULTATION_WEIGHTS = [
     ["CO2 Fullscan Fast #4"] * 2,
 
     ["6SUBD CO #2"] * 0,
-    ["6SUBD CO #3"] * 0,
+    # ["6SUBD CO #3"] * 0,
     ["6SUBD CO2 #13"] * 0,
     ["6SUBD CO2 #18"] * 0,
     ["6SUBD CO2 #21"] * 0,
@@ -283,38 +288,49 @@ OCCULTATION_H2O_REGION_WEIGHTS = [
 # IN GENERAL, USE LESS CH4 ORDERS AS THESE ARE NORMALLY ADDED WHEN CROSSING OVER INTERESTING REGIONS
 NADIR_WEIGHTS = [
 
+    # new MTP107+
+    ["CO 3SUBD #1"] * 6,
+    ["CO 3SUBD #2"] * 6,
+    ["CO 3SUBD #3"] * 6,
+    ["CO H2O 3SUBD #3"] * 6,
+    ["CO H2O 3SUBD #4"] * 6,
+
+    ["H2O CO 3SUBD #3 136"] * 8,  # François water and CO reduce rows
+    ["H2O 3SUBD #1 136"] * 8,  # François all water orders reduce rows
+    ["Surface Ice 6SUBD 01 136"] * 8,  # reduce rows
+
     # new MTP104+
-    ["H2O CO 3SUBD #3"] * 8,  # 167, 190, 191
-    ["H2O CO 2SUBD #2"] * 8,  # 169, 191
-    ["CO 2SUBD 02"] * 8,  # 167, 189
-    ["H2O CO 2SUBD #3"] * 8,  # 169, 189
+    # ["H2O CO 3SUBD #3"] * 8,  # 167, 190, 191 replaced by 136 test
+    ["H2O CO 2SUBD #2"] * 4,  # 169, 191
+    ["CO 2SUBD 02"] * 4,  # 167, 189
+    ["H2O CO 2SUBD #3"] * 4,  # 169, 189
 
     # new ordering MTP103+
-    ["CO 2SUBD #1"] * 6,
-    ["H2O 3SUBD #1"] * 6,
+    ["CO 2SUBD #1"] * 3,
+    # ["H2O 3SUBD #1"] * 6,  # replaced by 136 test
 
-    ["H2O CO 2SUBD #1"] * 5,
-    ["H2O CO 3SUBD #2"] * 5,
+    ["H2O CO 2SUBD #1"] * 3,
+    ["H2O CO 3SUBD #2"] * 3,
 
-    ["Surface Ice 6SUBD 01"] * 3,
+    # ["Surface Ice 6SUBD 01"] * 3,  # replaced by 136 test
 
     ["H2O 2SUBD 01"] * 2,
     ["Nominal 3SUBD 01"] * 2,
     ["Surface 3SUBD #3"] * 2,
     ["Surface Ice 4SUBD 01"] * 2,
 
-    ["CH4 3SUBD 01"] * 0,
-    ["CH4 CO 2SUBD #3"] * 0,
-    ["CH4 H2O 2SUBD 01"] * 0,
-    ["CH4 H2O 2SUBD 02"] * 0,
-    ["Ice CH4 2SUBD #1"] * 0,
-    ["Ice CO 2SUBD #2"] * 0,
-    ["Ice H2O 2SUBD #1"] * 0,
-    ["Nominal 4SUBD #2"] * 0,
-    ["Nominal 4SUBD 01"] * 0,
-    ["Nominal 6SUBD #2"] * 0,
-    ["Surface Ice 3SUBD #2"] * 0,
-    ["Surface Ice 3SUBD #3"] * 0,
+    # ["CH4 3SUBD 01"] * 0,
+    # ["CH4 CO 2SUBD #3"] * 0,
+    # ["CH4 H2O 2SUBD 01"] * 0,
+    # ["CH4 H2O 2SUBD 02"] * 0,
+    # ["Ice CH4 2SUBD #1"] * 0,
+    # ["Ice CO 2SUBD #2"] * 0,
+    # ["Ice H2O 2SUBD #1"] * 0,
+    # ["Nominal 4SUBD #2"] * 0,
+    # ["Nominal 4SUBD 01"] * 0,
+    # ["Nominal 6SUBD #2"] * 0,
+    # ["Surface Ice 3SUBD #2"] * 0,
+    # ["Surface Ice 3SUBD #3"] * 0,
 
     # new MTP093+
     # ["H2O 3SUBD #1"] * 16,  # HIGH #167, 168, 169 FOR FH
@@ -470,7 +486,7 @@ def make_shuffled_obs_list(cycle, n_obs):
     obs_list_full = cycle
 
     # interpolate full obs list onto n_obs
-    ixs = np.floor(np.arange(n_obs) * (len(obs_list_full)/n_obs))
+    ixs = np.floor(np.arange(n_obs) * (len(obs_list_full) / n_obs))
     # shuffle
     np.random.shuffle(ixs)
     # convert indices to integers

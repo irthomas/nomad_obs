@@ -1,0 +1,210 @@
+14:33:44,915 root INFO ### SO science ###
+14:33:44,917 root DEBUG new_science_rows ['so', {'6SUBD Nominal #55': [[147, 148, 149, 147, 148, 149], 4, 1, 16, 0], '6SUBD Nominal #56': [[132, 185, 186, 132, 185, 186], 4, 1, 16, 0], '6SUBD Nominal #57': [[124, 137, 196, 146, 170, 196], 4, 1, 16, 0]}, '20250510_113000', '20260423_143344_new']
+14:33:44,917 root DEBUG read_cop_csv C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20250510_113000\so_science_table.csv
+14:33:45,0 root INFO Read in 4096 lines from C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20250510_113000\so_science_table.csv
+14:33:45,2 root INFO Checking for observation 6SUBD Nominal #55 [[147, 148, 149, 147, 148, 149], 4, 1, 16, 0] in existing science rows
+14:33:45,16 root DEBUG NAccs = 12 from parameters [850.0, 16, 6, 4]
+14:33:45,16 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 147, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,16 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 148, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,18 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 149, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,18 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 147, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,18 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 148, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,20 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 149, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,20 root INFO Checking for observation 6SUBD Nominal #56 [[132, 185, 186, 132, 185, 186], 4, 1, 16, 0] in existing science rows
+14:33:45,20 root DEBUG NAccs = 12 from parameters [850.0, 16, 6, 4]
+14:33:45,20 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 132, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,20 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 185, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,22 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 186, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,22 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 132, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,22 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 185, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,24 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 186, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,24 root INFO Checking for observation 6SUBD Nominal #57 [[124, 137, 196, 146, 170, 196], 4, 1, 16, 0] in existing science rows
+14:33:45,24 root DEBUG NAccs = 12 from parameters [850.0, 16, 6, 4]
+14:33:45,24 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 124, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,24 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 137, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,26 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 196, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,26 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 146, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,26 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 170, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,28 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 196, 'steppingPointer': 0, 'accumulationCount': 12, 'binningFactor': 3, 'integrationTime': 4000, 'other': {'d_rows': 16, 'rhythm': 1, 'n_orders': 6}}
+14:33:45,28 root INFO All lines already in table, none added
+14:33:45,28 root INFO Making directory C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new
+14:33:45,30 root INFO 0 so science lines written to file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\so_science_table.csv
+14:33:45,30 root DEBUG replace_lines ['so', 'science', '20250510_113000', '20260423_143344_new', 'mtp107_proposed']
+14:33:45,32 root INFO Reading 0 new lines from file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\so_science_table.csv
+14:33:45,34 root INFO Reading 4097 existing lines from file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20250510_113000\so_science_table.csv
+14:33:45,34 root INFO No new lines to add, skipping replacement
+14:33:45,34 root INFO Making directory C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed
+14:33:45,46 root INFO 0 new rows added to file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\so_science_table.csv
+14:33:45,48 root INFO 17 rows still available in file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\so_science_table.csv
+14:33:45,48 root INFO Renaming C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\so_science_table.csv -> C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\so_science_normal_table.csv
+14:33:45,48 root INFO ### SO subdomain ###
+14:33:45,48 root DEBUG new_subdomain_rows ['so', {'6SUBD Nominal #55': [[147, 148, 149, 147, 148, 149], 4, 1, 16, 0], '6SUBD Nominal #56': [[132, 185, 186, 132, 185, 186], 4, 1, 16, 0], '6SUBD Nominal #57': [[124, 137, 196, 146, 170, 196], 4, 1, 16, 0]}, 'mtp107_proposed', '20260423_143344_new']
+14:33:45,48 root DEBUG read_cop_csv C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\so_science_table.csv
+14:33:45,127 root INFO Read in 3492 non-empty and non-calibration lines from C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\so_science_table.csv
+14:33:45,127 root INFO Checking for observation 6SUBD Nominal #55 [[147, 148, 149, 147, 148, 149], 4, 1, 16, 0] in existing subdomain rows
+14:33:45,155 root INFO Appending new subdomain row 2940,2941,2942,2940,2941,2942 # ORDERS 147 148 149 147 148 149 -- OCCULTATION_16ROWS_1SECS_6SUBDS -- EXECTIME=796MS
+14:33:45,155 root INFO Checking for observation 6SUBD Nominal #56 [[132, 185, 186, 132, 185, 186], 4, 1, 16, 0] in existing subdomain rows
+14:33:45,181 root INFO Appending new subdomain row 2925,2978,2979,2925,2978,2979 # ORDERS 132 185 186 132 185 186 -- OCCULTATION_16ROWS_1SECS_6SUBDS -- EXECTIME=796MS
+14:33:45,181 root INFO Checking for observation 6SUBD Nominal #57 [[124, 137, 196, 146, 170, 196], 4, 1, 16, 0] in existing subdomain rows
+14:33:45,204 root INFO Appending new subdomain row 2917,2930,2989,2939,2963,2989 # ORDERS 124 137 196 146 170 196 -- OCCULTATION_16ROWS_1SECS_6SUBDS -- EXECTIME=796MS
+14:33:45,208 root INFO 3 so sub_domain lines written to file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\so_sub_domain_table.csv
+14:33:45,208 root DEBUG replace_lines ['so', 'sub_domain', '20250510_113000', '20260423_143344_new', 'mtp107_proposed']
+14:33:45,208 root INFO Reading 3 new lines from file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\so_sub_domain_table.csv
+14:33:45,212 root INFO Reading 4097 existing lines from file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20250510_113000\so_sub_domain_table.csv
+14:33:45,212 root INFO Adding line 2940,2941,2942,2940,2941,2942 # ORDERS 147 148 149 147 148 149 -- OCCULTATION_16ROWS_1SECS_6SUBDS -- EXECTIME=796MS
+ to line 3251
+14:33:45,212 root INFO Adding line 2925,2978,2979,2925,2978,2979 # ORDERS 132 185 186 132 185 186 -- OCCULTATION_16ROWS_1SECS_6SUBDS -- EXECTIME=796MS
+ to line 3252
+14:33:45,212 root INFO Adding line 2917,2930,2989,2939,2963,2989 # ORDERS 124 137 196 146 170 196 -- OCCULTATION_16ROWS_1SECS_6SUBDS -- EXECTIME=796MS
+ to line 3253
+14:33:45,226 root INFO 3 new rows added to file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\so_sub_domain_table.csv
+14:33:45,226 root INFO 843 rows still available in file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\so_sub_domain_table.csv
+14:33:45,226 root INFO Renaming C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\so_sub_domain_table.csv -> C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\so_sub_domain_normal_table.csv
+14:33:45,226 root INFO ### LNO fixed ###
+14:33:45,226 root DEBUG read_cop_csv C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20250510_113000\lno_fixed_table.csv
+14:33:45,232 root INFO Adding new line to fixed file: 135,80,1,1,0,0,15 # NADIR
+14:33:45,246 root INFO 1 lno fixed lines written to file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\lno_fixed_table.csv
+14:33:45,252 root DEBUG replace_lines ['lno', 'fixed', '20250510_113000', '20260423_143344_new', 'mtp107_proposed']
+14:33:45,252 root INFO Reading 1 new lines from file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\lno_fixed_table.csv
+14:33:45,254 root INFO Reading 257 existing lines from file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20250510_113000\lno_fixed_table.csv
+14:33:45,254 root INFO Adding line 135,80,1,1,0,0,15 # NADIR
+ to line 254
+14:33:45,258 root INFO 1 new rows added to file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\lno_fixed_table.csv
+14:33:45,258 root INFO 2 rows still available in file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\lno_fixed_table.csv
+14:33:45,258 root INFO ### LNO science ###
+14:33:45,258 root DEBUG new_science_rows ['lno', {'CO 3SUBD #1': [[186, 189, 191], 205, 15, 144], 'CO 3SUBD #2': [[186, 190, 191], 205, 15, 144], 'CO 3SUBD #3': [[186, 187, 189], 205, 15, 144], 'CO H2O 3SUBD #3': [[167, 189, 191], 205, 15, 144], 'CO H2O 3SUBD #4': [[169, 189, 191], 205, 15, 144], 'H2O CO 3SUBD #3': [[167, 190, 191], 210, 15, 136, 1], 'H2O 3SUBD #1': [[167, 168, 169], 210, 15, 136, 1], 'Surface Ice 6SUBD 01': [[199, 198, 194, 193, 187, 186], 225, 15, 136, 1]}, '20250510_113000', '20260423_143344_new']
+14:33:45,258 root DEBUG read_cop_csv C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20250510_113000\lno_science_table.csv
+14:33:45,336 root INFO Read in 4096 lines from C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20250510_113000\lno_science_table.csv
+14:33:45,336 root INFO Checking for observation CO 3SUBD #1 [[186, 189, 191], 205, 15, 144] in existing science rows
+14:33:45,336 root DEBUG NAccs = 18 from parameters [14600.0, 144, 3, 205]
+14:33:45,338 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 186, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 17, 'integrationTime': 205000, 'other': {'d_rows': 144, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,338 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 189, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 17, 'integrationTime': 205000, 'other': {'d_rows': 144, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,338 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 191, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 17, 'integrationTime': 205000, 'other': {'d_rows': 144, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,338 root INFO Checking for observation CO 3SUBD #2 [[186, 190, 191], 205, 15, 144] in existing science rows
+14:33:45,338 root DEBUG NAccs = 18 from parameters [14600.0, 144, 3, 205]
+14:33:45,340 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 186, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 17, 'integrationTime': 205000, 'other': {'d_rows': 144, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,340 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 190, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 17, 'integrationTime': 205000, 'other': {'d_rows': 144, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,342 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 191, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 17, 'integrationTime': 205000, 'other': {'d_rows': 144, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,342 root INFO Checking for observation CO 3SUBD #3 [[186, 187, 189], 205, 15, 144] in existing science rows
+14:33:45,342 root DEBUG NAccs = 18 from parameters [14600.0, 144, 3, 205]
+14:33:45,342 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 186, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 17, 'integrationTime': 205000, 'other': {'d_rows': 144, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,342 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 187, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 17, 'integrationTime': 205000, 'other': {'d_rows': 144, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,343 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 189, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 17, 'integrationTime': 205000, 'other': {'d_rows': 144, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,343 root INFO Checking for observation CO H2O 3SUBD #3 [[167, 189, 191], 205, 15, 144] in existing science rows
+14:33:45,343 root DEBUG NAccs = 18 from parameters [14600.0, 144, 3, 205]
+14:33:45,343 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 167, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 17, 'integrationTime': 205000, 'other': {'d_rows': 144, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,343 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 189, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 17, 'integrationTime': 205000, 'other': {'d_rows': 144, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,345 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 191, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 17, 'integrationTime': 205000, 'other': {'d_rows': 144, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,345 root INFO Checking for observation CO H2O 3SUBD #4 [[169, 189, 191], 205, 15, 144] in existing science rows
+14:33:45,345 root DEBUG NAccs = 18 from parameters [14600.0, 144, 3, 205]
+14:33:45,345 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 169, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 17, 'integrationTime': 205000, 'other': {'d_rows': 144, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,345 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 189, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 17, 'integrationTime': 205000, 'other': {'d_rows': 144, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,347 root INFO Line already in existing science cop table {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 191, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 17, 'integrationTime': 205000, 'other': {'d_rows': 144, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,347 root INFO Checking for observation H2O CO 3SUBD #3 [[167, 190, 191], 210, 15, 136, 1] in existing science rows
+14:33:45,347 root DEBUG NAccs = 18 from parameters [14600.0, 136, 3, 210]
+14:33:45,347 root INFO Adding new line to science dictionary {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 167, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 16, 'integrationTime': 210000, 'other': {'d_rows': 136, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,349 root INFO Adding new line to science dictionary {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 190, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 16, 'integrationTime': 210000, 'other': {'d_rows': 136, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,349 root INFO Adding new line to science dictionary {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 191, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 16, 'integrationTime': 210000, 'other': {'d_rows': 136, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,349 root INFO Checking for observation H2O 3SUBD #1 [[167, 168, 169], 210, 15, 136, 1] in existing science rows
+14:33:45,349 root DEBUG NAccs = 18 from parameters [14600.0, 136, 3, 210]
+14:33:45,349 root INFO Line already in science dictionary {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 167, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 16, 'integrationTime': 210000, 'other': {'d_rows': 136, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,351 root INFO Adding new line to science dictionary {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 168, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 16, 'integrationTime': 210000, 'other': {'d_rows': 136, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,351 root INFO Adding new line to science dictionary {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 169, 'steppingPointer': 0, 'accumulationCount': 18, 'binningFactor': 16, 'integrationTime': 210000, 'other': {'d_rows': 136, 'rhythm': 15, 'n_orders': 3}}
+14:33:45,351 root INFO Checking for observation Surface Ice 6SUBD 01 [[199, 198, 194, 193, 187, 186], 225, 15, 136, 1] in existing science rows
+14:33:45,351 root DEBUG NAccs = 8 from parameters [14600.0, 136, 6, 225]
+14:33:45,353 root INFO Adding new line to science dictionary {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 199, 'steppingPointer': 0, 'accumulationCount': 8, 'binningFactor': 33, 'integrationTime': 225000, 'other': {'d_rows': 136, 'rhythm': 15, 'n_orders': 6}}
+14:33:45,353 root INFO Adding new line to science dictionary {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 198, 'steppingPointer': 0, 'accumulationCount': 8, 'binningFactor': 33, 'integrationTime': 225000, 'other': {'d_rows': 136, 'rhythm': 15, 'n_orders': 6}}
+14:33:45,355 root INFO Adding new line to science dictionary {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 194, 'steppingPointer': 0, 'accumulationCount': 8, 'binningFactor': 33, 'integrationTime': 225000, 'other': {'d_rows': 136, 'rhythm': 15, 'n_orders': 6}}
+14:33:45,355 root INFO Adding new line to science dictionary {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 193, 'steppingPointer': 0, 'accumulationCount': 8, 'binningFactor': 33, 'integrationTime': 225000, 'other': {'d_rows': 136, 'rhythm': 15, 'n_orders': 6}}
+14:33:45,357 root INFO Adding new line to science dictionary {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 187, 'steppingPointer': 0, 'accumulationCount': 8, 'binningFactor': 33, 'integrationTime': 225000, 'other': {'d_rows': 136, 'rhythm': 15, 'n_orders': 6}}
+14:33:45,357 root INFO Adding new line to science dictionary {'degf': 0, 'dvaf': 1, 'sbsf': 1, 'aotfPointer': 186, 'steppingPointer': 0, 'accumulationCount': 8, 'binningFactor': 33, 'integrationTime': 225000, 'other': {'d_rows': 136, 'rhythm': 15, 'n_orders': 6}}
+14:33:45,357 root INFO Adding 11 lines to the science table
+14:33:45,357 root INFO Appending new science row 0,1,1,167,0,18,16,210000 # NADIR_136ROWS_15SECS_3SUBDS -- EXECTIME=14512MS
+14:33:45,357 root INFO Appending new science row 0,1,1,168,0,18,16,210000 # NADIR_136ROWS_15SECS_3SUBDS -- EXECTIME=14512MS
+14:33:45,357 root INFO Appending new science row 0,1,1,169,0,18,16,210000 # NADIR_136ROWS_15SECS_3SUBDS -- EXECTIME=14512MS
+14:33:45,357 root INFO Appending new science row 0,1,1,186,0,8,33,225000 # NADIR_136ROWS_15SECS_6SUBDS -- EXECTIME=14559MS
+14:33:45,357 root INFO Appending new science row 0,1,1,187,0,8,33,225000 # NADIR_136ROWS_15SECS_6SUBDS -- EXECTIME=14559MS
+14:33:45,359 root INFO Appending new science row 0,1,1,190,0,18,16,210000 # NADIR_136ROWS_15SECS_3SUBDS -- EXECTIME=14512MS
+14:33:45,359 root INFO Appending new science row 0,1,1,191,0,18,16,210000 # NADIR_136ROWS_15SECS_3SUBDS -- EXECTIME=14512MS
+14:33:45,359 root INFO Appending new science row 0,1,1,193,0,8,33,225000 # NADIR_136ROWS_15SECS_6SUBDS -- EXECTIME=14559MS
+14:33:45,359 root INFO Appending new science row 0,1,1,194,0,8,33,225000 # NADIR_136ROWS_15SECS_6SUBDS -- EXECTIME=14559MS
+14:33:45,359 root INFO Appending new science row 0,1,1,198,0,8,33,225000 # NADIR_136ROWS_15SECS_6SUBDS -- EXECTIME=14559MS
+14:33:45,359 root INFO Appending new science row 0,1,1,199,0,8,33,225000 # NADIR_136ROWS_15SECS_6SUBDS -- EXECTIME=14559MS
+14:33:45,361 root INFO 11 lno science lines written to file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\lno_science_table.csv
+14:33:45,363 root DEBUG replace_lines ['lno', 'science', '20250510_113000', '20260423_143344_new', 'mtp107_proposed']
+14:33:45,363 root INFO Reading 11 new lines from file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\lno_science_table.csv
+14:33:45,367 root INFO Reading 4097 existing lines from file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20250510_113000\lno_science_table.csv
+14:33:45,367 root INFO Adding line 0,1,1,167,0,18,16,210000 # NADIR_136ROWS_15SECS_3SUBDS -- EXECTIME=14512MS
+ to line 4038
+14:33:45,367 root INFO Adding line 0,1,1,168,0,18,16,210000 # NADIR_136ROWS_15SECS_3SUBDS -- EXECTIME=14512MS
+ to line 4039
+14:33:45,367 root INFO Adding line 0,1,1,169,0,18,16,210000 # NADIR_136ROWS_15SECS_3SUBDS -- EXECTIME=14512MS
+ to line 4040
+14:33:45,367 root INFO Adding line 0,1,1,186,0,8,33,225000 # NADIR_136ROWS_15SECS_6SUBDS -- EXECTIME=14559MS
+ to line 4041
+14:33:45,367 root INFO Adding line 0,1,1,187,0,8,33,225000 # NADIR_136ROWS_15SECS_6SUBDS -- EXECTIME=14559MS
+ to line 4042
+14:33:45,367 root INFO Adding line 0,1,1,190,0,18,16,210000 # NADIR_136ROWS_15SECS_3SUBDS -- EXECTIME=14512MS
+ to line 4043
+14:33:45,367 root INFO Adding line 0,1,1,191,0,18,16,210000 # NADIR_136ROWS_15SECS_3SUBDS -- EXECTIME=14512MS
+ to line 4044
+14:33:45,367 root INFO Adding line 0,1,1,193,0,8,33,225000 # NADIR_136ROWS_15SECS_6SUBDS -- EXECTIME=14559MS
+ to line 4045
+14:33:45,367 root INFO Adding line 0,1,1,194,0,8,33,225000 # NADIR_136ROWS_15SECS_6SUBDS -- EXECTIME=14559MS
+ to line 4046
+14:33:45,367 root INFO Adding line 0,1,1,198,0,8,33,225000 # NADIR_136ROWS_15SECS_6SUBDS -- EXECTIME=14559MS
+ to line 4047
+14:33:45,367 root INFO Adding line 0,1,1,199,0,8,33,225000 # NADIR_136ROWS_15SECS_6SUBDS -- EXECTIME=14559MS
+ to line 4048
+14:33:45,379 root INFO 11 new rows added to file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\lno_science_table.csv
+14:33:45,381 root INFO 48 rows still available in file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\lno_science_table.csv
+14:33:45,381 root INFO Renaming C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\lno_science_table.csv -> C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\lno_science_normal_table.csv
+14:33:45,381 root INFO ### LNO subdomain ###
+14:33:45,381 root DEBUG new_subdomain_rows ['lno', {'CO 3SUBD #1': [[186, 189, 191], 205, 15, 144], 'CO 3SUBD #2': [[186, 190, 191], 205, 15, 144], 'CO 3SUBD #3': [[186, 187, 189], 205, 15, 144], 'CO H2O 3SUBD #3': [[167, 189, 191], 205, 15, 144], 'CO H2O 3SUBD #4': [[169, 189, 191], 205, 15, 144], 'H2O CO 3SUBD #3': [[167, 190, 191], 210, 15, 136, 1], 'H2O 3SUBD #1': [[167, 168, 169], 210, 15, 136, 1], 'Surface Ice 6SUBD 01': [[199, 198, 194, 193, 187, 186], 225, 15, 136, 1]}, 'mtp107_proposed', '20260423_143344_new']
+14:33:45,381 root DEBUG read_cop_csv C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\lno_science_table.csv
+14:33:45,460 root INFO Read in 3139 non-empty and non-calibration lines from C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\lno_science_table.csv
+14:33:45,460 root INFO Checking for observation CO 3SUBD #1 [[186, 189, 191], 205, 15, 144] in existing subdomain rows
+14:33:45,472 root INFO Appending new subdomain row 2626,2629,2631,0,0,0 # ORDERS 186 189 191 -- NADIR_144ROWS_15SECS_3SUBDS -- EXECTIME=14373MS
+14:33:45,472 root INFO Checking for observation CO 3SUBD #2 [[186, 190, 191], 205, 15, 144] in existing subdomain rows
+14:33:45,483 root INFO Appending new subdomain row 2626,2630,2631,0,0,0 # ORDERS 186 190 191 -- NADIR_144ROWS_15SECS_3SUBDS -- EXECTIME=14373MS
+14:33:45,483 root INFO Checking for observation CO 3SUBD #3 [[186, 187, 189], 205, 15, 144] in existing subdomain rows
+14:33:45,496 root INFO Appending new subdomain row 2626,2627,2629,0,0,0 # ORDERS 186 187 189 -- NADIR_144ROWS_15SECS_3SUBDS -- EXECTIME=14373MS
+14:33:45,496 root INFO Checking for observation CO H2O 3SUBD #3 [[167, 189, 191], 205, 15, 144] in existing subdomain rows
+14:33:45,509 root INFO Appending new subdomain row 2607,2629,2631,0,0,0 # ORDERS 167 189 191 -- NADIR_144ROWS_15SECS_3SUBDS -- EXECTIME=14373MS
+14:33:45,514 root INFO Checking for observation CO H2O 3SUBD #4 [[169, 189, 191], 205, 15, 144] in existing subdomain rows
+14:33:45,528 root INFO Appending new subdomain row 2609,2629,2631,0,0,0 # ORDERS 169 189 191 -- NADIR_144ROWS_15SECS_3SUBDS -- EXECTIME=14373MS
+14:33:45,528 root INFO Checking for observation H2O CO 3SUBD #3 [[167, 190, 191], 210, 15, 136, 1] in existing subdomain rows
+14:33:45,542 root INFO Appending new subdomain row 4037,4042,4043,0,0,0 # ORDERS 167 190 191 -- NADIR_136ROWS_15SECS_3SUBDS -- EXECTIME=14512MS
+14:33:45,542 root INFO Checking for observation H2O 3SUBD #1 [[167, 168, 169], 210, 15, 136, 1] in existing subdomain rows
+14:33:45,554 root INFO Appending new subdomain row 4037,4038,4039,0,0,0 # ORDERS 167 168 169 -- NADIR_136ROWS_15SECS_3SUBDS -- EXECTIME=14512MS
+14:33:45,554 root INFO Checking for observation Surface Ice 6SUBD 01 [[199, 198, 194, 193, 187, 186], 225, 15, 136, 1] in existing subdomain rows
+14:33:45,577 root INFO Appending new subdomain row 4047,4046,4045,4044,4041,4040 # ORDERS 199 198 194 193 187 186 -- NADIR_136ROWS_15SECS_6SUBDS -- EXECTIME=14559MS
+14:33:45,581 root INFO 8 lno sub_domain lines written to file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\lno_sub_domain_table.csv
+14:33:45,583 root DEBUG replace_lines ['lno', 'sub_domain', '20250510_113000', '20260423_143344_new', 'mtp107_proposed']
+14:33:45,585 root INFO Reading 8 new lines from file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\lno_sub_domain_table.csv
+14:33:45,587 root INFO Reading 4097 existing lines from file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20250510_113000\lno_sub_domain_table.csv
+14:33:45,587 root INFO Adding line 2626,2629,2631,0,0,0 # ORDERS 186 189 191 -- NADIR_144ROWS_15SECS_3SUBDS -- EXECTIME=14373MS
+ to line 4085
+14:33:45,587 root INFO Adding line 2626,2630,2631,0,0,0 # ORDERS 186 190 191 -- NADIR_144ROWS_15SECS_3SUBDS -- EXECTIME=14373MS
+ to line 4086
+14:33:45,589 root INFO Adding line 2626,2627,2629,0,0,0 # ORDERS 186 187 189 -- NADIR_144ROWS_15SECS_3SUBDS -- EXECTIME=14373MS
+ to line 4087
+14:33:45,589 root INFO Adding line 2607,2629,2631,0,0,0 # ORDERS 167 189 191 -- NADIR_144ROWS_15SECS_3SUBDS -- EXECTIME=14373MS
+ to line 4088
+14:33:45,589 root INFO Adding line 2609,2629,2631,0,0,0 # ORDERS 169 189 191 -- NADIR_144ROWS_15SECS_3SUBDS -- EXECTIME=14373MS
+ to line 4089
+14:33:45,589 root INFO Adding line 4037,4042,4043,0,0,0 # ORDERS 167 190 191 -- NADIR_136ROWS_15SECS_3SUBDS -- EXECTIME=14512MS
+ to line 4090
+14:33:45,589 root INFO Adding line 4037,4038,4039,0,0,0 # ORDERS 167 168 169 -- NADIR_136ROWS_15SECS_3SUBDS -- EXECTIME=14512MS
+ to line 4091
+14:33:45,589 root INFO Adding line 4047,4046,4045,4044,4041,4040 # ORDERS 199 198 194 193 187 186 -- NADIR_136ROWS_15SECS_6SUBDS -- EXECTIME=14559MS
+ to line 4092
+14:33:45,613 root INFO 8 new rows added to file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\lno_sub_domain_table.csv
+14:33:45,613 root INFO 2 rows still available in file C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\lno_sub_domain_table.csv
+14:33:45,613 root INFO Renaming C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\lno_sub_domain_table.csv -> C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20260423_143344_new\lno_sub_domain_normal_table.csv
+14:33:45,615 root DEBUG read_cop_csv C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20250510_113000\so_stepping_table.csv
+14:33:45,619 root DEBUG read_cop_csv C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\so_science_table.csv
+14:33:45,700 root DEBUG read_cop_csv C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\so_sub_domain_table.csv
+14:33:45,850 root DEBUG read_cop_csv C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\20250510_113000\lno_stepping_table.csv
+14:33:45,856 root DEBUG read_cop_csv C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\lno_science_table.csv
+14:33:45,934 root DEBUG read_cop_csv C:\Users\iant\Documents\PROGRAMS\nomad_obs\cop_tables\mtp107_proposed\lno_sub_domain_table.csv

@@ -48,6 +48,11 @@ __contact__ = "ian . thomas AT aeronomie . be"
 # name:[[orders], int time, rhythm, lines, so=0/lno=1]
 occultationObservationDict = {
 
+    # new MTP107+
+    "6SUBD Nominal #55": [[147, 148, 149, 147, 148, 149], 4, 1, 16, 0],  # Loic mesosphere temperature
+    "6SUBD Nominal #56": [[132, 185, 186, 132, 185, 186], 4, 1, 16, 0],
+    "6SUBD Nominal #57": [[124, 137, 196, 146, 170, 196], 4, 1, 16, 0],  # Loic low altitude CO2
+
     # new MTP104+
     "168 only #1": [[168, 168, 168, 168, 168, 168], 4, 1, 16, 0],  # 168 only for Shohei
 
@@ -295,6 +300,18 @@ occultationObservationDict = {
 
 # name:[[orders], int time, rhythm, lines, channel (not used)]
 nadirObservationDict = {
+
+    # new MTP107+
+    "CO 3SUBD #1": [[186, 189, 191], 205, 15, 144, 1],
+    "CO 3SUBD #2": [[186, 190, 191], 205, 15, 144, 1],
+    "CO 3SUBD #3": [[186, 187, 189], 205, 15, 144, 1],
+    "CO H2O 3SUBD #3": [[167, 189, 191], 205, 15, 144, 1],
+    "CO H2O 3SUBD #4": [[169, 189, 191], 205, 15, 144, 1],
+
+    "H2O CO 3SUBD #3 136": [[167, 190, 191], 210, 15, 136, 1],  # François water and CO reduce rows
+    "H2O 3SUBD #1 136": [[167, 168, 169], 210, 15, 136, 1],  # François all water orders reduce rows
+    "Surface Ice 6SUBD 01 136": [[199, 198, 194, 193, 187, 186], 225, 15, 136, 1],
+
 
     # new MTP104+
     "H2O CO 3SUBD #3": [[167, 190, 191], 205, 15, 144, 1],  # François water and CO
