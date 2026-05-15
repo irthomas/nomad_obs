@@ -60,6 +60,7 @@ NIGHTSIDE_ORBIT_TYPES = [7, 17, 27, 47]
 # TODO: UPDATE THIS AUTOMATICALLY
 # COP_TABLE_VERSION = "20231028_120000"
 COP_TABLE_VERSION = "20250510_113000"
+COP_TABLE_VERSION = "20260606_113000"
 
 
 # def get_local_md5(local_path):
@@ -91,7 +92,6 @@ def get_new_updated_webdav_file_dict():
         if VERBOSE:
             print("Checking if path exists locally:", webdav_filepath)
 
-        
         if webdav_file_dict[webdav_filepath]["type"] in ["cop_rows", "orbit_plans"]:
             local_filepath = webdav_file_dict[webdav_filepath]["local_path"]
             if VERBOSE:
@@ -100,7 +100,7 @@ def get_new_updated_webdav_file_dict():
             # if file exists locally, get md5 checksum for checking later
             if os.path.exists(local_filepath):
 
-                md5 = "" # no md5 for webdav
+                md5 = ""  # no md5 for webdav
                 webdav_file_dict[webdav_filepath]["local_md5"] = md5
                 webdav_file_dict[webdav_filepath]["exists"] = True
                 if VERBOSE:
@@ -188,33 +188,33 @@ def analyse_cop_rows(new_files):
 
         # if any of the new files are cop rows, analyse them
         if new_files[filename]["type"] == "cop_rows":
-            
+
             if ".txt" in filename:
 
                 mtp, channel_str, obs_type = filename.replace(".txt", "").split("_", 2)
-    
+
                 if obs_type in ["calibration", "calibrations"]:
                     obs_type = "calibration"
-    
+
                 # if nadir cop rows delivered, need to get orbit plan to figure out observation types
                 if obs_type in ["dayside_nadir", "nightside_nadir"]:
                     orbit_plan_path = get_orbit_plan_path(mtp)
-    
+
                     # if orbit plan is not available, stop with error and send error email
                     if not os.path.exists(orbit_plan_path):
                         print("Error: %s doesn't exist" % orbit_plan_path)
                         error = True
                         return error, "%s doesn't exist" % orbit_plan_path, {}
-    
+
                     else:
                         # read orbit plan data
                         with open(orbit_plan_path, "rb") as f:
                             orbit_lines = [s.decode().strip() for i, s in enumerate(f.readlines()) if i > 0]
-    
+
                         # get indices of potential dayside (all) or potential nightside orbit numbers
                         all_orbits_types = [int(i) for i in orbit_lines]
                         nightside_orbits_types = [int(i) for i in orbit_lines if int(i) in NIGHTSIDE_ORBIT_TYPES]
-    
+
                         # add info to dictionary
                         if obs_type == "dayside_nadir":
                             obs_info_dict[filename] = {"mtp": mtp, "channel_str": channel_str, "obs_type": obs_type, "cop_rows": [],
@@ -225,24 +225,24 @@ def analyse_cop_rows(new_files):
                 else:
                     # if not nadir, leave orbit types empty
                     obs_info_dict[filename] = {"mtp": mtp, "channel_str": channel_str, "obs_type": obs_type, "cop_rows": [], "channels": [], "orbit_types": []}
-    
+
                 # parse cop row file
                 local_filepath = new_files[filename]["path"]
                 with open(local_filepath, "rb") as f:
                     try:
-                        lines = [s.decode(errors = "ignore").strip() for i, s in enumerate(f.readlines()) if i > 0]
+                        lines = [s.decode(errors="ignore").strip() for i, s in enumerate(f.readlines()) if i > 0]
                     except Exception as e:
                         print("Error reading file %s" % (local_filepath))
                         print(e)
                         print(f.readlines())
                         error = True
                         return error, "Error reading file %s: %s" % (local_filepath, e), {}
-    
+
                 for i, line in enumerate(lines):
                     # csv file, so split by comma if line contains data
                     if len(line.strip()) > 0:
                         split = line.split(",")
-    
+
                         # try to convert cop rows to integers
                         if channel_str == "ir":
                             try:
@@ -258,14 +258,14 @@ def analyse_cop_rows(new_files):
                             except ValueError as e:
                                 error = True
                                 return error, "Error line %i: %s %s" % (i, line, str(e)), {}
-        
+
                         obs_info_dict[filename]["cop_rows"].append(sci_cop_row)
                         obs_info_dict[filename]["channels"].append(channel)
-        
+
                         # no orbit type info is available for non-nadir/limbs
                         if obs_type not in ["dayside_nadir", "nightside_nadir"]:
                             obs_info_dict[filename]["orbit_types"].append(-1)
-    
+
                 # check that each dayside and nightside has a COP row
                 if len(obs_info_dict[filename]["orbit_types"]) != len(obs_info_dict[filename]["cop_rows"]):
                     print("Error: %s lengths of orbits and COP rows do not match (%i vs %i)" % (filename, len(obs_info_dict[filename]["orbit_types"]),
@@ -273,7 +273,7 @@ def analyse_cop_rows(new_files):
                     error = True
                     return error, "Error: %s lengths of orbits and COP rows do not match (%i vs %i)" % (filename, len(obs_info_dict[filename]["orbit_types"]),
                                                                                                         len(obs_info_dict[filename]["cop_rows"])), {}
-    
+
                 else:
                     # merge list of orbit types with COP rows
                     channel_str = obs_info_dict[filename]["channel_str"]
@@ -282,10 +282,10 @@ def analyse_cop_rows(new_files):
                         obs_info_dict[filename]["info"] = {"so": {}, "lno": {}, "off": {}}
                     else:
                         obs_info_dict[filename]["info"] = {"uvis": {}}
-    
+
                     for orbit_type, cop_row, channel in zip(obs_info_dict[filename]["orbit_types"], obs_info_dict[filename]["cop_rows"],
                                                             obs_info_dict[filename]["channels"]):
-    
+
                         # add cop rows to dictionary, one item per row in the cop row file for this orbit type and channel
                         # cop row is either X for uvis or (X, X) for so/lno
                         if orbit_type not in obs_info_dict[filename]["info"][channel].keys():
@@ -427,7 +427,7 @@ while True:
 
     # run main program
     check_webdav()
-    
+
     if VERBOSE:
         print("Check complete; waiting")
 

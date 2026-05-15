@@ -452,6 +452,7 @@ nadirObservationDict = {
     "LNO Ice Index 2SUBD 01": [[153, 158], 200, 15, 144, 1],  # OLD <MTP013 F.SCHMIDT SIGNAL TOO LOW
     "LNO Ice Index 2SUBD 02": [[193, 194], 200, 15, 144, 1],  # OLD MTP013+ F.SCHMIDT NEW. LST 6-8AM AND AT HIGH LATS ONLY
 
+    # uvis testing
     "UVIS Binning 3 IT 5000 Delay 0": [["COP#81"], 5000, 7017, 57, 2],
     "UVIS Binning 3 IT 7000 Delay 0": [["COP#85"], 7000, 9017, 57, 2],
     "UVIS Binning 3 IT 10000 Delay 0": [["COP#89"], 10000, 12017, 57, 2],

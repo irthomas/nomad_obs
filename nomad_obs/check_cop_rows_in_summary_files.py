@@ -20,7 +20,7 @@ from datetime import datetime, timedelta
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 
-mtpNumber = 106
+mtpNumber = 107
 # add the correct MTP info in obs_inputs
 
 DT_STR = "%Y %b %d %H:%M:%S"

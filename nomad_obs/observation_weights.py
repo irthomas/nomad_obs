@@ -374,7 +374,8 @@ NADIR_WEIGHTS = [
 # ORDER 164 FOR LIMBS > 50KM, CONTINUE 163-165 COMBINATIONS FOR CASSIS LIMBS
 NADIR_LIMB_WEIGHTS = [
     # ["Limb 2SUBD 07"] * 3,  # 164 x2
-    # ["Nominal Limb 01"] * 1,  # 164, 169
+    # ["Nominal Limb 01"] * 1,  # 164
+    ["Nominal 6SUBD #2"] * 1,  # for AMEC, remove after MTP107
 ]
 
 NADIR_NIGHT_LIMB_WEIGHTS = [

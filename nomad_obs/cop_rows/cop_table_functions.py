@@ -427,8 +427,8 @@ def getObservationDescription(channel, copTableDict, fixedRow, copRow, silent=Fa
                 integrationTime = int(findCopRowData(channel, copTableDict, ["integrationTime"], sciencePointer)) / 1000
                 if steppingType == "AOTF_IX":
                     observationText = "Diffraction order stepping (fullscan): %i orders from %i to %i in steps of %s (%s order(s) per %s second(s))" % (
-                        int(steppingCount), int(aotfOrder), int(aotfOrder) + int(steppingCount) *
-                        int(steppingValue), int(steppingValue), int(steppingSpeed) + 1,
+                        int(steppingCount), int(aotfOrder), int(aotfOrder) + int(steppingCount)
+                        * int(steppingValue), int(steppingValue), int(steppingSpeed) + 1,
                         int(fixedRhythm))
                 elif steppingType == "WINDOW_TOP":
                     observationText = "Detector window stepping: %i step(s) covering detector lines %i to %i (%s step(s) per %s second(s))" % (
@@ -444,8 +444,8 @@ def getObservationDescription(channel, copTableDict, fixedRow, copRow, silent=Fa
                         aotfFrequency) / 1000, int(aotfFrequency) / 1000 + int(steppingCount) * np.round(int(steppingValue) * 8e4 / 2**32),
                         np.round(int(steppingValue) * 8e4 / 2**32), int(steppingSpeed) + 1, int(fixedRhythm))
         elif nSubdomains == 0:
-            print("Error: no subdomains")
-            stop()
+            print("Error: no subdomains in row %i for channel %s" % (copRow, channel))
+            return ""
         else:
             observationText = "Science: orders "
             integrationTimes = []
@@ -569,6 +569,9 @@ def getCopRows(observationName, observationDict, copTableDict, copTableCombinati
 
     # find description of observation
     description = getObservationDescription(channel, copTableDict, fixedCopRow, scienceCopRow, silent=True)
+    if description == "":
+        print(observationName)
+        stop()
     outputDict = {"scienceCopRow": scienceCopRow, "fixedCopRow": fixedCopRow, "copRowDescription": description}
 
     return outputDict, diffractionOrders, integrationTime, rhythm, windowHeight, channelCode
