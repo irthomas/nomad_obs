@@ -570,7 +570,7 @@ def getCopRows(observationName, observationDict, copTableDict, copTableCombinati
     # find description of observation
     description = getObservationDescription(channel, copTableDict, fixedCopRow, scienceCopRow, silent=True)
     if description == "":
-        print(observationName)
+        print("%s not found: this could be due to outdated COP tables" % observationName)
         stop()
     outputDict = {"scienceCopRow": scienceCopRow, "fixedCopRow": fixedCopRow, "copRowDescription": description}
 
