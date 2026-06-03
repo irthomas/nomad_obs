@@ -203,7 +203,7 @@ class MetakernelParser():
             with open(os.path.join(self.local_path, "mk", self.mk_name), 'w') as f:
                 print("Adding local path to metakernel")
                 print
-                f.write(data.replace("( '..' )", "('"+self.local_path+"')"))  # re sub doesn't work with windows paths
+                f.write(data.replace("( '..' )", "('" + self.local_path + "')"))  # re sub doesn't work with windows paths
         except IOError as e:
             print("IO error ({0})".format(e.message))
 
@@ -248,7 +248,7 @@ class MetakernelParser():
             if os.path.exists(os.path.normcase(os.path.join(self.local_path, filename))):
                 print("Error: file already exists %s" % os.path.normcase(os.path.join(self.local_path, filename)))
             else:
-                print(posixpath.join(self.remote_path, filename)+' --> '+os.path.normcase(os.path.join(self.local_path, filename)))
+                print(posixpath.join(self.remote_path, filename) + ' --> ' + os.path.normcase(os.path.join(self.local_path, filename)))
                 self.retrieve_FTP_file(posixpath.join(self.remote_path, filename), os.path.normcase(os.path.join(self.local_path, filename)))
 
     def check_tree(self, dest):

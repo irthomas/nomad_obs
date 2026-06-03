@@ -52,7 +52,7 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 107
+mtpNumber = 108
 
 # global orbitList
 
@@ -157,7 +157,7 @@ Other targets	          Normal priority
     Change to orbit type 1 (or 5 if merged/grazing) and add ingress observation name manually e.g. irIngress, irIngress, uvisIngress
 
 
-*Place nomad_mtp0xx_plan_generic.xlsx, nomad_mtp0xx_plan.csv, nomad_mtp0xx_lno_orbits.txt, nomad_mtp0xx_lno_irdayside_h2o_orbits.txt on the ftp in
+*Place nomad_mtp0xx_plan_generic.xlsx, nomad_mtp0xx_plan.csv, nomad_mtp0xx_lno_orbits.txt, nomad_mtp0xx_lno_irdayside_h2o_orbits.txt on the webdav in
 /Operations/nomad_ops/orbit_plans/mtpxxx
 
 ###

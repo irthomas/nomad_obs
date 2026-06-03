@@ -295,8 +295,8 @@ NADIR_WEIGHTS = [
     ["CO H2O 3SUBD #3"] * 6,
     ["CO H2O 3SUBD #4"] * 6,
 
-    ["H2O CO 3SUBD #3 136"] * 8,  # François water and CO reduce rows
-    ["H2O 3SUBD #1 136"] * 8,  # François all water orders reduce rows
+    ["H2O CO 3SUBD #3 136"] * 8,  # François water and CO reduced rows
+    ["H2O 3SUBD #1 136"] * 8,  # François all water orders reduced rows
     ["Surface Ice 6SUBD 01 136"] * 8,  # reduce rows
 
     # new MTP104+
