@@ -9,6 +9,7 @@ PARSE ORBIT PLAN AND REMOVE SELECTED NADIRS
 TODO:
     SET IR REGIONS OF INTEREST TO GENERIC OBSERVATION irDayside
     MAKE INTO FUNCTION TO BE RUN BY MAIN SCRIPT (MUST NOT CONTINUE EXECUTION AFTER)
+    RUN MORE AT LOW SZA ANGLES
     
 
 """
@@ -25,7 +26,7 @@ from nomad_obs.regions_of_interest import nadirRegionsOfInterest
 from nomad_obs.io.orbit_plan_xlsx import getMtpPlanXlsx
 
 
-mtpNumber = 110
+mtpNumber = 111
 mtpConstants = getMtpConstants(mtpNumber)
 paths = setupPaths(mtpConstants)
 

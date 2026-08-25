@@ -1,0 +1,11 @@
+Target Name,Flyover #,Orbit type,Thermal orbit number,Start crossing time (UTC),End crossing time (UTC),Start crossing latitude (deg),Start crossing longitude (deg),End crossing latitude (deg),End crossing longitude (deg),Start crossing phase angle (deg),End crossing phase angle (deg),Start crossing solar incidence angle (deg),End crossing solar incidence angle (deg),Start crossing emission angle (deg),End crossing emission angle (deg),Start crossing LST (h),End crossing LST (h)
+Region of residual magnetic field,1,3,188,2026 OCT 11 22:07:42,2026 OCT 11 22:21:52,-51.3575,-166.7257,-10.0989,-154.9326,112.8254,148.1433,117.341,147.9461,4.5426,0.38638,20.8964,21.9122
+Region of residual magnetic field,2,3,189,2026 OCT 12 00:05:39,2026 OCT 12 00:19:47,-51.5727,163.6338,-10.0989,176.0981,117.1002,147.905,116.7582,147.6909,0.60651,0.38283,20.8342,21.8944
+Region of residual magnetic field,3,3,200,2026 OCT 12 21:42:47,2026 OCT 12 21:56:45,-50.8699,-153.7042,-10.0989,-142.1523,112.8254,145.3798,116.4433,145.2121,3.6529,0.38936,20.7233,21.72
+Region of residual magnetic field,4,1,201,2026 OCT 12 23:40:43,2026 OCT 12 23:54:39,-50.782,177.275,-10.0989,-171.1131,112.944,145.1267,116.3349,144.9593,3.4105,0.38931,20.7022,21.7025
+Region of residual magnetic field,5,3,202,2026 OCT 13 01:39:36,2026 OCT 13 01:52:36,-48.0022,150.0274,-10.0989,159.9219,112.8986,144.8777,118.7514,144.7106,5.8767,0.38919,20.8144,21.685
+Region of residual magnetic field,6,3,212,2026 OCT 13 21:17:55,2026 OCT 13 21:18:17,-50.3336,-140.7078,-49.2177,-140,112.8254,112.8254,115.4829,116.4807,2.7066,3.6915,20.5497,20.6028
+Region of residual magnetic field,7,1,213,2026 OCT 13 23:15:49,2026 OCT 13 23:29:33,-50.2816,-169.7175,-10.0989,-158.3322,112.944,142.3744,115.3478,142.2099,2.4327,0.38846,20.5286,21.5103
+Region of residual magnetic field,8,3,214,2026 OCT 14 01:13:47,2026 OCT 14 01:27:29,-50.1925,161.3326,-10.0989,172.701,112.8254,142.1189,115.2718,141.9547,2.5,0.38836,20.5125,21.4925
+Region of residual magnetic field,9,3,227,2026 OCT 15 02:50:07,2026 OCT 15 03:00:18,-39.9339,150.015,-10.0989,156.5174,116.033,139.0979,121.8256,138.9364,5.8181,0.38751,20.6842,21.2831
+Region of residual magnetic field,10,1,252,2026 OCT 17 04:02:38,2026 OCT 17 04:08:00,-25.9883,150.0093,-10.0989,153.1186,125.6456,133.2773,126.0211,133.1205,0.60795,0.38601,20.5869,20.8814

@@ -9,28 +9,35 @@ Summary pages for all MTPs can be found here: https://rawcdn.githack.com/irthoma
 * Various standard packages (numpy, os, sys, datetime, matplotlib)
 * Xlsxwriter and xlrd
 
-All the above are available on crunch7.
+All the above are available on adaX.
 
 
 ### Directories
 
-Within the base directory there are four directories
+Within the base directory there are the following directories:
 
 Directory Name | Description
 --- | ---
 `cop_patching` | Scripts to generate patches to the COP tables onboard NOMAD.
 `nomad_obs` | Scripts to run the observation planning.
 `observations` | Input and output files, website pages, etc.
-`website` | Temporary website directory
+`tmp` | Place to copy Ops overview and summary files from the webDAV server.
+`website` | Old website directory.
 
 
 ### Scripts
 
-To run the planning with the same settings are the previous MTP, only two scripts must be modified:
+All scripts are found in the nomad_obs directory, and are in numerical order in the order to be run. 
+First, the SPICE kernels need to be downloaded by running `_01_spice_kernel_downloader.py`.
+
+Then the Ops overview files from the webDAV server need to be copied to the tmp directory, and the script `_02_07_organise_extracted_inputs.py` will place the input files into the correct directories in `observations`.  
+
+
+To run the planning with the same settings as the previous MTP, only two scripts must be modified:
 Script Name | Description
 --- | ---
-`run_planning.py` | (Unsurprisingly) this runs the planning. Here the `mtpNumber` must be changed to the current MTP.
-`nomad_obs/mtp_inputs.py` | Info about all MTPs run so far. `mtpStart` and `mtpEnd` are the *EXMGEO_TD2N* and *EXMGEO_TD2N* times specified by Bojan or Claudio. `copVersion` is the COP table directory name used for this MTP. After each patch is executed onboard, this must be updated to reflect the new COP rows. If no patching has taken place this is the same as the previous MTP.
+`nomad_obs/run_planning.py` | (Unsurprisingly) this runs the planning. Here the `mtpNumber` must be changed to the current MTP.
+`nomad_obs/mtp_inputs.py` | Info about all MTPs run so far. `mtpStart` and `mtpEnd` are the *EXMGEO_TD2N* and *EXMGEO_TD2N* times specified by Bojan or Claudio. `copVersion` is the COP table directory name used for this MTP, to be added to `cop_tables` after a patch has been performed. After each patch is executed onboard, this must be updated to reflect the new COP rows. If no patching has taken place this is the same as the previous MTP.
 
 
 
@@ -59,16 +66,16 @@ When Bojan and Claudio distribute the MTP overview, the planning can begin. The 
 6. Manually define solar and Phobos/Deimos calibrations.
 7. When ready, send COP rows and joint NIR-SO file to Bojan and Claudio.
 
-Detailed information about each step can be found below.
+Detailed information about each step can be found below. See the header of `_04_06_run_planning.py` for the latest info.
 
 Orbit type definitions can be found on the website: https://nomad.aeronomie.be/index.php/observations/observation-planning-orbit-rules
 
-**All emails must be sent to `nomad.iops@aeronomie.be`**
+**All emails must be sent to the nomad-ops address (lists.aeronomie.be)**
 
 
 ### Set up paths
 
-To run on crunch7, all the paths are already pointing to the default locations on the servers. If running on Windows, or if you are on Linux and prefer to run the planning in a directory other than the default, modify `nomad_obs/config/paths.py` as required. There are five paths to be specified:
+To run on adaX, all the paths are already pointing to the default locations on the servers. If running on Windows, or if you are on Linux and prefer to run the planning in a directory other than the default, modify `nomad_obs/config/paths.py` as required. There are five paths to be specified:
 
 
 Variable name | Description
@@ -91,13 +98,9 @@ The metakernel name, given by `METAKERNEL_NAME`, should be specified. This shoul
 
 ### SPICE kernels
 
-The latest planning kernels will need to be downloaded as follows:
-
-* `cd /bira-iasb/projects/NOMAD/Science/Planning/kernels/`
-* `git pull`
+The latest planning kernels will need to be downloaded.
 
 This must be done before each MTP.
-
 
 ### Set up MTP and observation parameters
 

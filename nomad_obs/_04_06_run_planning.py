@@ -49,7 +49,7 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 110
+mtpNumber = 111
 
 # global orbitList
 
@@ -120,7 +120,6 @@ Other targets	          Normal priority
     yellow = CaSSIS surface ice
     blue = CaSSIS limbs
     green = UVIS nightside nadir
-    light blue = EUVM joint occs
     light red = IRTF joint obs
 
 * If grazing occultations, check latitude/min tangent altitude SO constraints are correct
