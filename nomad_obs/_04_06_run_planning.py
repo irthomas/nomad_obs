@@ -49,7 +49,7 @@ __contact__ = "ian . thomas AT aeronomie . be"
 
 
 # select the MTP number to be run
-mtpNumber = 112
+mtpNumber = 113
 
 # global orbitList
 
@@ -59,7 +59,7 @@ r"""
 run nomad_obs._01_spice_kernel_downloader.py ensuring that it is in planning mode
 
 * Extract the zip files to the folder tmp e.g. tmp/MTP101_overview_20251021
-* Run nomad_obs._02_organise_extracted_inputs.py to put the inputs in the correct folders
+* Run nomad_obs._02_07_organise_extracted_inputs.py to put the inputs in the correct folders
 
 If CaSSIS joint limbs, copy file and place here:
 summary_files\mtp0xx\NOMAD_TRUE_LIMB_ORBITS_OT28_WITH_UVIS_NADIR_LOS_TOWARDS_LIMB.txt (if exists)
@@ -71,7 +71,7 @@ Sort orbit numbers in ascending order, add to required_dayside_orbits in nomad_o
 * Add start/end times, COP table version, and list of required/forbidden dayside nadir orbits (from ops email)
 to nomad_obs._03_mtp_inputs.py
 
-* Then run nomad_obs._04_run_planning.py
+* Then run nomad_obs._04_06_run_planning.py
 
 * When finished, update the mtpNumber in nomad_obs._05_remove_ir_nadirs.py
 * Run nomad_obs._05_remove_ir_nadirs.py
@@ -107,8 +107,9 @@ Other targets	          Normal priority
 *change orbit to type 28 (dayside) or 47 (nightside as appropriate, see email) for UVIS ridealong
 
 * If requested by Liege team: add 2 UVIS nightsides (type 7 "uvisNightside") from list of orbits in roi_flyovers_nightside-filtered.txt
-    These must not clash with other observations e.g. solar occultations or high priority LNO nadirs
-    (UVIS can run night and day on same orbit).
+These must not clash with other observations e.g. solar occultations or high priority LNO nadirs
+(UVIS can run night and day on same orbit).
+Run nomad_obs._05b_add_uvis_nightsides.py to find good orbits
 
 * For other joint observations, plan manually in the orbit_plans\mtp0xx\nomad_mtp0xx_plan_generic.xlsx
     e.g. check occultations matching EUVM joint list (Feb 2026+). Run high altitude CO2 e.g. 6SUBD CO2 H2O #14
@@ -151,7 +152,7 @@ Other targets	          Normal priority
 
 *Ignore all UVIS inputs for now
 
-*Then run run_planning.py again to finish planning
+*Then run nomad_obs._04_06_run_planning.py again to finish planning
     Possible errors: occultation just before (in same orbit as) OCM slot or special pointing - check timings in nomad_ingress_events.txt (or grazing)
     Change to orbit type 1 (or 5 if merged/grazing) and add ingress observation name manually e.g. irIngress, irIngress, uvisIngress
 
@@ -164,11 +165,12 @@ Wait until Ops team sends summary files
 
 ###
 *When summary files are available:
+Run nomad_obs._02_07_organise_extracted_inputs.py to collect the summary files
 
 *Add Phobos Deimos LNO COP rows manually (copy file from a previous MTP and update from spreadsheet)
 *Add solar calibration SO COP rows manually (copy file from a previous MTP and update from spreadsheet)
 
-*Place summary files xlsx files in summary files directory and run check_cop_rows_in_summary_files.py once selecting the correct MTP number
+*Run nomad_obs._08_check_cop_rows_in_summary_files.py once selecting the correct MTP number
 *Check the output in the console:
     * For every file, the number of rows must match
     * The times in the two columns must be approximately correct i.e. nadirs within 15 minutes and occultations within 1 minute

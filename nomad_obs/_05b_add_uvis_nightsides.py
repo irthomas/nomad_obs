@@ -15,7 +15,7 @@ from nomad_obs.io.orbit_plan_xlsx import getMtpPlanXlsx
 DT_STR = "%Y %b %d %H:%M:%S"
 
 
-mtpNumber = 112
+mtpNumber = 113
 mtpConstants = getMtpConstants(mtpNumber)
 paths = setupPaths(mtpConstants)
 
